@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Prime Energy Group</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/mobile.css" />
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+
+<!-- PRELOADER-->
+<div class="preloader" id="preloader" aria-label="Завантаження" role="status">
+    <div class="preloader__card">
+        <img
+                src="img/content/hero-desktop.png"
+                alt="Prime Energy Group"
+                class="preloader__image"
+                id="preloaderImage"
+        />
+
+        <div class="preloader__progress">
+            <span class="preloader__spinner" aria-hidden="true"></span>
+            <span class="preloader__percent" id="preloaderPercent">1%</span>
+        </div>
+    </div>
+</div>
+
+<!-- ====== HEADER / MENU ====== -->
+<header class="header" id="top">
+    <div class="container header__inner">
+        <a class="header__logo" href="#home" aria-label="Prime Energy Group">
+            <!-- заміни на svg/png -->
+            <img src="img/logos/logo.svg" alt="Prime Energy Group" />
+        </a>
+
+        <nav class="header__nav" aria-label="Навігація">
+            <a class="nav__link" href="#home">Головна</a>
+            <a class="nav__link" href="#engineering">Інжиніринг</a>
+            <a class="nav__link" href="#library">Бібліотека</a>
+            <a class="nav__link" href="#docs">Документація</a>
+            <a class="nav__link" href="#products">Продукція</a>
+            <a class="nav__link" href="#contacts">Контакти</a>
+        </nav>
+
+        <div class="header__actions">
+            <button class="btn btn--ghost" type="button" data-open-contact>
+                Консультація
+            </button>
+
+            <button class="burger" type="button" aria-label="Відкрити меню" aria-expanded="false" data-open-menu>
+                <span class="burger__line"></span>
+                <span class="burger__line"></span>
+                <span class="burger__line"></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- ====== MOBILE MENU OVERLAY (готово під JS) ====== -->
+<div class="overlay" id="menu-overlay" aria-hidden="true">
+    <div class="overlay__backdrop" data-close-menu></div>
+    <div class="overlay__panel" role="dialog" aria-modal="true" aria-label="Меню">
+        <button class="overlay__close" type="button" aria-label="Закрити" data-close-menu>×</button>
+
+        <nav class="overlay__nav">
+            <a href="#home" data-close-menu>Головна</a>
+            <a href="#engineering" data-close-menu>Інжиніринг</a>
+            <a href="#library" data-close-menu>Технічна бібліотека</a>
+            <a href="#docs" data-close-menu>Документація</a>
+            <a href="#products" data-close-menu>Продукція</a>
+            <a href="#contacts" data-close-menu>Контакти</a>
+        </nav>
+
+        <button class="btn btn--primary overlay__cta" type="button" data-open-contact>
+            Консультація
+        </button>
+    </div>
+</div>
+
+<main>
+
+    <!-- ====== HERO (експортований фрейм) ====== -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero__frame">
+                <img class="hero__img" src="img/content/hero-desktop.png" alt="Prime Energy Group">
+
+                <!-- приклад клікабельних зон поверх -->
+                <a class="hero__hit hero__hit--cta" href="#products" aria-label="Перейти до продукції"></a>
+                <button class="hero__hit hero__hit--consult" type="button" aria-label="Консультація"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== ENGINEERING ====== -->
+    <section class="section engineering" id="engineering">
+        <div class="container">
+            <header class="section__head">
+                <h2 class="h2">Інжиніринг та рішення</h2>
+                <p class="lead">Короткий опис секції (заглушка).</p>
+            </header>
+
+            <div class="engineering__steps">
+                <article class="step">
+                    <div class="step__num">1</div>
+                    <h3 class="h3">Крок / напрям 1</h3>
+                    <p>Опис (заглушка).</p>
+                </article>
+                <article class="step">
+                    <div class="step__num">2</div>
+                    <h3 class="h3">Крок / напрям 2</h3>
+                    <p>Опис (заглушка).</p>
+                </article>
+                <article class="step">
+                    <div class="step__num">3</div>
+                    <h3 class="h3">Крок / напрям 3</h3>
+                    <p>Опис (заглушка).</p>
+                </article>
+            </div>
+
+            <div class="engineering__grid">
+                <div class="card">Кейс / напрям 1</div>
+                <div class="card">Кейс / напрям 2</div>
+                <div class="card">Кейс / напрям 3</div>
+                <div class="card">Кейс / напрям 4</div>
+                <div class="card">Кейс / напрям 5</div>
+                <div class="card">Кейс / напрям 6</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== TECH LIBRARY ====== -->
+    <section class="section library" id="library">
+        <div class="container">
+            <header class="section__head">
+                <h2 class="h2">Технічна бібліотека</h2>
+                <p class="lead">Опис + список матеріалів (заглушка).</p>
+            </header>
+
+            <div class="library__layout">
+                <div class="library__info card">
+                    <h3 class="h3">Опис</h3>
+                    <p>Тут буде текст з макета.</p>
+                    <button class="btn btn--primary" type="button">Перейти</button>
+                </div>
+
+                <div class="library__list card">
+                    <h3 class="h3">Категорії</h3>
+                    <ul class="list">
+                        <li><a href="#">Категорія 1</a></li>
+                        <li><a href="#">Категорія 2</a></li>
+                        <li><a href="#">Категорія 3</a></li>
+                        <li><a href="#">Категорія 4</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== DOCS ====== -->
+    <section class="section docs" id="docs">
+        <div class="container">
+            <header class="section__head">
+                <h2 class="h2">Документація</h2>
+                <p class="lead">Список документів/категорій (заглушка).</p>
+            </header>
+
+            <div class="docs__list">
+                <article class="doc card">
+                    <h3 class="h3">Документ 1</h3>
+                    <p>Короткий опис документа.</p>
+                    <a class="btn btn--ghost" href="docs/doc-1.pdf" target="_blank" rel="noopener">Переглянути</a>
+                </article>
+
+                <article class="doc card">
+                    <h3 class="h3">Документ 2</h3>
+                    <p>Короткий опис документа.</p>
+                    <a class="btn btn--ghost" href="docs/doc-2.pdf" target="_blank" rel="noopener">Переглянути</a>
+                </article>
+
+                <article class="doc card">
+                    <h3 class="h3">Документ 3</h3>
+                    <p>Короткий опис документа.</p>
+                    <a class="btn btn--ghost" href="docs/doc-3.pdf" target="_blank" rel="noopener">Переглянути</a>
+                </article>
+            </div>
+
+            <div class="docs__cta">
+                <button class="btn btn--primary" type="button">Отримати консультацію</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== PRODUCTS ====== -->
+    <section class="section products" id="products">
+        <div class="container">
+            <header class="section__head">
+                <h2 class="h2">Продукція</h2>
+                <p class="lead">Каталог товарів (заглушка).</p>
+            </header>
+
+            <div class="products__grid">
+                <!-- Приклад картки -->
+                <article class="product-card card">
+                    <img src="img/products/product-01.webp" alt="Товар 1" />
+                    <h3 class="h3">Товар 1</h3>
+                    <p class="muted">Короткий опис.</p>
+                    <button class="btn btn--ghost" type="button" data-product-open="product-01">
+                        Опис продукту
+                    </button>
+                </article>
+
+                <!-- Аноди + калькулятор -->
+                <article class="product-card card" id="product-az">
+                    <img src="img/products/az-01.webp" alt="Аноди заземлюючі магнетитові" />
+                    <h3 class="h3">Аноди заземлюючі магнетитові</h3>
+                    <p class="muted">Короткий опис (заглушка).</p>
+
+                    <div class="product-card__actions">
+                        <button class="btn btn--ghost" type="button" data-product-open="az">
+                            Опис продукту
+                        </button>
+                        <button class="btn btn--primary" type="button" data-az-open>
+                            Калькулятор
+                        </button>
+                    </div>
+                </article>
+
+                <article class="product-card card">
+                    <img src="img/products/product-03.webp" alt="Товар 3" />
+                    <h3 class="h3">Товар 3</h3>
+                    <p class="muted">Короткий опис.</p>
+                    <button class="btn btn--ghost" type="button" data-product-open="product-03">
+                        Опис продукту
+                    </button>
+                </article>
+
+                <article class="product-card card">
+                    <img src="img/products/product-04.webp" alt="Товар 4" />
+                    <h3 class="h3">Товар 4</h3>
+                    <p class="muted">Короткий опис.</p>
+                    <button class="btn btn--ghost" type="button" data-product-open="product-04">
+                        Опис продукту
+                    </button>
+                </article>
+            </div>
+
+            <!-- ====== PRODUCT MODAL (загальна модалка під всі товари) ====== -->
+            <div class="modal" id="product-modal" aria-hidden="true">
+                <div class="modal__backdrop" data-product-close></div>
+
+                <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="product-title">
+                    <button class="modal__close" type="button" data-product-close aria-label="Закрити">×</button>
+
+                    <h3 id="product-title" class="modal__title">Назва продукту</h3>
+                    <div class="modal__content">
+                        <p>Тут буде опис продукту (підставлятимемо з JS або з прихованих шаблонів).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ====== AZ CALCULATOR MODAL (тільки для секції продукція) ====== -->
+            <div class="modal" id="az-calc" aria-hidden="true">
+                <div class="modal__backdrop" data-close></div>
+
+                <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="az-title">
+                    <button class="modal__close" type="button" data-close aria-label="Закрити">×</button>
+
+                    <h3 id="az-title" class="modal__title">
+                        Розрахунок кількості сердечників магнетиту
+                    </h3>
+
+                    <form class="modal__form" id="az-form">
+                        <label class="field">
+                            <span>Iном СКЗ (A)</span>
+                            <input name="inom" type="text" inputmode="decimal" placeholder="Напр. 4.0" required>
+                        </label>
+
+                        <label class="field">
+                            <span>ρ ґрунту (Ом·м)</span>
+                            <input name="rho" type="text" inputmode="decimal" placeholder="Напр. 50" required>
+                        </label>
+
+                        <button class="btn btn--primary" type="submit">Визначити кількість</button>
+
+                        <div class="result" id="az-result" hidden>
+                            <div class="result__big">
+                                Потрібно: <b><span id="az-n"></span></b> шт.
+                            </div>
+                            <div class="result__meta" id="az-meta"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ====== PARTNERS ====== -->
+    <section class="section partners" id="partners">
+        <div class="container">
+            <header class="section__head">
+                <h2 class="h2">Партнери / Нам довіряють</h2>
+            </header>
+
+            <div class="partners__row">
+                <img src="img/logos/partner-01.svg" alt="Partner 1" />
+                <img src="img/logos/partner-02.svg" alt="Partner 2" />
+                <img src="img/logos/partner-03.svg" alt="Partner 3" />
+                <img src="img/logos/partner-04.svg" alt="Partner 4" />
+                <img src="img/logos/partner-05.svg" alt="Partner 5" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== CONTACTS (секція + кнопка відкриває попап) ====== -->
+    <section class="section contacts" id="contacts">
+        <div class="container">
+            <header class="section__head">
+                <h2 class="h2">Контакти</h2>
+                <p class="lead">Адреса / телефон / пошта + форма (у модалці).</p>
+            </header>
+
+            <div class="contacts__grid">
+                <div class="contacts__info card">
+                    <p><b>Телефон:</b> <a href="tel:+380000000000">+38 (000) 000-00-00</a></p>
+                    <p><b>Email:</b> <a href="mailto:info@lc-peg.com">info@lc-peg.com</a></p>
+                    <p><b>Адреса:</b> Київ, Україна</p>
+                </div>
+
+                <div class="contacts__cta card">
+                    <h3 class="h3">Потрібна консультація?</h3>
+                    <p class="muted">Залиште заявку — відповімо найближчим часом.</p>
+                    <button class="btn btn--primary" type="button" data-open-contact>Відкрити форму</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== CONTACT MODAL (форма зворотнього зв’язку) ====== -->
+    <div class="modal" id="contact-modal" aria-hidden="true">
+        <div class="modal__backdrop" data-contact-close></div>
+
+        <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+            <button class="modal__close" type="button" data-contact-close aria-label="Закрити">×</button>
+
+            <h3 id="contact-title" class="modal__title">Зворотній зв’язок</h3>
+
+            <form class="modal__form" id="contact-form">
+                <label class="field">
+                    <span>Ім’я</span>
+                    <input name="name" type="text" required>
+                </label>
+
+                <label class="field">
+                    <span>Телефон</span>
+                    <input name="phone" type="tel" required>
+                </label>
+
+                <label class="field">
+                    <span>Повідомлення</span>
+                    <textarea name="message" rows="4"></textarea>
+                </label>
+
+                <button class="btn btn--primary" type="submit">Надіслати</button>
+            </form>
+        </div>
+    </div>
+
+</main>
+
+<!-- ====== FOOTER ====== -->
+<footer class="footer">
+    <div class="container footer__top">
+        <div class="footer__col">
+            <a href="#home" class="footer__logo">Prime Energy Group</a>
+            <p class="muted">Короткий опис компанії (заглушка).</p>
+        </div>
+
+        <div class="footer__col">
+            <h4 class="footer__title">Навігація</h4>
+            <a href="#engineering">Інжиніринг</a>
+            <a href="#library">Бібліотека</a>
+            <a href="#docs">Документація</a>
+            <a href="#products">Продукція</a>
+            <a href="#contacts">Контакти</a>
+        </div>
+
+        <div class="footer__col">
+            <h4 class="footer__title">Контакти</h4>
+            <a href="tel:+380000000000">+38 (000) 000-00-00</a>
+            <a href="mailto:info@lc-peg.com">info@lc-peg.com</a>
+        </div>
+
+        <div class="footer__col">
+            <h4 class="footer__title">Соцмережі</h4>
+            <div class="footer__social">
+                <a href="#" aria-label="Telegram">Telegram</a>
+                <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                <a href="#" aria-label="Facebook">Facebook</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container footer__bottom">
+        <div class="footer__copy">© <span id="y"></span> Prime Energy Group</div>
+
+        <div class="footer__brand" aria-hidden="true">
+            PRIME ENERGY GROUP
+        </div>
+    </div>
+</footer>
+<script>
+    $(function () {
+        const $preloader = $("#preloader");
+        const $percent = $("#preloaderPercent");
+        const $image = $("#preloaderImage");
+
+        if (!$preloader.length || !$percent.length || !$image.length) return;
+
+        let p = 1;
+        let closed = false;
+
+        function render() {
+            $percent.text(p + "%");
+            $image.css("opacity", (0.08 + (p / 100) * 0.92).toFixed(3));
+        }
+
+        function closePreloader() {
+            if (closed) return;
+            closed = true;
+
+            $preloader.addClass("preloader--hide");
+            setTimeout(function () {
+                $preloader.remove();
+            }, 260);
+        }
+
+        render();
+
+        const timer = setInterval(function () {
+            p += p < 60 ? 3 : p < 90 ? 2 : 1;
+            if (p > 100) p = 100;
+
+            render();
+
+            if (p >= 100) {
+                clearInterval(timer);
+                closePreloader();
+            }
+        }, 90);
+
+        $preloader.on("click", function () {
+            clearInterval(timer);
+            closePreloader();
+        });
+    });
+</script>
+<!--<script defer src="main.js"></script>-->
+</body>
+</html>
+
+
+
+
+<!--<button class="btn" type="button" data-az-open>Калькулятор</button>-->
