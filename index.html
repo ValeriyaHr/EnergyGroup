@@ -35,8 +35,7 @@
 <header class="header" id="top">
     <div class="container header__inner">
         <a class="header__logo" href="#home" aria-label="Prime Energy Group">
-            <!-- заміни на svg/png -->
-            <img src="img/logos/logo.svg" alt="Prime Energy Group" />
+            <img src="img/logos/peg-logo.svg" alt="Prime Energy Group" />
         </a>
 
         <nav class="header__nav" aria-label="Навігація">
@@ -84,19 +83,6 @@
 </div>
 
 <main>
-
-    <!-- ====== HERO (експортований фрейм) ====== -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero__frame">
-                <img class="hero__img" src="img/content/hero-desktop.png" alt="Prime Energy Group">
-
-                <!-- приклад клікабельних зон поверх -->
-                <a class="hero__hit hero__hit--cta" href="#products" aria-label="Перейти до продукції"></a>
-                <button class="hero__hit hero__hit--consult" type="button" aria-label="Консультація"></button>
-            </div>
-        </div>
-    </section>
 
     <!-- ====== ENGINEERING ====== -->
     <section class="section engineering" id="engineering">
@@ -375,47 +361,97 @@
 
 </main>
 
-<!-- ====== FOOTER ====== -->
-<footer class="footer">
-    <div class="container footer__top">
-        <div class="footer__col">
-            <a href="#home" class="footer__logo">Prime Energy Group</a>
-            <p class="muted">Короткий опис компанії (заглушка).</p>
+<footer class="footer404">
+    <div class="container footer404__top">
+        <div class="footer404__col">
+            <div class="footer404__title">Меню:</div>
+            <div class="footer404__line"></div>
+
+            <a href="index.html#home">ГОЛОВНИЙ ЕКРАН</a>
+            <a href="index.html#products">ПРОДУКЦІЯ</a>
+            <a href="index.html#engineering">ІНЖИНІРИНГ</a>
+            <a href="index.html#library">ТЕХНІЧНА БІБЛІОТЕКА</a>
+            <a href="index.html#docs">ДОКУМЕНТАЦІЯ</a>
         </div>
 
-        <div class="footer__col">
-            <h4 class="footer__title">Навігація</h4>
-            <a href="#engineering">Інжиніринг</a>
-            <a href="#library">Бібліотека</a>
-            <a href="#docs">Документація</a>
-            <a href="#products">Продукція</a>
-            <a href="#contacts">Контакти</a>
+        <div class="footer404__col">
+            <div class="footer404__title">&nbsp;</div>
+            <div class="footer404__line"></div>
+
+            <a href="#">ЛІЦЕНЗІЇ</a>
+            <a href="#">КАТАЛОГИ ТА ПРЕЗЕНТАЦІЇ</a>
+            <a href="#">ІНСТРУКЦІЇ КОРИСТУВАЧА</a>
+            <a href="#">СЕРТИФІКАТИ ВІДПОВІДНОСТІ</a>
+            <a href="#">ПОЛІТИКА КОНФІДЕНЦІЙНОСТІ</a>
         </div>
 
-        <div class="footer__col">
-            <h4 class="footer__title">Контакти</h4>
-            <a href="tel:+380000000000">+38 (000) 000-00-00</a>
-            <a href="mailto:info@lc-peg.com">info@lc-peg.com</a>
-        </div>
+        <div class="footer404__col footer404__contacts">
+            <div class="footer404__title">Контакти:</div>
+            <div class="footer404__line"></div>
 
-        <div class="footer__col">
-            <h4 class="footer__title">Соцмережі</h4>
-            <div class="footer__social">
-                <a href="#" aria-label="Telegram">Telegram</a>
-                <a href="#" aria-label="LinkedIn">LinkedIn</a>
-                <a href="#" aria-label="Facebook">Facebook</a>
+            <div class="footer404__meta">
+                <div>Номер телефону:</div>
+                <div>
+                    <a href="tel:+380443901015">+38 (044) 390-10-15</a>
+                    <a href="tel:+380732444088">+38 (073) 244-40-88</a>
+                </div>
+            </div>
+
+            <div class="footer404__meta">
+                <div>E-mail:</div>
+                <a class="is-underline" href="mailto:info@llc-peg.com">INFO@LLC-PEG.COM</a>
+            </div>
+
+            <div class="footer404__meta">
+                <div>Поштова адреса:</div>
+                <div class="is-underline">
+                    07400, КИЇВСЬКА ОБЛ., М. БРОВАРИ,<br>
+                    ВУЛ. ГЕРОЇВ УКРАЇНИ, 21А, ОФІС 405
+                </div>
+            </div>
+
+            <div class="footer404__meta">
+                <div>Юридична адреса:</div>
+                <div class="is-underline">
+                    УКРАЇНА М. КИЇВ, ВУЛ. КНЯЗІВ ОСТРОЗЬКИХ, 15
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="container footer__bottom">
-        <div class="footer__copy">© <span id="y"></span> Prime Energy Group</div>
+        <div class="footer404__col footer404__social">
+            <div class="footer404__title">&nbsp;</div>
+            <div class="footer404__line"></div>
 
-        <div class="footer__brand" aria-hidden="true">
-            PRIME ENERGY GROUP
+            <div class="footer404__socialRow">
+                <a href="#" class="footer404__socialLink">
+                    <img src="img/ui/instagram.svg" alt="">
+                    <span>INSTAGRAM</span>
+                </a>
+                <a href="#" class="footer404__socialLink">
+                    <img src="img/ui/facebook.svg" alt="">
+                    <span>FACEBOOK</span>
+                </a>
+            </div>
+
+            <div class="footer404__socialRow">
+                <a href="#" class="footer404__socialLink">
+                    <span>TELEGRAM</span>
+                </a>
+                <a href="#" class="footer404__socialLink">
+                    <span>WHATSAPP</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer404__col footer404__qr">
+            <img src="img/ui/qr-telegram.png" alt="Telegram QR">
+            <img src="img/ui/qr-whatsapp.png" alt="WhatsApp QR">
         </div>
     </div>
+
+    <div class="footer404__brand">PRIME ENERGY GROUP</div>
 </footer>
+
 <script>
     $(function () {
         const $preloader = $("#preloader");
