@@ -21,22 +21,7 @@
 <body>
 
 <!-- PRELOADER-->
-<div class="preloader" id="preloader" aria-label="Завантаження" role="status">
-    <div class="preloader__card">
-        <img
-                src="/img/content/hero-desktop.png"
-                alt="Prime Energy Group"
-                class="preloader__image"
-                id="preloaderImage"
-        />
-
-        <div class="preloader__progress">
-            <span class="preloader__spinner" aria-hidden="true"></span>
-            <span class="preloader__percent" id="preloaderPercent">1%</span>
-        </div>
-    </div>
-</div>
-
+<!-- {{>preloader}} -->
 <!-- ===== HEADER ===== -->
 <header class="header" id="top">
     <div class="container header__inner">
@@ -81,6 +66,7 @@
                 <div class="hero__kicker">Engineering Production Implementation</div>
                 <h1 class="hero__title">PRIME ENERGY<br>GROUP</h1>
                 <p class="hero__desc">
+
                     Виробничо-інжинірингова компанія, що
                     розробляє, виготовляє та впроваджує обладнання для електрохімічного захисту від
                     корозії трубопроводів, резервуарів, нафтогазових і інших підземних металевих споруд
@@ -371,34 +357,8 @@
 
 
 <!-- ===== FOOTER ===== -->
-<footer class="footer" id="footer">
-    <div class="container footer__inner">
-        <div class="footer__cols">
-            <div class="footer__col">
-                <div class="footer__title">Меню</div>
-                <a href="#home">Головний екран</a>
-                <a href="products.html">Продукція</a>
-                <a href="#engineering">Інжиніринг</a>
-                <a href="library.html">Технічна бібліотека</a>
-            </div>
+{{>footer}}
 
-            <div class="footer__col">
-                <div class="footer__title">Контакти</div>
-                <div class="muted">Номер телефону:</div>
-                <div>+38 (044) 390-10-15</div>
-                <div class="muted">E-mail:</div>
-                <div>info@llc-peg.com</div>
-            </div>
-
-            <div class="footer__col footer__qr">
-                <img src="/img/ui/qr-telegram.png" alt="QR 1">
-                <img src="/img/ui/qr-whatsapp.png" alt="QR 2">
-            </div>
-        </div>
-
-        <div class="footer__brand">PRIME ENERGY GROUP</div>
-    </div>
-</footer>
 
 
 
