@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Prime Energy Group</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="alternate icon" href="/favicon.svg">
+
+    <script src="./js/jquery/jquery-3.7.1.min.js"></script>
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/menu.js"></script>
+
+    <!-- Подключение CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/mobile.css" media="(max-width: 768px)">
+</head>
+
+<body>
+
+<!-- PRELOADER-->
+<!-- {{>preloader}} -->
+<!-- ===== HEADER ===== -->
+<header class="header" id="top">
+    <div class="container header__inner">
+        <div class="header__left">
+            <button class="header__burger" type="button" aria-label="Menu" aria-controls="menuOverlay" aria-expanded="false">
+                <img src="/img/ui/burger.svg" alt="" width="24" height="24">
+            </button>
+
+            <div class="header__lang">
+                <a href="index.html" class="is-active">UA</a>
+                <span>|</span>
+                <a href="index-en.html">EN</a>
+            </div>
+
+            <div class="header__contacts">
+                <a href="tel:+380443901015">+38 (044) 390-10-15</a>
+                <a class="is-underline" href="mailto:info@llc-peg.com">info@llc-peg.com</a>
+            </div>
+        </div>
+
+        <a class="header__logo" href="#home" aria-label="Prime Energy Group">
+            <img src="/img/logos/peg-logo.svg" alt="Prime Energy Group">
+        </a>
+
+        <div class="header__right">
+            <a class="header__ctaSecondary btn btn--secondary" href="#contacts">CONSULT WITH ENGINEER</a>
+
+            <a class="header__ctaPrimary btn btn--primary" href="#contacts">
+                <span class="btn__bracket">[</span>
+                <span class="btn__label">КОНСУЛЬТАЦІЯ</span>
+                <span class="btn__bracket">]</span>
+            </a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- ===== PREVIEW PRODUCT ===== -->
+    <section class="previewProduct" aria-label="Попередній перегляд продукту">
+        <div class="previewProduct__gridBg" aria-hidden="true"></div>
+
+        <div class="container previewProduct__inner">
+            <div class="previewProduct__side previewProduct__side--left">
+                <div class="previewProduct__label">
+                    СТАНЦІЇ КАТОДНОГО<br>
+                    ЗАХИСТУ ІНВЕРТОРНІ<br>
+                    АВТОМАТИЧНІ
+                </div>
+            </div>
+
+            <div class="previewProduct__media">
+                <img id="previewProductImage" src="/img/content/products/product-01.png" alt="Станція катодного захисту">
+            </div>
+
+            <div class="previewProduct__side previewProduct__side--right">
+                <p class="previewProduct__desc">
+                    Інверторні станції нового покоління для стабільного та
+                    енергоефективного катодного захисту трубопроводів із точним
+                    автоматичним регулюванням
+                </p>
+
+                <a class="btn btn--secondary previewProduct__btn" href="#">
+                    ПЕРЕГЛЯНУТИ ПРОДУКТ
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== LIST PRODUCTS ===== -->
+    <section class="productsList" aria-label="Продукція">
+        <div class="container">
+            <div class="productsList__grid" id="productsGrid">
+
+                <article class="productCard" data-preview="./img/content/products/product-01.png">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/img/content/products/product-01-small.jpg" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">01</span>
+                            <div class="productCard__title">
+                                Станції катодного захисту інверторні автоматичні (СКЗІ)
+                            </div>
+
+                            <div class="productCard__text">
+                                Інверторні станції нового покоління для стабільного та енергоефективного катодного
+                                захисту трубопроводів
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="/img/ui/orange-up.svg" alt="" width="16" height="16">
+                            </span>
+                        </div>
+
+
+                    </a>
+                </article>
+
+                <article class="productCard" data-preview="./img/content/products/product-02.png">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/img/content/products/product-02-small.jpg" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">02</span>
+                            <div class="productCard__title">
+                                Блоки сумісного захисту (електронні) плавного прецизійного керування
+                            </div>
+
+                            <div class="productCard__text">
+                                Регульований струм для плавного керування, контроль безпеки та систем катодного захисту
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="/img/ui/orange-up.svg" alt="" width="16" height="16">
+                            </span>
+                        </div>
+
+
+                    </a>
+                </article>
+
+                <article class="productCard" data-preview="./img/content/products/product-03.png">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/img/content/products/product-03-small.jpg" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">03</span>
+                            <div class="productCard__title">
+                                Аноди заземлюючі магнетитові (АЗМТ)
+                            </div>
+
+                            <div class="productCard__text">
+                                Високостійкі магнетитові аноди для катодного захисту з тривалим ресурсом роботи
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="/img/ui/orange-up.svg" alt="" width="16" height="16">
+                            </span>
+                        </div>
+
+
+                    </a>
+                </article>
+
+                <article class="productCard" data-preview="./img/content/products/product-04.png">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/img/content/products/product-04-small.jpg" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">04</span>
+                            <div class="productCard__title">
+                                Контрольно-вимірювальні пункти (КВП) з БЗК та телеметрією
+                            </div>
+
+                            <div class="productCard__text">
+                                Комплексні рішення для будованого блоку сумісного захисту та телеметрії
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="/img/ui/orange-up.svg" alt="" width="16" height="16">
+                            </span>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="productCard" data-preview="./img/content/products/product-01.png">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/img/content/products/product-01.png" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">05</span>
+                            <div class="productCard__title">
+                                Станції катодного захисту інверторні автоматичні (СКЗІ)
+                            </div>
+
+                            <div class="productCard__text">
+                                Інверторні станції нового покоління для стабільного та енергоефективного катодного
+                                захисту трубопроводів
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="/img/ui/orange-up.svg" alt="" width="16" height="16">
+                            </span>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="productCard" data-preview="./img/content/products/product-06.png">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/img/content/products/product-06.png" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">06</span>
+                            <div class="productCard__title">
+                                Блоки сумісного захисту (електронні) плавного прецизійного керування
+                            </div>
+
+                            <div class="productCard__text">
+                                Регульований струм для плавного керування, контроль безпеки та систем катодного захисту
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="/img/ui/orange-up.svg" alt="" width="16" height="16">
+                            </span>
+                        </div>
+
+
+                    </a>
+                </article>
+
+                <article class="productCard" data-preview="./img/content/products/product-07.png">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/img/content/products/product-03.png" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">07</span>
+                            <div class="productCard__title">
+                                Аноди заземлюючі магнетитові (АЗМТ)
+                            </div>
+
+                            <div class="productCard__text">
+                                Високостійкі магнетитові аноди для катодного захисту з тривалим ресурсом роботи
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="/img/ui/orange-up.svg" alt="" width="16" height="16">
+                            </span>
+                        </div>
+
+
+                    </a>
+                </article>
+
+                <article class="productCard" data-preview="./img/content/products/product-07.png">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/img/content/products/product-07.png" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">07</span>
+                            <div class="productCard__title">
+                                Контрольно-вимірювальні пункти (КВП) з БЗК та телеметрією
+                            </div>
+
+                            <div class="productCard__text">
+                                Комплексні рішення для будованого блоку сумісного захисту та телеметрії
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="/img/ui/orange-up.svg" alt="" width="16" height="16">
+                            </span>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="productCard" data-preview="./img/content/products/product-08.png">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/img/content/products/product-048.png" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">08</span>
+                            <div class="productCard__title">
+                                Контрольно-вимірювальні пункти (КВП) з БЗК та телеметрією
+                            </div>
+
+                            <div class="productCard__text">
+                                Комплексні рішення для будованого блоку сумісного захисту та телеметрії
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="/img/ui/orange-up.svg" alt="" width="16" height="16">
+                            </span>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="productCard" data-preview="./img/content/products/product-09.png">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/img/content/products/product-09-small.jpg" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">09</span>
+                            <div class="productCard__title">
+                                Контрольно-вимірювальні пункти (КВП) з БЗК та телеметрією
+                            </div>
+
+                            <div class="productCard__text">
+                                Комплексні рішення для будованого блоку сумісного захисту та телеметрії
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="/img/ui/orange-up.svg" alt="" width="16" height="16">
+                            </span>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="productCard" data-preview="./img/content/products/product-10.png">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/img/content/products/product-10-small.jpg" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">10</span>
+                            <div class="productCard__title">
+                                Контрольно-вимірювальні пункти (КВП) з БЗК та телеметрією
+                            </div>
+
+                            <div class="productCard__text">
+                                Комплексні рішення для будованого блоку сумісного захисту та телеметрії
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="/img/ui/orange-up.svg" alt="" width="16" height="16">
+                            </span>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="productCard" data-preview="./img/content/products/product-11.png">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/img/content/products/product-11-small.jpg" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">11</span>
+                            <div class="productCard__title">
+                                Контрольно-вимірювальні пункти (КВП) з БЗК та телеметрією
+                            </div>
+
+                            <div class="productCard__text">
+                                Комплексні рішення для будованого блоку сумісного захисту та телеметрії
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="/img/ui/orange-up.svg" alt="" width="16" height="16">
+                            </span>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="productCard" data-preview="./img/content/products/product-12.png">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/img/content/products/product-12-small.jpg" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">12</span>
+                            <div class="productCard__title">
+                                Контрольно-вимірювальні пункти (КВП) з БЗК та телеметрією
+                            </div>
+
+                            <div class="productCard__text">
+                                Комплексні рішення для будованого блоку сумісного захисту та телеметрії
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="/img/ui/orange-up.svg" alt="" width="16" height="16">
+                            </span>
+                        </div>
+                    </a>
+                </article>
+
+
+                <article class="productCard" data-preview="./img/content/products/product-13.png">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/img/content/products/product-13-small.jpg" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">13</span>
+                            <div class="productCard__title">
+                                Контрольно-вимірювальні пункти (КВП) з БЗК та телеметрією
+                            </div>
+
+                            <div class="productCard__text">
+                                Комплексні рішення для будованого блоку сумісного захисту та телеметрії
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="/img/ui/orange-up.svg" alt="" width="16" height="16">
+                            </span>
+                        </div>
+                    </a>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // swap preview image on hover/focus/click — переписано на jQuery
+        (function ($) {
+            $(function () {
+                var $img = $('#previewProductImage');
+                var $grid = $('#productsGrid');
+                if (!$img.length || !$grid.length) return;
+
+                function setPreview(src) {
+                    if (!src) return;
+                    $img.css('opacity', 0);
+                    window.setTimeout(function () {
+                        $img.attr('src', src);
+                        $img.css('opacity', 1);
+                    }, 90);
+                }
+
+                // Делегируем обработку на сетку — находим ближайшую .productCard для любого события внутри
+                $grid.on('mouseover focusin click', function (e) {
+                    var $card = $(e.target).closest('.productCard');
+                    if (!$card.length) return;
+                    setPreview($card.data('preview'));
+                });
+            });
+        })(jQuery);
+    </script>
+</main>
+
+
+<!-- ===== FOOTER ===== -->
+    <footer class="footer" id="footer">
+        <div class="container footer__inner">
+            <div class="footer__cols">
+                <div class="footer__col">
+                    <div class="footer__title">Меню</div>
+                    <a href="#home">Головний екран</a>
+                    <a href="products.html">Продукція</a>
+                    <a href="#engineering">Інжиніринг</a>
+                    <a href="library.html">Технічна бібліотека</a>
+                </div>
+
+                <div class="footer__col">
+                    <div class="footer__title">Контакти</div>
+                    <div class="muted">Номер телефону:</div>
+                    <div>+38 (044) 390-10-15</div>
+                    <div class="muted">E-mail:</div>
+                    <div>info@llc-peg.com</div>
+                </div>
+
+                <div class="footer__col footer__qr">
+                    <img src="/img/ui/qr-telegram.png" alt="QR 1">
+                    <img src="/img/ui/qr-whatsapp.png" alt="QR 2">
+                </div>
+            </div>
+
+            <div class="footer__brand">PRIME ENERGY GROUP</div>
+        </div>
+    </footer>
+
+
+
+
+
+
+<div class="menuOverlay" id="menuOverlay" aria-hidden="true">
+    <div class="menuOverlay__panel" role="dialog" aria-modal="true" aria-label="Меню">
+
+        <div class="menuOverlay__top">
+            <div class="menuOverlay__title">МЕНЮ</div>
+
+            <a class="menuOverlay__consult btn btn--brackets" href="#">
+                КОНСУЛЬТАЦІЯ
+            </a>
+
+            <button class="menuOverlay__close" type="button" aria-label="Закрити меню">×</button>
+        </div>
+
+        <div class="menuOverlay__divider"></div>
+
+        <nav class="menuOverlay__nav">
+            <a class="menuItem" href="index.html">
+                <span class="menuItem__text">ГОЛОВНИЙ ЕКРАН</span>
+                <span class="menuItem__num">(01)</span>
+                <img class="menuItem__icon" src="/img/ui/arrow-diag-open.svg" alt="" />
+            </a>
+
+            <a class="menuItem" href="products.html">
+                <span class="menuItem__text">ПРОДУКЦІЯ</span>
+                <span class="menuItem__num">(02)</span>
+                <img class="menuItem__icon" src="/img/ui/arrow-diag-open.svg" alt="" />
+            </a>
+
+            <a class="menuItem" href="engineering.html">
+                <span class="menuItem__text">ІНЖИНІРИНГ</span>
+                <span class="menuItem__num">(03)</span>
+                <img class="menuItem__icon" src="/img/ui/arrow-diag-open.svg" alt="" />
+            </a>
+
+            <a class="menuItem" href="library.html">
+                <span class="menuItem__text">ТЕХНІЧКА БІБЛІОТЕКА</span>
+                <span class="menuItem__num">(04)</span>
+                <img class="menuItem__icon" src="/img/ui/arrow-diag-open.svg" alt="" />
+            </a>
+
+            <a class="menuItem" href="docs.html">
+                <span class="menuItem__text">ДОКУМЕНТАЦІЯ</span>
+                <span class="menuItem__num">(05)</span>
+                <img class="menuItem__icon" src="/img/ui/arrow-diag-open.svg" alt="" />
+            </a>
+        </nav>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+<!--<button class="btn" type="button" data-az-open>Калькулятор</button>-->
