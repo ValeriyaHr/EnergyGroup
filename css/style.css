@@ -415,7 +415,7 @@ body{
     right:0;
     bottom:0;
     height:260px;
-    background: url("../../public/img/content/glow.png") center bottom no-repeat;
+    background: url("../img/content/glow.png") center bottom no-repeat;
     background-size: cover;
 
     pointer-events:none;
