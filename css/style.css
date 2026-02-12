@@ -1256,6 +1256,40 @@ body.menu-open{
     transition: transform .15s ease;
 }
 
+.menuItem{
+    display:grid;
+    grid-template-columns: 1fr auto 28px;
+    align-items:center;
+    gap:14px;
+    background: transparent;
+    border:0;
+    padding: 0;
+    color: #111;
+    cursor: pointer;
+}
+
+.menuItem_arrow{
+    width: 28px;
+    height: 28px;
+    justify-self: end;
+    color: #FC944A;
+    transform: translateX(0) translateY(0) rotate(0deg);
+    transition: transform .18s ease;
+    transform-origin: 50% 50%;
+}
+
+.menuItem:hover .menuItem_arrow{
+    transform: translateX(2px) translateY(-2px) rotate(0deg);
+}
+
+.menuOverlay.is-open .menuItem_arrow{
+    transform: translateX(0) translateY(0) rotate(180deg);
+}
+
+.menuOverlay.is-open .menuItem:hover .menuItem_arrow{
+    transform: translateX(2px) translateY(-2px) rotate(180deg);
+}
+
 .btn--brackets{
     position: relative;
     padding-left: 18px;
