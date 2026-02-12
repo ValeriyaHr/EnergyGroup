@@ -126,3 +126,51 @@
         height: 200px;
     }
 }
+
+
+
+/* ===== PRODUCT DETAILS ===== */
+    .productDetails{
+        padding: 16px 0 48px;
+    }
+
+    .productDetails__card{
+        padding: 22px 18px 26px;
+        min-height: 0;
+        border-radius: 16px;
+    }
+
+    .productDetails__back{
+        top: 14px;
+        left: 14px;
+    }
+
+    .productDetails__badge{
+        top: 12px;
+        right: 12px;
+        min-width: 170px;
+        height: 92px;
+        padding: 0 18px;
+        font-size: 72px;
+        border-radius: 12px;
+    }
+
+    .productDetails__row{
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .productDetails__row--benefits{
+        padding-top: 64px;
+    }
+
+    .productDetails__h,
+    .productDetails__title{
+        width: auto;
+    }
+
+    .productDetails__cols{
+        flex-direction: column;
+        gap: 18px;
+    }
+ 
