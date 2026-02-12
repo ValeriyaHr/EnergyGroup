@@ -8,7 +8,8 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/img/favicon.svg">
     <link rel="alternate icon" href="/img/favicon.svg">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- локальна копія jQuery (предпочтительно хранити /js/jquery-3.7.1.min.js) -->
+    <script src="/js/jquery/jquery-3.7.1.min.js"></script>
     <script type="module" src="/js/main.js"></script>
     <script type="module" src="/js/menu.js"></script>
 
@@ -132,8 +133,8 @@
                     </p>
 
                     <div class="intro__actions">
-                        <a class="btn btn--secondary" href="#products">ПЕРЕГЛЯНУТИ ПРОДУКЦІЮ</a>
-                        <a class="btn btn--secondary" href="#products">РОЗРАХУВАТИ ВАРТІСТЬ РІШЕННЯ ПІД ВАШ ОБʼЄКТ</a>
+                        <a class="btn btn--secondary" href="products.html">ПЕРЕГЛЯНУТИ ПРОДУКЦІЮ</a>
+                        <a class="btn btn--secondary" href="products.html">РОЗРАХУВАТИ ВАРТІСТЬ РІШЕННЯ ПІД ВАШ ОБʼЄКТ</a>
                     </div>
                 </div>
             </div>
@@ -376,9 +377,9 @@
             <div class="footer__col">
                 <div class="footer__title">Меню</div>
                 <a href="#home">Головний екран</a>
-                <a href="#products">Продукція</a>
+                <a href="products.html">Продукція</a>
                 <a href="#engineering">Інжиніринг</a>
-                <a href="#library">Технічна бібліотека</a>
+                <a href="library.html">Технічна бібліотека</a>
             </div>
 
             <div class="footer__col">
@@ -398,7 +399,6 @@
         <div class="footer__brand">PRIME ENERGY GROUP</div>
     </div>
 </footer>
-
 
 
 
@@ -449,6 +449,7 @@
     });
 </script>
 <!--<script defer src="main.js"></script>-->
+
 
 
 <div class="menuOverlay" id="menuOverlay" aria-hidden="true">
