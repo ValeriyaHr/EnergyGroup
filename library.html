@@ -58,132 +58,244 @@
     </div>
 </header>
 
-<main>
 
-    <section class="docs" id="docs">
-        <!-- 1) TOP / WHITE -->
-        <div class="docsTop">
-            <div class="container docsTop__inner">
-                <div class="docsTop__titleCol">
-                    <h2 class="docsTop__title">
-                        ОФІЦІЙНА<br />
-                        ТЕХНІЧНА<br />
-                        ДОКУМЕНТАЦІЯ
-                    </h2>
+    <main>
+        <section class="techLib" id="tech-lib">
+            <!-- 1) WHITE: Технічна бібліотека -->
+            <section class="techLibHero">
+                <div class="container techLibHero__inner">
+                    <div class="techLibHero__titleCol">
+                        <div class="techLibHero__brand">Prime Energy Group</div>
 
-                    <a class="docsTop__downloadAll" href="#" download>
-                        [ ЗАВАНТАЖИТИ ВСЕ АРХІВОМ ]
-                    </a>
-                </div>
+                        <h1 class="techLibHero__title">
+                            ТЕХНІЧНА<br />
+                            БІБЛІОТЕКА
+                        </h1>
 
-                <div class="docsTop__tabs">
-                    <a class="docsTop__tab" href="#certs">СЕРТИФІКАТИ ВІДПОВІДНОСТІ</a>
-                    <a class="docsTop__tab" href="#passports">ТЕХНІЧНІ ПАСПОРТИ</a>
-                    <a class="docsTop__tab" href="#catalogs">КАТАЛОГИ ТА ПРЕЗЕНТАЦІЇ</a>
-                    <a class="docsTop__tab" href="#manuals">ІНСТРУКЦІЇ КОРИСТУВАЧА</a>
-                </div>
-            </div>
-        </div>
+                        <div class="techLibHero__actions">
+                            <a class="uLinkBrackets" href="#materials">ПЕРЕЙТИ ДО МАТЕРІАЛІВ</a>
+                            <a class="uLinkBrackets" href="#consult">ЗВ’ЯЗАТИСЬ ІЗ ТЕХНІЧНИМ ВІДДІЛОМ</a>
+                        </div>
+                    </div>
 
-        <!-- 2) BLACK / LINKS -->
-        <div class="docsLinks">
-            <div class="container docsLinks__inner">
-                <div class="docsLinks__col" id="manuals">
-                    <div class="docsLinks__head">ІНСТРУКЦІЇ КОРИСТУВАЧА</div>
+                    <div class="techLibHero__nav">
+                        <a class="techLibHero__navItem" href="#docs-cert">ТЕХНІЧНА ДОКУМЕНТАЦІЯ</a>
+                        <a class="techLibHero__navItem" href="#schemes">ПРИНЦИПОВІ СХЕМИ</a>
+                        <a class="techLibHero__navItem" href="#montage">ТИПОВІ МОНТАЖІ</a>
 
-                    <a class="docsLink" href="#">
-                        <span class="docsLink__text">ПЕРЕГЛЯНУТИ ІНСТРУКЦІЇ</span>
-                        <span class="docsLink__icon">↗</span>
-                    </a>
-
-                    <a class="docsLink" href="#" download>
-                        <span class="docsLink__text">ЗАВАНТАЖИТИ АРХІВ ІНСТРУКЦІЙ</span>
-                        <span class="docsLink__icon">↗</span>
-                    </a>
-                </div>
-
-                <div class="docsLinks__col" id="certs">
-                    <div class="docsLinks__head">СЕРТИФІКАТИ ВІДПОВІДНОСТІ</div>
-
-                    <a class="docsLink" href="#">
-                        <span class="docsLink__text">ПЕРЕГЛЯНУТИ СЕРТИФІКАТИ</span>
-                        <span class="docsLink__icon">↗</span>
-                    </a>
-
-                    <a class="docsLink" href="#" download>
-                        <span class="docsLink__text">ЗАВАНТАЖИТИ АРХІВ СЕРТИФІКАТІВ PDF</span>
-                        <span class="docsLink__icon">↗</span>
-                    </a>
-                </div>
-
-                <div class="docsLinks__col" id="catalogs">
-                    <div class="docsLinks__head">КАТАЛОГИ ТА ПРЕЗЕНТАЦІЇ</div>
-
-                    <a class="docsLink" href="#" download>
-                        <span class="docsLink__text">ЗАВАНТАЖИТИ АРХІВ КАТАЛОГУ PDF</span>
-                        <span class="docsLink__icon">↗</span>
-                    </a>
-
-                    <a class="docsLink" href="#">
-                        <span class="docsLink__text">ПЕРЕГЛЯНУТИ КАТАЛОГИ</span>
-                        <span class="docsLink__icon">↗</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- 3) BOTTOM / FORM -->
-        <div class="docsForm">
-            <div class="container docsForm__inner">
-                <div class="docsForm__left">
-                    <h3 class="docsForm__title">НЕ ЗНАЙШЛИ ПОТРІБНОГО ДОКУМЕНТА?</h3>
-                    <p class="docsForm__subtitle">Ми надішлемо його на вашу пошту.</p>
-                </div>
-
-                <div class="docsForm__right">
-                    <form class="reqForm" action="#" method="post">
-                        <div class="reqForm__box">
-                            <div class="reqForm__grid">
-                                <label class="reqField">
-                                    <input class="reqField__input" type="text" name="firstName" placeholder="ІМ’Я *" required />
-                                </label>
-
-                                <label class="reqField">
-                                    <input class="reqField__input" type="text" name="lastName" placeholder="ПРІЗВИЩЕ *" required />
-                                </label>
-
-                                <label class="reqField reqField--full">
-                                    <input class="reqField__input" type="email" name="email" placeholder="EMAIL *" required />
-                                </label>
-
-                                <label class="reqField reqField--full">
-                                    <input class="reqField__input" type="tel" name="phone" placeholder="ТЕЛЕФОН" />
-                                </label>
-
-                                <label class="reqField reqField--full">
-                                    <textarea class="reqField__textarea" name="message" placeholder="ОПИШІТЬ, ЧИМ МИ МОЖЕМО ВАМ ДОПОМОГТИ *" required></textarea>
-                                </label>
+                        <div class="techLibHero__note">
+                            <div class="techLibHero__noteTitle">ТЕХНІЧНА ДОКУМЕНТАЦІЯ</div>
+                            <div class="techLibHero__noteText">
+                                Ми створюємо не просто обладнання — ми формуємо культуру технічної надійності.
                             </div>
                         </div>
-
-                        <label class="reqAgree">
-                            <input class="reqAgree__check" type="checkbox" required />
-                            <span class="reqAgree__dot" aria-hidden="true"></span>
-                            <span class="reqAgree__text">Даю згоду на обробку персональних даних</span>
-                        </label>
-
-                        <button class="reqBtn" type="submit">[ НАДІСЛАТИ ЗАПИТ ]</button>
-                    </form>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
+
+            <!-- 2) BLACK: Типові монтажі -->
+            <section class="techLibBlock techLibBlock--montage" id="montage">
+                <div class="container techLibBlock__inner">
+                    <div class="techLibBlock__left">
+                        <h2 class="techLibBlock__title">ТИПОВІ МОНТАЖІ</h2>
+
+                        <div class="techLibBlock__art" aria-hidden="true">
+                            <!-- Заглушка SVG (замени на свою картинку/SVG) -->
+                            <svg viewBox="0 0 520 360" class="artSvg">
+                                <g fill="none" stroke="rgba(255,255,255,.22)" stroke-width="2">
+                                    <rect x="40" y="130" width="300" height="120" rx="10"/>
+                                    <circle cx="90" cy="110" r="26"/>
+                                    <circle cx="160" cy="110" r="26"/>
+                                    <circle cx="230" cy="110" r="26"/>
+                                    <rect x="60" y="160" width="40" height="70" rx="6"/>
+                                    <rect x="120" y="160" width="40" height="70" rx="6"/>
+                                    <rect x="180" y="160" width="40" height="70" rx="6"/>
+                                    <rect x="240" y="160" width="40" height="70" rx="6"/>
+                                    <rect x="320" y="190" width="70" height="40" rx="8"/>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="techLibBlock__right">
+                        <p class="techLibBlock__desc">
+                            Ми стандартизували досвід реалізованих проєктів у готові монтажні приклади — щоб вашим
+                            фахівцям було простіше, швидше й точніше.
+                        </p>
+
+                        <div class="techLibList">
+                            <a class="techLibItem" href="#">
+                                <span class="techLibItem__text">ПІДКЛЮЧЕННЯ БЛОКУ БЗК</span>
+                                <span class="techLibItem__arrow">↗</span>
+                            </a>
+                            <a class="techLibItem" href="#">
+                                <span class="techLibItem__text">МОНТАЖ МАГНЕТИТОВОГО АНІОДНОГО ЗАЗЕМЛЮВАЧА</span>
+                                <span class="techLibItem__arrow">↗</span>
+                            </a>
+                            <a class="techLibItem" href="#">
+                                <span class="techLibItem__text">ВСТАНОВЛЕННЯ ТЕЛЕМЕТРІЇ</span>
+                                <span class="techLibItem__arrow">↗</span>
+                            </a>
+                        </div>
+
+                        <a class="uLinkBrackets uLinkBrackets--right" href="#" id="materials">
+                            ПЕРЕГЛЯНУТИ ТА ЗАВАНТАЖИТИ СХЕМИ
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3) BLACK: Принципові схеми -->
+            <section class="techLibBlock techLibBlock--schemes" id="schemes">
+                <div class="container techLibBlock__inner">
+                    <div class="techLibBlock__left">
+                        <h2 class="techLibBlock__title">ПРИНЦИПОВІ СХЕМИ</h2>
+
+                        <div class="techLibBlock__art techLibBlock__art--schemes" aria-hidden="true">
+                            <!-- Заглушка SVG "схема" -->
+                            <svg viewBox="0 0 520 360" class="artSvg">
+                                <g fill="none" stroke="rgba(255,255,255,.22)" stroke-width="2" stroke-linecap="round">
+                                    <circle cx="90" cy="260" r="38"/>
+                                    <path d="M52 260h76"/>
+                                    <path d="M128 260h120"/>
+                                    <path d="M248 260h60"/>
+                                    <path d="M308 260h90"/>
+                                    <path d="M398 260h70"/>
+                                    <path d="M248 260v-120"/>
+                                    <path d="M230 140h36"/>
+                                    <path d="M240 120h20"/>
+                                    <path d="M248 80v40"/>
+                                    <circle cx="248" cy="260" r="8"/>
+                                    <circle cx="248" cy="140" r="8"/>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="techLibBlock__right">
+                        <p class="techLibBlock__desc">
+                            Prime Energy Group розробляє принципові схеми систем катодного захисту, резервуарів,
+                            телеметрії та рішень для промислових об’єктів.
+                        </p>
+
+                        <div class="techLibList">
+                            <a class="techLibItem" href="#">
+                                <span class="techLibItem__text">ВАРІАНТИ ДЛЯ РЕЗЕРВУАРНИХ ПАРКІВ</span>
+                                <span class="techLibItem__arrow">↗</span>
+                            </a>
+                            <a class="techLibItem" href="#">
+                                <span class="techLibItem__text">СХЕМИ КАТОДНОГО ЗАХИСТУ ДЛЯ ТРУБОПРОВОДІВ</span>
+                                <span class="techLibItem__arrow">↗</span>
+                            </a>
+                            <a class="techLibItem" href="#">
+                                <span class="techLibItem__text">КОНФІГУРАЦІЇ З ТЕЛЕМЕТРІЄЮ</span>
+                                <span class="techLibItem__arrow">↗</span>
+                            </a>
+                        </div>
+
+                        <a class="uLinkBrackets uLinkBrackets--right" href="#">
+                            ПЕРЕГЛЯНУТИ ТА ЗАВАНТАЖИТИ СХЕМИ
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4) BLACK: Документація та сертифікати -->
+            <section class="techLibBlock techLibBlock--docs" id="docs-cert">
+                <div class="container techLibBlock__inner">
+                    <div class="techLibBlock__left">
+                        <h2 class="techLibBlock__title">ДОКУМЕНТАЦІЯ ТА СЕРТИФІКАТИ</h2>
+
+                        <div class="techLibBlock__art techLibBlock__art--docs" aria-hidden="true">
+                            <!-- Заглушка SVG "документы" -->
+                            <svg viewBox="0 0 520 360" class="artSvg">
+                                <g fill="none" stroke="rgba(255,255,255,.22)" stroke-width="2">
+                                    <rect x="70" y="110" width="180" height="220" rx="12"/>
+                                    <rect x="95" y="90" width="180" height="220" rx="12"/>
+                                    <rect x="120" y="70" width="180" height="220" rx="12"/>
+                                    <path d="M145 120h110"/>
+                                    <path d="M145 150h90"/>
+                                    <path d="M145 180h120"/>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="techLibBlock__right">
+                        <p class="techLibBlock__desc">
+                            Ми дотримуємося повної технічної прозорості: сертифікати, інструкції користувача,
+                            експлуатаційні матеріали та рекомендації з монтажу.
+                        </p>
+
+                        <div class="techLibCtas">
+                            <a class="uLinkBrackets uLinkBrackets--right" href="#consult">ЗАПРОСИТИ ОРИГІНАЛ ДОКУМЕНТУ</a>
+                            <a class="pillBtn" href="#" download>ЗАВАНТАЖИТИ PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5) WHITE: форма -->
+            <section class="techLibForm" id="consult">
+                <div class="container techLibForm__inner">
+                    <div class="techLibForm__left">
+                        <h3 class="techLibForm__title">
+                            ЯКЩО ВИ НЕ ЗНАЙШЛИ ПОТРІБНУ СХЕМУ ЧИ МАЄТЕ ПИТАННЯ ЩОДО ЕКСПЛУАТАЦІЇ —
+                            НАШ ТЕХНІЧНИЙ ВІДДІЛ ДОПОМОЖЕ ДИСТАНЦІЙНО АБО НА ОБ’ЄКТІ
+                        </h3>
+
+                        <p class="techLibForm__note">
+                            Залиште свої контакти — і технічний відділ зв’яжеться з вами протягом 2 робочих днів
+                        </p>
+                    </div>
+
+                    <div class="techLibForm__right">
+                        <form class="tForm" action="#" method="post">
+                            <div class="tForm__panel">
+                                <div class="tForm__grid">
+                                    <label class="tField">
+                                        <input class="tField__input" type="text" name="name" placeholder="ІМ’Я *" required />
+                                    </label>
+
+                                    <label class="tField">
+                                        <input class="tField__input" type="text" name="surname" placeholder="ПРІЗВИЩЕ *" required />
+                                    </label>
+
+                                    <label class="tField tField--full">
+                                        <input class="tField__input" type="email" name="email" placeholder="EMAIL *" required />
+                                    </label>
+
+                                    <label class="tField tField--full">
+                                        <input class="tField__input" type="tel" name="phone" placeholder="ТЕЛЕФОН" />
+                                    </label>
+
+                                    <label class="tField tField--full">
+                                        <textarea class="tField__textarea" name="msg" placeholder="ОПИШІТЬ, ЧИМ МИ МОЖЕМО ВАМ ДОПОМОГТИ *" required></textarea>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <label class="tAgree">
+                                <input class="tAgree__check" type="checkbox" required />
+                                <span class="tAgree__dot" aria-hidden="true"></span>
+                                <span class="tAgree__text">Даю згоду на обробку персональних даних</span>
+                            </label>
+
+                            <button class="pillBtn pillBtn--wide" type="submit">ЗВ’ЯЗАТИСЬ ІЗ ТЕХНІЧНИМ ВІДДІЛОМ</button>
+                            <div class="tForm__subLink">
+                                <a class="uLinkBrackets" href="#">CONSULT WITH ENGINEER</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
 
 
 
 
 
-</main>
 
 
 <!-- ===== FOOTER ===== -->
