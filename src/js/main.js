@@ -8,4 +8,8 @@ import "./menu.js";
 
 
 
-setupCounter(document.querySelector('#counter'))
+// Вызов setupCounter — только если функция определена (защита от Vite шаблонных артефактов)
+const counterEl = document.querySelector('#counter');
+if (counterEl && typeof window.setupCounter === 'function') {
+    window.setupCounter(counterEl);
+}
