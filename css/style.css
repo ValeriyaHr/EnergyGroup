@@ -473,22 +473,84 @@ btn--secondary.btn--secondary::before,
    ENGINEERING / SOLUTIONS (dark section)
 ========================= */
 .engSection{
-    padding: 22px 0 70px;
+    padding: 0;
 }
 
+/* engSection wrapper: прибираємо контейнерні поля саме тут */
+.engSection__wrap{
+    max-width: none;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* сама чорна картка по центру з “40px зліва/справа” */
+.engSection__card{
+    width: min(1240px, calc(100% - 80px)); /* 40 + 40 */
+    margin: 0 auto;
+}
+
+.engHero{
+    position: relative;
+    background:#fff;
+    padding: 72px 0 0;
+    overflow: visible;
+}
+
+.engHero__panel{
+    border-radius: 26px;
+    background:#fff;
+    padding: 56px 40px 120px; /* місце під дугу */
+    text-align:center;
+}
+
+.engHero__title{
+    margin:0;
+    font-family: var(--font-head);
+    font-size: 64px;
+    line-height:.9;
+    color:#0A0606;
+    text-transform:uppercase;
+}
+
+.engHero__glow{
+    position:absolute;
+    left:50%;
+    bottom:-120px;  /* ГОЛОВНЕ — ось це */
+    transform:translateX(-50%);
+    width: min(2977px, 140%);
+    height:auto;
+    pointer-events:none;
+    z-index:3;
+}
 .engSection__card{
     position: relative;
     border-radius: 26px;
     padding: 44px 48px 42px;
+    overflow: hidden;
+
     background:
             radial-gradient(900px 520px at 18% 6%, rgba(255,255,255,.06), transparent 62%),
             radial-gradient(820px 460px at 78% 22%, rgba(255,122,0,.06), transparent 55%),
-            #070707;
+            #0A0606;
+
     color: rgba(255,255,255,.80);
-    overflow: hidden;
 }
 
-.engSection__rows{
+.engSection__glow{
+    position: absolute;
+    left: 50%;
+    top: 210px;               /* під макет */
+    transform: translateX(-50%);
+    width: min(2977px, 140%);
+    height: auto;
+    pointer-events: none;
+    z-index: 1;
+}
+/* щоб контент був поверх підсвітки */
+.engSection__rows,
+.engSection__video,
+.engSection__bottom{
     position: relative;
     z-index: 2;
 }
@@ -863,11 +925,10 @@ btn--secondary.btn--secondary::before,
 .partners{ padding: 22px 0 44px; }
 .partners__inner{
     display:flex;
-    gap: 36px;
-    align-items:center;
-    justify-content:space-between;
+    gap: 40px;
+    align-items:start;
 }
-.partners__inner img{ height:38px; width:auto; opacity:.95; }
+.partners__inner img{ height:218px; width:368px; opacity:.95; }
 
 /* EXPERIENCE BLOCK */
 
