@@ -14,21 +14,31 @@
     font-display: swap;
 }
 
-:root{
-    --orange:#ff7a00;
-    --black:#0A0606;
-    --text:#413E39;
-    --muted:#9c9c9c;
+@font-face {
+    font-family: "Manrope";
+    src: url("../fonts/Manrope-Light.woff2") format("woff2");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
 
-    --font-head:"Bebas Neue", system-ui, sans-serif;
-    --font-text:"Supreme", system-ui, sans-serif;
-    --font-display: var(--font-head); /* добавлено: дефолтный display-шрифт */
+:root {
+    --orange: #ff7a00;
+    --black: #0A0606;
+    --text: #413E39;
+    --muted: #9c9c9c;
+
+    --font-head: "Bebas Neue", system-ui, sans-serif;
+    --font-text: "Supreme", system-ui, sans-serif;
+    --font-text-product: "Manrope", system-ui, sans-serif;
+
+    --font-display: var(--font-head);
 }
 
 *{ box-sizing:border-box; }
-body{
+
+    body{
     margin:0;
-    font-family: var(--font-text);
     color: var(--text);
     background:#fff;
 }
@@ -44,20 +54,17 @@ body{
     align-items:center;
     justify-content:center;
     gap:10px;
-
     height:44px;
-    padding:0 18px;
+    padding:0 22px;
     border-radius:999px;
-
-    font-family: var(--font-text);
     font-weight:400;
     font-size:24px;
     line-height:1.05;
     letter-spacing:-0.03em;
     text-transform:uppercase;
-
     text-decoration:none;
     border:0;
+    background: transparent;
     cursor:pointer;
     user-select:none;
 }
@@ -141,8 +148,6 @@ body{
 }
 
 .header__logo img{
-    height:40px;
-    width:auto;
     display:block;
 }
 
@@ -196,7 +201,6 @@ body{
 }
 
 .hero__title{
-    font-family: var(--font-head);
     font-size: 96px;
     line-height: .9;
     margin: 0 0 20px;
@@ -255,7 +259,6 @@ body{
     background: rgba(255,255,255,.96);
     color: #0a0606;
     border-radius: 14px;
-    font-family: var(--font-head);
     font-size: 128px;
     line-height: 1;
     letter-spacing: -0.02em;
@@ -274,7 +277,6 @@ body{
 .productDetails__h{
     margin: 0;
     width: 240px;
-    font-family: var(--font-text);
     font-size: 18px;
     font-weight: 400;
     color: rgba(255,255,255,.34);
@@ -303,7 +305,6 @@ body{
 .productDetails__title{
     margin: 0;
     width: 320px;
-    font-family: var(--font-text);
     font-size: 22px;
     font-weight: 500;
     line-height: 1.15;
@@ -998,25 +999,6 @@ body{
     transition: opacity 240ms ease;
 }
 
-.btn{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    height: 44px;
-    padding: 0 22px;
-    border-radius: 999px;
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-    user-select: none;
-
-    transition:
-            background-color .15s ease,
-            box-shadow .15s ease,
-            transform .12s ease,
-            filter .15s ease;
-}
 
 .btn__bracket{
     opacity: .95;
@@ -1228,7 +1210,6 @@ body{
 
 .notfound__title{
     margin-left: 200px;
-    font-family: var(--font-text);
     font-weight: 500;
     font-size: 22px;
     letter-spacing: .02em;
@@ -1239,7 +1220,6 @@ body{
 
 .notfound__text{
     margin-left: 100px;
-    font-family: var(--font-text);
     color:#727270;
     line-height: 1.35;
     text-transform: uppercase;
@@ -1345,7 +1325,6 @@ body{
     display:flex;
     align-items:center;
     gap:10px;
-    font-family: var(--font-text);
     color:#b2b2b2;
 }
 .header404__lang a{ color:#b2b2b2; text-decoration:none; }
@@ -1356,7 +1335,6 @@ body{
     align-items:center;
     justify-content:center;
     gap: 42px;
-    font-family: var(--font-text);
     color:#c9c9c9;
 }
 .header404__contacts a{
@@ -1389,7 +1367,6 @@ body{
     align-items: center;
     justify-content: end;
     gap: 22px;
-    font-family: var(--font-text);
 }
 
 .header404__ctaText{
@@ -1493,16 +1470,30 @@ body.menu-open{
     transform: translateY(6px);
 }
 
-.menuItem__icon{
+.menuItem_icon{
     width: 28px;
     height: 28px;
-    justify-self: end;
+    color: #ff7a1a;
+
+    transform: rotate(180deg); /* ЗАКРИТО = ↙ */
+    transition: transform .18s ease;
+    transform-origin: 50% 50%;
 }
 
-.menuItem:hover .menuItem__icon{
-    transform: translateX(2px) translateY(-2px);
-    transition: transform .15s ease;
+/* ВІДКРИТО = ↗ */
+.menuItem.is-open .menuItem_icon{
+    transform: rotate(0deg);
 }
+
+/* hover трохи зсунути */
+.menuItem_btn:hover .menuItem_icon{
+    transform: translate(2px, -2px) rotate(180deg);
+}
+
+.menuItem.is-open .menuItem_btn:hover .menuItem_icon{
+    transform: translate(2px, -2px) rotate(0deg);
+}
+
 
 .menuItem{
     display:grid;
@@ -1570,7 +1561,6 @@ body.menu-open{
 }
 
 .footer404__title{
-    font-family: var(--font-text);
     opacity:.9;
     margin-bottom: 10px;
 }
@@ -1584,14 +1574,12 @@ body.menu-open{
     color: rgba(255,255,255,.85);
     text-decoration:none;
     display:block;
-    font-family: var(--font-text);
     margin: 8px 0;
 }
 .footer404 .is-underline{ text-decoration: underline; text-underline-offset: 6px; }
 
 .footer404__meta{
     margin: 12px 0 0;
-    font-family: var(--font-text);
     opacity:.92;
 }
 
@@ -1620,7 +1608,6 @@ body.menu-open{
 
 .footer404__brand{
     margin-top: 24px;
-    font-family: var(--font-display);
     font-size: 180px;
     line-height: .85;
     letter-spacing: .02em;
@@ -1655,7 +1642,6 @@ body.menu-open{
 
 .footer__brand{
     margin-top: 24px;
-    font-family: var(--font-head);
     font-size: 120px;
     line-height: .85;
     color: var(--orange);
@@ -1684,13 +1670,33 @@ body.menu-open{
     opacity: 1;
 }
 
+.previewProduct::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: url("/img/ui/background-product.png") center 45% no-repeat;
+    background-size: 1200px auto;
+
+    pointer-events: none;
+    z-index: 1;
+}
+
 .previewProduct__inner{
     position: relative;
-    display:flex;
-    align-items:center;
     justify-content:space-between;
-    gap: 28px;
     min-height: 520px;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 260px minmax(420px, 1fr) 360px;
+    align-items: end;
+    gap: 40px;
+    padding-top: 28px;
+    padding-bottom: 28px;
+}
+
+.previewProduct__side--left{
+    align-self: end;
 }
 
 .previewProduct__side{
@@ -1699,12 +1705,21 @@ body.menu-open{
 }
 
 .previewProduct__label{
-    font-family: var(--font-text);
-    font-size: 12px;
-    letter-spacing: .12em;
+    font-size: 24px;
     text-transform: uppercase;
-    color: #2a2a2a;
-    line-height: 1.35;
+    color: #413E39;
+    letter-spacing: -0.72px;
+    line-height: 1.05;
+    max-width: 540px;
+}
+
+.previewProduct__side--right{
+    align-self: end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 18px;
+    padding-bottom: 6px;
 }
 
 .previewProduct__media{
@@ -1723,13 +1738,20 @@ body.menu-open{
     transition: opacity .12s ease;
 }
 
-.previewProduct__desc{
-    margin: 0 0 14px;
-    color: #b0b0b0;
-    font-size: 12px;
-    line-height: 1.6;
-    text-transform: uppercase;
-    max-width: 320px;
+.previewProduct__desc {
+    font-family: "Manrope", sans-serif;
+    font-weight: 300;
+    color: #D6D5D3;
+    font-size: 18px;
+    line-height: 1.1;
+    max-width: 600px;
+    margin: 0;
+    letter-spacing: -0.54px;
+}
+
+.previewProduct__btn{
+    margin-top: 2px;
+    align-self: flex-end;
 }
 
 /* --- Products list --- */
@@ -1790,7 +1812,6 @@ body.menu-open{
 }
 
 .productCard__title{
-    font-family: var(--font-text);
     font-size: 16px;
     line-height: 1.2;
     letter-spacing: .01em;
@@ -2091,6 +2112,32 @@ body.menu-open{
 }
 .pillBtn:hover{ opacity:.92; }
 .pillBtn--wide{ padding:14px 22px; width:max-content; }
+
+/* ====== product detals====== */
+
+/* контейнер куди підвантажуємо */
+#productDetails {
+    display: none;
+}
+
+/* коли HTML підвантажено */
+#productDetails.is-ready {
+    display: block;
+}
+
+/* анімація: початковий стан */
+#productDetails .productDetails {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity .35s ease, transform .35s ease;
+    will-change: opacity, transform;
+}
+
+/* активний стан */
+#productDetails.is-open .productDetails {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 /* ====== 1) HERO WHITE ====== */
 .techLibHero{

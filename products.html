@@ -12,6 +12,7 @@
     <script src="./js/jquery/jquery-3.7.1.min.js"></script>
     <script type="module" src="./js/main.js"></script>
     <script type="module" src="./js/menu.js"></script>
+    <script src="/js/products.js"></script>
 
     <!-- Подключение CSS -->
     <link rel="stylesheet" href="./css/style.css">
@@ -66,9 +67,7 @@
         <div class="container previewProduct__inner">
             <div class="previewProduct__side previewProduct__side--left">
                 <div class="previewProduct__label">
-                    СТАНЦІЇ КАТОДНОГО<br>
-                    ЗАХИСТУ ІНВЕРТОРНІ<br>
-                    АВТОМАТИЧНІ
+                    Станції катодного захисту інверторні  автоматичні (СКЗІ)
                 </div>
             </div>
 
@@ -83,11 +82,15 @@
                     автоматичним регулюванням
                 </p>
 
-                <a class="btn btn--secondary previewProduct__btn" href="#">
-                    ПЕРЕГЛЯНУТИ ПРОДУКТ
-                </a>
+                <button class="btn btn--secondary previewProduct__btn js-open-product" data-product="p01">
+                    Переглянути продукт
+                </button>
+
             </div>
         </div>
+    </section>
+    <section id="productDetails">
+
     </section>
 
     <!-- ===== LIST PRODUCTS ===== -->
@@ -118,8 +121,8 @@
                             <span class="productCard__arrow" aria-hidden="true">
                                 <img src="/img/ui/orange-up.svg" alt="" width="16" height="16">
                             </span>
-                        </div>
 
+                        </div>
 
                     </a>
                 </article>
@@ -448,80 +451,6 @@
             </div>
         </div>
     </section>
-
-    <!-- ===== PRODUCT DETAILS (appears under main block) ===== -->
-    <section class="productDetails" aria-label="Деталі продукту">
-        <div class="container">
-            <article class="productDetails__card">
-                <a class="productDetails__back" href="products.html" aria-label="Назад">
-                    <span aria-hidden="true">←</span>
-                </a>
-
-                <div class="productDetails__badge" aria-hidden="true">01</div>
-
-                <div class="productDetails__row productDetails__row--benefits">
-                    <h2 class="productDetails__h">Переваги</h2>
-
-                    <ul class="productDetails__benefits">
-                        <li>Зручне дистанційне керування та діагностика</li>
-                        <li>Висока стабільність точність параметрів</li>
-                        <li>Автоматичний захист від збоїв і коротких замикань</li>
-                        <li>Повна сумісність із системами телеметрії</li>
-                    </ul>
-                </div>
-
-                <div class="productDetails__divider" aria-hidden="true"></div>
-
-                <div class="productDetails__row productDetails__row--about">
-                    <h3 class="productDetails__title">
-                        Станції катодного
-                        захисту інверторні
-                        автоматичні (СКЗІ)
-                    </h3>
-
-                    <p class="productDetails__text">
-                        СКЗІ — це інверторні перетворювачі катодного захисту
-                        призначені для захисту підземних трубопроводів, резервуарів,
-                        насосних станцій, підземних металевих споруд та інших
-                        металоконструкцій від корозії.
-                    </p>
-                </div>
-
-                <div class="productDetails__divider" aria-hidden="true"></div>
-
-                <div class="productDetails__cols">
-                    <section class="productDetails__col" aria-label="Контроль та моніторинг">
-                        <div class="productDetails__kicker">Контроль та моніторинг</div>
-                        <ul class="productDetails__list">
-                            <li>Контроль режимів роботи станції</li>
-                            <li>Контроль вихідних параметрів (струм, напруга, потенціал)</li>
-                            <li>Виявлення несанкціонованого доступу</li>
-                            <li>Облік напрацювання та споживаної електроенергії</li>
-                        </ul>
-                    </section>
-
-                    <section class="productDetails__col" aria-label="Режими керування">
-                        <div class="productDetails__kicker">Режими керування</div>
-                        <ul class="productDetails__list">
-                            <li>Дистанційне</li>
-                            <li>Ручне</li>
-                        </ul>
-                    </section>
-
-                    <section class="productDetails__col" aria-label="Можливості системи">
-                        <div class="productDetails__kicker">Можливості системи</div>
-                        <ul class="productDetails__list">
-                            <li>Опитування пристроїв з інтервалом від 1 хв до 24 год</li>
-                            <li>Збереження робочих даних на сервері</li>
-                            <li>Формування звітів і графіків роботи</li>
-                            <li>Автоматичне архівування даних</li>
-                        </ul>
-                    </section>
-                </div>
-            </article>
-        </div>
-    </section>
-
 
 
     <script>
