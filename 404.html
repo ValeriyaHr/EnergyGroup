@@ -12,42 +12,7 @@
 <body class="page404">
 
 <!-- ===== HEADER 404 ===== -->
-<header class="header404">
-    <div class="container header404__inner">
-        <div class="header404__left">
-          <button class="header404__burger" type="button" aria-label="Відкрити меню">
-              <img src="img/ui/burger.svg" alt="" width="40" height="40">
-          </button>
-
-          <nav class="header404__lang">
-              <a href="#" class="is-active">UA</a>
-              <span>|</span>
-              <a href="#">EN</a>
-          </nav>
-
-          <div class="header404__contacts">
-              <a href="tel:+380443901015">+38 (044) 390-10-15</a>
-              <a href="mailto:info@llc-peg.com" class="is-underline">info@llc-peg.com</a>
-          </div>
-        </div>
-        <div class="header404__logo">
-            <img src="img/logos/peg-logo.svg" alt="Prime Energy Group">
-        </div>
-
-        <div class="header404__right">
-          <div class="header404__cta">
-              <a href="#" class="btn btn--secondary header404__ctaSecondary">
-                  CONSULT WITH ENGINEER
-              </a>
-              <button class="btn btn--primary" type="button">
-                  <span class="btn__bracket">[</span>
-                  <span class="btn__label">КОНСУЛЬТАЦІЯ</span>
-                  <span class="btn__bracket">]</span>
-              </button>
-          </div>
-         </div>
-    </div>
-</header>
+{{>header}}
 
 <!-- ===== 404 CONTENT ===== -->
 <main class="notfound">
@@ -71,15 +36,7 @@
 </main>
 
 <!-- ===== FOOTER 404 ===== -->
-<footer class="footer404">
-    <div class="container footer404__top">
-        <!-- тут твои колонки 1:1 из макета -->
-    </div>
-
-    <div class="footer404__brand">
-        PRIME ENERGY GROUP
-    </div>
-</footer>
+{{> footer}}
 
 </body>
 </html>
