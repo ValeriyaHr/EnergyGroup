@@ -1,0 +1,263 @@
+.footerPeg{
+    background:
+            radial-gradient(1200px 600px at 20% 10%, rgba(255,255,255,0.06), transparent 60%),
+            #0A0606;
+    color: rgba(255,255,255,.88);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 520px; /* под макет; можно 480/560 */
+
+}
+
+.footerPeg__top{
+    padding-top: 80px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.footerPeg__grid{
+    display: grid;
+
+    /* Меню | Лицензии | Контакты | Соц | QR */
+    grid-template-columns:
+    200px   /* меню */
+    200px   /* лицензии — СДЕЛАЛИ УЖЕ */
+    1fr     /* контакты — гибкие */
+    220px   /* соц */
+   250px;  /* QR */
+
+    gap: 73px;
+    align-items: start;
+}
+.footerPeg__col{ min-width: 0; } /* щоб текст не ламав сітку */
+
+.footerPeg__head{
+    font-size: 12px;
+    letter-spacing: .18em;
+
+    opacity: .9;
+    margin-bottom: 10px;
+}
+
+.footerPeg__line{
+    height: 1px;
+    background: rgba(255,255,255,.28);
+    margin-bottom: 18px;
+}
+.footerPeg__col--contacts{
+    padding-right: 60px;
+}
+/* links */
+.footerPeg__link{
+    display: block;
+    text-decoration: none;
+    color: rgba(255,255,255,.86);
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    line-height: 1.75;
+    margin: 6px 0;
+    opacity: .84;
+}
+.footerPeg__link:hover{ opacity: 1; }
+
+/* contacts */
+.footerPeg__muted{
+    font-size: 12px;
+    opacity: .55;
+    margin-top: 12px;
+    margin-bottom: 4px;
+}
+
+.footerPeg__text{
+    font-size: 12px;
+    line-height: 1.6;
+    opacity: .86;
+    max-width: 520px;
+    text-transform: uppercase;
+}
+
+.footerPeg__textRow{
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.footerPeg__textLink{
+    color: rgba(255,255,255,.9);
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 1.6;
+    opacity: .86;
+    white-space: nowrap; /* телефони не рвемо */
+}
+.footerPeg__textLink:hover{
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+
+/* social (іконки завжди всередині колонки) */
+.footerPeg__social{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-top: 2px;
+}
+
+.footerPeg__socialLink{
+    display: grid;
+    grid-template-columns: 1fr 22px; /* текст | іконка */
+    align-items: center;
+    column-gap: 14px;
+
+    width: 100%;
+    max-width: 100%;
+
+    text-decoration: none;
+    color: rgba(255,255,255,.86);
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    opacity: .84;
+}
+.footerPeg__socialLink:hover{ opacity: 1; }
+
+.footerPeg__socialIcon{
+    width: 18px;
+    height: 18px;
+    display: block;
+    justify-self: end;
+    opacity: .95;
+}
+
+.footerPeg__socialLink--right{
+    justify-content: end;
+    padding-top: 6px;
+}
+
+/* qr */
+.footerPeg__col--qr{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 12px;
+}
+
+.footerPeg__qrStack{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: flex-end;
+}
+
+.footerPeg__qrImg{
+    width: 120px;
+    height: auto;
+    border-radius: 18px;
+    display: block;
+}
+.footer__qr{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    align-items:flex-end;
+}
+
+.footer__qr img{
+    width:120px;
+    border-radius:18px;
+    padding:0;
+    background:none;
+}
+/* brand */
+.footerPeg__brand{
+    margin-top: 44px;
+    padding: 0 0 22px;
+    font-family: var(--font-head, "Bebas Neue", system-ui, sans-serif);
+    font-size: clamp(84px, 10vw, 180px);
+    line-height: .85;
+    letter-spacing: .02em;
+    color: var(--orange, #ff7a00);
+    text-transform: uppercase;
+    text-align: left;
+    padding-left: clamp(16px, 3vw, 40px);
+}
+
+/* =========================
+   TABLET (<= 1200px)
+   2 колонки + QR справа
+========================= */
+@media (max-width: 1200px){
+    .footerPeg__grid{
+        grid-template-columns: 1fr 1fr;
+        gap: 36px 40px;
+    }
+
+    /* QR і Social не розтягуємо */
+    .footerPeg__col--qr{ justify-content: flex-start; padding-right: 0; }
+    .footerPeg__qrStack{ align-items: flex-start; }
+
+    /* трохи менше відступу зверху */
+    .footerPeg__top{ padding-top: 46px; }
+}
+
+/* =========================
+   MOBILE (<= 720px)
+   1 колонка
+========================= */
+@media (max-width: 720px){
+    .footerPeg__grid{
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .footerPeg__top{ padding-top: 40px; }
+
+    /* телефони можна дозволити переносити, щоб не ламало екран */
+    .footerPeg__textLink{ white-space: normal; }
+
+    /* Social: іконка в правому краї, але не злітає */
+    .footerPeg__socialLink{
+        grid-template-columns: 1fr 20px;
+    }
+
+    /* QR на мобілці в ряд, якщо хочеш компактніше */
+    .footerPeg__qrStack{
+        flex-direction: row;
+        gap: 14px;
+        align-items: flex-start;
+    }
+
+    .footerPeg__qrImg{ width: 110px; }
+
+    .footerPeg__brand{
+        margin-top: 34px;
+        padding-bottom: 18px;
+    }
+}
+
+
+/* =========================
+   VERY SMALL (<= 420px)
+========================= */
+@media (max-width: 420px){
+    .footerPeg__qrStack{ flex-direction: column; }
+    .footerPeg__qrImg{ width: 108px; }
+}
+
+
+.footer__brand{
+    margin-top: 60px;
+    font-family: var(--font-head);
+    font-size: 14.6vw;
+    line-height: .8;
+    letter-spacing: .02em;
+    color: var(--orange);
+    text-transform: uppercase;
+    position: relative;
+    bottom: 1px;
+    width:100%;
+    text-align: center;
+    padding-left:0;
+}
