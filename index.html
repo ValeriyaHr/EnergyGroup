@@ -10,12 +10,16 @@
     <link rel="alternate icon" href="/img/favicon.svg">
 
     <script src="./js/jquery/jquery-3.7.1.min.js"></script>
+
     <script type="module" src="./js/main.js"></script>
     <script type="module" src="./js/menu.js"></script>
 
-    <!-- Подключение CSS -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/mobile.css" media="(max-width: 768px)">
+
+
 </head>
 
 <body>
@@ -193,13 +197,25 @@
     </section>
     <!-- ===== PARTNERS ===== -->
     <section class="partners" id="partners">
-        <div>Наші партнери</div>
-        <div class="container partners__inner">
-            <img src="/img/logos/naftogaz.svg" alt="Нафтогаз">
-            <img src="/img/logos/kyivgaz.svg" alt="Київгаз">
-            <img src="/img/logos/umangaz.svg" alt="Уманьгаз">
-            <img src="/img/logos/ukrnafta.svg" alt="Укрнафта">
-            <img src="/img/logos/gazmerezi.svg" alt="Газмережі">
+        <div class="container">
+            <div class="partners__title">Наші партнери</div>
+
+            <div class="swiper partnersSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide partnersSlide"><img src="/img/logos/naftogaz.svg" alt="Нафтогаз"></div>
+                    <div class="swiper-slide partnersSlide"><img src="/img/logos/kyivgaz.svg" alt="Київгаз"></div>
+                    <div class="swiper-slide partnersSlide"><img src="/img/logos/umangaz.svg" alt="Уманьгаз"></div>
+                    <div class="swiper-slide partnersSlide"><img src="/img/logos/ukrnafta.svg" alt="Укрнафта"></div>
+                    <div class="swiper-slide partnersSlide"><img src="/img/logos/gazmerezi.svg" alt="Газмережі"></div>
+                </div>
+
+                <div class="partnersNav">
+                    <button class="partnersPrev" type="button" aria-label="Prev"></button>
+                    <button class="partnersNext" type="button" aria-label="Next"></button>
+                </div>
+
+                <div class="partnersScrollbar"></div>
+            </div>
         </div>
     </section>
 
@@ -374,9 +390,52 @@
             closePreloader();
         });
     });
+
+
+
 </script>
 <!--<script defer src="main.js"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    const partnersSwiper = new Swiper('.partnersSwiper', {
+        slidesPerView: 4,
+        spaceBetween: 24,
+        loop: false,
+        navigation: { nextEl: '.partnersNext', prevEl: '.partnersPrev' },
+        scrollbar: { el: '.partnersScrollbar', draggable: true },
+        breakpoints: {
+            0:   { slidesPerView: 1.2, spaceBetween: 14 },
+            480: { slidesPerView: 1.8, spaceBetween: 16 },
+            768: { slidesPerView: 2.6, spaceBetween: 18 },
+            1024:{ slidesPerView: 3.2, spaceBetween: 22 },
+            1200:{ slidesPerView: 4,   spaceBetween: 24 },
+        },
+    });
 
+    const sliderEl = document.querySelector('.partnersSwiper');
+
+    sliderEl.addEventListener('wheel', (e) => {
+        const dy = e.deltaY || 0;
+        if (!dy) return;
+
+        // обновим края (Swiper иногда ленится, если не было интеракций)
+        partnersSwiper.updateProgress();
+
+        const atStart = partnersSwiper.isBeginning;
+        const atEnd   = partnersSwiper.isEnd;
+
+        // Если в конце и крутим вниз — пусть крутится страница
+        if (atEnd && dy > 0) return;
+
+        // Если в начале и крутим вверх — пусть крутится страница
+        if (atStart && dy < 0) return;
+
+        // Иначе — крутим слайдер и блокируем скролл страницы
+        e.preventDefault();
+        if (dy > 0) partnersSwiper.slideNext();
+        else partnersSwiper.slidePrev();
+    }, { passive: false });
+</script>
 
 
 
