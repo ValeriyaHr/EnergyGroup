@@ -50,6 +50,14 @@
     font-display: swap;
 }
 
+@font-face{
+    font-family: "General Sans";
+    src: url("../fonts/GeneralSans-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --orange: #ff7a00;
     --orange90: #FC944A;
@@ -2016,25 +2024,21 @@ body.menu-open{
     transform: translateY(-1px);
 }
 
-.productCard__arrow{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
+
 
 .productCard__arrow svg{
-    width: 18px;
-    height: 18px;
+    width: 28px;
+    height: 28px;
 }
 
 .productCard__arrow path{
     stroke: #FC944A;
-    stroke-width: 2;
+    stroke-width: 1;
     fill: none;
 
     stroke-linecap: butt;
     stroke-linejoin: miter;
-    stroke-miterlimit: 20;
+    stroke-miterlimit: 10;
 }
 
 
@@ -2319,73 +2323,136 @@ body.menu-open{
 .techLibHero{
     position:relative;
     background:#fff;
-    padding:72px 0 44px;
+    padding: 132px 0 86px;
     overflow:hidden;
 }
+/* сітка-фон */
 .techLibHero::before{
     content:"";
     position:absolute;
     inset:0;
     background:
-            linear-gradient(var(--gridLine) 1px, transparent 1px) 0 0/120px 120px,
-            linear-gradient(90deg, var(--gridLine) 1px, transparent 1px) 0 0/120px 120px;
+            linear-gradient(var(--gridLine) 1px, transparent 1px) 0 0/240px 240px,
+            linear-gradient(90deg, var(--gridLine) 1px, transparent 1px) 0 0/240px 240px;
     pointer-events:none;
 }
+
 .techLibHero__inner{
-    position:relative;
-    display:flex;
-    justify-content:space-between;
-    gap:40px;
+    position: relative;
 }
-.techLibHero__titleCol{ flex:1 1 640px; }
+
+/* верх */
+.techLibHero__top{
+    max-width: 980px;
+}
+
 .techLibHero__brand{
-    font-size:10px;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    color:var(--orange);
-    margin-bottom:10px;
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
 }
+
 .techLibHero__title{
-    margin:0 0 18px;
-    font-weight:900;
-    letter-spacing:-.02em;
-    line-height:.95;
-    font-size:clamp(42px, 5vw, 74px);
-    text-transform:uppercase;
+    margin: 0 0 32px;
+    font-family: "General Sans", sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: normal;
+    font-size: clamp(92px, 7.2vw, 168px);
+    text-transform: uppercase;
+    color: var(--black);
+    position: relative;
 }
+
+.techLibHero__titleTop,
+.techLibHero__titleBottom{
+    display: block;
+}
+
+.techLibHero__titleBottom{
+    margin-top: -30px;
+    margin-left: clamp(220px, 10.5vw, 240px);
+}
+
+.techLibHero__brandInTitle{
+    position: absolute;
+    left: 0;
+    top: 12em;    font-family: var(--font-text);
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--orange);
+    opacity: 1;
+    pointer-events: none;
+}
+
+.techLibHero__brand{
+    font-size: 14px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    opacity: .7;
+}
+
 .techLibHero__actions{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
+    display: grid;
+    gap: 14px;
+    margin-left: 230px;
 }
-.techLibHero__nav{
-    flex:0 0 520px;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-    gap:18px;
+
+.techLibHero .uLinkBrackets{
+    color: rgba(65,62,57,.82);
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
 }
-.techLibHero__navItem{
-    font-size:10px;
-    letter-spacing:.14em;
-    text-transform:uppercase;
-    color:rgba(0,0,0,.55);
-    text-decoration:none;
+.techLibHero .uLinkBrackets::before,
+.techLibHero .uLinkBrackets::after{
+    color: var(--orange);
 }
-.techLibHero__navItem:hover{ color:rgba(0,0,0,.8); }
-.techLibHero__note{ margin-top:28px; }
-.techLibHero__noteTitle{
-    font-size:10px;
-    letter-spacing:.14em;
-    text-transform:uppercase;
-    color:rgba(0,0,0,.45);
-    margin-bottom:8px;
+.techLibHero .uLinkBrackets:hover{ color: rgba(65,62,57,.95); }
+
+/* низ: три колонки */
+.techLibHero__bottom{
+    margin-top: 210px;
+    display: flex;
+    gap: 120px;
+    align-items: start;
 }
-.techLibHero__noteText{
-    font-size:12px;
-    color:var(--orange);
-    max-width:320px;
-    line-height:1.4;
+
+.techLibHeroCard__titleLink{
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(65,62,57,.60);
+}
+.techLibHeroCard__titleLink:hover{ color: rgba(65,62,57,.85); }
+
+.techLibHeroCard__text{
+    margin-top: 22px;
+    font-size: 12px;
+    line-height: 1.35;
+    color: rgba(65,62,57,.32);
+    max-width: 520px;
+}
+.techLibHeroCard__text--orange{
+    color: var(--orange);
+    max-width: 260px;
+}
+
+/* tablet/mobile */
+@media (max-width: 1024px){
+    .techLibHero{ padding: 96px 0 64px; }
+    .techLibHero__bottom{
+        margin-top: 120px;
+        grid-template-columns: 1fr;
+        gap: 38px;
+    }
+    .techLibHero__title{ font-size: clamp(72px, 10vw, 132px); }
 }
 
 /* ====== 2-4) BLACK BLOCKS ====== */
