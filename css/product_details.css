@@ -201,13 +201,3 @@
     .productDetails__cols{ gap: 28px; }
 }
 
-/* ---------- intro ---------- */
-.intro{ padding: 34px 0 40px; }
-.intro__text{
-    font-family: var(--font-text);
-    font-size: 14px;
-    letter-spacing: .02em;
-    text-transform: uppercase;
-    margin: 0 0 20px;
-    color: var(--black);
-}
