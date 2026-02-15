@@ -33,7 +33,7 @@
 
         <div class="container previewProduct__inner">
             <div class="previewProduct__side previewProduct__side--left">
-                <div class="previewProduct__label">
+                <div class="previewProduct__label" id="previewProductTitle">
                     Станції катодного захисту інверторні  автоматичні (СКЗІ)
                 </div>
             </div>
@@ -43,12 +43,12 @@
             </div>
 
             <div class="previewProduct__side previewProduct__side--right">
-                <p class="previewProduct__desc">
+                <p class="previewProduct__desc" id="previewProductDesc">
                     Інверторні станції нового покоління для стабільного та енергоефективного катодного захисту трубопроводів
                     із точним автоматичним регулюванням
                 </p>
 
-                <button class="btn btn--secondary btn--drift previewProduct__btn js-open-product" data-product="p01">
+                <button id="btnShowDetails" class="btn btn--secondary btn--drift previewProduct__btn js-open-product" data-product="p01">
                     Переглянути продукт
                 </button>
 
@@ -64,7 +64,7 @@
         <div class="container">
             <div class="productsList__grid" id="productsGrid">
 
-                <article class="productCard" data-preview="./img/content/products/product-01.png">
+                <article class="productCard" data-preview="./img/content/products/product-01.png" data-details="p01">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="/img/content/products/product-01-small.jpg" alt="">
@@ -97,7 +97,7 @@
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-02.png">
+                <article class="productCard" data-preview="./img/content/products/product-02.png" data-details="p02">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="/img/content/products/product-02-small.jpg" alt="">
@@ -125,7 +125,7 @@
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-03.png">
+                <article class="productCard" data-preview="./img/content/products/product-03.png" data-details="p03">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="/img/content/products/product-03-small.jpg" alt="">
@@ -153,7 +153,7 @@
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-04.png">
+                <article class="productCard" data-preview="./img/content/products/product-04.png" data-details="p04">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="/img/content/products/product-04-small.jpg" alt="">
@@ -179,7 +179,7 @@
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-05.png">
+                <article class="productCard" data-preview="./img/content/products/product-05.png" data-details="p05">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="/img/content/products/product-05-small.jpg" alt="">
@@ -205,7 +205,7 @@
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-06.png">
+                <article class="productCard" data-preview="./img/content/products/product-06.png" data-details="p06">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="/img/content/products/product-06-small.jpg" alt="">
@@ -234,7 +234,7 @@
                 </article>
 
 
-                <article class="productCard" data-preview="./img/content/products/product-07.png">
+                <article class="productCard" data-preview="./img/content/products/product-07.png" data-details="p07">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="./img/content/products/product-07-small.jpg" alt="">
@@ -260,7 +260,7 @@
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-08.png">
+                <article class="productCard" data-preview="./img/content/products/product-08.png" data-details="p08">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="/img/content/products/product-08-small.jpg" alt="">
@@ -286,7 +286,7 @@
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-09.png">
+                <article class="productCard" data-preview="./img/content/products/product-09.png" data-details="p09">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="/img/content/products/product-09-small.jpg" alt="">
@@ -313,7 +313,7 @@
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-10.png">
+                <article class="productCard" data-preview="./img/content/products/product-10.png" data-details="p10">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="/img/content/products/product-10-small.jpg" alt="">
@@ -341,7 +341,7 @@
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-11.png">
+                <article class="productCard" data-preview="./img/content/products/product-11.png" data-details="p11">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="/img/content/products/product-11-small.jpg" alt="">
@@ -368,7 +368,7 @@
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-12.png">
+                <article class="productCard" data-preview="./img/content/products/product-12.png" data-details="p12">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="/img/content/products/product-12-small.jpg" alt="">
@@ -396,7 +396,7 @@
                 </article>
 
 
-                <article class="productCard" data-preview="./img/content/products/product-13.png">
+                <article class="productCard" data-preview="./img/content/products/product-13.png" data-details="p11">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="/img/content/products/product-13-small.jpg" alt="">
@@ -430,28 +430,126 @@
 
 
     <script>
-        // swap preview image on hover/focus/click — переписано на jQuery
+        // swap preview image on hover/focus/click + автопрокрутка каждые 3 секунды
         (function ($) {
             $(function () {
                 var $img = $('#previewProductImage');
+                var $title = $('#previewProductTitle');
+                var $desc = $('#previewProductDesc');
+                var $btnDetails = $('#btnShowDetails');
                 var $grid = $('#productsGrid');
                 if (!$img.length || !$grid.length) return;
 
-                function setPreview(src) {
+                var autoplayInterval = null;
+                var currentIndex = 0;
+                var $cards = $grid.find('.productCard');
+
+                function setPreview(src, title, desc, productId) {
                     if (!src) return;
                     $img.css('opacity', 0);
+                    $title.css('opacity', 0);
+                    $desc.css('opacity', 0);
+
                     window.setTimeout(function () {
                         $img.attr('src', src);
+                        if (title) $title.text(title);
+                        if (desc) $desc.text(desc);
+                        if (productId && $btnDetails.length) {
+                            $btnDetails.attr('data-product', productId);
+                        }
+
                         $img.css('opacity', 1);
+                        $title.css('opacity', 1);
+                        $desc.css('opacity', 1);
                     }, 90);
                 }
 
-                // Делегируем обработку на сетку — находим ближайшую .productCard для любого события внутри
+                // Функция для показа конкретной карточки
+                function showCard(index) {
+                    if (index >= $cards.length) index = 0;
+                    if (index < 0) index = $cards.length - 1;
+
+                    var $card = $cards.eq(index);
+                    var previewSrc = $card.data('preview');
+                    var title = $card.find('.productCard__title').text().trim();
+                    var text = $card.find('.productCard__text').text().trim();
+                    var productId = $card.data('details');
+
+                    setPreview(previewSrc, title, text, productId);
+                    currentIndex = index;
+                }
+
+                // Автопрокрутка каждые 3 секунды
+                function startAutoplay() {
+                    stopAutoplay();
+                    autoplayInterval = window.setInterval(function () {
+                        currentIndex++;
+                        if (currentIndex >= $cards.length) currentIndex = 0;
+                        showCard(currentIndex);
+                    }, 5000);
+                }
+
+                function stopAutoplay() {
+                    if (autoplayInterval) {
+                        window.clearInterval(autoplayInterval);
+                        autoplayInterval = null;
+                    }
+                }
+
+                // При наведении/фокусе/клике — останавливаем автопрокрутку и показываем выбранную карточку
                 $grid.on('mouseover focusin click', function (e) {
                     var $card = $(e.target).closest('.productCard');
                     if (!$card.length) return;
-                    setPreview($card.data('preview'));
+
+                    stopAutoplay();
+
+                    var previewSrc = $card.data('preview');
+                    var title = $card.find('.productCard__title').text().trim();
+                    var text = $card.find('.productCard__text').text().trim();
+                    var productId = $card.data('details');
+
+                    setPreview(previewSrc, title, text, productId);
+
+                    // Обновляем текущий индекс
+                    currentIndex = $cards.index($card);
                 });
+
+                // При уходе мыши из области сетки — возобновляем автопрокрутку
+                $grid.on('mouseleave', function () {
+                    startAutoplay();
+                });
+
+                // Обработчик клика на ссылку карточки - обновляем превью и открываем детали
+                $grid.on('click', '.productCard__link', function (e) {
+                    e.preventDefault();
+
+                    var $card = $(this).closest('.productCard');
+                    if (!$card.length) return;
+
+                    stopAutoplay();
+
+                    var previewSrc = $card.data('preview');
+                    var title = $card.find('.productCard__title').text().trim();
+                    var text = $card.find('.productCard__text').text().trim();
+                    var productId = $card.data('details');
+
+                    setPreview(previewSrc, title, text, productId);
+                    currentIndex = $cards.index($card);
+
+                    // Программно кликаем по кнопке после небольшой задержки для плавности
+                    window.setTimeout(function () {
+                        $btnDetails = $('#btnShowDetails');
+                        $btnDetails.attr('data-product', productId);
+
+                        $btnDetails.click();
+
+                        alert('TEST'+$btnDetails.attr('data-product'));
+                    }, 150);
+
+                });
+
+                // Запускаем автопрокрутку при загрузке
+                startAutoplay();
             });
         })(jQuery);
     </script>
@@ -459,11 +557,7 @@
 
 
 <!-- ===== FOOTER ===== -->
-
-
 {{> footer}}
-
-
 
 
 </body>
