@@ -1,3 +1,5 @@
+@import url("footer.css");
+
 @font-face {
     font-family: "Bebas Neue";
     src: url("../fonts/BebasNeue.woff2") format("woff2");
@@ -22,8 +24,33 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "Montserrat";
+    src: url("../fonts/Montserrat-Light.woff2") format("woff2");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("../fonts/Montserrat-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Kaushan Script";
+    src: url("../fonts/KaushanScript-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --orange: #ff7a00;
+    --orange90: #FC944A;
     --black: #0A0606;
     --text: #413E39;
     --muted: #9c9c9c;
@@ -420,7 +447,6 @@ btn--secondary.btn--secondary::before,
     font-size: 10px;
     letter-spacing: .18em;
     text-transform: uppercase;
-
     color: rgba(255,122,0,.85);
     margin-bottom: 12px;
 }
@@ -1748,35 +1774,15 @@ body.menu-open{
 
 
 /* ---------- footer ---------- */
-.footer{
-    background:#0b0b0b;
-    color:#fff;
-    padding: 34px 0 26px;
-}
-.footer__cols{
-    display:grid;
-    grid-template-columns: 1fr 1.2fr .8fr;
-    gap: 44px;
-    align-items:start;
-}
-.footer__title{
-    font-size: 12px;
-    opacity:.8;
-    margin-bottom: 12px;
-    text-transform: uppercase;
-    letter-spacing: .1em;
-}
-.footer a{ color:#fff; opacity:.8; text-decoration:none; display:block; margin: 8px 0; }
-.footer__qr{ display:flex; gap: 14px; justify-content:flex-end; }
-.footer__qr img{ width:110px; height:auto; display:block; border-radius: 10px; background:#fff; padding:6px; }
+/* ===== FOOTER (макетний, темний) ===== */
+/* =========================
+  FOOTER (responsive)
+========================= */
 
-.footer__brand{
-    margin-top: 24px;
-    font-size: 120px;
-    line-height: .85;
-    color: var(--orange);
-    text-transform: uppercase;
-}
+
+
+
+
 /* =========================
    PRODUCTS PAGE
 ========================= */
@@ -1947,21 +1953,39 @@ body.menu-open{
     flex: 1 1 auto;
 }
 
+.productCard__num{
+    position:absolute;
+    right: 18px;
+    margin-top: 4px;
+    font-family: "Kaushan Script", cursive;
+    font-size: 18px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: 0;
+    color: #FF822C;
+    z-index: 2;
+}
+
 .productCard__title{
-    font-size: 16px;
-    line-height: 1.2;
-    letter-spacing: .01em;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.15;
+    letter-spacing: 0;
     width: 90%;
-    color: var(--text);
-    margin-bottom: 10px;
+    color: #413E39;
+    margin-bottom: 14px;
 }
 
 .productCard__text{
-    font-size: 12px;
-    line-height: 1.55;
-
-    color:#b0b0b0;
-    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 1.45;
+    letter-spacing: 0;
+    color:#413E39;
+    margin: 0 0 18px;;
 }
 
 .productCard__bottom{
@@ -1973,33 +1997,47 @@ body.menu-open{
 }
 
 .productCard__more{
-    font-size: 12px;
-    letter-spacing: .06em;
-
-    color: var(--orange);
+    font-family: var(--font-text);
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: .02em;
+    color: rgba(255, 122, 0, .9);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: opacity .18s ease, transform .18s ease;
 }
 
-.productCard__arrow{
-    font-size: 16px;
-    color: var(--orange);
-    line-height: 1;
+.productCard__more:hover{
+    opacity: .78;
     transform: translateY(-1px);
 }
 
-
-.productCard__num{
-    position:absolute;
-    right: 18px;
-    margin-top: 4px;
-    /*top: 18px;*/
-    font-size: 12px;
-    font-style:italic ;
-    font-weight: 700;
-    font-family: "Bebas Neue", sans-serif;
-    z-index: 2;
-    letter-spacing: .08em;
-    color: var(--orange);
+.productCard__arrow{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.productCard__arrow svg{
+    width: 18px;
+    height: 18px;
+}
+
+.productCard__arrow path{
+    stroke: #FC944A;
+    stroke-width: 2;
+    fill: none;
+
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
+    stroke-miterlimit: 20;
+}
+
+
+
+
 /* Библиотека */
   .docs { background: #fff; }
 /* 1) TOP */
