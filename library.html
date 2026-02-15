@@ -23,40 +23,7 @@
 <!-- PRELOADER-->
 <!-- {{>preloader}} -->
 <!-- ===== HEADER ===== -->
-<header class="header" id="top">
-    <div class="container header__inner">
-        <div class="header__left">
-            <button class="header__burger" type="button" aria-label="Menu" aria-controls="menuOverlay" aria-expanded="false">
-                <img src="/img/ui/burger.svg" alt="" width="24" height="24">
-            </button>
-
-            <div class="header__lang">
-                <a href="index.html" class="is-active">UA</a>
-                <span>|</span>
-                <a href="index-en.html">EN</a>
-            </div>
-
-            <div class="header__contacts">
-                <a href="tel:+380443901015">+38 (044) 390-10-15</a>
-                <a class="is-underline" href="mailto:info@llc-peg.com">info@llc-peg.com</a>
-            </div>
-        </div>
-
-        <a class="header__logo" href="#home" aria-label="Prime Energy Group">
-            <img src="/img/logos/peg-logo.svg" alt="Prime Energy Group">
-        </a>
-
-        <div class="header__right">
-            <a class="header__ctaSecondary btn btn--secondary" href="#contacts">CONSULT WITH ENGINEER</a>
-
-            <a class="header__ctaPrimary btn btn--primary" href="#contacts">
-                <span class="btn__bracket">[</span>
-                <span class="btn__label">КОНСУЛЬТАЦІЯ</span>
-                <span class="btn__bracket">]</span>
-            </a>
-        </div>
-    </div>
-</header>
+{{>header}}
 
 
     <main>
@@ -299,88 +266,12 @@
 
 
 <!-- ===== FOOTER ===== -->
-<footer class="footer" id="footer">
-    <div class="container footer__inner">
-        <div class="footer__cols">
-            <div class="footer__col">
-                <div class="footer__title">Меню</div>
-                <a href="#home">Головний екран</a>
-                <a href="products.html">Продукція</a>
-                <a href="#engineering">Інжиніринг</a>
-                <a href="library.html">Технічна бібліотека</a>
-            </div>
-
-            <div class="footer__col">
-                <div class="footer__title">Контакти</div>
-                <div class="muted">Номер телефону:</div>
-                <div>+38 (044) 390-10-15</div>
-                <div class="muted">E-mail:</div>
-                <div>info@llc-peg.com</div>
-            </div>
-
-            <div class="footer__col footer__qr">
-                <img src="./img/ui/qr-telegram.png" alt="QR 1">
-                <img src="./img/ui/qr-whatsapp.png" alt="QR 2">
-            </div>
-        </div>
-
-        <div class="footer__brand">PRIME ENERGY GROUP</div>
-    </div>
-</footer>
+{{>footer}}
 
 
 
 
 
-
-<div class="menuOverlay" id="menuOverlay" aria-hidden="true">
-    <div class="menuOverlay__panel" role="dialog" aria-modal="true" aria-label="Меню">
-
-        <div class="menuOverlay__top">
-            <div class="menuOverlay__title">МЕНЮ</div>
-
-            <a class="menuOverlay__consult btn btn--brackets" href="#">
-                КОНСУЛЬТАЦІЯ
-            </a>
-
-            <button class="menuOverlay__close" type="button" aria-label="Закрити меню">×</button>
-        </div>
-
-        <div class="menuOverlay__divider"></div>
-
-        <nav class="menuOverlay__nav">
-            <a class="menuItem" href="index.html">
-                <span class="menuItem__text">ГОЛОВНИЙ ЕКРАН</span>
-                <span class="menuItem__num">(01)</span>
-                <img class="menuItem__icon" src="./img/ui/arrow-diag-open.svg" alt="" />
-            </a>
-
-            <a class="menuItem" href="products.html">
-                <span class="menuItem__text">ПРОДУКЦІЯ</span>
-                <span class="menuItem__num">(02)</span>
-                <img class="menuItem__icon" src="./img/ui/arrow-diag-open.svg" alt="" />
-            </a>
-
-            <a class="menuItem" href="engineering.html">
-                <span class="menuItem__text">ІНЖИНІРИНГ</span>
-                <span class="menuItem__num">(03)</span>
-                <img class="menuItem__icon" src="./img/ui/arrow-diag-open.svg" alt="" />
-            </a>
-
-            <a class="menuItem" href="library.html">
-                <span class="menuItem__text">ТЕХНІЧКА БІБЛІОТЕКА</span>
-                <span class="menuItem__num">(04)</span>
-                <img class="menuItem__icon" src="./img/ui/arrow-diag-open.svg" alt="" />
-            </a>
-
-            <a class="menuItem" href="docs.html">
-                <span class="menuItem__text">ДОКУМЕНТАЦІЯ</span>
-                <span class="menuItem__num">(05)</span>
-                <img class="menuItem__icon" src="./img/ui/arrow-diag-open.svg" alt="" />
-            </a>
-        </nav>
-    </div>
-</div>
 
 
 </body>
