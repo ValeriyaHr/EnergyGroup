@@ -28,15 +28,14 @@
 
     <main>
         <section class="techLib" id="tech-lib">
-            <!-- 1) WHITE: Технічна бібліотека -->
             <section class="techLibHero">
                 <div class="container techLibHero__inner">
                     <div class="techLibHero__titleCol">
-                        <div class="techLibHero__brand">Prime Energy Group</div>
 
                         <h1 class="techLibHero__title">
-                            ТЕХНІЧНА<br />
-                            БІБЛІОТЕКА
+                            <span class="techLibHero__brandInTitle">Prime Energy Group</span>
+                            <span class="techLibHero__titleTop">ТЕХНІЧНА</span>
+                            <span class="techLibHero__titleBottom">БІБЛІОТЕКА</span>
                         </h1>
 
                         <div class="techLibHero__actions">
@@ -45,21 +44,29 @@
                         </div>
                     </div>
 
-                    <div class="techLibHero__nav">
-                        <a class="techLibHero__navItem" href="#docs-cert">ТЕХНІЧНА ДОКУМЕНТАЦІЯ</a>
-                        <a class="techLibHero__navItem" href="#schemes">ПРИНЦИПОВІ СХЕМИ</a>
-                        <a class="techLibHero__navItem" href="#montage">ТИПОВІ МОНТАЖІ</a>
-
-                        <div class="techLibHero__note">
-                            <div class="techLibHero__noteTitle">ТЕХНІЧНА ДОКУМЕНТАЦІЯ</div>
-                            <div class="techLibHero__noteText">
-                                Ми створюємо не просто обладнання — ми формуємо культуру технічної надійності.
+                    <div class="techLibHero__bottom" aria-label="Розділи технічної бібліотеки">
+                        <div class="techLibHeroCard">
+                            <a class="techLibHeroCard__titleLink" href="#docs-cert">ТЕХНІЧНА ДОКУМЕНТАЦІЯ</a>
+                            <div class="techLibHeroCard__text techLibHeroCard__text--orange">
+                                Ми створюємо не просто обладнання — ми формуємо культуру технічної надійності
                             </div>
+                        </div>
+
+                        <div class="techLibHeroCard">
+                            <a class="techLibHeroCard__titleLink" href="#schemes">ПРИНЦИПОВІ СХЕМИ</a>
+                            <div class="techLibHeroCard__text">
+                                Кожен документ, схема чи відео — це результат багаторічного досвіду впровадження систем ЕХЗ “Під ключ”
+                                <br /><br />
+                                У цьому розділі зібрані практичні матеріали, створені нашими інженерами на основі реальних проєктів в Україні та за кордоном
+                            </div>
+                        </div>
+
+                        <div class="techLibHeroCard">
+                            <a class="techLibHeroCard__titleLink" href="#montage">ТИПОВІ МОНТАЖІ</a>
                         </div>
                     </div>
                 </div>
             </section>
-
             <!-- 2) BLACK: Типові монтажі -->
             <section class="techLibBlock techLibBlock--montage" id="montage">
                 <div class="container techLibBlock__inner">
