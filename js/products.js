@@ -24,6 +24,13 @@ $(function () {
     function closeDetails() {
         $wrap.removeClass("is-open");
         isOpen = false;
+
+        // Очищаем содержимое после завершения анимации
+        setTimeout(() => {
+            $wrap.removeClass("is-ready").empty();
+            isLoaded = false;
+            lastUrl = null;
+        }, 350);
     }
 
     function loadProduct(url) {
@@ -51,6 +58,10 @@ $(function () {
         });
     }
 
+    $(document).on("click", ".productDetails__back", function (e) {
+        e.preventDefault();
+        closeDetails();
+    });
     // ✅ КЛІК по кнопці
     $(document).on("click", ".js-open-product", function (e) {
         e.preventDefault();
