@@ -84,14 +84,9 @@
 
                         <div class="productCard__bottom">
                             <span class="productCard__more">Дізнатися більше</span>
-
                             <span class="productCard__arrow" aria-hidden="true">
-                                <svg width="18" height="18" viewBox="0 0 60 60">
-                                    <path d="M14 14 H46 V46" />
-                                    <path d="M46 14 L46 30 L30 14" />
-                                </svg>
+                                <img src="./img/ui/orange-up.svg" alt="" width="16" height="16">
                             </span>
-
                         </div>
 
                     </a>
@@ -522,6 +517,11 @@
                 // Обработчик клика на ссылку карточки - обновляем превью и открываем детали
                 $grid.on('click', '.productCard__link', function (e) {
                     e.preventDefault();
+                    return false;
+                });
+                $grid.on('click', '.productCard__bottom', function (e) {
+                    e.preventDefault();
+
 
                     var $card = $(this).closest('.productCard');
                     if (!$card.length) return;
