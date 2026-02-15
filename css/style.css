@@ -1,3 +1,5 @@
+@import url("footer.css");
+
 @font-face {
     font-family: "Bebas Neue";
     src: url("../fonts/BebasNeue.woff2") format("woff2");
@@ -1748,35 +1750,15 @@ body.menu-open{
 
 
 /* ---------- footer ---------- */
-.footer{
-    background:#0b0b0b;
-    color:#fff;
-    padding: 34px 0 26px;
-}
-.footer__cols{
-    display:grid;
-    grid-template-columns: 1fr 1.2fr .8fr;
-    gap: 44px;
-    align-items:start;
-}
-.footer__title{
-    font-size: 12px;
-    opacity:.8;
-    margin-bottom: 12px;
-    text-transform: uppercase;
-    letter-spacing: .1em;
-}
-.footer a{ color:#fff; opacity:.8; text-decoration:none; display:block; margin: 8px 0; }
-.footer__qr{ display:flex; gap: 14px; justify-content:flex-end; }
-.footer__qr img{ width:110px; height:auto; display:block; border-radius: 10px; background:#fff; padding:6px; }
+/* ===== FOOTER (макетний, темний) ===== */
+/* =========================
+  FOOTER (responsive)
+========================= */
 
-.footer__brand{
-    margin-top: 24px;
-    font-size: 120px;
-    line-height: .85;
-    color: var(--orange);
-    text-transform: uppercase;
-}
+
+
+
+
 /* =========================
    PRODUCTS PAGE
 ========================= */
