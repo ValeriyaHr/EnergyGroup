@@ -247,8 +247,11 @@ btn--secondary.btn--secondary::before,
 }
 
 .hero__title{
+    font-family: var(--font-head);
+    font-weight: 400;
     font-size: 96px;
-    line-height: .9;
+    line-height: .85;
+    letter-spacing: -0.05em;
     margin: 0 0 20px;
     color: var(--black);
     text-transform: uppercase;
@@ -1215,9 +1218,7 @@ btn--secondary.btn--secondary::before,
 }
 
 .hero__img{
-    display:block;
-    width:100%;
-    height:auto;
+
 }
 
 .hero__hit{
