@@ -2129,14 +2129,10 @@ body.menu-open{
     content:"";
     position:absolute;
     inset:0;
-    background:
-            linear-gradient(var(--gridLine) 1px, transparent 1px) 0 0/240px 240px,
-            linear-gradient(90deg, var(--gridLine) 1px, transparent 1px) 0 0/240px 240px;
+    background: url("../img/ui/grid-404.svg") repeat;
+    background-size: 1400px 1400px;
+    background-position: 0 0;
     pointer-events:none;
-}
-
-.techLibHero__inner{
-    position: relative;
 }
 
 /* верх */
@@ -2292,8 +2288,27 @@ body.menu-open{
 .techLibBlock__art{
     margin-top:10px;
     opacity:.85;
+    min-height: 360px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: contain;
 }
 .artSvg{ width:100%; height:auto; display:block; }
+
+/* 1. Типові монтажі */
+.techLibBlock--montage .techLibBlock__art{
+    background-image: url("../img/ui/lib1.svg");
+}
+
+/* 2. Принципові схеми */
+.techLibBlock--schemes .techLibBlock__art{
+    background-image: url("../img/ui/lib2.svg");
+}
+
+/* 3. Документація */
+.techLibBlock--docs .techLibBlock__art{
+    background-image: url("../img/ui/lib3.svg");
+}
 
 
 .techLibList{
