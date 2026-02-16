@@ -59,17 +59,31 @@
     font-display: swap;
 }
 
+/*Заміна Supreme Thin*/
+@font-face{
+    font-family: "General Sans";
+    src: url("../fonts/GeneralSans-Light.woff2") format("woff2");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --orange: #ff7a00;
-    --orange90: #FC944A;
+    --orange-light: #FC944A;
     --black: #0A0606;
+    --grey: #727270;
+    --lightgrey: #D6D5D3;
     --text: #413E39;
-    --muted: #9c9c9c;
+    --muted-on-dark:rgba(255,255,255,.65);
 
     --font-head: "Bebas Neue", system-ui, sans-serif;
     --font-text: "Supreme", system-ui, sans-serif;
     --font-text-product: "Manrope", system-ui, sans-serif;
+    --font-text-lib: "General Sans", system-ui, sans-serif;
 
+    --line:rgba(255,255,255,.12);
+    --gridLine:rgba(0,0,0,.04);
     --font-display: var(--font-head);
 }
 
@@ -82,10 +96,9 @@
 }
 
 .container{
-    width: min(1240px, calc(100% - 48px));
-    margin:0 auto;
+    width: min(1240px, calc(100% - 80px));
+    margin: 0 auto;
 }
-
 /* ---------- buttons ---------- */
 .btn{
     display:inline-flex;
@@ -113,7 +126,10 @@
     color:#fff;
 }
 .btn--primary:hover{ filter: brightness(0.95); }
-.btn--primary:active{ transform: translateY(1px); }
+.btn--primary:active{
+    transform: translateY(1px);
+    background: var(--grey);
+}
 
 .btn__bracket{ opacity:.95; }
 .btn__label{ letter-spacing:-0.03em; }
@@ -158,7 +174,7 @@
 
 .btn--drift:disabled,
 .btn--drift[aria-disabled="true"]{
-    color: #727270;
+    color: var(--grey);
     cursor: not-allowed;
 }
 
@@ -166,7 +182,7 @@
 .btn--drift:disabled::after,
 .btn--drift[aria-disabled="true"]::before,
 .btn--drift[aria-disabled="true"]::after{
-    color: #727270;
+    color: var(--grey);
 }
 /*
 btn--secondary.btn--secondary::before,
@@ -198,7 +214,6 @@ btn--secondary.btn--secondary::before,
 
 .header .container{
     max-width: none;
-    width: calc(100% - 48px);
 }
 
 .header__inner{
@@ -971,17 +986,8 @@ btn--secondary.btn--secondary::before,
     transform: translateY(-.5px);
 }
 
-.btn--primary{
-    background: #ff7a1a;
-    color: #fff;
-}
-
 .btn--primary .btn__bracket{
     color: #fff;
-}
-
-.btn--primary:hover{
-    background: #f2761f;
 }
 
 .btn--primary:focus-visible{
@@ -989,10 +995,6 @@ btn--secondary.btn--secondary::before,
     box-shadow: 0 0 0 3px rgba(255, 122, 26, .28);
 }
 
-.btn--primary:active{
-    background: #e86f1d;
-    transform: translateY(1px);
-}
 .header404__ctaBtn{
     background: none;
     padding: 0;
@@ -1042,17 +1044,12 @@ btn--secondary.btn--secondary::before,
     transform: translateY(1px);
 }
 /*hero*/
-.hero { padding: 40px 0 0; }
 
 .hero__frame{
     position:relative;
     border-radius: 20px;
     overflow:hidden;
     box-shadow: 0 20px 60px rgba(0,0,0,.35);
-}
-
-.hero__img{
-
 }
 
 .hero__hit{
@@ -1184,7 +1181,7 @@ btn--secondary.btn--secondary::before,
 
 .notfound__text{
     margin-left: 100px;
-    color:#727270;
+    color:var(--grey);
     line-height: 1.35;
     text-transform: uppercase;
 }
@@ -1475,7 +1472,7 @@ body.menu-open{
     width: 28px;
     height: 28px;
     justify-self: end;
-    color: #FC944A;
+    color: var(--orange-light);
     transform: translateX(0) translateY(0) rotate(0deg);
     transition: transform .18s ease;
     transform-origin: 50% 50%;
@@ -1493,14 +1490,14 @@ body.menu-open{
     transform: translateX(2px) translateY(-2px) rotate(180deg);
 }
 
-.btn--brackets{
+.menuOverlay .btn--brackets{
     position: relative;
     padding-left: 18px;
     padding-right: 18px;
 }
 
-.btn--brackets::before,
-.btn--brackets::after{
+.menuOverlay .btn--brackets::before,
+.menuOverlay .btn--brackets::after{
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -1683,7 +1680,7 @@ body.menu-open{
 .previewProduct__desc {
     font-family: "Manrope", sans-serif;
     font-weight: 300;
-    color: #D6D5D3;
+    color: var(--lightgrey);
     font-size: 18px;
     line-height: 1.1;
     max-width: 600px;
@@ -1830,7 +1827,7 @@ body.menu-open{
 }
 
 .productCard__arrow path{
-    stroke: #FC944A;
+    stroke: var(--orange-light);
     stroke-width: 1;
     fill: none;
 
@@ -2040,21 +2037,6 @@ body.menu-open{
     cursor:pointer;
 }
 .reqBtn:hover{ opacity:.9; }
-/** ***/
-:root{
-    --orange:#ff7a00;
-    --black:#050505;
-    --white:#ffffff;
-    --muted:rgba(255,255,255,.65);
-    --line:rgba(255,255,255,.12);
-    --gridLine:rgba(0,0,0,.04);
-}
-
-/* если container уже есть — оставь свой */
-.container{
-    width:min(1200px, calc(100% - 64px));
-    margin:0 auto;
-}
 
 /* ====== shared ui ====== */
 .uLinkBrackets{
@@ -2140,14 +2122,6 @@ body.menu-open{
     max-width: 980px;
 }
 
-.techLibHero__brand{
-    font-size: 12px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 16px;
-}
-
 .techLibHero__title{
     margin: 0 0 32px;
     font-family: "General Sans", sans-serif;
@@ -2173,8 +2147,9 @@ body.menu-open{
 .techLibHero__brandInTitle{
     position: absolute;
     left: 0;
-    top: 12em;    font-family: var(--font-text);
-    font-size: 10px;
+    top: 12em;
+    font-family: var(--font-text);
+    font-size: 14px;
     letter-spacing: .12em;
     text-transform: uppercase;
     color: var(--orange);
@@ -2194,6 +2169,11 @@ body.menu-open{
     display: grid;
     gap: 14px;
     margin-left: 230px;
+}
+
+.right{
+    display: flex;
+    justify-content: flex-end;
 }
 
 .techLibHero .uLinkBrackets{
@@ -2250,6 +2230,23 @@ body.menu-open{
 }
 
 /* ====== 2-4) BLACK BLOCKS ====== */
+
+/* текст опису в чорних блоках */
+.techLib .techLibBlock__desc{
+    font-family: var(--font-text-lib);
+    font-weight: 300;
+}
+
+/* пункти списку */
+.techLib .techLibItem__text{
+    font-family: var(--font-text-lib);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+}
+
 .techLibBlock{
     background:
             radial-gradient(1000px 520px at 45% 20%, rgba(255,255,255,.08), rgba(0,0,0,0)),
@@ -2323,17 +2320,17 @@ body.menu-open{
     justify-content:space-between;
     gap:16px;
     padding:10px 0;
-    border-bottom:1px solid var(--line);
     text-decoration:none;
     color:#fff;
 }
-.techLibItem:first-child{ border-top:1px solid var(--line); }
+
 .techLibItem__text{
     font-size:12px;
     letter-spacing:.10em;
     text-transform:uppercase;
     opacity:.86;
 }
+
 .techLibItem__arrow{
     font-size:22px;
     opacity:.65;
@@ -2343,12 +2340,95 @@ body.menu-open{
 .techLibItem:hover .techLibItem__arrow{ opacity:1; }
 
 .techLibCtas{
-    display:flex;
-    align-items:center;
-    justify-content:flex-end;
-    gap:16px;
-    flex-wrap:wrap;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;   /* ← оце головне */
+    gap: 16px;
 }
+/* ===== Arrow swap ONLY inside .techLib ===== */
+.techLib .techLibItem__arrow{
+    position: relative;
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+
+    /* прибираємо вплив “текстової стрілки” зі старих стилів */
+    font-size: 0;
+    line-height: 0;
+    opacity: 1;
+}
+
+.techLib .techLibItem__arrow .techLibArrow{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+
+    opacity: 1;
+    transition: opacity .18s ease, transform .18s ease;
+}
+
+.techLib .techLibItem__arrow .techLibArrow--orange{
+    opacity: 0;              /* <-- головне: ховаємо оранжеву */
+}
+
+.techLib .techLibItem:hover .techLibArrow--white{
+    opacity: 0;
+}
+
+.techLib .techLibItem:hover .techLibArrow--orange{
+    opacity: 1;
+    transform: translate(2px, -2px);
+}
+
+/* ===== techLib bracket links like in mockup ===== */
+.techLibBlock .uLinkBrackets{
+    color: rgba(255,255,255,.92);
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    position: relative;
+    padding: 0 18px;              /* місце під дужки */
+    transition: color .18s ease, opacity .18s ease;
+}
+
+.techLibBlock .uLinkBrackets::before,
+.techLibBlock .uLinkBrackets::after{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) translateX(0);
+    color: var(--orange);
+    transition: transform .18s ease, color .18s ease, opacity .18s ease;
+    line-height: 1;
+}
+
+.techLibBlock .uLinkBrackets::before{ content:"["; left: 0; }
+.techLibBlock .uLinkBrackets::after { content:"]"; right: 0; }
+
+.techLibBlock .uLinkBrackets:hover{
+    color:#fff;
+}
+
+.techLibBlock .uLinkBrackets:hover::before{ transform: translateY(-50%) translateX(-10px); }
+.techLibBlock .uLinkBrackets:hover::after { transform: translateY(-50%) translateX(10px); }
+
+/* праве вирівнювання*/
+.techLibBlock .uLinkBrackets--right{
+    justify-content: flex-end;
+}
+/* techLib: primary button size tweak (same look, smaller) */
+.techLib .techLibPdfBtn.btn{
+    height: 44px;
+    padding: 0 20px;
+    font-size: 12px;
+    letter-spacing: .12em;
+}
+.techLib .techLibPdfBtn .btn__label{
+    letter-spacing: .12em; /* щоб було як у макеті на дрібному тексті */
+}
+
 
 /* ====== 5) FORM WHITE ====== */
 .techLibForm{
@@ -2463,6 +2543,8 @@ body.menu-open{
     .techLibForm__right{ min-width:0; }
     .uLinkBrackets--right{ margin-left:0; }
 }
+
+
 
 @media (max-width: 560px){
     .container{ width:calc(100% - 32px); }
