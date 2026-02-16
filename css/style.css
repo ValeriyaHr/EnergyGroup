@@ -2426,9 +2426,52 @@ body.menu-open{
     letter-spacing: .12em;
 }
 .techLib .techLibPdfBtn .btn__label{
-    letter-spacing: .12em; /* щоб було як у макеті на дрібному тексті */
+    letter-spacing: .12em;
 }
 
+/* ===== techLibHero: brackets drift on hover (ONLY here) ===== */
+.techLibHero .uLinkBrackets{
+    position: relative;
+    display: inline-flex;
+    width: fit-content;
+    align-self: flex-start;
+    padding: 0 18px;
+}
+
+.techLibHero .uLinkBrackets::before,
+.techLibHero .uLinkBrackets::after{
+    content: "";
+}
+
+/* малюємо дужки як елементи */
+.techLibHero .uLinkBrackets::before{
+    content: "[";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) translateX(-6px);
+    color: var(--orange);
+    transition: transform .18s ease, opacity .18s ease;
+    line-height: 1;
+}
+
+.techLibHero .uLinkBrackets::after{
+    content: "]";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) translateX(6px);
+    color: var(--orange);
+    transition: transform .18s ease, opacity .18s ease;
+    line-height: 1;
+}
+
+.techLibHero .uLinkBrackets:hover::before{
+    transform: translateY(-50%) translateX(-10px);
+}
+.techLibHero .uLinkBrackets:hover::after{
+    transform: translateY(-50%) translateX(10px);
+}
 
 /* ====== 5) FORM WHITE ====== */
 .techLibForm{
