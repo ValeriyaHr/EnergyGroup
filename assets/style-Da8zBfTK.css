@@ -2742,15 +2742,15 @@ body.menu-open{
 .artSvg{ width:100%; height:auto; display:block; }
 /* 1. Типові монтажі */
 .techLibBlock--montage .techLibBlock__art{
-    background-image: url("/EnergyGroup/assets/lib1-DluEkvGO.svg");
+    background-image: url("/EnergyGroup/assets/lib1-nAsO4He9.svg");
 }
 /* 2. Принципові схеми */
 .techLibBlock--schemes .techLibBlock__art{
-    background-image: url("/EnergyGroup/assets/lib2-CSs39WCb.svg");
+    background-image: url("/EnergyGroup/assets/lib2-DK23tPPJ.svg");
 }
 /* 3. Документація */
 .techLibBlock--docs .techLibBlock__art{
-    background-image: url("/EnergyGroup/assets/lib3-CIrxrpvd.svg");
+    background-image: url("/EnergyGroup/assets/lib3-C1X9033-.svg");
 }
 .techLibList{
     display:flex;
