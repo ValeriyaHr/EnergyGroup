@@ -6,6 +6,7 @@ import path from 'path'
 
 export default defineConfig({
     base: '/EnergyGroup/',
+    appType: "mpa",
     build: {
         minify: false,      // отключить минификацию
         sourcemap: true,    // удобно дебажить
