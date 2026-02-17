@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Prime Energy Group</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="alternate icon" href="/favicon.svg">
+
+    <script src="./js/jquery/jquery-3.7.1.min.js"></script>
+
+    <!-- Подключение CSS -->
+    <link rel="stylesheet" href="data:text/css;base64,LyogPT09PT09PT09PT09PT09PT09PT09PT09PQ0KICAgTU9CSUxFIE9OTFkNCj09PT09PT09PT09PT09PT09PT09PT09PT0gKi8NCkBtZWRpYSAobWF4LXdpZHRoOiA3NjhweCl7DQoNCiAgICAuYnRuLA0KICAgIC5idXR0b257DQogICAgICAgIGZvbnQtc2l6ZTogMTZweDsNCiAgICB9DQoNCiAgICAvKiA9PT09PSBIRUFERVIgPT09PT0gKi8NCiAgICAuaGVhZGVyNDA0X19pbm5lcnsNCiAgICAgICAgZ2FwOiAxMHB4Ow0KICAgIH0NCg0KICAgIC5oZWFkZXI0MDRfX2xhbmcsDQogICAgLmhlYWRlcjQwNF9fY29udGFjdHMsDQogICAgLmhlYWRlcjQwNF9fY3RhVGV4dHsNCiAgICAgICAgZGlzcGxheTogbm9uZTsNCiAgICB9DQoNCiAgICAuaGVhZGVyNDA0X19sb2dvIGltZ3sNCiAgICAgICAgaGVpZ2h0OiAzNHB4Ow0KICAgIH0NCg0KICAgIC8qID09PT09IDQwNCA9PT09PSAqLw0KICAgIC5ub3Rmb3VuZHsNCiAgICAgICAgcGFkZGluZy10b3A6IDA7DQogICAgfQ0KDQogICAgLm5vdGZvdW5kX19pbm5lcnsNCiAgICAgICAgZGlzcGxheTogZmxleDsNCiAgICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjsNCiAgICB9DQoNCiAgICAubm90Zm91bmRfX2hlcm97DQogICAgICAgIHBvc2l0aW9uOiBzdGF0aWM7DQogICAgICAgIHRyYW5zZm9ybTogbm9uZTsNCiAgICAgICAgd2lkdGg6IDg4dnc7DQogICAgICAgIG1hcmdpbjogMTZweCBhdXRvIDA7DQogICAgICAgIG9yZGVyOiAxOw0KICAgIH0NCg0KICAgIC5ub3Rmb3VuZF9fY29weXsNCiAgICAgICAgcG9zaXRpb246IHN0YXRpYzsNCiAgICAgICAgbWF4LXdpZHRoOiA5MnZ3Ow0KICAgICAgICBtYXJnaW46IDIwcHggYXV0byAwOw0KICAgICAgICBwYWRkaW5nOiAwIDE2cHg7DQogICAgICAgIHRleHQtYWxpZ246IGxlZnQ7DQogICAgICAgIG9yZGVyOiAyOw0KICAgIH0NCg0KICAgIC8qID09PT09IEZPT1RFUiA9PT09PSAqLw0KICAgIC5mb290ZXI0MDRfX3RvcHsNCiAgICAgICAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiAxZnI7DQogICAgICAgIGdhcDogMjZweDsNCiAgICB9DQoNCiAgICAuZm9vdGVyNDA0X19xcnsNCiAgICAgICAganVzdGlmeS1pdGVtczogc3RhcnQ7DQogICAgICAgIGdyaWQtYXV0by1mbG93OiBjb2x1bW47DQogICAgICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogcmVwZWF0KDIsIDFmcik7DQogICAgfQ0KDQogICAgLmZvb3RlcjQwNF9fYnJhbmR7DQogICAgICAgIGZvbnQtc2l6ZTogNjRweDsNCiAgICAgICAgcGFkZGluZzogMCAxNnB4IDI0cHg7DQogICAgfQ0KfQ0KDQovKiA9PT09PSBQUk9EVUNUIERFVEFJTFMgPT09PT0gKi8NCiAgICAucHJvZHVjdERldGFpbHN7DQogICAgICAgIHBhZGRpbmc6IDE2cHggMCA0OHB4Ow0KICAgIH0NCg0KICAgIC5wcm9kdWN0RGV0YWlsc19fY2FyZHsNCiAgICAgICAgcGFkZGluZzogMjJweCAxOHB4IDI2cHg7DQogICAgICAgIG1pbi1oZWlnaHQ6IDA7DQogICAgICAgIGJvcmRlci1yYWRpdXM6IDE2cHg7DQogICAgfQ0KDQogICAgLnByb2R1Y3REZXRhaWxzX19iYWNrew0KICAgICAgICB0b3A6IDE0cHg7DQogICAgICAgIGxlZnQ6IDE0cHg7DQogICAgfQ0KDQogICAgLnByb2R1Y3REZXRhaWxzX19iYWRnZXsNCiAgICAgICAgdG9wOiAxMnB4Ow0KICAgICAgICByaWdodDogMTJweDsNCiAgICAgICAgbWluLXdpZHRoOiAxNzBweDsNCiAgICAgICAgaGVpZ2h0OiA5MnB4Ow0KICAgICAgICBwYWRkaW5nOiAwIDE4cHg7DQogICAgICAgIGZvbnQtc2l6ZTogNzJweDsNCiAgICAgICAgYm9yZGVyLXJhZGl1czogMTJweDsNCiAgICB9DQoNCiAgICAucHJvZHVjdERldGFpbHNfX3Jvd3sNCiAgICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjsNCiAgICAgICAgZ2FwOiAxNHB4Ow0KICAgIH0NCg0KICAgIC5wcm9kdWN0RGV0YWlsc19fcm93LS1iZW5lZml0c3sNCiAgICAgICAgcGFkZGluZy10b3A6IDY0cHg7DQogICAgfQ0KDQogICAgLnByb2R1Y3REZXRhaWxzX19oLA0KICAgIC5wcm9kdWN0RGV0YWlsc19fdGl0bGV7DQogICAgICAgIHdpZHRoOiBhdXRvOw0KICAgIH0NCg0KICAgIC5wcm9kdWN0RGV0YWlsc19fY29sc3sNCiAgICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjsNCiAgICAgICAgZ2FwOiAxOHB4Ow0KICAgIH0NCg0KQG1lZGlhIChtYXgtd2lkdGg6IDc2OHB4KXsNCiAgICAucHJvZHVjdERldGFpbHN7IHBhZGRpbmc6IDE2cHggMCA0OHB4OyB9DQoNCiAgICAucHJvZHVjdERldGFpbHNfX2NhcmR7DQogICAgICAgIHBhZGRpbmc6IDIycHggMThweCAyNnB4Ow0KICAgICAgICBtaW4taGVpZ2h0OiAwOw0KICAgICAgICBib3JkZXItcmFkaXVzOiAxNnB4Ow0KICAgIH0NCg0KICAgIC5wcm9kdWN0RGV0YWlsc19fYmFja3sNCiAgICAgICAgdG9wOiAxNHB4Ow0KICAgICAgICBsZWZ0OiAxNHB4Ow0KICAgICAgICB3aWR0aDogNDJweDsNCiAgICAgICAgaGVpZ2h0OiA0MnB4Ow0KICAgIH0NCg0KICAgIC5wcm9kdWN0RGV0YWlsc19fYmFkZ2V7DQogICAgICAgIHRvcDogMTJweDsNCiAgICAgICAgcmlnaHQ6IDEycHg7DQogICAgICAgIHdpZHRoOiAxNzBweDsNCiAgICAgICAgaGVpZ2h0OiA5MnB4Ow0KICAgICAgICBwYWRkaW5nOiAwIDE4cHg7DQogICAgICAgIGZvbnQtc2l6ZTogODRweDsNCiAgICAgICAgYm9yZGVyLXJhZGl1czogMTJweDsNCiAgICB9DQoNCiAgICAucHJvZHVjdERldGFpbHNfX3Jvd3sNCiAgICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjsNCiAgICAgICAgZ2FwOiAxNHB4Ow0KICAgIH0NCg0KICAgIC5wcm9kdWN0RGV0YWlsc19fcm93LS1iZW5lZml0c3sNCiAgICAgICAgcGFkZGluZy10b3A6IDExMHB4OyAgLyog0YnQvtCxIGJhZGdlINC90LUg0L/QtdGA0LXQutGA0LjQstCw0LIgKi8NCiAgICAgICAgcGFkZGluZy1yaWdodDogMDsNCiAgICB9DQoNCiAgICAucHJvZHVjdERldGFpbHNfX2gsDQogICAgLnByb2R1Y3REZXRhaWxzX190aXRsZXsNCiAgICAgICAgd2lkdGg6IGF1dG87DQogICAgfQ0KDQogICAgLnByb2R1Y3REZXRhaWxzX19jb2xzew0KICAgICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uOw0KICAgICAgICBnYXA6IDE4cHg7DQogICAgfQ0KfQ==" media="(max-width: 768px)">
+  <script type="module" crossorigin src="/EnergyGroup/assets/modulepreload-polyfill-COaX8i6R.js"></script>
+  <script type="module" crossorigin src="/EnergyGroup/assets/mainJs-hjbWbjCw.js"></script>
+  <script type="module" crossorigin src="/EnergyGroup/assets/menu-DHYyUrCX.js"></script>
+  <link rel="stylesheet" crossorigin href="/EnergyGroup/assets/style-CcsUWVrv.css">
+</head>
+
+<body>
+
+<!-- PRELOADER-->
+<!-- <div class="preloader" id="preloader" aria-label="Завантаження" role="status">
+    <div class="preloader__card">
+        <img
+                src="/img/content/hero-desktop.png"
+                alt="Prime Energy Group"
+                class="preloader__image"
+                id="preloaderImage"
+        />
+
+        <div class="preloader__progress">
+            <span class="preloader__spinner" aria-hidden="true"></span>
+            <span class="preloader__percent" id="preloaderPercent">1%</span>
+        </div>
+    </div>
+</div>
+ -->
+<!-- ===== HEADER ===== -->
+<!-- ===== HEADER ===== -->
+<header class="header" id="top">
+    <div class="container header__inner">
+        <div class="header__left">
+            <button class="header__burger" type="button" aria-label="Menu" aria-controls="menuOverlay" aria-expanded="false">
+                <img src="data:image/svg+xml,%3csvg%20width='64'%20height='18'%20viewBox='0%200%2064%2018'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M0%201H64'%20stroke='%23413E39'%20stroke-width='2'/%3e%3cpath%20d='M0%2017H64'%20stroke='%23413E39'%20stroke-width='2'/%3e%3c/svg%3e" alt="" width="24" height="24">
+            </button>
+
+            <div class="header__lang">
+                <a href="index.html" class="is-active">UA</a>
+                <span>|</span>
+                <a href="index-en.html">EN</a>
+            </div>
+
+            <div class="header__contacts">
+                <a href="tel:+380443901015">+38 (044) 390-10-15</a>
+                <a class="is-underline" href="mailto:info@llc-peg.com">info@llc-peg.com</a>
+            </div>
+        </div>
+
+        <a class="header__logo" href="#home" aria-label="Prime Energy Group">
+            <img src="/EnergyGroup/assets/peg-logo-BDSjm_s2.svg" alt="Prime Energy Group">
+        </a>
+
+        <div class="header__right">
+            <a class="header__ctaSecondary btn btn--secondary btn--drift" href="#contacts">CONSULT WITH ENGINEER</a>
+
+            <a class="header__ctaPrimary btn btn--primary" href="#contacts">
+                <span class="btn__bracket">[</span>
+                <span class="btn__label">КОНСУЛЬТАЦІЯ</span>
+                <span class="btn__bracket">]</span>
+            </a>
+        </div>
+    </div>
+</header>
+
+<div class="menuOverlay" id="menuOverlay" aria-hidden="true">
+    <div class="menuOverlay__panel" role="dialog" aria-modal="true" aria-label="Меню">
+
+        <button class="menuOverlay__close" type="button" aria-label="Закрити меню">
+            <img src="data:image/svg+xml,%3csvg%20width='42'%20height='42'%20viewBox='0%200%2042%2042'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M0.707031%200.707031L40.707%2040.707'%20stroke='black'%20stroke-width='2'/%3e%3cpath%20d='M40.707%200.707031L0.70703%2040.707'%20stroke='black'%20stroke-width='2'/%3e%3c/svg%3e" alt="">
+        </button>
+
+        <div class="menuOverlay__top">
+            <div class="menuOverlay__title">МЕНЮ</div>
+
+            <a class="btn btn--secondary btn--drift menuOverlay__consult" href="#">
+                КОНСУЛЬТАЦІЯ
+            </a>
+
+        </div>
+
+
+
+        <div class="menuOverlay__divider"></div>
+
+        <nav class="menuOverlay__nav">
+            <a class="menuItem" href="index.html">
+                <span class="menuItem__text">ГОЛОВНИЙ ЕКРАН</span>
+                <span class="menuItem__num">(01)</span>
+                <img class="menuItem__icon" src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20version='1.1'%20width='22'%20height='22'%20viewBox='0%200%2022%2022'%3e%3cdesc%3eCreated%20with%20SVGMaker%20Editor%202.2.3%3c/desc%3e%3cdefs%3e%3c/defs%3e%3cpath%20transform='translate(0,0)'%20style='stroke:%20rgb(252,148,74);%20stroke-width:%202;%20fill:%20none'%20stroke-linecap='round'%20d='M%200.707%2021%20L%2020.707%201%20M%2020.707%201%20L%200.707%201%20M%2020.8836%200.0495%20L%2020.707%2021'/%3e%3c/svg%3e" alt="" />
+            </a>
+
+            <a class="menuItem" href="products.html">
+                <span class="menuItem__text">ПРОДУКЦІЯ</span>
+                <span class="menuItem__num">(02)</span>
+                <img class="menuItem__icon" src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20version='1.1'%20width='22'%20height='22'%20viewBox='0%200%2022%2022'%3e%3cdesc%3eCreated%20with%20SVGMaker%20Editor%202.2.3%3c/desc%3e%3cdefs%3e%3c/defs%3e%3cpath%20transform='translate(0,0)'%20style='stroke:%20rgb(252,148,74);%20stroke-width:%202;%20fill:%20none'%20stroke-linecap='round'%20d='M%200.707%2021%20L%2020.707%201%20M%2020.707%201%20L%200.707%201%20M%2020.8836%200.0495%20L%2020.707%2021'/%3e%3c/svg%3e" alt="" />
+            </a>
+
+<!--            <p class="menuItem__page">
+                Станції катодного захисту інверторні автоматичні (СКЗІ)</p>
+            <p class="menuItem__page">
+                Система телеметрії та телеуправління станціями катодного захисту</p>
+            <p class="menuItem__page">
+                Станція дренажного захисту (СДЗ) типу “Поляризаційна”</p>
+            <p class="menuItem__page">
+                Станція дренажного захисту (СДЗ) типу “Підсилений дренаж”</p>
+            <p class="menuItem__page">
+                Система телеметрична для збору даних з ПВ</p>
+            <p class="menuItem__page">
+                Аноди заземлюючі магнетитові (АЗМТ)</p>
+            <p class="menuItem__page">
+                Блоки сумісного захисту (електронні) плавного прецизійного керування</p>
+            <p class="menuItem__page">
+                Блоки управління ізоляційними фланцями (електронні) плавного прецизійного керування</p>
+            <p class="menuItem__page">
+                Контрольно-вимірювальні пункти (ПВ)</p>
+            <p class="menuItem__page">
+                Контрольно-вимірювальні пункти (ПВ) з блоком сумісного захисту та системою телеметрії</p>
+            <p class="menuItem__page">
+                Комплекс відведення наведеного струму КВНС.ПЕГ</p>
+            <p class="menuItem__page">
+                Електроізолюючі вставки (муфти)</p>
+            <p class="menuItem__page">
+                Пристрій контролю струмів анодних заземлювачів</p>-->
+
+            <a class="menuItem" href="engineering.html">
+                <span class="menuItem__text">ІНЖИНІРИНГ</span>
+                <span class="menuItem__num">(03)</span>
+                <img class="menuItem__icon" src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20version='1.1'%20width='22'%20height='22'%20viewBox='0%200%2022%2022'%3e%3cdesc%3eCreated%20with%20SVGMaker%20Editor%202.2.3%3c/desc%3e%3cdefs%3e%3c/defs%3e%3cpath%20transform='translate(0,0)'%20style='stroke:%20rgb(252,148,74);%20stroke-width:%202;%20fill:%20none'%20stroke-linecap='round'%20d='M%200.707%2021%20L%2020.707%201%20M%2020.707%201%20L%200.707%201%20M%2020.8836%200.0495%20L%2020.707%2021'/%3e%3c/svg%3e" alt="" />
+            </a>
+
+            <!--            <p class="menuItem__page">
+                Проєктування</p>
+            <p class="menuItem__page">
+                Типові рішення</p>
+            <p class="menuItem__page">
+                Відео: монтаж і впровадження</p>-->
+
+            <a class="menuItem" href="library.html">
+                <span class="menuItem__text">ТЕХНІЧКА БІБЛІОТЕКА</span>
+                <span class="menuItem__num">(04)</span>
+                <img class="menuItem__icon" src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20version='1.1'%20width='22'%20height='22'%20viewBox='0%200%2022%2022'%3e%3cdesc%3eCreated%20with%20SVGMaker%20Editor%202.2.3%3c/desc%3e%3cdefs%3e%3c/defs%3e%3cpath%20transform='translate(0,0)'%20style='stroke:%20rgb(252,148,74);%20stroke-width:%202;%20fill:%20none'%20stroke-linecap='round'%20d='M%200.707%2021%20L%2020.707%201%20M%2020.707%201%20L%200.707%201%20M%2020.8836%200.0495%20L%2020.707%2021'/%3e%3c/svg%3e" alt="" />
+            </a>
+
+            <!--            <p class="menuItem__page">
+    Типові монтажі</p>
+<p class="menuItem__page">
+    Принципові схеми</p>
+<p class="menuItem__page">
+    Документація та сертифікати</p>
+<p class="menuItem__page">
+    Технічна підтримка</p>-->
+
+            <a class="menuItem" href="docs.html">
+                <span class="menuItem__text">ДОКУМЕНТАЦІЯ</span>
+                <span class="menuItem__num">(05)</span>
+                <img class="menuItem__icon" src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20version='1.1'%20width='22'%20height='22'%20viewBox='0%200%2022%2022'%3e%3cdesc%3eCreated%20with%20SVGMaker%20Editor%202.2.3%3c/desc%3e%3cdefs%3e%3c/defs%3e%3cpath%20transform='translate(0,0)'%20style='stroke:%20rgb(252,148,74);%20stroke-width:%202;%20fill:%20none'%20stroke-linecap='round'%20d='M%200.707%2021%20L%2020.707%201%20M%2020.707%201%20L%200.707%201%20M%2020.8836%200.0495%20L%2020.707%2021'/%3e%3c/svg%3e" alt="" />
+            </a>
+
+            <!--            <p class="menuItem__page">
+Сертифікати відповідності</p>
+<p class="menuItem__page">
+Технічні паспорти</p>
+<p class="menuItem__page">
+Інструкції користувача</p>
+<p class="menuItem__page">
+Каталоги та презентації</p>-->
+
+        </nav>
+    </div>
+</div><main>
+
+    <section class="engHero" aria-label="Інжиніринг та рішення — вступ">
+        <div class="container">
+            <div class="engHero__panel">
+                <h1 class="engHero__title">Інжиніринг та Рішення</h1>
+                <!-- тут потім доб’ємо дрібні тексти/дужки як у pdf -->
+            </div>
+        </div>
+
+        <img class="engHero__glow" src="/EnergyGroup/assets/eng-arc-glow-EFMcqy1O.png" alt="" aria-hidden="true">
+    </section>
+
+
+    <!-- Инженеринг та решение начало -->
+    <section class="engSection" id="engineering" aria-label="Інжиніринг та рішення">
+        <div class="container engSection__wrap">
+            <div class="engSection__card">
+                <div class="engSection__rows">
+                    <!-- Row 1 -->
+                    <div class="engSolRow">
+                        <div class="engSolRow__left">
+                            <div class="engSolRow__label">[ Проєктування</div>
+                            <div class="engSolRow__num">1</div>
+                        </div>
+
+                        <div class="engSolRow__center">
+                            <p>Ми виконуємо розрахунок систем катодного захисту з урахуванням довжини комунікацій, опору ґрунтів, типу ізоляції, агресивності середовища й умов експлуатації.</p>
+                            <p>Розробляємо проєктну та виконавчу документацію згідно з ДСТУ, ISO та EN. Наші рішення відповідають вимогам європейських технічних стандартів.</p>
+                        </div>
+
+                        <div class="engSolRow__right">
+                            <a class="engSolRow__action" href="#contacts">[ ЗАПРОСИТИ РОЗРАХУНОК СИСТЕМИ ]</a>
+                            <div class="engSolRow__note">Розробляємо системи ЕХЗ для об’єктів будь-якого масштабу — від локальних до міжнародних</div>
+                        </div>
+                    </div>
+
+                    <section class="circleSection" style="display: none">
+                        <div class="circle" >
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+                                <defs>
+                                    <!-- лёгкое свечение как на макете -->
+                                    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                                        <feGaussianBlur stdDeviation="1.2" result="b"/>
+                                        <feMerge>
+                                            <feMergeNode in="b"/>
+                                            <feMergeNode in="SourceGraphic"/>
+                                        </feMerge>
+                                    </filter>
+
+                                    <!-- мягкий градиент на лучиках -->
+                                    <linearGradient id="tickGrad" x1="0" y1="0" x2="1" y2="0">
+                                        <stop offset="0" stop-color="white" stop-opacity="0.15"/>
+                                        <stop offset="0.5" stop-color="white" stop-opacity="0.85"/>
+                                        <stop offset="1" stop-color="white" stop-opacity="0.15"/>
+                                    </linearGradient>
+                                </defs>
+
+                                <!-- центр -->
+                                <g id="ticks" filter="url(#glow)"></g>
+
+                                <!-- Генерация лучиков прямо внутри SVG -->
+                                <script><![CDATA[
+                                (function () {
+                                    const svg = document.currentScript.ownerDocument;
+                                    const g = svg.getElementById("ticks");
+
+                                    const cx = 400, cy = 400;
+
+                                    // настройки "как часы"
+                                    const startDeg = 205;   // откуда начинаем дугу
+                                    const endDeg   = 25;    // где заканчиваем (через 360)
+                                    const stepDeg  = 4;     // шаг лучиков (меньше = больше лучиков)
+
+                                    const rOuter = 345;     // внешний радиус
+                                    const rInnerMin = 295;  // внутренняя граница (короткие лучи)
+                                    const rInnerMax = 260;  // внутренняя граница (длинные лучи)
+
+                                    // нормализуем диапазон дуги через 360
+                                    const spanDeg = (endDeg >= startDeg) ? (endDeg - startDeg) : (360 - startDeg + endDeg);
+                                    const count = Math.floor(spanDeg / stepDeg) + 1;
+
+                                    for (let i = 0; i < count; i++) {
+                                        const deg = startDeg + i * stepDeg;
+                                        const t = i / Math.max(1, count - 1); // 0..1 вдоль дуги
+
+                                        // делаем длины чуть "живыми", как на макете: ближе к правому краю — длиннее
+                                        const ease = Math.pow(t, 1.6);
+                                        const rInner = rInnerMin - (rInnerMin - rInnerMax) * ease;
+
+                                        // прозрачность: ближе к правому краю — ярче
+                                        const op = 0.25 + 0.75 * ease;
+
+                                        const rad = deg * Math.PI / 180;
+
+                                        const x1 = cx + rInner * Math.cos(rad);
+                                        const y1 = cy + rInner * Math.sin(rad);
+                                        const x2 = cx + rOuter * Math.cos(rad);
+                                        const y2 = cy + rOuter * Math.sin(rad);
+
+                                        const line = svg.createElementNS("http://www.w3.org/2000/svg", "line");
+                                        line.setAttribute("x1", x1.toFixed(2));
+                                        line.setAttribute("y1", y1.toFixed(2));
+                                        line.setAttribute("x2", x2.toFixed(2));
+                                        line.setAttribute("y2", y2.toFixed(2));
+                                        line.setAttribute("stroke", "url(#tickGrad)");
+                                        line.setAttribute("stroke-width", "3");
+                                        line.setAttribute("stroke-linecap", "round");
+                                        line.setAttribute("opacity", op.toFixed(3));
+
+                                        g.appendChild(line);
+                                    }
+                                })();
+                                ]]></script>
+                            </svg>
+                            <!-- картинки -->
+                            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20800'%20width='800'%20height='800'%3e%3cdefs%3e%3c!--%20лёгкое%20свечение%20как%20на%20макете%20--%3e%3cfilter%20id='glow'%20x='-50%25'%20y='-50%25'%20width='200%25'%20height='200%25'%3e%3cfeGaussianBlur%20stdDeviation='1.2'%20result='b'/%3e%3cfeMerge%3e%3cfeMergeNode%20in='b'/%3e%3cfeMergeNode%20in='SourceGraphic'/%3e%3c/feMerge%3e%3c/filter%3e%3c!--%20мягкий%20градиент%20на%20лучиках%20--%3e%3clinearGradient%20id='tickGrad'%20x1='0'%20y1='0'%20x2='1'%20y2='0'%3e%3cstop%20offset='0'%20stop-color='white'%20stop-opacity='0.15'/%3e%3cstop%20offset='0.5'%20stop-color='white'%20stop-opacity='0.85'/%3e%3cstop%20offset='1'%20stop-color='white'%20stop-opacity='0.15'/%3e%3c/linearGradient%3e%3c/defs%3e%3c!--%20центр%20--%3e%3cg%20id='ticks'%20filter='url(%23glow)'%3e%3c/g%3e%3c!--%20Генерация%20лучиков%20прямо%20внутри%20SVG%20--%3e%3cscript%3e%3c![CDATA[%20(function%20()%20{%20const%20svg%20=%20document.currentScript.ownerDocument;%20const%20g%20=%20svg.getElementById('ticks');%20const%20cx%20=%20400,%20cy%20=%20400;%20//%20настройки%20'как%20часы'%20const%20startDeg%20=%20205;%20//%20откуда%20начинаем%20дугу%20const%20endDeg%20=%2025;%20//%20где%20заканчиваем%20(через%20360)%20const%20stepDeg%20=%204;%20//%20шаг%20лучиков%20(меньше%20=%20больше%20лучиков)%20const%20rOuter%20=%20345;%20//%20внешний%20радиус%20const%20rInnerMin%20=%20295;%20//%20внутренняя%20граница%20(короткие%20лучи)%20const%20rInnerMax%20=%20260;%20//%20внутренняя%20граница%20(длинные%20лучи)%20//%20нормализуем%20диапазон%20дуги%20через%20360%20const%20spanDeg%20=%20(endDeg%20%3e=%20startDeg)%20?%20(endDeg%20-%20startDeg)%20:%20(360%20-%20startDeg%20+%20endDeg);%20const%20count%20=%20Math.floor(spanDeg%20/%20stepDeg)%20+%201;%20for%20(let%20i%20=%200;%20i%20%3c%20count;%20i++)%20{%20const%20deg%20=%20startDeg%20+%20i%20*%20stepDeg;%20const%20t%20=%20i%20/%20Math.max(1,%20count%20-%201);%20//%200..1%20вдоль%20дуги%20//%20делаем%20длины%20чуть%20'живыми',%20как%20на%20макете:%20ближе%20к%20правому%20краю%20—%20длиннее%20const%20ease%20=%20Math.pow(t,%201.6);%20const%20rInner%20=%20rInnerMin%20-%20(rInnerMin%20-%20rInnerMax)%20*%20ease;%20//%20прозрачность:%20ближе%20к%20правому%20краю%20—%20ярче%20const%20op%20=%200.25%20+%200.75%20*%20ease;%20const%20rad%20=%20deg%20*%20Math.PI%20/%20180;%20const%20x1%20=%20cx%20+%20rInner%20*%20Math.cos(rad);%20const%20y1%20=%20cy%20+%20rInner%20*%20Math.sin(rad);%20const%20x2%20=%20cx%20+%20rOuter%20*%20Math.cos(rad);%20const%20y2%20=%20cy%20+%20rOuter%20*%20Math.sin(rad);%20const%20line%20=%20svg.createElementNS('http://www.w3.org/2000/svg',%20'line');%20line.setAttribute('x1',%20x1.toFixed(2));%20line.setAttribute('y1',%20y1.toFixed(2));%20line.setAttribute('x2',%20x2.toFixed(2));%20line.setAttribute('y2',%20y2.toFixed(2));%20line.setAttribute('stroke',%20'url(%23tickGrad)');%20line.setAttribute('stroke-width',%20'3');%20line.setAttribute('stroke-linecap',%20'round');%20line.setAttribute('opacity',%20op.toFixed(3));%20g.appendChild(line);%20}%20})();%20]]%3e%3c/script%3e%3c/svg%3e" class="circleItem">
+                            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20800'%20width='800'%20height='800'%3e%3cdefs%3e%3c!--%20лёгкое%20свечение%20как%20на%20макете%20--%3e%3cfilter%20id='glow'%20x='-50%25'%20y='-50%25'%20width='200%25'%20height='200%25'%3e%3cfeGaussianBlur%20stdDeviation='1.2'%20result='b'/%3e%3cfeMerge%3e%3cfeMergeNode%20in='b'/%3e%3cfeMergeNode%20in='SourceGraphic'/%3e%3c/feMerge%3e%3c/filter%3e%3c!--%20мягкий%20градиент%20на%20лучиках%20--%3e%3clinearGradient%20id='tickGrad'%20x1='0'%20y1='0'%20x2='1'%20y2='0'%3e%3cstop%20offset='0'%20stop-color='white'%20stop-opacity='0.15'/%3e%3cstop%20offset='0.5'%20stop-color='white'%20stop-opacity='0.85'/%3e%3cstop%20offset='1'%20stop-color='white'%20stop-opacity='0.15'/%3e%3c/linearGradient%3e%3c/defs%3e%3c!--%20центр%20--%3e%3cg%20id='ticks'%20filter='url(%23glow)'%3e%3c/g%3e%3c!--%20Генерация%20лучиков%20прямо%20внутри%20SVG%20--%3e%3cscript%3e%3c![CDATA[%20(function%20()%20{%20const%20svg%20=%20document.currentScript.ownerDocument;%20const%20g%20=%20svg.getElementById('ticks');%20const%20cx%20=%20400,%20cy%20=%20400;%20//%20настройки%20'как%20часы'%20const%20startDeg%20=%20205;%20//%20откуда%20начинаем%20дугу%20const%20endDeg%20=%2025;%20//%20где%20заканчиваем%20(через%20360)%20const%20stepDeg%20=%204;%20//%20шаг%20лучиков%20(меньше%20=%20больше%20лучиков)%20const%20rOuter%20=%20345;%20//%20внешний%20радиус%20const%20rInnerMin%20=%20295;%20//%20внутренняя%20граница%20(короткие%20лучи)%20const%20rInnerMax%20=%20260;%20//%20внутренняя%20граница%20(длинные%20лучи)%20//%20нормализуем%20диапазон%20дуги%20через%20360%20const%20spanDeg%20=%20(endDeg%20%3e=%20startDeg)%20?%20(endDeg%20-%20startDeg)%20:%20(360%20-%20startDeg%20+%20endDeg);%20const%20count%20=%20Math.floor(spanDeg%20/%20stepDeg)%20+%201;%20for%20(let%20i%20=%200;%20i%20%3c%20count;%20i++)%20{%20const%20deg%20=%20startDeg%20+%20i%20*%20stepDeg;%20const%20t%20=%20i%20/%20Math.max(1,%20count%20-%201);%20//%200..1%20вдоль%20дуги%20//%20делаем%20длины%20чуть%20'живыми',%20как%20на%20макете:%20ближе%20к%20правому%20краю%20—%20длиннее%20const%20ease%20=%20Math.pow(t,%201.6);%20const%20rInner%20=%20rInnerMin%20-%20(rInnerMin%20-%20rInnerMax)%20*%20ease;%20//%20прозрачность:%20ближе%20к%20правому%20краю%20—%20ярче%20const%20op%20=%200.25%20+%200.75%20*%20ease;%20const%20rad%20=%20deg%20*%20Math.PI%20/%20180;%20const%20x1%20=%20cx%20+%20rInner%20*%20Math.cos(rad);%20const%20y1%20=%20cy%20+%20rInner%20*%20Math.sin(rad);%20const%20x2%20=%20cx%20+%20rOuter%20*%20Math.cos(rad);%20const%20y2%20=%20cy%20+%20rOuter%20*%20Math.sin(rad);%20const%20line%20=%20svg.createElementNS('http://www.w3.org/2000/svg',%20'line');%20line.setAttribute('x1',%20x1.toFixed(2));%20line.setAttribute('y1',%20y1.toFixed(2));%20line.setAttribute('x2',%20x2.toFixed(2));%20line.setAttribute('y2',%20y2.toFixed(2));%20line.setAttribute('stroke',%20'url(%23tickGrad)');%20line.setAttribute('stroke-width',%20'3');%20line.setAttribute('stroke-linecap',%20'round');%20line.setAttribute('opacity',%20op.toFixed(3));%20g.appendChild(line);%20}%20})();%20]]%3e%3c/script%3e%3c/svg%3e" class="circleItem">
+                            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20800'%20width='800'%20height='800'%3e%3cdefs%3e%3c!--%20лёгкое%20свечение%20как%20на%20макете%20--%3e%3cfilter%20id='glow'%20x='-50%25'%20y='-50%25'%20width='200%25'%20height='200%25'%3e%3cfeGaussianBlur%20stdDeviation='1.2'%20result='b'/%3e%3cfeMerge%3e%3cfeMergeNode%20in='b'/%3e%3cfeMergeNode%20in='SourceGraphic'/%3e%3c/feMerge%3e%3c/filter%3e%3c!--%20мягкий%20градиент%20на%20лучиках%20--%3e%3clinearGradient%20id='tickGrad'%20x1='0'%20y1='0'%20x2='1'%20y2='0'%3e%3cstop%20offset='0'%20stop-color='white'%20stop-opacity='0.15'/%3e%3cstop%20offset='0.5'%20stop-color='white'%20stop-opacity='0.85'/%3e%3cstop%20offset='1'%20stop-color='white'%20stop-opacity='0.15'/%3e%3c/linearGradient%3e%3c/defs%3e%3c!--%20центр%20--%3e%3cg%20id='ticks'%20filter='url(%23glow)'%3e%3c/g%3e%3c!--%20Генерация%20лучиков%20прямо%20внутри%20SVG%20--%3e%3cscript%3e%3c![CDATA[%20(function%20()%20{%20const%20svg%20=%20document.currentScript.ownerDocument;%20const%20g%20=%20svg.getElementById('ticks');%20const%20cx%20=%20400,%20cy%20=%20400;%20//%20настройки%20'как%20часы'%20const%20startDeg%20=%20205;%20//%20откуда%20начинаем%20дугу%20const%20endDeg%20=%2025;%20//%20где%20заканчиваем%20(через%20360)%20const%20stepDeg%20=%204;%20//%20шаг%20лучиков%20(меньше%20=%20больше%20лучиков)%20const%20rOuter%20=%20345;%20//%20внешний%20радиус%20const%20rInnerMin%20=%20295;%20//%20внутренняя%20граница%20(короткие%20лучи)%20const%20rInnerMax%20=%20260;%20//%20внутренняя%20граница%20(длинные%20лучи)%20//%20нормализуем%20диапазон%20дуги%20через%20360%20const%20spanDeg%20=%20(endDeg%20%3e=%20startDeg)%20?%20(endDeg%20-%20startDeg)%20:%20(360%20-%20startDeg%20+%20endDeg);%20const%20count%20=%20Math.floor(spanDeg%20/%20stepDeg)%20+%201;%20for%20(let%20i%20=%200;%20i%20%3c%20count;%20i++)%20{%20const%20deg%20=%20startDeg%20+%20i%20*%20stepDeg;%20const%20t%20=%20i%20/%20Math.max(1,%20count%20-%201);%20//%200..1%20вдоль%20дуги%20//%20делаем%20длины%20чуть%20'живыми',%20как%20на%20макете:%20ближе%20к%20правому%20краю%20—%20длиннее%20const%20ease%20=%20Math.pow(t,%201.6);%20const%20rInner%20=%20rInnerMin%20-%20(rInnerMin%20-%20rInnerMax)%20*%20ease;%20//%20прозрачность:%20ближе%20к%20правому%20краю%20—%20ярче%20const%20op%20=%200.25%20+%200.75%20*%20ease;%20const%20rad%20=%20deg%20*%20Math.PI%20/%20180;%20const%20x1%20=%20cx%20+%20rInner%20*%20Math.cos(rad);%20const%20y1%20=%20cy%20+%20rInner%20*%20Math.sin(rad);%20const%20x2%20=%20cx%20+%20rOuter%20*%20Math.cos(rad);%20const%20y2%20=%20cy%20+%20rOuter%20*%20Math.sin(rad);%20const%20line%20=%20svg.createElementNS('http://www.w3.org/2000/svg',%20'line');%20line.setAttribute('x1',%20x1.toFixed(2));%20line.setAttribute('y1',%20y1.toFixed(2));%20line.setAttribute('x2',%20x2.toFixed(2));%20line.setAttribute('y2',%20y2.toFixed(2));%20line.setAttribute('stroke',%20'url(%23tickGrad)');%20line.setAttribute('stroke-width',%20'3');%20line.setAttribute('stroke-linecap',%20'round');%20line.setAttribute('opacity',%20op.toFixed(3));%20g.appendChild(line);%20}%20})();%20]]%3e%3c/script%3e%3c/svg%3e" class="circleItem">
+                            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20800'%20width='800'%20height='800'%3e%3cdefs%3e%3c!--%20лёгкое%20свечение%20как%20на%20макете%20--%3e%3cfilter%20id='glow'%20x='-50%25'%20y='-50%25'%20width='200%25'%20height='200%25'%3e%3cfeGaussianBlur%20stdDeviation='1.2'%20result='b'/%3e%3cfeMerge%3e%3cfeMergeNode%20in='b'/%3e%3cfeMergeNode%20in='SourceGraphic'/%3e%3c/feMerge%3e%3c/filter%3e%3c!--%20мягкий%20градиент%20на%20лучиках%20--%3e%3clinearGradient%20id='tickGrad'%20x1='0'%20y1='0'%20x2='1'%20y2='0'%3e%3cstop%20offset='0'%20stop-color='white'%20stop-opacity='0.15'/%3e%3cstop%20offset='0.5'%20stop-color='white'%20stop-opacity='0.85'/%3e%3cstop%20offset='1'%20stop-color='white'%20stop-opacity='0.15'/%3e%3c/linearGradient%3e%3c/defs%3e%3c!--%20центр%20--%3e%3cg%20id='ticks'%20filter='url(%23glow)'%3e%3c/g%3e%3c!--%20Генерация%20лучиков%20прямо%20внутри%20SVG%20--%3e%3cscript%3e%3c![CDATA[%20(function%20()%20{%20const%20svg%20=%20document.currentScript.ownerDocument;%20const%20g%20=%20svg.getElementById('ticks');%20const%20cx%20=%20400,%20cy%20=%20400;%20//%20настройки%20'как%20часы'%20const%20startDeg%20=%20205;%20//%20откуда%20начинаем%20дугу%20const%20endDeg%20=%2025;%20//%20где%20заканчиваем%20(через%20360)%20const%20stepDeg%20=%204;%20//%20шаг%20лучиков%20(меньше%20=%20больше%20лучиков)%20const%20rOuter%20=%20345;%20//%20внешний%20радиус%20const%20rInnerMin%20=%20295;%20//%20внутренняя%20граница%20(короткие%20лучи)%20const%20rInnerMax%20=%20260;%20//%20внутренняя%20граница%20(длинные%20лучи)%20//%20нормализуем%20диапазон%20дуги%20через%20360%20const%20spanDeg%20=%20(endDeg%20%3e=%20startDeg)%20?%20(endDeg%20-%20startDeg)%20:%20(360%20-%20startDeg%20+%20endDeg);%20const%20count%20=%20Math.floor(spanDeg%20/%20stepDeg)%20+%201;%20for%20(let%20i%20=%200;%20i%20%3c%20count;%20i++)%20{%20const%20deg%20=%20startDeg%20+%20i%20*%20stepDeg;%20const%20t%20=%20i%20/%20Math.max(1,%20count%20-%201);%20//%200..1%20вдоль%20дуги%20//%20делаем%20длины%20чуть%20'живыми',%20как%20на%20макете:%20ближе%20к%20правому%20краю%20—%20длиннее%20const%20ease%20=%20Math.pow(t,%201.6);%20const%20rInner%20=%20rInnerMin%20-%20(rInnerMin%20-%20rInnerMax)%20*%20ease;%20//%20прозрачность:%20ближе%20к%20правому%20краю%20—%20ярче%20const%20op%20=%200.25%20+%200.75%20*%20ease;%20const%20rad%20=%20deg%20*%20Math.PI%20/%20180;%20const%20x1%20=%20cx%20+%20rInner%20*%20Math.cos(rad);%20const%20y1%20=%20cy%20+%20rInner%20*%20Math.sin(rad);%20const%20x2%20=%20cx%20+%20rOuter%20*%20Math.cos(rad);%20const%20y2%20=%20cy%20+%20rOuter%20*%20Math.sin(rad);%20const%20line%20=%20svg.createElementNS('http://www.w3.org/2000/svg',%20'line');%20line.setAttribute('x1',%20x1.toFixed(2));%20line.setAttribute('y1',%20y1.toFixed(2));%20line.setAttribute('x2',%20x2.toFixed(2));%20line.setAttribute('y2',%20y2.toFixed(2));%20line.setAttribute('stroke',%20'url(%23tickGrad)');%20line.setAttribute('stroke-width',%20'3');%20line.setAttribute('stroke-linecap',%20'round');%20line.setAttribute('opacity',%20op.toFixed(3));%20g.appendChild(line);%20}%20})();%20]]%3e%3c/script%3e%3c/svg%3e" class="circleItem">
+                            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20800'%20width='800'%20height='800'%3e%3cdefs%3e%3c!--%20лёгкое%20свечение%20как%20на%20макете%20--%3e%3cfilter%20id='glow'%20x='-50%25'%20y='-50%25'%20width='200%25'%20height='200%25'%3e%3cfeGaussianBlur%20stdDeviation='1.2'%20result='b'/%3e%3cfeMerge%3e%3cfeMergeNode%20in='b'/%3e%3cfeMergeNode%20in='SourceGraphic'/%3e%3c/feMerge%3e%3c/filter%3e%3c!--%20мягкий%20градиент%20на%20лучиках%20--%3e%3clinearGradient%20id='tickGrad'%20x1='0'%20y1='0'%20x2='1'%20y2='0'%3e%3cstop%20offset='0'%20stop-color='white'%20stop-opacity='0.15'/%3e%3cstop%20offset='0.5'%20stop-color='white'%20stop-opacity='0.85'/%3e%3cstop%20offset='1'%20stop-color='white'%20stop-opacity='0.15'/%3e%3c/linearGradient%3e%3c/defs%3e%3c!--%20центр%20--%3e%3cg%20id='ticks'%20filter='url(%23glow)'%3e%3c/g%3e%3c!--%20Генерация%20лучиков%20прямо%20внутри%20SVG%20--%3e%3cscript%3e%3c![CDATA[%20(function%20()%20{%20const%20svg%20=%20document.currentScript.ownerDocument;%20const%20g%20=%20svg.getElementById('ticks');%20const%20cx%20=%20400,%20cy%20=%20400;%20//%20настройки%20'как%20часы'%20const%20startDeg%20=%20205;%20//%20откуда%20начинаем%20дугу%20const%20endDeg%20=%2025;%20//%20где%20заканчиваем%20(через%20360)%20const%20stepDeg%20=%204;%20//%20шаг%20лучиков%20(меньше%20=%20больше%20лучиков)%20const%20rOuter%20=%20345;%20//%20внешний%20радиус%20const%20rInnerMin%20=%20295;%20//%20внутренняя%20граница%20(короткие%20лучи)%20const%20rInnerMax%20=%20260;%20//%20внутренняя%20граница%20(длинные%20лучи)%20//%20нормализуем%20диапазон%20дуги%20через%20360%20const%20spanDeg%20=%20(endDeg%20%3e=%20startDeg)%20?%20(endDeg%20-%20startDeg)%20:%20(360%20-%20startDeg%20+%20endDeg);%20const%20count%20=%20Math.floor(spanDeg%20/%20stepDeg)%20+%201;%20for%20(let%20i%20=%200;%20i%20%3c%20count;%20i++)%20{%20const%20deg%20=%20startDeg%20+%20i%20*%20stepDeg;%20const%20t%20=%20i%20/%20Math.max(1,%20count%20-%201);%20//%200..1%20вдоль%20дуги%20//%20делаем%20длины%20чуть%20'живыми',%20как%20на%20макете:%20ближе%20к%20правому%20краю%20—%20длиннее%20const%20ease%20=%20Math.pow(t,%201.6);%20const%20rInner%20=%20rInnerMin%20-%20(rInnerMin%20-%20rInnerMax)%20*%20ease;%20//%20прозрачность:%20ближе%20к%20правому%20краю%20—%20ярче%20const%20op%20=%200.25%20+%200.75%20*%20ease;%20const%20rad%20=%20deg%20*%20Math.PI%20/%20180;%20const%20x1%20=%20cx%20+%20rInner%20*%20Math.cos(rad);%20const%20y1%20=%20cy%20+%20rInner%20*%20Math.sin(rad);%20const%20x2%20=%20cx%20+%20rOuter%20*%20Math.cos(rad);%20const%20y2%20=%20cy%20+%20rOuter%20*%20Math.sin(rad);%20const%20line%20=%20svg.createElementNS('http://www.w3.org/2000/svg',%20'line');%20line.setAttribute('x1',%20x1.toFixed(2));%20line.setAttribute('y1',%20y1.toFixed(2));%20line.setAttribute('x2',%20x2.toFixed(2));%20line.setAttribute('y2',%20y2.toFixed(2));%20line.setAttribute('stroke',%20'url(%23tickGrad)');%20line.setAttribute('stroke-width',%20'3');%20line.setAttribute('stroke-linecap',%20'round');%20line.setAttribute('opacity',%20op.toFixed(3));%20g.appendChild(line);%20}%20})();%20]]%3e%3c/script%3e%3c/svg%3e" class="circleItem">
+                            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20800'%20width='800'%20height='800'%3e%3cdefs%3e%3c!--%20лёгкое%20свечение%20как%20на%20макете%20--%3e%3cfilter%20id='glow'%20x='-50%25'%20y='-50%25'%20width='200%25'%20height='200%25'%3e%3cfeGaussianBlur%20stdDeviation='1.2'%20result='b'/%3e%3cfeMerge%3e%3cfeMergeNode%20in='b'/%3e%3cfeMergeNode%20in='SourceGraphic'/%3e%3c/feMerge%3e%3c/filter%3e%3c!--%20мягкий%20градиент%20на%20лучиках%20--%3e%3clinearGradient%20id='tickGrad'%20x1='0'%20y1='0'%20x2='1'%20y2='0'%3e%3cstop%20offset='0'%20stop-color='white'%20stop-opacity='0.15'/%3e%3cstop%20offset='0.5'%20stop-color='white'%20stop-opacity='0.85'/%3e%3cstop%20offset='1'%20stop-color='white'%20stop-opacity='0.15'/%3e%3c/linearGradient%3e%3c/defs%3e%3c!--%20центр%20--%3e%3cg%20id='ticks'%20filter='url(%23glow)'%3e%3c/g%3e%3c!--%20Генерация%20лучиков%20прямо%20внутри%20SVG%20--%3e%3cscript%3e%3c![CDATA[%20(function%20()%20{%20const%20svg%20=%20document.currentScript.ownerDocument;%20const%20g%20=%20svg.getElementById('ticks');%20const%20cx%20=%20400,%20cy%20=%20400;%20//%20настройки%20'как%20часы'%20const%20startDeg%20=%20205;%20//%20откуда%20начинаем%20дугу%20const%20endDeg%20=%2025;%20//%20где%20заканчиваем%20(через%20360)%20const%20stepDeg%20=%204;%20//%20шаг%20лучиков%20(меньше%20=%20больше%20лучиков)%20const%20rOuter%20=%20345;%20//%20внешний%20радиус%20const%20rInnerMin%20=%20295;%20//%20внутренняя%20граница%20(короткие%20лучи)%20const%20rInnerMax%20=%20260;%20//%20внутренняя%20граница%20(длинные%20лучи)%20//%20нормализуем%20диапазон%20дуги%20через%20360%20const%20spanDeg%20=%20(endDeg%20%3e=%20startDeg)%20?%20(endDeg%20-%20startDeg)%20:%20(360%20-%20startDeg%20+%20endDeg);%20const%20count%20=%20Math.floor(spanDeg%20/%20stepDeg)%20+%201;%20for%20(let%20i%20=%200;%20i%20%3c%20count;%20i++)%20{%20const%20deg%20=%20startDeg%20+%20i%20*%20stepDeg;%20const%20t%20=%20i%20/%20Math.max(1,%20count%20-%201);%20//%200..1%20вдоль%20дуги%20//%20делаем%20длины%20чуть%20'живыми',%20как%20на%20макете:%20ближе%20к%20правому%20краю%20—%20длиннее%20const%20ease%20=%20Math.pow(t,%201.6);%20const%20rInner%20=%20rInnerMin%20-%20(rInnerMin%20-%20rInnerMax)%20*%20ease;%20//%20прозрачность:%20ближе%20к%20правому%20краю%20—%20ярче%20const%20op%20=%200.25%20+%200.75%20*%20ease;%20const%20rad%20=%20deg%20*%20Math.PI%20/%20180;%20const%20x1%20=%20cx%20+%20rInner%20*%20Math.cos(rad);%20const%20y1%20=%20cy%20+%20rInner%20*%20Math.sin(rad);%20const%20x2%20=%20cx%20+%20rOuter%20*%20Math.cos(rad);%20const%20y2%20=%20cy%20+%20rOuter%20*%20Math.sin(rad);%20const%20line%20=%20svg.createElementNS('http://www.w3.org/2000/svg',%20'line');%20line.setAttribute('x1',%20x1.toFixed(2));%20line.setAttribute('y1',%20y1.toFixed(2));%20line.setAttribute('x2',%20x2.toFixed(2));%20line.setAttribute('y2',%20y2.toFixed(2));%20line.setAttribute('stroke',%20'url(%23tickGrad)');%20line.setAttribute('stroke-width',%20'3');%20line.setAttribute('stroke-linecap',%20'round');%20line.setAttribute('opacity',%20op.toFixed(3));%20g.appendChild(line);%20}%20})();%20]]%3e%3c/script%3e%3c/svg%3e" class="circleItem">
+                            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20800'%20width='800'%20height='800'%3e%3cdefs%3e%3c!--%20лёгкое%20свечение%20как%20на%20макете%20--%3e%3cfilter%20id='glow'%20x='-50%25'%20y='-50%25'%20width='200%25'%20height='200%25'%3e%3cfeGaussianBlur%20stdDeviation='1.2'%20result='b'/%3e%3cfeMerge%3e%3cfeMergeNode%20in='b'/%3e%3cfeMergeNode%20in='SourceGraphic'/%3e%3c/feMerge%3e%3c/filter%3e%3c!--%20мягкий%20градиент%20на%20лучиках%20--%3e%3clinearGradient%20id='tickGrad'%20x1='0'%20y1='0'%20x2='1'%20y2='0'%3e%3cstop%20offset='0'%20stop-color='white'%20stop-opacity='0.15'/%3e%3cstop%20offset='0.5'%20stop-color='white'%20stop-opacity='0.85'/%3e%3cstop%20offset='1'%20stop-color='white'%20stop-opacity='0.15'/%3e%3c/linearGradient%3e%3c/defs%3e%3c!--%20центр%20--%3e%3cg%20id='ticks'%20filter='url(%23glow)'%3e%3c/g%3e%3c!--%20Генерация%20лучиков%20прямо%20внутри%20SVG%20--%3e%3cscript%3e%3c![CDATA[%20(function%20()%20{%20const%20svg%20=%20document.currentScript.ownerDocument;%20const%20g%20=%20svg.getElementById('ticks');%20const%20cx%20=%20400,%20cy%20=%20400;%20//%20настройки%20'как%20часы'%20const%20startDeg%20=%20205;%20//%20откуда%20начинаем%20дугу%20const%20endDeg%20=%2025;%20//%20где%20заканчиваем%20(через%20360)%20const%20stepDeg%20=%204;%20//%20шаг%20лучиков%20(меньше%20=%20больше%20лучиков)%20const%20rOuter%20=%20345;%20//%20внешний%20радиус%20const%20rInnerMin%20=%20295;%20//%20внутренняя%20граница%20(короткие%20лучи)%20const%20rInnerMax%20=%20260;%20//%20внутренняя%20граница%20(длинные%20лучи)%20//%20нормализуем%20диапазон%20дуги%20через%20360%20const%20spanDeg%20=%20(endDeg%20%3e=%20startDeg)%20?%20(endDeg%20-%20startDeg)%20:%20(360%20-%20startDeg%20+%20endDeg);%20const%20count%20=%20Math.floor(spanDeg%20/%20stepDeg)%20+%201;%20for%20(let%20i%20=%200;%20i%20%3c%20count;%20i++)%20{%20const%20deg%20=%20startDeg%20+%20i%20*%20stepDeg;%20const%20t%20=%20i%20/%20Math.max(1,%20count%20-%201);%20//%200..1%20вдоль%20дуги%20//%20делаем%20длины%20чуть%20'живыми',%20как%20на%20макете:%20ближе%20к%20правому%20краю%20—%20длиннее%20const%20ease%20=%20Math.pow(t,%201.6);%20const%20rInner%20=%20rInnerMin%20-%20(rInnerMin%20-%20rInnerMax)%20*%20ease;%20//%20прозрачность:%20ближе%20к%20правому%20краю%20—%20ярче%20const%20op%20=%200.25%20+%200.75%20*%20ease;%20const%20rad%20=%20deg%20*%20Math.PI%20/%20180;%20const%20x1%20=%20cx%20+%20rInner%20*%20Math.cos(rad);%20const%20y1%20=%20cy%20+%20rInner%20*%20Math.sin(rad);%20const%20x2%20=%20cx%20+%20rOuter%20*%20Math.cos(rad);%20const%20y2%20=%20cy%20+%20rOuter%20*%20Math.sin(rad);%20const%20line%20=%20svg.createElementNS('http://www.w3.org/2000/svg',%20'line');%20line.setAttribute('x1',%20x1.toFixed(2));%20line.setAttribute('y1',%20y1.toFixed(2));%20line.setAttribute('x2',%20x2.toFixed(2));%20line.setAttribute('y2',%20y2.toFixed(2));%20line.setAttribute('stroke',%20'url(%23tickGrad)');%20line.setAttribute('stroke-width',%20'3');%20line.setAttribute('stroke-linecap',%20'round');%20line.setAttribute('opacity',%20op.toFixed(3));%20g.appendChild(line);%20}%20})();%20]]%3e%3c/script%3e%3c/svg%3e" class="circleItem">
+                            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20800'%20width='800'%20height='800'%3e%3cdefs%3e%3c!--%20лёгкое%20свечение%20как%20на%20макете%20--%3e%3cfilter%20id='glow'%20x='-50%25'%20y='-50%25'%20width='200%25'%20height='200%25'%3e%3cfeGaussianBlur%20stdDeviation='1.2'%20result='b'/%3e%3cfeMerge%3e%3cfeMergeNode%20in='b'/%3e%3cfeMergeNode%20in='SourceGraphic'/%3e%3c/feMerge%3e%3c/filter%3e%3c!--%20мягкий%20градиент%20на%20лучиках%20--%3e%3clinearGradient%20id='tickGrad'%20x1='0'%20y1='0'%20x2='1'%20y2='0'%3e%3cstop%20offset='0'%20stop-color='white'%20stop-opacity='0.15'/%3e%3cstop%20offset='0.5'%20stop-color='white'%20stop-opacity='0.85'/%3e%3cstop%20offset='1'%20stop-color='white'%20stop-opacity='0.15'/%3e%3c/linearGradient%3e%3c/defs%3e%3c!--%20центр%20--%3e%3cg%20id='ticks'%20filter='url(%23glow)'%3e%3c/g%3e%3c!--%20Генерация%20лучиков%20прямо%20внутри%20SVG%20--%3e%3cscript%3e%3c![CDATA[%20(function%20()%20{%20const%20svg%20=%20document.currentScript.ownerDocument;%20const%20g%20=%20svg.getElementById('ticks');%20const%20cx%20=%20400,%20cy%20=%20400;%20//%20настройки%20'как%20часы'%20const%20startDeg%20=%20205;%20//%20откуда%20начинаем%20дугу%20const%20endDeg%20=%2025;%20//%20где%20заканчиваем%20(через%20360)%20const%20stepDeg%20=%204;%20//%20шаг%20лучиков%20(меньше%20=%20больше%20лучиков)%20const%20rOuter%20=%20345;%20//%20внешний%20радиус%20const%20rInnerMin%20=%20295;%20//%20внутренняя%20граница%20(короткие%20лучи)%20const%20rInnerMax%20=%20260;%20//%20внутренняя%20граница%20(длинные%20лучи)%20//%20нормализуем%20диапазон%20дуги%20через%20360%20const%20spanDeg%20=%20(endDeg%20%3e=%20startDeg)%20?%20(endDeg%20-%20startDeg)%20:%20(360%20-%20startDeg%20+%20endDeg);%20const%20count%20=%20Math.floor(spanDeg%20/%20stepDeg)%20+%201;%20for%20(let%20i%20=%200;%20i%20%3c%20count;%20i++)%20{%20const%20deg%20=%20startDeg%20+%20i%20*%20stepDeg;%20const%20t%20=%20i%20/%20Math.max(1,%20count%20-%201);%20//%200..1%20вдоль%20дуги%20//%20делаем%20длины%20чуть%20'живыми',%20как%20на%20макете:%20ближе%20к%20правому%20краю%20—%20длиннее%20const%20ease%20=%20Math.pow(t,%201.6);%20const%20rInner%20=%20rInnerMin%20-%20(rInnerMin%20-%20rInnerMax)%20*%20ease;%20//%20прозрачность:%20ближе%20к%20правому%20краю%20—%20ярче%20const%20op%20=%200.25%20+%200.75%20*%20ease;%20const%20rad%20=%20deg%20*%20Math.PI%20/%20180;%20const%20x1%20=%20cx%20+%20rInner%20*%20Math.cos(rad);%20const%20y1%20=%20cy%20+%20rInner%20*%20Math.sin(rad);%20const%20x2%20=%20cx%20+%20rOuter%20*%20Math.cos(rad);%20const%20y2%20=%20cy%20+%20rOuter%20*%20Math.sin(rad);%20const%20line%20=%20svg.createElementNS('http://www.w3.org/2000/svg',%20'line');%20line.setAttribute('x1',%20x1.toFixed(2));%20line.setAttribute('y1',%20y1.toFixed(2));%20line.setAttribute('x2',%20x2.toFixed(2));%20line.setAttribute('y2',%20y2.toFixed(2));%20line.setAttribute('stroke',%20'url(%23tickGrad)');%20line.setAttribute('stroke-width',%20'3');%20line.setAttribute('stroke-linecap',%20'round');%20line.setAttribute('opacity',%20op.toFixed(3));%20g.appendChild(line);%20}%20})();%20]]%3e%3c/script%3e%3c/svg%3e" class="circleItem">
+                            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20800'%20width='800'%20height='800'%3e%3cdefs%3e%3c!--%20лёгкое%20свечение%20как%20на%20макете%20--%3e%3cfilter%20id='glow'%20x='-50%25'%20y='-50%25'%20width='200%25'%20height='200%25'%3e%3cfeGaussianBlur%20stdDeviation='1.2'%20result='b'/%3e%3cfeMerge%3e%3cfeMergeNode%20in='b'/%3e%3cfeMergeNode%20in='SourceGraphic'/%3e%3c/feMerge%3e%3c/filter%3e%3c!--%20мягкий%20градиент%20на%20лучиках%20--%3e%3clinearGradient%20id='tickGrad'%20x1='0'%20y1='0'%20x2='1'%20y2='0'%3e%3cstop%20offset='0'%20stop-color='white'%20stop-opacity='0.15'/%3e%3cstop%20offset='0.5'%20stop-color='white'%20stop-opacity='0.85'/%3e%3cstop%20offset='1'%20stop-color='white'%20stop-opacity='0.15'/%3e%3c/linearGradient%3e%3c/defs%3e%3c!--%20центр%20--%3e%3cg%20id='ticks'%20filter='url(%23glow)'%3e%3c/g%3e%3c!--%20Генерация%20лучиков%20прямо%20внутри%20SVG%20--%3e%3cscript%3e%3c![CDATA[%20(function%20()%20{%20const%20svg%20=%20document.currentScript.ownerDocument;%20const%20g%20=%20svg.getElementById('ticks');%20const%20cx%20=%20400,%20cy%20=%20400;%20//%20настройки%20'как%20часы'%20const%20startDeg%20=%20205;%20//%20откуда%20начинаем%20дугу%20const%20endDeg%20=%2025;%20//%20где%20заканчиваем%20(через%20360)%20const%20stepDeg%20=%204;%20//%20шаг%20лучиков%20(меньше%20=%20больше%20лучиков)%20const%20rOuter%20=%20345;%20//%20внешний%20радиус%20const%20rInnerMin%20=%20295;%20//%20внутренняя%20граница%20(короткие%20лучи)%20const%20rInnerMax%20=%20260;%20//%20внутренняя%20граница%20(длинные%20лучи)%20//%20нормализуем%20диапазон%20дуги%20через%20360%20const%20spanDeg%20=%20(endDeg%20%3e=%20startDeg)%20?%20(endDeg%20-%20startDeg)%20:%20(360%20-%20startDeg%20+%20endDeg);%20const%20count%20=%20Math.floor(spanDeg%20/%20stepDeg)%20+%201;%20for%20(let%20i%20=%200;%20i%20%3c%20count;%20i++)%20{%20const%20deg%20=%20startDeg%20+%20i%20*%20stepDeg;%20const%20t%20=%20i%20/%20Math.max(1,%20count%20-%201);%20//%200..1%20вдоль%20дуги%20//%20делаем%20длины%20чуть%20'живыми',%20как%20на%20макете:%20ближе%20к%20правому%20краю%20—%20длиннее%20const%20ease%20=%20Math.pow(t,%201.6);%20const%20rInner%20=%20rInnerMin%20-%20(rInnerMin%20-%20rInnerMax)%20*%20ease;%20//%20прозрачность:%20ближе%20к%20правому%20краю%20—%20ярче%20const%20op%20=%200.25%20+%200.75%20*%20ease;%20const%20rad%20=%20deg%20*%20Math.PI%20/%20180;%20const%20x1%20=%20cx%20+%20rInner%20*%20Math.cos(rad);%20const%20y1%20=%20cy%20+%20rInner%20*%20Math.sin(rad);%20const%20x2%20=%20cx%20+%20rOuter%20*%20Math.cos(rad);%20const%20y2%20=%20cy%20+%20rOuter%20*%20Math.sin(rad);%20const%20line%20=%20svg.createElementNS('http://www.w3.org/2000/svg',%20'line');%20line.setAttribute('x1',%20x1.toFixed(2));%20line.setAttribute('y1',%20y1.toFixed(2));%20line.setAttribute('x2',%20x2.toFixed(2));%20line.setAttribute('y2',%20y2.toFixed(2));%20line.setAttribute('stroke',%20'url(%23tickGrad)');%20line.setAttribute('stroke-width',%20'3');%20line.setAttribute('stroke-linecap',%20'round');%20line.setAttribute('opacity',%20op.toFixed(3));%20g.appendChild(line);%20}%20})();%20]]%3e%3c/script%3e%3c/svg%3e" class="circleItem">
+                            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20800'%20width='800'%20height='800'%3e%3cdefs%3e%3c!--%20лёгкое%20свечение%20как%20на%20макете%20--%3e%3cfilter%20id='glow'%20x='-50%25'%20y='-50%25'%20width='200%25'%20height='200%25'%3e%3cfeGaussianBlur%20stdDeviation='1.2'%20result='b'/%3e%3cfeMerge%3e%3cfeMergeNode%20in='b'/%3e%3cfeMergeNode%20in='SourceGraphic'/%3e%3c/feMerge%3e%3c/filter%3e%3c!--%20мягкий%20градиент%20на%20лучиках%20--%3e%3clinearGradient%20id='tickGrad'%20x1='0'%20y1='0'%20x2='1'%20y2='0'%3e%3cstop%20offset='0'%20stop-color='white'%20stop-opacity='0.15'/%3e%3cstop%20offset='0.5'%20stop-color='white'%20stop-opacity='0.85'/%3e%3cstop%20offset='1'%20stop-color='white'%20stop-opacity='0.15'/%3e%3c/linearGradient%3e%3c/defs%3e%3c!--%20центр%20--%3e%3cg%20id='ticks'%20filter='url(%23glow)'%3e%3c/g%3e%3c!--%20Генерация%20лучиков%20прямо%20внутри%20SVG%20--%3e%3cscript%3e%3c![CDATA[%20(function%20()%20{%20const%20svg%20=%20document.currentScript.ownerDocument;%20const%20g%20=%20svg.getElementById('ticks');%20const%20cx%20=%20400,%20cy%20=%20400;%20//%20настройки%20'как%20часы'%20const%20startDeg%20=%20205;%20//%20откуда%20начинаем%20дугу%20const%20endDeg%20=%2025;%20//%20где%20заканчиваем%20(через%20360)%20const%20stepDeg%20=%204;%20//%20шаг%20лучиков%20(меньше%20=%20больше%20лучиков)%20const%20rOuter%20=%20345;%20//%20внешний%20радиус%20const%20rInnerMin%20=%20295;%20//%20внутренняя%20граница%20(короткие%20лучи)%20const%20rInnerMax%20=%20260;%20//%20внутренняя%20граница%20(длинные%20лучи)%20//%20нормализуем%20диапазон%20дуги%20через%20360%20const%20spanDeg%20=%20(endDeg%20%3e=%20startDeg)%20?%20(endDeg%20-%20startDeg)%20:%20(360%20-%20startDeg%20+%20endDeg);%20const%20count%20=%20Math.floor(spanDeg%20/%20stepDeg)%20+%201;%20for%20(let%20i%20=%200;%20i%20%3c%20count;%20i++)%20{%20const%20deg%20=%20startDeg%20+%20i%20*%20stepDeg;%20const%20t%20=%20i%20/%20Math.max(1,%20count%20-%201);%20//%200..1%20вдоль%20дуги%20//%20делаем%20длины%20чуть%20'живыми',%20как%20на%20макете:%20ближе%20к%20правому%20краю%20—%20длиннее%20const%20ease%20=%20Math.pow(t,%201.6);%20const%20rInner%20=%20rInnerMin%20-%20(rInnerMin%20-%20rInnerMax)%20*%20ease;%20//%20прозрачность:%20ближе%20к%20правому%20краю%20—%20ярче%20const%20op%20=%200.25%20+%200.75%20*%20ease;%20const%20rad%20=%20deg%20*%20Math.PI%20/%20180;%20const%20x1%20=%20cx%20+%20rInner%20*%20Math.cos(rad);%20const%20y1%20=%20cy%20+%20rInner%20*%20Math.sin(rad);%20const%20x2%20=%20cx%20+%20rOuter%20*%20Math.cos(rad);%20const%20y2%20=%20cy%20+%20rOuter%20*%20Math.sin(rad);%20const%20line%20=%20svg.createElementNS('http://www.w3.org/2000/svg',%20'line');%20line.setAttribute('x1',%20x1.toFixed(2));%20line.setAttribute('y1',%20y1.toFixed(2));%20line.setAttribute('x2',%20x2.toFixed(2));%20line.setAttribute('y2',%20y2.toFixed(2));%20line.setAttribute('stroke',%20'url(%23tickGrad)');%20line.setAttribute('stroke-width',%20'3');%20line.setAttribute('stroke-linecap',%20'round');%20line.setAttribute('opacity',%20op.toFixed(3));%20g.appendChild(line);%20}%20})();%20]]%3e%3c/script%3e%3c/svg%3e" class="circleItem">
+                            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20800'%20width='800'%20height='800'%3e%3cdefs%3e%3c!--%20лёгкое%20свечение%20как%20на%20макете%20--%3e%3cfilter%20id='glow'%20x='-50%25'%20y='-50%25'%20width='200%25'%20height='200%25'%3e%3cfeGaussianBlur%20stdDeviation='1.2'%20result='b'/%3e%3cfeMerge%3e%3cfeMergeNode%20in='b'/%3e%3cfeMergeNode%20in='SourceGraphic'/%3e%3c/feMerge%3e%3c/filter%3e%3c!--%20мягкий%20градиент%20на%20лучиках%20--%3e%3clinearGradient%20id='tickGrad'%20x1='0'%20y1='0'%20x2='1'%20y2='0'%3e%3cstop%20offset='0'%20stop-color='white'%20stop-opacity='0.15'/%3e%3cstop%20offset='0.5'%20stop-color='white'%20stop-opacity='0.85'/%3e%3cstop%20offset='1'%20stop-color='white'%20stop-opacity='0.15'/%3e%3c/linearGradient%3e%3c/defs%3e%3c!--%20центр%20--%3e%3cg%20id='ticks'%20filter='url(%23glow)'%3e%3c/g%3e%3c!--%20Генерация%20лучиков%20прямо%20внутри%20SVG%20--%3e%3cscript%3e%3c![CDATA[%20(function%20()%20{%20const%20svg%20=%20document.currentScript.ownerDocument;%20const%20g%20=%20svg.getElementById('ticks');%20const%20cx%20=%20400,%20cy%20=%20400;%20//%20настройки%20'как%20часы'%20const%20startDeg%20=%20205;%20//%20откуда%20начинаем%20дугу%20const%20endDeg%20=%2025;%20//%20где%20заканчиваем%20(через%20360)%20const%20stepDeg%20=%204;%20//%20шаг%20лучиков%20(меньше%20=%20больше%20лучиков)%20const%20rOuter%20=%20345;%20//%20внешний%20радиус%20const%20rInnerMin%20=%20295;%20//%20внутренняя%20граница%20(короткие%20лучи)%20const%20rInnerMax%20=%20260;%20//%20внутренняя%20граница%20(длинные%20лучи)%20//%20нормализуем%20диапазон%20дуги%20через%20360%20const%20spanDeg%20=%20(endDeg%20%3e=%20startDeg)%20?%20(endDeg%20-%20startDeg)%20:%20(360%20-%20startDeg%20+%20endDeg);%20const%20count%20=%20Math.floor(spanDeg%20/%20stepDeg)%20+%201;%20for%20(let%20i%20=%200;%20i%20%3c%20count;%20i++)%20{%20const%20deg%20=%20startDeg%20+%20i%20*%20stepDeg;%20const%20t%20=%20i%20/%20Math.max(1,%20count%20-%201);%20//%200..1%20вдоль%20дуги%20//%20делаем%20длины%20чуть%20'живыми',%20как%20на%20макете:%20ближе%20к%20правому%20краю%20—%20длиннее%20const%20ease%20=%20Math.pow(t,%201.6);%20const%20rInner%20=%20rInnerMin%20-%20(rInnerMin%20-%20rInnerMax)%20*%20ease;%20//%20прозрачность:%20ближе%20к%20правому%20краю%20—%20ярче%20const%20op%20=%200.25%20+%200.75%20*%20ease;%20const%20rad%20=%20deg%20*%20Math.PI%20/%20180;%20const%20x1%20=%20cx%20+%20rInner%20*%20Math.cos(rad);%20const%20y1%20=%20cy%20+%20rInner%20*%20Math.sin(rad);%20const%20x2%20=%20cx%20+%20rOuter%20*%20Math.cos(rad);%20const%20y2%20=%20cy%20+%20rOuter%20*%20Math.sin(rad);%20const%20line%20=%20svg.createElementNS('http://www.w3.org/2000/svg',%20'line');%20line.setAttribute('x1',%20x1.toFixed(2));%20line.setAttribute('y1',%20y1.toFixed(2));%20line.setAttribute('x2',%20x2.toFixed(2));%20line.setAttribute('y2',%20y2.toFixed(2));%20line.setAttribute('stroke',%20'url(%23tickGrad)');%20line.setAttribute('stroke-width',%20'3');%20line.setAttribute('stroke-linecap',%20'round');%20line.setAttribute('opacity',%20op.toFixed(3));%20g.appendChild(line);%20}%20})();%20]]%3e%3c/script%3e%3c/svg%3e" class="circleItem">
+                            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20800'%20width='800'%20height='800'%3e%3cdefs%3e%3c!--%20лёгкое%20свечение%20как%20на%20макете%20--%3e%3cfilter%20id='glow'%20x='-50%25'%20y='-50%25'%20width='200%25'%20height='200%25'%3e%3cfeGaussianBlur%20stdDeviation='1.2'%20result='b'/%3e%3cfeMerge%3e%3cfeMergeNode%20in='b'/%3e%3cfeMergeNode%20in='SourceGraphic'/%3e%3c/feMerge%3e%3c/filter%3e%3c!--%20мягкий%20градиент%20на%20лучиках%20--%3e%3clinearGradient%20id='tickGrad'%20x1='0'%20y1='0'%20x2='1'%20y2='0'%3e%3cstop%20offset='0'%20stop-color='white'%20stop-opacity='0.15'/%3e%3cstop%20offset='0.5'%20stop-color='white'%20stop-opacity='0.85'/%3e%3cstop%20offset='1'%20stop-color='white'%20stop-opacity='0.15'/%3e%3c/linearGradient%3e%3c/defs%3e%3c!--%20центр%20--%3e%3cg%20id='ticks'%20filter='url(%23glow)'%3e%3c/g%3e%3c!--%20Генерация%20лучиков%20прямо%20внутри%20SVG%20--%3e%3cscript%3e%3c![CDATA[%20(function%20()%20{%20const%20svg%20=%20document.currentScript.ownerDocument;%20const%20g%20=%20svg.getElementById('ticks');%20const%20cx%20=%20400,%20cy%20=%20400;%20//%20настройки%20'как%20часы'%20const%20startDeg%20=%20205;%20//%20откуда%20начинаем%20дугу%20const%20endDeg%20=%2025;%20//%20где%20заканчиваем%20(через%20360)%20const%20stepDeg%20=%204;%20//%20шаг%20лучиков%20(меньше%20=%20больше%20лучиков)%20const%20rOuter%20=%20345;%20//%20внешний%20радиус%20const%20rInnerMin%20=%20295;%20//%20внутренняя%20граница%20(короткие%20лучи)%20const%20rInnerMax%20=%20260;%20//%20внутренняя%20граница%20(длинные%20лучи)%20//%20нормализуем%20диапазон%20дуги%20через%20360%20const%20spanDeg%20=%20(endDeg%20%3e=%20startDeg)%20?%20(endDeg%20-%20startDeg)%20:%20(360%20-%20startDeg%20+%20endDeg);%20const%20count%20=%20Math.floor(spanDeg%20/%20stepDeg)%20+%201;%20for%20(let%20i%20=%200;%20i%20%3c%20count;%20i++)%20{%20const%20deg%20=%20startDeg%20+%20i%20*%20stepDeg;%20const%20t%20=%20i%20/%20Math.max(1,%20count%20-%201);%20//%200..1%20вдоль%20дуги%20//%20делаем%20длины%20чуть%20'живыми',%20как%20на%20макете:%20ближе%20к%20правому%20краю%20—%20длиннее%20const%20ease%20=%20Math.pow(t,%201.6);%20const%20rInner%20=%20rInnerMin%20-%20(rInnerMin%20-%20rInnerMax)%20*%20ease;%20//%20прозрачность:%20ближе%20к%20правому%20краю%20—%20ярче%20const%20op%20=%200.25%20+%200.75%20*%20ease;%20const%20rad%20=%20deg%20*%20Math.PI%20/%20180;%20const%20x1%20=%20cx%20+%20rInner%20*%20Math.cos(rad);%20const%20y1%20=%20cy%20+%20rInner%20*%20Math.sin(rad);%20const%20x2%20=%20cx%20+%20rOuter%20*%20Math.cos(rad);%20const%20y2%20=%20cy%20+%20rOuter%20*%20Math.sin(rad);%20const%20line%20=%20svg.createElementNS('http://www.w3.org/2000/svg',%20'line');%20line.setAttribute('x1',%20x1.toFixed(2));%20line.setAttribute('y1',%20y1.toFixed(2));%20line.setAttribute('x2',%20x2.toFixed(2));%20line.setAttribute('y2',%20y2.toFixed(2));%20line.setAttribute('stroke',%20'url(%23tickGrad)');%20line.setAttribute('stroke-width',%20'3');%20line.setAttribute('stroke-linecap',%20'round');%20line.setAttribute('opacity',%20op.toFixed(3));%20g.appendChild(line);%20}%20})();%20]]%3e%3c/script%3e%3c/svg%3e" class="circleItem">
+                            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20800'%20width='800'%20height='800'%3e%3cdefs%3e%3c!--%20лёгкое%20свечение%20как%20на%20макете%20--%3e%3cfilter%20id='glow'%20x='-50%25'%20y='-50%25'%20width='200%25'%20height='200%25'%3e%3cfeGaussianBlur%20stdDeviation='1.2'%20result='b'/%3e%3cfeMerge%3e%3cfeMergeNode%20in='b'/%3e%3cfeMergeNode%20in='SourceGraphic'/%3e%3c/feMerge%3e%3c/filter%3e%3c!--%20мягкий%20градиент%20на%20лучиках%20--%3e%3clinearGradient%20id='tickGrad'%20x1='0'%20y1='0'%20x2='1'%20y2='0'%3e%3cstop%20offset='0'%20stop-color='white'%20stop-opacity='0.15'/%3e%3cstop%20offset='0.5'%20stop-color='white'%20stop-opacity='0.85'/%3e%3cstop%20offset='1'%20stop-color='white'%20stop-opacity='0.15'/%3e%3c/linearGradient%3e%3c/defs%3e%3c!--%20центр%20--%3e%3cg%20id='ticks'%20filter='url(%23glow)'%3e%3c/g%3e%3c!--%20Генерация%20лучиков%20прямо%20внутри%20SVG%20--%3e%3cscript%3e%3c![CDATA[%20(function%20()%20{%20const%20svg%20=%20document.currentScript.ownerDocument;%20const%20g%20=%20svg.getElementById('ticks');%20const%20cx%20=%20400,%20cy%20=%20400;%20//%20настройки%20'как%20часы'%20const%20startDeg%20=%20205;%20//%20откуда%20начинаем%20дугу%20const%20endDeg%20=%2025;%20//%20где%20заканчиваем%20(через%20360)%20const%20stepDeg%20=%204;%20//%20шаг%20лучиков%20(меньше%20=%20больше%20лучиков)%20const%20rOuter%20=%20345;%20//%20внешний%20радиус%20const%20rInnerMin%20=%20295;%20//%20внутренняя%20граница%20(короткие%20лучи)%20const%20rInnerMax%20=%20260;%20//%20внутренняя%20граница%20(длинные%20лучи)%20//%20нормализуем%20диапазон%20дуги%20через%20360%20const%20spanDeg%20=%20(endDeg%20%3e=%20startDeg)%20?%20(endDeg%20-%20startDeg)%20:%20(360%20-%20startDeg%20+%20endDeg);%20const%20count%20=%20Math.floor(spanDeg%20/%20stepDeg)%20+%201;%20for%20(let%20i%20=%200;%20i%20%3c%20count;%20i++)%20{%20const%20deg%20=%20startDeg%20+%20i%20*%20stepDeg;%20const%20t%20=%20i%20/%20Math.max(1,%20count%20-%201);%20//%200..1%20вдоль%20дуги%20//%20делаем%20длины%20чуть%20'живыми',%20как%20на%20макете:%20ближе%20к%20правому%20краю%20—%20длиннее%20const%20ease%20=%20Math.pow(t,%201.6);%20const%20rInner%20=%20rInnerMin%20-%20(rInnerMin%20-%20rInnerMax)%20*%20ease;%20//%20прозрачность:%20ближе%20к%20правому%20краю%20—%20ярче%20const%20op%20=%200.25%20+%200.75%20*%20ease;%20const%20rad%20=%20deg%20*%20Math.PI%20/%20180;%20const%20x1%20=%20cx%20+%20rInner%20*%20Math.cos(rad);%20const%20y1%20=%20cy%20+%20rInner%20*%20Math.sin(rad);%20const%20x2%20=%20cx%20+%20rOuter%20*%20Math.cos(rad);%20const%20y2%20=%20cy%20+%20rOuter%20*%20Math.sin(rad);%20const%20line%20=%20svg.createElementNS('http://www.w3.org/2000/svg',%20'line');%20line.setAttribute('x1',%20x1.toFixed(2));%20line.setAttribute('y1',%20y1.toFixed(2));%20line.setAttribute('x2',%20x2.toFixed(2));%20line.setAttribute('y2',%20y2.toFixed(2));%20line.setAttribute('stroke',%20'url(%23tickGrad)');%20line.setAttribute('stroke-width',%20'3');%20line.setAttribute('stroke-linecap',%20'round');%20line.setAttribute('opacity',%20op.toFixed(3));%20g.appendChild(line);%20}%20})();%20]]%3e%3c/script%3e%3c/svg%3e" class="circleItem">
+                            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20800'%20width='800'%20height='800'%3e%3cdefs%3e%3c!--%20лёгкое%20свечение%20как%20на%20макете%20--%3e%3cfilter%20id='glow'%20x='-50%25'%20y='-50%25'%20width='200%25'%20height='200%25'%3e%3cfeGaussianBlur%20stdDeviation='1.2'%20result='b'/%3e%3cfeMerge%3e%3cfeMergeNode%20in='b'/%3e%3cfeMergeNode%20in='SourceGraphic'/%3e%3c/feMerge%3e%3c/filter%3e%3c!--%20мягкий%20градиент%20на%20лучиках%20--%3e%3clinearGradient%20id='tickGrad'%20x1='0'%20y1='0'%20x2='1'%20y2='0'%3e%3cstop%20offset='0'%20stop-color='white'%20stop-opacity='0.15'/%3e%3cstop%20offset='0.5'%20stop-color='white'%20stop-opacity='0.85'/%3e%3cstop%20offset='1'%20stop-color='white'%20stop-opacity='0.15'/%3e%3c/linearGradient%3e%3c/defs%3e%3c!--%20центр%20--%3e%3cg%20id='ticks'%20filter='url(%23glow)'%3e%3c/g%3e%3c!--%20Генерация%20лучиков%20прямо%20внутри%20SVG%20--%3e%3cscript%3e%3c![CDATA[%20(function%20()%20{%20const%20svg%20=%20document.currentScript.ownerDocument;%20const%20g%20=%20svg.getElementById('ticks');%20const%20cx%20=%20400,%20cy%20=%20400;%20//%20настройки%20'как%20часы'%20const%20startDeg%20=%20205;%20//%20откуда%20начинаем%20дугу%20const%20endDeg%20=%2025;%20//%20где%20заканчиваем%20(через%20360)%20const%20stepDeg%20=%204;%20//%20шаг%20лучиков%20(меньше%20=%20больше%20лучиков)%20const%20rOuter%20=%20345;%20//%20внешний%20радиус%20const%20rInnerMin%20=%20295;%20//%20внутренняя%20граница%20(короткие%20лучи)%20const%20rInnerMax%20=%20260;%20//%20внутренняя%20граница%20(длинные%20лучи)%20//%20нормализуем%20диапазон%20дуги%20через%20360%20const%20spanDeg%20=%20(endDeg%20%3e=%20startDeg)%20?%20(endDeg%20-%20startDeg)%20:%20(360%20-%20startDeg%20+%20endDeg);%20const%20count%20=%20Math.floor(spanDeg%20/%20stepDeg)%20+%201;%20for%20(let%20i%20=%200;%20i%20%3c%20count;%20i++)%20{%20const%20deg%20=%20startDeg%20+%20i%20*%20stepDeg;%20const%20t%20=%20i%20/%20Math.max(1,%20count%20-%201);%20//%200..1%20вдоль%20дуги%20//%20делаем%20длины%20чуть%20'живыми',%20как%20на%20макете:%20ближе%20к%20правому%20краю%20—%20длиннее%20const%20ease%20=%20Math.pow(t,%201.6);%20const%20rInner%20=%20rInnerMin%20-%20(rInnerMin%20-%20rInnerMax)%20*%20ease;%20//%20прозрачность:%20ближе%20к%20правому%20краю%20—%20ярче%20const%20op%20=%200.25%20+%200.75%20*%20ease;%20const%20rad%20=%20deg%20*%20Math.PI%20/%20180;%20const%20x1%20=%20cx%20+%20rInner%20*%20Math.cos(rad);%20const%20y1%20=%20cy%20+%20rInner%20*%20Math.sin(rad);%20const%20x2%20=%20cx%20+%20rOuter%20*%20Math.cos(rad);%20const%20y2%20=%20cy%20+%20rOuter%20*%20Math.sin(rad);%20const%20line%20=%20svg.createElementNS('http://www.w3.org/2000/svg',%20'line');%20line.setAttribute('x1',%20x1.toFixed(2));%20line.setAttribute('y1',%20y1.toFixed(2));%20line.setAttribute('x2',%20x2.toFixed(2));%20line.setAttribute('y2',%20y2.toFixed(2));%20line.setAttribute('stroke',%20'url(%23tickGrad)');%20line.setAttribute('stroke-width',%20'3');%20line.setAttribute('stroke-linecap',%20'round');%20line.setAttribute('opacity',%20op.toFixed(3));%20g.appendChild(line);%20}%20})();%20]]%3e%3c/script%3e%3c/svg%3e" class="circleItem">
+                            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20800'%20width='800'%20height='800'%3e%3cdefs%3e%3c!--%20лёгкое%20свечение%20как%20на%20макете%20--%3e%3cfilter%20id='glow'%20x='-50%25'%20y='-50%25'%20width='200%25'%20height='200%25'%3e%3cfeGaussianBlur%20stdDeviation='1.2'%20result='b'/%3e%3cfeMerge%3e%3cfeMergeNode%20in='b'/%3e%3cfeMergeNode%20in='SourceGraphic'/%3e%3c/feMerge%3e%3c/filter%3e%3c!--%20мягкий%20градиент%20на%20лучиках%20--%3e%3clinearGradient%20id='tickGrad'%20x1='0'%20y1='0'%20x2='1'%20y2='0'%3e%3cstop%20offset='0'%20stop-color='white'%20stop-opacity='0.15'/%3e%3cstop%20offset='0.5'%20stop-color='white'%20stop-opacity='0.85'/%3e%3cstop%20offset='1'%20stop-color='white'%20stop-opacity='0.15'/%3e%3c/linearGradient%3e%3c/defs%3e%3c!--%20центр%20--%3e%3cg%20id='ticks'%20filter='url(%23glow)'%3e%3c/g%3e%3c!--%20Генерация%20лучиков%20прямо%20внутри%20SVG%20--%3e%3cscript%3e%3c![CDATA[%20(function%20()%20{%20const%20svg%20=%20document.currentScript.ownerDocument;%20const%20g%20=%20svg.getElementById('ticks');%20const%20cx%20=%20400,%20cy%20=%20400;%20//%20настройки%20'как%20часы'%20const%20startDeg%20=%20205;%20//%20откуда%20начинаем%20дугу%20const%20endDeg%20=%2025;%20//%20где%20заканчиваем%20(через%20360)%20const%20stepDeg%20=%204;%20//%20шаг%20лучиков%20(меньше%20=%20больше%20лучиков)%20const%20rOuter%20=%20345;%20//%20внешний%20радиус%20const%20rInnerMin%20=%20295;%20//%20внутренняя%20граница%20(короткие%20лучи)%20const%20rInnerMax%20=%20260;%20//%20внутренняя%20граница%20(длинные%20лучи)%20//%20нормализуем%20диапазон%20дуги%20через%20360%20const%20spanDeg%20=%20(endDeg%20%3e=%20startDeg)%20?%20(endDeg%20-%20startDeg)%20:%20(360%20-%20startDeg%20+%20endDeg);%20const%20count%20=%20Math.floor(spanDeg%20/%20stepDeg)%20+%201;%20for%20(let%20i%20=%200;%20i%20%3c%20count;%20i++)%20{%20const%20deg%20=%20startDeg%20+%20i%20*%20stepDeg;%20const%20t%20=%20i%20/%20Math.max(1,%20count%20-%201);%20//%200..1%20вдоль%20дуги%20//%20делаем%20длины%20чуть%20'живыми',%20как%20на%20макете:%20ближе%20к%20правому%20краю%20—%20длиннее%20const%20ease%20=%20Math.pow(t,%201.6);%20const%20rInner%20=%20rInnerMin%20-%20(rInnerMin%20-%20rInnerMax)%20*%20ease;%20//%20прозрачность:%20ближе%20к%20правому%20краю%20—%20ярче%20const%20op%20=%200.25%20+%200.75%20*%20ease;%20const%20rad%20=%20deg%20*%20Math.PI%20/%20180;%20const%20x1%20=%20cx%20+%20rInner%20*%20Math.cos(rad);%20const%20y1%20=%20cy%20+%20rInner%20*%20Math.sin(rad);%20const%20x2%20=%20cx%20+%20rOuter%20*%20Math.cos(rad);%20const%20y2%20=%20cy%20+%20rOuter%20*%20Math.sin(rad);%20const%20line%20=%20svg.createElementNS('http://www.w3.org/2000/svg',%20'line');%20line.setAttribute('x1',%20x1.toFixed(2));%20line.setAttribute('y1',%20y1.toFixed(2));%20line.setAttribute('x2',%20x2.toFixed(2));%20line.setAttribute('y2',%20y2.toFixed(2));%20line.setAttribute('stroke',%20'url(%23tickGrad)');%20line.setAttribute('stroke-width',%20'3');%20line.setAttribute('stroke-linecap',%20'round');%20line.setAttribute('opacity',%20op.toFixed(3));%20g.appendChild(line);%20}%20})();%20]]%3e%3c/script%3e%3c/svg%3e" class="circleItem">
+                            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20800'%20width='800'%20height='800'%3e%3cdefs%3e%3c!--%20лёгкое%20свечение%20как%20на%20макете%20--%3e%3cfilter%20id='glow'%20x='-50%25'%20y='-50%25'%20width='200%25'%20height='200%25'%3e%3cfeGaussianBlur%20stdDeviation='1.2'%20result='b'/%3e%3cfeMerge%3e%3cfeMergeNode%20in='b'/%3e%3cfeMergeNode%20in='SourceGraphic'/%3e%3c/feMerge%3e%3c/filter%3e%3c!--%20мягкий%20градиент%20на%20лучиках%20--%3e%3clinearGradient%20id='tickGrad'%20x1='0'%20y1='0'%20x2='1'%20y2='0'%3e%3cstop%20offset='0'%20stop-color='white'%20stop-opacity='0.15'/%3e%3cstop%20offset='0.5'%20stop-color='white'%20stop-opacity='0.85'/%3e%3cstop%20offset='1'%20stop-color='white'%20stop-opacity='0.15'/%3e%3c/linearGradient%3e%3c/defs%3e%3c!--%20центр%20--%3e%3cg%20id='ticks'%20filter='url(%23glow)'%3e%3c/g%3e%3c!--%20Генерация%20лучиков%20прямо%20внутри%20SVG%20--%3e%3cscript%3e%3c![CDATA[%20(function%20()%20{%20const%20svg%20=%20document.currentScript.ownerDocument;%20const%20g%20=%20svg.getElementById('ticks');%20const%20cx%20=%20400,%20cy%20=%20400;%20//%20настройки%20'как%20часы'%20const%20startDeg%20=%20205;%20//%20откуда%20начинаем%20дугу%20const%20endDeg%20=%2025;%20//%20где%20заканчиваем%20(через%20360)%20const%20stepDeg%20=%204;%20//%20шаг%20лучиков%20(меньше%20=%20больше%20лучиков)%20const%20rOuter%20=%20345;%20//%20внешний%20радиус%20const%20rInnerMin%20=%20295;%20//%20внутренняя%20граница%20(короткие%20лучи)%20const%20rInnerMax%20=%20260;%20//%20внутренняя%20граница%20(длинные%20лучи)%20//%20нормализуем%20диапазон%20дуги%20через%20360%20const%20spanDeg%20=%20(endDeg%20%3e=%20startDeg)%20?%20(endDeg%20-%20startDeg)%20:%20(360%20-%20startDeg%20+%20endDeg);%20const%20count%20=%20Math.floor(spanDeg%20/%20stepDeg)%20+%201;%20for%20(let%20i%20=%200;%20i%20%3c%20count;%20i++)%20{%20const%20deg%20=%20startDeg%20+%20i%20*%20stepDeg;%20const%20t%20=%20i%20/%20Math.max(1,%20count%20-%201);%20//%200..1%20вдоль%20дуги%20//%20делаем%20длины%20чуть%20'живыми',%20как%20на%20макете:%20ближе%20к%20правому%20краю%20—%20длиннее%20const%20ease%20=%20Math.pow(t,%201.6);%20const%20rInner%20=%20rInnerMin%20-%20(rInnerMin%20-%20rInnerMax)%20*%20ease;%20//%20прозрачность:%20ближе%20к%20правому%20краю%20—%20ярче%20const%20op%20=%200.25%20+%200.75%20*%20ease;%20const%20rad%20=%20deg%20*%20Math.PI%20/%20180;%20const%20x1%20=%20cx%20+%20rInner%20*%20Math.cos(rad);%20const%20y1%20=%20cy%20+%20rInner%20*%20Math.sin(rad);%20const%20x2%20=%20cx%20+%20rOuter%20*%20Math.cos(rad);%20const%20y2%20=%20cy%20+%20rOuter%20*%20Math.sin(rad);%20const%20line%20=%20svg.createElementNS('http://www.w3.org/2000/svg',%20'line');%20line.setAttribute('x1',%20x1.toFixed(2));%20line.setAttribute('y1',%20y1.toFixed(2));%20line.setAttribute('x2',%20x2.toFixed(2));%20line.setAttribute('y2',%20y2.toFixed(2));%20line.setAttribute('stroke',%20'url(%23tickGrad)');%20line.setAttribute('stroke-width',%20'3');%20line.setAttribute('stroke-linecap',%20'round');%20line.setAttribute('opacity',%20op.toFixed(3));%20g.appendChild(line);%20}%20})();%20]]%3e%3c/script%3e%3c/svg%3e" class="circleItem">
+                            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20800'%20width='800'%20height='800'%3e%3cdefs%3e%3c!--%20лёгкое%20свечение%20как%20на%20макете%20--%3e%3cfilter%20id='glow'%20x='-50%25'%20y='-50%25'%20width='200%25'%20height='200%25'%3e%3cfeGaussianBlur%20stdDeviation='1.2'%20result='b'/%3e%3cfeMerge%3e%3cfeMergeNode%20in='b'/%3e%3cfeMergeNode%20in='SourceGraphic'/%3e%3c/feMerge%3e%3c/filter%3e%3c!--%20мягкий%20градиент%20на%20лучиках%20--%3e%3clinearGradient%20id='tickGrad'%20x1='0'%20y1='0'%20x2='1'%20y2='0'%3e%3cstop%20offset='0'%20stop-color='white'%20stop-opacity='0.15'/%3e%3cstop%20offset='0.5'%20stop-color='white'%20stop-opacity='0.85'/%3e%3cstop%20offset='1'%20stop-color='white'%20stop-opacity='0.15'/%3e%3c/linearGradient%3e%3c/defs%3e%3c!--%20центр%20--%3e%3cg%20id='ticks'%20filter='url(%23glow)'%3e%3c/g%3e%3c!--%20Генерация%20лучиков%20прямо%20внутри%20SVG%20--%3e%3cscript%3e%3c![CDATA[%20(function%20()%20{%20const%20svg%20=%20document.currentScript.ownerDocument;%20const%20g%20=%20svg.getElementById('ticks');%20const%20cx%20=%20400,%20cy%20=%20400;%20//%20настройки%20'как%20часы'%20const%20startDeg%20=%20205;%20//%20откуда%20начинаем%20дугу%20const%20endDeg%20=%2025;%20//%20где%20заканчиваем%20(через%20360)%20const%20stepDeg%20=%204;%20//%20шаг%20лучиков%20(меньше%20=%20больше%20лучиков)%20const%20rOuter%20=%20345;%20//%20внешний%20радиус%20const%20rInnerMin%20=%20295;%20//%20внутренняя%20граница%20(короткие%20лучи)%20const%20rInnerMax%20=%20260;%20//%20внутренняя%20граница%20(длинные%20лучи)%20//%20нормализуем%20диапазон%20дуги%20через%20360%20const%20spanDeg%20=%20(endDeg%20%3e=%20startDeg)%20?%20(endDeg%20-%20startDeg)%20:%20(360%20-%20startDeg%20+%20endDeg);%20const%20count%20=%20Math.floor(spanDeg%20/%20stepDeg)%20+%201;%20for%20(let%20i%20=%200;%20i%20%3c%20count;%20i++)%20{%20const%20deg%20=%20startDeg%20+%20i%20*%20stepDeg;%20const%20t%20=%20i%20/%20Math.max(1,%20count%20-%201);%20//%200..1%20вдоль%20дуги%20//%20делаем%20длины%20чуть%20'живыми',%20как%20на%20макете:%20ближе%20к%20правому%20краю%20—%20длиннее%20const%20ease%20=%20Math.pow(t,%201.6);%20const%20rInner%20=%20rInnerMin%20-%20(rInnerMin%20-%20rInnerMax)%20*%20ease;%20//%20прозрачность:%20ближе%20к%20правому%20краю%20—%20ярче%20const%20op%20=%200.25%20+%200.75%20*%20ease;%20const%20rad%20=%20deg%20*%20Math.PI%20/%20180;%20const%20x1%20=%20cx%20+%20rInner%20*%20Math.cos(rad);%20const%20y1%20=%20cy%20+%20rInner%20*%20Math.sin(rad);%20const%20x2%20=%20cx%20+%20rOuter%20*%20Math.cos(rad);%20const%20y2%20=%20cy%20+%20rOuter%20*%20Math.sin(rad);%20const%20line%20=%20svg.createElementNS('http://www.w3.org/2000/svg',%20'line');%20line.setAttribute('x1',%20x1.toFixed(2));%20line.setAttribute('y1',%20y1.toFixed(2));%20line.setAttribute('x2',%20x2.toFixed(2));%20line.setAttribute('y2',%20y2.toFixed(2));%20line.setAttribute('stroke',%20'url(%23tickGrad)');%20line.setAttribute('stroke-width',%20'3');%20line.setAttribute('stroke-linecap',%20'round');%20line.setAttribute('opacity',%20op.toFixed(3));%20g.appendChild(line);%20}%20})();%20]]%3e%3c/script%3e%3c/svg%3e" class="circleItem">
+
+                        </div>
+                    <!-- Row 2 -->
+                    <div class="engSolRow">
+                        <div class="engSolRow__left">
+                            <div class="engSolRow__label">[ Типові рішення</div>
+                            <div class="engSolRow__num">2</div>
+                        </div>
+
+                        <div class="engSolRow__center">
+                            <p>Пропонуємо перевірені рішення для: підключення станцій катодного захисту (СКЗ), розміщення анодних полів і магнетитових заземлювачів, системи телеметрії та дистанційного контролю.</p>
+                            <p>Рішення базуються на реалізованих проєктах Prime Energy Group в Україні та ЄС. Файли доступні у форматах PDF.</p>
+                        </div>
+
+                        <div class="engSolRow__right">
+                            <a class="engSolRow__action" href="#" download>[ ЗАВАНТАЖИТИ ТИПОВІ СХЕМИ PDF ]</a>
+                            <div class="engSolRow__note">Готові схеми для швидкої інтеграції у проєкти будь-якого масштабу</div>
+                        </div>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="engSolRow">
+                        <div class="engSolRow__left">
+                            <div class="engSolRow__label">[ Відео: монтаж і впровадження</div>
+                            <div class="engSolRow__num">3</div>
+                        </div>
+
+                        <div class="engSolRow__center">
+                            <p>Коротке відео демонструє повний цикл: від монтажу анодного поля та встановлення СКЗ до пусконалагодження і вимірювання потенціалу.</p>
+                        </div>
+
+                        <div class="engSolRow__right">
+                            <a class="engSolRow__action" href="#contacts">[ ЗАПРОСИТИ РОЗРАХУНОК СИСТЕМИ ]</a>
+                            <div class="engSolRow__note">Як ми впроваджуємо системи катодного захисту — на українських і міжнародних об’єктах</div>
+                        </div>
+                    </div>
+                </div>
+
+                <svg class="engSection__arc" viewBox="0 0 600 300" aria-hidden="true" focusable="false">
+                    <path d="M60 260 A240 240 0 0 1 540 260" fill="none" stroke="rgba(255,255,255,.40)" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 10" />
+                </svg>
+
+                <div class="engSection__video" aria-label="Відео">
+                    <div class="engSection__videoLabel">ВІДЕО</div>
+                    <div class="engVideoGrid">
+                        <a class="engVideoCard" href="#" aria-label="Відео 1"></a>
+                        <a class="engVideoCard" href="#" aria-label="Відео 2"></a>
+                        <a class="engVideoCard" href="#" aria-label="Відео 3"></a>
+                        <a class="engVideoCard" href="#" aria-label="Відео 4"></a>
+                    </div>
+                </div>
+
+                <div class="engSection__bottom">
+                    <div class="engSection__bottomLeft">
+                        <div class="engSection__big">Ми проєктуємо, виробляємо та впроваджуємо системи ЕХЗ, які працюють десятиліттями — в Україні і поза нею.</div>
+                        <div class="engSection__small">Це підсилює міжнародну експертність — компанія не просто виробляє, а реалізує повноцінні інженерні рішення за світовими стандартами.</div>
+                    </div>
+
+                    <div class="engSection__bottomRight">
+                        <div class="engSection__ctaText">Отримайте технічну консультацію та попередній розрахунок системи катодного захисту під ваш об’єкт — наш інженер зв’яжеться з вами протягом двох робочих днів</div>
+                        <a class="engSolRow__action engSolRow__action--bottom" href="#contacts">[ ЗАПРОСИТИ РОЗРАХУНОК СИСТЕМИ ]</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+</main>
+
+
+<!-- ===== FOOTER ===== -->
+<footer class="footerPeg" id="footer">
+
+    <div class="footerPeg__top">
+        <div class="footerPeg__grid">
+
+            <!-- 1) MENU -->
+            <div class="footerPeg__col">
+                <div class="footerPeg__head">Меню</div>
+                <div class="footerPeg__line"></div>
+
+                <a class="footerPeg__link" href="#home">ГОЛОВНИЙ ЕКРАН</a>
+                <a class="footerPeg__link" href="products.html">ПРОДУКЦІЯ</a>
+                <a class="footerPeg__link" href="engineering.html">ІНЖИНІРИНГ</a>
+                <a class="footerPeg__link" href="library.html">ТЕХНІЧНА БІБЛІОТЕКА</a>
+                <a class="footerPeg__link" href="docs.html">ДОКУМЕНТАЦІЯ</a>
+            </div>
+
+            <!-- 2) DOCS -->
+            <div class="footerPeg__col">
+                <div class="footerPeg__head">&nbsp;</div>
+                <div class="footerPeg__line"></div>
+
+                <a class="footerPeg__link" href="#">ЛІЦЕНЗІЇ</a>
+                <a class="footerPeg__link" href="#">КАТАЛОГИ ТА ПРЕЗЕНТАЦІЇ</a>
+                <a class="footerPeg__link" href="#">ІНСТРУКЦІЇ КОРИСТУВАЧА</a>
+                <a class="footerPeg__link" href="#">СЕРТИФІКАТИ ВІДПОВІДНОСТІ</a>
+                <a class="footerPeg__link" href="#">ПОЛІТИКА КОНФІДЕНЦІЙНОСТІ</a>
+            </div>
+
+            <!-- 3) CONTACTS -->
+            <div class="footerPeg__col footerPeg__col--contacts">
+                <div class="footerPeg__head">Контакти</div>
+                <div class="footerPeg__line"></div>
+
+                <div class="footerPeg__muted">Номер телефону:</div>
+                <div class="footerPeg__textRow">
+                    <a class="footerPeg__textLink" href="tel:+380443901015">+38 (044) 390-10-15</a>
+                    <a class="footerPeg__textLink" href="tel:+380732444088">+38 (073) 244-40-88</a>
+                </div>
+
+                <div class="footerPeg__muted">E-mail:</div>
+                <a class="footerPeg__textLink" href="mailto:info@llc-peg.com">info@llc-peg.com</a>
+
+                <div class="footerPeg__muted">Поштова адреса:</div>
+                <div class="footerPeg__text">07400, Київська обл., м. Бровари, вул. Героїв України, 21, офіс 405</div>
+
+                <div class="footerPeg__muted">Юридична адреса:</div>
+                <div class="footerPeg__text">Україна, м. Київ, вул. Князів Острозьких, 15</div>
+            </div>
+
+            <!-- 4) SOCIAL -->
+            <div class="footerPeg__col footerPeg__col--social">
+                <div class="footerPeg__head">&nbsp;</div>
+                <div class="footerPeg__line"></div>
+
+                <div class="footerPeg__social">
+                    <a class="footerPeg__socialLink" href="#" aria-label="Instagram">
+                        <span class="footerPeg__socialText">INSTAGRAM</span>
+                        <img class="footerPeg__socialIcon" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M11.0286%200C12.1536%200.003%2012.7246%200.009%2013.2176%200.023L13.4116%200.03C13.6356%200.038%2013.8566%200.0479999%2014.1236%200.0599999C15.1876%200.11%2015.9136%200.278%2016.5506%200.525C17.2106%200.779%2017.7666%201.123%2018.3226%201.678C18.8313%202.17773%2019.2248%202.78247%2019.4756%203.45C19.7226%204.087%2019.8906%204.813%2019.9406%205.878C19.9526%206.144%2019.9626%206.365%2019.9706%206.59L19.9766%206.784C19.9916%207.276%2019.9976%207.847%2019.9996%208.972L20.0006%209.718V11.028C20.003%2011.7574%2019.9953%2012.4868%2019.9776%2013.216L19.9716%2013.41C19.9636%2013.635%2019.9536%2013.856%2019.9416%2014.122C19.8916%2015.187%2019.7216%2015.912%2019.4756%2016.55C19.2248%2017.2175%2018.8313%2017.8223%2018.3226%2018.322C17.8228%2018.8307%2017.2181%2019.2242%2016.5506%2019.475C15.9136%2019.722%2015.1876%2019.89%2014.1236%2019.94L13.4116%2019.97L13.2176%2019.976C12.7246%2019.99%2012.1536%2019.997%2011.0286%2019.999L10.2826%2020H8.97357C8.24383%2020.0026%207.51409%2019.9949%206.78457%2019.977L6.59057%2019.971C6.35318%2019.962%206.11584%2019.9517%205.87857%2019.94C4.81457%2019.89%204.08857%2019.722%203.45057%2019.475C2.7834%2019.2241%202.17901%2018.8306%201.67957%2018.322C1.17051%2017.8224%200.776678%2017.2176%200.525569%2016.55C0.278569%2015.913%200.110569%2015.187%200.0605687%2014.122L0.0305688%2013.41L0.0255689%2013.216C0.00713493%2012.4868%20-0.00119929%2011.7574%200.000568797%2011.028V8.972C-0.0021991%208.2426%200.00513501%207.5132%200.0225689%206.784L0.0295688%206.59C0.0375688%206.365%200.0475688%206.144%200.0595688%205.878C0.109569%204.813%200.277569%204.088%200.524569%203.45C0.776263%202.7822%201.17079%202.17744%201.68057%201.678C2.17972%201.16955%202.78376%200.776074%203.45057%200.525C4.08857%200.278%204.81357%200.11%205.87857%200.0599999C6.14457%200.0479999%206.36657%200.038%206.59057%200.03L6.78457%200.0239999C7.51376%200.00623271%208.24316%20-0.0014347%208.97257%200.000999928L11.0286%200ZM10.0006%205C8.67449%205%207.40272%205.52678%206.46503%206.46447C5.52735%207.40215%205.00057%208.67392%205.00057%2010C5.00057%2011.3261%205.52735%2012.5979%206.46503%2013.5355C7.40272%2014.4732%208.67449%2015%2010.0006%2015C11.3267%2015%2012.5984%2014.4732%2013.5361%2013.5355C14.4738%2012.5979%2015.0006%2011.3261%2015.0006%2010C15.0006%208.67392%2014.4738%207.40215%2013.5361%206.46447C12.5984%205.52678%2011.3267%205%2010.0006%205ZM10.0006%207C10.3945%206.99993%2010.7847%207.07747%2011.1487%207.22817C11.5127%207.37887%2011.8434%207.5998%2012.122%207.87833C12.4007%208.15686%2012.6217%208.48754%2012.7725%208.85149C12.9233%209.21544%2013.001%209.60553%2013.0011%209.9995C13.0011%2010.3935%2012.9236%2010.7836%2012.7729%2011.1476C12.6222%2011.5116%2012.4013%2011.8423%2012.1227%2012.121C11.8442%2012.3996%2011.5135%2012.6206%2011.1496%2012.7714C10.7856%2012.9223%2010.3955%2012.9999%2010.0016%2013C9.20592%2013%208.44286%2012.6839%207.88025%2012.1213C7.31764%2011.5587%207.00157%2010.7956%207.00157%2010C7.00157%209.20435%207.31764%208.44129%207.88025%207.87868C8.44286%207.31607%209.20592%207%2010.0016%207M15.2516%203.5C14.92%203.5%2014.6021%203.6317%2014.3677%203.86612C14.1333%204.10054%2014.0016%204.41848%2014.0016%204.75C14.0016%205.08152%2014.1333%205.39946%2014.3677%205.63388C14.6021%205.8683%2014.92%206%2015.2516%206C15.5831%206%2015.901%205.8683%2016.1355%205.63388C16.3699%205.39946%2016.5016%205.08152%2016.5016%204.75C16.5016%204.41848%2016.3699%204.10054%2016.1355%203.86612C15.901%203.6317%2015.5831%203.5%2015.2516%203.5Z'%20fill='white'/%3e%3c/svg%3e" alt="">
+                    </a>
+
+                    <a class="footerPeg__socialLink" href="#" aria-label="Facebook">
+                        <span class="footerPeg__socialText">FACEBOOK</span>
+                        <img class="footerPeg__socialIcon" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M20%2010.0251C20%204.49123%2015.52%200%2010%200C4.48%200%200%204.49123%200%2010.0251C0%2014.8772%203.44%2018.9173%208%2019.8496V13.0326H6V10.0251H8V7.5188C8%205.58396%209.57%204.01003%2011.5%204.01003H14V7.01754H12C11.45%207.01754%2011%207.46867%2011%208.02005V10.0251H14V13.0326H11V20C16.05%2019.4987%2020%2015.2281%2020%2010.0251Z'%20fill='white'/%3e%3c/svg%3e" alt="">
+                    </a>
+
+
+
+
+                </div>
+            </div>
+
+            <div class="footerPeg__col footerPeg__col--social">
+                <div class="footerPeg__head">&nbsp;</div>
+                <div class="footerPeg__line"></div>
+
+                <div class="footerPeg__social">
+                    <div class="footerPeg__qrStack" style="text-align: center">
+                        <div class="footerPeg__qrItem">
+                            <div class="footerPeg__qrLabel">TELEGRAM</div>
+                            <img class="footerPeg__qrImg" src="/EnergyGroup/assets/qr-telegram-C5inGcTP.png" alt="QR Telegram">
+                        </div>
+
+                        <div class="footerPeg__qrItem">
+                            <div class="footerPeg__qrLabel">WHATSAPP</div>
+                            <img class="footerPeg__qrImg" src="/EnergyGroup/assets/qr-whatsapp-Bb7FvM-c.png" alt="QR WhatsApp">
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+
+
+    </div>
+
+    <div class="footer__brand">PRIME ENERGY GROUP</div>
+</footer>
+
+
+
+
+
+
+
+<script>
+    $(document).ready(function() {
+
+        const $items = $(".circleItem");
+        const total = $items.length;
+        const radius = 260; // радіус кола
+        const center = 300; // центр (половина width/height)
+
+        // розставляємо по колу
+        $items.each(function(index) {
+
+            const angle = (index / total) * (2 * Math.PI);
+
+            const x = center + radius * Math.cos(angle) - 40;
+            const y = center + radius * Math.sin(angle) - 40;
+
+            $(this).css({
+                left: x + "px",
+                top: y + "px"
+            });
+        });
+
+        // по черзі з’являються як годинник
+        let i = 0;
+
+        function showNext() {
+            $items.eq(i).animate({
+                opacity: 1
+            }, 300).animate({
+                scale: 1
+            });
+
+            $items.eq(i).css("transform", "scale(1)");
+
+            i++;
+            if (i >= total) {
+                i = 0;
+                $items.css({
+                    opacity: 0,
+                    transform: "scale(0.3)"
+                });
+            }
+        }
+
+        setInterval(showNext, 300);
+
+    });
+</script>
+</body>
+</html>
+

@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Prime Energy Group</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="alternate icon" href="/favicon.svg">
+
+    <script src="./js/jquery/jquery-3.7.1.min.js"></script>
+    <script src="./js/products.js"></script>
+
+    <!-- Подключение CSS -->
+    <link rel="stylesheet" href="data:text/css;base64,LyogPT09PT09PT09PT09PT09PT09PT09PT09PQ0KICAgTU9CSUxFIE9OTFkNCj09PT09PT09PT09PT09PT09PT09PT09PT0gKi8NCkBtZWRpYSAobWF4LXdpZHRoOiA3NjhweCl7DQoNCiAgICAuYnRuLA0KICAgIC5idXR0b257DQogICAgICAgIGZvbnQtc2l6ZTogMTZweDsNCiAgICB9DQoNCiAgICAvKiA9PT09PSBIRUFERVIgPT09PT0gKi8NCiAgICAuaGVhZGVyNDA0X19pbm5lcnsNCiAgICAgICAgZ2FwOiAxMHB4Ow0KICAgIH0NCg0KICAgIC5oZWFkZXI0MDRfX2xhbmcsDQogICAgLmhlYWRlcjQwNF9fY29udGFjdHMsDQogICAgLmhlYWRlcjQwNF9fY3RhVGV4dHsNCiAgICAgICAgZGlzcGxheTogbm9uZTsNCiAgICB9DQoNCiAgICAuaGVhZGVyNDA0X19sb2dvIGltZ3sNCiAgICAgICAgaGVpZ2h0OiAzNHB4Ow0KICAgIH0NCg0KICAgIC8qID09PT09IDQwNCA9PT09PSAqLw0KICAgIC5ub3Rmb3VuZHsNCiAgICAgICAgcGFkZGluZy10b3A6IDA7DQogICAgfQ0KDQogICAgLm5vdGZvdW5kX19pbm5lcnsNCiAgICAgICAgZGlzcGxheTogZmxleDsNCiAgICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjsNCiAgICB9DQoNCiAgICAubm90Zm91bmRfX2hlcm97DQogICAgICAgIHBvc2l0aW9uOiBzdGF0aWM7DQogICAgICAgIHRyYW5zZm9ybTogbm9uZTsNCiAgICAgICAgd2lkdGg6IDg4dnc7DQogICAgICAgIG1hcmdpbjogMTZweCBhdXRvIDA7DQogICAgICAgIG9yZGVyOiAxOw0KICAgIH0NCg0KICAgIC5ub3Rmb3VuZF9fY29weXsNCiAgICAgICAgcG9zaXRpb246IHN0YXRpYzsNCiAgICAgICAgbWF4LXdpZHRoOiA5MnZ3Ow0KICAgICAgICBtYXJnaW46IDIwcHggYXV0byAwOw0KICAgICAgICBwYWRkaW5nOiAwIDE2cHg7DQogICAgICAgIHRleHQtYWxpZ246IGxlZnQ7DQogICAgICAgIG9yZGVyOiAyOw0KICAgIH0NCg0KICAgIC8qID09PT09IEZPT1RFUiA9PT09PSAqLw0KICAgIC5mb290ZXI0MDRfX3RvcHsNCiAgICAgICAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiAxZnI7DQogICAgICAgIGdhcDogMjZweDsNCiAgICB9DQoNCiAgICAuZm9vdGVyNDA0X19xcnsNCiAgICAgICAganVzdGlmeS1pdGVtczogc3RhcnQ7DQogICAgICAgIGdyaWQtYXV0by1mbG93OiBjb2x1bW47DQogICAgICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogcmVwZWF0KDIsIDFmcik7DQogICAgfQ0KDQogICAgLmZvb3RlcjQwNF9fYnJhbmR7DQogICAgICAgIGZvbnQtc2l6ZTogNjRweDsNCiAgICAgICAgcGFkZGluZzogMCAxNnB4IDI0cHg7DQogICAgfQ0KfQ0KDQovKiA9PT09PSBQUk9EVUNUIERFVEFJTFMgPT09PT0gKi8NCiAgICAucHJvZHVjdERldGFpbHN7DQogICAgICAgIHBhZGRpbmc6IDE2cHggMCA0OHB4Ow0KICAgIH0NCg0KICAgIC5wcm9kdWN0RGV0YWlsc19fY2FyZHsNCiAgICAgICAgcGFkZGluZzogMjJweCAxOHB4IDI2cHg7DQogICAgICAgIG1pbi1oZWlnaHQ6IDA7DQogICAgICAgIGJvcmRlci1yYWRpdXM6IDE2cHg7DQogICAgfQ0KDQogICAgLnByb2R1Y3REZXRhaWxzX19iYWNrew0KICAgICAgICB0b3A6IDE0cHg7DQogICAgICAgIGxlZnQ6IDE0cHg7DQogICAgfQ0KDQogICAgLnByb2R1Y3REZXRhaWxzX19iYWRnZXsNCiAgICAgICAgdG9wOiAxMnB4Ow0KICAgICAgICByaWdodDogMTJweDsNCiAgICAgICAgbWluLXdpZHRoOiAxNzBweDsNCiAgICAgICAgaGVpZ2h0OiA5MnB4Ow0KICAgICAgICBwYWRkaW5nOiAwIDE4cHg7DQogICAgICAgIGZvbnQtc2l6ZTogNzJweDsNCiAgICAgICAgYm9yZGVyLXJhZGl1czogMTJweDsNCiAgICB9DQoNCiAgICAucHJvZHVjdERldGFpbHNfX3Jvd3sNCiAgICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjsNCiAgICAgICAgZ2FwOiAxNHB4Ow0KICAgIH0NCg0KICAgIC5wcm9kdWN0RGV0YWlsc19fcm93LS1iZW5lZml0c3sNCiAgICAgICAgcGFkZGluZy10b3A6IDY0cHg7DQogICAgfQ0KDQogICAgLnByb2R1Y3REZXRhaWxzX19oLA0KICAgIC5wcm9kdWN0RGV0YWlsc19fdGl0bGV7DQogICAgICAgIHdpZHRoOiBhdXRvOw0KICAgIH0NCg0KICAgIC5wcm9kdWN0RGV0YWlsc19fY29sc3sNCiAgICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjsNCiAgICAgICAgZ2FwOiAxOHB4Ow0KICAgIH0NCg0KQG1lZGlhIChtYXgtd2lkdGg6IDc2OHB4KXsNCiAgICAucHJvZHVjdERldGFpbHN7IHBhZGRpbmc6IDE2cHggMCA0OHB4OyB9DQoNCiAgICAucHJvZHVjdERldGFpbHNfX2NhcmR7DQogICAgICAgIHBhZGRpbmc6IDIycHggMThweCAyNnB4Ow0KICAgICAgICBtaW4taGVpZ2h0OiAwOw0KICAgICAgICBib3JkZXItcmFkaXVzOiAxNnB4Ow0KICAgIH0NCg0KICAgIC5wcm9kdWN0RGV0YWlsc19fYmFja3sNCiAgICAgICAgdG9wOiAxNHB4Ow0KICAgICAgICBsZWZ0OiAxNHB4Ow0KICAgICAgICB3aWR0aDogNDJweDsNCiAgICAgICAgaGVpZ2h0OiA0MnB4Ow0KICAgIH0NCg0KICAgIC5wcm9kdWN0RGV0YWlsc19fYmFkZ2V7DQogICAgICAgIHRvcDogMTJweDsNCiAgICAgICAgcmlnaHQ6IDEycHg7DQogICAgICAgIHdpZHRoOiAxNzBweDsNCiAgICAgICAgaGVpZ2h0OiA5MnB4Ow0KICAgICAgICBwYWRkaW5nOiAwIDE4cHg7DQogICAgICAgIGZvbnQtc2l6ZTogODRweDsNCiAgICAgICAgYm9yZGVyLXJhZGl1czogMTJweDsNCiAgICB9DQoNCiAgICAucHJvZHVjdERldGFpbHNfX3Jvd3sNCiAgICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjsNCiAgICAgICAgZ2FwOiAxNHB4Ow0KICAgIH0NCg0KICAgIC5wcm9kdWN0RGV0YWlsc19fcm93LS1iZW5lZml0c3sNCiAgICAgICAgcGFkZGluZy10b3A6IDExMHB4OyAgLyog0YnQvtCxIGJhZGdlINC90LUg0L/QtdGA0LXQutGA0LjQstCw0LIgKi8NCiAgICAgICAgcGFkZGluZy1yaWdodDogMDsNCiAgICB9DQoNCiAgICAucHJvZHVjdERldGFpbHNfX2gsDQogICAgLnByb2R1Y3REZXRhaWxzX190aXRsZXsNCiAgICAgICAgd2lkdGg6IGF1dG87DQogICAgfQ0KDQogICAgLnByb2R1Y3REZXRhaWxzX19jb2xzew0KICAgICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uOw0KICAgICAgICBnYXA6IDE4cHg7DQogICAgfQ0KfQ==" media="(max-width: 768px)">
+  <script type="module" crossorigin src="/EnergyGroup/assets/modulepreload-polyfill-COaX8i6R.js"></script>
+  <script type="module" crossorigin src="/EnergyGroup/assets/mainJs-hjbWbjCw.js"></script>
+  <script type="module" crossorigin src="/EnergyGroup/assets/menu-DHYyUrCX.js"></script>
+  <link rel="stylesheet" crossorigin href="/EnergyGroup/assets/style-CcsUWVrv.css">
+</head>
+
+<body>
+
+<!-- PRELOADER-->
+<!-- <div class="preloader" id="preloader" aria-label="Завантаження" role="status">
+    <div class="preloader__card">
+        <img
+                src="/img/content/hero-desktop.png"
+                alt="Prime Energy Group"
+                class="preloader__image"
+                id="preloaderImage"
+        />
+
+        <div class="preloader__progress">
+            <span class="preloader__spinner" aria-hidden="true"></span>
+            <span class="preloader__percent" id="preloaderPercent">1%</span>
+        </div>
+    </div>
+</div>
+ -->
+<!-- ===== HEADER ===== -->
+<!-- ===== HEADER ===== -->
+<header class="header" id="top">
+    <div class="container header__inner">
+        <div class="header__left">
+            <button class="header__burger" type="button" aria-label="Menu" aria-controls="menuOverlay" aria-expanded="false">
+                <img src="data:image/svg+xml,%3csvg%20width='64'%20height='18'%20viewBox='0%200%2064%2018'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M0%201H64'%20stroke='%23413E39'%20stroke-width='2'/%3e%3cpath%20d='M0%2017H64'%20stroke='%23413E39'%20stroke-width='2'/%3e%3c/svg%3e" alt="" width="24" height="24">
+            </button>
+
+            <div class="header__lang">
+                <a href="index.html" class="is-active">UA</a>
+                <span>|</span>
+                <a href="index-en.html">EN</a>
+            </div>
+
+            <div class="header__contacts">
+                <a href="tel:+380443901015">+38 (044) 390-10-15</a>
+                <a class="is-underline" href="mailto:info@llc-peg.com">info@llc-peg.com</a>
+            </div>
+        </div>
+
+        <a class="header__logo" href="#home" aria-label="Prime Energy Group">
+            <img src="/EnergyGroup/assets/peg-logo-BDSjm_s2.svg" alt="Prime Energy Group">
+        </a>
+
+        <div class="header__right">
+            <a class="header__ctaSecondary btn btn--secondary btn--drift" href="#contacts">CONSULT WITH ENGINEER</a>
+
+            <a class="header__ctaPrimary btn btn--primary" href="#contacts">
+                <span class="btn__bracket">[</span>
+                <span class="btn__label">КОНСУЛЬТАЦІЯ</span>
+                <span class="btn__bracket">]</span>
+            </a>
+        </div>
+    </div>
+</header>
+
+<div class="menuOverlay" id="menuOverlay" aria-hidden="true">
+    <div class="menuOverlay__panel" role="dialog" aria-modal="true" aria-label="Меню">
+
+        <button class="menuOverlay__close" type="button" aria-label="Закрити меню">
+            <img src="data:image/svg+xml,%3csvg%20width='42'%20height='42'%20viewBox='0%200%2042%2042'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M0.707031%200.707031L40.707%2040.707'%20stroke='black'%20stroke-width='2'/%3e%3cpath%20d='M40.707%200.707031L0.70703%2040.707'%20stroke='black'%20stroke-width='2'/%3e%3c/svg%3e" alt="">
+        </button>
+
+        <div class="menuOverlay__top">
+            <div class="menuOverlay__title">МЕНЮ</div>
+
+            <a class="btn btn--secondary btn--drift menuOverlay__consult" href="#">
+                КОНСУЛЬТАЦІЯ
+            </a>
+
+        </div>
+
+
+
+        <div class="menuOverlay__divider"></div>
+
+        <nav class="menuOverlay__nav">
+            <a class="menuItem" href="index.html">
+                <span class="menuItem__text">ГОЛОВНИЙ ЕКРАН</span>
+                <span class="menuItem__num">(01)</span>
+                <img class="menuItem__icon" src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20version='1.1'%20width='22'%20height='22'%20viewBox='0%200%2022%2022'%3e%3cdesc%3eCreated%20with%20SVGMaker%20Editor%202.2.3%3c/desc%3e%3cdefs%3e%3c/defs%3e%3cpath%20transform='translate(0,0)'%20style='stroke:%20rgb(252,148,74);%20stroke-width:%202;%20fill:%20none'%20stroke-linecap='round'%20d='M%200.707%2021%20L%2020.707%201%20M%2020.707%201%20L%200.707%201%20M%2020.8836%200.0495%20L%2020.707%2021'/%3e%3c/svg%3e" alt="" />
+            </a>
+
+            <a class="menuItem" href="products.html">
+                <span class="menuItem__text">ПРОДУКЦІЯ</span>
+                <span class="menuItem__num">(02)</span>
+                <img class="menuItem__icon" src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20version='1.1'%20width='22'%20height='22'%20viewBox='0%200%2022%2022'%3e%3cdesc%3eCreated%20with%20SVGMaker%20Editor%202.2.3%3c/desc%3e%3cdefs%3e%3c/defs%3e%3cpath%20transform='translate(0,0)'%20style='stroke:%20rgb(252,148,74);%20stroke-width:%202;%20fill:%20none'%20stroke-linecap='round'%20d='M%200.707%2021%20L%2020.707%201%20M%2020.707%201%20L%200.707%201%20M%2020.8836%200.0495%20L%2020.707%2021'/%3e%3c/svg%3e" alt="" />
+            </a>
+
+<!--            <p class="menuItem__page">
+                Станції катодного захисту інверторні автоматичні (СКЗІ)</p>
+            <p class="menuItem__page">
+                Система телеметрії та телеуправління станціями катодного захисту</p>
+            <p class="menuItem__page">
+                Станція дренажного захисту (СДЗ) типу “Поляризаційна”</p>
+            <p class="menuItem__page">
+                Станція дренажного захисту (СДЗ) типу “Підсилений дренаж”</p>
+            <p class="menuItem__page">
+                Система телеметрична для збору даних з ПВ</p>
+            <p class="menuItem__page">
+                Аноди заземлюючі магнетитові (АЗМТ)</p>
+            <p class="menuItem__page">
+                Блоки сумісного захисту (електронні) плавного прецизійного керування</p>
+            <p class="menuItem__page">
+                Блоки управління ізоляційними фланцями (електронні) плавного прецизійного керування</p>
+            <p class="menuItem__page">
+                Контрольно-вимірювальні пункти (ПВ)</p>
+            <p class="menuItem__page">
+                Контрольно-вимірювальні пункти (ПВ) з блоком сумісного захисту та системою телеметрії</p>
+            <p class="menuItem__page">
+                Комплекс відведення наведеного струму КВНС.ПЕГ</p>
+            <p class="menuItem__page">
+                Електроізолюючі вставки (муфти)</p>
+            <p class="menuItem__page">
+                Пристрій контролю струмів анодних заземлювачів</p>-->
+
+            <a class="menuItem" href="engineering.html">
+                <span class="menuItem__text">ІНЖИНІРИНГ</span>
+                <span class="menuItem__num">(03)</span>
+                <img class="menuItem__icon" src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20version='1.1'%20width='22'%20height='22'%20viewBox='0%200%2022%2022'%3e%3cdesc%3eCreated%20with%20SVGMaker%20Editor%202.2.3%3c/desc%3e%3cdefs%3e%3c/defs%3e%3cpath%20transform='translate(0,0)'%20style='stroke:%20rgb(252,148,74);%20stroke-width:%202;%20fill:%20none'%20stroke-linecap='round'%20d='M%200.707%2021%20L%2020.707%201%20M%2020.707%201%20L%200.707%201%20M%2020.8836%200.0495%20L%2020.707%2021'/%3e%3c/svg%3e" alt="" />
+            </a>
+
+            <!--            <p class="menuItem__page">
+                Проєктування</p>
+            <p class="menuItem__page">
+                Типові рішення</p>
+            <p class="menuItem__page">
+                Відео: монтаж і впровадження</p>-->
+
+            <a class="menuItem" href="library.html">
+                <span class="menuItem__text">ТЕХНІЧКА БІБЛІОТЕКА</span>
+                <span class="menuItem__num">(04)</span>
+                <img class="menuItem__icon" src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20version='1.1'%20width='22'%20height='22'%20viewBox='0%200%2022%2022'%3e%3cdesc%3eCreated%20with%20SVGMaker%20Editor%202.2.3%3c/desc%3e%3cdefs%3e%3c/defs%3e%3cpath%20transform='translate(0,0)'%20style='stroke:%20rgb(252,148,74);%20stroke-width:%202;%20fill:%20none'%20stroke-linecap='round'%20d='M%200.707%2021%20L%2020.707%201%20M%2020.707%201%20L%200.707%201%20M%2020.8836%200.0495%20L%2020.707%2021'/%3e%3c/svg%3e" alt="" />
+            </a>
+
+            <!--            <p class="menuItem__page">
+    Типові монтажі</p>
+<p class="menuItem__page">
+    Принципові схеми</p>
+<p class="menuItem__page">
+    Документація та сертифікати</p>
+<p class="menuItem__page">
+    Технічна підтримка</p>-->
+
+            <a class="menuItem" href="docs.html">
+                <span class="menuItem__text">ДОКУМЕНТАЦІЯ</span>
+                <span class="menuItem__num">(05)</span>
+                <img class="menuItem__icon" src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20version='1.1'%20width='22'%20height='22'%20viewBox='0%200%2022%2022'%3e%3cdesc%3eCreated%20with%20SVGMaker%20Editor%202.2.3%3c/desc%3e%3cdefs%3e%3c/defs%3e%3cpath%20transform='translate(0,0)'%20style='stroke:%20rgb(252,148,74);%20stroke-width:%202;%20fill:%20none'%20stroke-linecap='round'%20d='M%200.707%2021%20L%2020.707%201%20M%2020.707%201%20L%200.707%201%20M%2020.8836%200.0495%20L%2020.707%2021'/%3e%3c/svg%3e" alt="" />
+            </a>
+
+            <!--            <p class="menuItem__page">
+Сертифікати відповідності</p>
+<p class="menuItem__page">
+Технічні паспорти</p>
+<p class="menuItem__page">
+Інструкції користувача</p>
+<p class="menuItem__page">
+Каталоги та презентації</p>-->
+
+        </nav>
+    </div>
+</div>
+<main>
+    <!-- ===== PREVIEW PRODUCT ===== -->
+    <section class="previewProduct" aria-label="Попередній перегляд продукту">
+        <div class="previewProduct__gridBg" aria-hidden="true"></div>
+
+        <div class="container previewProduct__inner">
+            <div class="previewProduct__side previewProduct__side--left">
+                <div class="previewProduct__label" id="previewProductTitle">
+                    Станції катодного захисту інверторні  автоматичні (СКЗІ)
+                </div>
+            </div>
+
+            <div class="previewProduct__media">
+                <img id="previewProductImage" src="/EnergyGroup/assets/product-01-CWIkfbj5.png" alt="Станція катодного захисту">
+            </div>
+
+            <div class="previewProduct__side previewProduct__side--right">
+                <p class="previewProduct__desc" id="previewProductDesc">
+                    Інверторні станції нового покоління для стабільного та енергоефективного катодного захисту трубопроводів
+                    із точним автоматичним регулюванням
+                </p>
+
+                <button id="btnShowDetails" class="btn btn--secondary btn--drift previewProduct__btn js-open-product" data-product="p01">
+                    Переглянути продукт
+                </button>
+
+            </div>
+        </div>
+    </section>
+    <section id="productDetails">
+
+    </section>
+
+    <!-- ===== LIST PRODUCTS ===== -->
+    <section class="productsList" aria-label="Продукція">
+        <div class="container">
+            <div class="productsList__grid" id="productsGrid">
+
+                <article class="productCard" data-preview="./img/content/products/product-01.png" data-details="p01">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/EnergyGroup/assets/product-01-small-BLWIPKwO.jpg" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">01</span>
+                            <div class="productCard__title">
+                                Станції катодного захисту інверторні автоматичні (СКЗІ)
+                            </div>
+
+                            <div class="productCard__text">
+                                Інверторні станції нового покоління для стабільного та енергоефективного катодного
+                                захисту трубопроводів
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20version='1.1'%20width='22'%20height='22'%20viewBox='0%200%2022%2022'%3e%3cdesc%3eCreated%20with%20SVGMaker%20Editor%202.2.3%3c/desc%3e%3cdefs%3e%3c/defs%3e%3cpath%20transform='translate(0,0)'%20style='stroke:%20rgb(252,148,74);%20stroke-width:%202;%20fill:%20none'%20stroke-linecap='round'%20d='M%200.707%2021%20L%2020.707%201%20M%2020.707%201%20L%200.707%201%20M%2020.8836%200.0495%20L%2020.707%2021'/%3e%3c/svg%3e" alt="" width="16" height="16">
+                        </div>
+
+                    </a>
+                </article>
+
+                <article class="productCard" data-preview="./img/content/products/product-02.png" data-details="p02">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/EnergyGroup/assets/product-02-small-xN8AdkTq.jpg" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">02</span>
+                            <div class="productCard__title">
+                                Блоки сумісного захисту (електронні) плавного прецизійного керування
+                            </div>
+
+                            <div class="productCard__text">
+                                Електронні БЗК з точним плавним регулюванням струмів для максимального контролю та безпеки систем катодного захисту
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20version='1.1'%20width='22'%20height='22'%20viewBox='0%200%2022%2022'%3e%3cdesc%3eCreated%20with%20SVGMaker%20Editor%202.2.3%3c/desc%3e%3cdefs%3e%3c/defs%3e%3cpath%20transform='translate(0,0)'%20style='stroke:%20rgb(252,148,74);%20stroke-width:%202;%20fill:%20none'%20stroke-linecap='round'%20d='M%200.707%2021%20L%2020.707%201%20M%2020.707%201%20L%200.707%201%20M%2020.8836%200.0495%20L%2020.707%2021'/%3e%3c/svg%3e" alt="" width="16" height="16">
+                            </span>
+                        </div>
+
+
+                    </a>
+                </article>
+
+                <article class="productCard" data-preview="./img/content/products/product-03.png" data-details="p03">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/EnergyGroup/assets/product-03-small-V0WSLBmC.jpg" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">03</span>
+                            <div class="productCard__title">
+                                Аноди заземлюючі магнетитові (АЗМТ)
+                            </div>
+
+                            <div class="productCard__text">
+                                Високостійкі магнетитові аноди для катодного захисту з тривалим ресурсом роботи та мінімальним опором ґрунту
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20version='1.1'%20width='22'%20height='22'%20viewBox='0%200%2022%2022'%3e%3cdesc%3eCreated%20with%20SVGMaker%20Editor%202.2.3%3c/desc%3e%3cdefs%3e%3c/defs%3e%3cpath%20transform='translate(0,0)'%20style='stroke:%20rgb(252,148,74);%20stroke-width:%202;%20fill:%20none'%20stroke-linecap='round'%20d='M%200.707%2021%20L%2020.707%201%20M%2020.707%201%20L%200.707%201%20M%2020.8836%200.0495%20L%2020.707%2021'/%3e%3c/svg%3e" alt="" width="16" height="16">
+                            </span>
+                        </div>
+
+
+                    </a>
+                </article>
+
+                <article class="productCard" data-preview="./img/content/products/product-04.png" data-details="p04">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/EnergyGroup/assets/product-04-small-BIpC0Dr0.jpg" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">04</span>
+                            <div class="productCard__title">
+                                Контрольно-вимірювальні пункти (ПВ) з БЗК та телеметрією
+                            </div>
+
+                            <div class="productCard__text">
+                                Комплексні ПВ із вбудованим блоком сумісного захисту та телеметрією для повного моніторингу потенціалів і струмів
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20version='1.1'%20width='22'%20height='22'%20viewBox='0%200%2022%2022'%3e%3cdesc%3eCreated%20with%20SVGMaker%20Editor%202.2.3%3c/desc%3e%3cdefs%3e%3c/defs%3e%3cpath%20transform='translate(0,0)'%20style='stroke:%20rgb(252,148,74);%20stroke-width:%202;%20fill:%20none'%20stroke-linecap='round'%20d='M%200.707%2021%20L%2020.707%201%20M%2020.707%201%20L%200.707%201%20M%2020.8836%200.0495%20L%2020.707%2021'/%3e%3c/svg%3e" alt="" width="16" height="16">
+                            </span>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="productCard" data-preview="./img/content/products/product-05.png" data-details="p05">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/EnergyGroup/assets/product-05-small-BbdcoY6F.jpg" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">05</span>
+                            <div class="productCard__title">
+                                Система телеметрична для збору даних з ПВ
+                            </div>
+
+                            <div class="productCard__text">
+                                Модем телеметрії для автоматичного збору, зберігання та передачі параметрів ПВ на диспетчерський центр
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20version='1.1'%20width='22'%20height='22'%20viewBox='0%200%2022%2022'%3e%3cdesc%3eCreated%20with%20SVGMaker%20Editor%202.2.3%3c/desc%3e%3cdefs%3e%3c/defs%3e%3cpath%20transform='translate(0,0)'%20style='stroke:%20rgb(252,148,74);%20stroke-width:%202;%20fill:%20none'%20stroke-linecap='round'%20d='M%200.707%2021%20L%2020.707%201%20M%2020.707%201%20L%200.707%201%20M%2020.8836%200.0495%20L%2020.707%2021'/%3e%3c/svg%3e" alt="" width="16" height="16">
+                            </span>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="productCard" data-preview="./img/content/products/product-06.png" data-details="p06">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/EnergyGroup/assets/product-06-small-CIS9x3P0.jpg" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">06</span>
+                            <div class="productCard__title">
+                                Система телеметрії та телеуправління станціями катодного захисту
+                            </div>
+
+                            <div class="productCard__text">
+                                Комплекс дистанційного контролю та керування СКЗ у режимі реального часу з передачею даних по GSM
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20version='1.1'%20width='22'%20height='22'%20viewBox='0%200%2022%2022'%3e%3cdesc%3eCreated%20with%20SVGMaker%20Editor%202.2.3%3c/desc%3e%3cdefs%3e%3c/defs%3e%3cpath%20transform='translate(0,0)'%20style='stroke:%20rgb(252,148,74);%20stroke-width:%202;%20fill:%20none'%20stroke-linecap='round'%20d='M%200.707%2021%20L%2020.707%201%20M%2020.707%201%20L%200.707%201%20M%2020.8836%200.0495%20L%2020.707%2021'/%3e%3c/svg%3e" alt="" width="16" height="16">
+                            </span>
+                        </div>
+
+
+                    </a>
+                </article>
+
+
+                <article class="productCard" data-preview="./img/content/products/product-07.png" data-details="p07">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/EnergyGroup/assets/product-07-small-CKLJZxWR.jpg" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">07</span>
+                            <div class="productCard__title">
+                                Комплекс відведення наведеного струму
+                            </div>
+
+                            <div class="productCard__text">
+                                Система для безпечного відведення високочастотних і наведених струмів з ЛЕП та промислових об’єктів
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20version='1.1'%20width='22'%20height='22'%20viewBox='0%200%2022%2022'%3e%3cdesc%3eCreated%20with%20SVGMaker%20Editor%202.2.3%3c/desc%3e%3cdefs%3e%3c/defs%3e%3cpath%20transform='translate(0,0)'%20style='stroke:%20rgb(252,148,74);%20stroke-width:%202;%20fill:%20none'%20stroke-linecap='round'%20d='M%200.707%2021%20L%2020.707%201%20M%2020.707%201%20L%200.707%201%20M%2020.8836%200.0495%20L%2020.707%2021'/%3e%3c/svg%3e" alt="" width="16" height="16">
+                            </span>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="productCard" data-preview="./img/content/products/product-08.png" data-details="p08">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/EnergyGroup/assets/product-08-small-D611FghH.jpg" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">08</span>
+                            <div class="productCard__title">
+                                Блоки управління ізоляційними фланцями (електронні) плавного прецизійного керування
+                            </div>
+
+                            <div class="productCard__text">
+                                Розумні електронні блоки для контролю стану ізоляційних фланців та автоматичного відведення небезпечних струмів
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20version='1.1'%20width='22'%20height='22'%20viewBox='0%200%2022%2022'%3e%3cdesc%3eCreated%20with%20SVGMaker%20Editor%202.2.3%3c/desc%3e%3cdefs%3e%3c/defs%3e%3cpath%20transform='translate(0,0)'%20style='stroke:%20rgb(252,148,74);%20stroke-width:%202;%20fill:%20none'%20stroke-linecap='round'%20d='M%200.707%2021%20L%2020.707%201%20M%2020.707%201%20L%200.707%201%20M%2020.8836%200.0495%20L%2020.707%2021'/%3e%3c/svg%3e" alt="" width="16" height="16">
+                            </span>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="productCard" data-preview="./img/content/products/product-09.png" data-details="p09">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/EnergyGroup/assets/product-09-small-CqOQXVgY.jpg" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">09</span>
+                            <div class="productCard__title">
+                                Станція дренажного захисту “Поляризаційна”
+                            </div>
+
+                            <div class="productCard__text">
+                                Станція для інтенсивного відведення великих блукаючих струмів та
+                                підвищення ефективності захисту трубопроводів у зонах з екстремальними електромагнітними впливами
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20version='1.1'%20width='22'%20height='22'%20viewBox='0%200%2022%2022'%3e%3cdesc%3eCreated%20with%20SVGMaker%20Editor%202.2.3%3c/desc%3e%3cdefs%3e%3c/defs%3e%3cpath%20transform='translate(0,0)'%20style='stroke:%20rgb(252,148,74);%20stroke-width:%202;%20fill:%20none'%20stroke-linecap='round'%20d='M%200.707%2021%20L%2020.707%201%20M%2020.707%201%20L%200.707%201%20M%2020.8836%200.0495%20L%2020.707%2021'/%3e%3c/svg%3e" alt="" width="16" height="16">
+                            </span>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="productCard" data-preview="./img/content/products/product-10.png" data-details="p10">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/EnergyGroup/assets/product-10-small-BeAH1v1a.jpg" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">10</span>
+                            <div class="productCard__title">
+                                Станція дренажного захисту “Підсилений дренаж”
+                            </div>
+
+                            <div class="productCard__text">
+                                Станція підвищеної потужності для інтенсивного відведення великих
+                                блукаючих струмів, що забезпечує надійний захист трубопроводів на
+                                ділянках із високим рівнем електромагнітних перешкод
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20version='1.1'%20width='22'%20height='22'%20viewBox='0%200%2022%2022'%3e%3cdesc%3eCreated%20with%20SVGMaker%20Editor%202.2.3%3c/desc%3e%3cdefs%3e%3c/defs%3e%3cpath%20transform='translate(0,0)'%20style='stroke:%20rgb(252,148,74);%20stroke-width:%202;%20fill:%20none'%20stroke-linecap='round'%20d='M%200.707%2021%20L%2020.707%201%20M%2020.707%201%20L%200.707%201%20M%2020.8836%200.0495%20L%2020.707%2021'/%3e%3c/svg%3e" alt="" width="16" height="16">
+                            </span>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="productCard" data-preview="./img/content/products/product-11.png" data-details="p11">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/EnergyGroup/assets/product-11-small-BG8e2onc.jpg" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">11</span>
+                            <div class="productCard__title">
+                                Електроізолюючі вставки (муфти)
+                            </div>
+
+                            <div class="productCard__text">
+                                Електроізолюючі вставки призначені для створення на трубопроводах надійного
+                                діелектричного розриву, що запобігає неконтрольованому проходженню струму між окремими ділянками системи
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20version='1.1'%20width='22'%20height='22'%20viewBox='0%200%2022%2022'%3e%3cdesc%3eCreated%20with%20SVGMaker%20Editor%202.2.3%3c/desc%3e%3cdefs%3e%3c/defs%3e%3cpath%20transform='translate(0,0)'%20style='stroke:%20rgb(252,148,74);%20stroke-width:%202;%20fill:%20none'%20stroke-linecap='round'%20d='M%200.707%2021%20L%2020.707%201%20M%2020.707%201%20L%200.707%201%20M%2020.8836%200.0495%20L%2020.707%2021'/%3e%3c/svg%3e" alt="" width="16" height="16">
+                            </span>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="productCard" data-preview="./img/content/products/product-12.png" data-details="p12">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/EnergyGroup/assets/product-12-small-CrkxB1xM.jpg" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">12</span>
+                            <div class="productCard__title">
+                                Пристрої контролю струмів анодних заземлювачів
+                            </div>
+
+                            <div class="productCard__text">
+                                Пристрої ПКЗА застосовуються в системах електрохімічного захисту протяжних підземних металевих об’єктів
+                                (трубопроводів) від корозії та призначені для розподілу та контролю захисних струмів анодних заземлювачів
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20version='1.1'%20width='22'%20height='22'%20viewBox='0%200%2022%2022'%3e%3cdesc%3eCreated%20with%20SVGMaker%20Editor%202.2.3%3c/desc%3e%3cdefs%3e%3c/defs%3e%3cpath%20transform='translate(0,0)'%20style='stroke:%20rgb(252,148,74);%20stroke-width:%202;%20fill:%20none'%20stroke-linecap='round'%20d='M%200.707%2021%20L%2020.707%201%20M%2020.707%201%20L%200.707%201%20M%2020.8836%200.0495%20L%2020.707%2021'/%3e%3c/svg%3e" alt="" width="16" height="16">
+                            </span>
+                        </div>
+                    </a>
+                </article>
+
+
+                <article class="productCard" data-preview="./img/content/products/product-13.png" data-details="p11">
+                    <a class="productCard__link" href="#">
+                        <div class="productCard__imgWrap">
+                            <img src="/EnergyGroup/assets/product-13-small-EOCXyC08.jpg" alt="">
+                        </div>
+
+                        <div class="productCard__body">
+                            <span class="productCard__num">13</span>
+                            <div class="productCard__title">
+                                Пункт вимірювальний ПЕГ КОМБ
+                            </div>
+
+                            <div class="productCard__text">
+                                Пункт вимірювальний ПЕГ КОМБ призначений для контролю потенціалів "труба-земля",
+                                використовується у системах електрохімічного захисту підземних металевих трубопроводів
+                                для обладнання трасових....
+                            </div>
+                        </div>
+
+                        <div class="productCard__bottom">
+                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__arrow" aria-hidden="true">
+                                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20version='1.1'%20width='22'%20height='22'%20viewBox='0%200%2022%2022'%3e%3cdesc%3eCreated%20with%20SVGMaker%20Editor%202.2.3%3c/desc%3e%3cdefs%3e%3c/defs%3e%3cpath%20transform='translate(0,0)'%20style='stroke:%20rgb(252,148,74);%20stroke-width:%202;%20fill:%20none'%20stroke-linecap='round'%20d='M%200.707%2021%20L%2020.707%201%20M%2020.707%201%20L%200.707%201%20M%2020.8836%200.0495%20L%2020.707%2021'/%3e%3c/svg%3e" alt="" width="16" height="16">
+                            </span>
+                        </div>
+                    </a>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        // swap preview image on hover/focus/click + автопрокрутка каждые 3 секунды
+        (function ($) {
+            $(function () {
+                var $img = $('#previewProductImage');
+                var $title = $('#previewProductTitle');
+                var $desc = $('#previewProductDesc');
+                var $btnDetails = $('#btnShowDetails');
+                var $grid = $('#productsGrid');
+                if (!$img.length || !$grid.length) return;
+
+                var autoplayInterval = null;
+                var currentIndex = 0;
+                var $cards = $grid.find('.productCard');
+
+                function setPreview(src, title, desc, productId) {
+                    if (!src) return;
+                    $img.css('opacity', 0);
+                    $title.css('opacity', 0);
+                    $desc.css('opacity', 0);
+                    productId='01';
+                    window.setTimeout(function () {
+                        $img.attr('src', src);
+                        if (title) $title.text(title);
+                        if (desc) $desc.text(desc);
+                        if (productId && $btnDetails.length) {
+                            $btnDetails.attr('data-product', productId);
+                        }
+
+                        $img.css('opacity', 1);
+                        $title.css('opacity', 1);
+                        $desc.css('opacity', 1);
+                    }, 90);
+                }
+
+                // Функция для показа конкретной карточки
+                function showCard(index) {
+                    if (index >= $cards.length) index = 0;
+                    if (index < 0) index = $cards.length - 1;
+
+                    var $card = $cards.eq(index);
+                    var previewSrc = $card.data('preview');
+                    var title = $card.find('.productCard__title').text().trim();
+                    var text = $card.find('.productCard__text').text().trim();
+                    var productId = $card.data('details');
+
+                    setPreview(previewSrc, title, text, productId);
+                    currentIndex = index;
+                }
+
+                // Автопрокрутка каждые 3 секунды
+                function startAutoplay() {
+                    stopAutoplay();
+                    autoplayInterval = window.setInterval(function () {
+                        currentIndex++;
+                        if (currentIndex >= $cards.length) currentIndex = 0;
+                        showCard(currentIndex);
+                    }, 5000);
+                }
+
+                function stopAutoplay() {
+                    if (autoplayInterval) {
+                        window.clearInterval(autoplayInterval);
+                        autoplayInterval = null;
+                    }
+                }
+
+                // При наведении/фокусе/клике — останавливаем автопрокрутку и показываем выбранную карточку
+                // $grid.on('mouseover focusin click', function (e) {
+                //     var $card = $(e.target).closest('.productCard');
+                //     if (!$card.length) return;
+                //
+                //     stopAutoplay();
+                //
+                //     var previewSrc = $card.data('preview');
+                //     var title = $card.find('.productCard__title').text().trim();
+                //     var text = $card.find('.productCard__text').text().trim();
+                //     var productId = $card.data('details');
+                //
+                //     setPreview(previewSrc, title, text, productId);
+                //
+                //     // Обновляем текущий индекс
+                //     currentIndex = $cards.index($card);
+                // });
+                //
+                // // При уходе мыши из области сетки — возобновляем автопрокрутку
+                // $grid.on('mouseleave', function () {
+                //     startAutoplay();
+                // });
+
+                // Обработчик клика на ссылку карточки - обновляем превью и открываем детали
+                $grid.on('click', '.productCard__link', function (e) {
+                    e.preventDefault();
+                    return false;
+                });
+                $grid.on('click', '.productCard__bottom', function (e) {
+                    e.preventDefault();
+
+
+                    var $card = $(this).closest('.productCard');
+                    if (!$card.length) return;
+
+                    stopAutoplay();
+
+                    var previewSrc = $card.data('preview');
+                    var title = $card.find('.productCard__title').text().trim();
+                    var text = $card.find('.productCard__text').text().trim();
+                    var productId = $card.data('details');
+
+                    setPreview(previewSrc, title, text, productId);
+                    currentIndex = $cards.index($card);
+
+                    // Программно кликаем по кнопке после небольшой задержки для плавности
+                    window.setTimeout(function () {
+                        $btnDetails = $('#btnShowDetails');
+                        $btnDetails.attr('data-product', productId);
+
+                        $btnDetails.click();
+
+
+                    }, 150);
+
+                });
+
+                // Запускаем автопрокрутку при загрузке
+                startAutoplay();
+            });
+        })(jQuery);
+    </script>
+</main>
+
+
+<!-- ===== FOOTER ===== -->
+<footer class="footerPeg" id="footer">
+
+    <div class="footerPeg__top">
+        <div class="footerPeg__grid">
+
+            <!-- 1) MENU -->
+            <div class="footerPeg__col">
+                <div class="footerPeg__head">Меню</div>
+                <div class="footerPeg__line"></div>
+
+                <a class="footerPeg__link" href="#home">ГОЛОВНИЙ ЕКРАН</a>
+                <a class="footerPeg__link" href="products.html">ПРОДУКЦІЯ</a>
+                <a class="footerPeg__link" href="engineering.html">ІНЖИНІРИНГ</a>
+                <a class="footerPeg__link" href="library.html">ТЕХНІЧНА БІБЛІОТЕКА</a>
+                <a class="footerPeg__link" href="docs.html">ДОКУМЕНТАЦІЯ</a>
+            </div>
+
+            <!-- 2) DOCS -->
+            <div class="footerPeg__col">
+                <div class="footerPeg__head">&nbsp;</div>
+                <div class="footerPeg__line"></div>
+
+                <a class="footerPeg__link" href="#">ЛІЦЕНЗІЇ</a>
+                <a class="footerPeg__link" href="#">КАТАЛОГИ ТА ПРЕЗЕНТАЦІЇ</a>
+                <a class="footerPeg__link" href="#">ІНСТРУКЦІЇ КОРИСТУВАЧА</a>
+                <a class="footerPeg__link" href="#">СЕРТИФІКАТИ ВІДПОВІДНОСТІ</a>
+                <a class="footerPeg__link" href="#">ПОЛІТИКА КОНФІДЕНЦІЙНОСТІ</a>
+            </div>
+
+            <!-- 3) CONTACTS -->
+            <div class="footerPeg__col footerPeg__col--contacts">
+                <div class="footerPeg__head">Контакти</div>
+                <div class="footerPeg__line"></div>
+
+                <div class="footerPeg__muted">Номер телефону:</div>
+                <div class="footerPeg__textRow">
+                    <a class="footerPeg__textLink" href="tel:+380443901015">+38 (044) 390-10-15</a>
+                    <a class="footerPeg__textLink" href="tel:+380732444088">+38 (073) 244-40-88</a>
+                </div>
+
+                <div class="footerPeg__muted">E-mail:</div>
+                <a class="footerPeg__textLink" href="mailto:info@llc-peg.com">info@llc-peg.com</a>
+
+                <div class="footerPeg__muted">Поштова адреса:</div>
+                <div class="footerPeg__text">07400, Київська обл., м. Бровари, вул. Героїв України, 21, офіс 405</div>
+
+                <div class="footerPeg__muted">Юридична адреса:</div>
+                <div class="footerPeg__text">Україна, м. Київ, вул. Князів Острозьких, 15</div>
+            </div>
+
+            <!-- 4) SOCIAL -->
+            <div class="footerPeg__col footerPeg__col--social">
+                <div class="footerPeg__head">&nbsp;</div>
+                <div class="footerPeg__line"></div>
+
+                <div class="footerPeg__social">
+                    <a class="footerPeg__socialLink" href="#" aria-label="Instagram">
+                        <span class="footerPeg__socialText">INSTAGRAM</span>
+                        <img class="footerPeg__socialIcon" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M11.0286%200C12.1536%200.003%2012.7246%200.009%2013.2176%200.023L13.4116%200.03C13.6356%200.038%2013.8566%200.0479999%2014.1236%200.0599999C15.1876%200.11%2015.9136%200.278%2016.5506%200.525C17.2106%200.779%2017.7666%201.123%2018.3226%201.678C18.8313%202.17773%2019.2248%202.78247%2019.4756%203.45C19.7226%204.087%2019.8906%204.813%2019.9406%205.878C19.9526%206.144%2019.9626%206.365%2019.9706%206.59L19.9766%206.784C19.9916%207.276%2019.9976%207.847%2019.9996%208.972L20.0006%209.718V11.028C20.003%2011.7574%2019.9953%2012.4868%2019.9776%2013.216L19.9716%2013.41C19.9636%2013.635%2019.9536%2013.856%2019.9416%2014.122C19.8916%2015.187%2019.7216%2015.912%2019.4756%2016.55C19.2248%2017.2175%2018.8313%2017.8223%2018.3226%2018.322C17.8228%2018.8307%2017.2181%2019.2242%2016.5506%2019.475C15.9136%2019.722%2015.1876%2019.89%2014.1236%2019.94L13.4116%2019.97L13.2176%2019.976C12.7246%2019.99%2012.1536%2019.997%2011.0286%2019.999L10.2826%2020H8.97357C8.24383%2020.0026%207.51409%2019.9949%206.78457%2019.977L6.59057%2019.971C6.35318%2019.962%206.11584%2019.9517%205.87857%2019.94C4.81457%2019.89%204.08857%2019.722%203.45057%2019.475C2.7834%2019.2241%202.17901%2018.8306%201.67957%2018.322C1.17051%2017.8224%200.776678%2017.2176%200.525569%2016.55C0.278569%2015.913%200.110569%2015.187%200.0605687%2014.122L0.0305688%2013.41L0.0255689%2013.216C0.00713493%2012.4868%20-0.00119929%2011.7574%200.000568797%2011.028V8.972C-0.0021991%208.2426%200.00513501%207.5132%200.0225689%206.784L0.0295688%206.59C0.0375688%206.365%200.0475688%206.144%200.0595688%205.878C0.109569%204.813%200.277569%204.088%200.524569%203.45C0.776263%202.7822%201.17079%202.17744%201.68057%201.678C2.17972%201.16955%202.78376%200.776074%203.45057%200.525C4.08857%200.278%204.81357%200.11%205.87857%200.0599999C6.14457%200.0479999%206.36657%200.038%206.59057%200.03L6.78457%200.0239999C7.51376%200.00623271%208.24316%20-0.0014347%208.97257%200.000999928L11.0286%200ZM10.0006%205C8.67449%205%207.40272%205.52678%206.46503%206.46447C5.52735%207.40215%205.00057%208.67392%205.00057%2010C5.00057%2011.3261%205.52735%2012.5979%206.46503%2013.5355C7.40272%2014.4732%208.67449%2015%2010.0006%2015C11.3267%2015%2012.5984%2014.4732%2013.5361%2013.5355C14.4738%2012.5979%2015.0006%2011.3261%2015.0006%2010C15.0006%208.67392%2014.4738%207.40215%2013.5361%206.46447C12.5984%205.52678%2011.3267%205%2010.0006%205ZM10.0006%207C10.3945%206.99993%2010.7847%207.07747%2011.1487%207.22817C11.5127%207.37887%2011.8434%207.5998%2012.122%207.87833C12.4007%208.15686%2012.6217%208.48754%2012.7725%208.85149C12.9233%209.21544%2013.001%209.60553%2013.0011%209.9995C13.0011%2010.3935%2012.9236%2010.7836%2012.7729%2011.1476C12.6222%2011.5116%2012.4013%2011.8423%2012.1227%2012.121C11.8442%2012.3996%2011.5135%2012.6206%2011.1496%2012.7714C10.7856%2012.9223%2010.3955%2012.9999%2010.0016%2013C9.20592%2013%208.44286%2012.6839%207.88025%2012.1213C7.31764%2011.5587%207.00157%2010.7956%207.00157%2010C7.00157%209.20435%207.31764%208.44129%207.88025%207.87868C8.44286%207.31607%209.20592%207%2010.0016%207M15.2516%203.5C14.92%203.5%2014.6021%203.6317%2014.3677%203.86612C14.1333%204.10054%2014.0016%204.41848%2014.0016%204.75C14.0016%205.08152%2014.1333%205.39946%2014.3677%205.63388C14.6021%205.8683%2014.92%206%2015.2516%206C15.5831%206%2015.901%205.8683%2016.1355%205.63388C16.3699%205.39946%2016.5016%205.08152%2016.5016%204.75C16.5016%204.41848%2016.3699%204.10054%2016.1355%203.86612C15.901%203.6317%2015.5831%203.5%2015.2516%203.5Z'%20fill='white'/%3e%3c/svg%3e" alt="">
+                    </a>
+
+                    <a class="footerPeg__socialLink" href="#" aria-label="Facebook">
+                        <span class="footerPeg__socialText">FACEBOOK</span>
+                        <img class="footerPeg__socialIcon" src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M20%2010.0251C20%204.49123%2015.52%200%2010%200C4.48%200%200%204.49123%200%2010.0251C0%2014.8772%203.44%2018.9173%208%2019.8496V13.0326H6V10.0251H8V7.5188C8%205.58396%209.57%204.01003%2011.5%204.01003H14V7.01754H12C11.45%207.01754%2011%207.46867%2011%208.02005V10.0251H14V13.0326H11V20C16.05%2019.4987%2020%2015.2281%2020%2010.0251Z'%20fill='white'/%3e%3c/svg%3e" alt="">
+                    </a>
+
+
+
+
+                </div>
+            </div>
+
+            <div class="footerPeg__col footerPeg__col--social">
+                <div class="footerPeg__head">&nbsp;</div>
+                <div class="footerPeg__line"></div>
+
+                <div class="footerPeg__social">
+                    <div class="footerPeg__qrStack" style="text-align: center">
+                        <div class="footerPeg__qrItem">
+                            <div class="footerPeg__qrLabel">TELEGRAM</div>
+                            <img class="footerPeg__qrImg" src="/EnergyGroup/assets/qr-telegram-C5inGcTP.png" alt="QR Telegram">
+                        </div>
+
+                        <div class="footerPeg__qrItem">
+                            <div class="footerPeg__qrLabel">WHATSAPP</div>
+                            <img class="footerPeg__qrImg" src="/EnergyGroup/assets/qr-whatsapp-Bb7FvM-c.png" alt="QR WhatsApp">
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+
+
+    </div>
+
+    <div class="footer__brand">PRIME ENERGY GROUP</div>
+</footer>
+
+
+
+</body>
+</html>
+
+
+
+
+<!--<button class="btn" type="button" data-az-open>Калькулятор</button>-->
