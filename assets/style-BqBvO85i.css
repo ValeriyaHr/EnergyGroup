@@ -412,7 +412,7 @@
     220px   /* соц */
    250px;  /* QR */
 
-    gap: 73px;
+    gap: 1.5%;
     align-items: start;
 }
 .footerPeg__col{ min-width: 0; }
@@ -616,7 +616,7 @@
 .footer__brand{
     margin-top: 60px;
     font-family: var(--font-head);
-    font-size: 14.6vw;
+    font-size: 14.3vw;
     line-height: .8;
     letter-spacing: .02em;
     color: var(--orange);
@@ -2541,9 +2541,9 @@ body.menu-open{
 .techLibHero__brandInTitle{
     position: absolute;
     left: 0;
-    top: 10em;
+    top: 50%;
     font-family: var(--font-text);
-    font-size: 14px;
+    font-size: 18px;
     letter-spacing: .12em;
     text-transform: uppercase;
     color: var(--orange);
@@ -2742,15 +2742,15 @@ body.menu-open{
 .artSvg{ width:100%; height:auto; display:block; }
 /* 1. Типові монтажі */
 .techLibBlock--montage .techLibBlock__art{
-    background-image: url("/EnergyGroup/assets/lib1-DluEkvGO.svg");
+    background-image: url("/EnergyGroup/assets/lib1-nAsO4He9.svg");
 }
 /* 2. Принципові схеми */
 .techLibBlock--schemes .techLibBlock__art{
-    background-image: url("/EnergyGroup/assets/lib2-CSs39WCb.svg");
+    background-image: url("/EnergyGroup/assets/lib2-DK23tPPJ.svg");
 }
 /* 3. Документація */
 .techLibBlock--docs .techLibBlock__art{
-    background-image: url("/EnergyGroup/assets/lib3-CIrxrpvd.svg");
+    background-image: url("/EnergyGroup/assets/lib3-C1X9033-.svg");
 }
 .techLibList{
     display:flex;
