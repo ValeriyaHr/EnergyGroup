@@ -30,3 +30,48 @@
         if (e.key === "Escape") close();
     });
 })();
+
+//------------
+$(function () {
+    var $overlay = $("#menuOverlay");
+    var $nav = $overlay.find(".menuOverlay__nav");
+
+    function closeGroup($btn) {
+        var $group = $btn.closest(".menuGroup");
+        var $sub = $group.find(".menuSub");
+
+        $btn.removeClass("is-open").attr("aria-expanded", "false");
+        $sub.stop(true, true).slideUp(180).attr("aria-hidden", "true");
+    }
+
+    function openGroup($btn) {
+        var $group = $btn.closest(".menuGroup");
+        var $sub = $group.find(".menuSub");
+
+        $btn.addClass("is-open").attr("aria-expanded", "true");
+        $sub.stop(true, true).slideDown(180).attr("aria-hidden", "false");
+    }
+
+    $nav.on("click", ".menuItem--toggle", function (e) {
+        e.preventDefault();
+
+        var $btn = $(this);
+        var isOpen = $btn.hasClass("is-open");
+
+        // закриваємо всі інші
+        $nav.find(".menuItem--toggle.is-open").not($btn).each(function () {
+            closeGroup($(this));
+        });
+
+        // перемикаємо поточний
+        if (isOpen) closeGroup($btn);
+        else openGroup($btn);
+    });
+
+    // опціонально: при закритті оверлею — закрити всі підменю
+    $overlay.on("closeMenuOverlay", function () {
+        $nav.find(".menuItem--toggle.is-open").each(function () {
+            closeGroup($(this));
+        });
+    });
+});
