@@ -258,7 +258,29 @@
 /* ---------- hero ---------- */
 .hero {
     padding: 90px 0 22px;
+    position: relative;
+    overflow: hidden;
+    min-height: calc(100vh - 86px); /* header__inner height */
     display: flex;
+    align-items: center;
+}
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+            linear-gradient(to right, var(--gridLine) 1px, transparent 1px),
+            linear-gradient(to bottom, var(--gridLine) 1px, transparent 1px);
+    background-size: 160px 160px;
+    background-position: 0 0;
+    pointer-events:none;
+}
+
+
+.hero__inner{
+    display:grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 48px;
     align-items: center;
 }
 
@@ -288,6 +310,36 @@
     text-transform: uppercase;
 }
 
+.hero__desc{
+    font-family: var(--font-text);
+    font-size: 12px;
+    line-height: 1.6;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    color: rgba(65,62,57,.55);
+    margin: 0 0 22px;
+    max-width: 460px;
+}
+
+.hero__right{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+}
+.hero__imgWrap{
+    width: min(560px, 44vw);
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+}
+
+.hero__image{
+    width: 100%;
+    height: auto;
+    max-height: min(560px, 62vh);
+    object-fit: contain;
+    display:block;
+}
 
 /* ---------- intro ---------- */
 .intro{ padding: 34px 0 40px; }
@@ -2161,9 +2213,9 @@ body.menu-open{
 .techLibHero__brandInTitle{
     position: absolute;
     left: 0;
-    top: 10em;
+    top: 50%;
     font-family: var(--font-text);
-    font-size: 14px;
+    font-size: 18px;
     letter-spacing: .12em;
     text-transform: uppercase;
     color: var(--orange);
@@ -2331,9 +2383,25 @@ body.menu-open{
 /* ====== 2-4) BLACK BLOCKS ====== */
 
 /* текст опису в чорних блоках */
+
+.techLibBlock__desc::before{
+    content: "[";
+    position: absolute;
+    left: 4px;
+    top: -2%;
+    transform: translateX(clamp(-14px, -1.2vw, -8px));
+    font-family: var(--font-text-lib);
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1;
+    color: rgba(255,255,255,.9);
+    pointer-events: none;
+}
+
 .techLib .techLibBlock__desc{
     font-family: var(--font-text-lib);
     font-weight: 300;
+    position: relative;
 }
 
 /* пункти списку */
