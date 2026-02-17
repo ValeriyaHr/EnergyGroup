@@ -5,7 +5,7 @@
 
 @font-face {
     font-family: "Bebas Neue";
-    src: url("../fonts/BebasNeue.woff2") format("woff2");
+    src: url("../fonts/BebasNeue-Regular.woff2") format("woff2");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -74,6 +74,7 @@
     --black: #0A0606;
     --grey: #727270;
     --lightgrey: #D6D5D3;
+    --grey-pale: #FAF9F9;
     --text: #413E39;
     --muted-on-dark:rgba(255,255,255,.65);
 

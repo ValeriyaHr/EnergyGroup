@@ -4,6 +4,7 @@
 }
 
 .productDetails__card{
+    padding: 20px;
     position: relative;
     border-radius: 18px;
     overflow: hidden;
@@ -114,7 +115,8 @@
     position: relative;
     padding: 12px 0;
     font-size: 14px;
-
+    color: var(--grey-pale);
+    font-family: var(--font-text-lib);
 }
 .productDetails__benefits li:not(:last-child)::after{
     content: "";
@@ -126,7 +128,6 @@
     height: 1px;
     background: rgba(255,255,255,.2);
 }
-
 
 /* divider */
 .productDetails__divider{
@@ -206,7 +207,7 @@
     font-size: 10px;
     letter-spacing: .18em;
     text-transform: uppercase;
-    color: rgba(255,122,0,.85);
+    color: var(--orange-light);
     margin-bottom: 12px;
 }
 
@@ -239,28 +240,31 @@
 
 .aboutGrid{
     display: grid;
-
     /* левая колонка широкая, правая еще шире */
     grid-template-columns: 38% 62%;
-
-    /* справа 2 ряда по 50% */
+    /* справа 2 ряда по 50%*/
     grid-template-rows: 1fr 1fr;
-
     gap: 0; /* как в макете, без промежутков */
+    margin: 40px 0;
+    font-family: var(--font-text-product);
 }
 
 /* левый заголовок занимает обе строки */
 .aboutGrid__title{
     grid-column: 1;
     grid-row: 1 / 3;
-
-    font-size: 34px;
+    font-size: 32px;
+    font-family: "Bebas Neue", sans-serif;
     line-height: 0.85;
     font-weight: 500;
     opacity: .45;
-
     margin: 0;
     padding-right: 60px;
+}
+
+.t_font_tittle{
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 32px;
 }
 
 /* правый верхний блок */
@@ -280,6 +284,8 @@
     line-height: 0.85;
     opacity: .9;
     width: 99%;
+    color: var(--grey-pale);
+    font-family: var(--font-text-lib);
 }
 
 /* правый нижний блок */
@@ -295,6 +301,8 @@
     padding-right: 20px;
     opacity: .9;
     width: 86%;
+    color: var(--grey-pale);
+    font-family: var(--font-text-lib);
 }
 
 /* responsive */
