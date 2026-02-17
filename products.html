@@ -6,8 +6,8 @@
 
     <title>Prime Energy Group</title>
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="alternate icon" href="/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="/EnergyGroup/assets/favicon-DvZB0BOQ.svg">
+    <link rel="alternate icon" href="/EnergyGroup/assets/favicon-DvZB0BOQ.svg">
 
     <script src="./js/jquery/jquery-3.7.1.min.js"></script>
     <script src="./js/products.js"></script>
@@ -646,27 +646,27 @@
                 }
 
                 // При наведении/фокусе/клике — останавливаем автопрокрутку и показываем выбранную карточку
-                // $grid.on('mouseover focusin click', function (e) {
-                //     var $card = $(e.target).closest('.productCard');
-                //     if (!$card.length) return;
-                //
-                //     stopAutoplay();
-                //
-                //     var previewSrc = $card.data('preview');
-                //     var title = $card.find('.productCard__title').text().trim();
-                //     var text = $card.find('.productCard__text').text().trim();
-                //     var productId = $card.data('details');
-                //
-                //     setPreview(previewSrc, title, text, productId);
-                //
-                //     // Обновляем текущий индекс
-                //     currentIndex = $cards.index($card);
-                // });
-                //
-                // // При уходе мыши из области сетки — возобновляем автопрокрутку
-                // $grid.on('mouseleave', function () {
-                //     startAutoplay();
-                // });
+                $grid.on('mouseover focusin click', function (e) {
+                    var $card = $(e.target).closest('.productCard');
+                    if (!$card.length) return;
+
+                    stopAutoplay();
+
+                    var previewSrc = $card.data('preview');
+                    var title = $card.find('.productCard__title').text().trim();
+                    var text = $card.find('.productCard__text').text().trim();
+                    var productId = $card.data('details');
+
+                    setPreview(previewSrc, title, text, productId);
+
+                    // Обновляем текущий индекс
+                    currentIndex = $cards.index($card);
+                });
+
+                // При уходе мыши из области сетки — возобновляем автопрокрутку
+                $grid.on('mouseleave', function () {
+                    startAutoplay();
+                });
 
                 // Обработчик клика на ссылку карточки - обновляем превью и открываем детали
                 $grid.on('click', '.productCard__link', function (e) {
