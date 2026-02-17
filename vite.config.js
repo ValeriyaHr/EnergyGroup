@@ -48,6 +48,10 @@ export default defineConfig({
                     // лучше относительный путь!
                     src: "js/**/*",
                     dest: "js"
+                },
+                {
+                    src: "img/**/*",   // ← добавили копирование картинок
+                    dest: "img"
                 }
             ]
         })
