@@ -27,7 +27,7 @@
     220px   /* соц */
    250px;  /* QR */
 
-    gap: 73px;
+    gap: 1.5%;
     align-items: start;
 }
 .footerPeg__col{ min-width: 0; } /* щоб текст не ламав сітку */
@@ -250,7 +250,7 @@
 .footer__brand{
     margin-top: 60px;
     font-family: var(--font-head);
-    font-size: 14.6vw;
+    font-size: 14.3vw;
     line-height: .8;
     letter-spacing: .02em;
     color: var(--orange);
