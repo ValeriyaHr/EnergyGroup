@@ -68,22 +68,6 @@
     font-display: swap;
 }
 
-@font-face{
-    font-family: "Montserrat";
-    src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2");
-    font-weight: 800;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face{
-    font-family: "Montserrat";
-    src: url("../fonts/Montserrat-Bold.woff2") format("woff2");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
-
 :root {
     --orange: #ff7a00;
     --orange-light: #FC944A;
@@ -98,10 +82,6 @@
     --font-text: "Supreme", system-ui, sans-serif;
     --font-text-product: "Manrope", system-ui, sans-serif;
     --font-text-lib: "General Sans", system-ui, sans-serif; /*Заміна Supreme Thin*/
-    --font-exstrabold: "Montserrat", system-ui, sans-serif; /*шрифт для заголовків800*/
-    --font-bold-tittle: "Montserrat", system-ui, sans-serif; /*шрифт для заголовків700*/
-
-
 
     --line:rgba(255,255,255,.12);
     --gridLine:rgba(0,0,0,.04);
@@ -288,11 +268,12 @@
     content:"";
     position:absolute;
     inset:0;
-    pointer-events:none;
-
-    background: url("../img/ui/grid-404.svg") repeat;
-    background-size: 1400px 1400px;
+    background-image:
+            linear-gradient(to right, var(--gridLine) 1px, transparent 1px),
+            linear-gradient(to bottom, var(--gridLine) 1px, transparent 1px);
+    background-size: 160px 160px;
     background-position: 0 0;
+    pointer-events:none;
 }
 
 
@@ -407,7 +388,7 @@
 
 .engHero__title{
     margin:0;
-    font-family: var(--font-bold-tittle);
+    font-family: var(--font-head);
     font-size: 64px;
     line-height:.9;
     color:#0A0606;
@@ -1928,90 +1909,34 @@ body.menu-open{
   .docs { background: #fff; }
 /* 1) TOP */
 .docsTop{
-    padding: 132px 0 86px;
+    padding: 72px 0 56px;
     background: #fff;
-    position: relative;
-    overflow: hidden;
 }
-
-/* сітка-фон */
-.docsTop::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background: url("../img/ui/grid-404.svg") repeat;
-    background-size: 1400px 1400px;
-    background-position: 0 0;
-    pointer-events:none;
-    z-index: 0;
-}
-
-
 .docsTop__inner{
-    position: relative;
-    z-index: 1;
+    display:flex;
+    justify-content:space-between;
+    gap: 40px;
 }
-
-.docsTop__titleCol{
-    flex: 1 1 560px;
-}
-
-
+.docsTop__titleCol{ flex: 1 1 560px; }
 .docsTop__title{
-    position: relative;
-    font-family: var(--font-bold-tittle);
     margin: 0 0 18px;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: -0.02em;
     line-height: .95;
     font-size: clamp(42px, 5vw, 72px);
     text-transform: uppercase;
 }
-
-
-/* =========================
-   DOWNLOAD ALL (pseudo brackets)
-========================= */
-
-.docsDownload{
-    position:relative;
-    display:inline-block;
-
-    font-size:10px;
-    letter-spacing:.16em;
-    text-transform:uppercase;
+.docsTop__downloadAll{
+    display:inline-flex;
+    gap:10px;
+    align-items:center;
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color:#ff7a00;
     text-decoration:none;
-
-    color:var(--orange);
 }
-
-/* дужки */
-.docsDownload::before,
-.docsDownload::after{
-    position:absolute;
-    top:50%;
-    transform:translateY(-50%);
-    transition:transform .18s ease;
-    color:var(--orange);
-}
-
-.docsDownload::before{
-    content:"[";
-    left:-12px;
-}
-
-.docsDownload::after{
-    content:"]";
-    right:-12px;
-}
-
-.docsDownload:hover::before{
-    transform:translate(-3px,-50%);
-}
-
-.docsDownload:hover::after{
-    transform:translate(3px,-50%);
-}
+.docsTop__downloadAll:hover{ opacity:.85; }
 
 .docsTop__tabs{
     flex: 0 0 520px;
@@ -2265,6 +2190,8 @@ body.menu-open{
 
 .techLibHero__title{
     margin: 0 0 32px;
+    font-family: "General Sans", sans-serif;
+    font-weight: 500;
     letter-spacing: -0.03em;
     line-height: normal;
     font-size: clamp(92px, 7.2vw, 168px);
@@ -2276,8 +2203,6 @@ body.menu-open{
 .techLibHero__titleTop,
 .techLibHero__titleBottom{
     display: block;
-    font-family: var(--font-bold-tittle);
-    font-weight: 700;
 }
 
 .techLibHero__titleBottom{
@@ -2288,7 +2213,7 @@ body.menu-open{
 .techLibHero__brandInTitle{
     position: absolute;
     left: 0;
-    top: 56%;
+    top: 50%;
     font-family: var(--font-text);
     font-size: 18px;
     letter-spacing: .12em;
