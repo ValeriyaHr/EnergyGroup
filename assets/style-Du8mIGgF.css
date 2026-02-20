@@ -2371,12 +2371,13 @@ body.menu-open{
 .docs .docsHero__inner{
     display: flex;
     flex-direction: column;
-    min-height: 0;
     padding-top: 72px;
     padding-bottom: 56px;
+    height: calc(100svh - var(--header-h));
 }
 .docsHero__titleCol{
     display: flex;
+    flex: 1 1 auto;
     align-items: stretch;
     flex-direction: column;
     min-height: calc(100svh - 86px);
@@ -2409,11 +2410,8 @@ body.menu-open{
     align-items: flex-end;
     flex-wrap: nowrap;
     width: 100%;
-
     gap: clamp(14px, 1.6vw, 40px); /* маленький проміжок між 1-2-3 */
-
     align-self: stretch;
-    justify-content: stretch;
     margin-top: auto;
     font-family: var(--font-family-Thin), sans-serif;
     font-weight: 100;
@@ -2480,12 +2478,25 @@ body.menu-open{
     background: #0f0f10; /* або твій чорний */
     color: rgba(255,255,255,.85);
 }
+/* 2) BLACK LINKS — layout як у макеті */
 .docsLinks__inner{
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-areas:
+    ". . certs"
+    "manuals . catalogs";
     gap: clamp(24px, 3vw, 64px);
-    padding: clamp(28px, 4vw, 72px) 0;
+    align-items: start;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(24px, 3vw, 80px);
+    row-gap: clamp(56px, 6vw, 140px);
+    padding: clamp(48px, 6vw, 110px) 0;
 }
+/* Прив’язка блоків */
+.docsLinks__col#certs{ grid-area: certs; }
+.docsLinks__col#manuals{ grid-area: manuals; }
+.docsLinks__col#catalogs{ grid-area: catalogs; }
+/* важливо: min-width у grid часто ламає адаптив */
+.docsLinks__col{ min-width: 0; }
 @media (max-width: 1100px){
     .docsLinks__inner{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
@@ -2493,44 +2504,78 @@ body.menu-open{
     .docsLinks__inner{ grid-template-columns: 1fr; }
 }
 .docsLinks__col{
-    flex: 1 1 0;
-    min-width: 260px;
+    min-width: 0;
+}
+.docsLinks .container{
+    width: min(1840px, calc(100% - 80px));
+    margin: 0 auto;
 }
 .docsLinks__head{
-    font-size: 10px;
-    letter-spacing: .14em;
+    font-family: var(--font3), sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.2; /* краще ніж 100% */
+    letter-spacing: -0.02em;
     text-transform: uppercase;
-    color: rgba(255,255,255,.55);
+    color: var(--grey);
     margin-bottom: 18px;
 }
+.docsLinks__head::after{
+    content: "";
+    display: block;
+    width: 71px;
+    margin-top: 12px;         /* відступ від тексту */
+    border-top: 1px solid var(--grey);
+}
 .docsLink{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
     gap: 16px;
-
     padding: 14px 0;
-    border-bottom: 1px solid rgba(255,255,255,.12);
-
-    text-decoration: none;
+    text-decoration:none;
 }
 .docsLink__text{
-    color: rgba(255,255,255,.45);       /* сірий */
-    transition: color .2s ease;
+    font-family: var(--font-family-Thin), sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: #ffffff;
 }
-.docsLink__icon{
-    color: rgba(255,255,255,.35);       /* сіра стрілка */
-    transition: color .2s ease, transform .2s ease;
+.docsLinks__col#certs{
+    grid-column: 8 / 13; /* правий верх */
+    grid-row: 1;
 }
-/* hover/focus — текст білий, стрілка оранжева */
-.docsLink:hover .docsLink__text,
-.docsLink:focus-visible .docsLink__text{
-    color: #fff;
+.docsLinks__col#manuals{
+    grid-column: 2 / 6;  /* лівий низ */
+    grid-row: 2;
 }
-.docsLink:hover .docsLink__icon,
-.docsLink:focus-visible .docsLink__icon{
-    color: var(--orange-light); /* твій оранжевий */
-    transform: translate(2px, -2px);
+.docsLinks__col#catalogs{
+    grid-column: 9 / 13; /* правий низ */
+    grid-row: 2;
+}
+.docsLink__arrow{
+    position: relative;
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+}
+.docsLink__arrow .docsArrow{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+
+}
+.docsArrow--orange{ opacity:0; }
+.docsLink:hover .docsArrow--white{ opacity:0; }
+.docsLink:hover .docsArrow--orange{ opacity:1; }
+.docsLink:hover .docsLink__arrow{
+    transform: translate(2px,-2px);
 }
 /* 3) FORM */
 .docsForm{
@@ -2630,7 +2675,7 @@ body.menu-open{
 .reqBtn:hover{ opacity:.9; }
 /* ====== shared ui ====== */
 .uLinkBrackets{
-    font-family: var(--font-family);
+    font-family: var(--font-family) sans-serif;
     font-weight: 400;
     display:inline-flex;
     align-items:center;
@@ -3055,6 +3100,7 @@ body.menu-open{
     position: relative;
     padding: 0 18px;              /* місце під дужки */
     transition: color .18s ease, opacity .18s ease;
+    margin-bottom: 200px;
 }
 .techLibBlock .uLinkBrackets::before,
 .techLibBlock .uLinkBrackets::after{
@@ -3253,6 +3299,23 @@ body.menu-open{
 }
 @media (max-width: 640px){
     .productCard{ flex-basis: 100%; }
+}
+@media (max-width: 1100px){
+    .docsLinks__inner{
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+      "certs certs"
+      "manuals catalogs";
+    }
+}
+@media (max-width: 560px){
+    .docsLinks__inner{
+        grid-template-columns: 1fr;
+        grid-template-areas:
+      "certs"
+      "manuals"
+      "catalogs";
+    }
 }
 /*
 Стрілка ↗
