@@ -16,7 +16,7 @@
   <script type="module" crossorigin src="/EnergyGroup/assets/modulepreload-polyfill-COaX8i6R.js"></script>
   <script type="module" crossorigin src="/EnergyGroup/assets/mainJs-hjbWbjCw.js"></script>
   <script type="module" crossorigin src="/EnergyGroup/assets/menu-DHYyUrCX.js"></script>
-  <link rel="stylesheet" crossorigin href="/EnergyGroup/assets/style-DpfRb1r3.css">
+  <link rel="stylesheet" crossorigin href="/EnergyGroup/assets/style-CUbKUBXd.css">
 </head>
 
 <body>
@@ -185,19 +185,30 @@
     <section class="engHero" aria-label="Інжиніринг та рішення — вступ">
         <div class="container">
             <div class="engHero__panel">
-                <h1 class="engHero__title">Інжиніринг та Рішення</h1>
-                <!-- тут потім доб’ємо дрібні тексти/дужки як у pdf -->
+                <div class="engHero__bgText" aria-hidden="true">PRIME ENERGY</div>
+
+                <div class="engHeroLayout">
+                <div class="engHeroFrame__right">Від технічного завдання<br>до введення системи в<br>експлуатацію — повний<br>інженерний цикл
+                    <span class="shift-line">із гарантією ефективності</span>
+                </div>
+                <div class="engHeroFrame">
+                    <div class="engHeroFrame__text">
+                     рішення <span class="text-grey">[</span>під ключ<span class="text-grey">]</span><br> ДЛЯ КАТОДНОГО ЗАХИСТУ <br> БУДЬ-ЯКОЇ СКЛАДНОСТІ В УКРАЇНІ <br>ТА ЗА КОРДОНОМ
+                    </div>
+                </div>
+                <div class="engHeroFrame__left">Ми реалізуємо<br>комплексні рішення для<br>трубопроводів,<br>резервуарів,<br>тепломереж та інших
+                    <span class="shift-line">промислових об’єктів</span></div>
+            </div>
             </div>
         </div>
-
-        <img class="engHero__glow" src="/EnergyGroup/assets/eng-arc-glow-EFMcqy1O.png" alt="" aria-hidden="true">
     </section>
 
-
+    <div class="engDivider" aria-hidden="true"></div>
     <!-- Инженеринг та решение начало -->
     <section class="engSection" id="engineering" aria-label="Інжиніринг та рішення">
         <div class="container engSection__wrap">
             <div class="engSection__card">
+                <img class="engSection__ticks" src="/EnergyGroup/assets/tics-pWtZ7qvC.svg" alt="" aria-hidden="true">
                 <div class="engSection__rows">
                     <!-- Row 1 -->
                     <div class="engSolRow">
@@ -315,6 +326,7 @@
                             <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20800'%20width='800'%20height='800'%3e%3cdefs%3e%3c!--%20лёгкое%20свечение%20как%20на%20макете%20--%3e%3cfilter%20id='glow'%20x='-50%25'%20y='-50%25'%20width='200%25'%20height='200%25'%3e%3cfeGaussianBlur%20stdDeviation='1.2'%20result='b'/%3e%3cfeMerge%3e%3cfeMergeNode%20in='b'/%3e%3cfeMergeNode%20in='SourceGraphic'/%3e%3c/feMerge%3e%3c/filter%3e%3c!--%20мягкий%20градиент%20на%20лучиках%20--%3e%3clinearGradient%20id='tickGrad'%20x1='0'%20y1='0'%20x2='1'%20y2='0'%3e%3cstop%20offset='0'%20stop-color='white'%20stop-opacity='0.15'/%3e%3cstop%20offset='0.5'%20stop-color='white'%20stop-opacity='0.85'/%3e%3cstop%20offset='1'%20stop-color='white'%20stop-opacity='0.15'/%3e%3c/linearGradient%3e%3c/defs%3e%3c!--%20центр%20--%3e%3cg%20id='ticks'%20filter='url(%23glow)'%3e%3c/g%3e%3c!--%20Генерация%20лучиков%20прямо%20внутри%20SVG%20--%3e%3cscript%3e%3c![CDATA[%20(function%20()%20{%20const%20svg%20=%20document.currentScript.ownerDocument;%20const%20g%20=%20svg.getElementById('ticks');%20const%20cx%20=%20400,%20cy%20=%20400;%20//%20настройки%20'как%20часы'%20const%20startDeg%20=%20205;%20//%20откуда%20начинаем%20дугу%20const%20endDeg%20=%2025;%20//%20где%20заканчиваем%20(через%20360)%20const%20stepDeg%20=%204;%20//%20шаг%20лучиков%20(меньше%20=%20больше%20лучиков)%20const%20rOuter%20=%20345;%20//%20внешний%20радиус%20const%20rInnerMin%20=%20295;%20//%20внутренняя%20граница%20(короткие%20лучи)%20const%20rInnerMax%20=%20260;%20//%20внутренняя%20граница%20(длинные%20лучи)%20//%20нормализуем%20диапазон%20дуги%20через%20360%20const%20spanDeg%20=%20(endDeg%20%3e=%20startDeg)%20?%20(endDeg%20-%20startDeg)%20:%20(360%20-%20startDeg%20+%20endDeg);%20const%20count%20=%20Math.floor(spanDeg%20/%20stepDeg)%20+%201;%20for%20(let%20i%20=%200;%20i%20%3c%20count;%20i++)%20{%20const%20deg%20=%20startDeg%20+%20i%20*%20stepDeg;%20const%20t%20=%20i%20/%20Math.max(1,%20count%20-%201);%20//%200..1%20вдоль%20дуги%20//%20делаем%20длины%20чуть%20'живыми',%20как%20на%20макете:%20ближе%20к%20правому%20краю%20—%20длиннее%20const%20ease%20=%20Math.pow(t,%201.6);%20const%20rInner%20=%20rInnerMin%20-%20(rInnerMin%20-%20rInnerMax)%20*%20ease;%20//%20прозрачность:%20ближе%20к%20правому%20краю%20—%20ярче%20const%20op%20=%200.25%20+%200.75%20*%20ease;%20const%20rad%20=%20deg%20*%20Math.PI%20/%20180;%20const%20x1%20=%20cx%20+%20rInner%20*%20Math.cos(rad);%20const%20y1%20=%20cy%20+%20rInner%20*%20Math.sin(rad);%20const%20x2%20=%20cx%20+%20rOuter%20*%20Math.cos(rad);%20const%20y2%20=%20cy%20+%20rOuter%20*%20Math.sin(rad);%20const%20line%20=%20svg.createElementNS('http://www.w3.org/2000/svg',%20'line');%20line.setAttribute('x1',%20x1.toFixed(2));%20line.setAttribute('y1',%20y1.toFixed(2));%20line.setAttribute('x2',%20x2.toFixed(2));%20line.setAttribute('y2',%20y2.toFixed(2));%20line.setAttribute('stroke',%20'url(%23tickGrad)');%20line.setAttribute('stroke-width',%20'3');%20line.setAttribute('stroke-linecap',%20'round');%20line.setAttribute('opacity',%20op.toFixed(3));%20g.appendChild(line);%20}%20})();%20]]%3e%3c/script%3e%3c/svg%3e" class="circleItem">
 
                         </div>
+                    </section>
                     <!-- Row 2 -->
                     <div class="engSolRow">
                         <div class="engSolRow__left">
@@ -350,10 +362,6 @@
                         </div>
                     </div>
                 </div>
-
-                <svg class="engSection__arc" viewBox="0 0 600 300" aria-hidden="true" focusable="false">
-                    <path d="M60 260 A240 240 0 0 1 540 260" fill="none" stroke="rgba(255,255,255,.40)" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 10" />
-                </svg>
 
                 <div class="engSection__video" aria-label="Відео">
                     <div class="engSection__videoLabel">ВІДЕО</div>
@@ -492,9 +500,13 @@
 
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
+        const $section = $(".circleSection");
+        const $items = $section.find(".circleItem");
 
-        const $items = $(".circleItem");
+        // якщо секція схована або елементів нема — нічого не робимо
+        if (!$items.length || $section.is(":hidden")) return;
+
         const total = $items.length;
         const radius = 260; // радіус кола
         const center = 300; // центр (половина width/height)
