@@ -664,6 +664,13 @@
 }
 @font-face {
     font-family: "Montserrat";
+    src: url("/EnergyGroup/assets/Montserrat-Medium-Bv7av8qq.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Montserrat";
     src: url("/EnergyGroup/assets/Montserrat-Regular-DLSKq2aI.woff2") format("woff2");
     font-weight: 400;
     font-style: normal;
@@ -720,6 +727,7 @@
     --lightgrey: #D6D5D3;
     --grey-pale: #FAF9F9;
     --text: #413E39;
+    --white: #ffffff;
     --muted-on-dark: rgba(255, 255, 255, .65);
 
     --font-family: "Supreme", sans-serif;
@@ -985,7 +993,9 @@ body{
    ENGINEERING / SOLUTIONS (dark section)
 ========================= */
 .engSection{
-    padding: 0;
+    margin-top: -120px;
+    position: relative;
+    z-index: 2;
 }
 /* engSection wrapper: прибираємо контейнерні поля саме тут */
 .engSection__wrap{
@@ -1027,18 +1037,16 @@ body{
     font-family: var(--font3), sans-serif;
     font-size: 64px;
     line-height:.9;
-    color:#0A0606;
+    color: var(--black);
     text-transform:uppercase;
 }
 .engHero__glow{
     position:absolute;
     left:50%;
-    bottom:-120px;  /* ГОЛОВНЕ — ось це */
+    bottom:-80px;  /* ГОЛОВНЕ — ось це */
     transform:translateX(-50%);
     width: min(2977px, 140%);
-    height:auto;
-    pointer-events:none;
-    z-index:3;
+    z-index:1;
 }
 .engSection__glow{
     position: absolute;
@@ -1741,8 +1749,7 @@ body{
     font-size: 22px;
     letter-spacing: .02em;
     text-transform: uppercase;
-    color:#0A0606;
-
+    color:var(--black);
 }
 .notfound__text{
     margin-left: 100px;
@@ -2547,14 +2554,17 @@ body.menu-open{
 .docsLinks__col#certs{
     grid-column: 8 / 13; /* правий верх */
     grid-row: 1;
+    max-width: 320px;
 }
 .docsLinks__col#manuals{
     grid-column: 2 / 6;  /* лівий низ */
     grid-row: 2;
+    max-width: 320px;
 }
 .docsLinks__col#catalogs{
     grid-column: 9 / 13; /* правий низ */
     grid-row: 2;
+    max-width: 320px;
 }
 .docsLink__arrow{
     position: relative;
@@ -2579,22 +2589,94 @@ body.menu-open{
 }
 /* 3) FORM */
 .docsForm{
-    padding: 64px 0 92px;
+    padding: 110px 0;
     background:#fff;
 }
 .docsForm__inner{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap: 56px;
+    display: grid;
+    grid-template-columns: minmax(320px, 520px) minmax(520px, 1fr);
+    grid-template-areas:
+    "title title"
+    "subtitle form";
+    gap: 24px 120px;
+    align-items: start;
 }
-.docsForm__left{ flex: 0 0 420px; }
+.docsForm__title{
+    grid-area: title;
+    margin: 0 0 12px;
+}
+.docsForm__left{
+    grid-column: 1;
+    display: contents;
+    flex-direction: column;
+    gap: 14px;
+}
+.docsForm__subtitle{
+    grid-area: subtitle;
+    margin: 0;
+    align-self: start;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: -0.03em;
+    color: var(--orange);
+}
+.docsForm__right{
+    grid-area: form;
+}
+.reqForm__box{
+    border-radius: 14px;
+    padding: 18px;
+    background: #0A0606;
+    box-shadow: 0 18px 50px rgba(0,0,0,.25);
+}
+.reqField--full{ grid-column: 1 / -1; }
+.reqField__input,
+.reqField__textarea{
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.04);
+    padding: 10px 12px;
+    outline: none;
+    font-family: var(--font-family-Thin),sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: var(--white);
+}
+.reqField__input{ height: 34px; }
+.reqField__textarea{ height: 62px; resize: none; }
+@media (max-width: 1100px){
+    .docsForm__inner{
+        grid-template-columns: 1fr;
+        grid-template-areas:
+      "title"
+      "subtitle"
+      "form";
+        gap: 18px;
+    }
+
+    .docsForm__subtitle{
+        margin-bottom: 8px;
+    }
+}
+@media (max-width: 560px){
+    .reqForm__grid{ grid-template-columns: 1fr; }
+    .reqField--full{ grid-column: auto; }
+}
 .docsForm__title{
     margin: 0 0 12px;
-    font-size: 20px;
-    font-weight: 800;
-    letter-spacing: .06em;
     text-transform: uppercase;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 500;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--black);
 }
 .docsForm__subtitle{
     margin: 0;
@@ -2644,7 +2726,11 @@ body.menu-open{
     gap: 10px;
     margin: 14px 0 22px;
     font-size: 11px;
-    color: rgba(0,0,0,.55);
+    font-family: var(--font-family), sans-serif;
+    font-weight: 100;
+    line-height: 110%;
+    letter-spacing: -0.03em;
+    color: var(--grey);
 }
 .reqAgree__check{ position:absolute; opacity:0; pointer-events:none; }
 .reqAgree__dot{
@@ -2655,15 +2741,15 @@ body.menu-open{
     display:inline-block;
 }
 .reqAgree__check:checked + .reqAgree__dot{
-    background:#ff7a00;
-    border-color:#ff7a00;
+    background:#FF822C;
+    border-color:#FF822C;
 }
 .reqBtn{
     display:inline-flex;
     align-items:center;
     justify-content:center;
     border: none;
-    background:#ff7a00;
+    background:#FF822C;
     color:#fff;
     border-radius: 999px;
     padding: 12px 20px;
@@ -3316,6 +3402,12 @@ body.menu-open{
       "manuals"
       "catalogs";
     }
+
+    .docsLinks__col#certs .docsLinks__col#manuals .docsLinks__col#catalogs {
+        width: 100%;
+    };
+
+
 }
 /*
 Стрілка ↗
