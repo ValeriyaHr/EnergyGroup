@@ -1007,26 +1007,36 @@ body{
     padding-left: 0;
     padding-right: 0;
 }
-/* сама чорна картка по центру з “40px зліва/справа” */
 .engSection__card{
-    width: min(1240px, calc(100% - 80px)); /* 40 + 40 */
     margin: 0 auto;
     position: relative;
+    isolation: isolate;
     padding: 120px 48px 160px;
     overflow: hidden;
     color: rgba(255,255,255,.80);
+    max-width: 1680px;
+    --pad-x: 48px;
+    --col-left: 240px;
+    --col-right: 360px;
+    --gap: clamp(24px, 6vw, 120px);
+    --mid: calc(100% - (2 * var(--pad-x) + var(--col-left) + var(--col-right) + 2 * var(--gap)));
 }
 .engSection__ticks{
     position: absolute;
-    left: 50%;
-    top: 44%;                     /* підняли */
-    transform: translate(-50%, -50%) rotate(-12deg);
-    width: min(980px, 70vw);      /* трохи менше */
+    left: calc(var(--pad-x) + var(--col-left) + var(--gap) + (var(--mid) / 2));
+    top: 960px;
+
+    width: clamp(720px, 62vw, 1280px);
     height: auto;
-    opacity: .65;
+
+    transform: translate(-50%, -50%) rotate(-12deg) scale(1.08);
+
+    opacity: .6;
+    filter: blur(.2px) drop-shadow(0 0 18px rgba(255,255,255,.18));
+
     pointer-events: none;
     user-select: none;
-    z-index: 1;
+    z-index: 0;
 }
 /* контент поверх тіксів */
 .engSection__rows,
@@ -1178,7 +1188,7 @@ body{
     transform: translateX(-36%);
 }
 .engDivider{
-    height: 300px;
+    height: 40vh;
     background: url("/EnergyGroup/assets/eng-arc-glow-EFMcqy1O.png") center bottom / cover no-repeat;
 }
 .engHero__glow{
@@ -1205,72 +1215,146 @@ body{
     position: relative;
     z-index: 2;
 }
-.engSolRow{
-    display: grid;
-    grid-template-columns: 180px 1fr 280px;
-    gap: 34px;
-    padding: 32px 0;
-}
-.engSolRow:first-child{ border-top: 0; padding-top: 0; }
-.engSolRow__left{
-    width: 180px;
-    flex: 0 0 180px;
+.engSection__rows{
     display: flex;
     flex-direction: column;
+}
+.engSolRow{
+    display: grid;
+    grid-template-columns: 240px minmax(520px, 1fr) 360px;
+    grid-template-rows: auto 1fr;
+    column-gap: clamp(24px, 6vw, 120px);
+    row-gap: 18px;
+    align-items: start;
+    padding: 44px 0;
+    border-top: none;
+}
+.engSolRow:first-child{
+    border-top: 0;
+    padding-top: 0;
+}
+/* left column */
+.engSolRow__left{
+    width: auto;
+    display: contents;
+    flex-direction: column;
     gap: 18px;
+    padding-top: 6px;
 }
 .engSolRow__label{
-    font-size: 12px;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.55);
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 100;
+    font-size: 18px;
+    line-height: 110%;
+    letter-spacing: -0.03em;
+    color: var(--orange);
+    margin-bottom: 55%;
 }
 .engSolRow__num{
     font-family: var(--font3), sans-serif;
-    font-size: 84px;
-    line-height: .9;
-    color: rgba(255,255,255,.62);
+    font-weight: 400;
+    font-size: clamp(64px, 8vw, 158px);
+    letter-spacing: -0.02em;
+    display: block;
+    line-height: 0.82;
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+    color: var(--lightgrey);
+    margin-left: 70%;
 }
-.engSolRow__center{
-    flex: 1 1 auto;
-    max-width: 560px;
-    font-size: 12px;
-    line-height: 1.65;
-    color: rgba(255,255,255,.70);
+.engSolRow__center {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: center;   /* ти хотіла блок по центру */
+    max-width: 452px;
+    width: 100%;
+    text-align: justify;
+    text-align-last: justify;
+    padding-top: 0;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.35;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: var(--white);
 }
-.engSolRow__center p{ margin: 0 0 14px; }
-.engSolRow__center p:last-child{ margin-bottom: 0; }
+/* right column */
 .engSolRow__right{
-    width: 280px;
-    flex: 0 0 280px;
-    display: flex;
+    width: auto;
+    display: contents;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 12px;
+    align-items: flex-end;      /* CTA по правому краю */
+    gap: 18px;
+    padding-top: 6px;
 }
 .engSolRow__action{
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+    align-self: start;
+    text-align: right;
+    text-transform: uppercase;
+    padding-top: 0;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
+    font-size: clamp(18px, 1.2vw, 24px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--white);
+}
+.engSolRow__action{
+    position: relative;
     display: inline-flex;
     justify-content: flex-end;
-    font-size: 12px;
+    padding: 0 18px;
+    font-size: 10px;
     letter-spacing: .14em;
     text-transform: uppercase;
     text-decoration: none;
     color: rgba(255,255,255,.82);
 }
-.engSolRow__action:hover{ color: #fff; }
-.engSolRow__action:focus-visible{
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(255,122,0,.25);
-    border-radius: 10px;
+.engSolRow__action::before,
+.engSolRow__action::after{
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    display: grid;
+    place-items: center;
+    color: var(--orange);
+    transition: transform .18s ease;
 }
+.engSolRow__action::before{ content:"["; left: 0; }
+.engSolRow__action::after { content:"]"; right: 0; }
+.engSolRow__action:hover::before{ transform: translateX(-10px); }
+.engSolRow__action:hover::after { transform: translateX(10px); }
 .engSolRow__note{
-    font-size: 12px;
-    line-height: 1.55;
-    color: rgba(255,122,0,.85);
+    grid-column: 3;
+    grid-row: 2;
+    justify-self: end;
+    align-self: start;
+    margin-top: 12px;
+    max-width: 260px;
+    text-align: left;
+    font-family: var(--font-family),sans-serif;
+    font-weight: 400;
+    font-size: clamp(14px, 0.9vw, 18px);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--orange);
 }
-.engSection__rows{
-    position: relative;
-    z-index: 2;
+/* tablet */
+@media (max-width: 1024px){
+    .engSolRow{
+        grid-template-columns: 200px minmax(420px, 1fr) 300px;
+        column-gap: 44px;
+        padding: 32px 0;
+    }
+    .engSolRow__num{ font-size: 80px; }
 }
 .engSection__video{
     position: relative;
