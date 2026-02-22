@@ -275,7 +275,7 @@
 
     margin: 0;
     display: flex;
-    align-items: center;     /* центр по вертикали внутри верхней зоны */
+    align-items: center;     /* центр по вертикали внутри верхньої зони */
     justify-content: center; /* центр по горизонтали */
     text-align: left;
 
@@ -289,7 +289,7 @@
     font-family: var(--font-text-lib);
 }
 
-/* правый нижний блок */
+/* правий нижній блок */
 .aboutGrid__bottom{
     grid-column: 2;
     grid-row: 2;
@@ -304,6 +304,69 @@
     width: 86%;
     color: var(--grey-pale);
     font-family: var(--font-text-lib);
+}
+
+/* Стили для таблицы с характеристиками */
+.productDetails__table{
+    width: 100%;
+    overflow-x: auto;
+}
+
+.specs-table{
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-text-product);
+    background: transparent;
+    color: #727270;
+}
+
+.specs-table thead tr{
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.bg90{
+    background: #D6D5D3;
+    color:#413E39 !important;
+}
+.specs-table th{
+    padding: 3px ;
+
+    text-align: left;
+    font-family: var(--font-text-product);
+    font-weight: 300;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+
+}
+
+
+.specs-table tbody tr:hover{
+    background: rgba(255, 122, 0, 0.05);
+}
+
+.specs-table td{
+    padding: 3px ;
+    font-size: 12px;
+    font-family: var(--font-text-product);
+    font-weight: 300;
+
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.82);
+}
+
+
+
+/* responsive */
+@media (max-width: 768px){
+    .specs-table th,
+    .specs-table td{
+        padding: 10px 8px;
+        font-size: 12px;
+    }
+
+    .specs-table td:first-child{
+        font-size: 11px;
+    }
 }
 
 /* responsive */
@@ -324,4 +387,3 @@
     .productDetails__row--benefits{ padding-right: 270px; }
     .productDetails__cols{ gap: 28px; }
 }
-
