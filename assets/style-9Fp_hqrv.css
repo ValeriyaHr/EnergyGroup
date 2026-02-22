@@ -962,7 +962,6 @@ body{
     text-decoration: underline;
     text-underline-offset: 6px;
 }
-/* ---------- hero ---------- */
 .hero {
     min-height: calc(70vh - var(--header-h));
     display:flex;
@@ -982,7 +981,6 @@ body{
 .hero__inner{
     display:grid;
     grid-template-columns: minmax(520px, 1fr) minmax(520px, 1fr);
-    gap: clamp(32px, 5vw, 84px);
     align-items: start;
 }
 .hero__left{
@@ -1035,6 +1033,9 @@ body{
 .light-grey{
     color: var(--lightgrey);
 }
+.margin-left{
+    margin-left: 15%;
+}
 .hero__right{
     display:flex;
     justify-content:flex-end;
@@ -1057,11 +1058,13 @@ body{
 .intro{ padding: 34px 0 40px; }
 .intro__text{
     font-family: var(--font-family), sans-serif;
-    font-size: 14px;
-    letter-spacing: .02em;
     text-transform: uppercase;
     padding: 80px 0 60px;
     color: var(--black);
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
 }
 /* =========================
    ENGINEERING / SOLUTIONS (dark section)
@@ -1618,21 +1621,132 @@ body{
 }
 .intro__media img{ width:100%; height:100%; object-fit:cover; display:block; }
 .intro__copy{
-    padding: 28px 32px;
+    padding: 28px 24px;
     border: 1px solid var(--lightgrey);
     border-radius: 12px;
     background: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
-.intro__p{ color:#6f6f6f; font-size: 13px; line-height: 1.7; margin:0 0 18px; }
-.intro__actions{ display:flex; gap:18px; flex-wrap:wrap; }
+.intro__p{
+    font-family: var(--font-family), sans-serif;
+    font-weight: 100;
+    font-size: clamp(14px, 1.2vw, 18px);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--orange);
+}
+.intro__content{
+    font-family: var(--font-family),sans-serif;
+    font-weight: 400;
+    font-size: clamp(14px, 1.2vw, 18px);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--grey);
+}
+.intro__aside{
+    font-family: var(--font-family),sans-serif;
+    font-weight: 400;
+    font-size: clamp(14px, 1.2vw, 18px);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--grey);
+    padding: 20px 40px 10px;
+}
+.intro__actions{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: flex-start;
+    font-family: var(--font-family),sans-serif;
+    font-weight: 400;
+    font-size: clamp(18px, 1.6vw, 24px);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--grey);
+    flex-wrap:nowrap;
+    margin-top: auto;      /* ⬅️ притискає блок з кнопками вниз */
+    padding-top: 18px;}
+.intro__link{
+    position: relative;
+    display: inline-flex;
+    padding: 0 18px;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
+    font-size: clamp(16px, 1.4vw, 22px);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--grey);
+    text-decoration: none;
+    transition: color .2s ease;
+}
+/* дужки */
+.intro__link::before,
+.intro__link::after{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--orange-light);
+    transition: transform .18s ease;
+    line-height: 1;
+}
+.intro__link::before{
+    content: "[";
+    left: 0;
+}
+.intro__link::after{
+    content: "]";
+    right: 0;
+}
+/* hover drift */
+.intro__link:hover::before{
+    transform: translateY(-50%) translateX(-8px);
+}
+.intro__link:hover::after{
+    transform: translateY(-50%) translateX(8px);
+}
+.intro__link:hover{
+    color: var(--black);
+}
 /* ---------- engineering ---------- */
-.engineering{ padding: 48px 0 66px; }
-.engineering__inner{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items:start;
+.engineering{
+    padding: 48px 0 66px;
 }
+.engineering__inner{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+}
+.engineering__top{
+    margin-bottom: 60px;
+    max-width: 920px;
+}
+.engineering__title {
+    font-family: var(--font-family);
+    font-size: clamp(28px, 2.2vw, 40px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    margin: 20px 0 0;
+}
+.engineering__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+}
+.engineering__left{
+    max-width: 480px;
+    font-family: var(--font-family), sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+    text-transform: uppercase;
+}
+.engineering__left p{ margin: 0; }
 .h2{
     font-family: var(--font-family), sans-serif;
     font-size: 22px;
