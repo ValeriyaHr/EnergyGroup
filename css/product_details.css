@@ -77,12 +77,12 @@
 
 .productDetails_twoCols:first-child{
     flex: 0 0 59%;
-    max-width: 60%;
+    max-width: 55%;
 }
 
 .productDetails_twoCols:last-child{
-    flex: 0 0 40%;
-    max-width: 40%;
+    flex: 0 0 45%;
+    max-width: 45%;
 }
 .productDetails__card__title{
     font-size: 24px;
