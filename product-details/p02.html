@@ -1,95 +1,108 @@
+<section class="productDetails" aria-label="Деталі продукту">
+    <div class="container" style="padding-top: 0; padding-bottom: 50px">
+        <article class="productDetails__card">
+            <div class="productDetails__card__header">
 
-    <section class="productDetails" aria-label="Деталі продукту">
-        <div class="container">
-            <article class="productDetails__card">
-
-                <!-- 1) Back arrow -->
-                <a class="productDetails__back" href="#" aria-label="Назад">
-                    <svg class="productDetails__arrowSvg" width="60" height="60" viewBox="0 0 60 60" aria-hidden="true">
-                        <path d="M38 14 L22 30 L38 46" />
-                        <path d="M22 30 H56" />
-                    </svg>
-                </a>
-
-                <!-- Badge -->
-                <div class="productDetails__badge" aria-hidden="true">02</div>
-
-                <!-- 2) Переваги -->
-                <div class="productDetails__row productDetails__row--benefits">
-                    <h2 class="productDetails__h">Переваги</h2>
-
-                    <ul class="productDetails__benefits">
-                        <li>Зручне дистанційне керування та діагностика</li>
-                        <li>Висока стабільність і точність параметрів</li>
-                        <li>Автоматичний захист від збоїв і коротких замикань</li>
-                        <li>Повна сумісність із системами телеметрії</li>
-                    </ul>
+                <div class="containerFlex">
+                    <div class="productDetails_twoCols">  <a class="productDetails__back" href="#" aria-label="Назад">
+                        <svg class="productDetails__arrowSvg" width="60" height="60" viewBox="0 0 60 60" aria-hidden="true">
+                            <path d="M38 14 L22 30 L38 46" />
+                            <path d="M22 30 H56" />
+                        </svg>
+                    </a></div>
+                    <div class="productDetails_twoCols productDetails_badge pr-16" >  <div  style="text-align: center">02</div></div>
                 </div>
 
-                <div class="productDetails__divider" aria-hidden="true"></div>
 
-                <!-- 3) Станції -->
-                <div class="productDetails__row productDetails__row--about">
-                    <h3 class="productDetails__title">
-                        Станції катодного<br />
-                        захисту інверторні<br />
-                        автоматичні СКЗІ
+
+            </div>
+
+            <div class="productDetails__divider" aria-hidden="true"></div>
+
+            <div class="containerFlex">
+                <div class="productDetails_twoCols pl-16 t_font_tittle">  <h2 class="productDetails__h">Переваги</h2></div>
+                <div class="productDetails_twoCols">
+                    <ul class="productDetails__benefits">
+                        <li>Плавне регулювання струм без перемикання перемичок</li>
+                        <li>Автоматична стабілізація струму в діапазоні 0,3–3,5 В</li>
+                        <li>Вирівнювання пульсацій вихідного струму станції катодного захисту</li>
+                        <li>Індикація параметрів (струм, напруга) для моделей 10 А та 30 А</li>
+                        <li>Вбудований грозо- та перенапругозахист</li>
+                        <li>Компактна конструкція— можливість встановлення у корпуси існуючих БЗК</li>
+                        <li>Захист IP 64— робота на відкритому повітрі або у ґрунтових колодязях</li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <div class="productDetails__divider" aria-hidden="true"></div>
+
+            <div class="  productDetails__row--about pl-16">
+                <div class="aboutGrid">
+                    <h3 class="aboutGrid__title t_font_tittle">
+                        Блоки сумісного захисту <br>(електронні)<br>
+                        плавного прецизійного <br>керування
                     </h3>
 
-                    <p class="productDetails__text">
-                        СКЗІ — це інверторні перетворювачі катодного захисту, призначені для захисту
-                        підземних металевих споруд від корозії. Застосовуються для одиночних і багатониткових
-                        нафтопроводів, газопроводів, насосних і компресорних станцій, тепломереж,
-                        електричних та водопровідних мереж, а також промислових об’єктів.
+                    <p class="aboutGrid__top">
+                        Блоки БЗК-ЕППК застосовуються у системах електрохімічного захисту (ЕХЗ) для захисту підземних сталевих споруд від
+                    </p>
+
+                    <p class="aboutGrid__bottom">
+                        ґрунтової корозії та усунення взаємного впливу сусідніх трубопроводів. Пристрій<br>
+                        забезпечує точний розподіл і плавне регулювання захисного струму між кількома<br>
+                        комунікаціями, підтримуючи оптимальний потенціал на кожній із них.
                     </p>
                 </div>
 
-                <div class="productDetails__divider" aria-hidden="true"></div>
 
-                <!-- 4) Нижний блок: 4 колонки -->
-                <div class="productDetails__cols">
+            </div>
 
-                    <section class="productDetails__col" aria-label="Контроль та моніторинг">
-                        <div class="productDetails__kicker">Контроль та моніторинг</div>
+
+
+            <div class="containerFlex" style="  padding-bottom: 30px;">
+                <div class="productDetails_twoCols pl-16">
+
+                    <section class="productDetails__col" aria-label="Призначення" style="width: 33%">
+                        <div class="productDetails__kicker">Призначення</div>
                         <ul class="productDetails__list">
-                            <li>Контроль режимів роботи станції</li>
-                            <li>Контроль вихідних параметрів (струм, напруга, потенціал)</li>
-                            <li>Виявлення несанкціонованого доступу</li>
-                            <li>Облік напрацювання та споживаної електроенергії</li>
+                            <li>Спільний захист кількох <br>трубопроводів від однієї<br> станції катодного захисту</li>
+                            <li>Усунення взаємного <br>впливу трубопроводів,<br> кабелів і споруд</li>
+                            <li>Регулювання сили <br> струму для забезпечення <br>необхідного захисного<br> потенціалу</li>
+
                         </ul>
                     </section>
+                </div>
+                <div class="productDetails_twoCols">
+                    <div class="productDetails__cols">
 
-                    <section class="productDetails__col" aria-label="Режими керування">
-                        <div class="productDetails__kicker">Режими керування</div>
-                        <ul class="productDetails__list">
-                            <li>Дистанційне</li>
-                            <li>Ручне</li>
-                        </ul>
-                    </section>
 
-                    <section class="productDetails__col" aria-label="Можливості системи">
-                        <div class="productDetails__kicker">Можливості системи</div>
-                        <ul class="productDetails__list">
-                            <li>Опитування пристроїв з інтервалом від 1 хв до 24 год</li>
-                            <li>Збереження робочих даних на сервері</li>
-                            <li>Формування звітів і графіків роботи</li>
-                            <li>Автоматичне архівування даних</li>
-                        </ul>
-                    </section>
+                        <section class="productDetails__col" aria-label="Параметр">
+                            <div class="productDetails__kicker">Параметр</div>
+                            <ul class="productDetails__list">
+                                <li>Номінальний струм</li>
+                                <li>Робоча напруга</li>
+                                <li>Ступінь захисту</li>
+                                <li>Температура роботи</li>
+                            </ul>
+                        </section>
 
-                    <!-- 4-я колонка (добавлена) -->
-                    <section class="productDetails__col" aria-label="Інтеграції та інтерфейси">
-                        <div class="productDetails__kicker">Інтеграції та інтерфейси</div>
-                        <ul class="productDetails__list">
-                            <li>Сумісність із SCADA/телеметрією</li>
-                            <li>Передача даних на диспетчерський пункт</li>
-                            <li>Журнали подій та аварій</li>
-                            <li>Гнучкі налаштування сповіщень</li>
-                        </ul>
-                    </section>
+                        <section class="productDetails__col" aria-label="Значення">
+                            <div class="productDetails__kicker">Значення</div>
+                            <ul class="productDetails__list">
+                                <li>10 А / 30 А</li>
+                                <li>0,3 – 3,5 В</li>
+                                <li>IP 64</li>
+                                <li>–40 … +50 °C</li>
+                            </ul>
+                        </section>
+                    </div>
 
                 </div>
-            </article>
-        </div>
-    </section>
+            </div>
 
+            <br>
+            <br>
+        </article>
+    </div>
+</section>
