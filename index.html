@@ -65,9 +65,9 @@
     <section class="intro" aria-label="Про компанію">
         <div class="container intro__inner">
             <p class="intro__text">
-                Ми проєктуємо, виготовляємо та монтуємо системи, які
-                 забезпечують довговічність і безаварійність трубопроводів, резервуарів,
-                промислових і комунальних об’єктів
+                Ми проєктуємо, виготовляємо та монтуємо системи, які <br>
+                 забезпечують довговічність і безаварійність <span class="light-grey">трубопроводів, резервуарів,<br>
+                промислових і комунальних об’єктів</span>
             </p>
 
             <div class="intro__card">
@@ -80,88 +80,174 @@
                         [ Наша діяльність
                     </p>
 
-                    <p class="intro__p">
+                    <p class="intro__content">
                         Наша компетенція охоплює весь ланцюг - Від розробки технічного рішення та виготовлення
                         обладнання - до монтажу, пусконалагодження, діагностики та сервісного супроводу.
                         Завдяки власному виробництву, та інженерному відділу ми гарантуємо точність,
                         відповідність ДСТУ/ISO і стабільність кожного проєкту
                     </p>
-                    <p class="intro__p">
+                    <div class="intro__aside">
                         Ми не просто постачаємо обладнання — ми створюємо системи, які працюють десятиліттями
                         та оптимізують виробничі процеси наших клієнтів
-                    </p>
+                    </div>
 
                     <div class="intro__actions">
-                        <a class="btn btn--secondary" href="products.html">ПЕРЕГЛЯНУТИ ПРОДУКЦІЮ</a>
-                        <a class="btn btn--secondary" href="products.html">РОЗРАХУВАТИ ВАРТІСТЬ РІШЕННЯ ПІД ВАШ ОБʼЄКТ</a>
+                        <a class="intro__link" href="products.html">
+                            ПЕРЕГЛЯНУТИ ПРОДУКЦІЮ
+                        </a>
+                        <a class="intro__link" href="products.html">
+                            РОЗРАХУВАТИ ВАРТІСТЬ РІШЕННЯ ПІД ВАШ ОБʼЄКТ
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== ENGINEERING ===== -->
     <section class="engineering" id="engineering">
-        <div class="container engineering__inner">
-            <div class="engineering__left">
-                <p>Реалізація проєктів</p>
-                <h2 class="h2">ми дотримуємось чіткої послідовності робіт — від аналізу об’єкта до введення системи в</h2>
-                <p class="muted">експлуатацію та її подальшого моніторингу</p>
+        <div class="container">
+
+            <!-- TOP -->
+            <div class="engineering__top">
+                <p class="intro__p">[ Реалізація проєктів ]</p>
+
+                <div class="intro__text">
+                    МИ ДОТРИМУЄМОСЬ ЧІТКОЇ ПОСЛІДОВНОСТІ РОБІТ —
+                    <br>
+                    ВІД АНАЛІЗУ ОБʼЄКТА ДО ВВЕДЕННЯ СИСТЕМИ В
+                    <br>
+                    <span class="light-grey margin-left">
+                    ЕКСПЛУАТАЦІЮ ТА ЇЇ ПОДАЛЬШОГО<br>
+                </span>
+                    <span class="light-grey margin-left">
+                   МОНІТОРИНГУ
+                </span>
+                </div>
             </div>
 
-            <div class="engineering__left">
-                Кожен етап виконується під контролем профільних інженерів,
-            що гарантує точність, надійність і відповідність технічним вимогам
-            </div>
+            <!-- CONTENT -->
+            <div class="engineering__content">
 
-            <div class="engineering__right">
-                <button class="engRow" type="button">
-                    <span>АНАЛІЗ ОБʼЄКТА ТА ТЕХНІЧНЕ ЗАВДАННЯ</span>
-<!--                    <img-->
-<!--                            src="/img/ui/arrow-diag-open.svg"-->
-<!--                            alt=""-->
-<!--                            class="process__arrow"-->
-<!--                            aria-hidden="true"-->
-<!--                    >-->
-                </button>
-                <button class="engRow" type="button">
-                    <span>РОЗРОБКА РІШЕННЯ ТА ВИРОБНИЦТВО</span>
-<!--                    <img-->
-<!--                            src="/img/ui/arrow-diag-open.svg"-->
-<!--                            alt=""-->
-<!--                            class="process__arrow"-->
-<!--                            aria-hidden="true"-->
-<!--                    >-->
-                </button>
-                <button class="engRow" type="button">
-                    <span>БУДІВЕЛЬНО-МОНТАЖНІ РОБОТИ ЕХЗ</span>
-<!--                    <img-->
-<!--                            src="/img/ui/arrow-diag-open.svg"-->
-<!--                            alt=""-->
-<!--                            class="process__arrow"-->
-<!--                            aria-hidden="true"-->
-<!--                    >-->
-                </button>
-                <button class="engRow" type="button">
-                    <span>МОНІТОРИНГ І СЕРВІС</span>
-<!--                    <img-->
-<!--                            src="/img/ui/arrow-diag-open.svg"-->
-<!--                            alt=""-->
-<!--                            class="process__arrow"-->
-<!--                            aria-hidden="true"-->
-<!--                    >-->
-                </button>
+                <div class="engineering__left">
+                    Кожен етап виконується під контролем профільних інженерів,
+                    що гарантує точність, надійність і відповідність технічним вимогам
+                </div>
 
-                <div class="engineering__ctaLine">
-                    <span class="muted">CONSULT WITH ENGINEER</span>
+                <div class="engineering__right">
 
-                    <div>We also cooperate with international engineering teams</div>
+                    <!-- 1 -->
+                    <div class="engItem">
+                        <div class="engRow js-engRow" aria-expanded="false">
+                            <div class="engRow__title">
+                                АНАЛІЗ ОБʼЄКТА ТА<br>ТЕХНІЧНЕ ЗАВДАННЯ
+                            </div>
 
-                    <a class="btn btn--primary" href="#contacts">
-                        <span class="btn__bracket">[</span>
-                        <span class="btn__label">КОНСУЛЬТАЦІЯ</span>
-                        <span class="btn__bracket">]</span>
-                    </a>
+                            <button
+                                    class="engRow__arrowBtn js-engArrow"
+                                    type="button"
+                                    aria-label="Розгорнути пункт"
+                                    data-src-closed="/img/ui/white-up2.svg"
+                                    data-src-open="/img/ui/orange-up2.svg"
+                            >
+                                <img class="engRow__arrowIcon" src="/img/ui/white-up2.svg" alt="" width="26" height="26" loading="lazy"/>
+                            </button>
+                        </div>
+
+                        <div class="engRowPanel js-engPanel" hidden>
+                            <p>
+                                Клієнт надає базові дані щодо об’єкта (схеми, умови експлуатації, параметри ґрунтів).
+                                Фахівці компанії проводять технічний аналіз, розрахунок струмів і формують технічно
+                                обґрунтоване завдання (ТЗ) з оптимальним складом обладнання
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 2 -->
+                    <div class="engItem">
+                        <div class="engRow js-engRow" aria-expanded="false">
+                            <div class="engRow__title">
+                                РОЗРОБКА РІШЕННЯ ТА<br>ВИРОБНИЦТВО
+                            </div>
+
+                            <button
+                                    class="engRow__arrowBtn js-engArrow"
+                                    type="button"
+                                    aria-label="Розгорнути пункт"
+                                    data-src-closed="/img/ui/white-up2.svg"
+                                    data-src-open="/img/ui/orange-up2.svg"
+                            >
+                                <img class="engRow__arrowIcon" src="/img/ui/white-up2.svg" alt="" width="18" height="18" loading="lazy"/>
+                            </button>
+                        </div>
+
+                        <div class="engRowPanel js-engPanel" hidden>
+                            <p>На основі погодженого ТЗ розробляється індивідуальний проєкт системи ЕХЗ Усі ключові елементи — аноди, станції
+                                катодного захисту, блоки БЗК, пункти вимірювання, телеметрія — виготовляються на власному виробництві з дотриманням ДСТУ та ISO</p>
+                        </div>
+                    </div>
+
+                    <!-- 3 -->
+                    <div class="engItem">
+                        <div class="engRow js-engRow" aria-expanded="false">
+                            <div class="engRow__title">
+                                БУДІВЕЛЬНО-МОНТАЖНІ<br>РОБОТИ ЕХЗ
+                            </div>
+
+                            <button
+                                    class="engRow__arrowBtn js-engArrow"
+                                    type="button"
+                                    aria-label="Розгорнути пункт"
+                                    data-src-closed="/img/ui/white-up2.svg"
+                                    data-src-open="/img/ui/orange-up2.svg"
+                            >
+                                <img class="engRow__arrowIcon" src="/img/ui/white-up2.svg" alt="" width="18" height="18" loading="lazy"/>
+                            </button>
+                        </div>
+
+                        <div class="engRowPanel js-engPanel" hidden>
+                            <p>Після виготовлення обладнання виконується монтаж, підключення та пусконалагодження інженерами Prime Energy Group. Система
+                                вводиться в експлуатацію з перевіркою параметрів і оформленням технічної документації</p>
+                        </div>
+                    </div>
+
+                    <!-- 4 -->
+                    <div class="engItem">
+                        <div class="engRow js-engRow" aria-expanded="false">
+                            <div class="engRow__title">
+                                МОНІТОРИНГ<br>І СЕРВІС
+                            </div>
+
+                            <button
+                                    class="engRow__arrowBtn js-engArrow"
+                                    type="button"
+                                    aria-label="Розгорнути пункт"
+                                    data-src-closed="/img/ui/white-up2.svg"
+                                    data-src-open="/img/ui/orange-up2.svg"
+                            >
+                                <img class="engRow__arrowIcon" src="/img/ui/white-up2.svg" alt="" width="18" height="18" loading="lazy"/>
+                            </button>
+                        </div>
+
+                        <div class="engRowPanel js-engPanel" hidden>
+                            <p>Після введення системи в експлуатацію забезпечується технічний супровід:
+                                діагностика анодних полів і станцій,
+                                обслуговування електронних модулів,
+                                дистанційний моніторинг через телеметрію GSM
+                                Це забезпечує стабільність потенціалів і продовжує ресурс експлуатації об’єкта</p>
+                        </div>
+                    </div>
+
+                    <div class="engineering__ctaLine">
+                        <span class="muted">CONSULT WITH ENGINEER</span>
+                        <div>We also cooperate with international engineering teams</div>
+
+                        <a class="btn btn--primary" href="#contacts">
+                            <span class="btn__bracket">[</span>
+                            <span class="btn__label">КОНСУЛЬТАЦІЯ</span>
+                            <span class="btn__bracket">]</span>
+                        </a>
+                    </div>
+
                 </div>
             </div>
         </div>
