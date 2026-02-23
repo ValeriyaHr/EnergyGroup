@@ -69,3 +69,126 @@ document.addEventListener("click", (e) => {
     panel.hidden = !isOpen;
     panel.classList.toggle("is-open", isOpen);
 });
+
+
+/// ./js/main.js
+// Prime Energy Group — main interactions (vanilla JS)
+
+function initWhyUsReveal() {
+    const tabs = document.querySelector(".whyus__tabs");
+    if (!tabs) return;
+
+    // Якщо вже видно на старті (наприклад, перезавантаження посеред сторінки)
+    const inViewportNow = () => {
+        const r = tabs.getBoundingClientRect();
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        return r.top < vh * 0.8 && r.bottom > vh * 0.2;
+    };
+
+    if (inViewportNow()) {
+        tabs.classList.add("is-inview");
+        return;
+    }
+
+    const io = new IntersectionObserver(
+        (entries) => {
+            for (const e of entries) {
+                if (e.isIntersecting) {
+                    tabs.classList.add("is-inview");
+                    io.disconnect(); // один раз
+                    break;
+                }
+            }
+        },
+        { threshold: 0.2 }
+    );
+
+    io.observe(tabs);
+}
+
+function initEngineeringAccordion() {
+    const rows = Array.from(document.querySelectorAll(".js-engRow"));
+    if (!rows.length) return;
+
+    const closeRow = (row) => {
+        const panel = row.parentElement?.querySelector(".js-engPanel");
+        const btn = row.querySelector(".js-engArrow");
+        const icon = btn?.querySelector("img");
+
+        row.setAttribute("aria-expanded", "false");
+        if (panel) panel.hidden = true;
+
+        if (btn && icon) {
+            const closed = btn.getAttribute("data-src-closed");
+            if (closed) icon.src = closed;
+        }
+    };
+
+    const openRow = (row) => {
+        const panel = row.parentElement?.querySelector(".js-engPanel");
+        const btn = row.querySelector(".js-engArrow");
+        const icon = btn?.querySelector("img");
+
+        row.setAttribute("aria-expanded", "true");
+        if (panel) panel.hidden = false;
+
+        if (btn && icon) {
+            const open = btn.getAttribute("data-src-open");
+            if (open) icon.src = open;
+        }
+    };
+
+    rows.forEach((row) => {
+        // клік по всьому рядку або по кнопці
+        row.addEventListener("click", (e) => {
+            const isButton = e.target.closest(".js-engArrow");
+            const clickedInsideRow = e.target.closest(".js-engRow");
+            if (!isButton && !clickedInsideRow) return;
+
+            const expanded = row.getAttribute("aria-expanded") === "true";
+
+            // якщо треба “тільки один відкритий” — закриваємо інші
+            rows.forEach((r) => {
+                if (r !== row) closeRow(r);
+            });
+
+            if (expanded) closeRow(row);
+            else openRow(row);
+        });
+
+        // початково — закрито (на випадок якщо HTML десь зламався)
+        if (row.getAttribute("aria-expanded") !== "true") closeRow(row);
+    });
+}
+
+function initSmoothAnchorScroll() {
+    // легкий UX: плавно скролимо до якорів
+    document.addEventListener("click", (e) => {
+        const a = e.target.closest('a[href^="#"]');
+        if (!a) return;
+
+        const id = a.getAttribute("href");
+        if (!id || id === "#") return;
+
+        const target = document.querySelector(id);
+        if (!target) return;
+
+        e.preventDefault();
+
+        const header = document.querySelector("header");
+        const headerH = header ? header.getBoundingClientRect().height : 0;
+
+        const top =
+            target.getBoundingClientRect().top +
+            window.pageYOffset -
+            Math.round(headerH);
+
+        window.scrollTo({ top, behavior: "smooth" });
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    initWhyUsReveal();
+    initEngineeringAccordion();
+    initSmoothAnchorScroll();
+});

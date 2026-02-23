@@ -1636,6 +1636,7 @@ body{
     line-height: 1.2;
     letter-spacing: -0.01em;
     color: var(--orange);
+    margin-top: 0;
 }
 .intro__content{
     font-family: var(--font-family),sans-serif;
@@ -1675,7 +1676,7 @@ body{
     padding: 0 18px;
     font-family: var(--font-family), sans-serif;
     font-weight: 400;
-    font-size: clamp(16px, 1.4vw, 22px);
+    font-size: clamp(16px, 1.4vw, 18px);
     line-height: 1.1;
     letter-spacing: -0.01em;
     text-transform: uppercase;
@@ -1714,6 +1715,30 @@ body{
 /* ---------- engineering ---------- */
 .engineering{
     padding: 48px 0 66px;
+    position: relative;
+    overflow: hidden;
+}
+.engineering__bgText{
+    position: absolute;
+    left: -4%;
+    top: 58%;
+    transform: translateY(-50%);
+    font-family: var(--font3), sans-serif;
+    font-weight: 400;
+    font-size: clamp(140px, 14vw, 320px);
+    letter-spacing: -0.04em;
+    line-height: 0.82;
+    color: var(--grey-pale);
+    white-space: nowrap;
+    text-transform: uppercase;
+    pointer-events: none;
+    user-select: none;
+    z-index: -1;
+    opacity: 1;
+}
+.engineering .container{
+    position: relative;
+    z-index: 2;
 }
 .engineering__inner{
     display: grid;
@@ -1837,35 +1862,120 @@ body{
     margin-top: -6px;
 }
 .js-engPanel{
-    background: var(--grey-pale);
-    border-radius: 12px;
-    padding: 10px 20px;
-    margin: 20px 0 20px;
-    font-family: var(--font-family),sans-serif;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 100%;
-    letter-spacing: -0.03em;
-    color: var(--grey-dark);
+
 }
 .engRowPanel.is-open{
     max-height: 600px;
 }
 .engRowPanel p{
-    margin: 12px 0 16px;
-    font-size: 12px;
-    line-height: 1.45;
+    font-size: 14px;
+    line-height: 1.25;
     letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: #7a7a7a;
+    background: var(--grey-pale);
+    border-radius: 12px;
+    padding: 10px 20px;
+    margin: 20px 0 18px;
+    font-family: var(--font-family),sans-serif;
+    font-weight: 400;
+    color: var(--grey-dark);
 }
 .engRow img{ width:18px; height:18px; }
-.engineering__ctaLine {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.engineering__ctaLine{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
     gap: 40px;
     padding: 32px 0;
+}
+.engCta{
+    min-width: 0;
+    display:flex;
+    flex-direction:column;
+    gap: 6px;
+}
+.engCta__title{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 0 18px;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
+    font-size: clamp(16px, 1.4vw, 18px);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--grey);
+    text-decoration: none;
+    transition: color .2s ease;
+}
+.engCta__title::before,
+.engCta__title::after{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) translateX(0);
+    line-height: 1;
+    color: var(--orange);
+    transition: transform .18s ease;
+    pointer-events: none;
+}
+.engCta__title::before{ content:"["; left: 0; }
+.engCta__title::after { content:"]"; right: 0; }
+.engCta__title:hover::before{ transform: translateY(-50%) translateX(-8px); }
+.engCta__title:hover::after { transform: translateY(-50%) translateX(8px); }
+.engCta__sub{
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.35;
+    letter-spacing: -0.03em;
+    color: var(--grey-dark);
+}
+/* Button brackets via pseudo + drift (no inner spans needed) */
+.btn--bracketsPseudo{
+    position: relative;
+    padding-left: 52px;
+    padding-right: 52px;
+}
+.btn--bracketsPseudo::before,
+.btn--bracketsPseudo::after{
+    position:absolute;
+    top:50%;
+    transform: translateY(-50%) translateX(0);
+    line-height: 1;
+    color: #fff;
+    transition: transform .18s ease;
+    pointer-events:none;
+}
+.btn--bracketsPseudo::before{ content:"["; left: 20px; }
+.btn--bracketsPseudo::after { content:"]"; right: 20px; }
+.btn--bracketsPseudo:hover::before{ transform: translateY(-50%) translateX(-10px); }
+.btn--bracketsPseudo:hover::after { transform: translateY(-50%) translateX(10px); }
+@media (max-width: 900px){
+    .engineering__ctaLine{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+}
+.engineering__ctaLine .muted{
+    margin: 0;
+}
+.engineering__ctaLine > div{
+    font-family: var(--font-family), sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--grey-dark);
+}
+@media (max-width: 900px){
+    .engineering__ctaLine{
+        grid-template-columns: 1fr;
+        gap: 14px;
+        align-items: start;
+    }
+    .engineering__ctaLine .btn{
+        justify-self: start;
+    }
 }
 /* ===== WHY US (as in mockup) ===== */
 .whyus{
@@ -1878,60 +1988,110 @@ body{
     gap: 44px;
     align-items:start;
 }
-.whyus__title{
-    font-family: var(--font-family), sans-serif;
-    font-size: 22px;
-    letter-spacing: .02em;
-    text-transform: uppercase;
-    margin: 0 0 14px;
-    color: var(--black);
+/* ===== WHY US / pill panel (scroll reveal) ===== */
+/* ===== WHY US (unfold on scroll, like mockup) ===== */
+.whyus{
+    padding: 56px 0 40px;
+    background:#fff;
 }
-.whyus__text{
-    margin: 0;
-    color: #6f6f6f;
-    font-size: 13px;
-    line-height: 1.7;
-    max-width: 560px;
-    text-transform: uppercase;
+.whyus__inner{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 44px;
+    align-items:start;
 }
-.whyus__tabs{
-    display:flex;
-    flex-direction:column;
-    gap: 10px;
-    padding-top: 4px;
+/* container that receives --p from JS */
+.whyReveal{
+    --p: 0;                 /* 0 = stacked, 1 = expanded */
+    --count: 10;            /* JS overwrite */
+    --item-h: 56px;
+    --gap: 12px;
+    --expanded-step: calc(var(--item-h) + var(--gap));
+    --collapsed-step: 18px; /* наскільки “стиснутий” стек у дефолті */
 }
-.whyus__tab{
-    height: 44px;
+.whyPanel{
+    width: 100%;
+    border-radius: 22px;
+    background: rgba(250,249,249,.75);
+    padding: 18px;
+
+    /* щоб абсолютні елементи не вилітали */
+    position: relative;
+    overflow: hidden;
+
+    /* висота одразу під “expanded”, щоб не скакала верстка */
+    min-height: calc(
+            var(--item-h) + (var(--count) - 1) * var(--expanded-step) + 0px
+    );
+}
+/* items become a “stack” and unfold with --p */
+.whyItem{
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    top: 18px;
+
+    height: var(--item-h);
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding: 0 14px;
+    gap: 16px;
 
+    padding: 0 18px;
     border-radius: 999px;
-    border:1px solid rgba(0,0,0,.08);
-    background:#fff;
+    border: 1px solid rgba(0,0,0,.06);
 
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
     font-size: 12px;
     letter-spacing: .08em;
     text-transform: uppercase;
-    color: var(--black);
+
+    background: rgba(255,255,255,.78);
+    color: rgba(10,6,6,.85);
+
+    /* ключ: інтерполяція між “стек” і “розкладено” */
+    transform: translateY(
+            calc(
+                    (var(--i) * var(--collapsed-step)) * (1 - var(--p)) +
+                    (var(--i) * var(--expanded-step)) * var(--p)
+            )
+    );
+
+    transition: filter .25s ease; /* дрібний “преміум” */
+    will-change: transform;
 }
-.whyus__tab i{
-    width:10px;
-    height:10px;
-    border-radius:50%;
-    background:#1d1d1d;
-    opacity:.45;
-    flex: 0 0 10px;
+.whyItem span{ min-width:0; }
+.whyDot{
+    width: 26px;
+    height: 26px;
+    border-radius: 999px;
+    background: rgba(10,6,6,.75);
+    flex: 0 0 26px;
 }
-.whyus__tab.is-active{
+/* styles like mockup */
+.whyItem.is-muted{
+    background: rgba(214,213,211,.85);
+    color: rgba(10,6,6,.72);
+}
+.whyItem.is-accent{
     background: var(--orange);
-    color:#fff;
     border-color: transparent;
+    color: #fff;
 }
-.whyus__tab.is-active i{
-    background:#fff;
-    opacity:1;
+.whyItem.is-accent.is-soft{
+    background: var(--orange-light);
+}
+.whyItem.is-accent .whyDot{
+    background: rgba(10,6,6,.75);
+}
+/* optional: tiny depth while stacked */
+.whyReveal[style] .whyItem{
+    filter: blur(calc((1 - var(--p)) * 0.6px));
+}
+/* accessibility */
+@media (prefers-reduced-motion: reduce){
+    .whyItem{ will-change: auto; }
 }
 /* ---------- partners ---------- */
 .partners{ padding: 22px 0 44px; }
