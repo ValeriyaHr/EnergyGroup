@@ -851,9 +851,9 @@ body{
     border-radius:999px;
     font-family: var(--font-family), sans-serif;
     font-weight:400;
-    font-size:18px;
-    line-height:1.05;
-    letter-spacing:-0.03em;
+    font-size: clamp(14px, 1.2vw, 18px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
     text-transform:uppercase;
     text-decoration:none;
     border:0;
@@ -1001,7 +1001,6 @@ body{
     padding-top: clamp(36px, 6vh, 86px);
 }
 .hero__cta{
-    margin-top: 18px;
     align-self: flex-end;
     margin-left: 0;
 }
