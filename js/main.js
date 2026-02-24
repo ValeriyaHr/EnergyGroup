@@ -30,7 +30,15 @@ async function includeAll() {
 }
 
 
-includeAll().catch(console.error);
+document.addEventListener("DOMContentLoaded", () => {
+    includeAll()
+        .then(() => {
+            initWhyUsUnfold();
+            if (typeof initSmoothAnchorScroll === "function") initSmoothAnchorScroll();
+            initExperienceNumbers();
+        })
+        .catch(console.error);
+});
 
 
 // --- arrows as DATA URI (exactly your white-up2.svg & orange-up2.svg) ---
@@ -74,121 +82,203 @@ document.addEventListener("click", (e) => {
 /// ./js/main.js
 // Prime Energy Group — main interactions (vanilla JS)
 
-function initWhyUsReveal() {
-    const tabs = document.querySelector(".whyus__tabs");
-    if (!tabs) return;
+function initWhyUsUnfold() {
+    const root = document.querySelector("#whyReveal");
+    if (!root) return;
 
-    // Якщо вже видно на старті (наприклад, перезавантаження посеред сторінки)
-    const inViewportNow = () => {
-        const r = tabs.getBoundingClientRect();
-        const vh = window.innerHeight || document.documentElement.clientHeight;
-        return r.top < vh * 0.8 && r.bottom > vh * 0.2;
-    };
+    const items = root.querySelectorAll(".whyItem");
+    if (!items.length) return;
 
-    if (inViewportNow()) {
-        tabs.classList.add("is-inview");
+    // щоб CSS міг порахувати висоту панелі
+    root.style.setProperty("--count", String(items.length));
+
+    // reduced motion — одразу розкладено
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches) {
+        root.style.setProperty("--p", "1");
         return;
     }
 
+    let raf = 0;
+    let active = false;
+
+    const clamp01 = (v) => Math.max(0, Math.min(1, v));
+
+    const update = () => {
+        raf = 0;
+        if (!active) return;
+
+        const r = root.getBoundingClientRect();
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+
+        // довгий “інтервал” розгортання — щоб виглядало як у макеті
+        const start = vh * 0.95; // починаємо майже знизу
+        const end   = vh * 0.05; // закінчуємо майже зверху
+
+        const p = clamp01((start - r.top) / (start - end));
+        root.style.setProperty("--p", p.toFixed(4));
+    };
+
+    const onScroll = () => {
+        if (raf) return;
+        raf = requestAnimationFrame(update);
+    };
+
     const io = new IntersectionObserver(
         (entries) => {
-            for (const e of entries) {
-                if (e.isIntersecting) {
-                    tabs.classList.add("is-inview");
-                    io.disconnect(); // один раз
-                    break;
-                }
+            const isIn = entries.some((e) => e.isIntersecting);
+
+            if (isIn && !active) {
+                active = true;
+                update();
+                window.addEventListener("scroll", onScroll, { passive: true });
+                window.addEventListener("resize", onScroll);
+            } else if (!isIn && active) {
+                active = false;
+                window.removeEventListener("scroll", onScroll);
+                window.removeEventListener("resize", onScroll);
             }
         },
-        { threshold: 0.2 }
+        { rootMargin: "200px 0px 200px 0px", threshold: 0.01 }
     );
 
-    io.observe(tabs);
+    io.observe(root);
 }
 
-function initEngineeringAccordion() {
-    const rows = Array.from(document.querySelectorAll(".js-engRow"));
-    if (!rows.length) return;
+// головна цифри
 
-    const closeRow = (row) => {
-        const panel = row.parentElement?.querySelector(".js-engPanel");
-        const btn = row.querySelector(".js-engArrow");
-        const icon = btn?.querySelector("img");
+function initExperienceStack() {
+    const stage = document.querySelector(".experience");
+    if (!stage) return;
 
-        row.setAttribute("aria-expanded", "false");
-        if (panel) panel.hidden = true;
+    const nums = stage.querySelector(".experience__numbers");
+    if (!nums) return;
 
-        if (btn && icon) {
-            const closed = btn.getAttribute("data-src-closed");
-            if (closed) icon.src = closed;
-        }
-    };
+    const items = Array.from(nums.querySelectorAll(".experience__big"));
+    if (!items.length) return;
 
-    const openRow = (row) => {
-        const panel = row.parentElement?.querySelector(".js-engPanel");
-        const btn = row.querySelector(".js-engArrow");
-        const icon = btn?.querySelector("img");
+    // reduced motion: одразу фінал
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches) {
+        items.forEach((el) => el.style.setProperty("--t", "1"));
+        return;
+    }
 
-        row.setAttribute("aria-expanded", "true");
-        if (panel) panel.hidden = false;
+    let raf = 0;
+    let active = false;
 
-        if (btn && icon) {
-            const open = btn.getAttribute("data-src-open");
-            if (open) icon.src = open;
-        }
-    };
+    const clamp01 = (v) => Math.max(0, Math.min(1, v));
 
-    rows.forEach((row) => {
-        // клік по всьому рядку або по кнопці
-        row.addEventListener("click", (e) => {
-            const isButton = e.target.closest(".js-engArrow");
-            const clickedInsideRow = e.target.closest(".js-engRow");
-            if (!isButton && !clickedInsideRow) return;
+    const update = () => {
+        raf = 0;
+        if (!active) return;
 
-            const expanded = row.getAttribute("aria-expanded") === "true";
+        const r = stage.getBoundingClientRect();
+        const vh = window.innerHeight || document.documentElement.clientHeight;
 
-            // якщо треба “тільки один відкритий” — закриваємо інші
-            rows.forEach((r) => {
-                if (r !== row) closeRow(r);
-            });
+        // довший інтервал, щоб "по одному" виглядало плавно
+        const start = vh * 0.92;   // старт трохи раніше
+        const end   = -vh * 0.50;  // фініш ближче, щоб швидше складався стек
 
-            if (expanded) closeRow(row);
-            else openRow(row);
+        const p01 = clamp01((start - r.top) / (start - end));
+
+        // 0..N: по черзі для кожного елемента
+        const n = items.length;
+        const p = p01 * (n - 1);
+
+        items.forEach((el, i) => {
+            const t = clamp01(p - i);
+            el.style.setProperty("--t", t.toFixed(4));
         });
+    };
 
-        // початково — закрито (на випадок якщо HTML десь зламався)
-        if (row.getAttribute("aria-expanded") !== "true") closeRow(row);
-    });
+    const onScroll = () => {
+        if (raf) return;
+        raf = requestAnimationFrame(update);
+    };
+
+    const io = new IntersectionObserver(
+        (entries) => {
+            const isIn = entries.some((e) => e.isIntersecting);
+            if (isIn && !active) {
+                active = true;
+                update();
+                window.addEventListener("scroll", onScroll, { passive: true });
+                window.addEventListener("resize", onScroll);
+            } else if (!isIn && active) {
+                active = false;
+                window.removeEventListener("scroll", onScroll);
+                window.removeEventListener("resize", onScroll);
+            }
+        },
+        { rootMargin: "200px 0px 200px 0px", threshold: 0.01 }
+    );
+
+    io.observe(stage);
 }
 
-function initSmoothAnchorScroll() {
-    // легкий UX: плавно скролимо до якорів
-    document.addEventListener("click", (e) => {
-        const a = e.target.closest('a[href^="#"]');
-        if (!a) return;
+function initExperienceNumbers() {
+    const section = document.querySelector(".experience");
+    if (!section) return;
 
-        const id = a.getAttribute("href");
-        if (!id || id === "#") return;
+    const nums = section.querySelector(".experience__numbers");
+    if (!nums) return;
 
-        const target = document.querySelector(id);
-        if (!target) return;
+    const items = Array.from(nums.querySelectorAll(".experience__big"));
+    if (!items.length) return;
 
-        e.preventDefault();
+    // reduce motion => одразу фінал
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches) {
+        items.forEach((el) => el.style.setProperty("--t", "1"));
+        return;
+    }
 
-        const header = document.querySelector("header");
-        const headerH = header ? header.getBoundingClientRect().height : 0;
+    let raf = 0;
+    let active = false;
 
-        const top =
-            target.getBoundingClientRect().top +
-            window.pageYOffset -
-            Math.round(headerH);
+    const clamp01 = (v) => Math.max(0, Math.min(1, v));
 
-        window.scrollTo({ top, behavior: "smooth" });
-    });
+    const update = () => {
+        raf = 0;
+        if (!active) return;
+
+        const r = section.getBoundingClientRect();
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+
+        // прогрес секції (довгий, щоб “по одній” було красиво)
+        const start = vh * 0.75;
+        const end = -vh * 1.10;
+        const p01 = clamp01((start - r.top) / (start - end));
+
+        // розкладаємо на N цифр
+        const n = items.length;
+        const p = p01 * (n - 1);
+
+        items.forEach((el, i) => {
+            const t = clamp01(p - i);
+            el.style.setProperty("--t", t.toFixed(4));
+        });
+    };
+
+    const onScroll = () => {
+        if (raf) return;
+        raf = requestAnimationFrame(update);
+    };
+
+    const io = new IntersectionObserver(
+        (entries) => {
+            const isIn = entries.some((e) => e.isIntersecting);
+            if (isIn && !active) {
+                active = true;
+                update();
+                window.addEventListener("scroll", onScroll, { passive: true });
+                window.addEventListener("resize", onScroll);
+            } else if (!isIn && active) {
+                active = false;
+                window.removeEventListener("scroll", onScroll);
+                window.removeEventListener("resize", onScroll);
+            }
+        },
+        { rootMargin: "300px 0px 300px 0px", threshold: 0.01 }
+    );
+
+    io.observe(section);
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    initWhyUsReveal();
-    initEngineeringAccordion();
-    initSmoothAnchorScroll();
-});

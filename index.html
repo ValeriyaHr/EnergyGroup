@@ -18,9 +18,9 @@
 
 
   <script type="module" crossorigin src="/EnergyGroup/assets/modulepreload-polyfill-COaX8i6R.js"></script>
-  <script type="module" crossorigin src="/EnergyGroup/assets/mainJs-B4o8aax_.js"></script>
+  <script type="module" crossorigin src="/EnergyGroup/assets/mainJs-57s-TK0D.js"></script>
   <script type="module" crossorigin src="/EnergyGroup/assets/menu-DHYyUrCX.js"></script>
-  <link rel="stylesheet" crossorigin href="/EnergyGroup/assets/style-5MajSUFy.css">
+  <link rel="stylesheet" crossorigin href="/EnergyGroup/assets/style-DnEUJ0q3.css">
 </head>
 
 <body>
@@ -71,12 +71,8 @@
 
         <div class="header__right">
             <a class="header__ctaSecondary btn btn--secondary btn--drift" href="#contacts">CONSULT WITH ENGINEER</a>
+            <a class="btn btn--primary btn--brackets hero__cta" href="#contacts">КОНСУЛЬТАЦІЯ</a>
 
-            <a class="header__ctaPrimary btn btn--primary" href="#contacts">
-                <span class="btn__bracket">[</span>
-                <span class="btn__label">КОНСУЛЬТАЦІЯ</span>
-                <span class="btn__bracket">]</span>
-            </a>
         </div>
     </div>
 </header>
@@ -421,12 +417,12 @@
             </div>
             <div class="whyus__tabs whyReveal" id="whyReveal">
                 <div class="whyPanel">
-                    <div class="whyItem is-accent" style="--i:0">
+                    <div class="whyItem" style="--i:0">
                         <span>Сертифікати відповідності ДСТУ / ISO</span>
                         <i class="whyDot" aria-hidden="true"></i>
                     </div>
 
-                    <div class="whyItem" style="--i:1">
+                    <div class="whyItem is-accent" style="--i:1">
                         <span>Технічна підтримка на кожному етапі</span>
                         <i class="whyDot" aria-hidden="true"></i>
                     </div>
@@ -505,13 +501,15 @@
 
             <div class="experience__top">
                 <div class="experience__kicker">
-                    [ Досвід, підтверджений результатами ]
+                    [ Досвід, підтверджений результатами
                 </div>
 
                 <div class="experience__lead">
-                    Наша ефективність вимірюється не словами, а цифрами. За роки роботи Prime Energy Group
-                    реалізувала десятки комплексних систем електрохімічного захисту, що працюють —
-                    від магістральних газопроводів до промислових резервуарів
+                    Наша ефективність вимірюється не словами, а цифрами. За<br>
+                    роки роботи Prime Energy Group реалізувала десятки<br>
+                    комплексних систем електрохімічного захисту, що<br>
+                    працюють — від магістральних газопроводів до<br>
+                    промислових резервуарів
                 </div>
             </div>
 
@@ -524,10 +522,10 @@
                 </div>
 
                 <div class="experience__labels">
-                    <div>Км трубопроводів під захистом наших систем</div>
-                    <div>Гарантії на кожен тип продукції власного виробництва</div>
-                    <div>Ресурс роботи анодного поля магнетитового типу</div>
-                    <div>Років на ринку інжинірингових рішень ЕХЗ</div>
+                    <div>Км трубопроводів під<br>захистом наших систем</div>
+                    <div>Гарантії на кожен тип продукції<br>власного виробництва</div>
+                    <div>Ресурс роботи анодного<br>поля магнетитового типу</div>
+                    <div>Років на ринку<br>інжинірингових рішень ЕХЗ</div>
                 </div>
             </div>
 
@@ -536,26 +534,41 @@
 
     <!-- ===== CONTACTS ===== -->
     <section class="contacts" id="contacts">
-        <div class="container contacts__inner">
-            <div class="contacts__left">
-                <h2 class="h2">ПОТРІБЕН ТЕХНІЧНИЙ РОЗРАХУНОК АБО ПІДБІР ОБЛАДНАННЯ?</h2>
-                <p class="muted">
-                    Заповніть форму — ми звʼяжемось з вами.
-                </p>
+        <div class="container">
+            <div class="contacts__tittle">ПОТРІБЕН ТЕХНІЧНИЙ<br> РОЗРАХУНОК АБО ПІДБІР<br> ОБЛАДНАННЯ?</div>
+            <div class="contacts__inner">
+                <div class= "contacts__left">
+                    <div class="contacts__text">Заповніть форму — інженер зв’яжеться з вами<br>
+                        й підготує попередній розрахунок під ваш об’єкт</div>
+                </div>
+
+                <form class="contacts__form" id="contacts-form" action="#" method="post" novalidate>
+
+                    <div class="contacts__panel">
+                        <div class="contacts__row">
+                            <input class="field" type="text" name="name" placeholder="Імʼя *" required>
+                            <input class="field" type="text" name="surname" placeholder="Прізвище *" required>
+                        </div>
+                        <input class="field" type="email" name="email" placeholder="Email *" required>
+                        <input class="field" type="tel" name="phone" placeholder="Телефон *" required>
+                        <textarea class="field field--area" name="message" placeholder="Опишіть задачу"></textarea>
+                    </div>
+
+                    <div class="contacts__bottom">
+                        <label class="contacts__consent">
+                            <input class="contacts__radio" type="checkbox" name="consent" required>
+                            <span>Даю згоду на обробку персональних даних</span>
+                        </label>
+
+                        <p class="contacts__error" id="contacts-consent-error"></p>
+
+                        <button class="btn btn--primary btn--brackets contacts__submit" type="submit">
+                            НАДІСЛАТИ ЗАПИТ
+                        </button>
+                    </div>
+
+                </form>
             </div>
-
-            <form class="contacts__form" action="#" method="post">
-                <input class="field" type="text" name="name" placeholder="Імʼя *" required>
-                <input class="field" type="email" name="email" placeholder="Email *" required>
-                <input class="field" type="tel" name="phone" placeholder="Телефон *" required>
-                <textarea class="field field--area" name="message" placeholder="Опишіть задачу"></textarea>
-
-                <button class="btn btn--primary" type="submit">
-                    <span class="btn__bracket">[</span>
-                    <span class="btn__label">НАДІСЛАТИ ЗАПИТ</span>
-                    <span class="btn__bracket">]</span>
-                </button>
-            </form>
         </div>
     </section>
 </main>
@@ -791,6 +804,28 @@
     }, { passive: false });
 </script>
 
+    <script>
+        (() => {
+            const form = document.getElementById('contacts-form');
+            if (!form) return;
+
+            const radio = form.querySelector('input[name="consent"]');
+            const error = document.getElementById('contacts-consent-error');
+
+            form.addEventListener('submit', (e) => {
+                if (!radio.checked) {
+                    e.preventDefault();
+                    error.textContent = 'Підтвердіть згоду з політикою приватності, щоб продовжити';
+                } else {
+                    error.textContent = '';
+                }
+            });
+
+            radio.addEventListener('change', () => {
+                if (radio.checked) error.textContent = '';
+            });
+        })();
+    </script>
 
 </div>
 </body>

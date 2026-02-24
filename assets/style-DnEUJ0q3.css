@@ -668,17 +668,25 @@
 }
 .footer__brand{
     margin-top: 60px;
-    font-family: var(--font-head);
-    font-size: 14.3vw;
-    line-height: .8;
-    letter-spacing: .02em;
-    color: var(--orange);
-    text-transform: uppercase;
     position: relative;
     bottom: 1px;
-    width:100%;
-    text-align: center;
     padding-left:0;
+    font-family: var(--font3), sans-serif;
+    font-size: clamp(40px, 11vw, 180px);
+    line-height: .8;
+    letter-spacing: 0;
+    color: var(--orange);
+    text-transform: uppercase;
+    width: 100%;
+    text-align: center;
+}
+.footer__brand{
+    font-size: 14vw;
+}
+@media (max-width: 768px){
+    .footer__brand{
+        font-size: 10vw;
+    }
 }
 @font-face {
     font-family: "Bebas Neue";
@@ -1418,8 +1426,6 @@ body{
     line-height: 1.2;
     letter-spacing: -0.02em;
     color: var(--orange);
-    text-align: left;
-
 }
 .engVideoGrid{
     display: grid;
@@ -2000,26 +2006,31 @@ body{
     gap: 44px;
     align-items:start;
 }
+.whyus__text{
+    font-family: var(--font-family), sans-serif;
+    text-transform: uppercase;
+    padding: 40px 0 60px;
+    color: var(--black);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+}
 /* container that receives --p from JS */
 .whyReveal{
     --p: 0;                 /* 0 = stacked, 1 = expanded */
     --count: 10;            /* JS overwrite */
     --item-h: 56px;
-    --gap: 12px;
+    --gap: 18px;
     --expanded-step: calc(var(--item-h) + var(--gap));
-    --collapsed-step: 18px; /* наскільки “стиснутий” стек у дефолті */
+    --collapsed-step: 26px; /* наскільки “стиснутий” стек у дефолті */
 }
 .whyPanel{
     width: 100%;
     border-radius: 22px;
-    background: rgba(250,249,249,.75);
     padding: 18px;
-
-    /* щоб абсолютні елементи не вилітали */
     position: relative;
     overflow: hidden;
-
-    /* висота одразу під “expanded”, щоб не скакала верстка */
     min-height: calc(
             var(--item-h) + (var(--count) - 1) * var(--expanded-step) + 0px
     );
@@ -2030,26 +2041,21 @@ body{
     left: 18px;
     right: 18px;
     top: 18px;
-
     height: var(--item-h);
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap: 16px;
-
     padding: 0 18px;
     border-radius: 999px;
     border: 1px solid rgba(0,0,0,.06);
-
     font-family: var(--font-family), sans-serif;
     font-weight: 400;
     font-size: 12px;
     letter-spacing: .08em;
     text-transform: uppercase;
-
     background: rgba(255,255,255,.78);
     color: rgba(10,6,6,.85);
-
     /* ключ: інтерполяція між “стек” і “розкладено” */
     transform: translateY(
             calc(
@@ -2094,7 +2100,41 @@ body{
     .whyItem{ will-change: auto; }
 }
 /* ---------- partners ---------- */
-.partners{ padding: 22px 0 44px; }
+/* ===== PARTNERS title (like Figma) ===== */
+.partners__title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 18px;
+    width: fit-content;
+    position: relative;
+    padding: 0 18px;                 /* місце під дужки */
+    font-family: var(--font-family), sans-serif;
+    font-weight: 100;
+    font-size: 18px;
+    line-height: 110%;
+    letter-spacing: -0.03em;
+    color: var(--orange);
+    text-transform: none;            /* як у макеті (звичайний регістр) */
+}
+.partners__title::before,
+.partners__title::after{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 1;
+    color: rgba(65,62,57,.35);       /* сірі дужки */
+    pointer-events: none;
+}
+.partners__title::before{ content:"["; left: 0; }
+.partners__title::after { content:"]"; right: 0; }
+.partners__title::before{ transform: translateY(-50%) translateX(0); }
+.partners__title::after { transform: translateY(-50%) translateX(0); }
+.partners__title:hover::before{ transform: translateY(-50%) translateX(-8px); }
+.partners__title:hover::after { transform: translateY(-50%) translateX(8px); }
+.partners{
+    padding: 56px 0 44px;
+}
 .partners__inner{
     display:flex;
     gap: 40px;
@@ -2104,57 +2144,118 @@ body{
 /* EXPERIENCE BLOCK */
 .experience{
     position: relative;
-    background: #070707;
-    color:#fff;
-    padding: 80px 0 200px;
-    overflow:hidden;
+    min-height: 115vh;
+    padding: 70px 0 80px;
+    background:var(--black);
+    overflow: hidden;
+}
+.experience__inner{
+    position: sticky;
+    top: 0;
+    padding-top: 12vh;
+
+    display: grid;
+    grid-template-columns:
+        minmax(420px, 1.25fr)   /* ліва (порожня зона) */
+        minmax(360px, 0.95fr)   /* центр (lead + цифри) */
+        minmax(240px, 0.70fr);  /* права (підписи) */
+    column-gap: clamp(32px, 4vw, 80px);
+    row-gap: clamp(36px, 4vw, 64px);
+    align-items: start;
 }
 .experience__bgGlow{
     position:absolute;
     left:0;
     right:0;
     bottom:0;
-    height:260px;
+    height:380px;
     background: url("/EnergyGroup/assets/glow-D20zywQf.png") center bottom no-repeat;
     background-size: cover;
 
     pointer-events:none;
 }
 .experience__top{
-    display:grid;
+    display: contents;
     grid-template-columns: 1fr 1fr;
-    margin-bottom: 60px;
+    column-gap: 70px;
+    align-items: start;
 }
 .experience__kicker{
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
     font-size: 14px;
     letter-spacing: .08em;
     color: var(--orange);
     text-transform: uppercase;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 100;
+    line-height: 110%;
 }
 .experience__lead{
-    font-size: 13px;
-    line-height: 1.6;
+    grid-row: 1;
+    max-width: 60ch;
+    justify-self: start;
     text-transform: uppercase;
-    max-width: 480px;
-    justify-self:end;
+    text-align: start;
+    grid-column: 2 / 4;
+    margin-bottom: 0;
+    font-family: var(--third-family),sans-serif;
+    font-weight: 300;
+    font-size: clamp(15px, 1vw, 18px);
+    line-height: 1.25;
+    letter-spacing: -0.09em;
+    color: var(--lightgrey);
 }
 .experience__content{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    align-items:center;
+    grid-column: 2 / 4;
+    grid-row: 2;
+    margin-top: 0;
+    display: grid;
+    grid-template-columns:
+    minmax(360px, 1fr)      /* цифри */
+    minmax(300px, 0.9fr);   /* права колонка ширша */
+    column-gap: clamp(24px, 3vw, 60px);
+    align-items: start;
 }
 .experience__numbers{
-    display:flex;
-    flex-direction:column;
-    gap: 8px;
-    align-items:center;
-}
-.experience__big{
     position: relative;
+    grid-column: 1;                 /* ліва колонка всередині контент-боксу */
+    justify-self: start;
+    width: min(520px, 46vw);
+    height: 360px;
+}
+/* кожна цифра — абсолютна, лежить в одному центрі */
+.experience__big{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    text-align: left;
+
+    /* твоя типографіка (залиш як треба) */
     font-size: 110px;
     font-weight: 700;
     line-height: .9;
 
+    --i: 0;                 /* прийде з nth-child */
+    --t: 0;                 /* JS крутить */
+
+    /* налаштування стопки */
+    --stack-step: 62px;     /* відстань між цифрами по Y */
+    --enter-x: 0px;         /* старт без X-зсуву */
+    --enter-y: 0px;         /* старт без Y-зсуву */
+
+    transform:
+            translateX(calc((1 - var(--t)) * var(--enter-x)))
+            translateY(calc((var(--i) * var(--stack-step)) * var(--t) + (1 - var(--t)) * var(--enter-y)));
+
+    /* щоб одразу накривало попередню цифру */
+    opacity: min(1, max(0, calc((var(--t) - 0.15) * 8)));
+    will-change: transform, opacity;
+    z-index: calc(10 - var(--i));
+
+    /* твій “металевий” текст (можеш лишити як було) */
     background: linear-gradient(
             180deg,
             #ffffff 0%,
@@ -2162,15 +2263,39 @@ body{
             #8e8e8e 70%,
             #4a4a4a 100%
     );
-
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
     text-shadow:
             0 2px 0 rgba(255,255,255,.15),
             0 8px 18px rgba(0,0,0,.7);
-
-    text-align:center;
+}
+.experience__numbers .experience__big:nth-child(1){ --i: 0; }
+.experience__numbers .experience__big:nth-child(2){ --i: 1; }
+.experience__numbers .experience__big:nth-child(3){ --i: 2; }
+.experience__numbers .experience__big:nth-child(4){ --i: 3; }
+.experience__big{
+    filter:
+            drop-shadow(0 0 calc((1 - var(--t)) * 10px) rgba(255, 122, 0, .22))
+            drop-shadow(0 2px 0 rgba(255,255,255,.10))
+            drop-shadow(0 10px 22px rgba(0,0,0,.75));
+}
+/* у браузерах без color-mix буде просто "оранжевий на вході", не критично */
+@supports (color: color-mix(in oklab, red 50%, white)) {
+    .experience__big{
+        /* t=0 -> orange, t=1 -> lightgrey (як у макеті) */
+        color: color-mix(
+                in oklab,
+                var(--orange) calc((1 - var(--t)) * 100%),
+                var(--lightgrey)
+        );
+    }
+}
+@media (prefers-reduced-motion: reduce){
+    .experience__big{
+        opacity: 1 !important;
+        transform: translateY(calc(var(--i) * var(--stack-step))) !important;
+    }
 }
 .experience__big::after{
     content: "";
@@ -2185,18 +2310,93 @@ body{
     -webkit-text-fill-color: transparent;
     pointer-events:none;
 }
-.experience__numbers{
-    margin-top: 40px;
-}
 .experience__labels{
-    display:flex;
-    flex-direction:column;
-    gap: 40px;
-    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--third-family),sans-serif;
+    font-weight: 300;
+    font-size: clamp(15px, 1vw, 18px);
+    letter-spacing: -0.09em;
+    line-height: 1.25;
     text-transform: uppercase;
-    line-height: 1.4;
+    color: var(--lightgrey);
+    justify-self: start;
+    margin-top: 0;
+    gap: 62px;
+    padding-top: 6px;
+    grid-column: 2;
+    grid-row: auto;
+}
+@media (max-width: 980px){
+    .experience__inner{ position: static; }
+    .experience{ min-height: auto; padding: 60px 0; }
+    .experience__top{ grid-template-columns: 1fr; gap: 18px; }
+    .experience__content{ grid-template-columns: 1fr; }
+    .experience__numbers{ width: 100%; }
+    .experience__labels{ margin-top: 22px; }
+}
+@media (max-width: 1100px){
+    .experience__inner{
+        position: static;
+        grid-template-columns: 1fr;
+    }
+
+    .experience__kicker,
+    .experience__lead,
+    .experience__numbers,
+    .experience__labels{
+        grid-column: 1;
+        justify-self: start;
+    }
+
+    .experience__numbers{ justify-self: start; }
 }
 /* ---------- contacts ---------- */
+/* --- consent --- */
+.contacts__consent{
+    display:flex;
+    align-items:flex-end;
+    gap:10px;
+    margin-top:6px;
+    font-family: var(--third-family), sans-serif;
+    cursor:pointer;
+    font-size: 14px;
+    line-height: 110%;
+    letter-spacing: -0.03em;
+    color: var(--grey-dark);
+}
+.contacts__radio{
+    appearance:none;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.35);
+    position:relative;
+    display:inline-block;
+}
+.contacts__radio::after{
+    content:"";
+    position:absolute;
+    inset:2px;
+    border-radius:50%;
+    background:var(--orange);
+    transform:scale(0);
+    transition:transform .15s ease;
+}
+.contacts__radio:checked::after{
+    transform:scale(1);
+}
+.contacts__error{
+    min-height:16px;
+    font-size:12px;
+    color:#ff3b30;
+    margin:2px 0 4px;
+}
+/* submit alignment */
+.contacts__submit{
+    justify-self:end;
+    margin-top:4px;
+}
 .contacts{ padding: 60px 0 76px; }
 .contacts__inner{
     display:grid;
@@ -2204,12 +2404,60 @@ body{
     gap: 46px;
     align-items:start;
 }
+.contacts__tittle{
+    font-family: var(--third-family), sans-serif;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: -0.08em;
+    text-transform: uppercase;
+    color: var(--black);
+    margin-bottom: 100px;
+}
+.contacts__text{
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: -0.03em;
+    color: var(--orange);
+}
+/* form — прозора, тільки сітка */
 .contacts__form{
-    background:#111;
+    background: transparent;     /* важливо */
+    padding: 0;                  /* важливо */
+    border-radius: 0;
+    display: grid;
+    gap: 14px;                   /* відстань між темною панеллю і низом */
+    justify-self: end;
+    width: min(560px, 100%);
+}
+.contacts__row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+/* темний блок тільки для полів */
+.contacts__panel{
+    background: #111;
     border-radius: 10px;
     padding: 18px;
-    display:grid;
+    display: grid;
     gap: 10px;
+}
+/* низ — на світлому фоні */
+.contacts__bottom{
+    display: grid;
+    gap: 6px;
+    padding: 0 6px;              /* легке вирівнювання як у макеті */
+}
+.contacts__submit{
+    justify-self: end;
+    margin-top: 6px;
+}
+/* чекбокс/радіо на світлому фоні */
+.contacts__radio{
+    border: 1px solid rgba(0,0,0,.35);
 }
 .field{
     width:100%;
