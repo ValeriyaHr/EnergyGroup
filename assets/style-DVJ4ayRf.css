@@ -805,6 +805,9 @@
     --gridLine:rgba(0,0,0,.04);
 
     --header-h: 86px;
+
+    --error: #bc0e0d;
+    --success: #24590d;
 }
 /*--svіtliy: #e4cfb4;*/
 /*--temniy: #e16f12;*/
@@ -2455,24 +2458,58 @@ body{
     justify-self: end;
     margin-top: 6px;
 }
-/* чекбокс/радіо на світлому фоні */
 .contacts__radio{
     border: 1px solid rgba(0,0,0,.35);
 }
-.field{
+.field_contact{
     width:100%;
-    height: 40px;
-    border-radius: 8px;
-    border:1px solid rgba(255,255,255,.12);
-    background:#151515;
+    height:44px;
+    border-radius:10px;
+
+    background: var(--black);
     color:#fff;
-    padding: 0 12px;
-    font-size: 12px;
+
+    border:1px solid #000;   /* чорний default */
+    outline:none;
+
+    transition:border-color .2s ease, box-shadow .2s ease;
+    text-transform: uppercase;
 }
-.field--area{
+.field_contact--area{
     height: 86px;
     padding: 10px 12px;
     resize: vertical;
+}
+.field_contact:focus{
+    border-color: var(--orange);
+    box-shadow: 0 0 0 2px rgba(255, 122, 0, .25);
+}
+.contacts__form.is-submitted .field_contact:invalid{
+    border-color: var(--error);
+    box-shadow: 0 0 0 2px rgba(204, 22, 2, .22);
+}
+/* Після "торкання" поля */
+.field_contact.is-touched:invalid{
+    border-color: var(--error);
+    box-shadow: 0 0 0 2px rgba(204, 22, 2, .22);
+}
+.contacts__form.is-submitted .field_contact:valid{
+    border-color: var(--success);
+    box-shadow: 0 0 0 2px rgba(46, 125, 50, .20);
+}
+.field_contact.is-touched:valid{
+    border-color: var(--success);
+    box-shadow: 0 0 0 2px rgba(46, 125, 50, .20);
+}
+/* Прибираємо білий фон автозаповнення */
+.field_contact:-webkit-autofill,
+.field_contact:-webkit-autofill:hover,
+.field_contact:-webkit-autofill:focus,
+.field_contact:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 1000px #000 inset !important;
+    -webkit-text-fill-color: #fff !important;
+    caret-color: #fff;
+    transition: background-color 9999s ease-in-out 0s;
 }
 /* ===== PRELOADER (image-based) ===== */
 .preloader{
