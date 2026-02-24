@@ -249,15 +249,25 @@
 
 .footer__brand{
     margin-top: 60px;
-    font-family: var(--font-head);
-    font-size: 14.3vw;
-    line-height: .8;
-    letter-spacing: .02em;
-    color: var(--orange);
-    text-transform: uppercase;
     position: relative;
     bottom: 1px;
-    width:100%;
-    text-align: center;
     padding-left:0;
+    font-family: var(--font3), sans-serif;
+    font-size: clamp(40px, 11vw, 180px);
+    line-height: .8;
+    letter-spacing: 0;
+    color: var(--orange);
+    text-transform: uppercase;
+    width: 100%;
+    text-align: center;
+}
+
+.footer__brand{
+    font-size: 14vw;
+}
+
+@media (max-width: 768px){
+    .footer__brand{
+        font-size: 10vw;
+    }
 }

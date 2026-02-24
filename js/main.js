@@ -30,7 +30,15 @@ async function includeAll() {
 }
 
 
-includeAll().catch(console.error);
+document.addEventListener("DOMContentLoaded", () => {
+    includeAll()
+        .then(() => {
+            initWhyUsUnfold();
+            if (typeof initSmoothAnchorScroll === "function") initSmoothAnchorScroll();
+            initExperienceNumbers();
+        })
+        .catch(console.error);
+});
 
 
 // --- arrows as DATA URI (exactly your white-up2.svg & orange-up2.svg) ---
@@ -69,3 +77,208 @@ document.addEventListener("click", (e) => {
     panel.hidden = !isOpen;
     panel.classList.toggle("is-open", isOpen);
 });
+
+
+/// ./js/main.js
+// Prime Energy Group — main interactions (vanilla JS)
+
+function initWhyUsUnfold() {
+    const root = document.querySelector("#whyReveal");
+    if (!root) return;
+
+    const items = root.querySelectorAll(".whyItem");
+    if (!items.length) return;
+
+    // щоб CSS міг порахувати висоту панелі
+    root.style.setProperty("--count", String(items.length));
+
+    // reduced motion — одразу розкладено
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches) {
+        root.style.setProperty("--p", "1");
+        return;
+    }
+
+    let raf = 0;
+    let active = false;
+
+    const clamp01 = (v) => Math.max(0, Math.min(1, v));
+
+    const update = () => {
+        raf = 0;
+        if (!active) return;
+
+        const r = root.getBoundingClientRect();
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+
+        // довгий “інтервал” розгортання — щоб виглядало як у макеті
+        const start = vh * 0.95; // починаємо майже знизу
+        const end   = vh * 0.05; // закінчуємо майже зверху
+
+        const p = clamp01((start - r.top) / (start - end));
+        root.style.setProperty("--p", p.toFixed(4));
+    };
+
+    const onScroll = () => {
+        if (raf) return;
+        raf = requestAnimationFrame(update);
+    };
+
+    const io = new IntersectionObserver(
+        (entries) => {
+            const isIn = entries.some((e) => e.isIntersecting);
+
+            if (isIn && !active) {
+                active = true;
+                update();
+                window.addEventListener("scroll", onScroll, { passive: true });
+                window.addEventListener("resize", onScroll);
+            } else if (!isIn && active) {
+                active = false;
+                window.removeEventListener("scroll", onScroll);
+                window.removeEventListener("resize", onScroll);
+            }
+        },
+        { rootMargin: "200px 0px 200px 0px", threshold: 0.01 }
+    );
+
+    io.observe(root);
+}
+
+// головна цифри
+
+function initExperienceStack() {
+    const stage = document.querySelector(".experience");
+    if (!stage) return;
+
+    const nums = stage.querySelector(".experience__numbers");
+    if (!nums) return;
+
+    const items = Array.from(nums.querySelectorAll(".experience__big"));
+    if (!items.length) return;
+
+    // reduced motion: одразу фінал
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches) {
+        items.forEach((el) => el.style.setProperty("--t", "1"));
+        return;
+    }
+
+    let raf = 0;
+    let active = false;
+
+    const clamp01 = (v) => Math.max(0, Math.min(1, v));
+
+    const update = () => {
+        raf = 0;
+        if (!active) return;
+
+        const r = stage.getBoundingClientRect();
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+
+        // довший інтервал, щоб "по одному" виглядало плавно
+        const start = vh * 0.92;   // старт трохи раніше
+        const end   = -vh * 0.50;  // фініш ближче, щоб швидше складався стек
+
+        const p01 = clamp01((start - r.top) / (start - end));
+
+        // 0..N: по черзі для кожного елемента
+        const n = items.length;
+        const p = p01 * (n - 1);
+
+        items.forEach((el, i) => {
+            const t = clamp01(p - i);
+            el.style.setProperty("--t", t.toFixed(4));
+        });
+    };
+
+    const onScroll = () => {
+        if (raf) return;
+        raf = requestAnimationFrame(update);
+    };
+
+    const io = new IntersectionObserver(
+        (entries) => {
+            const isIn = entries.some((e) => e.isIntersecting);
+            if (isIn && !active) {
+                active = true;
+                update();
+                window.addEventListener("scroll", onScroll, { passive: true });
+                window.addEventListener("resize", onScroll);
+            } else if (!isIn && active) {
+                active = false;
+                window.removeEventListener("scroll", onScroll);
+                window.removeEventListener("resize", onScroll);
+            }
+        },
+        { rootMargin: "200px 0px 200px 0px", threshold: 0.01 }
+    );
+
+    io.observe(stage);
+}
+
+function initExperienceNumbers() {
+    const section = document.querySelector(".experience");
+    if (!section) return;
+
+    const nums = section.querySelector(".experience__numbers");
+    if (!nums) return;
+
+    const items = Array.from(nums.querySelectorAll(".experience__big"));
+    if (!items.length) return;
+
+    // reduce motion => одразу фінал
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches) {
+        items.forEach((el) => el.style.setProperty("--t", "1"));
+        return;
+    }
+
+    let raf = 0;
+    let active = false;
+
+    const clamp01 = (v) => Math.max(0, Math.min(1, v));
+
+    const update = () => {
+        raf = 0;
+        if (!active) return;
+
+        const r = section.getBoundingClientRect();
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+
+        // прогрес секції (довгий, щоб “по одній” було красиво)
+        const start = vh * 0.75;
+        const end = -vh * 1.10;
+        const p01 = clamp01((start - r.top) / (start - end));
+
+        // розкладаємо на N цифр
+        const n = items.length;
+        const p = p01 * (n - 1);
+
+        items.forEach((el, i) => {
+            const t = clamp01(p - i);
+            el.style.setProperty("--t", t.toFixed(4));
+        });
+    };
+
+    const onScroll = () => {
+        if (raf) return;
+        raf = requestAnimationFrame(update);
+    };
+
+    const io = new IntersectionObserver(
+        (entries) => {
+            const isIn = entries.some((e) => e.isIntersecting);
+            if (isIn && !active) {
+                active = true;
+                update();
+                window.addEventListener("scroll", onScroll, { passive: true });
+                window.addEventListener("resize", onScroll);
+            } else if (!isIn && active) {
+                active = false;
+                window.removeEventListener("scroll", onScroll);
+                window.removeEventListener("resize", onScroll);
+            }
+        },
+        { rootMargin: "300px 0px 300px 0px", threshold: 0.01 }
+    );
+
+    io.observe(section);
+}
