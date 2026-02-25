@@ -1,39 +1,39 @@
 /* =========================
    MOBILE ONLY
 ========================= */
-@media (max-width: 768px){
+@media (max-width: 768px) {
 
     .btn,
-    .button{
+    .button {
         font-size: 16px;
     }
 
     /* ===== HEADER ===== */
-    .header404__inner{
+    .header404__inner {
         gap: 10px;
     }
 
     .header404__lang,
     .header404__contacts,
-    .header404__ctaText{
+    .header404__ctaText {
         display: none;
     }
 
-    .header404__logo img{
+    .header404__logo img {
         height: 34px;
     }
 
     /* ===== 404 ===== */
-    .notfound{
+    .notfound {
         padding-top: 0;
     }
 
-    .notfound__inner{
+    .notfound__inner {
         display: flex;
         flex-direction: column;
     }
 
-    .notfound__hero{
+    .notfound__hero {
         position: static;
         transform: none;
         width: 88vw;
@@ -41,7 +41,7 @@
         order: 1;
     }
 
-    .notfound__copy{
+    .notfound__copy {
         position: static;
         max-width: 92vw;
         margin: 20px auto 0;
@@ -50,18 +50,34 @@
         order: 2;
     }
 
-    @media (max-width: 1024px){
-        .hero{
+    @media (max-width: 1024px) {
+        .hero {
             min-height: auto;
             padding: 72px 0 64px;
         }
-        .hero__inner{
+
+        .hero__inner {
             grid-template-columns: 1fr;
             gap: 28px;
         }
-        .hero__right{ justify-content:flex-start; }
-        .hero__imgWrap{ width: min(520px, 92vw); }
-        .hero__title{ font-size: 72px; }
+
+        .hero__right {
+            justify-content: flex-start;
+        }
+
+        .hero__imgWrap {
+            width: min(520px, 92vw);
+        }
+
+        .hero__title {
+            font-size: 72px;
+        }
+    }
+
+    @media (max-width: 768px){
+        .hero__kicker{
+            white-space: nowrap;
+        }
     }
 
     /* ===== FOOTER ===== */
@@ -80,6 +96,18 @@
         font-size: 64px;
         padding: 0 16px 24px;
     }
+}
+
+@media (max-width: 1200px){
+    .header__inner{ gap: 14px; }
+    .header__right{ gap: 14px; }
+    .header__contacts{ gap: 18px; }
+
+    .header .btn--primary{
+        padding: 0 16px;   /* було 22px */
+        font-size: 16px;   /* було 18px */
+    }
+
 }
 
 /* ===== PRODUCT DETAILS ===== */
