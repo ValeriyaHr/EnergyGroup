@@ -76,7 +76,15 @@
 
     @media (max-width: 768px){
         .hero__kicker{
-            white-space: nowrap;
+            white-space: nowrap; /* 1 рядок */
+        }
+
+        .hero__kicker span{
+            display:inline;
+        }
+
+        .hero__kicker span + span{
+            margin-left: 6px; /* пробіл між словами */
         }
     }
 
