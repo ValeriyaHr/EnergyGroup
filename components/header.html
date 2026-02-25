@@ -3,7 +3,10 @@
     <div class="container header__inner">
         <div class="header__left">
             <button class="header__burger" type="button" aria-label="Menu" aria-controls="menuOverlay" aria-expanded="false">
-                <img src="/img/ui/burger.svg" alt="" width="24" height="24">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="/img/ui/burger-mobile.svg">
+                    <img src="/img/ui/burger.svg" alt="" width="24" height="24">
+                </picture>
             </button>
 
             <div class="header__lang">

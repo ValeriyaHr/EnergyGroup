@@ -322,21 +322,107 @@
     display:flex;align-items:center;gap:42px;
     color:#c9c9c9;
 }
-.header__contacts a{ color:#c9c9c9; text-decoration:none; }
+.header__contacts a{
+    color:#c9c9c9;
+    text-decoration:none;
+    min-width: 0;
+    white-space: nowrap;
+}
+
 .header__contacts a.is-underline{
     text-decoration: underline;
     text-underline-offset: 6px;
 }
+@media (max-width: 1200px){
+
+    /* 1) Ховаємо телефон/контакти */
+    .header__contacts{
+        display: none !important;
+    }
+
+    /* 2) Ховаємо “CONSULT WITH ENGINEER” (secondary CTA) */
+    .header__ctaSecondary{
+        display: none !important;
+    }
+
+    /* 3) Лишаємо структуру як ти хочеш */
+    .header__inner{
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        gap: 14px;
+        align-items: center;
+    }
+
+    .header__right{
+        justify-self: end;
+        gap: 0;
+    }
+
+    .header__right .btn--primary{
+        padding: 0 16px;
+        font-size: 16px;
+    }
+    .header .btn--brackets{
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+    .header .btn--brackets::before{
+        left: 10px;
+    }
+    .header .btn--brackets::after{
+        right: 10px;
+    }
+}
+
+
+
+@media (max-width: 768px){
+
+    /* Хедер стає простим: один рядок */
+    .header__inner{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 56px;
+        gap: 12px;
+    }
+
+    /* Прибираємо все зайве на мобілці */
+    .header__contacts{ display: none !important; }
+    .header__logo{ display: none !important; }
+    .header__right{ display: none !important; }
+
+    /* Лівий блок займає весь рядок і розкидає: мови ліво, бургер право */
+    .header__left{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    /* Порядок елементів усередині header__left */
+    .header__lang{ order: 1; }
+    .header__burger{ order: 2; }
+}
+
+
+
 .hero {
     min-height: calc(70vh - var(--header-h));
     display:flex;
-    align-items: center;
     position: relative;
+    align-items: flex-start;
+    padding-top: clamp(36px, 6vh, 86px);
 }
 .hero::before{
     content:"";
     position:absolute;
     inset:0;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
     background: url("../img/ui/grid-404.svg") repeat;
     background-size: 1400px 1400px;
     background-position: 0 0;
@@ -354,7 +440,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding-top: clamp(36px, 6vh, 86px);
+    padding-top: 0;
 }
 
 .hero__cta{
@@ -402,6 +488,96 @@
     padding-left: 140px;
 }
 
+@media (min-width: 769px){
+    /* центруємо секцію як “композицію”, без ламання внутрішніх зсувів */
+    .hero .container{
+        width: min(1280px, calc(100% - 80px)); /* було 1440px глобально */
+    }
+
+    .hero__inner{
+        grid-template-columns: 1fr 1fr;              /* без мінімумів 520px */
+        column-gap: clamp(40px, 6vw, 120px);         /* контрольований простір між текстом і шафою */
+    }
+}
+
+@media (max-width: 768px){
+
+    :root{ --header-h: 56px; }
+
+    .hero{
+        min-height: auto;
+        padding: 18px 0 34px;
+        display:flex;
+        flex-direction:column;
+    }
+
+    .hero__inner{
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .hero__left{
+        padding-top: 14px;
+        align-items: flex-start;
+        display:flex;
+        flex-direction:column;
+    }
+    .hero__left{ order:1; }
+    .hero__right{ order:2; }
+
+    .hero__kicker{
+        margin-left: 0;
+        margin-bottom: 14px;
+        font-size: 12px;
+    }
+
+    .hero__title{
+        font-size: 64px;
+        line-height: .88;
+        margin-bottom: 14px;
+    }
+
+    .hero__desc{
+        max-width: none;
+        font-size: 12px;
+        line-height: 1.15;
+        margin-bottom: 18px;
+    }
+
+    .hero__descLine1{ padding-left: 0; }
+    .margin-left{ margin-left: 0; }
+
+    .hero__right{
+        justify-content: center;
+        padding-top: 0;
+    }
+    .hero__imgWrap{
+        width: 100%;
+        display:flex;
+        justify-content:flex-start;
+    }
+    .hero__image{
+        max-height: none;
+    }
+
+    .hero__cta{
+        align-self: center;         /* кнопка по центру */
+        width: min(320px, 92vw);    /* не “бочка на півекрана” */
+        height: 52px;
+        font-size: 16px;
+        order:3;
+        margin-top: 24px;
+    }
+
+    .hero__imgWrap{
+        width: min(300px, 80vw);
+    }
+
+    .hero__image{
+        max-height: 420px;
+    }
+}
+
 .light-grey{
     color: var(--lightgrey);
 }
@@ -412,8 +588,10 @@
 
 .hero__right{
     display:flex;
-    justify-content:flex-end;
-    align-items:center;
+    justify-content:flex-start;
+    align-items:flex-start;
+    padding-top: clamp(36px, 6vh, 86px);
+
 }
 .hero__imgWrap{
     width: min(560px, 44vw);
