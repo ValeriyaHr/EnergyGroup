@@ -407,27 +407,17 @@
 }
 
 
-
-.hero {
-    min-height: calc(70vh - var(--header-h));
-    display:flex;
+.hero{
     position: relative;
-    align-items: flex-start;
+    min-height: calc(100vh - var(--header-h));
     padding-top: clamp(36px, 6vh, 86px);
-}
-.hero::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    left:0;
-    right:0;
-    top:0;
-    bottom:0;
+    overflow: hidden;
+    display:flex;
+    align-items: flex-start;
+
     background: url("../img/ui/grid-404.svg") repeat;
     background-size: 1400px 1400px;
-    background-position: 0 0;
-    pointer-events:none;
-    z-index:0;
+    background-position: 0 0; /* ← головне */
 }
 
 .hero__inner{
@@ -458,6 +448,10 @@
     color: var(--black);
     margin-bottom: 28px;
     margin-left: 115px;
+}
+
+.hero__kicker span{
+    display:block;
 }
 
 .hero__title{
@@ -576,6 +570,12 @@
     .hero__image{
         max-height: 420px;
     }
+}
+
+.hero__inner,
+.hero__left,
+.hero__right{
+    background: transparent !important;
 }
 
 .light-grey{
