@@ -1,7 +1,5 @@
-/* =========================
-   MOBILE ONLY
-========================= */
-@media (max-width: 768px) {
+
+/*ONLY max-width: 769px*/
 
     .btn,
     .button {
@@ -49,34 +47,9 @@
         text-align: left;
         order: 2;
     }
-
-    @media (max-width: 1024px) {
-        .hero {
-            min-height: auto;
-            padding: 72px 0 64px;
-        }
-
-        .hero__inner {
-            grid-template-columns: 1fr;
-            gap: 28px;
-        }
-
-        .hero__right {
-            justify-content: flex-start;
-        }
-
-        .hero__imgWrap {
-            width: min(520px, 92vw);
-        }
-
-        .hero__title {
-            font-size: 72px;
-        }
-    }
-
-    @media (max-width: 768px){
         .hero__kicker{
             white-space: nowrap; /* 1 рядок */
+            margin-left: 0;
         }
 
         .hero__kicker span{
@@ -86,7 +59,92 @@
         .hero__kicker span + span{
             margin-left: 6px; /* пробіл між словами */
         }
-    }
+        :root{ --header-h: 56px; }
+
+        .hero{
+            min-height: auto;
+            padding: 18px 0 34px;
+            display:flex;
+            flex-direction:column;
+        }
+
+        .hero__inner{
+            grid-template-columns: 1fr;
+            grid-template-areas:
+      "left"
+      "right"
+      "cta";
+            gap: 18px;}
+
+        .hero__left{
+            padding-top: 14px;
+            align-items: flex-start;
+            display:flex;
+            flex-direction:column;
+        }
+
+        .hero__kicker{
+            margin-left: 0;
+            margin-bottom: 14px;
+            font-size: 12px;
+        }
+
+        .hero__title{
+            font-size: clamp(44px, 12vw, 64px);
+            line-height: .88;
+            margin-bottom: 14px;
+        }
+
+        .hero__desc{
+            max-width: none;
+            font-size: 12px;
+            line-height: 1.15;
+            margin-bottom: 18px;
+        }
+
+        .hero__descLine1{ padding-left: 0; }
+        .margin-left{ margin-left: 0; }
+
+        .hero__right{
+            transform: none;          /* прибираємо translateY(70px) зі стилів desktop */
+            align-items: center;
+            justify-content: center;
+            padding-top: 0;
+        }
+        .hero__imgWrap{
+            justify-content: center;
+            width: min(300px, 80vw);
+            margin: 0 auto;
+        }
+        .hero__image{
+            max-height: none;
+        }
+
+        .hero__cta{
+            height: 52px;
+            font-size: 16px;
+            width: auto;              /* прибираємо 320px */
+            max-width: 260px;         /* контроль ширини */
+            padding-left: 28px;       /* менші відступи */
+            padding-right: 28px;
+            justify-self: center;     /* grid-центрування */
+            transform: none !important;
+            align-self: center;
+            margin-top: 24px;
+        }
+
+        .hero__cta.btn--brackets::before{
+            left: 10px;
+        }
+
+        .hero__cta.btn--brackets::after{
+            right: 10px;
+        }
+
+        .hero__image{
+            max-height: 420px;
+        }
+
 
     /* ===== FOOTER ===== */
     .footer404__top{
@@ -104,19 +162,7 @@
         font-size: 64px;
         padding: 0 16px 24px;
     }
-}
 
-@media (max-width: 1200px){
-    .header__inner{ gap: 14px; }
-    .header__right{ gap: 14px; }
-    .header__contacts{ gap: 18px; }
-
-    .header .btn--primary{
-        padding: 0 16px;   /* було 22px */
-        font-size: 16px;   /* було 18px */
-    }
-
-}
 
 /* ===== PRODUCT DETAILS ===== */
     .productDetails{
@@ -163,7 +209,6 @@
         gap: 18px;
     }
 
-@media (max-width: 768px){
     .productDetails{ padding: 16px 0 48px; }
 
     .productDetails__card{
@@ -208,11 +253,36 @@
         flex-direction: column;
         gap: 18px;
     }
-}
 
-@media (max-width: 768px){
     .techLib .techLibBlock__desc::before{
         transform: translateX(-14px);
         font-size: 16px;
     }
-}
+
+    /* Хедер стає простим: один рядок */
+    .header__inner{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 56px;
+        gap: 12px;
+    }
+
+    /* Прибираємо все зайве на мобілці */
+    .header__contacts{ display: none !important; }
+    .header__logo{ display: none !important; }
+    .header__right{ display: none !important; }
+
+    /* Лівий блок займає весь рядок і розкидає: мови ліво, бургер право */
+    .header__left{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    /* Порядок елементів усередині header__left */
+    .header__lang{ order: 1; }
+    .header__burger{ order: 2; }
+

@@ -333,6 +333,47 @@
     text-decoration: underline;
     text-underline-offset: 6px;
 }
+
+@media (max-width: 1024px) {
+    .hero {
+        min-height: auto;
+        padding: 72px 0 64px;
+    }
+
+    .hero__inner {
+        gap: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero .hero__cta {
+        transform: none;      /* прибираємо підняття */
+        order: 3;             /* після картинки */
+        margin-top: 24px;
+    }
+
+    .hero__right {
+        padding-top: 0;
+        justify-content: center;
+        transform: none;      /* прибираємо зсув шафи */
+        order: 2;
+    }
+
+    .hero__left {
+        order: 1;
+    }
+
+    .hero__imgWrap {
+        width: min(520px, 92vw);
+    }
+
+    .hero__title {
+        white-space: normal;
+        font-size: clamp(42px, 12vw, 64px);
+    }
+}
+
 @media (max-width: 1200px){
 
     /* 1) Ховаємо телефон/контакти */
@@ -372,58 +413,41 @@
     .header .btn--brackets::after{
         right: 10px;
     }
-}
 
+    .header__inner{ gap: 14px; }
+    .header__right{ gap: 14px; }
+    .header__contacts{ gap: 18px; }
 
-
-@media (max-width: 768px){
-
-    /* Хедер стає простим: один рядок */
-    .header__inner{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 56px;
-        gap: 12px;
+    .header .btn--primary{
+        padding: 0 16px;   /* було 22px */
+        font-size: 16px;   /* було 18px */
     }
-
-    /* Прибираємо все зайве на мобілці */
-    .header__contacts{ display: none !important; }
-    .header__logo{ display: none !important; }
-    .header__right{ display: none !important; }
-
-    /* Лівий блок займає весь рядок і розкидає: мови ліво, бургер право */
-    .header__left{
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-    }
-
-    /* Порядок елементів усередині header__left */
-    .header__lang{ order: 1; }
-    .header__burger{ order: 2; }
 }
 
 
 .hero{
     position: relative;
-    min-height: calc(100vh - var(--header-h));
     padding-top: clamp(36px, 6vh, 86px);
     overflow: hidden;
     display:flex;
     align-items: flex-start;
-
     background: url("../img/ui/grid-404.svg") repeat;
-    background-size: 1400px 1400px;
     background-position: 0 0; /* ← головне */
 }
 
 .hero__inner{
-    display:grid;
-    grid-template-columns: minmax(520px, 1fr) minmax(520px, 1fr);
+    display: grid;
+
+    /* 3 колонки: left | gap | right */
+    grid-template-columns: minmax(520px, 1fr) clamp(40px, 6vw, 120px) minmax(520px, 1fr);
+
+    grid-template-areas:
+      "left . right"
+      "cta  cta right";
+
     align-items: start;
+    column-gap: 0;   /* тепер gap — це окрема колонка */
+    row-gap: 0;
 }
 
 .hero__left{
@@ -431,11 +455,14 @@
     flex-direction: column;
     align-items: flex-start;
     padding-top: 0;
+    grid-area: left;
 }
 
-.hero__cta{
-    align-self: flex-end;
-    margin-left: 0;
+.hero .hero__cta {
+    grid-area: cta;
+    justify-self: center;
+    align-self: start;
+    transform: translateY(-24px);
 }
 
 .hero__kicker{
@@ -463,6 +490,7 @@
     font-size: clamp(64px, 9vw, 180px);
     line-height: 0.85;
     letter-spacing: -0.04em;
+    white-space: nowrap;
 }
 
 .hero__desc{
@@ -472,7 +500,7 @@
     letter-spacing: -0.03em;
     text-transform: uppercase;
     color: var(--black);
-    margin: 0 0 22px;
+    margin: 50px 0;
     max-width: 460px;
     font-weight: 100;
 }
@@ -494,84 +522,6 @@
     }
 }
 
-@media (max-width: 768px){
-
-    :root{ --header-h: 56px; }
-
-    .hero{
-        min-height: auto;
-        padding: 18px 0 34px;
-        display:flex;
-        flex-direction:column;
-    }
-
-    .hero__inner{
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
-
-    .hero__left{
-        padding-top: 14px;
-        align-items: flex-start;
-        display:flex;
-        flex-direction:column;
-    }
-    .hero__left{ order:1; }
-    .hero__right{ order:2; }
-
-    .hero__kicker{
-        margin-left: 0;
-        margin-bottom: 14px;
-        font-size: 12px;
-    }
-
-    .hero__title{
-        font-size: 64px;
-        line-height: .88;
-        margin-bottom: 14px;
-    }
-
-    .hero__desc{
-        max-width: none;
-        font-size: 12px;
-        line-height: 1.15;
-        margin-bottom: 18px;
-    }
-
-    .hero__descLine1{ padding-left: 0; }
-    .margin-left{ margin-left: 0; }
-
-    .hero__right{
-        justify-content: center;
-        padding-top: 0;
-    }
-    .hero__imgWrap{
-        width: 100%;
-        display:flex;
-        justify-content:flex-start;
-    }
-    .hero__image{
-        max-height: none;
-    }
-
-    .hero__cta{
-        align-self: center;         /* кнопка по центру */
-        width: min(320px, 92vw);    /* не “бочка на півекрана” */
-        height: 52px;
-        font-size: 16px;
-        order:3;
-        margin-top: 24px;
-    }
-
-    .hero__imgWrap{
-        width: min(300px, 80vw);
-    }
-
-    .hero__image{
-        max-height: 420px;
-    }
-}
-
 .hero__inner,
 .hero__left,
 .hero__right{
@@ -586,15 +536,16 @@
     margin-left: 15%;
 }
 
-.hero__right{
+    .hero .hero__right{
     display:flex;
     justify-content:flex-start;
     align-items:flex-start;
-    padding-top: clamp(36px, 6vh, 86px);
-
+    padding-top: 0;
+    grid-area: right;
+    align-self: start;
+    transform: translateY(70px);
 }
 .hero__imgWrap{
-    width: min(560px, 44vw);
     display:flex;
     justify-content:flex-end;
     align-items:center;
@@ -4294,7 +4245,7 @@ body.menu-open{
 .tForm__subLink{ margin-top:18px; }
 
 /* ====== responsive ====== */
-@media (max-width: 1024px){
+@media (max-width: 1024px) and (min-width: 769px) {
     .techLibHero__inner,
     .techLibBlock__inner,
     .techLibForm__inner{
