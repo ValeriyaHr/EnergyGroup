@@ -334,7 +334,7 @@
     text-underline-offset: 6px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1024px) and (min-width: 769px) {
     .hero {
         min-height: auto;
         padding: 72px 0 64px;
@@ -458,11 +458,11 @@
     grid-area: left;
 }
 
-.hero .hero__cta {
+.hero .hero__cta{
     grid-area: cta;
     justify-self: center;
     align-self: start;
-    transform: translateY(-24px);
+    transform: translate(clamp(80px, 6vw, 160px), -24px);
 }
 
 .hero__kicker{
@@ -1210,18 +1210,18 @@
 }
 
 .intro__content{
-    font-family: var(--font-family),sans-serif;
+    font-family: var(--third-family),sans-serif;
     font-weight: 400;
-    font-size: clamp(14px, 1.2vw, 18px);
+    font-size: clamp(16px, 1.2vw, 18px);
     line-height: 1.2;
     letter-spacing: -0.01em;
     color: var(--grey);
 }
 
 .intro__aside{
-    font-family: var(--font-family),sans-serif;
+    font-family: var(--third-family),sans-serif;
     font-weight: 400;
-    font-size: clamp(14px, 1.2vw, 18px);
+    font-size: clamp(16px, 1.2vw, 18px);
     line-height: 1.2;
     letter-spacing: -0.01em;
     color: var(--grey);
@@ -1251,7 +1251,7 @@
     padding: 0 18px;
     font-family: var(--font-family), sans-serif;
     font-weight: 400;
-    font-size: clamp(16px, 1.4vw, 18px);
+    font-size: clamp(14px, 1.4vw, 16px);
     line-height: 1.1;
     letter-spacing: -0.01em;
     text-transform: uppercase;
@@ -1336,9 +1336,39 @@
     align-items: start;
 }
 
-.engineering__top{
-
+.engineering__top .engineering__headline{
+    /* прибираємо intro__text великий padding */
+    padding: 0;
+    margin: 0;
+    max-width: 640px;                 /* під макет */
+    font-family: var(--font-family), sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: clamp(17px, 4.5vw, 19px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--black);
 }
+
+.engineering__headline-main{
+    display: block;
+}
+
+/* сірий рядок з відступом вправо як у макеті */
+.engineering__headline-sub{
+    display: block;
+    color: var(--lightgrey);
+    padding-left: clamp(120px, 10vw, 190px);
+    margin-bottom: 30px;
+}
+
+/* На дуже широких — трохи менше “пливе” */
+@media (min-width: 1440px){
+    .engineering__headline-sub{
+        padding-left: 170px;
+    }
+}
+
 .engineering__title {
     font-family: var(--third-family), sans-serif;
     font-size: clamp(28px, 2.2vw, 40px);
@@ -1493,7 +1523,7 @@
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap: 40px;
+    gap: 30px;
     padding: 32px 0;
 }
 
@@ -1631,7 +1661,7 @@
     padding: 40px 0 60px;
     color: var(--black);
     font-weight: 500;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.25;
     letter-spacing: -0.01em;
 }
@@ -1641,7 +1671,7 @@
     --p: 0;                 /* 0 = stacked, 1 = expanded */
     --count: 10;            /* JS overwrite */
     --item-h: 56px;
-    --gap: 18px;
+    --gap: 1px;
     --expanded-step: calc(var(--item-h) + var(--gap));
     --collapsed-step: 26px; /* наскільки “стиснутий” стек у дефолті */
 }
@@ -1653,7 +1683,7 @@
     position: relative;
     overflow: hidden;
     min-height: calc(
-            var(--item-h) + (var(--count) - 1) * var(--expanded-step) + 0px
+            var(--item-h) + (var(--count) - 1) * var(--expanded-step) + 36px
     );
 }
 
@@ -1678,20 +1708,18 @@
     text-transform: uppercase;
     background: rgba(255,255,255,.78);
     color: rgba(10,6,6,.85);
-    /* ключ: інтерполяція між “стек” і “розкладено” */
     transform: translateY(
             calc(
                     (var(--i) * var(--collapsed-step)) * (1 - var(--p)) +
                     (var(--i) * var(--expanded-step)) * var(--p)
             )
     );
-
     transition: filter .25s ease; /* дрібний “преміум” */
     will-change: transform;
+    opacity: 1;
 }
 
 .whyItem span{ min-width:0; }
-
 .whyDot{
     width: 26px;
     height: 26px;
@@ -1703,35 +1731,54 @@
 /* styles like mockup */
 .whyItem.is-muted{
     background: rgba(214,213,211,.85);
-    color: rgba(10,6,6,.72);
+    color: var(--grey-dark);
 }
 
 .whyItem.is-accent{
     background: var(--orange);
     border-color: transparent;
-    color: #fff;
+    color: var(--grey-dark);
 }
 
-.whyItem.is-accent.is-soft{
-    background: var(--orange-light);
-}
 
 .whyItem.is-accent .whyDot{
     background: rgba(10,6,6,.75);
 }
 
-/* optional: tiny depth while stacked */
-.whyReveal[style] .whyItem{
-    filter: blur(calc((1 - var(--p)) * 0.6px));
+/* ===== WHY US: remove "transparency" when stacked (desktop) ===== */
+.whyPanel .whyItem{
+    opacity: 1;
+    filter: none;
+    mix-blend-mode: normal;
+
+    /* головне: непрозорий фон, бо елементи перекриваються */
+    background: #ffffff;
+}
+
+.whyPanel .whyItem.is-muted{
+    background: #D6D5D3; /* var(--lightgrey), але hex = гарантовано без альфи */
+}
+
+.whyPanel .whyItem.is-accent{
+    background: #FF7A00; /* var(--orange) */
+}
+
+/* якщо є "soft" (світліший оранжевий) */
+.whyPanel .whyItem.is-accent.is-soft{
+    background: #FC944A; /* var(--orange-light) */
+}
+
+/* текст завжди темний */
+.whyPanel .whyItem,
+.whyPanel .whyItem span{
+    color: #0A0606; /* var(--black) */
 }
 
 /* accessibility */
 @media (prefers-reduced-motion: reduce){
     .whyItem{ will-change: auto; }
 }
-
 /* ---------- partners ---------- */
-
 /* ===== PARTNERS title (like Figma) ===== */
 .partners__title{
     display: flex;
@@ -3667,7 +3714,7 @@ body.menu-open{
 .pillBtn:hover{ opacity:.92; }
 .pillBtn--wide{ padding:14px 22px; width:max-content; }
 
-/* ====== product detals====== */
+/* ====== product details====== */
 
 /* контейнер куди підвантажуємо */
 #productDetails {
