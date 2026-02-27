@@ -1,0 +1,632 @@
+/*ONLY max-width: 769px*/
+section{
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.container{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+    .btn,
+    .button {
+        font-size: 16px;
+    }
+
+    /* ===== HEADER ===== */
+    .header404__inner {
+        gap: 10px;
+    }
+
+    .header404__lang,
+    .header404__contacts,
+    .header404__ctaText {
+        display: none;
+    }
+
+    .header404__logo img {
+        height: 34px;
+    }
+
+    /* ===== 404 ===== */
+    .notfound {
+        padding-top: 0;
+    }
+
+    .notfound__inner {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .notfound__hero {
+        position: static;
+        transform: none;
+        width: 88vw;
+        margin: 16px auto 0;
+        order: 1;
+    }
+
+    .notfound__copy {
+        position: static;
+        max-width: 92vw;
+        margin: 20px auto 0;
+        padding: 0 16px;
+        text-align: left;
+        order: 2;
+    }
+        .hero__kicker{
+            white-space: nowrap; /* 1 рядок */
+            margin-left: 0;
+            margin-top: 100px;
+        }
+
+        .hero__kicker span{
+            display:inline;
+        }
+
+        .hero__kicker span + span{
+            margin-left: 6px; /* пробіл між словами */
+        }
+        :root{ --header-h: 56px; }
+
+        .hero{
+            min-height: auto;
+            padding: 18px 0 34px;
+            display:flex;
+            flex-direction:column;
+        }
+
+        .hero__inner{
+            grid-template-columns: 1fr;
+            grid-template-areas:
+      "left"
+      "right"
+      "cta";
+            gap: 2px;}
+
+        .hero__left{
+            padding-top: 14px;
+            align-items: flex-start;
+            display:flex;
+            flex-direction:column;
+        }
+
+
+        .hero__kicker{
+            margin-left: 0;
+            margin-bottom: 14px;
+            font-size: 12px;
+        }
+
+        .hero__title{
+            font-size: clamp(44px, 12vw, 64px);
+            line-height: .88;
+            margin-bottom: 14px;
+        }
+
+.hero__desc{
+    max-width: 335px;
+    margin: 0 auto 18px;
+    font-size: 14px;
+    line-height: 1.15;
+    text-align: left;
+    padding-top: 30px;
+}
+
+.hero__desc::before{
+    content: "";
+    float: left;
+    width: 35%;
+    height: 2.3em;
+}
+
+.hero__desc-dark{
+    display: inline;
+}
+
+.hero__desc .light-grey{
+    display: inline;
+    margin-left: 4px;
+}
+
+
+
+.hero__descLine1{ padding-left: 0; }
+
+.hero__descLine1{ display: block; }
+
+        .hero__descLine1{ padding-left: 0; }
+        .margin-left{ margin-left: 0; }
+
+        .hero__right{
+            transform: none;
+            align-items: center;
+            justify-content: center;
+            padding-top: 0;
+        }
+        .hero__imgWrap{
+            justify-content: center;
+            width: min(300px, 80vw);
+            margin: 0 auto;
+        }
+        .hero__image{
+            max-height: none;
+        }
+
+        .hero__cta{
+            height: 52px;
+            font-size: 16px;
+            width: auto;              /* прибираємо 320px */
+            max-width: 260px;         /* контроль ширини */
+            padding-left: 28px;       /* менші відступи */
+            padding-right: 28px;
+            justify-self: center;     /* grid-центрування */
+            transform: none !important;
+            margin-top: 80px;
+            align-self: center;
+
+        }
+
+        .hero__cta.btn--brackets::before{
+            left: 10px;
+        }
+
+        .hero__cta.btn--brackets::after{
+            right: 10px;
+        }
+
+.hero__left{ order:1; }
+.hero__right{ order:2; }
+.hero__cta{ order:3; }
+
+        .hero__image{
+            max-height: 420px;
+        }
+        /*інтро(головна сторінка, блок з каскою)*/
+.intro__text{
+    padding: 0;
+    margin: 0 auto 24px;
+    max-width: 335px;
+    font-size: 16px;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.intro__text-top{
+    display: block;
+}
+
+.intro__text-bottom{
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 8px;
+    align-items: baseline;
+}
+
+.intro__text-bottomBlack{
+    white-space: nowrap;
+}
+
+.intro__text .light-grey{
+    display: block;
+    margin: 0;
+}
+
+.intro__card{
+    grid-template-columns: 1fr;
+    gap: 18px;
+}
+
+.intro__media{
+    border-radius: 16px;
+}
+.intro__media img{
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+}
+
+.intro__copy{
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    padding: 0;
+}
+
+.intro__grid2{
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    column-gap: 14px;
+    align-items: start;
+    margin-bottom: 40px;
+}
+
+.intro__p{
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.1;
+}
+
+.intro__content{
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.25;
+}
+
+.intro__aside{
+    padding: 0;
+    font-size: 16px;
+    line-height: 1.25;
+}
+
+.intro__actions--mobile{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:40px;
+}
+
+.intro__btnPrimary{
+    width: 280px;
+    height: 54px;
+    border-radius: 28px;
+    justify-content: center;
+    font-size: 13px;
+}
+
+.intro__btnPrimary.btn--brackets{
+    width:250px;
+    height:54px;
+    border-radius:28px;
+    justify-content:center;
+    font-size:13px;
+    padding-left:30px;
+    padding-right:30px;
+}
+
+.intro__btnPrimary.btn--brackets::before{ left:18px; }
+.intro__btnPrimary.btn--brackets::after { right:18px; }
+
+.intro__btnPrimary.btn--brackets:hover::before{
+    transform: translateY(-50%) translateX(-6px);
+}
+.intro__btnPrimary.btn--brackets:hover::after{
+    transform: translateY(-50%) translateX(6px);
+}
+
+.intro__link--sub{
+    width: fit-content;
+    max-width: calc(100% - 40px);
+    margin: 0 auto;
+    padding: 0 18px;
+    white-space: nowrap;
+    font-size: 10px;
+    line-height: 1.1;
+    text-align: center;
+}
+
+.intro__link--sub::before,
+.intro__link--sub::after{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 1;
+}
+.intro__link--sub::before{ left: 0; }
+.intro__link--sub::after { right: 0; }
+
+.intro__link--sub:hover::before{
+    transform: translateY(-50%) translateX(-4px);
+}
+.intro__link--sub:hover::after{
+    transform: translateY(-50%) translateX(4px);
+}
+/* ===== кінець інтро (2 блок головної сторінки, де фото з каскою ===== */
+/* ===== ENGINEERING СЕКЦІЯ ГОЛОВНОЇ 3, ДЕ АКОНДЕОН ===== */
+.engineering__top{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+}
+.intro__p{
+    margin-bottom: 30px;
+}
+
+.engineering__top .intro__text{
+    padding: 0;
+    margin: 0;
+    max-width: 335px;
+    display: block;
+}
+
+.engineering__headline-main{
+    display: block;
+    font-size: 17px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+.engineering__headline-sub{
+    display: inline-block;
+    padding-left: 110px;
+    margin-top: 0;
+    text-align: left;
+    line-height: 1.15;
+    opacity: .9;
+}
+
+.engineering__content{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.engineering__left{
+    order: 1;
+    width: 100%;
+    max-width: 260px;
+    margin: 0 50% 20px;
+    text-align: start;
+    line-height: 1.2;
+    color: var(--grey);
+}
+
+.engineering__right{
+    order: 2;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.engineering__right .engItem{
+    width: 100%;
+    max-width: 335px;
+}
+
+.engineering__right .engRow{
+    width: 100%;
+    border-radius: 16px;
+    font-size: 14px;
+}
+
+.engineering__ctaLine{
+    width: 100%;
+    max-width: 335px;
+    margin-top: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+.engineering__ctaLine > a.btn{
+    order: 1;
+}
+.engineering__ctaLine .engCta{
+    order: 2;
+    text-align: center;
+}
+
+.engineering__ctaLine .engCta__title::before,
+.engineering__ctaLine .engCta__title::after{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 1;
+}
+
+.engineering__ctaLine .engCta__title::before{ content: "["; left: 0; }
+.engineering__ctaLine .engCta__title::after { content: "]"; right: 0; }
+
+.engineering__ctaLine .engCta__sub{
+    margin-top: 6px;
+    font-size: 10px;
+    line-height: 1.2;
+    color: var(--lightgrey);
+}
+
+@media (hover: hover) and (pointer: fine){
+    .engineering__ctaLine .engCta__title:hover::before{
+        transform: translateY(-50%) translateX(-4px);
+    }
+    .engineering__ctaLine .engCta__title:hover::after{
+        transform: translateY(-50%) translateX(4px);
+    }
+}
+/* ===== кінець ENGINEERING СЕКЦІЯ ГОЛОВНОЇ 3, ДЕ АКОНДЕОН ===== */
+/* ===== початок - WHY US секція з табами ===== */
+.whyus__inner{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+}
+.whyus__left{
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    column-gap: 14px;
+    align-items: start;
+}
+.whyus__text{
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.35;
+    color: var(--grey);
+    font-weight: 300;
+}
+.whyus__text br{ display:none; }
+
+/* таби — просто нижче, як другий блок */
+.whyus__tabs{
+    order: 2;
+    width: 100%;
+}
+.whyPanel{
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 18px;
+    background: #faf9f9;
+}
+.whyReveal{
+    --gap: 6px;
+    --item-h: 56px;
+}
+.whyItem{
+    left: 16px;
+    right: 16px;
+    top: 14px;
+    padding: 0 16px;
+    font-size: 10px;
+    letter-spacing: .06em;
+}
+
+/* ===== кінець - WHY US секція з табами ===== */
+
+
+
+
+
+    /* ===== FOOTER ===== */
+    .footer404__top{
+        grid-template-columns: 1fr;
+        gap: 26px;
+    }
+
+    .footer404__qr{
+        justify-items: start;
+        grid-auto-flow: column;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer404__brand{
+        font-size: 64px;
+        padding: 0 16px 24px;
+    }
+
+
+/* ===== PRODUCT DETAILS ===== */
+    .productDetails{
+        padding: 16px 0 48px;
+    }
+
+    .productDetails__card{
+        padding: 22px 18px 26px;
+        min-height: 0;
+        border-radius: 16px;
+    }
+
+    .productDetails__back{
+        top: 14px;
+        left: 14px;
+    }
+
+    .productDetails__badge{
+        top: 12px;
+        right: 12px;
+        min-width: 170px;
+        height: 92px;
+        padding: 0 18px;
+        font-size: 72px;
+        border-radius: 12px;
+    }
+
+    .productDetails__row{
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .productDetails__row--benefits{
+        padding-top: 64px;
+    }
+
+    .productDetails__h,
+    .productDetails__title{
+        width: auto;
+    }
+
+    .productDetails__cols{
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .productDetails{ padding: 16px 0 48px; }
+
+    .productDetails__card{
+        padding: 22px 18px 26px;
+        min-height: 0;
+        border-radius: 16px;
+    }
+
+    .productDetails__back{
+        top: 14px;
+        left: 14px;
+        width: 42px;
+        height: 42px;
+    }
+
+    .productDetails__badge{
+        top: 12px;
+        right: 12px;
+        width: 170px;
+        height: 92px;
+        padding: 0 18px;
+        font-size: 84px;
+        border-radius: 12px;
+    }
+
+    .productDetails__row{
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .productDetails__row--benefits{
+        padding-top: 110px;  /* щоб badge не перекривав */
+        padding-right: 0;
+    }
+
+    .productDetails__h,
+    .productDetails__title{
+        width: auto;
+    }
+
+    .productDetails__cols{
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .techLib .techLibBlock__desc::before{
+        transform: translateX(-14px);
+        font-size: 16px;
+    }
+
+    /* Хедер стає простим: один рядок */
+    .header__inner{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 56px;
+        gap: 12px;
+    }
+
+    /* Прибираємо все зайве на мобілці */
+    .header__contacts{ display: none !important; }
+    .header__logo{ display: none !important; }
+    .header__right{ display: none !important; }
+
+    /* Лівий блок займає весь рядок і розкидає: мови ліво, бургер право */
+    .header__left{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    /* Порядок елементів усередині header__left */
+    .header__lang{ order: 1; }
+    .header__burger{ order: 2; }
+
