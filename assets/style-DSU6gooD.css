@@ -2161,7 +2161,7 @@ body{
     padding: 40px 0 60px;
     color: var(--black);
     font-weight: 500;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.25;
     letter-spacing: -0.01em;
 }
@@ -2181,7 +2181,7 @@ body{
     position: relative;
     overflow: hidden;
     min-height: calc(
-            var(--item-h) + (var(--count) - 1) * var(--expanded-step) + 0px
+            var(--item-h) + (var(--count) - 1) * var(--expanded-step) + 36px
     );
 }
 /* items become a “stack” and unfold with --p */

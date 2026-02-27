@@ -438,7 +438,7 @@ section{
     }
 }
 /* ===== кінець ENGINEERING СЕКЦІЯ ГОЛОВНОЇ 3, ДЕ АКОНДЕОН ===== */
-/* ===== початок - WHY US секція з табами ===== */
+/* ===== початок - WHY US секція з плашками ===== */
 .whyus__inner{
     display: grid;
     grid-template-columns: 1fr;
@@ -469,7 +469,6 @@ section{
     width: 100%;
     padding: 14px 16px;
     border-radius: 18px;
-    background: #faf9f9;
 }
 .whyReveal{
     --gap: 6px;
