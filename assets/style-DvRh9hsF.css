@@ -2187,24 +2187,23 @@ body{
 /* items become a “stack” and unfold with --p */
 .whyItem{
     position: absolute;
-    left: 18px;
-    right: 18px;
-    top: 18px;
-    height: var(--item-h);
+    left: 20px;
+    right: 20px;
+    top: 20px;
+    height: 76px;
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap: 16px;
-    padding: 0 18px;
-    border-radius: 999px;
-    border: 1px solid rgba(0,0,0,.06);
-    font-family: var(--font-family), sans-serif;
-    font-weight: 400;
-    font-size: 12px;
+    padding: 20px;
+    border-radius: 18px;
+    font-family: var(--third-family), sans-serif;
+    font-weight: 300;
+    font-size: 16px;
     letter-spacing: .08em;
     text-transform: uppercase;
-    background: rgba(255,255,255,.78);
-    color: rgba(10,6,6,.85);
+    background: var(--lightgrey);
+    color: var(--grey-dark);
     transform: translateY(
             calc(
                     (var(--i) * var(--collapsed-step)) * (1 - var(--p)) +
@@ -2217,15 +2216,15 @@ body{
 }
 .whyItem span{ min-width:0; }
 .whyDot{
-    width: 26px;
-    height: 26px;
-    border-radius: 999px;
-    background: rgba(10,6,6,.75);
-    flex: 0 0 26px;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background: var(--grey-dark);
+    flex: 0 0 20px;
 }
 /* styles like mockup */
 .whyItem.is-muted{
-    background: rgba(214,213,211,.85);
+    background: var(--lightgrey);
     color: var(--grey-dark);
 }
 .whyItem.is-accent{
@@ -2246,19 +2245,15 @@ body{
     background: #ffffff;
 }
 .whyPanel .whyItem.is-muted{
-    background: #D6D5D3; /* var(--lightgrey), але hex = гарантовано без альфи */
+    background: var(--lightgrey);
 }
 .whyPanel .whyItem.is-accent{
-    background: #FF7A00; /* var(--orange) */
-}
-/* якщо є "soft" (світліший оранжевий) */
-.whyPanel .whyItem.is-accent.is-soft{
-    background: #FC944A; /* var(--orange-light) */
+    background: var(--orange);
 }
 /* текст завжди темний */
 .whyPanel .whyItem,
 .whyPanel .whyItem span{
-    color: #0A0606; /* var(--black) */
+    color: var(--grey-dark);
 }
 /* accessibility */
 @media (prefers-reduced-motion: reduce){
@@ -2372,7 +2367,7 @@ body{
     letter-spacing: -0.09em;
     color: var(--lightgrey);
 }
-.experience__content{
+.experience__content--desktop{
     grid-column: 2 / 4;
     grid-row: 2;
     margin-top: 0;
@@ -2496,7 +2491,7 @@ body{
     .experience__inner{ position: static; }
     .experience{ min-height: auto; padding: 60px 0; }
     .experience__top{ grid-template-columns: 1fr; gap: 18px; }
-    .experience__content{ grid-template-columns: 1fr; }
+    .experience__content--desktop{ grid-template-columns: 1fr; }
     .experience__numbers{ width: 100%; }
     .experience__labels{ margin-top: 22px; }
 }
@@ -2516,6 +2511,7 @@ body{
 
     .experience__numbers{ justify-self: start; }
 }
+.experience__content--mobile { display: none; }
 /* ---------- contacts ---------- */
 /* --- consent --- */
 .contacts__consent{
