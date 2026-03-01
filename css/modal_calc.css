@@ -235,6 +235,8 @@ body.no-scroll{ overflow: hidden; }
     color: rgba(255,255,255,.60);
 }
 
+
+
 /* ========== RESPONSIVE ========== */
 @media (max-width: 768px){
     :root{
