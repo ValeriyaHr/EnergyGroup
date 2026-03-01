@@ -389,8 +389,8 @@
                 </article>
 
 
-                <article class="productCard" data-preview="./img/content/products/product-13.png" data-details="p11">
-                    <a class="productCard__link" href="#">
+                <article class="productCard" data-preview="./img/content/products/product-13.png" data-details="p13">
+                    <a class="productCard__link" href="#" >
                         <div class="productCard__imgWrap">
                             <img src="./img/content/products/product-13-small.jpg" alt="">
                         </div>
@@ -442,7 +442,7 @@
                     $img.css('opacity', 0);
                     $title.css('opacity', 0);
                     $desc.css('opacity', 0);
-                    productId='01';
+
                     window.setTimeout(function () {
                         $img.attr('src', src);
                         if (title) $title.text(title);
@@ -459,6 +459,7 @@
 
                 // Функция для показа конкретной карточки
                 function showCard(index) {
+
                     if (index >= $cards.length) index = 0;
                     if (index < 0) index = $cards.length - 1;
 
@@ -509,12 +510,13 @@
 
                 // При уходе мыши из области сетки — возобновляем автопрокрутку
                 $grid.on('mouseleave', function () {
-                    startAutoplay();
+                   // startAutoplay();
                 });
 
                 // Обработчик клика на ссылку карточки - обновляем превью и открываем детали
                 $grid.on('click', '.productCard__link', function (e) {
                     e.preventDefault();
+                  //  $('.productCard__bottom').trigger('click');
                     return false;
                 });
                 $grid.on('click', '.productCard__bottom', function (e) {
@@ -522,6 +524,7 @@
 
 
                     var $card = $(this).closest('.productCard');
+
                     if (!$card.length) return;
 
                     stopAutoplay();
@@ -531,8 +534,11 @@
                     var text = $card.find('.productCard__text').text().trim();
                     var productId = $card.data('details');
 
+                    alert(productId);
+
                     setPreview(previewSrc, title, text, productId);
                     currentIndex = $cards.index($card);
+
 
                     // Программно кликаем по кнопке после небольшой задержки для плавности
                     window.setTimeout(function () {
@@ -547,7 +553,7 @@
                 });
 
                 // Запускаем автопрокрутку при загрузке
-                startAutoplay();
+                //startAutoplay();
             });
         })(jQuery);
     </script>
