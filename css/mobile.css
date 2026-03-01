@@ -668,6 +668,8 @@ section{
 .engHero__panel{
     padding: 18px 0 26px;  /* прибираємо “зайве повітря” */
     text-align: left;
+    background: transparent;
+
 }
 
 /* величезний PRIME ENERGY на мобілці робимо тихішим */
