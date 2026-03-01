@@ -67,6 +67,7 @@ $(function () {
         e.preventDefault();
 
         const productId = $(this).data("product"); // p01
+
         const url = `./product-details/${productId}.html`;
         loadProduct(url);
 
