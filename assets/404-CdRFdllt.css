@@ -779,6 +779,168 @@ section{
 .engHeroFrame__right{ order: 1; }
 .engHeroFrame{ order: 2; }
 .engHeroFrame__left{ order: 3; }
+
+.engSection{ margin-top: 0; }
+.engSection__wrap{ padding-left: 0; padding-right: 0; }
+.engSection__card{
+    padding: 64px 20px 0; /* було 110px 48px 160px на десктопі */
+}
+
+
+.engSolRow{
+    display: flex;          /* ключ */
+    flex-direction: column;
+    gap: 14px;
+    padding: 18px 0;
+}
+
+.engSolRow__left,
+.engSolRow__center,
+.engSolRow__right{
+    width: 100%;
+}
+
+.engSolRow__right{
+    align-items: flex-start;
+}
+
+.engSolRow__note{
+    margin-top: 15px;
+    margin-bottom: 30px;
+    width: 40%;
+    margin-left: auto;     /* штовхає блок вправо */
+    text-align: right;
+    font-family: var(--third-family), sans-serif;
+    font-weight: 100;
+    line-height: 100%;
+    letter-spacing: -0.03em;
+}
+/* 1 рядок: [label ..... number] */
+.engSolRow__left{
+    display:flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.engSolRow__label{
+    margin-bottom: 0;          /* прибираємо 55% */
+    margin-left: 0;            /* ти вже додала, лишаємо */
+    font-size: 12px;
+    line-height: 100%;
+}
+
+.engSolRow__num{
+    margin-left: 0;
+    font-size: 144px;
+    letter-spacing: -0.04em;
+    text-align: right;
+}
+
+.engSolRow__center{
+    max-width: 100%;
+    width: 100%;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    text-align-last: left;
+}
+
+.engSolRow__right{
+    align-items: flex-start;
+}
+.engSolRow__action{
+    white-space: normal;
+    padding: 0 14px;
+}
+
+.engSolRow__right{ display: contents; }
+
+.engSolRow__left{ order: 1; }
+.engSolRow__note{ order: 2; }
+.engSolRow__center{ order: 3; }
+.engSolRow__action{ order: 4; }
+
+.engSolRow__note{
+    margin-top: 8px;
+    max-width: 100%;
+}
+
+.engSolRow__action{
+    align-self: center;
+    font-size: 16px;
+    line-height: 110%;
+    margin-top: 83px;
+    margin-bottom: 165px;
+}
+.engVideoGrid{
+    grid-template-columns: 1fr !important;
+    grid-auto-rows: auto !important;
+}
+
+.engVideoGrid .engVideoCard:not(:first-child){
+    display: none !important;
+}
+
+/* (опційно) щоб перша виглядала як нормальний “плеєр” */
+.engVideoGrid .engVideoCard:first-child{
+    min-height: 360px; /* підкрутиш під макет */
+}
+.engSection__bottom{
+    grid-template-columns: 1fr;
+    row-gap: 22px;
+    margin-top: 56px; /* підкрутиш */
+}
+
+/* Лівий текст (splitText) — прибираємо всі зсуви */
+.splitText__line1{
+    transform: none;
+}
+
+.splitText__base,
+.splitText__overlay{
+    transform: none;
+    padding-right: 0;
+}
+
+/* Щоб “сіреньке” і “біле” читались як 1 колонка */
+.splitText__base,
+.splitText__overlay{
+    text-align: left;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: -0.01em;
+}
+
+.splitText__base br,
+.splitText__overlay br{display: none;}
+
+.splitText__line1,
+.splitText__base,
+.splitText__overlay{
+    transform: none;
+}
+
+.splitText__line1{
+    padding-left: 42%;
+}
+
+/* Правий оранжевий блок — теж в колонку і по лівому краю */
+.engSection__bottomRight{
+    max-width: 100%;
+    justify-items: center;
+    margin-top: 64px;
+}
+
+.engSection__ctaText{
+    max-width: 100%;
+}
+.btn--centered{
+    display: flex;        /* щоб margin auto спрацював */
+    margin: 64px auto 82px;  /* центр + відступ знизу */
+}
 /* ===== кінець - інженірінг ===== */
     /* ===== FOOTER ===== */
     .footer404__top{
