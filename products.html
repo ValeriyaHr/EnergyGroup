@@ -50,7 +50,7 @@
                     із точним автоматичним регулюванням
                 </p>
                 <div>
-                <button  class="openCalcBtn btn btn--secondary btn--drift previewProduct__btn  hide " style="width: 315px; "   data-calc-open >Визначити кількість</button>
+                <button id="calculator_btn" class="openCalcBtn btn btn--secondary btn--drift previewProduct__btn  hide " style="width: 315px; " onclick="openModal('calc-modal');">Визначити кількість</button>
                 <button id="btnShowDetails" class="btn btn--secondary btn--drift previewProduct__btn js-open-product"  style="width: 315px" data-product="p01">
                     Переглянути продукт
                 </button>
@@ -452,9 +452,11 @@
 
 
                     console.log('Product ID:', productId);
-                    if (productId === 'p03'){
+                    if (productId == 'p03'){
+                        console.log('show btn');
                         $('#calculator_btn').removeClass('hide');
                     }else{
+                        console.log('hide btn');
                         $('#calculator_btn').addClass('hide');
                     }
 
@@ -569,7 +571,7 @@
                 });
 
                 // Запускаем автопрокрутку при загрузке
-                //startAutoplay();
+               startAutoplay();
             });
         })(jQuery);
     </script>
