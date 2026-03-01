@@ -925,7 +925,7 @@ body.no-scroll{ overflow: hidden; }
 .footerPeg__brand{
     margin-top: 44px;
     padding: 0 0 22px;
-    font-family: var(--font-head, "Bebas Neue", system-ui, sans-serif);
+    font-family: var(--third-family), sans-serif;
     font-size: clamp(84px, 10vw, 180px);
     line-height: .85;
     letter-spacing: .02em;
@@ -2594,23 +2594,10 @@ body{
 /* ===== початок - experience__content--секція з цифрами ===== */
 .experience{
     position: relative;
-    min-height: 90vh;
+    min-height: 110vh;
     padding: 70px 0 80px;
-    background:var(--black);
+    background: var(--black);
     overflow: hidden;
-}
-.experience__inner{
-    position: sticky;
-    top: 0;
-    padding-top: 12vh;
-    display: grid;
-    grid-template-columns:
-        minmax(420px, 1.25fr)   /* ліва (порожня зона) */
-        minmax(360px, 0.95fr)   /* центр (lead + цифри) */
-        minmax(240px, 0.70fr);  /* права (підписи) */
-    column-gap: clamp(24px, 2vw, 48px);
-    row-gap: clamp(24px, 2vw, 48px);
-    align-items: start;
 }
 .experience__bgGlow{
     position:absolute;
@@ -2622,11 +2609,24 @@ body{
     background-size: cover;
     pointer-events:none;
 }
+.experience__inner{
+    position: sticky;
+    top: 0;
+    display: grid;
+    /* композиція як у макеті */
+    --col-left: 320px;   /* зона кікера зліва */
+    --col-mid:  720px;   /* зона ліда + статистики */
+    --gap: clamp(24px, 3vw, 64px);
+    --col-right: 2px;          /* або 220–320px під око */
+    grid-template-columns: var(--col-left) var(--col-mid) var(--col-right);
+    justify-content: center;     /* оце саме “зсуває” все вправо */
+    column-gap: var(--gap);
+    row-gap: 26px;
+    padding-top: clamp(56px, 9vh, 110px);
+    align-items: start;
+}
 .experience__top{
     display: contents;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 70px;
-    align-items: start;
 }
 .experience__kicker{
     grid-column: 1;
@@ -2641,12 +2641,12 @@ body{
     line-height: 110%;
 }
 .experience__lead{
+    grid-column: 2;
     grid-row: 1;
-    max-width: 60ch;
     justify-self: start;
+    max-width: 62ch;
     text-transform: uppercase;
     text-align: start;
-    grid-column: 2 / 4;
     margin-bottom: 0;
     font-family: var(--third-family),sans-serif;
     font-weight: 300;
@@ -2656,40 +2656,52 @@ body{
     color: var(--lightgrey);
 }
 .experience__content--desktop{
-    grid-column: 2 / 4;
+    grid-column: 2;
     grid-row: 2;
-    margin-top: 0;
+    justify-self: start;
     padding-top: 18px;
 }
+/* ===== Stats композиція (як у макеті) ===== */
 .expGrid{
-    --rightW: 240px;
-    --gapX: 40px;
-    /* висота 1 рядка = 2 рядки тексту справа */
-    --txtSize: clamp(15px, 1vw, 18px);
-    --txtLh: 1.25;
-    --rowH: calc(var(--txtSize) * var(--txtLh) * 2);
+    /* налаштування “перекриття” */
+    --numSize: 160px;               /* розмір цифр */
+    --step: 92px;                   /* крок вниз між числами (менше numSize => overlap) */
+
+    --rightW: 260px;
+    --gapX: 56px;
+
+    /* підгін вертикалі підписів відносно числа */
+    --captionShift: 34px;
+
     display: grid;
     grid-template-columns: 1fr var(--rightW);
-    grid-auto-rows: var(--rowH);
     column-gap: var(--gapX);
-    row-gap: 0;
+
+    /* ключ: контролюємо накладення через висоту рядка */
+    grid-auto-rows: var(--step);
+
+    width: min(860px, 100%);
     align-items: start;
-    overflow: visible; /* цифрам дозволяємо “вилазити” */
+    overflow: visible;
 }
 .expRow{ display: contents; }
 .expNum{
     grid-column: 1;
     align-self: start;
+
     font-family: var(--font3), sans-serif;
     font-weight: 400;
-    font-size: 158px;
+    font-size: var(--numSize);
     line-height: 1;
     letter-spacing: -0.04em;
+
     background: linear-gradient(180deg, #fff 0%, #161616 62.33%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+
     position: relative;
+    z-index: 1;
 }
 .expNum::after{
     content: "";
@@ -2703,28 +2715,23 @@ body{
 .expTxt{
     grid-column: 2;
     align-self: start;
-    max-width: 240px;
+    padding-top: 16px;
+    max-width: var(--rightW);
     font-family: var(--third-family), sans-serif;
     font-weight: 300;
-    font-size: var(--txtSize);
-    line-height: var(--txtLh);
+    font-size: clamp(15px, 1vw, 18px);
+    line-height: 1.25;
     letter-spacing: -0.09em;
     text-transform: uppercase;
     color: var(--lightgrey);
+
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     overflow: hidden;
 }
-.experience__kicker,
-    .experience__lead,
-    .experience__numbers,
-    .experience__labels{
-        grid-column: 1;
-        justify-self: start;
-    }
-.experience__numbers{ justify-self: start; }
-.experience__content--mobile { display: none; }
+/* мобільний блок на десктопі ховаємо (в тебе мобілка вже ок) */
+.experience__content--mobile{ display: none; }
 /* ===== кінець - experience__content--секція з цифрами ===== */
 /* ===== початок - contacts--остання секція з формою ===== */
 .contacts{ padding: 60px 0 76px; }

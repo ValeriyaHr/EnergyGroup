@@ -504,7 +504,8 @@ section{
     position: relative;
 }
 .experience__inner{
-    position: static;
+    justify-content: stretch;
+    grid-template-columns: 1fr;
     top: auto;
     padding-top: 0;
     margin-bottom: 88px;
