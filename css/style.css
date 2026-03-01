@@ -835,7 +835,7 @@
     grid-column: 1;
     grid-row: 1;
     align-self: start;
-    font-family: var(--font-family), sans-serif;
+    font-family: var(--third-family), sans-serif;
     font-weight: 100;
     font-size: 18px;
     line-height: 110%;
@@ -867,7 +867,7 @@
     text-align: justify;
     text-align-last: justify;
     padding-top: 0;
-    font-family: var(--font-family), sans-serif;
+    font-family: var(--third-family), sans-serif;
     font-weight: 300;
     font-size: 18px;
     line-height: 1.35;
@@ -936,7 +936,7 @@
     text-align: left;
     font-family: var(--font-family),sans-serif;
     font-weight: 400;
-    font-size: clamp(14px, 0.9vw, 18px);
+    font-size: clamp(12px, 0.9vw, 18px);
     line-height: 1.2;
     letter-spacing: -0.02em;
     color: var(--orange);
@@ -1060,8 +1060,6 @@
     letter-spacing: -0.01em;
     text-transform: uppercase;
     padding-right: 108px;
-
-
 }
 
 .engSection__bottomRight{
@@ -1124,6 +1122,7 @@
         width: auto;
         flex-basis: auto;
         align-items: flex-start;
+        text-align-last: left;
     }
     .engSolRow__action {
         justify-content: flex-start;
@@ -1141,6 +1140,37 @@
     .engSection__bottomRight{ width: auto; flex-basis: auto; }
     .engSection__big{ font-size: 28px; }
 }
+
+
+@media (min-width: 769px) and (max-width: 1619px){
+
+    /* прибираємо десктопні зсуви, які на середніх екранах “пливуть” */
+    .splitText__line1,
+    .splitText__base,
+    .splitText__overlay{
+        transform: none !important;
+        padding-right: 0 !important;
+    }
+
+    /* типографіка: трохи менше, але “дихає” */
+    .splitText__base,
+    .splitText__overlay{
+        font-size: clamp(18px, 1.55vw, 26px);
+        line-height: 1.12;
+        letter-spacing: 0.02em;
+    }
+
+    /* зсув першого рядка (менший, ніж на великому десктопі) */
+    .splitText__line1{
+        padding-left: clamp(120px, 22vw, 320px); /* було занадто жорстко — тепер м’якше */
+    }
+
+    /* головне: білий оверлей має починатися з того ж місця */
+    .splitText__overlay{
+        clip-path: inset(0 0 0 clamp(120px, 22vw, 320px));
+    }
+}
+
 
 .intro__card{
     display:grid;
@@ -1850,7 +1880,7 @@
     font-weight: 300;
     font-size: clamp(15px, 1vw, 18px);
     line-height: 1.25;
-    letter-spacing: -0.09em;
+    letter-spacing: -0.03em;
     color: var(--lightgrey);
 }
 
