@@ -16,15 +16,12 @@ body.no-scroll{ overflow: hidden; }
     display: none;
     place-items: center;
     padding: 28px;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity .3s ease, visibility .3s ease;
+    pointer-events: none;
 }
 
 .calc-modal.is-open{
     display: grid;
-    visibility: visible;
-    opacity: 1;
+    pointer-events: auto;
 }
 
 /* ========== MODAL OVERLAY ========== */

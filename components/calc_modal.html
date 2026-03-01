@@ -3,7 +3,7 @@
     <div class="calc-modal__overlay" data-close-calc></div>
 
     <div class="calc-modal__dialog" role="dialog" aria-modal="true">
-        <button class="calc-modal__close" type="button" data-close-calc>
+        <button class="calc-modal__close" type="button" onclick="closeModal('calc-modal');">
             <span></span>
             <span></span>
         </button>
@@ -16,34 +16,18 @@
             Введіть необхідні параметри для розрахунку
         </p>
 
-        <form id="calc-form" class="calc-modal__form">
+        <form id="calc-form" class="calc-modal__form" onSubmit="ShowCalcResult(); return false;">
             <div class="calc-field">
-                <label for="calc-inom">Номінальний струм (Inom), А</label>
-                <input
-                        type="number"
-                        id="calc-inom"
-                        name="inom"
-                        placeholder="10"
-                        required
-                        min="0"
-                        step="any"
-                />
+                <label for="inom">Номінальний струм (Inom), А</label>
+                <input type="number" id="inom" name="inom" placeholder="10" required min="0" step="any"/>
             </div>
 
             <div class="calc-field">
-                <label for="calc-rho">Питомий опір ґрунту (ρ), Ом·м</label>
-                <input
-                        type="number"
-                        id="calc-rho"
-                        name="rho"
-                        placeholder="100"
-                        required
-                        min="0"
-                        step="any"
-                />
+                <label for="rho">Питомий опір ґрунту (ρ), Ом·м</label>
+                <input type="number" id="rho" name="rho" placeholder="100" required min="0" step="any"/>
             </div>
 
-            <button type="submit" class="calc-modal__btn">
+            <button type="button" class="calc-modal__btn" onclick="ShowCalcResult();">
                 Розрахувати
             </button>
         </form>
@@ -53,10 +37,10 @@
 
 <!-- CALC MODAL: RESULT -->
 <div class="calc-modal" id="calc-modal-result">
-    <div class="calc-modal__overlay" data-close-calc></div>
+    <div class="calc-modal__overlay"  onclick="closeModal('calc-modal-result');"></div>
 
     <div class="calc-modal__dialog" role="dialog" aria-modal="true">
-        <button class="calc-modal__close" type="button" data-close-calc>
+        <button class="calc-modal__close" type="button" onclick="closeModal('calc-modal-result');">
             <span></span>
             <span></span>
         </button>
@@ -76,7 +60,7 @@
             </div>
         </div>
 
-        <button type="button" class="calc-modal__btn" data-close-calc>
+        <button type="button" class="calc-modal__btn" onclick="closeModal('calc-modal-result');">
             Закрити
         </button>
     </div>
