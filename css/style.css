@@ -1,5 +1,8 @@
 @import url("parners_slider.css");
+
 @import url("product_details.css");
+
+@import url("modal_calc.css");
 @import url("footer.css");
 
 
@@ -2871,7 +2874,9 @@ body.menu-open{
     background:#fff;
     overflow:hidden;
 }
-
+.hide{
+    display: none;
+}
 .previewProduct__gridBg{
     position:absolute;
     inset:0;

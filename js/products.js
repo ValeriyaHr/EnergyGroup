@@ -29,7 +29,7 @@ $(function () {
         setTimeout(() => {
             $wrap.removeClass("is-ready").empty();
             isLoaded = false;
-            lastUrl = null;
+            //lastUrl = null;
         }, 350);
     }
 
@@ -67,6 +67,9 @@ $(function () {
         e.preventDefault();
 
         const productId = $(this).data("product"); // p01
+
+
+
 
         const url = `./product-details/${productId}.html`;
         loadProduct(url);

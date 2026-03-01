@@ -47,10 +47,14 @@
                     Інверторні станції нового покоління для стабільного та енергоефективного катодного захисту трубопроводів
                     із точним автоматичним регулюванням
                 </p>
-
-                <button id="btnShowDetails" class="btn btn--secondary btn--drift previewProduct__btn js-open-product" data-product="p01">
+                <div>
+                <button  class="openCalcBtn btn btn--secondary btn--drift previewProduct__btn  hide " style="width: 315px; "   data-calc-open >Визначити кількість</button>
+                <button id="btnShowDetails" class="btn btn--secondary btn--drift previewProduct__btn js-open-product"  style="width: 315px" data-product="p01">
                     Переглянути продукт
                 </button>
+                </div>
+
+
 
             </div>
         </div>
@@ -421,6 +425,7 @@
         </div>
     </section>
 
+    {{> calc_modal}}
 
     <script>
         // swap preview image on hover/focus/click + автопрокрутка каждые 3 секунды
@@ -443,12 +448,20 @@
                     $title.css('opacity', 0);
                     $desc.css('opacity', 0);
 
+
+                    console.log('Product ID:', productId);
+                    if (productId === 'p03'){
+                        $('#calculator_btn').removeClass('hide');
+                    }else{
+                        $('#calculator_btn').addClass('hide');
+                    }
+
                     window.setTimeout(function () {
                         $img.attr('src', src);
                         if (title) $title.text(title);
                         if (desc) $desc.text(desc);
                         if (productId && $btnDetails.length) {
-                            $btnDetails.attr('data-product', productId);
+                            $btnDetails.data('product', productId).attr('data-product', productId);
                         }
 
                         $img.css('opacity', 1);
@@ -510,7 +523,7 @@
 
                 // При уходе мыши из области сетки — возобновляем автопрокрутку
                 $grid.on('mouseleave', function () {
-                   // startAutoplay();
+                     startAutoplay();
                 });
 
                 // Обработчик клика на ссылку карточки - обновляем превью и открываем детали
@@ -534,16 +547,17 @@
                     var text = $card.find('.productCard__text').text().trim();
                     var productId = $card.data('details');
 
-                    alert(productId);
+
 
                     setPreview(previewSrc, title, text, productId);
                     currentIndex = $cards.index($card);
+                    $btnDetails = $('#btnShowDetails');
 
-
+                    $btnDetails.data('product', productId).attr('data-product', productId);
+                    $('.productDetails__back').click();
                     // Программно кликаем по кнопке после небольшой задержки для плавности
                     window.setTimeout(function () {
-                        $btnDetails = $('#btnShowDetails');
-                        $btnDetails.attr('data-product', productId);
+
 
                         $btnDetails.click();
 
@@ -557,7 +571,10 @@
             });
         })(jQuery);
     </script>
+
+
 </main>
+
 
 
 <!-- ===== FOOTER ===== -->

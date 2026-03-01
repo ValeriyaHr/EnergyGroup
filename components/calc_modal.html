@@ -1,0 +1,83 @@
+<!-- CALC MODAL: INPUT -->
+<div class="calc-modal" id="calcModal" aria-hidden="true">
+    <div class="calc-modal__overlay" data-close-calc></div>
+
+    <div class="calc-modal__dialog" role="dialog" aria-modal="true">
+        <button class="calc-modal__close" type="button" data-close-calc>
+            <span></span>
+            <span></span>
+        </button>
+
+        <h2 class="calc-modal__title">
+            Розрахунок кількості магнетитових осердь
+        </h2>
+
+        <p class="calc-modal__subtitle">
+            Введіть необхідні параметри для розрахунку
+        </p>
+
+        <form id="calcForm" class="calc-modal__form">
+            <div class="calc-field">
+                <label for="inom">Номінальний струм (Inom), А</label>
+                <input
+                        type="number"
+                        id="inom"
+                        name="inom"
+                        placeholder="10"
+                        required
+                        min="0"
+                        step="any"
+                />
+            </div>
+
+            <div class="calc-field">
+                <label for="rho">Питомий опір ґрунту (ρ), Ом·м</label>
+                <input
+                        type="number"
+                        id="rho"
+                        name="rho"
+                        placeholder="100"
+                        required
+                        min="0"
+                        step="any"
+                />
+            </div>
+
+            <button type="submit" class="calc-modal__btn">
+                Розрахувати
+            </button>
+        </form>
+    </div>
+</div>
+
+
+<!-- CALC MODAL: RESULT -->
+<div class="calc-modal calc-modal--result" id="calcResultModal" aria-hidden="true">
+    <div class="calc-modal__overlay" data-close-calc></div>
+
+    <div class="calc-modal__dialog" role="dialog" aria-modal="true">
+        <button class="calc-modal__close" type="button" data-close-calc>
+            <span></span>
+            <span></span>
+        </button>
+
+        <h2 class="calc-modal__title">
+            Результат розрахунку
+        </h2>
+
+        <div class="calc-result">
+            <p class="calc-result__text">
+                Рекомендована кількість магнетитових осердь:
+            </p>
+
+            <div class="calc-result__value">
+                <span id="calcResultValue">0</span>
+                <span class="calc-result__unit">шт</span>
+            </div>
+        </div>
+
+        <button type="button" class="calc-modal__btn" data-close-calc>
+            Закрити
+        </button>
+    </div>
+</div>

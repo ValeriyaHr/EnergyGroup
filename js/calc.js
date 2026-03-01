@@ -7,44 +7,46 @@ function toNum(v){
 }
 
 function openModal(id){
-    const m = document.getElementById(id);
-    m.setAttribute("aria-hidden", "false");
+    $("#" + id).addClass("is-open");
+    $("body").addClass("no-scroll");
 }
 
-function closeModal(modal){
-    modal.setAttribute("aria-hidden", "true");
+function closeModal($modal){
+    $modal.removeClass("is-open");
+    $("body").removeClass("no-scroll");
 }
 
 (function initAzCalculator(){
-    const modal = document.getElementById("az-calc");
-    if (!modal) return;
+    const $modal = $("#calc-modal-overlay");
+    if ($modal.length === 0) return;
 
-    modal.addEventListener("click", (e) => {
-        if (e.target.matches("[data-close]")) closeModal(modal);
+    $modal.on("click", function(e) {
+        if ($(e.target).is("[data-close-calc]") || $(e.target).closest(".calc-modal__close").length) {
+            closeModal($modal);
+        }
     });
 
     // Виклик з кнопки на картці товару:
-    // <button data-az-open>Калькулятор</button>
-    document.addEventListener("click", (e) => {
-        const btn = e.target.closest("[data-az-open]");
-        if (btn) openModal("az-calc");
+    // <button data-calc-open>Калькулятор</button>
+    $(document).on("click", "[data-calc-open]", function() {
+        openModal("calc-modal-overlay");
     });
 
-    const form = document.getElementById("az-form");
-    const result = document.getElementById("az-result");
-    const nEl = document.getElementById("az-n");
-    const metaEl = document.getElementById("az-meta");
+    const $form = $("#calc-form");
+    const $result = $("#calc-result");
+    const $nEl = $("#calc-n");
+    const $metaEl = $("#calc-meta");
 
-    form.addEventListener("submit", (e) => {
+    $form.on("submit", function(e) {
         e.preventDefault();
 
-        const inom = toNum(form.inom.value);
-        const rho = toNum(form.rho.value);
+        const inom = toNum($form.find("input[name='inom']").val());
+        const rho = toNum($form.find("input[name='rho']").val());
 
         if (inom === null || rho === null || inom <= 0 || rho <= 0) {
-            result.hidden = false;
-            nEl.textContent = "—";
-            metaEl.textContent = "Перевір числа: мають бути > 0 (можна 4,0 або 4.0).";
+            $result.show();
+            $nEl.text("—");
+            $metaEl.text("Перевій числа: мають бути > 0 (можна 4,0 або 4.0).");
             return;
         }
 
@@ -77,9 +79,10 @@ function closeModal(modal){
 
         const N_final = Math.ceil(Math.max(N_fact, N_by_mass));
 
-        result.hidden = false;
-        nEl.textContent = String(N_final);
-        metaEl.textContent =
-            `Imax=${I_max.toFixed(2)}A, Uпоч=${U_start.toFixed(2)}V, Nфакт=${N_fact.toFixed(2)}, Nпо масі=${N_by_mass.toFixed(2)}.`;
+        $result.show();
+        $nEl.text(String(N_final));
+        $metaEl.text(
+            `Imax=${I_max.toFixed(2)}A, Uпоч=${U_start.toFixed(2)}V, Nфакт=${N_fact.toFixed(2)}, Nпо масі=${N_by_mass.toFixed(2)}.`
+        );
     });
 })();
