@@ -1,0 +1,29 @@
+/* FooterPeg light theme — only Engineering page */
+.page-engineering .footerPeg{
+    background: var(--white);
+    color: var(--black);
+}
+
+/* тексти/лінки */
+.page-engineering .footerPeg__head,
+.page-engineering .footerPeg__muted,
+.page-engineering .footerPeg__text{
+    color: rgba(0,0,0,.88);
+}
+
+.page-engineering .footerPeg__link,
+.page-engineering .footerPeg__textLink,
+.page-engineering .footerPeg__socialLink{
+    color: rgba(0,0,0,.86);
+}
+
+/* розділювачі */
+.page-engineering .footerPeg__line{
+    background: rgba(0,0,0,.18);
+}
+
+/* svg-іконки (якщо є) */
+.page-engineering .footerPeg svg path{
+    fill: rgba(0,0,0,.86);
+    stroke: rgba(0,0,0,.86);
+}
