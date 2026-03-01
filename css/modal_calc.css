@@ -151,6 +151,18 @@ body.no-scroll{ overflow: hidden; }
     transition: border-color .15s ease, box-shadow .15s ease;
 }
 
+/* Скрываем спиннер (стрелки) для Chrome, Safari, Edge, Opera */
+.calc-field input[type="number"]::-webkit-outer-spin-button,
+.calc-field input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Скрываем спиннер для Firefox */
+.calc-field input[type="number"] {
+    -moz-appearance: textfield;
+}
+
 .calc-field input::placeholder{
     color: rgba(255,255,255,.22);
     letter-spacing: -0.02em;
