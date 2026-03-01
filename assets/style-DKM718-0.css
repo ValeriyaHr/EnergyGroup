@@ -454,14 +454,11 @@ body.no-scroll{ overflow: hidden; }
     display: none;
     place-items: center;
     padding: 28px;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity .3s ease, visibility .3s ease;
+    pointer-events: none;
 }
 .calc-modal.is-open{
     display: grid;
-    visibility: visible;
-    opacity: 1;
+    pointer-events: auto;
 }
 /* ========== MODAL OVERLAY ========== */
 .calc-modal__overlay{
@@ -576,6 +573,16 @@ body.no-scroll{ overflow: hidden; }
     font-size: 14px;
     letter-spacing: -0.02em;
     transition: border-color .15s ease, box-shadow .15s ease;
+}
+/* Скрываем спиннер (стрелки) для Chrome, Safari, Edge, Opera */
+.calc-field input[type="number"]::-webkit-outer-spin-button,
+.calc-field input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* Скрываем спиннер для Firefox */
+.calc-field input[type="number"] {
+    -moz-appearance: textfield;
 }
 .calc-field input::placeholder{
     color: rgba(255,255,255,.22);

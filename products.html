@@ -15,11 +15,11 @@
     <script src="./js/products.js"></script>
 
     <!-- Подключение CSS -->
-    <link rel="stylesheet" href="/EnergyGroup/assets/mobile-RTndUsQ9.css" media="(max-width: 768px)">
+    <link rel="stylesheet" href="/EnergyGroup/assets/mobile-DCrEsZA8.css" media="(max-width: 768px)">
   <script type="module" crossorigin src="/EnergyGroup/assets/modulepreload-polyfill-COaX8i6R.js"></script>
   <script type="module" crossorigin src="/EnergyGroup/assets/mainJs-C70gN9Ql.js"></script>
   <script type="module" crossorigin src="/EnergyGroup/assets/menu-DHYyUrCX.js"></script>
-  <link rel="stylesheet" crossorigin href="/EnergyGroup/assets/style-I8MzeCTr.css">
+  <link rel="stylesheet" crossorigin href="/EnergyGroup/assets/style-DKM718-0.css">
 </head>
 
 <body>
@@ -65,7 +65,7 @@
             </div>
         </div>
 
-        <a class="header__logo" href="#home" aria-label="Prime Energy Group">
+        <a class="header__logo" href="./index.html" aria-label="Prime Energy Group">
             <img src="/EnergyGroup/assets/peg-logo-BDSjm_s2.svg" alt="Prime Energy Group">
         </a>
 
@@ -205,7 +205,7 @@
                     із точним автоматичним регулюванням
                 </p>
                 <div>
-                <button  class="openCalcBtn btn btn--secondary btn--drift previewProduct__btn  hide " style="width: 315px; "   data-calc-open >Визначити кількість</button>
+                <button id="calculator_btn" class="openCalcBtn btn btn--secondary btn--drift previewProduct__btn  hide " style="width: 315px; " onclick="openModal('calc-modal');">Визначити кількість</button>
                 <button id="btnShowDetails" class="btn btn--secondary btn--drift previewProduct__btn js-open-product"  style="width: 315px" data-product="p01">
                     Переглянути продукт
                 </button>
@@ -587,7 +587,7 @@
         <div class="calc-modal__overlay" data-close-calc></div>
     
         <div class="calc-modal__dialog" role="dialog" aria-modal="true">
-            <button class="calc-modal__close" type="button" data-close-calc>
+            <button class="calc-modal__close" type="button">
                 <span></span>
                 <span></span>
             </button>
@@ -602,29 +602,13 @@
     
             <form id="calc-form" class="calc-modal__form">
                 <div class="calc-field">
-                    <label for="calc-inom">Номінальний струм (Inom), А</label>
-                    <input
-                            type="number"
-                            id="calc-inom"
-                            name="inom"
-                            placeholder="10"
-                            required
-                            min="0"
-                            step="any"
-                    />
+                    <label for="inom">Номінальний струм (Inom), А</label>
+                    <input type="number" id="inom" name="inom" placeholder="10" required min="0" step="any"/>
                 </div>
     
                 <div class="calc-field">
-                    <label for="calc-rho">Питомий опір ґрунту (ρ), Ом·м</label>
-                    <input
-                            type="number"
-                            id="calc-rho"
-                            name="rho"
-                            placeholder="100"
-                            required
-                            min="0"
-                            step="any"
-                    />
+                    <label for="rho">Питомий опір ґрунту (ρ), Ом·м</label>
+                    <input type="number" id="rho" name="rho" placeholder="100" required min="0" step="any"/>
                 </div>
     
                 <button type="submit" class="calc-modal__btn">
@@ -640,7 +624,7 @@
         <div class="calc-modal__overlay" data-close-calc></div>
     
         <div class="calc-modal__dialog" role="dialog" aria-modal="true">
-            <button class="calc-modal__close" type="button" data-close-calc>
+            <button class="calc-modal__close" type="button">
                 <span></span>
                 <span></span>
             </button>
@@ -688,9 +672,11 @@
 
 
                     console.log('Product ID:', productId);
-                    if (productId === 'p03'){
+                    if (productId == 'p03'){
+                        console.log('show btn');
                         $('#calculator_btn').removeClass('hide');
                     }else{
+                        console.log('hide btn');
                         $('#calculator_btn').addClass('hide');
                     }
 
@@ -805,7 +791,7 @@
                 });
 
                 // Запускаем автопрокрутку при загрузке
-                //startAutoplay();
+               startAutoplay();
             });
         })(jQuery);
     </script>
