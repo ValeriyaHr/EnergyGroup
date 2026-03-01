@@ -1,5 +1,5 @@
 <!-- CALC MODAL: INPUT -->
-<div class="calc-modal" id="calcModal" aria-hidden="true">
+<div class="calc-modal" id="calc-modal">
     <div class="calc-modal__overlay" data-close-calc></div>
 
     <div class="calc-modal__dialog" role="dialog" aria-modal="true">
@@ -16,12 +16,12 @@
             Введіть необхідні параметри для розрахунку
         </p>
 
-        <form id="calcForm" class="calc-modal__form">
+        <form id="calc-form" class="calc-modal__form">
             <div class="calc-field">
-                <label for="inom">Номінальний струм (Inom), А</label>
+                <label for="calc-inom">Номінальний струм (Inom), А</label>
                 <input
                         type="number"
-                        id="inom"
+                        id="calc-inom"
                         name="inom"
                         placeholder="10"
                         required
@@ -31,10 +31,10 @@
             </div>
 
             <div class="calc-field">
-                <label for="rho">Питомий опір ґрунту (ρ), Ом·м</label>
+                <label for="calc-rho">Питомий опір ґрунту (ρ), Ом·м</label>
                 <input
                         type="number"
-                        id="rho"
+                        id="calc-rho"
                         name="rho"
                         placeholder="100"
                         required
@@ -52,7 +52,7 @@
 
 
 <!-- CALC MODAL: RESULT -->
-<div class="calc-modal calc-modal--result" id="calcResultModal" aria-hidden="true">
+<div class="calc-modal" id="calc-modal-result">
     <div class="calc-modal__overlay" data-close-calc></div>
 
     <div class="calc-modal__dialog" role="dialog" aria-modal="true">
@@ -71,7 +71,7 @@
             </p>
 
             <div class="calc-result__value">
-                <span id="calcResultValue">0</span>
+                <span id="calc-result-value">0</span>
                 <span class="calc-result__unit">шт</span>
             </div>
         </div>

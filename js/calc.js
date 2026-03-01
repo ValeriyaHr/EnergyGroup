@@ -11,31 +11,32 @@ function openModal(id){
     $("body").addClass("no-scroll");
 }
 
-function closeModal($modal){
-    $modal.removeClass("is-open");
+function closeModal(id){
+    $("#" + id).removeClass("is-open");
     $("body").removeClass("no-scroll");
 }
 
 (function initAzCalculator(){
-    const $modal = $("#calc-modal-overlay");
-    if ($modal.length === 0) return;
+    const $modal = $("#calc-modal");
+    const $resultModal = $("#calc-modal-result");
+    if ($modal.length === 0 || $resultModal.length === 0) return;
 
-    $modal.on("click", function(e) {
-        if ($(e.target).is("[data-close-calc]") || $(e.target).closest(".calc-modal__close").length) {
-            closeModal($modal);
+    // Закриття модалей при кліку на overlay або кнопку close
+    $(document).on("click", "[data-close-calc]", function() {
+        const $parent = $(this).closest(".calc-modal");
+        if ($parent.length) {
+            closeModal($parent.attr("id"));
         }
     });
 
     // Виклик з кнопки на картці товару:
     // <button data-calc-open>Калькулятор</button>
     $(document).on("click", "[data-calc-open]", function() {
-        openModal("calc-modal-overlay");
+        openModal("calc-modal");
     });
 
     const $form = $("#calc-form");
-    const $result = $("#calc-result");
-    const $nEl = $("#calc-n");
-    const $metaEl = $("#calc-meta");
+    const $resultValue = $("#calc-result-value");
 
     $form.on("submit", function(e) {
         e.preventDefault();
@@ -44,9 +45,7 @@ function closeModal($modal){
         const rho = toNum($form.find("input[name='rho']").val());
 
         if (inom === null || rho === null || inom <= 0 || rho <= 0) {
-            $result.show();
-            $nEl.text("—");
-            $metaEl.text("Перевій числа: мають бути > 0 (можна 4,0 або 4.0).");
+            alert("Перевір числа: мають бути > 0 (можна 4,0 або 4.0).");
             return;
         }
 
@@ -79,10 +78,11 @@ function closeModal($modal){
 
         const N_final = Math.ceil(Math.max(N_fact, N_by_mass));
 
-        $result.show();
-        $nEl.text(String(N_final));
-        $metaEl.text(
-            `Imax=${I_max.toFixed(2)}A, Uпоч=${U_start.toFixed(2)}V, Nфакт=${N_fact.toFixed(2)}, Nпо масі=${N_by_mass.toFixed(2)}.`
-        );
+        // Показує результат
+        $resultValue.text(String(N_final));
+
+        // Закриває форму і відкриває результат
+        closeModal("calc-modal");
+        openModal("calc-modal-result");
     });
 })();
