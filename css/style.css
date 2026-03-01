@@ -2304,9 +2304,9 @@
     outline: none;
     box-shadow: 0 0 0 2px rgba(255,132,0,.35);
 }
-
 .btn--brackets:active{
-    transform: translateY(1px);
+    position: relative;
+    top: 1px;
 }
 /*hero*/
 
