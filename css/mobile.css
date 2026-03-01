@@ -1,3 +1,17 @@
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    margin: 0;
+}
+
+
 /*ONLY max-width: 769px*/
 section{
     margin-top: 60px;
