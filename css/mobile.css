@@ -662,7 +662,13 @@ section{
     padding-bottom: 56px;
     margin-top: 0;
     margin-bottom: 0;
-    background:var(--grey-pale);
+    background: linear-gradient(
+            to bottom,
+            var(--grey-pale) 0%,
+            #fdfdfd 40%,
+            #ffffff 75%,
+            #ffffff 100%
+    );
 }
 
 .engHero__panel{
