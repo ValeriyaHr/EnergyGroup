@@ -86,6 +86,83 @@
     .partnersSlide{ height: 160px; padding: 14px; }
     .partnersPrev, .partnersNext{ display:none; } /* на мобиле чаще свайпают */
 }
+/* ========== SUBMENU STYLES FOR ACCORDION MENU ========== */
+.menuGroup {
+    position: relative;
+}
+.menuItem--toggle {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+}
+.menuItem--toggle:hover {
+    opacity: 0.8;
+}
+.menuItem--toggle.is-open .menuItem__icon {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+}
+.menuSub {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    margin-top: 12px;
+    padding-left: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+.menuSub__item {
+    margin: 0;
+    padding: 8px 0;
+    line-height: 1.5;
+    cursor: pointer;
+    color:black;
+}
+.menuSub__item a {
+    font-size: 13px;
+    font-weight: 300;
+
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+    display: block;
+}
+.menuSub__item a:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+/* ========== MENU OVERLAY SCROLLABLE ========== */
+.menuOverlay__nav {
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 12px;
+}
+/* Стилізація скролбара для webkit браузерів (Chrome, Safari, Edge) */
+.menuOverlay__nav::-webkit-scrollbar {
+    width: 6px;
+}
+.menuOverlay__nav::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+}
+.menuOverlay__nav::-webkit-scrollbar-thumb {
+    background: rgba(255, 122, 0, 0.6);
+    border-radius: 3px;
+}
+.menuOverlay__nav::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 122, 0, 0.8);
+}
 /* PRODUCT DETAILS (under hero) */
 .productDetails{
     padding: 0 40px 110px;
@@ -1143,7 +1220,10 @@ body{
 }
 /* ---------- header ---------- */
 .header{
-    background:#fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background:var(--white);
     border-bottom:1px solid rgba(0,0,0,.06);
     overflow: hidden;
 }
@@ -2168,7 +2248,7 @@ body{
     width:100%;
     gap: 16px;
     border-radius: 8px;
-    border:1px solid rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.12);
     padding: 14px 16px;
     background:var(--black);
     text-transform: uppercase;
@@ -2514,7 +2594,7 @@ body{
 /* ===== початок - experience__content--секція з цифрами ===== */
 .experience{
     position: relative;
-    min-height: 115vh;
+    min-height: 90vh;
     padding: 70px 0 80px;
     background:var(--black);
     overflow: hidden;
@@ -2540,7 +2620,6 @@ body{
     height:380px;
     background: url("/EnergyGroup/assets/glow-D20zywQf.png") center bottom no-repeat;
     background-size: cover;
-
     pointer-events:none;
 }
 .experience__top{
@@ -2580,135 +2659,71 @@ body{
     grid-column: 2 / 4;
     grid-row: 2;
     margin-top: 0;
-
-    /* налаштування сітки під макет */
-    --rowH: 72px;     /* крок по вертикалі (менше = більше перекриття цифр) */
-    --rightW: 240px;  /* ширина правої колонки */
-    --gapX: 40px;     /* відстань між цифрами і текстом */
-    --topPad: 18px;   /* спільний верхній відступ для 1-го рядка */
-
+    padding-top: 18px;
+}
+.expGrid{
+    --rightW: 240px;
+    --gapX: 40px;
+    /* висота 1 рядка = 2 рядки тексту справа */
+    --txtSize: clamp(15px, 1vw, 18px);
+    --txtLh: 1.25;
+    --rowH: calc(var(--txtSize) * var(--txtLh) * 2);
     display: grid;
     grid-template-columns: 1fr var(--rightW);
-    grid-template-rows: repeat(4, var(--rowH));
+    grid-auto-rows: var(--rowH);
     column-gap: var(--gapX);
+    row-gap: 0;
     align-items: start;
-
-    padding-top: var(--topPad);
-    overflow: visible; /* щоб великі цифри могли “налазити” на наступний ряд */
+    overflow: visible; /* цифрам дозволяємо “вилазити” */
 }
-/* робимо так, щоб діти стали прямими елементами гріда */
-.experience__numbers,
-.experience__labels{
-    display: contents !important;
-}
-/* ЛІВА КОЛОНКА: цифри */
-.experience__big{
+.expRow{ display: contents; }
+.expNum{
     grid-column: 1;
     align-self: start;
-    position: relative;
-    display: block;
     font-family: var(--font3), sans-serif;
     font-weight: 400;
     font-size: 158px;
-    line-height: 1;          /* щоб не підрізало */
+    line-height: 1;
     letter-spacing: -0.04em;
-
     background: linear-gradient(180deg, #fff 0%, #161616 62.33%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    position: relative;
 }
-/* ПРАВА КОЛОНКА: підписи */
-.experience__label{
-    grid-column: 2;
-    align-self: start;
-
-    position: static !important; /* прибираємо абсолют/рейки якщо лишились */
-    margin: 0;
-
-    max-width: var(--rightW);
-    white-space: normal;
-    overflow-wrap: anywhere;
-
-    font-family: var(--third-family), sans-serif;
-    font-weight: 300;
-    font-size: clamp(15px, 1vw, 18px);
-    letter-spacing: -0.09em;
-    line-height: 1.25;
-    text-transform: uppercase;
-    color: var(--lightgrey);
-}
-/* прив’язка рядків 1..4 */
-.experience__numbers .experience__big:nth-child(1){ grid-row: 1; }
-.experience__numbers .experience__big:nth-child(2){ grid-row: 2; }
-.experience__numbers .experience__big:nth-child(3){ grid-row: 3; }
-.experience__numbers .experience__big:nth-child(4){ grid-row: 4; }
-.experience__labels .experience__label:nth-child(1){ grid-row: 1; }
-.experience__labels .experience__label:nth-child(2){ grid-row: 2; }
-.experience__labels .experience__label:nth-child(3){ grid-row: 3; }
-.experience__labels .experience__label:nth-child(4){ grid-row: 4; }
-.experience__big::after{
+.expNum::after{
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-            180deg,
-            rgba(255,255,255,.4),
-            transparent 40%
-    );
+    background: linear-gradient(180deg, rgba(255,255,255,.4), transparent 40%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    pointer-events:none;
+    pointer-events: none;
 }
-.experience__labels{
-    max-width: 100%;
-    white-space: normal;
-    overflow-wrap: anywhere;
-    position: relative;
-
-    font-family: var(--third-family),sans-serif;
-    font-weight: 300;
-    font-size: clamp(15px, 1vw, 18px);
-    letter-spacing: -0.09em;
-    line-height: 1.25;
-    text-transform: uppercase;
-    color: var(--lightgrey);
-    justify-self: start;
-    margin-top: 0;
-    grid-column: 2;
-}
-.experience__label{
+.expTxt{
     grid-column: 2;
     align-self: start;
-
-    white-space: normal;
-    overflow-wrap: anywhere;
-    line-height: 1.25;
+    max-width: 240px;
+    font-family: var(--third-family), sans-serif;
+    font-weight: 300;
+    font-size: var(--txtSize);
+    line-height: var(--txtLh);
+    letter-spacing: -0.09em;
+    text-transform: uppercase;
+    color: var(--lightgrey);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
 }
-@media (max-width: 980px){
-    .experience__inner{ position: static; }
-    .experience{ min-height: auto; padding: 60px 0; }
-    .experience__top{ grid-template-columns: 1fr; gap: 18px; }
-    .experience__content--desktop{ grid-template-columns: 1fr; }
-    .experience__numbers{ width: 100%; }
-    .experience__labels{ margin-top: 22px; }
-}
-@media (max-width: 1100px){
-    .experience__inner{
-        position: static;
-        grid-template-columns: 1fr;
-    }
-
-    .experience__kicker,
+.experience__kicker,
     .experience__lead,
     .experience__numbers,
     .experience__labels{
         grid-column: 1;
         justify-self: start;
     }
-
-    .experience__numbers{ justify-self: start; }
-}
+.experience__numbers{ justify-self: start; }
 .experience__content--mobile { display: none; }
 /* ===== кінець - experience__content--секція з цифрами ===== */
 /* ===== початок - contacts--остання секція з формою ===== */
@@ -2939,9 +2954,6 @@ body{
 .btn__bracket{
     opacity: .95;
     transform: translateY(-.5px);
-}
-.btn--primary .btn__bracket{
-    color: #fff;
 }
 .btn--primary:focus-visible{
     outline: none;
@@ -3335,6 +3347,25 @@ body.menu-open{
     display: flex;
     flex-direction: column;
     gap: 22px;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 12px;
+}
+/* Стилізація скролбара для webkit браузерів (Chrome, Safari, Edge) */
+.menuOverlay__nav::-webkit-scrollbar {
+    width: 6px;
+}
+.menuOverlay__nav::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+}
+.menuOverlay__nav::-webkit-scrollbar-thumb {
+    background: rgba(255, 122, 0, 0.6);
+    border-radius: 3px;
+}
+.menuOverlay__nav::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 122, 0, 0.8);
 }
 .menuItem{
     display: flex;
@@ -3906,11 +3937,9 @@ body.menu-open{
     text-decoration:none;
 }
 .docsLink__text{
-    font-family: var(--font-family-Thin), sans-serif;
-    font-weight: 300;
+    font-family: var(--font-family), sans-serif;
     font-size: 20px;
     line-height: 1.2;
-    letter-spacing: -0.01em;
     text-transform: uppercase;
     color: #ffffff;
 }
@@ -4727,27 +4756,6 @@ body.menu-open{
     .docsForm__left{ flex: 1 1 auto; }
 }
 @media (max-width: 560px){
-    .container{ width: calc(100% - 32px); }
-    .reqField{ flex: 1 1 100%; }
-}
-/* breakpoints (desktop -> tablet) */
-@media (max-width: 1100px){
-    .productCard{ flex-basis: calc((100% - 24px) / 2); }
-    .previewProduct__side{ flex-basis: 220px; }
-    .previewProduct__media img{ width: min(520px, 54vw); height: min(520px, 54vw); }
-}
-@media (max-width: 640px){
-    .productCard{ flex-basis: 100%; }
-}
-@media (max-width: 1100px){
-    .docsLinks__inner{
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas:
-      "certs certs"
-      "manuals catalogs";
-    }
-}
-@media (max-width: 560px){
     .docsLinks__inner{
         grid-template-columns: 1fr;
         grid-template-areas:
@@ -4784,7 +4792,64 @@ body.menu-open{
 
     stroke-linecap: butt;
     stroke-linejoin: miter;
-    stroke-miterlimit: 20;
+    stroke-miterlimit: 10;
 }*/
-
-
+/* ========== ACCORDION MENU SUBMENU STYLES ========== */
+/*.menuGroup {*/
+/*    position: relative;*/
+/*}*/
+/*.menuItem--toggle {*/
+/*    background: none;*/
+/*    border: none;*/
+/*    padding: 0;*/
+/*    cursor: pointer;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    width: 100%;*/
+/*    text-align: left;*/
+/*    font: inherit;*/
+/*    color: inherit;*/
+/*    transition: opacity 0.2s ease;*/
+/*}*/
+/*.menuItem--toggle:hover {*/
+/*    opacity: 0.8;*/
+/*}*/
+/*.menuItem--toggle.is-open .menuItem__icon {*/
+/*    transform: rotate(180deg);*/
+/*}*/
+/*.menuItem--toggle .menuItem__icon {*/
+/*    transition: transform 0.3s ease;*/
+/*}*/
+/*.menuSub {*/
+/*    list-style: none;*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*    display: none;*/
+/*    background-color: rgba(255, 255, 255, 0.05);*/
+/*    border-left: 2px solid rgba(255, 122, 0, 0.3);*/
+/*    margin-top: 12px;*/
+/*    padding-left: 24px;*/
+/*    padding-top: 12px;*/
+/*    padding-bottom: 12px;*/
+/*    overflow: hidden;*/
+/*}*/
+/*.menuSub.is-open {*/
+/*    display: block;*/
+/*}*/
+/*.menuSub__item {*/
+/*    margin: 0;*/
+/*    padding: 8px 0;*/
+/*    line-height: 1.6;*/
+/*    list-style: none;*/
+/*}*/
+/*.menuSub__item a {*/
+/*    font-size: 13px;*/
+/*    font-weight: 300;*/
+/*    text-decoration: none;*/
+/*    color: rgba(255, 255, 255, 0.75);*/
+/*    transition: color 0.2s ease;*/
+/*    display: block;*/
+/*}*/
+/*.menuSub__item a:hover {*/
+/*    color: rgba(255, 122, 0, 0.9);*/
+/*}*/

@@ -31,47 +31,60 @@
     });
 })();
 
-//------------
+//------------ jQuery Accordion Menu
 $(function () {
     var $overlay = $("#menuOverlay");
     var $nav = $overlay.find(".menuOverlay__nav");
 
-    function closeGroup($btn) {
-        var $group = $btn.closest(".menuGroup");
-        var $sub = $group.find(".menuSub");
-
-        $btn.removeClass("is-open").attr("aria-expanded", "false");
-        $sub.stop(true, true).slideUp(180).attr("aria-hidden", "true");
-    }
-
-    function openGroup($btn) {
-        var $group = $btn.closest(".menuGroup");
-        var $sub = $group.find(".menuSub");
-
-        $btn.addClass("is-open").attr("aria-expanded", "true");
-        $sub.stop(true, true).slideDown(180).attr("aria-hidden", "false");
-    }
-
+    // Accordion toggle handler
     $nav.on("click", ".menuItem--toggle", function (e) {
         e.preventDefault();
 
         var $btn = $(this);
-        var isOpen = $btn.hasClass("is-open");
+        var $submenu = $("#" + $btn.attr("data-target"));
+        var isOpen = $btn.attr("aria-expanded") === "true";
 
-        // закриваємо всі інші
-        $nav.find(".menuItem--toggle.is-open").not($btn).each(function () {
-            closeGroup($(this));
+        // Close all other submenus
+        $nav.find(".menuItem--toggle").not($btn).each(function () {
+            var $other = $(this);
+            var $otherSub = $("#" + $other.attr("data-target"));
+            $other.attr("aria-expanded", "false").removeClass("is-open");
+            $otherSub.stop(true, true).slideUp(180).attr("aria-hidden", "true");
         });
 
-        // перемикаємо поточний
-        if (isOpen) closeGroup($btn);
-        else openGroup($btn);
+        // Toggle current submenu
+        if (isOpen) {
+            $btn.attr("aria-expanded", "false").removeClass("is-open");
+            $submenu.stop(true, true).slideUp(180).attr("aria-hidden", "true");
+        } else {
+            $btn.attr("aria-expanded", "true").addClass("is-open");
+            $submenu.stop(true, true).slideDown(180).attr("aria-hidden", "false");
+        }
     });
 
-    // опціонально: при закритті оверлею — закрити всі підменю
-    $overlay.on("closeMenuOverlay", function () {
-        $nav.find(".menuItem--toggle.is-open").each(function () {
-            closeGroup($(this));
-        });
+    // Close all submenus when menu overlay closes
+    $overlay.on("click", ".menuOverlay__close", function () {
+        $nav.find(".menuItem--toggle").attr("aria-expanded", "false").removeClass("is-open");
+        $nav.find(".menuSub").stop(true, true).slideUp(180).attr("aria-hidden", "true");
+    });
+
+    // Wheel scroll support for menu navigation
+    $nav.on("wheel", function (e) {
+        var $element = $(this);
+        var scrollTop = $element.scrollTop();
+        var scrollHeight = $element.prop("scrollHeight");
+        var clientHeight = $element.prop("clientHeight");
+
+        var isAtTop = scrollTop === 0;
+        var isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
+
+        // If at top and scrolling up, or at bottom and scrolling down - allow page scroll
+        if ((isAtTop && e.originalEvent.deltaY < 0) || (isAtBottom && e.originalEvent.deltaY > 0)) {
+            return;
+        }
+
+        // Otherwise prevent default and let the menu scroll
+        e.preventDefault();
+        $element.scrollTop(scrollTop + e.originalEvent.deltaY);
     });
 });
