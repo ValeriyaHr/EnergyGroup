@@ -14,13 +14,13 @@
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <link rel="stylesheet" href="/EnergyGroup/assets/mobile-52kAnfgr.css" media="(max-width: 768px)">
+    <link rel="stylesheet" href="/EnergyGroup/assets/mobile-RTndUsQ9.css" media="(max-width: 768px)">
 
 
   <script type="module" crossorigin src="/EnergyGroup/assets/modulepreload-polyfill-COaX8i6R.js"></script>
-  <script type="module" crossorigin src="/EnergyGroup/assets/mainJs-57s-TK0D.js"></script>
+  <script type="module" crossorigin src="/EnergyGroup/assets/mainJs-C70gN9Ql.js"></script>
   <script type="module" crossorigin src="/EnergyGroup/assets/menu-DHYyUrCX.js"></script>
-  <link rel="stylesheet" crossorigin href="/EnergyGroup/assets/style-DvRh9hsF.css">
+  <link rel="stylesheet" crossorigin href="/EnergyGroup/assets/style-I8MzeCTr.css">
 </head>
 
 <body>
@@ -29,21 +29,22 @@
 
 
 <!-- PRELOADER-->
- <div class="preloader" id="preloader" aria-label="Завантаження" role="status">
-     <div class="preloader__card">
-         <img
-                 src="/EnergyGroup/assets/hero-desktop-JoPS_c4W.png"
-                 alt="Prime Energy Group"
-                 class="preloader__image"
-                 id="preloaderImage"
-         />
- 
-         <div class="preloader__progress">
-             <span class="preloader__spinner" aria-hidden="true"></span>
-             <span class="preloader__percent" id="preloaderPercent">1%</span>
-         </div>
-     </div>
- </div>
+<!-- <div class="preloader" id="preloader" aria-label="Завантаження" role="status">
+    <div class="preloader__card">
+        <img
+                src="/img/content/hero-desktop.png"
+                alt="Prime Energy Group"
+                class="preloader__image"
+                id="preloaderImage"
+        />
+
+        <div class="preloader__progress">
+            <span class="preloader__spinner" aria-hidden="true"></span>
+            <span class="preloader__percent" id="preloaderPercent">1%</span>
+        </div>
+    </div>
+</div>
+-->
 <!-- ===== HEADER ===== -->
 <!-- ===== HEADER ===== -->
 <header class="header" id="top">
@@ -545,10 +546,10 @@
                 </div>
 
                 <div class="experience__labels">
-                    <div>Км трубопроводів під<br>захистом наших систем</div>
-                    <div>Гарантії на кожен тип продукції<br>власного виробництва</div>
-                    <div>Ресурс роботи анодного<br>поля магнетитового типу</div>
-                    <div>Років на ринку<br>інжинірингових рішень ЕХЗ</div>
+                    <div class="experience__label" style="--i:0">Км трубопроводів під захистом наших систем</div>
+                    <div class="experience__label" style="--i:1">Гарантії на кожен тип продукції власного виробництва</div>
+                    <div class="experience__label" style="--i:2">Ресурс роботи анодного поля магнетитового типу</div>
+                    <div class="experience__label" style="--i:3">Років на ринку інжинірингових рішень ЕХЗ</div>
                 </div>
             </div>
 
@@ -566,13 +567,13 @@
                     <div class="experience__label">Гарантії на кожен тип продукції власного виробництва</div>
                 </div>
 
-                <div class="experienceStat">
+                <div class="experienceStat exleft">
                     <div class="experience__big">35+</div>
                     <div class="experience__label">Ресурс роботи анодного поля магнетитового типу</div>
                 </div>
 
-                <div class="experienceStat">
-                    <div class="experience__big">8+</div>
+                <div class="experienceStat exleft">
+                    <div class="experience__big">7+</div>
                     <div class="experience__label">Років на ринку інжинірингових рішень ЕХЗ</div>
                 </div>
             </div>
@@ -652,8 +653,89 @@
         </div>
     </div>
 
-
-
+    <!-- CALC MODAL: INPUT -->
+    <div class="calc-modal" id="calc-modal">
+        <div class="calc-modal__overlay" data-close-calc></div>
+    
+        <div class="calc-modal__dialog" role="dialog" aria-modal="true">
+            <button class="calc-modal__close" type="button" data-close-calc>
+                <span></span>
+                <span></span>
+            </button>
+    
+            <h2 class="calc-modal__title">
+                Розрахунок кількості магнетитових осердь
+            </h2>
+    
+            <p class="calc-modal__subtitle">
+                Введіть необхідні параметри для розрахунку
+            </p>
+    
+            <form id="calc-form" class="calc-modal__form">
+                <div class="calc-field">
+                    <label for="calc-inom">Номінальний струм (Inom), А</label>
+                    <input
+                            type="number"
+                            id="calc-inom"
+                            name="inom"
+                            placeholder="10"
+                            required
+                            min="0"
+                            step="any"
+                    />
+                </div>
+    
+                <div class="calc-field">
+                    <label for="calc-rho">Питомий опір ґрунту (ρ), Ом·м</label>
+                    <input
+                            type="number"
+                            id="calc-rho"
+                            name="rho"
+                            placeholder="100"
+                            required
+                            min="0"
+                            step="any"
+                    />
+                </div>
+    
+                <button type="submit" class="calc-modal__btn">
+                    Розрахувати
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    
+    <!-- CALC MODAL: RESULT -->
+    <div class="calc-modal" id="calc-modal-result">
+        <div class="calc-modal__overlay" data-close-calc></div>
+    
+        <div class="calc-modal__dialog" role="dialog" aria-modal="true">
+            <button class="calc-modal__close" type="button" data-close-calc>
+                <span></span>
+                <span></span>
+            </button>
+    
+            <h2 class="calc-modal__title">
+                Результат розрахунку
+            </h2>
+    
+            <div class="calc-result">
+                <p class="calc-result__text">
+                    Рекомендована кількість магнетитових осердь:
+                </p>
+    
+                <div class="calc-result__value">
+                    <span id="calc-result-value">0</span>
+                    <span class="calc-result__unit">шт</span>
+                </div>
+            </div>
+    
+            <button type="button" class="calc-modal__btn" data-close-calc>
+                Закрити
+            </button>
+        </div>
+    </div>
 
 <!-- ===== FOOTER ===== -->
 <footer class="footerPeg" id="footer">

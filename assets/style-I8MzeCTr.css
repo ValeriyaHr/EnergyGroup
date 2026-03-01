@@ -438,6 +438,248 @@
     .productDetails__row--benefits{ padding-right: 270px; }
     .productDetails__cols{ gap: 28px; }
 }
+:root{
+    --calc-radius: 28px;
+    --calc-pad-x: 70px;
+    --calc-pad-y: 62px;
+    --calc-max-w: 860px;
+}
+/* lock scroll when modal open */
+body.no-scroll{ overflow: hidden; }
+/* ========== MODAL CONTAINER ========== */
+.calc-modal{
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    place-items: center;
+    padding: 28px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .3s ease, visibility .3s ease;
+}
+.calc-modal.is-open{
+    display: grid;
+    visibility: visible;
+    opacity: 1;
+}
+/* ========== MODAL OVERLAY ========== */
+.calc-modal__overlay{
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(0,0,0,.55);
+    backdrop-filter: blur(2px);
+    cursor: pointer;
+}
+/* ========== MODAL DIALOG ========== */
+.calc-modal__dialog{
+    width: min(var(--calc-max-w), calc(100vw - 56px));
+    background:
+            radial-gradient(900px 520px at 18% 10%, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 62%),
+            radial-gradient(780px 520px at 88% 12%, rgba(255,122,0,.08) 0%, rgba(255,122,0,0) 54%),
+            linear-gradient(90deg, #050505 0%, #0A0606 52%, #040404 100%);
+    color: rgba(255,255,255,.86);
+    border-radius: var(--calc-radius);
+    box-shadow: 0 30px 80px rgba(0,0,0,.55);
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    padding: var(--calc-pad-y) var(--calc-pad-x) 56px;
+}
+/* ========== CLOSE BUTTON ========== */
+.calc-modal__close{
+    position: absolute;
+    top: 26px;
+    right: 28px;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    opacity: .65;
+    transition: opacity .15s ease, transform .15s ease;
+    padding: 0;
+}
+.calc-modal__close:hover{ opacity: .9; }
+.calc-modal__close:active{ transform: translateY(1px); }
+.calc-modal__close span{
+    position: absolute;
+    width: 18px;
+    height: 2px;
+    background: rgba(255,255,255,.70);
+    border-radius: 2px;
+}
+.calc-modal__close span:first-child{ transform: rotate(45deg); }
+.calc-modal__close span:last-child{ transform: rotate(-45deg); }
+/* ========== TITLE ========== */
+.calc-modal__title{
+    margin: 0;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.90);
+    max-width: 560px;
+}
+/* ========== SUBTITLE ========== */
+.calc-modal__subtitle{
+    margin: 12px 0 28px;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    color: var(--orange);
+}
+/* ========== FORM ========== */
+.calc-modal__form{
+    margin: 0;
+}
+/* ========== FIELD ========== */
+.calc-field{
+    margin-top: 22px;
+}
+.calc-field label{
+    display: block;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: -0.03em;
+    color: rgba(255,255,255,.78);
+    margin-bottom: 8px;
+}
+.calc-field__hint{
+    margin: 0 0 12px;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.45;
+    letter-spacing: -0.02em;
+    color: rgba(255,255,255,.38);
+}
+/* ========== INPUT ========== */
+.calc-field input{
+    width: 100%;
+    height: 60px;
+    padding: 0 22px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.16);
+    background: rgba(0,0,0,.18);
+    color: rgba(255,255,255,.88);
+    outline: none;
+    font-family: var(--font-family), sans-serif;
+    font-size: 14px;
+    letter-spacing: -0.02em;
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+.calc-field input::placeholder{
+    color: rgba(255,255,255,.22);
+    letter-spacing: -0.02em;
+}
+.calc-field input:focus{
+    border-color: rgba(255,122,0,.55);
+    box-shadow: 0 0 0 3px rgba(255,122,0,.12);
+}
+/* ========== BUTTON ========== */
+.calc-modal__btn{
+    height: 54px;
+    padding: 0 34px;
+    margin-top: 34px;
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    background: var(--orange);
+    color: #fff;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    white-space: nowrap;
+    transition: filter .15s ease, transform .15s ease;
+}
+.calc-modal__btn:hover{ filter: brightness(.96); }
+.calc-modal__btn:active{ transform: translateY(1px); }
+.calc-modal__btn:disabled{
+    filter: grayscale(.4);
+    opacity: .7;
+    cursor: not-allowed;
+}
+/* ========== RESULT SECTION ========== */
+.calc-result{
+    margin-top: 32px;
+}
+.calc-result__text{
+    margin: 0 0 16px;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    color: rgba(255,255,255,.78);
+}
+.calc-result__value{
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    color: rgba(255,255,255,.92);
+}
+.calc-result__unit{
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: -0.02em;
+    color: rgba(255,255,255,.60);
+}
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px){
+    :root{
+        --calc-radius: 22px;
+        --calc-pad-x: 22px;
+        --calc-pad-y: 22px;
+        --calc-max-w: 720px;
+    }
+
+    .calc-modal{
+        padding: 16px;
+    }
+
+    .calc-modal__dialog{
+        padding: var(--calc-pad-y) var(--calc-pad-x) 36px;
+    }
+
+    .calc-modal__title{
+        font-size: 16px;
+        max-width: none;
+    }
+
+    .calc-field input{
+        height: 54px;
+    }
+
+    .calc-modal__btn{
+        width: 100%;
+    }
+}
+@media (max-width: 420px){
+    .calc-modal__close{
+        top: 16px;
+        right: 16px;
+    }
+
+    .calc-modal__title{
+        font-size: 14px;
+    }
+}
 .footerPeg{
     background:
             radial-gradient(1200px 600px at 20% 10%, rgba(255,255,255,0.06), transparent 60%),
@@ -809,27 +1051,6 @@
     --error: #bc0e0d;
     --success: #24590d;
 }
-/*--svіtliy: #e4cfb4;*/
-/*--temniy: #e16f12;*/
-/*--bіliy: #fff;*/
-/*--persikoviy-dlya-elіpsіv: #fed6bb;*/
-/*--chorniy-100: #0a0606;*/
-/*--chorniy-90: #191010;*/
-/*--sіriy-100: #413e39;*/
-/*--sіriy-80: #faf9f9;*/
-/*--sіriy-90: #d6d5d3;*/
-/*--sіriy-95: #727270;*/
-/*--oranzheviy-90: #fc944a;*/
-/*--oranzheviy-100: #ff822c;*/
-/*--oranzheviy-zhovtiy: #ffe436;*/
-/*--chervoniy-90: #e25021;*/
-/*--chervoniy-100: #cc1602;*/
-/*--linear---blur-blyur: rgba(14, 7, 2, 0.15);*/
-/*--linear---blur-bіliy-360-dlya-blyuru: rgba(240, 240, 240, 0.36);*/
-/*--zhovtiy: #ffe436;*/
-/*--chervoniy: #e25021;*/
-/*--color-blur: rgba(118, 53, 13, 0.98);*/
-/*--sіriy-logo: #727270;*/
 *, *::before, *::after { box-sizing: border-box; }
 body{
     margin:0;
@@ -867,7 +1088,8 @@ body{
 }
 .btn--primary:hover{ filter: brightness(0.95); }
 .btn--primary:active{
-    transform: translateY(1px);
+    position: relative;
+    top: 1px;
     background: var(--grey);
 }
 .btn__label{ letter-spacing:-0.03em; }
@@ -1207,7 +1429,6 @@ body{
     z-index: 2;
     background: #0A0606;
 }
-/* engSection wrapper: прибираємо контейнерні поля саме тут */
 .engSection__wrap{
     max-width: none;
     width: 100%;
@@ -1232,20 +1453,15 @@ body{
     position: absolute;
     left: calc(var(--pad-x) + var(--col-left) + var(--gap) + (var(--mid) / 2));
     top: 797px;
-
     width: clamp(720px, 62vw, 1280px);
     height: auto;
-
     transform: translate(-50%, -50%) rotate(-12deg) scale(1.08);
-
     opacity: .6;
     filter: blur(.2px) drop-shadow(0 0 18px rgba(255,255,255,.18));
-
     pointer-events: none;
     user-select: none;
     z-index: 0;
 }
-/* контент поверх тіксів */
 .engSection__rows,
 .engSection__video,
 .engSection__bottom{
@@ -1254,7 +1470,7 @@ body{
 }
 .engHero{
     position: relative;
-    background:#fff;
+    background:var(--white);
     padding-top: 160px;
     padding-bottom: 160px;
     overflow: hidden;
@@ -1295,7 +1511,7 @@ body{
 .engHero__bgText::before{
     content: "[Інжиніринг]";
     top: -14%;
-    left: 10%;
+    left: 4%;
 }
 .engHero__bgText::after{
     content: "[Рішення]";
@@ -1306,14 +1522,11 @@ body{
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    gap: 20px; /* підженеш під макет */
+    gap: 20px;
     max-width: 1240px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
-}
-.engHeroFrame{
-
 }
 .engHeroFrame__left{
     justify-content: flex-end;   /* щоб притиснути до рамки */
@@ -1358,7 +1571,7 @@ body{
 .engHeroFrame__text{
     text-transform: uppercase;
     text-align: center;
-    font-family: var(--font-family), sans-serif;
+    font-family: var(--third-family), sans-serif;
     font-weight: 500;
     font-size: 40px;
     line-height: 100%;
@@ -1374,14 +1587,7 @@ body{
 .text-grey:last-of-type {
     margin-left: 20px;
 }
-.engHeroFrame__right{
-    font-family: var(--font-family), sans-serif;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 100%;
-    letter-spacing: -0.03em;
-    color: var(--orange);
-}
+.engHeroFrame__right,
 .engHeroFrame__left{
     font-family: var(--font-family), sans-serif;
     font-weight: 400;
@@ -2184,7 +2390,6 @@ body{
             var(--item-h) + (var(--count) - 1) * var(--expanded-step) + 36px
     );
 }
-/* items become a “stack” and unfold with --p */
 .whyItem{
     position: absolute;
     left: 20px;
@@ -2210,7 +2415,7 @@ body{
                     (var(--i) * var(--expanded-step)) * var(--p)
             )
     );
-    transition: filter .25s ease; /* дрібний “преміум” */
+    transition: filter .25s ease;
     will-change: transform;
     opacity: 1;
 }
@@ -2222,7 +2427,6 @@ body{
     background: var(--grey-dark);
     flex: 0 0 20px;
 }
-/* styles like mockup */
 .whyItem.is-muted{
     background: var(--lightgrey);
     color: var(--grey-dark);
@@ -2260,7 +2464,6 @@ body{
     .whyItem{ will-change: auto; }
 }
 /* ---------- partners ---------- */
-/* ===== PARTNERS title (like Figma) ===== */
 .partners__title{
     display: flex;
     justify-content: center;
@@ -2268,14 +2471,14 @@ body{
     margin: 0 auto 18px;
     width: fit-content;
     position: relative;
-    padding: 0 18px;                 /* місце під дужки */
+    padding: 0 18px;
     font-family: var(--font-family), sans-serif;
     font-weight: 100;
     font-size: 18px;
     line-height: 110%;
     letter-spacing: -0.03em;
     color: var(--orange);
-    text-transform: none;            /* як у макеті (звичайний регістр) */
+    text-transform: none;
 }
 .partners__title::before,
 .partners__title::after{
@@ -2283,7 +2486,7 @@ body{
     top: 50%;
     transform: translateY(-50%);
     line-height: 1;
-    color: rgba(65,62,57,.35);       /* сірі дужки */
+    color: var(--lightgrey);
     pointer-events: none;
 }
 .partners__title::before{ content:"["; left: 0; }
@@ -2301,7 +2504,7 @@ body{
     align-items:start;
 }
 .partners__inner img{ height:218px; width:368px; opacity:.95; }
-/* EXPERIENCE BLOCK */
+/* ===== початок - experience__content--секція з цифрами ===== */
 .experience{
     position: relative;
     min-height: 115vh;
@@ -2313,14 +2516,13 @@ body{
     position: sticky;
     top: 0;
     padding-top: 12vh;
-
     display: grid;
     grid-template-columns:
         minmax(420px, 1.25fr)   /* ліва (порожня зона) */
         minmax(360px, 0.95fr)   /* центр (lead + цифри) */
         minmax(240px, 0.70fr);  /* права (підписи) */
-    column-gap: clamp(32px, 4vw, 80px);
-    row-gap: clamp(36px, 4vw, 64px);
+    column-gap: clamp(24px, 2vw, 48px);
+    row-gap: clamp(24px, 2vw, 48px);
     align-items: start;
 }
 .experience__bgGlow{
@@ -2348,7 +2550,7 @@ body{
     letter-spacing: .08em;
     color: var(--orange);
     text-transform: uppercase;
-    font-family: var(--font-family), sans-serif;
+    font-family: var(--third-family), sans-serif;
     font-weight: 100;
     line-height: 110%;
 }
@@ -2371,92 +2573,73 @@ body{
     grid-column: 2 / 4;
     grid-row: 2;
     margin-top: 0;
+
+    /* налаштування сітки під макет */
+    --rowH: 72px;     /* крок по вертикалі (менше = більше перекриття цифр) */
+    --rightW: 240px;  /* ширина правої колонки */
+    --gapX: 40px;     /* відстань між цифрами і текстом */
+    --topPad: 18px;   /* спільний верхній відступ для 1-го рядка */
+
     display: grid;
-    grid-template-columns:
-    minmax(360px, 1fr)      /* цифри */
-    minmax(300px, 0.9fr);   /* права колонка ширша */
-    column-gap: clamp(24px, 3vw, 60px);
+    grid-template-columns: 1fr var(--rightW);
+    grid-template-rows: repeat(4, var(--rowH));
+    column-gap: var(--gapX);
     align-items: start;
+
+    padding-top: var(--topPad);
+    overflow: visible; /* щоб великі цифри могли “налазити” на наступний ряд */
 }
-.experience__numbers{
+/* робимо так, щоб діти стали прямими елементами гріда */
+.experience__numbers,
+.experience__labels{
+    display: contents !important;
+}
+/* ЛІВА КОЛОНКА: цифри */
+.experience__big{
+    grid-column: 1;
+    align-self: start;
     position: relative;
-    grid-column: 1;                 /* ліва колонка всередині контент-боксу */
-    justify-self: start;
-    width: min(520px, 46vw);
-    height: 360px;
-}
-/* кожна цифра — абсолютна, лежить в одному центрі */
-.experience__big{
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    text-align: left;
+    display: block;
+    font-family: var(--font3), sans-serif;
+    font-weight: 400;
+    font-size: 158px;
+    line-height: 1;          /* щоб не підрізало */
+    letter-spacing: -0.04em;
 
-    /* твоя типографіка (залиш як треба) */
-    font-size: 110px;
-    font-weight: 700;
-    line-height: .9;
-
-    --i: 0;                 /* прийде з nth-child */
-    --t: 0;                 /* JS крутить */
-
-    /* налаштування стопки */
-    --stack-step: 62px;     /* відстань між цифрами по Y */
-    --enter-x: 0px;         /* старт без X-зсуву */
-    --enter-y: 0px;         /* старт без Y-зсуву */
-
-    transform:
-            translateX(calc((1 - var(--t)) * var(--enter-x)))
-            translateY(calc((var(--i) * var(--stack-step)) * var(--t) + (1 - var(--t)) * var(--enter-y)));
-
-    /* щоб одразу накривало попередню цифру */
-    opacity: min(1, max(0, calc((var(--t) - 0.15) * 8)));
-    will-change: transform, opacity;
-    z-index: calc(10 - var(--i));
-
-    /* твій “металевий” текст (можеш лишити як було) */
-    background: linear-gradient(
-            180deg,
-            #ffffff 0%,
-            #dcdcdc 35%,
-            #8e8e8e 70%,
-            #4a4a4a 100%
-    );
+    background: linear-gradient(180deg, #fff 0%, #161616 62.33%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+/* ПРАВА КОЛОНКА: підписи */
+.experience__label{
+    grid-column: 2;
+    align-self: start;
 
-    text-shadow:
-            0 2px 0 rgba(255,255,255,.15),
-            0 8px 18px rgba(0,0,0,.7);
+    position: static !important; /* прибираємо абсолют/рейки якщо лишились */
+    margin: 0;
+
+    max-width: var(--rightW);
+    white-space: normal;
+    overflow-wrap: anywhere;
+
+    font-family: var(--third-family), sans-serif;
+    font-weight: 300;
+    font-size: clamp(15px, 1vw, 18px);
+    letter-spacing: -0.09em;
+    line-height: 1.25;
+    text-transform: uppercase;
+    color: var(--lightgrey);
 }
-.experience__numbers .experience__big:nth-child(1){ --i: 0; }
-.experience__numbers .experience__big:nth-child(2){ --i: 1; }
-.experience__numbers .experience__big:nth-child(3){ --i: 2; }
-.experience__numbers .experience__big:nth-child(4){ --i: 3; }
-.experience__big{
-    filter:
-            drop-shadow(0 0 calc((1 - var(--t)) * 10px) rgba(255, 122, 0, .22))
-            drop-shadow(0 2px 0 rgba(255,255,255,.10))
-            drop-shadow(0 10px 22px rgba(0,0,0,.75));
-}
-/* у браузерах без color-mix буде просто "оранжевий на вході", не критично */
-@supports (color: color-mix(in oklab, red 50%, white)) {
-    .experience__big{
-        /* t=0 -> orange, t=1 -> lightgrey (як у макеті) */
-        color: color-mix(
-                in oklab,
-                var(--orange) calc((1 - var(--t)) * 100%),
-                var(--lightgrey)
-        );
-    }
-}
-@media (prefers-reduced-motion: reduce){
-    .experience__big{
-        opacity: 1 !important;
-        transform: translateY(calc(var(--i) * var(--stack-step))) !important;
-    }
-}
+/* прив’язка рядків 1..4 */
+.experience__numbers .experience__big:nth-child(1){ grid-row: 1; }
+.experience__numbers .experience__big:nth-child(2){ grid-row: 2; }
+.experience__numbers .experience__big:nth-child(3){ grid-row: 3; }
+.experience__numbers .experience__big:nth-child(4){ grid-row: 4; }
+.experience__labels .experience__label:nth-child(1){ grid-row: 1; }
+.experience__labels .experience__label:nth-child(2){ grid-row: 2; }
+.experience__labels .experience__label:nth-child(3){ grid-row: 3; }
+.experience__labels .experience__label:nth-child(4){ grid-row: 4; }
 .experience__big::after{
     content: "";
     position: absolute;
@@ -2471,8 +2654,11 @@ body{
     pointer-events:none;
 }
 .experience__labels{
-    display: flex;
-    flex-direction: column;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    position: relative;
+
     font-family: var(--third-family),sans-serif;
     font-weight: 300;
     font-size: clamp(15px, 1vw, 18px);
@@ -2482,10 +2668,15 @@ body{
     color: var(--lightgrey);
     justify-self: start;
     margin-top: 0;
-    gap: 62px;
-    padding-top: 6px;
     grid-column: 2;
-    grid-row: auto;
+}
+.experience__label{
+    grid-column: 2;
+    align-self: start;
+
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.25;
 }
 @media (max-width: 980px){
     .experience__inner{ position: static; }
@@ -2512,19 +2703,65 @@ body{
     .experience__numbers{ justify-self: start; }
 }
 .experience__content--mobile { display: none; }
-/* ---------- contacts ---------- */
-/* --- consent --- */
-.contacts__consent{
-    display:flex;
-    align-items:flex-end;
-    gap:10px;
-    margin-top:6px;
+/* ===== кінець - experience__content--секція з цифрами ===== */
+/* ===== початок - contacts--остання секція з формою ===== */
+.contacts{ padding: 60px 0 76px; }
+.contacts__inner{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 46px;
+    align-items:start;
+}
+.contacts__tittle{
     font-family: var(--third-family), sans-serif;
-    cursor:pointer;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: -0.08em;
+    text-transform: uppercase;
+    color: var(--black);
+    margin-bottom: 100px;
+}
+.contacts__text{
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: -0.03em;
+    color: var(--orange);
+}
+.contacts__consent {
+    gap: 10px;
+    margin-top: 6px;
+    font-family: var(--third-family), sans-serif;
+    cursor: pointer;
     font-size: 14px;
     line-height: 110%;
     letter-spacing: -0.03em;
     color: var(--grey-dark);
+    display: grid;
+    grid-template-columns: 14px 1fr;
+    column-gap: 10px;
+    row-gap: 4px;
+    align-items: start;
+}
+.contacts__consent .contacts__radio{
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    margin-top: 2px;
+}
+.contacts__consent span{
+    grid-column: 2;
+    display: block;
+}
+.contacts__consent span:first-of-type{
+    font-weight: 500;
+}
+.contacts__consent .light-grey{
+    font-size: 12px;
+    line-height: 1.35;
+    color: rgba(0,0,0,.45);
+    letter-spacing: -0.01em;
 }
 .contacts__radio{
     appearance:none;
@@ -2557,31 +2794,6 @@ body{
 .contacts__submit{
     justify-self:end;
     margin-top:4px;
-}
-.contacts{ padding: 60px 0 76px; }
-.contacts__inner{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 46px;
-    align-items:start;
-}
-.contacts__tittle{
-    font-family: var(--third-family), sans-serif;
-    font-weight: 500;
-    font-size: 40px;
-    line-height: 100%;
-    letter-spacing: -0.08em;
-    text-transform: uppercase;
-    color: var(--black);
-    margin-bottom: 100px;
-}
-.contacts__text{
-    font-family: var(--font-family), sans-serif;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 100%;
-    letter-spacing: -0.03em;
-    color: var(--orange);
 }
 /* form — прозора, тільки сітка */
 .contacts__form{
@@ -2623,13 +2835,10 @@ body{
     width:100%;
     height:44px;
     border-radius:10px;
-
     background: var(--black);
-    color:#fff;
-
+    color:var(--white);
     border:1px solid #000;   /* чорний default */
     outline:none;
-
     transition:border-color .2s ease, box-shadow .2s ease;
     text-transform: uppercase;
 }
@@ -2772,7 +2981,8 @@ body{
     box-shadow: 0 0 0 2px rgba(255,132,0,.35);
 }
 .btn--brackets:active{
-    transform: translateY(1px);
+    position: relative;
+    top: 1px;
 }
 /*hero*/
 .hero__frame{
@@ -3270,6 +3480,9 @@ body.menu-open{
     background:#fff;
     overflow:hidden;
 }
+.hide{
+    display: none;
+}
 .previewProduct__gridBg{
     position:absolute;
     inset:0;
@@ -3284,7 +3497,6 @@ body.menu-open{
     content: "";
     position: absolute;
     inset: 0;
-
     background: url("/EnergyGroup/assets/background-product-wvMnVLp1.png") center 45% no-repeat;
     background-size: 1200px auto;
 

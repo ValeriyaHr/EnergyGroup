@@ -21,7 +21,6 @@ $(function() {
     setTimeout(() => {
       $wrap.removeClass("is-ready").empty();
       isLoaded = false;
-      lastUrl = null;
     }, 350);
   }
   function loadProduct(url) {
@@ -67,4 +66,4 @@ $(function() {
     if (e.key === "Escape") closeDetails();
   });
 });
-//# sourceMappingURL=productsJs-7In4NRz1.js.map
+//# sourceMappingURL=productsJs-B-7EgQXk.js.map

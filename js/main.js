@@ -216,6 +216,7 @@ function initExperienceStack() {
 }
 
 function initExperienceNumbers() {
+    return;
     const section = document.querySelector(".experience");
     if (!section) return;
 
