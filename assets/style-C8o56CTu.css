@@ -1110,6 +1110,7 @@ body.no-scroll{ overflow: hidden; }
     --orange: #ff7a00;
     --orange-light: #FC944A;
     --black: #0A0606;
+    --black-background: #191010;
     --grey-dark: #413E39;
     --grey: #727270;
     --lightgrey: #D6D5D3;
@@ -1250,14 +1251,17 @@ body{
     gap:22px;
     min-width:0;
 }
-.header__logo{
-    justify-self:center;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
+.header__logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
 }
-.header__logo img{
-    display:block;
+.header__logo img {
+    display: block;
+    height: 48px;
+    width: auto;
+    max-width: 100%;
 }
 .header__burger{
     width:44px;height:44px;
@@ -1276,6 +1280,8 @@ body{
 .header__contacts{
     display:flex;align-items:center;gap:42px;
     color:#c9c9c9;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
 }
 .header__contacts a{
     color:#c9c9c9;
@@ -1586,8 +1592,7 @@ body{
 .engHero__bgText::before,
 .engHero__bgText::after{
     position: absolute;
-    font-family: var(--font-family), sans-serif;
-    text-transform: uppercase;
+    font-family: var(--third-family), sans-serif;
     white-space: nowrap;
     font-weight: 100;
     font-size: 18px;
@@ -1596,12 +1601,12 @@ body{
     color: var(--lightgrey);
 }
 .engHero__bgText::before{
-    content: "[Інжиніринг]";
+    content: "(Інжиніринг)";
     top: -14%;
     left: 4%;
 }
 .engHero__bgText::after{
-    content: "[Рішення]";
+    content: "(Рішення)";
     bottom: -40%;
     left: 10%;
 }
@@ -1804,11 +1809,13 @@ body{
     letter-spacing: .14em;
     text-transform: uppercase;
     text-decoration: none;
-    color: rgba(255,255,255,.82);
     align-items: center;
     line-height: 1;
     white-space: nowrap;
     align-self: flex-start;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
+    color: var(--white);
 }
 .engSolRow__action--bottom{
     justify-self: start;
@@ -2558,9 +2565,8 @@ body{
     opacity: 1;
     filter: none;
     mix-blend-mode: normal;
-
     /* головне: непрозорий фон, бо елементи перекриваються */
-    background: #ffffff;
+    background: var(--grey-pale);
 }
 .whyPanel .whyItem.is-muted{
     background: var(--lightgrey);
@@ -2889,9 +2895,10 @@ body{
 }
 .field_contact{
     width:100%;
+    padding: 10px 12px;
     height:44px;
     border-radius:10px;
-    background: var(--black);
+    background: var(--black-background);
     color:var(--white);
     border:1px solid #000;   /* чорний default */
     outline:none;

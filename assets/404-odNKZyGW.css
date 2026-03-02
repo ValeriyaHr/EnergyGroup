@@ -679,8 +679,8 @@ section{
     margin-bottom: 0;
     background: linear-gradient(
             to bottom,
-            var(--grey-pale) 0%,
-            #fdfdfd 40%,
+            var(--grey-pale) 76%,
+            #fdfdfd 87%,
             #ffffff 75%,
             #ffffff 100%
     );
@@ -692,15 +692,35 @@ section{
     background: transparent;
 
 }
+.engDivider{
+    height: 28vh;              /* було 40vh */
+    background-position: center 120%;  /* опускаємо glow вниз */
+}
 
-/* величезний PRIME ENERGY на мобілці робимо тихішим */
+/* величезний PRIME ENERGY на мобілці*/
 .engHero__bgText{
+    position: absolute;
+    left: 66%;
+    top: 45%;
     font-family: var(--font3), sans-serif;
     font-weight: 400;
-    font-size: 262px;
+    font-size: 320px;
     line-height: 82%;
     letter-spacing: -0.04em;
     color: var(--white);
+}
+.engHero__bgText::before{
+    top: -46%;
+    left: 28%;
+}
+.engHero__bgText::after{
+    bottom: -18%;
+    left: 28%;
+}
+.engHero__bgText::before,
+.engHero__bgText::after{
+    font-size: 14px;
+    line-height: 100%;
 }
 
 .engHeroLayout{
@@ -710,7 +730,6 @@ section{
     background:transparent;
 
 }
-
 .shift-line{
     transform: none;
 }
@@ -719,6 +738,8 @@ section{
     width: 300px;
     padding: 18px 18px;
     grid-column: auto;
+    margin-top: 75px;
+    margin-bottom: 130px;
 }
 
 /* дужки рамки — компактніше */
@@ -741,8 +762,9 @@ section{
 
 /* текст всередині рамки */
 .engHeroFrame__text{
+    font-family: var(--font-family), sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 150%;
     letter-spacing: -0.03em;
     padding: 10px 6px;
@@ -758,10 +780,11 @@ section{
 .engHeroFrame__right,
 .engHeroFrame__left{
     font-family: var(--third-family), sans-serif;
-    font-weight: 100;
-    font-size: 13px;
+    font-weight: 300;
+    font-size: 14px;
     line-height: 100%;
     letter-spacing: -0.03em;
+    width: 100%;
 }
 
 .engHeroFrame__right{
@@ -772,7 +795,6 @@ section{
 
 .engHeroFrame__left{
     color: var(--grey);
-
 }
 
 /* порядок як у макеті: верхній текст → рамка → нижній текст */
@@ -854,6 +876,9 @@ section{
 .engSolRow__action{
     white-space: normal;
     padding: 0 14px;
+    font-size: 16px;
+    line-height: 110%;
+    letter-spacing: -0.03em;
 }
 
 .engSolRow__right{ display: contents; }
