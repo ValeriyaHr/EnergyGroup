@@ -286,11 +286,11 @@
     flex: 0 0 auto;
 }
 
-.header__logo img {
-    display: block;
-    height: 48px;
-    width: auto;
-    max-width: 100%;
+.header__logo img{
+    width: auto !important;
+    height: 48px !important;
+    max-height: 48px;
+    object-fit: contain !important;
 }
 
 .header__burger{
@@ -597,9 +597,9 @@
 }
 .engSection__ticks{
     position: absolute;
-    left: calc(var(--pad-x) + var(--col-left) + var(--gap) + (var(--mid) / 2));
-    top: 797px;
-    width: clamp(720px, 62vw, 1280px);
+    left:46%;
+    top: 32%;
+    width: clamp(1000px, 65vw, 1280px);
     height: auto;
     transform: translate(-50%, -50%) rotate(-12deg) scale(1.08);
     opacity: .6;
