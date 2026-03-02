@@ -653,8 +653,7 @@
 .engHero__bgText::before,
 .engHero__bgText::after{
     position: absolute;
-    font-family: var(--font-family), sans-serif;
-    text-transform: uppercase;
+    font-family: var(--third-family), sans-serif;
     white-space: nowrap;
     font-weight: 100;
     font-size: 18px;
@@ -665,14 +664,12 @@
 
 
 .engHero__bgText::before{
-    content: "[Інжиніринг]";
+    content: "(Інжиніринг)";
     top: -14%;
     left: 4%;
 }
-
-
 .engHero__bgText::after{
-    content: "[Рішення]";
+    content: "(Рішення)";
     bottom: -40%;
     left: 10%;
 }
@@ -903,11 +900,13 @@
     letter-spacing: .14em;
     text-transform: uppercase;
     text-decoration: none;
-    color: rgba(255,255,255,.82);
     align-items: center;
     line-height: 1;
     white-space: nowrap;
     align-self: flex-start;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
+    color: var(--white);
 }
 
 .engSolRow__action--bottom{
