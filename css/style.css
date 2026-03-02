@@ -117,6 +117,7 @@
     --orange: #ff7a00;
     --orange-light: #FC944A;
     --black: #0A0606;
+    --black-background: #191010;
     --grey-dark: #413E39;
     --grey: #727270;
     --lightgrey: #D6D5D3;
@@ -278,15 +279,18 @@
     min-width:0;
 }
 
-.header__logo{
-    justify-self:center;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
+.header__logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
 }
 
-.header__logo img{
-    display:block;
+.header__logo img {
+    display: block;
+    height: 48px;
+    width: auto;
+    max-width: 100%;
 }
 
 .header__burger{
@@ -309,6 +313,8 @@
 .header__contacts{
     display:flex;align-items:center;gap:42px;
     color:#c9c9c9;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
 }
 .header__contacts a{
     color:#c9c9c9;
@@ -1744,9 +1750,8 @@
     opacity: 1;
     filter: none;
     mix-blend-mode: normal;
-
     /* головне: непрозорий фон, бо елементи перекриваються */
-    background: #ffffff;
+    background: var(--grey-pale);
 }
 
 .whyPanel .whyItem.is-muted{
@@ -2112,9 +2117,10 @@
 
 .field_contact{
     width:100%;
+    padding: 10px 12px;
     height:44px;
     border-radius:10px;
-    background: var(--black);
+    background: var(--black-background);
     color:var(--white);
     border:1px solid #000;   /* чорний default */
     outline:none;
