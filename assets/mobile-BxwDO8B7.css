@@ -807,7 +807,12 @@ section{
 .engSection__card{
     padding: 64px 20px 0; /* було 110px 48px 160px на десктопі */
 }
-
+.engSection__ticks{
+    position: absolute;
+    left:80%;
+    top: 30%;
+    height: auto;
+}
 
 .engSolRow{
     display: flex;          /* ключ */
