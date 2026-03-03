@@ -173,7 +173,7 @@
 .grid12{
     display:grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: clamp(16px, 2.8vw, 32px);
+    column-gap: clamp(12px, 1.8vw, 24px);
 }
 /* ---------- buttons ---------- */
 .btn{
@@ -316,18 +316,16 @@
     min-width: 0;
 }
 
-/* do not "chew" text/buttons */
 .header__ctaSecondary,
 .header__right .btn{
     white-space: nowrap;
     flex-shrink: 0;
 }
 
-/* logo image sizing */
 .header__logo img{
     width: auto !important;
-    height: 48px !important;
-    max-height: 48px;
+    height: 44px !important;
+    max-height: 44px;
     object-fit: contain !important;
 }
 
@@ -335,8 +333,6 @@
 .header img[src*="arrow-diag-open"]{
     display: none !important;
 }
-
-/* ================= HEADER TYPO ================= */
 
 .header__lang a{
     color: var(--lightgrey);
@@ -362,25 +358,21 @@
     text-underline-offset: 6px;
 }
 
-/* button font size (desktop->tablet fluid) */
 .header__ctaSecondary,
 .header__right .btn--primary{
     font-size: clamp(16px, 1.2vw, 20px);
 }
 
-/* ================= BRACKETS BUTTON FIX ================= */
-/* secondary: compact */
 .header__ctaSecondary{
-    padding: 0 18px;               /* менше "повітря" */
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
-/* primary with brackets: more space */
 .header__right .btn--primary.btn--brackets{
     padding-left: 38px;            /* більше місця під дужки */
     padding-right: 38px;
 }
 
-/* bring brackets a bit closer (header-only) */
 .header__right .btn--primary.btn--brackets::before{ left: 14px; }
 .header__right .btn--primary.btn--brackets::after { right: 14px; }
 
@@ -388,13 +380,9 @@
 @media (max-width: 1200px){
     .header__right{ gap: 12px; }
     .header__contacts{ gap: 14px; }
-
-    /* secondary can shrink a bit */
     .header__ctaSecondary{
         padding: 0 14px;
     }
-
-    /* keep primary comfy even on tablet */
     .header__right .btn--primary.btn--brackets{
         padding-left: 34px;
         padding-right: 34px;
@@ -402,7 +390,40 @@
     .header__right .btn--primary.btn--brackets::before{ left: 12px; }
     .header__right .btn--primary.btn--brackets::after { right: 12px; }
 }
+@media (max-width: 1200px) and (min-width: 769px){
+    .header{
+        font-size: 14px;
+    }
 
+    .header__logo{
+        grid-column: 6 / 8;
+    }
+
+    .header__right{
+        grid-column: 8 / 13;
+        gap: 10px;
+    }
+
+    .header__ctaSecondary{
+        padding-left: 26px;
+        padding-right: 26px;
+    }
+
+    .header__ctaSecondary,
+    .header__right .btn{
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 1020px) and (min-width: 769px){
+    .header__contacts a.is-underline{
+        display: none;
+    }
+
+    .header__ctaSecondary{
+        display: none;
+    }
+}
 /*ХЕДЕР КІНЕЦЬ*/
 /*ГОЛОВНА ПОЧАТОК*/
 .hero{
@@ -4450,18 +4471,22 @@ body.menu-open{
 /*.menuSub__item a:hover {*/
 /*    color: rgba(255, 122, 0, 0.9);*/
 /*}*/
-body::before{
+.grid12.debug-grid{
+    position: relative;
+}
+
+.grid12.debug-grid::after{
     content:"";
-    position: fixed;
-    inset: 0;
+    position:absolute;
+    inset:0;
     pointer-events:none;
-    z-index: 99999;
+    z-index:9999;
 
     background-image: repeating-linear-gradient(
             to right,
-            transparent 0,
-            transparent calc(100vw / 6 - 1px),
-            rgba(255,0,0,.5) calc(100vw / 6 - 1px),
-            rgba(255,0,0,.5) calc(100vw / 6)
+            rgba(180,0,255,.7) 0,
+            rgba(180,0,255,.7) 1px,
+            transparent 1px,
+            transparent calc(100% / 12)
     );
 }
