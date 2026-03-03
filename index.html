@@ -572,7 +572,9 @@
     const partnersSwiper = new Swiper('.partnersSwiper', {
         slidesPerView: 4,
         spaceBetween: 24,
-        loop: false,
+        loop: true,
+        autoplay: false, // Отключено по умолчанию, включится при видимости
+        speed: 600,
         navigation: { nextEl: '.partnersNext', prevEl: '.partnersPrev' },
         scrollbar: { el: '.partnersScrollbar', draggable: true },
         breakpoints: {
@@ -583,6 +585,30 @@
             1200:{ slidesPerView: 4,   spaceBetween: 24 },
         },
     });
+
+    // Автопрокрутка при попадании в область видимости
+    const partnersSection = document.querySelector('#partners');
+    if (partnersSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Секция в области видимости - запускаем автопрокрутку
+                    partnersSwiper.params.autoplay = {
+                        delay: 3000,
+                        disableOnInteraction: false,
+                    };
+                    partnersSwiper.autoplay.start();
+                } else {
+                    // Секция вне области видимости - останавливаем
+                    partnersSwiper.autoplay.stop();
+                }
+            });
+        }, {
+            threshold: 0.3 // Запуск когда 30% секции видно
+        });
+
+        observer.observe(partnersSection);
+    }
 
     const sliderEl = document.querySelector('.partnersSwiper');
 
