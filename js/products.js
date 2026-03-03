@@ -1,3 +1,64 @@
+
+// Mobile panel - переключение режимов отображения продукции
+(function ($) {
+    $(function () {
+        function isMobileView() {
+            return window.matchMedia('(max-width: 768px)').matches;
+        }
+
+        var $panel = $('.mobile_panel');
+        var $grid = $('#productsGrid');
+        var $buttons = $panel.find('.mobile_panel__btn');
+
+        if (!$panel.length || !$grid.length) return;
+
+        // Обработчик клика на кнопки панели
+        $buttons.on('click', function (e) {
+            e.preventDefault();
+
+            var $btn = $(this);
+            var viewMode = $btn.data('view');
+
+            // Убираем активный класс у всех кнопок
+            $buttons.removeClass('active');
+
+            // Добавляем активный класс к текущей кнопке
+            $btn.addClass('active');
+
+            // Удаляем все классы режимов
+            $grid.removeClass('view-single view-double');
+
+            // Добавляем класс в зависимости от выбранного режима
+            if (viewMode === 'single') {
+                $grid.addClass('view-single');
+            } else if (viewMode === 'double') {
+                $grid.addClass('view-double');
+            }
+
+            // Сохраняем выбор в localStorage
+            try {
+                localStorage.setItem('productsViewMode', viewMode);
+            } catch (e) {
+                // Игнорируем ошибки localStorage
+            }
+        });
+
+        // Восстанавливаем сохраненный режим при загрузке
+        try {
+            var savedMode = localStorage.getItem('productsViewMode');
+            if (savedMode) {
+                var $savedBtn = $buttons.filter('[data-view="' + savedMode + '"]');
+                if ($savedBtn.length) {
+                    $savedBtn.click();
+                }
+            }
+        } catch (e) {
+            // Игнорируем ошибки localStorage
+        }
+    });
+})(jQuery);
+
+//--------- Открытие и подгрузка детального просмотра продуктов
 $(function () {
     const $wrap = $("#productDetails");
 
@@ -5,6 +66,10 @@ $(function () {
     let isLoaded = false;
     let isOpen = false;
     let wheelArmed = true; // щоб не спрацьовувало 20 разів
+
+
+
+
 
     function openDetails() {
         if (!isLoaded) return;

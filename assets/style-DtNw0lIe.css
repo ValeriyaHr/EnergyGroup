@@ -1575,28 +1575,40 @@ body{
     width: clamp(1000px, 65vw, 1280px);
     height: auto;
     transform: translate(-50%, -50%) rotate(-12deg) scale(1.08);
-    opacity: .6;
+
     pointer-events: none;
     user-select: none;
     z-index: 0;
+
+    /* анимація вращення по часовій стрілці */
+    animation: ticsRotate 60s linear infinite;
 }
-.engSection__ticks{
-    will-change: transform, opacity, filter;
-    animation: ticksFloat 6s ease-in-out infinite;
+/* ===== TICS PATH ANIMATION ===== */
+.engSection__ticks path {
+    transition: stroke 0.4s ease;
 }
-@keyframes ticksFloat{
-    0%,100% { transform: translate(-50%, -50%) rotate(-12deg) scale(1.02); opacity:.55; }
-    50%     { transform: translate(-50%, -52%) rotate(-12deg) scale(1.04); opacity:.65; }
+@keyframes ticsRotate {
+    from {
+        transform: translate(-50%, -50%) rotate(-12deg) scale(1.08);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(348deg) scale(1.08);
+    }
 }
 @media (max-width: 1320px) and (min-width: 769px){
     .engSection__ticks{
         left: 50%;
         top: 32%;
         width: min(920px, 78vw);
-        opacity: .45;
+
         filter: blur(.12px) drop-shadow(0 0 10px rgba(255,255,255,.10));
         transform: translate(-50%, -50%) rotate(-12deg) scale(1.02);
     }
+}
+.svgTick path.is-active {
+    stroke: #ff7a00 !important;
+    opacity: 1 !important;
+    transition: stroke 0.2s ease;
 }
 .engSection__rows,
 .engSection__video,
@@ -2819,8 +2831,88 @@ body{
     -webkit-line-clamp: 2;
     overflow: hidden;
 }
-/* мобільний блок на десктопі ховаємо (в тебе мобілка вже ок) */
-.experience__content--mobile{ display: none; }
+/* ===== EXPERIENCE ANIMATION ===== */
+.expNum {
+    /* дефолт: скрыт, смещен ВНИЗ (для появления снизу вверх) */
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                -webkit-text-fill-color 0.5s ease;
+    will-change: opacity, transform, -webkit-text-fill-color;
+
+    /* эффект наезжания: отрицательный margin создает перекрытие */
+    margin-bottom: -30px;
+    position: relative;
+    z-index: 1;
+}
+.expTxt {
+    grid-column: 2;
+    align-self: start;
+    padding-top: 16px;
+    max-width: var(--rightW);
+    font-family: var(--third-family), sans-serif;
+    font-weight: 300;
+    font-size: clamp(15px, 1vw, 18px);
+    line-height: 1.25;
+    letter-spacing: -0.09em;
+    text-transform: uppercase;
+    color: var(--lightgrey);
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+
+    /* плавне появлення текста */
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+    will-change: opacity, transform;
+}
+/* коли активна: видима й на місці */
+.expRow.is-active .expNum {
+    opacity: 1;
+    transform: translateY(0);
+}
+.expRow.is-active .expTxt {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* ЦИФРИ — жёлтый highlight під час лічення */
+.expNum.is-highlight {
+    -webkit-text-fill-color: #FC944A;
+
+    background: linear-gradient(180deg, #FFD700 0%, #FC944A 62.33%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+/* ===== EXPERIENCE MOBILE ANIMATION ===== */
+.experienceStat {
+    /* дефолт: скрыт, смещен ВНИЗ (для появления снизу вверх) */
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+/* коли активна: видима й на місці */
+.experienceStat.is-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* ЦИФРИ на мобілці — жёлтий highlight під час лічення */
+.experienceStat .experience__big {
+    transition: -webkit-text-fill-color 0.5s ease;
+    will-change: -webkit-text-fill-color;
+}
+.experienceStat .experience__big.is-highlight {
+    -webkit-text-fill-color: #FFD700;
+    background: linear-gradient(180deg, #FFD700 0%, #FFA500 62.33%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
 /* ===== кінець - experience__content--секція з цифрами ===== */
 /* ===== початок - contacts--остання секція з формою ===== */
 .contacts{ padding: 60px 0 76px; }
@@ -3716,10 +3808,86 @@ body.menu-open{
     flex-wrap:wrap;
     gap: 24px;
 }
+/* --- Mobile Panel --- */
+.mobile_panel{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; /* кнопки прижати вправо */
+    align-items: center;
+    gap: 8px; /* расстояние между кнопками */
+    padding: 8px 16px; /* отступы по бокам */
+    box-sizing: border-box;
+    opacity: 0;
+    visibility: hidden;
+
+}
 .productCard{
     flex: 0 0 calc((100% - 72px) / 4);
     min-width: 220px;
+    transition: flex 0.3s ease;
 }
+.productsList__grid.view-single .productCard,
+.productsList__grid.view-double .productCard {
+    flex: 0 0 calc((100% - 72px) / 4);
+}
+/* Показываем панель на мобильных */
+@media (max-width: 768px) {
+    .mobile_panel{
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Режим отображения по 1 элементу */
+    .productsList__grid.view-single .productCard{
+        flex: 0 0 100%;
+    }
+
+    /* Режим отображения по 2 элемента */
+    .productsList__grid.view-double .productCard{
+        flex: 0 0 calc((100% - 24px) / 2);
+    }
+}
+@media (max-width: 767px) {
+  .productsList__grid.view-double {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .productsList__grid.view-double .productCard {
+    flex: initial;
+    width: 100%;
+    max-width: none;
+  }
+}
+.mobile_panel__btn{
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
+    border-radius: 12px;
+
+    padding: 0;
+    color: #BDBDBD; /* неактивный цвет */
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+.mobile_panel__btn:hover{
+
+    color: #FF822C;
+}
+.mobile_panel__btn.active{
+    color: #1E1E1E; /* активный цвет */
+}
+.mobile_panel__btn svg{
+    width: 24px;
+    height: 24px;
+}
+/* --- Products list --- */
 .productCard__link{
     position: relative;
     display:flex;
@@ -4178,7 +4346,7 @@ body.menu-open{
 /* form look */
 .reqForm{ width: 100%; }
 .reqForm__box{
-    background: radial-gradient(900px 220px at 50% 0%, rgba(255,255,255,.08), rgba(255,255,255,0)) , #050505;
+    background: radial-gradient(900px 260px at 50% 0%, rgba(255,255,255,.08), rgba(255,255,255,0)) , #050505;
     border-radius: 14px;
     padding: 18px;
     box-shadow: 0 14px 40px rgba(0,0,0,.25);
@@ -4186,7 +4354,7 @@ body.menu-open{
 .reqForm__grid{
     display:flex;
     flex-wrap:wrap;
-    gap: 12px;
+    gap:12px;
 }
 .reqField{ flex: 1 1 calc(50% - 6px); }
 .reqField--full{ flex: 1 1 100%; }
@@ -4227,25 +4395,25 @@ body.menu-open{
     height: 10px;
     border: 1px solid rgba(0,0,0,.3);
     border-radius: 50%;
-    display:inline-block;
+    display: inline-block;
 }
 .reqAgree__check:checked + .reqAgree__dot{
-    background:#FF822C;
-    border-color:#FF822C;
+    background: #FF822C;
+    border-color: #FF822C;
 }
 .reqBtn{
     display:inline-flex;
     align-items:center;
     justify-content:center;
     border: none;
-    background:#FF822C;
-    color:#fff;
+    background: #FF822C;
+    color: #fff;
     border-radius: 999px;
     padding: 12px 20px;
     font-size: 11px;
     letter-spacing: .12em;
     text-transform: uppercase;
-    cursor:pointer;
+    cursor: pointer;
 }
 .reqBtn:hover{ opacity:.9; }
 /* ====== shared ui ====== */
@@ -4562,6 +4730,7 @@ body.menu-open{
     font-size:clamp(26px, 3vw, 40px);
     letter-spacing:.06em;
     text-transform:uppercase;
+    line-height:1.15;
     color:var(--orange);
 }
 .techLibBlock__desc{
@@ -4582,15 +4751,15 @@ body.menu-open{
 .artSvg{ width:100%; height:auto; display:block; }
 /* 1. Типові монтажі */
 .techLibBlock--montage .techLibBlock__art{
-    background-image: url("/EnergyGroup/assets/lib1-nAsO4He9.svg");
+    background-image: url("/EnergyGroup/assets/lib1-DluEkvGO.svg");
 }
 /* 2. Принципові схеми */
 .techLibBlock--schemes .techLibBlock__art{
-    background-image: url("/EnergyGroup/assets/lib2-DK23tPPJ.svg");
+    background-image: url("/EnergyGroup/assets/lib2-CSs39WCb.svg");
 }
 /* 3. Документація */
 .techLibBlock--docs .techLibBlock__art{
-    background-image: url("/EnergyGroup/assets/lib3-C1X9033-.svg");
+    background-image: url("/EnergyGroup/assets/lib3-CIrxrpvd.svg");
 }
 .techLibList{
     display:flex;
@@ -4965,3 +5134,4 @@ body::before{
             rgba(255,0,0,.5) calc(100vw / 6)
     );
 }
+

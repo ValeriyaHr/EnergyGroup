@@ -1,3 +1,38 @@
+(function($2) {
+  $2(function() {
+    var $panel = $2(".mobile_panel");
+    var $grid = $2("#productsGrid");
+    var $buttons = $panel.find(".mobile_panel__btn");
+    if (!$panel.length || !$grid.length) return;
+    $buttons.on("click", function(e) {
+      e.preventDefault();
+      var $btn = $2(this);
+      var viewMode = $btn.data("view");
+      $buttons.removeClass("active");
+      $btn.addClass("active");
+      $grid.removeClass("view-single view-double");
+      if (viewMode === "single") {
+        $grid.addClass("view-single");
+      } else if (viewMode === "double") {
+        $grid.addClass("view-double");
+      }
+      try {
+        localStorage.setItem("productsViewMode", viewMode);
+      } catch (e2) {
+      }
+    });
+    try {
+      var savedMode = localStorage.getItem("productsViewMode");
+      if (savedMode) {
+        var $savedBtn = $buttons.filter('[data-view="' + savedMode + '"]');
+        if ($savedBtn.length) {
+          $savedBtn.click();
+        }
+      }
+    } catch (e) {
+    }
+  });
+})(jQuery);
 $(function() {
   const $wrap = $("#productDetails");
   let lastUrl = null;
@@ -66,4 +101,4 @@ $(function() {
     if (e.key === "Escape") closeDetails();
   });
 });
-//# sourceMappingURL=productsJs-B-7EgQXk.js.map
+//# sourceMappingURL=productsJs-DHtIPY7D.js.map

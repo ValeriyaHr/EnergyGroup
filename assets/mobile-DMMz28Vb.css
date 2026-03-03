@@ -815,7 +815,7 @@ section{
     left: 78%;
     top: 27%;
     width: min(720px, 140vw);
-    opacity: .28;
+
     filter: none; /* ключове */
     transform: translate(-50%, -50%) rotate(-12deg) scale(.9);
 }
