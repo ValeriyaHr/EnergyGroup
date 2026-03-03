@@ -3052,10 +3052,97 @@ body.menu-open{
     gap: 24px;
 }
 
+
+/* --- Mobile Panel --- */
+.mobile_panel{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; /* кнопки прижати вправо */
+    align-items: center;
+    gap: 8px; /* расстояние между кнопками */
+    padding: 8px 16px; /* отступы по бокам */
+    box-sizing: border-box;
+    opacity: 0;
+    visibility: hidden;
+
+}
+
 .productCard{
     flex: 0 0 calc((100% - 72px) / 4);
     min-width: 220px;
+    transition: flex 0.3s ease;
 }
+
+
+.productsList__grid.view-single .productCard,
+.productsList__grid.view-double .productCard {
+    flex: 0 0 calc((100% - 72px) / 4);
+}
+
+/* Показываем панель на мобильных */
+@media (max-width: 768px) {
+    .mobile_panel{
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Режим отображения по 1 элементу */
+    .productsList__grid.view-single .productCard{
+        flex: 0 0 100%;
+    }
+
+    /* Режим отображения по 2 элемента */
+    .productsList__grid.view-double .productCard{
+        flex: 0 0 calc((100% - 24px) / 2);
+    }
+}
+
+@media (max-width: 767px) {
+  .productsList__grid.view-double {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .productsList__grid.view-double .productCard {
+    flex: initial;
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.mobile_panel__btn{
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
+    border-radius: 12px;
+
+    padding: 0;
+    color: #BDBDBD; /* неактивный цвет */
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.mobile_panel__btn:hover{
+
+    color: #FF822C;
+}
+
+.mobile_panel__btn.active{
+    color: #1E1E1E; /* активный цвет */
+}
+
+.mobile_panel__btn svg{
+    width: 24px;
+    height: 24px;
+}
+
+/* --- Products list --- */
 
 .productCard__link{
     position: relative;
@@ -3586,7 +3673,7 @@ body.menu-open{
 /* form look */
 .reqForm{ width: 100%; }
 .reqForm__box{
-    background: radial-gradient(900px 220px at 50% 0%, rgba(255,255,255,.08), rgba(255,255,255,0)) , #050505;
+    background: radial-gradient(900px 260px at 50% 0%, rgba(255,255,255,.08), rgba(255,255,255,0)) , #050505;
     border-radius: 14px;
     padding: 18px;
     box-shadow: 0 14px 40px rgba(0,0,0,.25);
@@ -3594,7 +3681,7 @@ body.menu-open{
 .reqForm__grid{
     display:flex;
     flex-wrap:wrap;
-    gap: 12px;
+    gap:12px;
 }
 .reqField{ flex: 1 1 calc(50% - 6px); }
 .reqField--full{ flex: 1 1 100%; }
@@ -4465,3 +4552,4 @@ body::before{
             rgba(255,0,0,.5) calc(100vw / 6)
     );
 }
+
