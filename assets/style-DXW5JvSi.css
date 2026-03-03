@@ -2706,9 +2706,22 @@ body{
     right:0;
     bottom:0;
     height:380px;
-    background: url("/EnergyGroup/assets/glow-D20zywQf.png") center bottom no-repeat;
+    background: url("/EnergyGroup/assets/glow-D20zywQf.png") center  bottom no-repeat;
     background-size: cover;
+    animation: waveMove 6s ease-in-out infinite;
+    will-change: filter, background-position;
     pointer-events:none;
+}
+/** --- движение фона */
+@keyframes waveMove{
+    /*0%   { filter: hue-rotate(0deg)   saturate(1.05); }*/
+    /*50%  { filter: hue-rotate(30deg)  saturate(1.2); }*/
+    /*100% { filter: hue-rotate(0deg)   saturate(1.05); }*/
+    0%   { background-position: 25% 50%; filter: hue-rotate(0deg) saturate(1.05); }
+    25%  { background-position: 35% 50%; filter: hue-rotate(25deg) saturate(1.15); }
+    50%  { background-position: 45% 50%; filter: hue-rotate(60deg) saturate(1.15); }
+    75%  { background-position: 35% 50%; filter: hue-rotate(60deg) saturate(1.15); }
+    100% { background-position: 100% 100%; filter: hue-rotate(0deg) saturate(1.05); }
 }
 .experience__inner{
     position: sticky;
