@@ -9,7 +9,9 @@ const $ = window.jQuery;
 
 
 
-
+function isMobileView() {
+    return window.matchMedia('(max-width: 768px)').matches;
+}
 // Вызов setupCounter — только если функция определена (защита от Vite шаблонных артефактов)
 const counterEl = document.querySelector('#counter');
 if (counterEl && typeof window.setupCounter === 'function') {
@@ -36,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
             initWhyUsUnfold();
             if (typeof initSmoothAnchorScroll === "function") initSmoothAnchorScroll();
             initExperienceNumbers();
+            initExperienceAnimation();
         })
         .catch(console.error);
 });
@@ -283,3 +286,181 @@ function initExperienceNumbers() {
 
     io.observe(section);
 }
+
+/* ===== EXPERIENCE SECTION ANIMATION ===== */
+function initExperienceAnimation() {
+  const experienceSection = document.querySelector('.experience');
+  const expGrid = document.querySelector('.expGrid');
+  
+  if (!experienceSection || !expGrid) return;
+  
+  // Получаем все expRow
+  const expRows = expGrid.querySelectorAll('.expRow');
+  if (!expRows.length) return;
+  
+  let hasAnimated = false;
+  
+  // Создаём IntersectionObserver для триггера анимации
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      // Триггер только когда секция входит в viewport и ще не анимирована
+      if (entry.isIntersecting && !hasAnimated) {
+        hasAnimated = true;
+        animateExperienceRowsSequential(expRows);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  
+  observer.observe(experienceSection);
+}
+
+function parseNumber(str) {
+  // Извлекаем число из строки (например, "15 000+" -> 15000)
+  const match = str.match(/[\d\s]+/);
+  if (!match) return 0;
+  return parseInt(match[0].replace(/\s/g, ''), 10);
+}
+
+function animateCounter(element, finalValue, duration = 1800) {
+  const startValue = 0;
+  const startTime = Date.now();
+  
+  // Сохраняем оригинальный текст (для суффиксов типа "+")
+  const originalText = element.textContent;
+  const suffix = originalText.replace(/[\d\s]/g, '');
+  
+  function update() {
+    const elapsed = Date.now() - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    
+    // Easing function для плавной анимации
+    const easeOut = 1 - Math.pow(1 - progress, 3);
+    const currentValue = Math.floor(startValue + (finalValue - startValue) * easeOut);
+    
+    // Форматируем число с пробелами (15000 -> "15 000")
+    const formattedValue = currentValue.toLocaleString('uk-UA').replace(/\s/g, ' ');
+    element.textContent = formattedValue + suffix;
+    
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    }
+  }
+  
+  update();
+}
+
+function animateSingleRow(row) {
+  return new Promise((resolve) => {
+    row.classList.add('is-active');
+    
+    // Получаем expNum внутри этой строки
+    const expNum = row.querySelector('.expNum');
+    if (expNum) {
+      // Добавляем класс для жёлтого цвета
+      expNum.classList.add('is-highlight');
+      
+      // Парсим финальное число
+      const finalValue = parseNumber(expNum.textContent);
+      
+      // Запускаем counter-анимацию (1800ms)
+      if (finalValue > 0) {
+        animateCounter(expNum, finalValue, 1800);
+      }
+      
+      // Через 1900ms (после завершения счёта) меняем цвет обратно
+      setTimeout(() => {
+        expNum.classList.remove('is-highlight');
+      }, 1900);
+    }
+    
+    // Разрешаем Promise через 2000ms (чтобы гарантировать завершение анимации)
+    setTimeout(() => {
+      resolve();
+    }, 2000);
+  });
+}
+
+async function animateExperienceRowsSequential(expRows) {
+  // Анимируем каждый row последовательно, один за другим
+  for (let i = 0; i < expRows.length; i++) {
+    await animateSingleRow(expRows[i]);
+  }
+}
+
+/* ===== EXPERIENCE MOBILE SECTION ANIMATION ===== */
+function initExperienceMobileAnimation() {
+  const experienceSection = document.querySelector('.experience');
+  const experienceStats = document.querySelector('.experienceStats');
+  
+  if (!experienceSection || !experienceStats) return;
+  
+  // Получаем все experienceStat
+  const experienceStatItems = experienceStats.querySelectorAll('.experienceStat');
+  if (!experienceStatItems.length) return;
+  
+  let hasAnimated = false;
+  
+  // Создаём IntersectionObserver для триггера анимации
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      // Триггер только когда секция входит в viewport и ще не анимирована
+      if (entry.isIntersecting && !hasAnimated) {
+        hasAnimated = true;
+        animateMobileExperienceRowsSequential(experienceStatItems);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  
+  observer.observe(experienceSection);
+}
+
+function animateSingleMobileRow(stat) {
+  return new Promise((resolve) => {
+    stat.classList.add('is-active');
+    
+    // Получаем experience__big внутри этой строки
+    const expBig = stat.querySelector('.experience__big');
+    if (expBig) {
+      // Добавляем класс для жёлтого цвета
+      expBig.classList.add('is-highlight');
+      
+      // Парсим финальное число
+      const finalValue = parseNumber(expBig.textContent);
+      
+      // Запускаем counter-анимацию (1800ms)
+      if (finalValue > 0) {
+        animateCounter(expBig, finalValue, 1800);
+      }
+      
+      // Через 1900ms (после завершения счёта) меняем цвет обратно
+      setTimeout(() => {
+        expBig.classList.remove('is-highlight');
+      }, 1900);
+    }
+    
+    // Разрешаем Promise через 2000ms (чтобы гарантировать завершение анимации)
+    setTimeout(() => {
+      resolve();
+    }, 2000);
+  });
+}
+
+async function animateMobileExperienceRowsSequential(experienceStatItems) {
+  // Анимируем каждый stat последовательно, один за другим
+  for (let i = 0; i < experienceStatItems.length; i++) {
+    await animateSingleMobileRow(experienceStatItems[i]);
+  }
+}
+
+// Инициализируем мобильную анимацию
+document.addEventListener('DOMContentLoaded', () => {
+  // Проверяем, есть ли мобильная версия
+  if (document.querySelector('.experienceStats')) {
+      if (isMobileView()){
+          initExperienceMobileAnimation();
+      }
+
+  }
+});

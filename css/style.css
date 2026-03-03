@@ -2034,8 +2034,96 @@
     overflow: hidden;
 }
 
-/* мобільний блок на десктопі ховаємо (в тебе мобілка вже ок) */
-.experience__content--mobile{ display: none; }
+/* ===== EXPERIENCE ANIMATION ===== */
+.expNum {
+    /* дефолт: скрыт, смещен ВНИЗ (для появления снизу вверх) */
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                -webkit-text-fill-color 0.5s ease;
+    will-change: opacity, transform, -webkit-text-fill-color;
+
+    /* эффект наезжания: отрицательный margin создает перекрытие */
+    margin-bottom: -30px;
+    position: relative;
+    z-index: 1;
+}
+
+.expTxt {
+    grid-column: 2;
+    align-self: start;
+    padding-top: 16px;
+    max-width: var(--rightW);
+    font-family: var(--third-family), sans-serif;
+    font-weight: 300;
+    font-size: clamp(15px, 1vw, 18px);
+    line-height: 1.25;
+    letter-spacing: -0.09em;
+    text-transform: uppercase;
+    color: var(--lightgrey);
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+
+    /* плавное появление текста */
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+    will-change: opacity, transform;
+}
+
+/* коли активна: видима й на місці */
+.expRow.is-active .expNum {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.expRow.is-active .expTxt {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ЦИФРИ — жёлтий highlight під час лічення */
+.expNum.is-highlight {
+    -webkit-text-fill-color: #FC944A;
+
+    background: linear-gradient(180deg, #FFD700 0%, #FC944A 62.33%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+/* ===== EXPERIENCE MOBILE ANIMATION ===== */
+.experienceStat {
+    /* дефолт: скрыт, смещен ВНИЗ (для появления снизу вверх) */
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+/* коли активна: видима й на місці */
+.experienceStat.is-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ЦИФРИ на мобілці — жёлтий highlight під час лічення */
+.experienceStat .experience__big {
+    transition: -webkit-text-fill-color 0.5s ease;
+    will-change: -webkit-text-fill-color;
+}
+
+.experienceStat .experience__big.is-highlight {
+    -webkit-text-fill-color: #FFD700;
+    background: linear-gradient(180deg, #FFD700 0%, #FFA500 62.33%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
 
 /* ===== кінець - experience__content--секція з цифрами ===== */
 /* ===== початок - contacts--остання секція з формою ===== */
