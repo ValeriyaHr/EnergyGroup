@@ -461,6 +461,95 @@ document.addEventListener('DOMContentLoaded', () => {
       if (isMobileView()){
           initExperienceMobileAnimation();
       }
-
   }
+  
+  // Инициализируем анимацию tics
+  initTicsAnimation();
 });
+
+/* ===== TICS ANIMATION ===== */
+function initTicsAnimation() {
+    const svg = document.querySelector('svg'); // или точнее: document.querySelector('.your-svg-class')
+    const paths = svg ? Array.from(svg.querySelectorAll('g[clip-path] path')) : [];
+
+    let i = 0;
+    const duration = 1000; // 1 сек
+
+    if (paths.length) {
+        // стартовое состояние: уберём активность
+        paths.forEach(p => p.classList.remove('is-active'));
+
+        setInterval(() => {
+            // снять с предыдущего
+            paths.forEach(p => p.classList.remove('is-active'));
+
+            // включить текущий
+            paths[i].classList.add('is-active');
+
+            // следующий
+            i = (i + 1) % paths.length;
+        }, duration);
+    }
+  const ticsElement = document.querySelector('.engSection__ticks');
+  if (!ticsElement) return;
+
+  // Найдём все path элементы внутри SVG tics
+  const ticsItems = ticsElement.querySelectorAll('path');
+  
+  if (!ticsItems.length) {
+    console.warn('No path elements found in tics SVG');
+    return;
+  }
+
+  console.log(`Found ${ticsItems.length} path elements in tics`);
+
+  // WeakMap для хранения оригинальных stroke значений
+  const originalStrokes = new WeakMap();
+
+  // Сохраняем оригинальные stroke для всех элементов
+  ticsItems.forEach(element => {
+    const stroke = element.getAttribute('stroke');
+    if (stroke) {
+      originalStrokes.set(element, stroke);
+    }
+  });
+
+  // Функция для раскрашивания одного path элемента оранжевым с затуханием
+  function highlightTic(element) {
+    // Получаем оригинальный stroke из WeakMap
+    const originalStroke = originalStrokes.get(element);
+    
+    if (!originalStroke) {
+      console.warn('No original stroke found for element');
+      return;
+    }
+
+    // Устанавливаем оранжевый цвет
+    element.setAttribute('stroke', '#ff7a00');
+    element.style.transition = 'all 0.4s ease';
+
+    // Через 1.5 секунды возвращаем оригинальный градиент
+    setTimeout(() => {
+      element.setAttribute('stroke', originalStroke);
+    }, 1500);
+  }
+
+  // Последовательное светение каждого path
+  function sequentialHighlight(index = 0) {
+    if (index >= ticsItems.length) {
+      // После всех элементов повторяем цикл через 500ms
+      setTimeout(() => sequentialHighlight(0), 500);
+      return;
+    }
+
+    highlightTic(ticsItems[index]);
+
+    // Переходим к следующему элементу через 150ms (быстрее для 52 элементов)
+    setTimeout(() => {
+      sequentialHighlight(index + 1);
+    }, 150);
+  }
+
+  // Запускаем анимацию
+  sequentialHighlight();
+}

@@ -629,20 +629,27 @@
     width: clamp(1000px, 65vw, 1280px);
     height: auto;
     transform: translate(-50%, -50%) rotate(-12deg) scale(1.08);
-    opacity: .6;
+
     pointer-events: none;
     user-select: none;
     z-index: 0;
+
+    /* анимація вращення по часовій стрілці */
+    animation: ticsRotate 60s linear infinite;
 }
 
-.engSection__ticks{
-    will-change: transform, opacity, filter;
-    animation: ticksFloat 6s ease-in-out infinite;
+/* ===== TICS PATH ANIMATION ===== */
+.engSection__ticks path {
+    transition: stroke 0.4s ease;
 }
 
-@keyframes ticksFloat{
-    0%,100% { transform: translate(-50%, -50%) rotate(-12deg) scale(1.02); opacity:.55; }
-    50%     { transform: translate(-50%, -52%) rotate(-12deg) scale(1.04); opacity:.65; }
+@keyframes ticsRotate {
+    from {
+        transform: translate(-50%, -50%) rotate(-12deg) scale(1.08);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(348deg) scale(1.08);
+    }
 }
 
 @media (max-width: 1320px) and (min-width: 769px){
@@ -650,12 +657,16 @@
         left: 50%;
         top: 32%;
         width: min(920px, 78vw);
-        opacity: .45;
+
         filter: blur(.12px) drop-shadow(0 0 10px rgba(255,255,255,.10));
         transform: translate(-50%, -50%) rotate(-12deg) scale(1.02);
     }
 }
-
+.svgTick path.is-active {
+    stroke: #ff7a00 !important;
+    opacity: 1 !important;
+    transition: stroke 0.2s ease;
+}
 .engSection__rows,
 .engSection__video,
 .engSection__bottom{
@@ -2068,7 +2079,7 @@
     -webkit-line-clamp: 2;
     overflow: hidden;
 
-    /* плавное появление текста */
+    /* плавне появлення текста */
     opacity: 0;
     transform: translateY(-20px);
     transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
@@ -2087,7 +2098,7 @@
     transform: translateY(0);
 }
 
-/* ЦИФРИ — жёлтий highlight під час лічення */
+/* ЦИФРИ — жёлтый highlight під час лічення */
 .expNum.is-highlight {
     -webkit-text-fill-color: #FC944A;
 
@@ -3010,10 +3021,6 @@ body.menu-open{
   FOOTER (responsive)
 ========================= */
 
-
-
-
-
 /* =========================
    PRODUCTS PAGE
 ========================= */
@@ -3812,11 +3819,11 @@ body.menu-open{
     height: 10px;
     border: 1px solid rgba(0,0,0,.3);
     border-radius: 50%;
-    display:inline-block;
+    display: inline-block;
 }
 .reqAgree__check:checked + .reqAgree__dot{
-    background:#FF822C;
-    border-color:#FF822C;
+    background: #FF822C;
+    border-color: #FF822C;
 }
 
 .reqBtn{
@@ -3824,14 +3831,14 @@ body.menu-open{
     align-items:center;
     justify-content:center;
     border: none;
-    background:#FF822C;
-    color:#fff;
+    background: #FF822C;
+    color: #fff;
     border-radius: 999px;
     padding: 12px 20px;
     font-size: 11px;
     letter-spacing: .12em;
     text-transform: uppercase;
-    cursor:pointer;
+    cursor: pointer;
 }
 .reqBtn:hover{ opacity:.9; }
 
@@ -4192,6 +4199,7 @@ body.menu-open{
     font-size:clamp(26px, 3vw, 40px);
     letter-spacing:.06em;
     text-transform:uppercase;
+    line-height:1.15;
     color:var(--orange);
 }
 .techLibBlock__desc{
