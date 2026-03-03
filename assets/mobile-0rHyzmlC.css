@@ -453,6 +453,10 @@ section{
 }
 /* ===== кінець ENGINEERING СЕКЦІЯ ГОЛОВНОЇ 3, ДЕ АКОНДЕОН ===== */
 /* ===== початок - WHY US секція з плашками ===== */
+.whyus::before{
+    background-size: 120%;
+}
+
 .whyus__inner{
     display: grid;
     grid-template-columns: 1fr;
@@ -808,10 +812,12 @@ section{
     padding: 64px 20px 0; /* було 110px 48px 160px на десктопі */
 }
 .engSection__ticks{
-    position: absolute;
-    left:80%;
-    top: 30%;
-    height: auto;
+    left: 78%;
+    top: 27%;
+    width: min(720px, 140vw);
+    opacity: .28;
+    filter: none; /* ключове */
+    transform: translate(-50%, -50%) rotate(-12deg) scale(.9);
 }
 
 .engSolRow{
@@ -872,7 +878,6 @@ section{
     font-weight: 400;
     font-size: 16px;
     line-height: 100%;
-    text-align-last: left;
 }
 
 .engSolRow__right{
@@ -971,6 +976,8 @@ section{
     display: flex;        /* щоб margin auto спрацював */
     margin: 64px auto 82px;  /* центр + відступ знизу */
 }
+
+
 /* ===== кінець - інженірінг ===== */
     /* ===== FOOTER ===== */
     .footer404__top{
