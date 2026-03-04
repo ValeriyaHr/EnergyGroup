@@ -1160,7 +1160,7 @@ body{
 .grid12{
     display:grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: clamp(16px, 2.8vw, 32px);
+    column-gap: clamp(12px, 1.8vw, 24px);
 }
 /* ---------- buttons ---------- */
 .btn{
@@ -1279,9 +1279,8 @@ body{
 }
 /* right block (last 4 cols) */
 .header__right{
-    grid-column: 9 / 13;
+    grid-column: 8 / 13;
     justify-self: end;
-
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -1289,24 +1288,22 @@ body{
     flex-wrap: nowrap;
     min-width: 0;
 }
-/* do not "chew" text/buttons */
 .header__ctaSecondary,
 .header__right .btn{
     white-space: nowrap;
     flex-shrink: 0;
+    margin-top: 0;
 }
-/* logo image sizing */
 .header__logo img{
     width: auto !important;
-    height: 48px !important;
-    max-height: 48px;
+    height: 44px !important;
+    max-height: 44px;
     object-fit: contain !important;
 }
 /* hide diag icon in header */
 .header img[src*="arrow-diag-open"]{
     display: none !important;
 }
-/* ================= HEADER TYPO ================= */
 .header__lang a{
     color: var(--lightgrey);
     text-decoration: none;
@@ -1329,35 +1326,26 @@ body{
     text-transform: uppercase;
     text-underline-offset: 6px;
 }
-/* button font size (desktop->tablet fluid) */
 .header__ctaSecondary,
 .header__right .btn--primary{
     font-size: clamp(16px, 1.2vw, 20px);
 }
-/* ================= BRACKETS BUTTON FIX ================= */
-/* secondary: compact */
 .header__ctaSecondary{
-    padding: 0 18px;               /* менше "повітря" */
+    padding-left: 40px;
+    padding-right: 40px;
 }
-/* primary with brackets: more space */
 .header__right .btn--primary.btn--brackets{
     padding-left: 38px;            /* більше місця під дужки */
     padding-right: 38px;
 }
-/* bring brackets a bit closer (header-only) */
 .header__right .btn--primary.btn--brackets::before{ left: 14px; }
 .header__right .btn--primary.btn--brackets::after { right: 14px; }
-/* ================= TABLET TIGHTEN ================= */
 @media (max-width: 1200px){
     .header__right{ gap: 12px; }
     .header__contacts{ gap: 14px; }
-
-    /* secondary can shrink a bit */
     .header__ctaSecondary{
         padding: 0 14px;
     }
-
-    /* keep primary comfy even on tablet */
     .header__right .btn--primary.btn--brackets{
         padding-left: 34px;
         padding-right: 34px;
@@ -1365,44 +1353,73 @@ body{
     .header__right .btn--primary.btn--brackets::before{ left: 12px; }
     .header__right .btn--primary.btn--brackets::after { right: 12px; }
 }
+@media (max-width: 1200px) and (min-width: 769px){
+    .header{
+        font-size: 14px;
+    }
+
+    .header__logo{
+        grid-column: 6 / 8;
+    }
+
+    .header__right{
+        grid-column: 8 / 13;
+        gap: 10px;
+    }
+
+    .header__ctaSecondary{
+        padding-left: 26px;
+        padding-right: 26px;
+    }
+
+    .header__ctaSecondary,
+    .header__right .btn{
+        font-size: 14px;
+    }
+}
+@media (max-width: 1020px) and (min-width: 769px){
+    .header__contacts a.is-underline{
+        display: none;
+    }
+
+    .header__ctaSecondary{
+        display: none;
+    }
+}
 /*ХЕДЕР КІНЕЦЬ*/
 /*ГОЛОВНА ПОЧАТОК*/
 .hero{
     position: relative;
     padding-top: clamp(36px, 6vh, 86px);
     overflow: hidden;
-    display:flex;
-    align-items: flex-start;
+    display:block;
     background: url("data:image/svg+xml,%3csvg%20width='1747'%20height='958'%20viewBox='0%200%201747%20958'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cline%20x1='970.15'%20y1='-6.55671e-09'%20x2='970.15'%20y2='958'%20stroke='%23D6D5D3'%20stroke-width='0.3'/%3e%3cline%20x1='1280.15'%20y1='636'%20x2='1280.15'%20y2='958'%20stroke='%23D6D5D3'%20stroke-width='0.3'/%3e%3cline%20x1='1745.15'%20y1='636'%20x2='1745.15'%20y2='958'%20stroke='%23D6D5D3'%20stroke-width='0.3'/%3e%3cline%20x1='815.15'%20y1='-6.55671e-09'%20x2='815.15'%20y2='958'%20stroke='%23D6D5D3'%20stroke-width='0.3'/%3e%3cline%20x1='1435.15'%20y1='-6.55671e-09'%20x2='1435.15'%20y2='958'%20stroke='%23D6D5D3'%20stroke-width='0.3'/%3e%3cline%20x1='350.15'%20y1='212'%20x2='350.15'%20y2='958'%20stroke='%23D6D5D3'%20stroke-width='0.3'/%3e%3cline%20x1='505.15'%20y1='-6.55671e-09'%20x2='505.15'%20y2='958'%20stroke='%23D6D5D3'%20stroke-width='0.3'/%3e%3cline%20x1='660.15'%20y1='-6.55671e-09'%20x2='660.15'%20y2='958'%20stroke='%23D6D5D3'%20stroke-width='0.3'/%3e%3cline%20x1='195.15'%20y1='296'%20x2='195.15'%20y2='958'%20stroke='%23D6D5D3'%20stroke-width='0.3'/%3e%3cline%20x1='505'%20y1='58.15'%20y2='58.15'%20stroke='%23D6D5D3'%20stroke-width='0.3'/%3e%3cline%20x1='350'%20y1='444.15'%20x2='195'%20y2='444.15'%20stroke='%23D6D5D3'%20stroke-width='0.3'/%3e%3cline%20x1='815'%20y1='364.15'%20x2='660'%20y2='364.15'%20stroke='%23D6D5D3'%20stroke-width='0.3'/%3e%3cline%20x1='815'%20y1='58.15'%20x2='660'%20y2='58.15'%20stroke='%23D6D5D3'%20stroke-width='0.3'/%3e%3cline%20x1='970'%20y1='212.15'%20x2='815'%20y2='212.15'%20stroke='%23D6D5D3'%20stroke-width='0.3'/%3e%3cline%20x1='970'%20y1='524.15'%20x2='815'%20y2='524.15'%20stroke='%23D6D5D3'%20stroke-width='0.3'/%3e%3cline%20x1='1435'%20y1='524.15'%20x2='1280'%20y2='524.15'%20stroke='%23D6D5D3'%20stroke-width='0.3'/%3e%3cline%20x1='1280'%20y1='636.15'%20x2='970'%20y2='636.15'%20stroke='%23D6D5D3'%20stroke-width='0.3'/%3e%3cline%20x1='1745'%20y1='636.15'%20x2='1435'%20y2='636.15'%20stroke='%23D6D5D3'%20stroke-width='0.3'/%3e%3cline%20x1='815'%20y1='822.15'%20x2='660'%20y2='822.15'%20stroke='%23D6D5D3'%20stroke-width='0.3'/%3e%3ccircle%20cx='815'%20cy='364'%20r='2'%20transform='rotate(90%20815%20364)'%20fill='%23D6D5D3'/%3e%3ccircle%20cx='815'%20cy='58'%20r='2'%20transform='rotate(90%20815%2058)'%20fill='%23D6D5D3'/%3e%3ccircle%20cx='970'%20cy='212'%20r='2'%20transform='rotate(90%20970%20212)'%20fill='%23D6D5D3'/%3e%3ccircle%20cx='970'%20cy='524'%20r='2'%20transform='rotate(90%20970%20524)'%20fill='%23D6D5D3'/%3e%3ccircle%20cx='1280'%20cy='524'%20r='2'%20transform='rotate(90%201280%20524)'%20fill='%23D6D5D3'/%3e%3ccircle%20cx='1280'%20cy='636'%20r='2'%20transform='rotate(90%201280%20636)'%20fill='%23D6D5D3'/%3e%3ccircle%20cx='1435'%20cy='636'%20r='2'%20transform='rotate(90%201435%20636)'%20fill='%23D6D5D3'/%3e%3ccircle%20cx='1745'%20cy='636'%20r='2'%20transform='rotate(90%201745%20636)'%20fill='%23D6D5D3'/%3e%3ccircle%20cx='815'%20cy='822'%20r='2'%20transform='rotate(90%20815%20822)'%20fill='%23D6D5D3'/%3e%3ccircle%20cx='350'%20cy='444'%20r='2'%20transform='rotate(90%20350%20444)'%20fill='%23D6D5D3'/%3e%3ccircle%20cx='505'%20cy='58'%20r='2'%20transform='rotate(90%20505%2058)'%20fill='%23D6D5D3'/%3e%3ccircle%20cx='660'%20cy='364'%20r='2'%20transform='rotate(90%20660%20364)'%20fill='%23D6D5D3'/%3e%3ccircle%20cx='660'%20cy='58'%20r='2'%20transform='rotate(90%20660%2058)'%20fill='%23D6D5D3'/%3e%3ccircle%20cx='815'%20cy='212'%20r='2'%20transform='rotate(90%20815%20212)'%20fill='%23D6D5D3'/%3e%3ccircle%20cx='815'%20cy='524'%20r='2'%20transform='rotate(90%20815%20524)'%20fill='%23D6D5D3'/%3e%3ccircle%20cx='970'%20cy='636'%20r='2'%20transform='rotate(90%20970%20636)'%20fill='%23D6D5D3'/%3e%3ccircle%20cx='660'%20cy='822'%20r='2'%20transform='rotate(90%20660%20822)'%20fill='%23D6D5D3'/%3e%3cline%20x1='660'%20y1='636.15'%20x2='505'%20y2='636.15'%20stroke='%23D6D5D3'%20stroke-width='0.3'/%3e%3ccircle%20cx='660'%20cy='636'%20r='2'%20transform='rotate(90%20660%20636)'%20fill='%23D6D5D3'/%3e%3ccircle%20cx='505'%20cy='636'%20r='2'%20transform='rotate(90%20505%20636)'%20fill='%23D6D5D3'/%3e%3ccircle%20cx='195'%20cy='444'%20r='2'%20transform='rotate(90%20195%20444)'%20fill='%23D6D5D3'/%3e%3ccircle%20cx='350'%20cy='296'%20r='2'%20transform='rotate(90%20350%20296)'%20fill='%23D6D5D3'/%3e%3c/svg%3e") repeat;
     background-position: 0 0; /* ← головне */
 }
+.hero__kicker{ grid-row: 1; }
+.hero__title{  grid-row: 2; }
+.hero__desc{   grid-row: 3; margin: 0; }
+/* важливо: прибрати старі margin:50px 0 */
+.hero__cta{    grid-row: 4; margin-top: 20px; }
+/* 3) шафа спанить 4 ряди і не “роздуває” тільки перший */
+/* шафа сидить у першому рядку (не роздуває 3-4 ряд) */
+.hero__right{
+    grid-column: 9 / 13;
+    grid-row: 1 / 4;         /* ВАЖЛИВО: не 1/5 */
+    align-self: start;
+    justify-self: start;
+}
 .hero__inner{
-    display: grid;
-
-    /* 3 колонки: left | gap | right */
-    grid-template-columns: minmax(520px, 1fr) clamp(40px, 6vw, 120px) minmax(520px, 1fr);
-
-    grid-template-areas:
-      "left . right"
-      "cta  cta right";
-
     align-items: start;
-    column-gap: 0;   /* тепер gap — це окрема колонка */
-    row-gap: 0;
+    align-content: start;
+    grid-auto-rows: min-content;
 }
 .hero__left{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-top: 0;
-    grid-area: left;
+    display: contents;
 }
-.hero .hero__cta{
-    grid-area: cta;
-    justify-self: center;
-    align-self: start;
-    transform: translate(clamp(80px, 6vw, 160px), -24px);
-}
+.hero__kicker{ grid-column: 3 / 7; margin: 0 0 28px; }
+.hero__title{  grid-column: 2 / 7; margin: 0 0 18px; white-space: nowrap; }
+.hero__desc{   grid-column: 2 / 6; margin: 0; max-width: none; }
 .hero__kicker{
     font-family: var(--third-family), sans-serif;
     font-weight: 100;
@@ -1411,8 +1428,8 @@ body{
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--black);
-    margin-bottom: 28px;
-    margin-left: 115px;
+    grid-column: 3 / 7;
+    margin: 0 0 28px;
 }
 .hero__kicker span{
     display:block;
@@ -1420,13 +1437,14 @@ body{
 .hero__title{
     font-family: var(--font3), sans-serif;
     font-weight: 400;
-    margin: 0 0 20px;
     color: var(--black);
     text-transform: uppercase;
     font-size: clamp(64px, 9vw, 180px);
     line-height: 0.85;
     letter-spacing: -0.04em;
     white-space: nowrap;
+    grid-column: 2 / 7;
+    margin: 0 0 18px;
 }
 .hero__desc{
     font-family: var(--font-family), sans-serif;
@@ -1435,24 +1453,13 @@ body{
     letter-spacing: -0.03em;
     text-transform: uppercase;
     color: var(--black);
-    margin: 50px 0;
-    max-width: 460px;
     font-weight: 100;
+    grid-column: 2 / 6;
+    margin: 0;
+    text-indent: calc((100% / 4) + 5px);
 }
-.hero__descLine1{
-    display: inline-block;
-    padding-left: 140px;
-}
-@media (min-width: 769px){
-    /* центруємо секцію як “композицію”, без ламання внутрішніх зсувів */
-    .hero .container{
-        width: min(1280px, calc(100% - 80px)); /* було 1440px глобально */
-    }
-
-    .hero__inner{
-        grid-template-columns: 1fr 1fr;              /* без мінімумів 520px */
-        column-gap: clamp(40px, 6vw, 120px);         /* контрольований простір між текстом і шафою */
-    }
+.hero__desc-dark{
+    display: block;
 }
 .hero__inner,
 .hero__left,
@@ -1466,74 +1473,42 @@ body{
     margin-left: 15%;
 }
 .hero .hero__right{
-    display:flex;
-    justify-content:flex-start;
-    align-items:flex-start;
     padding-top: 0;
-    grid-area: right;
     align-self: start;
-    transform: translateY(70px);
+    justify-self: start;
+}
+.hero__right{
+    grid-column: 9 / 13;
+    justify-self: start;
+    align-self: start;
 }
 .hero__imgWrap{
-    display:flex;
-    justify-content:flex-end;
-    align-items:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 392px;
+    max-width: 392px;
 }
 .hero__image{
     width: 100%;
     height: auto;
-    max-height: min(560px, 62vh);
+    display: block;
     object-fit: contain;
-    display:block;
 }
-@media (max-width: 1024px) and (min-width: 769px) {
-    .hero {
-        min-height: auto;
-        padding: 72px 0 64px;
-    }
-
-    .hero__inner {
-        gap: 24px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .hero .hero__cta {
-        transform: none;      /* прибираємо підняття */
-        order: 3;             /* після картинки */
-        margin-top: 24px;
-    }
-
-    .hero__right {
-        padding-top: 0;
-        justify-content: center;
-        transform: none;      /* прибираємо зсув шафи */
-        order: 2;
-    }
-
-    .hero__left {
-        order: 1;
-    }
-
-    .hero__imgWrap {
-        width: min(520px, 92vw);
-    }
-
-    .hero__title {
-        white-space: normal;
-        font-size: clamp(42px, 12vw, 64px);
-    }
+/* кнопка реально по центру контейнера */
+.hero__cta{
+    grid-column: 1 / -1;
+    justify-self: center;
+    margin-top: 20px;
 }
-/* ---------- intro ---------- */
+/* ---------- intro -блок з каскою--------- */
 .intro{ padding: 34px 0 40px; }
 .intro__text{
-    font-family: var(--font-family), sans-serif;
     text-transform: uppercase;
     padding: 80px 0 60px;
     color: var(--black);
     font-weight: 500;
-    font-size: 24px;
+    font-size: 26px;
     line-height: 1.25;
     letter-spacing: -0.01em;
 }
@@ -2091,7 +2066,6 @@ body{
     .engSection__big{ font-size: 28px; }
 }
 @media (min-width: 769px) and (max-width: 1619px){
-
     /* прибираємо десктопні зсуви, які на середніх екранах “пливуть” */
     .splitText__line1,
     .splitText__base,
@@ -2099,7 +2073,6 @@ body{
         transform: none !important;
         padding-right: 0 !important;
     }
-
     /* типографіка: трохи менше, але “дихає” */
     .splitText__base,
     .splitText__overlay{
@@ -2107,7 +2080,6 @@ body{
         line-height: 1.12;
         letter-spacing: 0.02em;
     }
-
     /* зсув першого рядка (менший, ніж на великому десктопі) */
     .splitText__line1{
         padding-left: clamp(120px, 22vw, 320px); /* було занадто жорстко — тепер м’якше */
@@ -2118,11 +2090,29 @@ body{
         clip-path: inset(0 0 0 clamp(120px, 22vw, 320px));
     }
 }
+/* intro__inner має бути grid12 (як у hero/header) */
+.intro__inner{
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(12px, 1.8vw, 24px);
+    row-gap: 26px;
+    align-items: start;
+}
+/* робимо wrapper “невидимим” для гріда */
 .intro__card{
-    display:grid;
-    grid-template-columns: 1.1fr .9fr;
-    gap: 26px;
-    align-items: stretch;
+    display: contents;
+}
+/* верхній рядок тексту — через всі колонки */
+.intro__text{
+    grid-column: 1 / -1;
+}
+/* ліва половина: каска (1–6) */
+.intro__media{
+    grid-column: 1 / 7;
+}
+/* права половина: картка (8–12) */
+.intro__copy{
+    grid-column: 7 / 13;
 }
 .intro__media{
     background:#111;
@@ -2134,7 +2124,7 @@ body{
     padding: 28px 24px;
     border: 1px solid var(--lightgrey);
     border-radius: 12px;
-    background: #fff;
+    background: var(--white);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -2149,7 +2139,7 @@ body{
     margin-top: 0;
 }
 .intro__content{
-    font-family: var(--third-family),sans-serif;
+    font-family: var(--font-family),sans-serif;
     font-weight: 400;
     font-size: clamp(16px, 1.2vw, 18px);
     line-height: 1.2;
@@ -2157,7 +2147,7 @@ body{
     color: var(--grey);
 }
 .intro__aside{
-    font-family: var(--third-family),sans-serif;
+    font-family: var(--font-family),sans-serif;
     font-weight: 400;
     font-size: clamp(16px, 1.2vw, 18px);
     line-height: 1.2;
@@ -2179,7 +2169,10 @@ body{
     color: var(--grey);
     flex-wrap:nowrap;
     margin-top: auto;      /* ⬅️ притискає блок з кнопками вниз */
-    padding-top: 18px;}
+    padding-top: 18px;
+    margin-left: 40px;
+
+}
 .intro__link{
     position: relative;
     display: inline-flex;
@@ -2193,6 +2186,7 @@ body{
     color: var(--grey);
     text-decoration: none;
     transition: color .2s ease;
+
 }
 /* дужки */
 .intro__link::before,
@@ -2228,6 +2222,15 @@ body{
     position: relative;
     overflow: hidden;
 }
+.engineering .container.grid12 { align-items: start; }
+.engineering__top,
+.engineering__content{
+    display: contents;
+}
+.engineering .intro__p{
+    grid-column: 1 / 3; /* старт з 1-ї, компактно */
+    margin: 0 0 16px;
+}
 .engineering__bgText{
     position: absolute;
     left: -4%;
@@ -2257,33 +2260,33 @@ body{
     align-items: start;
 }
 .engineering__top .engineering__headline{
-    /* прибираємо intro__text великий padding */
     padding: 0;
     margin: 0;
     max-width: 640px;                 /* під макет */
     font-family: var(--font-family), sans-serif;
     text-transform: uppercase;
     font-weight: 500;
-    font-size: clamp(17px, 4.5vw, 19px);
+    font-size: clamp(17px, 4.5vw, 20px);
     line-height: 1.15;
     letter-spacing: -0.01em;
     color: var(--black);
 }
+.engineering__headline{
+    display: contents;
+    margin: 0;
+    padding: 0;
+}
 .engineering__headline-main{
     display: block;
+    grid-column: 1 / 6;
 }
 /* сірий рядок з відступом вправо як у макеті */
 .engineering__headline-sub{
     display: block;
     color: var(--lightgrey);
-    padding-left: clamp(120px, 10vw, 190px);
     margin-bottom: 30px;
-}
-/* На дуже широких — трохи менше “пливе” */
-@media (min-width: 1440px){
-    .engineering__headline-sub{
-        padding-left: 170px;
-    }
+    grid-column: 3 / 8;   /* 3..7 — як ти хочеш */
+    padding-left: 0;      /* важливо */
 }
 .engineering__title {
     font-family: var(--third-family), sans-serif;
@@ -2295,12 +2298,6 @@ body{
     font-weight: 500;
     color: var(--black);
 }
-.engineering__content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-}
 .engineering__left{
     max-width: 480px;
     font-family: var(--font-family), sans-serif;
@@ -2308,8 +2305,10 @@ body{
     font-size: 14px;
     line-height: 100%;
     letter-spacing: -0.03em;
-    color: var(--orange);
-    margin-left: 32%;
+    color: var(--black);
+    grid-column: 3 / 7;    /* 3,4,5,6 */
+    margin-left: 0;
+    margin-top: 22px;
 }
 .engineering__left p{ margin: 0; }
 .h2{
@@ -2321,8 +2320,8 @@ body{
     color: var(--black);
 }
 .engineering__right {
-    align-items:start;
-
+    grid-column: 7 / 13;   /* 7..12 */
+    margin-top: 22px;
 }
 .muted{ color:#9e9e9e; font-size: 12px; line-height: 1.6; }
 /* контейнер пункту */
@@ -2390,12 +2389,12 @@ body{
     transition: max-height .25s ease;
     padding: 0 16px;
 }
-.engItem.is-open::after{
-    content: "";
-    display: block;
-    height: 1px;
-    background: #dedede;
-    margin-top: -6px;
+.engItem::after{
+    content:"";
+    display:block;
+    height:1px;
+    background:#dedede;
+    margin-top: 14px;
 }
 .js-engPanel{
 
@@ -2417,11 +2416,14 @@ body{
 }
 .engRow img{ width:18px; height:18px; }
 .engineering__ctaLine{
-    display:flex;
-    align-items:center;
     justify-content:space-between;
     gap: 30px;
     padding: 32px 0;
+    grid-column: 7 / 13;      /* старт як акордіон */
+    display: grid;
+    grid-template-columns: 1fr auto;  /* зліва текст/кнопка, справа CTA */
+    align-items: start;
+
 }
 .engCta{
     min-width: 0;
@@ -2444,6 +2446,11 @@ body{
     color: var(--grey);
     text-decoration: none;
     transition: color .2s ease;
+    border: 1px solid rgba(0,0,0,.12);
+    border-radius: 999px;
+    background: transparent;
+    cursor: pointer;
+    border: none;
 }
 .engCta__title::before,
 .engCta__title::after{
@@ -2454,6 +2461,17 @@ body{
     color: var(--orange);
     transition: transform .18s ease;
     pointer-events: none;
+}
+.engineering__ctaLine .btn--drift{
+    padding-left: 24px;
+    padding-right: 24px;
+    width: fit-content;
+}
+.engineering__ctaLine .btn--drift::before{
+    left: 6px;
+}
+.engineering__ctaLine .btn--drift::after{
+    right: 6px;
 }
 .engCta__title::before{ content:"["; left: 0; }
 .engCta__title::after { content:"]"; right: 0; }
@@ -2466,6 +2484,10 @@ body{
     line-height: 1.35;
     letter-spacing: -0.03em;
     color: var(--grey-dark);
+    max-width: 320px;
+}
+.engineering__ctaLine .btn{
+    justify-self: end;
 }
 /* Button brackets via pseudo + drift (no inner spans needed) */
 .btn--bracketsPseudo{
@@ -2695,7 +2717,7 @@ body{
 /* ===== початок - experience__content--секція з цифрами ===== */
 .experience{
     position: relative;
-    min-height: 110vh;
+    min-height: 1020px;
     padding: 70px 0 80px;
     background: var(--black);
     overflow: hidden;
@@ -2714,9 +2736,6 @@ body{
 }
 /** --- движение фона */
 @keyframes waveMove{
-    /*0%   { filter: hue-rotate(0deg)   saturate(1.05); }*/
-    /*50%  { filter: hue-rotate(30deg)  saturate(1.2); }*/
-    /*100% { filter: hue-rotate(0deg)   saturate(1.05); }*/
     0%   { background-position: 25% 50%; filter: hue-rotate(0deg) saturate(1.05); }
     25%  { background-position: 35% 50%; filter: hue-rotate(25deg) saturate(1.15); }
     50%  { background-position: 45% 50%; filter: hue-rotate(60deg) saturate(1.15); }
@@ -2775,6 +2794,7 @@ body{
     justify-self: start;
     padding-top: 18px;
 }
+.experience__content--mobile{display: none; }
 /* ===== Stats композиція (як у макеті) ===== */
 .expGrid{
     /* налаштування “перекриття” */
@@ -2926,9 +2946,39 @@ body{
     -webkit-background-clip: text;
     background-clip: text;
 }
+/*@media (max-width: 1200px) and (min-width: 769px) {*/
+/*    .experience{*/
+/*        min-height: unset;      !* скидаємо 110vh *!*/
+/*        padding: 100px 0;*/
+/*    }*/
+/*    .experience__inner{*/
+/*        position: static;       !* вимикаємо sticky *!*/
+/*        top: auto;*/
+/*        padding-top: 56px;      !* щоб не прилипало до верху *!*/
+/*    }*/
+/*}*/
 /* ===== кінець - experience__content--секція з цифрами ===== */
 /* ===== початок - contacts--остання секція з формою ===== */
-.contacts{ padding: 60px 0 76px; }
+.contacts {
+    padding: 60px 0 76px;
+    position: relative;
+    overflow: hidden;
+}
+.contacts::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("/EnergyGroup/assets/word-3p4zCSP9.svg") no-repeat;
+    background-position: center top;
+    background-size: min(900px, 70vw) auto;
+
+    pointer-events: none;
+    z-index: 0;
+}
+.contacts .container{
+    position: relative;
+    z-index: 1;
+}
 .contacts__inner{
     display:grid;
     grid-template-columns: 1fr 1fr;
@@ -4764,15 +4814,15 @@ body.menu-open{
 .artSvg{ width:100%; height:auto; display:block; }
 /* 1. Типові монтажі */
 .techLibBlock--montage .techLibBlock__art{
-    background-image: url("/EnergyGroup/assets/lib1-DluEkvGO.svg");
+    background-image: url("/EnergyGroup/assets/lib1-nAsO4He9.svg");
 }
 /* 2. Принципові схеми */
 .techLibBlock--schemes .techLibBlock__art{
-    background-image: url("/EnergyGroup/assets/lib2-CSs39WCb.svg");
+    background-image: url("/EnergyGroup/assets/lib2-DK23tPPJ.svg");
 }
 /* 3. Документація */
 .techLibBlock--docs .techLibBlock__art{
-    background-image: url("/EnergyGroup/assets/lib3-CIrxrpvd.svg");
+    background-image: url("/EnergyGroup/assets/lib3-C1X9033-.svg");
 }
 .techLibList{
     display:flex;
@@ -5132,19 +5182,22 @@ body.menu-open{
 /*.menuSub__item a:hover {*/
 /*    color: rgba(255, 122, 0, 0.9);*/
 /*}*/
-body::before{
+.grid12.debug-grid{
+    position: relative;
+}
+.grid12.debug-grid::after{
     content:"";
-    position: fixed;
-    inset: 0;
+    position:absolute;
+    inset:0;
     pointer-events:none;
-    z-index: 99999;
+    z-index:9999;
 
     background-image: repeating-linear-gradient(
             to right,
-            transparent 0,
-            transparent calc(100vw / 6 - 1px),
-            rgba(255,0,0,.5) calc(100vw / 6 - 1px),
-            rgba(255,0,0,.5) calc(100vw / 6)
+            rgba(180,0,255,.7) 0,
+            rgba(180,0,255,.7) 1px,
+            transparent 1px,
+            transparent calc(100% / 12)
     );
 }
 
