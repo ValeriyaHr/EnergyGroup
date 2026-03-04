@@ -248,18 +248,20 @@
 
 
 .footer__brand{
-    margin-top: 60px;
-    position: relative;
-    bottom: 1px;
-    padding-left:0;
+    width: 100vw;                       /* повний екран */
+    margin-left: calc(50% - 50vw);      /* вирівнюємо по центру вьюпорта */
+    padding: 0;
+    text-align: center;
+
     font-family: var(--font3), sans-serif;
-    font-size: clamp(40px, 11vw, 180px);
+    font-size: clamp(64px, 14vw, 180px);
     line-height: .8;
     letter-spacing: 0;
     color: var(--orange);
     text-transform: uppercase;
-    width: 100%;
-    text-align: center;
+
+    position: relative;
+    z-index: 1;
 }
 
 .footer__brand{
