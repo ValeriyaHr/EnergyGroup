@@ -993,18 +993,20 @@ body.no-scroll{ overflow: hidden; }
     .footerPeg__qrImg{ width: 108px; }
 }
 .footer__brand{
-    margin-top: 60px;
-    position: relative;
-    bottom: 1px;
-    padding-left:0;
+    width: 100vw;                       /* повний екран */
+    margin-left: calc(50% - 50vw);      /* вирівнюємо по центру вьюпорта */
+    padding: 0;
+    text-align: center;
+
     font-family: var(--font3), sans-serif;
-    font-size: clamp(40px, 11vw, 180px);
+    font-size: clamp(64px, 14vw, 180px);
     line-height: .8;
     letter-spacing: 0;
     color: var(--orange);
     text-transform: uppercase;
-    width: 100%;
-    text-align: center;
+
+    position: relative;
+    z-index: 1;
 }
 .footer__brand{
     font-size: 14vw;
@@ -2541,17 +2543,22 @@ body{
     background:#fff;
 }
 .whyus__inner{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 44px;
     align-items:start;
 }
-/* ===== WHY US / pill panel (scroll reveal) ===== */
-/* ===== WHY US (unfold on scroll, like mockup) ===== */
 .whyus{
     padding: 56px 0 40px;
     position: relative;
     overflow: hidden;
+}
+.whyus__left{
+    grid-column: 2 / 7;   /* старт з 2-ї */
+}
+.whyus__tabs{
+    grid-column: 7 / 13;  /* 7..12 */
+}
+.whyus .intro__p{
+    grid-column: 2 / 7;
+    margin-top: 0;
 }
 .whyus::before{
     content:"";
@@ -2566,12 +2573,6 @@ body{
     position:relative;
     z-index:1;
 }
-.whyus__inner{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 44px;
-    align-items:start;
-}
 .whyus__text{
     font-family: var(--font-family), sans-serif;
     text-transform: uppercase;
@@ -2582,7 +2583,6 @@ body{
     line-height: 1.25;
     letter-spacing: -0.01em;
 }
-/* container that receives --p from JS */
 .whyReveal{
     --p: 0;                 /* 0 = stacked, 1 = expanded */
     --count: 10;            /* JS overwrite */
@@ -2678,7 +2678,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto 18px;
+    margin: 0 auto 80px;
     width: fit-content;
     position: relative;
     padding: 0 18px;
@@ -2717,8 +2717,9 @@ body{
 /* ===== початок - experience__content--секція з цифрами ===== */
 .experience{
     position: relative;
-    min-height: 1020px;
-    padding: 70px 0 80px;
+    min-height: 1300px;
+    padding-top: clamp(80px, 10vh, 140px);
+    padding-bottom: clamp(80px, 10vh, 140px);
     background: var(--black);
     overflow: hidden;
 }
@@ -2726,8 +2727,8 @@ body{
     position:absolute;
     left:0;
     right:0;
-    bottom:0;
-    height:380px;
+    bottom: -2px;
+    height:400px;
     background: url("/EnergyGroup/assets/glow-D20zywQf.png") center  bottom no-repeat;
     background-size: cover;
     animation: waveMove 6s ease-in-out infinite;
@@ -2743,26 +2744,15 @@ body{
     100% { background-position: 100% 100%; filter: hue-rotate(0deg) saturate(1.05); }
 }
 .experience__inner{
-    position: sticky;
-    top: 0;
-    display: grid;
-    /* композиція як у макеті */
-    --col-left: 320px;   /* зона кікера зліва */
-    --col-mid:  720px;   /* зона ліда + статистики */
-    --gap: clamp(24px, 3vw, 64px);
-    --col-right: 2px;          /* або 220–320px під око */
-    grid-template-columns: var(--col-left) var(--col-mid) var(--col-right);
-    justify-content: center;     /* оце саме “зсуває” все вправо */
-    column-gap: var(--gap);
+    align-items: start;
     row-gap: 26px;
     padding-top: clamp(56px, 9vh, 110px);
-    align-items: start;
 }
 .experience__top{
     display: contents;
 }
 .experience__kicker{
-    grid-column: 1;
+    grid-column: 1 / 8;
     grid-row: 1;
     justify-self: start;
     font-size: 14px;
@@ -2774,13 +2764,13 @@ body{
     line-height: 110%;
 }
 .experience__lead{
-    grid-column: 2;
+    grid-column: 7 / 12;  /* 8-11 */
     grid-row: 1;
+    margin: 0;
     justify-self: start;
     max-width: 62ch;
     text-transform: uppercase;
     text-align: start;
-    margin-bottom: 0;
     font-family: var(--third-family),sans-serif;
     font-weight: 300;
     font-size: clamp(15px, 1vw, 18px);
@@ -2789,7 +2779,7 @@ body{
     color: var(--lightgrey);
 }
 .experience__content--desktop{
-    grid-column: 2;
+    grid-column: 7 / 13;
     grid-row: 2;
     justify-self: start;
     padding-top: 18px;
@@ -2797,24 +2787,19 @@ body{
 .experience__content--mobile{display: none; }
 /* ===== Stats композиція (як у макеті) ===== */
 .expGrid{
-    /* налаштування “перекриття” */
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    column-gap: clamp(18px, 2vw, 44px);
+    row-gap: 26px;
     --numSize: 160px;               /* розмір цифр */
     --step: 92px;                   /* крок вниз між числами (менше numSize => overlap) */
-
     --rightW: 260px;
     --gapX: 56px;
-
     /* підгін вертикалі підписів відносно числа */
     --captionShift: 34px;
-
-    display: grid;
-    grid-template-columns: 1fr var(--rightW);
-    column-gap: var(--gapX);
-
     /* ключ: контролюємо накладення через висоту рядка */
     grid-auto-rows: var(--step);
-
-    width: min(860px, 100%);
+    width: 100%;
     align-items: start;
     overflow: visible;
 }
@@ -2850,18 +2835,18 @@ body{
     grid-column: 2;
     align-self: start;
     padding-top: 16px;
-    max-width: var(--rightW);
     font-family: var(--third-family), sans-serif;
     font-weight: 300;
     font-size: clamp(15px, 1vw, 18px);
-    line-height: 1.25;
+    line-height: 1.35;
+    max-width: 32ch;
+    word-break: normal;
     letter-spacing: -0.09em;
     text-transform: uppercase;
     color: var(--lightgrey);
-
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     overflow: hidden;
 }
 /* ===== EXPERIENCE ANIMATION ===== */
@@ -2883,18 +2868,18 @@ body{
     grid-column: 2;
     align-self: start;
     padding-top: 16px;
-    max-width: var(--rightW);
     font-family: var(--third-family), sans-serif;
     font-weight: 300;
     font-size: clamp(15px, 1vw, 18px);
-    line-height: 1.25;
+    max-width: 32ch;
+    word-break: normal;
     letter-spacing: -0.09em;
     text-transform: uppercase;
     color: var(--lightgrey);
 
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     overflow: hidden;
 
     /* плавне появлення текста */
@@ -2913,11 +2898,39 @@ body{
     opacity: 1;
     transform: translateY(0);
 }
+@media (max-width:1440px){
+    .experience__lead{
+        grid-column: 6 / 12;}
+    .experience__content--desktop{
+        grid-column: 6 / 13;}
+}
+@media (max-width:1200px){
+    .experience__kicker{
+        grid-column: 1 / 4;}
+    .experience__lead{
+        grid-column: 5 / 12;}
+    .experience__content--desktop{
+        grid-column: 5 / 13;}
+}
+@media (max-width:1024px){
+    .experience__kicker{
+        grid-column: 1 / -1;
+        grid-row: 1;
+    }
+    .experience__lead{
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+    .experience__content--desktop{
+        grid-column: 1 / -1;
+        grid-row: 3;
+    }
+}
 /* ЦИФРИ — жёлтый highlight під час лічення */
 .expNum.is-highlight {
     -webkit-text-fill-color: #FC944A;
 
-    background: linear-gradient(180deg, #FFD700 0%, #FC944A 62.33%);
+    background: linear-gradient(180deg, #ffe436 0%, #e25021 62.33%);
     -webkit-background-clip: text;
     background-clip: text;
 }
@@ -2946,17 +2959,6 @@ body{
     -webkit-background-clip: text;
     background-clip: text;
 }
-/*@media (max-width: 1200px) and (min-width: 769px) {*/
-/*    .experience{*/
-/*        min-height: unset;      !* скидаємо 110vh *!*/
-/*        padding: 100px 0;*/
-/*    }*/
-/*    .experience__inner{*/
-/*        position: static;       !* вимикаємо sticky *!*/
-/*        top: auto;*/
-/*        padding-top: 56px;      !* щоб не прилипало до верху *!*/
-/*    }*/
-/*}*/
 /* ===== кінець - experience__content--секція з цифрами ===== */
 /* ===== початок - contacts--остання секція з формою ===== */
 .contacts {
@@ -2980,10 +2982,19 @@ body{
     z-index: 1;
 }
 .contacts__inner{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 46px;
-    align-items:start;
+    display: contents;
+}
+/* Заголовок: 1–4 */
+.contacts__tittle{
+    grid-column: 1 / 5;
+}
+/* Оранжевий текст зліва: 1–3 */
+.contacts__left{
+    grid-column: 1 / 4;
+}
+/* Форма справа: 7–12 */
+.contacts__form{
+    grid-column: 7 / 13;
 }
 .contacts__tittle{
     font-family: var(--third-family), sans-serif;
@@ -2993,7 +3004,7 @@ body{
     letter-spacing: -0.08em;
     text-transform: uppercase;
     color: var(--black);
-    margin-bottom: 100px;
+    margin-bottom: 80px;
 }
 .contacts__text{
     font-family: var(--font-family), sans-serif;
@@ -3004,6 +3015,8 @@ body{
     color: var(--orange);
 }
 .contacts__consent {
+    display: grid;
+    row-gap: 8px;
     gap: 10px;
     margin-top: 6px;
     font-family: var(--third-family), sans-serif;
@@ -3012,10 +3025,8 @@ body{
     line-height: 110%;
     letter-spacing: -0.03em;
     color: var(--grey-dark);
-    display: grid;
     grid-template-columns: 14px 1fr;
     column-gap: 10px;
-    row-gap: 4px;
     align-items: start;
 }
 .contacts__consent .contacts__radio{
@@ -3076,7 +3087,7 @@ body{
     display: grid;
     gap: 14px;                   /* відстань між темною панеллю і низом */
     justify-self: end;
-    width: min(560px, 100%);
+    width: 100%;
 }
 .contacts__row{
     display: grid;
