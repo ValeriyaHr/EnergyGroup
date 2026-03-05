@@ -36,19 +36,19 @@ $(function() {
       var $other = $(this);
       var $otherSub = $("#" + $other.attr("data-target"));
       $other.attr("aria-expanded", "false").removeClass("is-open");
-      $otherSub.stop(true, true).slideUp(180).attr("aria-hidden", "true");
+      $otherSub.attr("aria-hidden", "true");
     });
     if (isOpen) {
       $btn.attr("aria-expanded", "false").removeClass("is-open");
-      $submenu.stop(true, true).slideUp(180).attr("aria-hidden", "true");
+      $submenu.attr("aria-hidden", "true");
     } else {
       $btn.attr("aria-expanded", "true").addClass("is-open");
-      $submenu.stop(true, true).slideDown(180).attr("aria-hidden", "false");
+      $submenu.attr("aria-hidden", "false");
     }
   });
   $overlay.on("click", ".menuOverlay__close", function() {
     $nav.find(".menuItem--toggle").attr("aria-expanded", "false").removeClass("is-open");
-    $nav.find(".menuSub").stop(true, true).slideUp(180).attr("aria-hidden", "true");
+    $nav.find(".menuSub").attr("aria-hidden", "true");
   });
   $nav.on("wheel", function(e) {
     var $element = $(this);
@@ -64,4 +64,4 @@ $(function() {
     $element.scrollTop(scrollTop + e.originalEvent.deltaY);
   });
 });
-//# sourceMappingURL=menu-D1Dl9q1j.js.map
+//# sourceMappingURL=menu-CMPAQx9X.js.map
