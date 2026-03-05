@@ -8,32 +8,46 @@
         <div class="menuOverlay__top">
             <div class="menuOverlay__title">МЕНЮ</div>
 
-            <a class="btn btn--secondary btn--drift menuOverlay__consult" href="#">
+            <a class="btn btn--secondary btn--drift menuOverlay__consult" href="/#contacts">
                 КОНСУЛЬТАЦІЯ
             </a>
-
         </div>
-
-
 
         <div class="menuOverlay__divider"></div>
 
         <nav class="menuOverlay__nav">
-            <a class="menuItem" href="index.html">
-                <span class="menuItem__text">ГОЛОВНИЙ ЕКРАН</span>
-                <span class="menuItem__num">(01)</span>
-                <img class="menuItem__icon" src="/img/ui/orange-up2.svg" alt="" />
-            </a>
 
-            <div class="menuGroup">
+            <div class="menuGroup menuGroup--single">
+                <div class="menuRow">
+                    <a class="menuItem" href="index.html">
+                        <span class="menuItem__text">ГОЛОВНИЙ ЕКРАН</span>
+                        <span class="menuItem__num">(01)</span>
+                    </a>
 
-                <a class="menuItem" href="products.html">
-                    <span class="menuItem__text">ПРОДУКЦІЯ</span>
-                </a>
-                <span class="menuItem__num">(02)</span>
-                <div class="menuItem menuItem--toggle" type="button" aria-expanded="false" data-target="submenu-02">
-                    <img class="menuItem__icon" src="/img/ui/orange-up2.svg" alt=""   />
+                    <!-- декоративна стрілка справа -->
+                    <span class="menuToggle menuToggle--decor" aria-hidden="true">
+      <img class="menuItem__icon" src="/img/ui/orange-up2.svg" alt="" />
+    </span>
                 </div>
+            </div>
+
+            <!-- ПРОДУКЦІЯ -->
+            <div class="menuGroup">
+                <div class="menuRow">
+                    <a class="menuItem" href="products.html">
+                        <span class="menuItem__text">ПРОДУКЦІЯ</span>
+                        <span class="menuItem__num">(02)</span>
+                    </a>
+
+                    <!-- ВАЖЛИВО: збережено menuItem--toggle + data-target для твого акордіона -->
+                    <button class="menuItem menuItem--toggle" type="button"
+                            aria-expanded="false"
+                            aria-controls="submenu-02"
+                            data-target="submenu-02">
+                        <img class="menuItem__icon" src="/img/ui/orange-up2.svg" alt="" />
+                    </button>
+                </div>
+
                 <ul class="menuSub" id="submenu-02" aria-hidden="true">
                     <li class="menuSub__item"><a href="products.html">Станції катодного захисту інверторні автоматичні (СКЗІ)</a></li>
                     <li class="menuSub__item"><a href="products.html">Система телеметрії та телеуправління станціями катодного захисту</a></li>
@@ -51,42 +65,22 @@
                 </ul>
             </div>
 
-<!--            <p class="menuItem__page">
-                Станції катодного захисту інверторні автоматичні (СКЗІ)</p>
-            <p class="menuItem__page">
-                Система телеметрії та телеуправління станціями катодного захисту</p>
-            <p class="menuItem__page">
-                Станція дренажного захисту (СДЗ) типу “Поляризаційна”</p>
-            <p class="menuItem__page">
-                Станція дренажного захисту (СДЗ) типу “Підсилений дренаж”</p>
-            <p class="menuItem__page">
-                Система телеметрична для збору даних з ПВ</p>
-            <p class="menuItem__page">
-                Аноди заземлюючі магнетитові (АЗМТ)</p>
-            <p class="menuItem__page">
-                Блоки сумісного захисту (електронні) плавного прецизійного керування</p>
-            <p class="menuItem__page">
-                Блоки управління ізоляційними фланцями (електронні) плавного прецизійного керування</p>
-            <p class="menuItem__page">
-                Контрольно-вимірювальні пункти (ПВ)</p>
-            <p class="menuItem__page">
-                Контрольно-вимірювальні пункти (ПВ) з блоком сумісного захисту та системою телеметрії</p>
-            <p class="menuItem__page">
-                Комплекс відведення наведеного струму КВНС.ПЕГ</p>
-            <p class="menuItem__page">
-                Електроізолюючі вставки (муфти)</p>
-            <p class="menuItem__page">
-                Пристрій контролю струмів анодних заземлювачів</p>-->
-
+            <!-- ІНЖИНІРИНГ -->
             <div class="menuGroup">
-                <a class="menuItem" href="engineering.html">
-                    <span class="menuItem__text">ІНЖИНІРИНГ</span>
-                </a>
-                <span class="menuItem__num">(03)</span>
+                <div class="menuRow">
+                    <a class="menuItem" href="engineering.html">
+                        <span class="menuItem__text">ІНЖИНІРИНГ</span>
+                        <span class="menuItem__num">(03)</span>
+                    </a>
 
-                <div class="menuItem menuItem--toggle" type="button" aria-expanded="false" data-target="submenu-03">
-                    <img class="menuItem__icon" src="/img/ui/orange-up2.svg" alt="" />
+                    <button class="menuItem menuItem--toggle" type="button"
+                            aria-expanded="false"
+                            aria-controls="submenu-03"
+                            data-target="submenu-03">
+                        <img class="menuItem__icon" src="/img/ui/orange-up2.svg" alt="" />
+                    </button>
                 </div>
+
                 <ul class="menuSub" id="submenu-03" aria-hidden="true">
                     <li class="menuSub__item"><a href="engineering.html">Проєктування</a></li>
                     <li class="menuSub__item"><a href="engineering.html">Типові рішення</a></li>
@@ -94,18 +88,21 @@
                 </ul>
             </div>
 
-
-
+            <!-- ТЕХНІЧКА БІБЛІОТЕКА -->
             <div class="menuGroup">
-                <a class="menuItem" href="engineering.html">
-                    <span class="menuItem__text">ТЕХНІЧКА БІБЛІОТЕКА</span>
-                </a>
-                <span class="menuItem__num">(04)</span>
+                <div class="menuRow">
+                    <a class="menuItem" href="engineering.html">
+                        <span class="menuItem__text">ТЕХНІЧНА БІБЛІОТЕКА</span>
+                        <span class="menuItem__num">(04)</span>
+                    </a>
 
-                <div class="menuItem menuItem--toggle" type="button" aria-expanded="false" data-target="submenu-04">
-                    <img class="menuItem__icon" src="/img/ui/orange-up2.svg" alt="" />
+                    <button class="menuItem menuItem--toggle" type="button"
+                            aria-expanded="false"
+                            aria-controls="submenu-04"
+                            data-target="submenu-04">
+                        <img class="menuItem__icon" src="/img/ui/orange-up2.svg" alt="" />
+                    </button>
                 </div>
-
 
                 <ul class="menuSub" id="submenu-04" aria-hidden="true">
                     <li class="menuSub__item"><a href="library.html">Типові монтажі</a></li>
@@ -115,18 +112,21 @@
                 </ul>
             </div>
 
-
-
+            <!-- ДОКУМЕНТАЦІЯ -->
             <div class="menuGroup">
-                <a class="menuItem" href="docs.html">
-                    <span class="menuItem__text">ДОКУМЕНТАЦІЯ</span>
-                </a>
-                <span class="menuItem__num">(05)</span>
+                <div class="menuRow">
+                    <a class="menuItem" href="docs.html">
+                        <span class="menuItem__text">ДОКУМЕНТАЦІЯ</span>
+                        <span class="menuItem__num">(05)</span>
+                    </a>
 
-                <div class="menuItem menuItem--toggle" type="button" aria-expanded="false" data-target="submenu-05">
-                    <img class="menuItem__icon" src="/img/ui/orange-up2.svg" alt="" />
+                    <button class="menuItem menuItem--toggle" type="button"
+                            aria-expanded="false"
+                            aria-controls="submenu-05"
+                            data-target="submenu-05">
+                        <img class="menuItem__icon" src="/img/ui/orange-up2.svg" alt="" />
+                    </button>
                 </div>
-
 
                 <ul class="menuSub" id="submenu-05" aria-hidden="true">
                     <li class="menuSub__item"><a href="docs.html">Сертифікати відповідності</a></li>
@@ -135,8 +135,6 @@
                     <li class="menuSub__item"><a href="docs.html">Каталоги та презентації</a></li>
                 </ul>
             </div>
-
-
 
         </nav>
     </div>
