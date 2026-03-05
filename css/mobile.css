@@ -324,57 +324,179 @@ section{
 }
 /* ===== кінець інтро (2 блок головної сторінки, де фото з каскою ===== */
 /* ===== ENGINEERING СЕКЦІЯ ГОЛОВНОЇ 3, ДЕ АКОНДЕОН ===== */
-
-
-
-/* ===== кінець ENGINEERING СЕКЦІЯ ГОЛОВНОЇ 3, ДЕ АКОНДЕОН ===== */
-/* ===== початок - WHY US секція з плашками ===== */
-.whyus::before{
-    background-size: 120%;
+.engineering{
+    padding: 82px 0 66px;
+    position: relative;
+    overflow: hidden;
+    background: var(--grey-pale);
 }
 
-.whyus__inner{
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 22px;
+/* фон-текст: не душимо контент */
+.engineering__bgText{
+    position: absolute;
+    left: -6%;
+    top: 85%;
+    font-family: var(--font3), sans-serif;
+    font-weight: 400;
+    font-size: 223px;
+    line-height: 82%;
+    letter-spacing: -0.04em;
+    text-align: left;
+    color: var(--white);
+    transform: translateY(-50%);
+    z-index: -1;
 }
-.whyus__left{
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    column-gap: 14px;
-    align-items: start;
+
+/* оранжевий лейбл зліва */
+.engineering .intro__p{
+    grid-column: 1 / 3;
+    margin: 0 0 12px;
 }
-.whyus__text{
+
+/* headline — один потік (dark + light), але з “зсувом” з 4-го рядка (з 3-ї колонки) */
+.engineering__headline{
+    grid-column: 1 / -1;
+    margin: 0 0 18px;
     padding: 0;
-    margin: 0;
-    font-size: 12px;
-    line-height: 1.35;
-    color: var(--grey);
-    font-weight: 300;
-}
-.whyus__text br{ display:none; }
 
-/* таби — просто нижче, як другий блок */
-.whyus__tabs{
+    font-family: var(--third-family), sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--black);
+
+    display: flow-root; /* щоб float працював акуратно */
+    --col2: calc((100% / 5) * 2); /* 2 колонки */
+    --lh: 1.2em;                  /* 1 рядок */
+}
+
+/* після 3-х рядків “вмикаємо” 2 колонки зліва, і текст починає з 3-ї */
+.engineering__headline::before{
+    content:"";
+    float:left;
+    width: var(--col2);
+    height: calc(var(--lh) * 8);
+    shape-outside: polygon(
+            0 0,
+            0 calc(var(--lh) * 3),
+            100% calc(var(--lh) * 3),
+            100% 100%,
+            0 100%
+    );
+}
+
+.engineering__headline-main,
+.engineering__headline-sub{
+    display: inline;
+}
+
+.engineering__headline-sub{ color: var(--lightgrey); }
+
+/* текст над акордіоном: старт з 3-ї колонки */
+.engineering__left{
+    grid-column: 3 / -1;
+    margin: 0 0 18px;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    color: var(--grey);
+}
+
+/* акордіон по центру, на всі 5 колонок */
+.engineering__right{
+    grid-column: 1 / -1;
+    width: 100%;
+    justify-self: center;
+    margin: 0;
+}
+
+/* компактніший акордіон на мобайл */
+.engRow{
+    padding: 12px 14px;
+    font-size: 14px;
+    border-radius: 10px;
+}
+.engRow__arrowBtn{ width: 34px; height: 34px; }
+.engRowPanel{ padding: 0 14px; }
+.engRowPanel p{ font-size: 12px; line-height: 1.3; }
+
+/* CTA під акордіоном */
+.engineering__ctaLine{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+}
+
+.engineering__ctaLine > a.btn--primary{
+    order: 1;}
+.engineering__ctaLine > .engCta{
     order: 2;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
-.whyPanel{
-    padding: 14px 16px;
-    border-radius: 18px;
-    width: 432px;
-    max-width: calc(100vw - 32px);
+.engineering__ctaLine > .engCta > a.btn--secondary{
+    order: 1;}
+.engineering__ctaLine > .engCta > .engCta__sub{
+    order: 2;
+    text-align: center;
+    color: var(--grey);
+    font-size: 12px;
+}
+/* ===== кінець ENGINEERING СЕКЦІЯ ГОЛОВНОЇ 3, ДЕ АКОНДЕОН ===== */
+/* ===== початок - WHY US секція з плашками ===== */
+.whyus__inner{
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    row-gap: 82px;
     margin: 0;
 }
-.whyReveal{
-    --gap: 6px;
-    --item-h: 56px;
+.whyus__left{
+    display: contents;
 }
+
+.whyus .intro__p{
+    grid-column: 1 / 3;
+    margin: 0;
+    font-size: 13px;
+}
+.whyus__text{
+    grid-column: 3 / -1;
+    margin: 0;
+    padding: 0;
+    display: inline;
+}
+.whyus__text .light-grey{color: var(--grey-dark);}
+.whyus__text br{ display:none; }
+
+/* таби — на всю ширину 5 колонок */
+.whyus__tabs{
+    grid-column: 1 / -1;
+    width: 100%;
+}
+
+/* панель табів — теж 100% */
+.whyPanel{
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 14px 16px;
+    border-radius: 18px;
+    overflow: visible;
+}
+/* айтеми — без фіксованої ширини */
 .whyItem{
-    width: 400px;
-}
-/* ===== кінець - WHY US секція з табами ===== */
+    width: 100%;}
+/* ===== /WHY US ===== */
+
+/* ===== кінець -мсекція з табами ===== */
 /* ===== початок - experience__content--секція з цифрами ===== */
 .experience{
     min-height: auto;
@@ -527,25 +649,58 @@ section{
 .field_contact--area{ height:110px; }
 /* ===== кінець - experience__content--секція з цифрами ===== */
 /* ===== початок - contacts--остання секція з формою ===== */
-.contacts{ padding: 82px 20px 145px; }
+.contacts{
+    padding: 82px 0 145px;
+}
 
-.contacts__tittle {
+.contacts__tittle{
+    grid-column: 1 / -1;
+    font-family: var(--third-family), sans-serif;
+    font-weight: 500;
+    margin-bottom: 22px;
+    text-align: left;
     font-size: 24px;
     line-height: 100%;
     letter-spacing: -0.01em;
-    margin-bottom: 12px;
 }
+
+.contacts__left{
+    grid-column: 1 / -1;
+    margin-bottom: 16px;
+    text-align: left;
+}
+
 .contacts__text{
-    font-family: var(--third-family), sans-serif;
-    font-weight: 100;
-    font-size: 18px;
+    font-size: 14px;
+    line-height: 1.1;
     margin-bottom: 82px;
 }
+
+.contacts__form{
+    grid-column: 1 / -1;
+    justify-self: stretch;
+    width: 100%;
+}
+
+.contacts__row{
+    grid-template-columns: 1fr;
+}
+
+.contacts__panel{
+    padding: 16px;
+    border-radius: 12px;
+}
+
 .contacts__submit{
+    justify-self:center;
     width: auto;
-    max-width: 280px;
-    margin: 0 auto;
-    display: block;
+}
+
+.contacts__bottom{
+    font-family: var(--third-family), sans-serif;
+    font-weight: 300;
+    padding: 0;
+    gap: 10px;
 }
 /* ===== кінець - contacts--остання секція з формою ===== */
 /* ===== початок - інженірінг ===== */
