@@ -1,19 +1,19 @@
 <svg width="1651" height="853" viewBox="0 0 1651 853" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g opacity="0.2">
-<circle cx="748" cy="495" r="494.5" transform="rotate(90 748 495)" stroke="#D6D5D3"/>
+<g opacity="0.3">
+<circle cx="748" cy="495" r="494.5" transform="rotate(90 748 495)" stroke="#A5A5A5"/>
 <path d="M753.5 491C753.5 706.685 584.918 881.5 377 881.5C169.082 881.5 0.5 706.685 0.5 491C0.5 275.315 169.082 100.5 377 100.5C584.918 100.5 753.5 275.315 753.5 491Z" stroke="#D6D5D3"/>
-<circle cx="1307.5" cy="494.5" r="57" transform="rotate(90 1307.5 494.5)" stroke="#D6D5D3"/>
-<circle cx="57.5" cy="57.5" r="57" transform="matrix(0 1 1 0 0 437)" stroke="#D6D5D3"/>
-<circle cx="818" cy="494" r="64.5" transform="rotate(90 818 494)" stroke="#D6D5D3"/>
-<circle cx="748.5" cy="493.5" r="316" transform="rotate(90 748.5 493.5)" stroke="#D6D5D3"/>
-<circle cx="1144" cy="491" r="390.5" transform="rotate(90 1144 491)" stroke="#D6D5D3"/>
-<circle cx="1153.5" cy="494.5" r="89" transform="rotate(90 1153.5 494.5)" stroke="#D6D5D3"/>
-<circle cx="89.5" cy="89.5" r="89" transform="matrix(0 1 1 0 253 405)" stroke="#D6D5D3"/>
-<circle cx="1258.5" cy="494.5" r="8" transform="rotate(90 1258.5 494.5)" stroke="#D6D5D3"/>
-<circle cx="8.5" cy="8.5" r="8" transform="matrix(0 1 1 0 99 486)" stroke="#D6D5D3"/>
-<circle cx="1072.5" cy="494.5" r="8" transform="rotate(90 1072.5 494.5)" stroke="#D6D5D3"/>
-<circle cx="8.5" cy="8.5" r="8" transform="matrix(0 1 1 0 415 486)" stroke="#D6D5D3"/>
-<circle cx="761.5" cy="493.5" r="8" transform="rotate(90 761.5 493.5)" stroke="#D6D5D3"/>
+<circle cx="1307.5" cy="494.5" r="57" transform="rotate(90 1307.5 494.5)" stroke="#A5A5A5"/>
+<circle cx="57.5" cy="57.5" r="57" transform="matrix(0 1 1 0 0 437)" stroke="#A5A5A5"/>
+<circle cx="818" cy="494" r="64.5" transform="rotate(90 818 494)" stroke="#A5A5A5"/>
+<circle cx="748.5" cy="493.5" r="316" transform="rotate(90 748.5 493.5)" stroke="#A5A5A5"/>
+<circle cx="1144" cy="491" r="390.5" transform="rotate(90 1144 491)" stroke="#A5A5A5"/>
+<circle cx="1153.5" cy="494.5" r="89" transform="rotate(90 1153.5 494.5)" stroke="#A5A5A5"/>
+<circle cx="89.5" cy="89.5" r="89" transform="matrix(0 1 1 0 253 405)" stroke="#A5A5A5"/>
+<circle cx="1258.5" cy="494.5" r="8" transform="rotate(90 1258.5 494.5)" stroke="#A5A5A5"/>
+<circle cx="8.5" cy="8.5" r="8" transform="matrix(0 1 1 0 99 486)" stroke="#A5A5A5"/>
+<circle cx="1072.5" cy="494.5" r="8" transform="rotate(90 1072.5 494.5)" stroke="#A5A5A5"/>
+<circle cx="8.5" cy="8.5" r="8" transform="matrix(0 1 1 0 415 486)" stroke="#A5A5A5"/>
+<circle cx="761.5" cy="493.5" r="8" transform="rotate(90 761.5 493.5)" stroke="#A5A5A5"/>
 <path d="M1508 347.5C1489.29 347.5 1470.76 351.314 1453.47 358.725C1436.19 366.137 1420.48 377 1407.24 390.696C1394.01 404.392 1383.51 420.652 1376.35 438.549C1369.19 456.445 1365.5 475.628 1365.5 495C1365.5 514.372 1369.19 533.555 1376.35 551.451C1383.51 569.348 1394.01 585.608 1407.24 599.304C1420.48 613 1436.19 623.863 1453.47 631.275C1470.76 638.686 1489.29 642.5 1508 642.5" stroke="#D6D5D3"/>
 <path d="M727.074 347.534C708.23 347.114 689.493 350.566 671.948 357.693C654.402 364.819 638.395 375.478 624.856 389.053C611.316 402.628 600.512 418.85 593.071 436.779C585.63 454.707 581.699 473.987 581.507 493.499C581.316 513.012 584.866 532.37 591.954 550.452C599.041 568.534 609.523 584.979 622.794 598.837C636.064 612.694 651.858 623.688 669.26 631.183C686.662 638.677 705.327 642.524 724.175 642.5" stroke="#D6D5D3"/>
 <path d="M737.448 377.527C722.44 377.192 707.517 379.942 693.542 385.619C679.567 391.296 666.818 399.787 656.034 410.601C645.249 421.415 636.644 434.337 630.717 448.619C624.789 462.902 621.659 478.26 621.506 493.805C621.353 509.349 624.181 524.77 629.827 539.175C635.472 553.579 643.822 566.68 654.391 577.719C664.961 588.758 677.541 597.515 691.401 603.485C705.262 609.455 720.128 612.519 735.139 612.5" stroke="#D6D5D3"/>
