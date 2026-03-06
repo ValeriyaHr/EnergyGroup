@@ -367,7 +367,13 @@ body.menu-open{
     }
 
     .menuOverlay__panel {
-        padding: 60px 24px;
+        padding: 60px 24px 128px;
+    }
+
+    .menuOverlay__nav{
+        flex: 1;
+        min-height: 0;
+        padding-bottom: 0; /* важливо: щоб не було подвійного запасу */
     }
 
     .menuOverlay__close {
