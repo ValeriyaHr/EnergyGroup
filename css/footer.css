@@ -1,0 +1,299 @@
+.footerPeg{
+    background:var(--black);
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
+    font-size: clamp(14px, 0.9vw, 18px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    overflow: hidden;
+    display:flex;
+    flex-direction: column;
+    min-height: 520px;
+}
+
+.footerPeg__top{
+    padding: 80px 20px 35px;
+    position: relative;
+    z-index: 2; /* контент над брендом */
+}
+
+.footerPeg__grid{
+    align-items: start;
+    column-gap: clamp(12px, 1.8vw, 24px);
+    row-gap: 0;
+    text-transform: uppercase;
+}
+
+.footerPeg__col{ min-width: 0; }
+
+/* колонки по grid12 */
+.footerPeg__grid > .footerPeg__col:nth-child(1){ grid-column: 1 / 3; }
+.footerPeg__grid > .footerPeg__col:nth-child(2){ grid-column: 3 / 5; }
+.footerPeg__grid > .footerPeg__col:nth-child(3){ grid-column: 5 / 8; }
+.footerPeg__grid > .footerPeg__col:nth-child(4){ grid-column: 9 / 11; }
+.footerPeg__grid > .footerPeg__col:nth-child(5){ grid-column: 11 / 13; }
+
+.footerPeg__head{
+    text-transform: none;
+    margin-bottom: 10px;
+    min-height: 14px; /* щоб лінії були на одному рівні */
+}
+
+.footerPeg__line{
+    height: 1px;
+    background: rgba(255,255,255,.28);
+    margin-bottom: 18px;
+}
+
+.footerPeg__col--contacts{
+    padding-right: 60px;
+}
+
+.footerPeg__link{
+    display: block;
+    text-decoration: none;
+    color: var(--white);
+    font-size: 13px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    line-height: 1.75;
+    margin: 6px 0;
+}
+.footerPeg__link:hover{ opacity: 1; }
+
+/* contacts */
+.footerPeg__muted{
+    font-size: 12px;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    text-transform: none;
+}
+
+.footerPeg__text{
+    font-size: 12px;
+    line-height: 1.6;
+    max-width: 520px;
+    text-transform: uppercase;
+}
+
+.footerPeg__textRow{
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.footerPeg__textLink{
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.6;
+    white-space: nowrap;
+    color: var(--white);
+}
+.footerPeg__textLink:hover{
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+
+/* social */
+.footerPeg__social{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-top: 2px;
+    text-decoration: underline;
+}
+
+.footerPeg__socialLink{
+    display: grid;
+    grid-template-columns: 1fr 22px;
+    column-gap: 14px;
+    width: 100%;
+    max-width: 100%;
+    text-transform: uppercase;
+    color: var(--white);
+}
+.footerPeg__socialLink:hover{ opacity: 1; }
+
+.footerPeg__socialIcon{
+    width: 18px;
+    height: 18px;
+    display: block;
+    justify-self: end;
+}
+
+/* qr (TELEGRAM | QR) */
+.footerPeg__qrStack{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: flex-end;
+}
+
+.footerPeg__qrItem{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 14px;
+    width: 100%;
+}
+
+.footerPeg__qrLabel{
+    justify-self: start;
+    text-align: left;
+    opacity: .9;
+}
+
+.footerPeg__qrImg{
+    width: 120px;
+    height: auto;
+    border-radius: 18px;
+    display: block;
+    justify-self: end;
+}
+
+/* великий бренд внизу */
+.footer__brand{
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding: 0;
+    text-align: center;
+    font-family: var(--font3), sans-serif;
+    font-size: 250px;
+    line-height: .82;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: var(--orange);
+    position: relative;
+    z-index: 1;
+}
+@media (max-width: 1440px) {
+    .footer__brand{font-size: 225px;}
+}
+
+/* tablet/mobile — якщо хочеш лишити твою логіку “2 колонки / 1 колонка” */
+@media (max-width: 1200px){
+    .footerPeg__grid{
+        grid-template-columns: 1fr 1fr; /* якщо grid12 не використовуєш на цьому розмірі */
+        gap: 36px 40px;
+    }
+    .footerPeg__top{ padding-top: 46px; }
+    .footerPeg__qrStack{ align-items: flex-start; }
+    .footer__brand{font-size: 200px;}
+}
+@media (max-width: 1020px){.footer__brand{font-size: 150px;}}
+@media (max-width: 720px){
+    .footerPeg__grid{
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+    .footerPeg__top{ padding-top: 40px; }
+    .footerPeg__textLink{ white-space: normal; }
+    .footerPeg__socialLink{ grid-template-columns: 1fr 20px; }
+    .footerPeg__qrStack{
+        flex-direction: row;
+        gap: 14px;
+        align-items: flex-start;
+    }
+    .footerPeg__qrImg{ width: 110px; }
+}
+
+@media (max-width: 420px){
+    .footerPeg__qrStack{ flex-direction: column; }
+    .footerPeg__qrImg{ width: 108px; }
+}
+
+@media (max-width: 768px){
+    .footer__brand{ font-size: 15vw; }
+}
+
+/* MOBILE: все в одну колонку як на макеті */
+@media (max-width: 768px){
+    /* 1) "Відміняємо" grid12-логіку і nth-child колонки */
+    .footerPeg__grid{
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        row-gap: 28px;
+        column-gap: 0;
+    }
+    .footerPeg__grid > .footerPeg__col{
+        grid-column: auto !important; /* перебиває nth-child grid-column */
+        min-width: 0;
+    }
+
+    /* 2) Паддінги/тексти */
+    .footerPeg__top{ padding: 40px 16px 24px; }
+    .footerPeg__col--contacts{ padding-right: 0; }
+    .footerPeg__text{ max-width: 100%; }
+
+    /* 3) Телефони — краще в стовпчик (читабельніше і менше “заломів”) */
+    .footerPeg__textRow{
+        flex-direction: column;
+        gap: 6px;
+    }
+    .footerPeg__textLink{ white-space: normal; }
+
+    /* 4) Social: текст зліва, іконка справа — як у тебе */
+    .footerPeg__socialLink{
+        grid-template-columns: 1fr 22px;
+    }
+
+    /* 5) QR: ВАЖЛИВО — лишаємо КОЛОНКУ (у тебе було row на мобілці) */
+    .footerPeg__qrStack{
+        flex-direction: column;
+        gap: 18px;
+        align-items: flex-end; /* QR вправо як на макеті */
+    }
+    .footerPeg__qrImg{ width: 120px; }
+
+    /* 6) Лінії/ритм */
+    .footerPeg__line{ margin-bottom: 14px; }
+
+    /* 7) Бренд внизу — без “гігантизму”, але з вау-ефектом */
+    .footer__brand{
+        font-size: clamp(48px, 15vw, 92px);
+        line-height: .9;
+    }
+
+    /* перебиваємо desktop grid-column розкладку */
+    .footerPeg__grid > .footerPeg__col{
+        grid-column: 1 / -1 !important;
+    }
+
+    /* і гарантовано 1 колонка */
+    .footerPeg__grid{
+        grid-template-columns: 1fr !important;
+    }
+
+    /* QR як на макеті — у колонку (в тебе було row) */
+    .footerPeg__qrStack{
+        flex-direction: column;
+        align-items: flex-end; /* якщо хочеш QR праворуч */
+        gap: 18px;
+    }
+
+    /* телефони/рядки — краще в колонку */
+    .footerPeg__textRow{
+        flex-direction: column;
+        gap: 6px;
+    }
+    .footerPeg__grid{
+        display:flex;
+        flex-direction:column;
+        gap:28px;
+    }
+
+    /* порядок блоків */
+
+    .footerPeg__grid > .footerPeg__col:nth-child(1){ order:1; } /* меню */
+    .footerPeg__grid > .footerPeg__col:nth-child(3){ order:2; } /* контакти */
+    .footerPeg__grid > .footerPeg__col:nth-child(2){ order:3; } /* друга частина меню */
+    .footerPeg__grid > .footerPeg__col:nth-child(4){ order:4; } /* соц */
+    .footerPeg__grid > .footerPeg__col:nth-child(5){ order:5; } /* QR */
+}
+
+/* Дуже вузькі екрани — щоб QR не “випирав” */
+@media (max-width: 420px){
+    .footerPeg__qrImg{ width: 108px; }
+}
