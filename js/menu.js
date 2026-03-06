@@ -6,6 +6,11 @@
     if (!openBtn || !overlay || !closeBtn) return;
 
     const open = () => {
+
+        // compensation for scrollbar width
+        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+        document.body.style.paddingRight = scrollbarWidth + "px";
+
         overlay.classList.add("is-open");
         document.body.classList.add("menu-open");
         overlay.setAttribute("aria-hidden", "false");
@@ -13,8 +18,13 @@
     };
 
     const close = () => {
+
         overlay.classList.remove("is-open");
         document.body.classList.remove("menu-open");
+
+        // remove scrollbar compensation
+        document.body.style.paddingRight = "";
+
         overlay.setAttribute("aria-hidden", "true");
         openBtn.setAttribute("aria-expanded", "false");
     };
@@ -49,7 +59,8 @@ $(function () {
             var $other = $(this);
             var $otherSub = $("#" + $other.attr("data-target"));
             $other.attr("aria-expanded", "false").removeClass("is-open");
-            $otherSub.attr("aria-hidden", "true");        });
+            $otherSub.attr("aria-hidden", "true");
+        });
 
         // Toggle current submenu
         if (isOpen) {
@@ -77,12 +88,10 @@ $(function () {
         var isAtTop = scrollTop === 0;
         var isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
 
-        // If at top and scrolling up, or at bottom and scrolling down - allow page scroll
         if ((isAtTop && e.originalEvent.deltaY < 0) || (isAtBottom && e.originalEvent.deltaY > 0)) {
             return;
         }
 
-        // Otherwise prevent default and let the menu scroll
         e.preventDefault();
         $element.scrollTop(scrollTop + e.originalEvent.deltaY);
     });

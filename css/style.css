@@ -164,6 +164,9 @@
     background:var(--white);
     font-family: var(--third-family), sans-serif;
 }
+body.menu-open{
+    overflow: hidden;
+}
 
 .container{
     width: min(1440px, calc(100% - (var(--gutter) * 2)));

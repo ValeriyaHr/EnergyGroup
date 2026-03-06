@@ -4,6 +4,8 @@
   const closeBtn = document.querySelector(".menuOverlay__close");
   if (!openBtn || !overlay || !closeBtn) return;
   const open = () => {
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.paddingRight = scrollbarWidth + "px";
     overlay.classList.add("is-open");
     document.body.classList.add("menu-open");
     overlay.setAttribute("aria-hidden", "false");
@@ -12,6 +14,7 @@
   const close = () => {
     overlay.classList.remove("is-open");
     document.body.classList.remove("menu-open");
+    document.body.style.paddingRight = "";
     overlay.setAttribute("aria-hidden", "true");
     openBtn.setAttribute("aria-expanded", "false");
   };
@@ -64,4 +67,4 @@ $(function() {
     $element.scrollTop(scrollTop + e.originalEvent.deltaY);
   });
 });
-//# sourceMappingURL=menu-CMPAQx9X.js.map
+//# sourceMappingURL=menu-BDQBc4t3.js.map
