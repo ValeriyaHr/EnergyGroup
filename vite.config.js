@@ -10,6 +10,7 @@ export default defineConfig({
     build: {
         minify: false,      // отключить минификацию
         sourcemap: true,    // удобно дебажить
+        assetsInlineLimit: 0, // не инлайнить ничего
         rollupOptions: {
             input: {
                 main: "index.html",
@@ -43,12 +44,44 @@ export default defineConfig({
         handlebars({
             partialDirectory: path.resolve(__dirname, 'components'),
         }),
+        {
+            name: 'reorder-mobile-css-links',
+            apply: 'build',
+            enforce: 'post',
+            generateBundle(_, bundle) {
+                for (const chunk of Object.values(bundle)) {
+                    if (chunk.type !== 'asset' || !chunk.fileName.endsWith('.html')) continue;
+                    if (typeof chunk.source !== 'string') continue;
+
+                    const html = chunk.source;
+                    const linkRe = /<link\s+[^>]*rel=["']stylesheet["'][^>]*>/gi;
+                    const links = html.match(linkRe);
+                    if (!links || links.length < 2) continue;
+
+                    const mobileLinks = links.filter(
+                        (tag) => /mobile-[^"']+\.css/i.test(tag) || /mobile\.css/i.test(tag)
+                    );
+                    if (!mobileLinks.length) continue;
+
+                    const nonMobileLinks = links.filter((tag) => !mobileLinks.includes(tag));
+                    const orderedLinks = [...nonMobileLinks, ...mobileLinks];
+
+                    // Меняем только порядок stylesheet-ссылок, остальное в head не трогаем.
+                    let i = 0;
+                    chunk.source = html.replace(linkRe, () => orderedLinks[i++]);
+                }
+            },
+        },
         viteStaticCopy({
             targets: [
                 {
                     // лучше относительный путь!
                     src: "js/**/*",
                     dest: "js"
+                },
+                {
+                    src: "css/**/*",   // ← добавили копирование CSS
+                    dest: "css"
                 },
                 {
                     src: "img/**/*",   // ← добавили копирование картинок
