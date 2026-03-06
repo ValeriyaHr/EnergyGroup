@@ -1933,18 +1933,18 @@
     pointer-events:none;
 }
 /** --- движение фона */
-@keyframes waveMove{
-    0%   { background-position: 25% 50%; filter: hue-rotate(0deg) saturate(1.05); }
-    25%  { background-position: 35% 50%; filter: hue-rotate(25deg) saturate(1.15); }
-    50%  { background-position: 45% 50%; filter: hue-rotate(60deg) saturate(1.15); }
-    75%  { background-position: 35% 50%; filter: hue-rotate(60deg) saturate(1.15); }
-    100% { background-position: 100% 100%; filter: hue-rotate(0deg) saturate(1.05); }
-}
-.experience__inner{
-    align-items: start;
-    row-gap: 26px;
-    padding-top: clamp(56px, 9vh, 110px);
-}
+/*@keyframes waveMove{*/
+/*    0%   { background-position: 25% 50%; filter: hue-rotate(0deg) saturate(1.05); }*/
+/*    25%  { background-position: 35% 50%; filter: hue-rotate(25deg) saturate(1.15); }*/
+/*    50%  { background-position: 45% 50%; filter: hue-rotate(60deg) saturate(1.15); }*/
+/*    75%  { background-position: 35% 50%; filter: hue-rotate(60deg) saturate(1.15); }*/
+/*    100% { background-position: 100% 100%; filter: hue-rotate(0deg) saturate(1.05); }*/
+/*}*/
+/*.experience__inner{*/
+/*    align-items: start;*/
+/*    row-gap: 26px;*/
+/*    padding-top: clamp(56px, 9vh, 110px);*/
+/*}*/
 
 .experience__top{
     display: contents;

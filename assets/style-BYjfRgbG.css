@@ -124,6 +124,12 @@ body.menu-open{
     position: fixed;
     inset: 0;
 
+    /* права службова зона */
+    --panel-right: 70px;
+    --arrow-col: 44px;
+    --arrow-gap: 22px;
+    --scroll-gutter: 16px;
+
     display: flex;
     flex-direction: column;
 
@@ -131,7 +137,7 @@ body.menu-open{
     overflow: hidden;
 
     background: var(--white);
-    padding: 100px 200px;
+    padding: 100px var(--panel-right) 100px 200px;
 }
 /* ===== Top bar ===== */
 .menuOverlay__top{
@@ -139,6 +145,7 @@ body.menu-open{
     justify-content:space-between;
     align-items: center;
     gap: 20px;
+    margin-right: -21px;
     position: relative;
     z-index: 1;
 }
@@ -152,25 +159,28 @@ body.menu-open{
     color: var(--black);
 }
 .menuOverlay__close{
-    display:flex;
     position:absolute;
-    top:40px;
-    right:40px;
+    top:32px;
+    right:80px;
+    display:flex;
     justify-content:center;
     align-items:center;
-    width:32px;
-    height:32px;
+    width:36px;
+    height:36px;
     border:0;
     background:transparent;
     cursor:pointer;
+    padding:0;
+    z-index:5;
 }
 .menuOverlay__close:hover{
     opacity:1;
 }
-.menuOverlay__close svg{
-    width:20px;
-    height:20px;
-    opacity:.7;
+.menuOverlay__close svg,
+.menuOverlay__close img{
+    width:22px;
+    height:22px;
+    display:block;
 }
 .menuOverlay .menuOverlay__consult{
     position: relative;
@@ -220,33 +230,35 @@ body.menu-open{
     min-height: 0;
     overflow-y: auto;
     overflow-x: hidden;
+    scrollbar-gutter: stable;
     display: flex;
     flex-direction: column;
     gap: 8px;
-    padding-right: 12px;
     padding-top: 10px;
+
     position: relative;
     z-index: 1;
 }
 /* Webkit scrollbar */
 .menuOverlay__nav::-webkit-scrollbar{
-    width:4px;
+    width: 4px;
 }
 .menuOverlay__nav::-webkit-scrollbar-track{
-    background:transparent;
+    background: transparent;
 }
 .menuOverlay__nav::-webkit-scrollbar-thumb{
-    background:rgba(0,0,0,.18);
-    border-radius:20px;
+    background: rgba(0,0,0,.18);
+    border-radius: 20px;
 }
 .menuOverlay__nav::-webkit-scrollbar-thumb:hover{
-    background:rgba(0,0,0,.35);
+    background: rgba(0,0,0,.35);
 }
+/* ===== Main rows ===== */
 .menuRow{
     display: grid;
-    grid-template-columns: 1fr 44px;
+    grid-template-columns: minmax(0, 1fr) var(--arrow-col);
+    column-gap: 14px;
     align-items: center;
-    column-gap: 18px;
     padding: 10px 0;
 }
 .menuRow .menuItem{
@@ -255,6 +267,7 @@ body.menu-open{
     gap: 12px;
     padding: 8px 0;
     text-decoration: none;
+    min-width: 0;
 }
 .menuItem__text{
     font-family: var(--font-family), sans-serif;
@@ -272,8 +285,8 @@ body.menu-open{
     transform: translateY(-2px);
 }
 .menuRow .menuItem--toggle{
-    width: 44px;
-    height: 44px;
+    width: var(--arrow-col);
+    height: var(--arrow-col);
     display: grid;
     place-items: center;
     border: 0;
@@ -283,12 +296,13 @@ body.menu-open{
     justify-self: end;
 }
 .menuToggle--decor{
-    width: 44px;
-    height: 44px;
+    width: var(--arrow-col);
+    height: var(--arrow-col);
     display: grid;
     place-items: center;
     justify-self: end;
-    pointer-events: none;
+    pointer-events: auto;
+    cursor: pointer;
     user-select: none;
 }
 .menuItem__icon{
@@ -297,7 +311,8 @@ body.menu-open{
     transition: transform .25s ease, translate .2s ease, opacity .2s ease;
     transform-origin: 50% 50%;
 }
-.menuRow .menuItem--toggle:hover .menuItem__icon{
+.menuRow .menuItem--toggle:hover .menuItem__icon,
+.menuToggle--decor:hover .menuItem__icon{
     translate: 2px -2px;
     opacity: .9;
 }
@@ -367,13 +382,30 @@ body.menu-open{
     }
 
     .menuOverlay__panel {
+        --panel-right: 24px;
+        --arrow-col: 40px;
+        --arrow-gap: 12px;
+        --scroll-gutter: 8px;
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        overflow: hidden;
+        background: var(--white);
         padding: 60px 24px 128px;
+    }
+
+    .menuOverlay__top{
+        padding-right: 48px;
     }
 
     .menuOverlay__nav{
         flex: 1;
         min-height: 0;
-        padding-bottom: 0; /* важливо: щоб не було подвійного запасу */
+        padding-right: calc(var(--arrow-col) + var(--arrow-gap));
+        padding-bottom: 0;
+        scrollbar-gutter: auto;
     }
 
     .menuOverlay__close {
@@ -1647,7 +1679,7 @@ body{
     padding-top: clamp(36px, 6vh, 86px);
     overflow: hidden;
     display:block;
-    background: url("/EnergyGroup/assets/grid-404-CYcgHVOB.svg") repeat;
+    background: url("/EnergyGroup/assets/grid-404-DXaU8owx.svg") repeat;
     background-position: 0 0; /* ← головне */
 }
 .hero__kicker{ grid-row: 1; }
@@ -2816,7 +2848,7 @@ body{
     content:"";
     position:absolute;
     inset:0;
-    background:url('/EnergyGroup/assets/bg-circles-D3yIyZYG.svg') center center no-repeat;
+    background:url('/EnergyGroup/assets/bg-circles-BM-igoHZ.svg') center center no-repeat;
     background-size: 70%;
     pointer-events:none;
     z-index:0;
@@ -2988,18 +3020,18 @@ body{
     pointer-events:none;
 }
 /** --- движение фона */
-@keyframes waveMove{
-    0%   { background-position: 25% 50%; filter: hue-rotate(0deg) saturate(1.05); }
-    25%  { background-position: 35% 50%; filter: hue-rotate(25deg) saturate(1.15); }
-    50%  { background-position: 45% 50%; filter: hue-rotate(60deg) saturate(1.15); }
-    75%  { background-position: 35% 50%; filter: hue-rotate(60deg) saturate(1.15); }
-    100% { background-position: 100% 100%; filter: hue-rotate(0deg) saturate(1.05); }
-}
-.experience__inner{
-    align-items: start;
-    row-gap: 26px;
-    padding-top: clamp(56px, 9vh, 110px);
-}
+/*@keyframes waveMove{*/
+/*    0%   { background-position: 25% 50%; filter: hue-rotate(0deg) saturate(1.05); }*/
+/*    25%  { background-position: 35% 50%; filter: hue-rotate(25deg) saturate(1.15); }*/
+/*    50%  { background-position: 45% 50%; filter: hue-rotate(60deg) saturate(1.15); }*/
+/*    75%  { background-position: 35% 50%; filter: hue-rotate(60deg) saturate(1.15); }*/
+/*    100% { background-position: 100% 100%; filter: hue-rotate(0deg) saturate(1.05); }*/
+/*}*/
+/*.experience__inner{*/
+/*    align-items: start;*/
+/*    row-gap: 26px;*/
+/*    padding-top: clamp(56px, 9vh, 110px);*/
+/*}*/
 .experience__top{
     display: contents;
 }
@@ -3222,7 +3254,7 @@ body{
     content: "";
     position: absolute;
     inset: 0;
-    background: url("/EnergyGroup/assets/word-bfZZbFBN.svg") no-repeat;
+    background: url("/EnergyGroup/assets/word-3p4zCSP9.svg") no-repeat;
     background-position: center top;
     background-size: min(900px, 70vw) auto;
 
@@ -3599,7 +3631,7 @@ body{
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background-image: url("/EnergyGroup/assets/grid-404-CYcgHVOB.svg");
+    background-image: url("/EnergyGroup/assets/grid-404-DXaU8owx.svg");
     background-repeat: repeat;
     background-size: 1400px 1400px;
     background-position: 0 0;
@@ -3853,7 +3885,7 @@ body{
     position:absolute;
     inset:0;
     pointer-events:none;
-    background-image: url("/EnergyGroup/assets/grid-404-CYcgHVOB.svg");
+    background-image: url("/EnergyGroup/assets/grid-404-DXaU8owx.svg");
     background-repeat: repeat;
     background-size: 1400px 1400px;
     background-position: 0 0;
@@ -4266,7 +4298,7 @@ body{
     content:"";
     position:absolute;
     inset:0;
-    background: url("/EnergyGroup/assets/grid-404-CYcgHVOB.svg") repeat;
+    background: url("/EnergyGroup/assets/grid-404-DXaU8owx.svg") repeat;
     background-size: 1400px 1400px;
     background-position: 0 0;
     pointer-events:none;
@@ -4652,7 +4684,7 @@ body{
     content:"";
     position:absolute;
     inset:0;
-    background: url("/EnergyGroup/assets/grid-404-CYcgHVOB.svg") repeat;
+    background: url("/EnergyGroup/assets/grid-404-DXaU8owx.svg") repeat;
     background-size: 1400px 1400px;
     background-position: 0 0;
     pointer-events:none;
@@ -4890,15 +4922,15 @@ body{
 .artSvg{ width:100%; height:auto; display:block; }
 /* 1. Типові монтажі */
 .techLibBlock--montage .techLibBlock__art{
-    background-image: url("/EnergyGroup/assets/lib1-DluEkvGO.svg");
+    background-image: url("/EnergyGroup/assets/lib1-nAsO4He9.svg");
 }
 /* 2. Принципові схеми */
 .techLibBlock--schemes .techLibBlock__art{
-    background-image: url("/EnergyGroup/assets/lib2-CSs39WCb.svg");
+    background-image: url("/EnergyGroup/assets/lib2-DK23tPPJ.svg");
 }
 /* 3. Документація */
 .techLibBlock--docs .techLibBlock__art{
-    background-image: url("/EnergyGroup/assets/lib3-CIrxrpvd.svg");
+    background-image: url("/EnergyGroup/assets/lib3-C1X9033-.svg");
 }
 .techLibList{
     display:flex;
