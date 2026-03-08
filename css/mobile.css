@@ -13,7 +13,7 @@ body {
 
 
 /*ONLY max-width: 769px*/
-section{
+body:not(.products-page) section{
     margin-top: 60px;
     margin-bottom: 60px;
 }
@@ -138,7 +138,7 @@ body.menu-open .header__burger::after {
     min-height: auto;
 }
 
-/* 5 “полосочок” */
+/* 5 грід-смужок */
 .hero__inner{
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
