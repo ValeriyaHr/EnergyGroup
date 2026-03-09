@@ -479,258 +479,6 @@ body.menu-open{
         line-height: 1.25;
     }
 }
-/* ======окремий CSS для сторінки products=========== */
-.productsList{
-    padding: 18px 0 72px;
-    background: #f6f6f6;
-}
-/* 12-column grid */
-.productsList__grid{
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: clamp(12px, 1.8vw, 24px);
-    row-gap: 24px;
-    align-items: start;
-}
-/* базова картка */
-.productCard{
-    grid-column: span 3;
-    justify-self: center;
-    align-self: start;
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-}
-/* ширина картки по сітці */
-.productCard--span-2{ grid-column: span 2; }
-.productCard--span-3{ grid-column: span 3; }
-.productCard--span-4{ grid-column: span 4; }
-.productCard--span-6{ grid-column: span 6; }
-.productCard--span-12{ grid-column: 1 / -1; }
-/* горизонтальне вирівнювання */
-.productCard--left{ justify-self: start; }
-.productCard--centerX{ justify-self: center; }
-.productCard--right{ justify-self: end; }
-/* вертикальне вирівнювання */
-.productCard--top{ align-self: start; }
-.productCard--center{ align-self: center; }
-.productCard--bottom{ align-self: end; }
-/* м'які дизайнерські зсуви, якщо треба "як у макеті" */
-.productCard--lift-1{ transform: translateY(-12px); }
-.productCard--lift-2{ transform: translateY(-24px); }
-.productCard--drop-1{ transform: translateY(12px); }
-.productCard--drop-2{ transform: translateY(24px); }
-/* картка */
-.productCard__link{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    min-height: 100%;
-    padding: 22px 22px 18px;
-    border-radius: 18px;
-    background: #fff;
-    text-decoration: none;
-    color: inherit;
-    box-shadow: 0 12px 34px rgba(0,0,0,.06);
-    overflow: hidden;
-    transition: transform .15s ease, box-shadow .15s ease;
-}
-.productCard__link:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 18px 44px rgba(0,0,0,.08);
-}
-.productCard__imgWrap{
-    width: 100%;
-    height: 220px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 14px;
-}
-.productCard__imgWrap img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-}
-.productCard__body{
-    flex: 1 1 auto;
-}
-.productCard__num{
-    position: absolute;
-    right: 18px;
-    top: 22px;
-    font-family: "Kaushan Script", cursive;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 1;
-    letter-spacing: 0;
-    color: #FF822C;
-    z-index: 2;
-}
-.productCard__title{
-    width: 90%;
-    margin-bottom: 14px;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 300;
-    font-size: 18px;
-    line-height: 1.15;
-    letter-spacing: 0;
-    color: #413E39;
-}
-.productCard__text{
-    margin: 0 0 18px;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 300;
-    font-size: 13px;
-    line-height: 1.45;
-    letter-spacing: 0;
-    color: #413E39;
-}
-.productCard__bottom{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    margin-top: 16px;
-}
-.productCard__more{
-    display: inline-flex;
-    align-items: center;
-    font-family: var(--font-family), sans-serif;
-    font-weight: 300;
-    font-size: 14px;
-    line-height: 1;
-    letter-spacing: .02em;
-    color: rgba(255, 122, 0, .9);
-    text-decoration: none;
-    transition: opacity .18s ease, transform .18s ease;
-}
-.productCard__more:hover{
-    opacity: .78;
-    transform: translateY(-1px);
-}
-.productCard__arrow,
-.productCard__bottom img{
-    flex: 0 0 auto;
-}
-/* --- Mobile Panel --- */
-.mobile_panel{
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    box-sizing: border-box;
-    opacity: 0;
-    visibility: hidden;
-}
-.mobile_panel__btn{
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background: transparent;
-    border-radius: 12px;
-    padding: 0;
-    color: #BDBDBD;
-    cursor: pointer;
-    transition: color 0.2s ease, opacity 0.2s ease;
-}
-.mobile_panel__btn:hover{
-    color: #FF822C;
-}
-.mobile_panel__btn.active{
-    color: #1E1E1E;
-}
-.mobile_panel__btn svg{
-    width: 24px;
-    height: 24px;
-}
-/* ---------- laptop ---------- */
-@media (max-width: 1200px){
-    .productCard{
-        grid-column: span 4;
-    }
-}
-/* ---------- tablet ---------- */
-@media (max-width: 992px){
-    .productsList__grid{
-        grid-template-columns: repeat(8, minmax(0, 1fr));
-    }
-
-    .productCard{
-        grid-column: span 4;
-    }
-}
-/* ---------- mobile ---------- */
-@media (max-width: 768px){
-    .mobile_panel{
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .productsList__grid{
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 24px;
-    }
-
-    .productCard{
-        grid-column: span 2;
-        transform: none !important;
-    }
-
-    .productsList__grid.view-double .productCard{
-        grid-column: span 1;
-    }
-
-    .productsList__grid.view-single .productCard{
-        grid-column: 1 / -1;
-    }
-
-    .productCard__imgWrap{
-        height: 190px;
-    }
-}
-/* ---------- small mobile ---------- */
-@media (max-width: 560px){
-    .productsList{
-        padding: 18px 0 56px;
-    }
-
-    .productsList__grid{
-        gap: 16px;
-    }
-
-    .productCard__link{
-        padding: 18px 18px 16px;
-        border-radius: 16px;
-    }
-
-    .productCard__imgWrap{
-        height: 164px;
-        margin-bottom: 12px;
-    }
-
-    .productCard__title{
-        width: 100%;
-        font-size: 16px;
-    }
-
-    .productCard__text{
-        font-size: 12px;
-    }
-
-    .productCard__num{
-        right: 16px;
-        top: 18px;
-        font-size: 16px;
-    }
-}
 /* PRODUCT DETAILS (under hero) */
 .productDetails{
     padding: 0 40px 110px;
@@ -1734,6 +1482,18 @@ body{
 body.menu-open{
     overflow: hidden;
 }
+/* Screen reader only - hide visually but keep accessible */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
 .container{
     width: min(1440px, calc(100% - (var(--gutter) * 2)));
     margin: 0 auto;
@@ -1974,17 +1734,17 @@ body.menu-open{
 /*ГОЛОВНА ПОЧАТОК*/
 .hero{
     position: relative;
-    padding-top: clamp(36px, 6vh, 86px);
+    padding-top: clamp(20px, 4vh, 56px);
     overflow: hidden;
     display:block;
-    background: url("/EnergyGroup/assets/grid-404-DXaU8owx.svg") repeat;
-    background-position: 0 0; /* ← головне */
+    background: #f5f5f5 url("/EnergyGroup/assets/fon1-BWFz6e-S.svg") no-repeat center center;
+    background-size: cover;
 }
 .hero__kicker{ grid-row: 1; }
 .hero__title{  grid-row: 2; }
 .hero__desc{   grid-row: 3; margin: 0; }
 /* важливо: прибрати старі margin:50px 0 */
-.hero__cta{    grid-row: 4; margin-top: 20px; }
+.hero__cta{    grid-row: 4; margin-top: 12px; }
 /* 3) шафа спанить 4 ряди і не “роздуває” тільки перший */
 /* шафа сидить у першому рядку (не роздуває 3-4 ряд) */
 .hero__right{
@@ -1992,6 +1752,7 @@ body.menu-open{
     grid-row: 1 / 4;         /* ВАЖЛИВО: не 1/5 */
     align-self: start;
     justify-self: start;
+    position: relative;
 }
 .hero__inner{
     align-items: start;
@@ -2001,19 +1762,19 @@ body.menu-open{
 .hero__left{
     display: contents;
 }
-.hero__kicker{ grid-column: 3 / 7; margin: 0 0 28px; }
-.hero__title{  grid-column: 2 / 7; margin: 0 0 18px; white-space: nowrap; }
-.hero__desc{   grid-column: 2 / 6; margin: 0; max-width: none; }
+.hero__kicker{ grid-column: 3 / 7; margin: 0 0 20px; }
+.hero__title{  grid-column: 2 / 7; margin: 0 0 10px; white-space: nowrap; }
+.hero__desc{   grid-column: 2 / 7; margin: 0; max-width: none; }
 .hero__kicker{
     font-family: var(--third-family), sans-serif;
     font-weight: 100;
     font-size: 14px;
     line-height: 1.1;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--black);
     grid-column: 3 / 7;
-    margin: 0 0 28px;
+    margin: 0 0 20px;
 }
 .hero__kicker span{
     display:block;
@@ -2025,10 +1786,10 @@ body.menu-open{
     text-transform: uppercase;
     font-size: clamp(64px, 9vw, 180px);
     line-height: 0.85;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.05em;
     white-space: nowrap;
     grid-column: 2 / 7;
-    margin: 0 0 18px;
+    margin: 0 0 10px;
 }
 .hero__desc{
     font-family: var(--font-family), sans-serif;
@@ -2038,12 +1799,13 @@ body.menu-open{
     text-transform: uppercase;
     color: var(--black);
     font-weight: 100;
-    grid-column: 2 / 6;
+    grid-column: 2 / 7;
     margin: 0;
-    text-indent: calc((100% / 4) + 5px);
+    text-indent: calc((100% / 5) * 1.2);
+    position: relative;
 }
 .hero__desc-dark{
-    display: block;
+    display: inline;
 }
 .hero__inner,
 .hero__left,
@@ -2067,11 +1829,13 @@ body.menu-open{
     align-self: start;
 }
 .hero__imgWrap{
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 392px;
-    max-width: 392px;
+    width: 340px;
+    max-width: 340px;
+    z-index: 1;
 }
 .hero__image{
     width: 100%;
@@ -2079,11 +1843,23 @@ body.menu-open{
     display: block;
     object-fit: contain;
 }
+/* Точки позади шафы по макету */
+.hero__right::before{
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 262px;
+    right: -18px;
+    top: 28px;
+    background: url("/EnergyGroup/assets/point-DlnmgDbe.svg") no-repeat center / contain;
+    z-index: 0;
+    pointer-events: none;
+}
 /* кнопка реально по центру контейнера */
 .hero__cta{
     grid-column: 1 / -1;
     justify-self: center;
-    margin-top: 20px;
+    margin-top: 12px;
 }
 /* ---------- intro -блок з каскою--------- */
 .intro{ padding: 34px 0 40px; }
@@ -2096,584 +1872,8 @@ body.menu-open{
     line-height: 1.25;
     letter-spacing: -0.01em;
 }
-/* =========================
-   ENGINEERING / SOLUTIONS (dark section)
-========================= */
-.engSection{
-    margin-top: -80px;
-    padding-bottom: 0;
-    position: relative;
-    z-index: 2;
-    background: #0A0606;
-}
-.engSection__wrap{
-    max-width: none;
-    width: 100%;
-    padding-left: 0;
-    padding-right: 0;
-}
-.engSection__card{
-    --pad-x: var(--gutter);
-    padding-left: var(--pad-x);
-    padding-right: var(--pad-x);
-    margin: 0 auto;
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    color: rgba(255,255,255,.80);
-    max-width: 1680px;
-    --col-left: 240px;
-    --col-right: 360px;
-    --gap: clamp(24px, 6vw, 120px);
-    --mid: calc(100% - (2 * var(--pad-x) + var(--col-left) + var(--col-right) + 2 * var(--gap)));
-}
-.engSection__ticks{
-    position: absolute;
-    left:46%;
-    top: 32%;
-    width: clamp(1000px, 65vw, 1280px);
-    height: auto;
-    transform: translate(-50%, -50%) rotate(-12deg) scale(1.08);
-
-    pointer-events: none;
-    user-select: none;
-    z-index: 0;
-
-    /* анимація вращення по часовій стрілці */
-    animation: ticsRotate 60s linear infinite;
-}
-/* ===== TICS PATH ANIMATION ===== */
-.engSection__ticks path {
-    transition: stroke 0.4s ease;
-}
-@keyframes ticsRotate {
-    from {
-        transform: translate(-50%, -50%) rotate(-12deg) scale(1.08);
-    }
-    to {
-        transform: translate(-50%, -50%) rotate(348deg) scale(1.08);
-    }
-}
-@media (max-width: 1320px) and (min-width: 769px){
-    .engSection__ticks{
-        left: 50%;
-        top: 32%;
-        width: min(920px, 78vw);
-
-        filter: blur(.12px) drop-shadow(0 0 10px rgba(255,255,255,.10));
-        transform: translate(-50%, -50%) rotate(-12deg) scale(1.02);
-    }
-}
-.svgTick path.is-active {
-    stroke: #ff7a00 !important;
-    opacity: 1 !important;
-    transition: stroke 0.2s ease;
-}
-.engSection__rows,
-.engSection__video,
-.engSection__bottom{
-    position: relative;
-    z-index: 2;
-}
-.engHero{
-    position: relative;
-    background:var(--white);
-    padding-top: 160px;
-    padding-bottom: 160px;
-    overflow: hidden;
-}
-.engHero__panel{
-    background:#fff;
-    padding: 56px 10px 120px; /* місце під дугу */
-    text-align:center;
-    position: relative;
-}
-.engHero__bgText{
-    position: absolute;
-    left: 50%;
-    top: 37%;
-    transform: translate(-50%, -50%);
-    font-family: var(--font3), sans-serif;
-    font-size: clamp(180px, 28vw, 414px);
-    letter-spacing: -0.04em;
-    line-height: 0.82;
-    color: var(--grey-pale);
-    white-space: nowrap;
-    pointer-events: none;
-    user-select: none;
-    z-index: 0;
-}
-.engHero__bgText::before,
-.engHero__bgText::after{
-    position: absolute;
-    font-family: var(--third-family), sans-serif;
-    white-space: nowrap;
-    font-weight: 100;
-    font-size: 18px;
-    line-height: 110%;
-    letter-spacing: -0.03em;
-    color: var(--lightgrey);
-}
-.engHero__bgText::before{
-    content: "(Інжиніринг)";
-    top: -14%;
-    left: 4%;
-}
-.engHero__bgText::after{
-    content: "(Рішення)";
-    bottom: -40%;
-    left: 10%;
-}
-.engHeroLayout{
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    gap: 20px;
-    max-width: 1240px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-}
-.engHeroFrame__left{
-    justify-content: flex-end;   /* щоб притиснути до рамки */
-    text-align: left;
-    z-index: 2;
-    position: relative;
-}
-.engHeroFrame__right{
-    justify-content: flex-start; /* щоб притиснути до рамки */
-    text-align: left;
-    z-index: 2;
-    position: relative;
-}
-.engHeroFrame {
-    position: relative;
-    width: min(680px, 92%);
-    margin: 0 auto;
-    padding: 42px 56px;
-    z-index: 2;
-    grid-column: 2;
-}
-/* вертикальні дужки */
-.engHeroFrame::before,
-.engHeroFrame::after{
-    content:"";
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    height: calc(100% - 24px);   /* рівно в межах рамки */
-    width: 28px;
-    border-top: 6px solid rgba(0,0,0,.65);
-    border-bottom: 6px solid rgba(0,0,0,.65);
-}
-.engHeroFrame::before{
-    left: 20px;
-    border-left: 6px solid rgba(0,0,0,.65);
-}
-.engHeroFrame::after{
-    right: 20px;
-    border-right: 6px solid rgba(0,0,0,.65);
-}
-.engHeroFrame__text{
-    text-transform: uppercase;
-    text-align: center;
-    font-family: var(--third-family), sans-serif;
-    font-weight: 500;
-    font-size: 40px;
-    line-height: 100%;
-    letter-spacing: -0.01em;
-    color: var(--grey-dark);
-}
-.text-grey{
-    color: var(--lightgrey);
-}
-.text-grey:first-of-type {
-    margin-right: 20px;
-}
-.text-grey:last-of-type {
-    margin-left: 20px;
-}
-.engHeroFrame__right,
-.engHeroFrame__left{
-    font-family: var(--font-family), sans-serif;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 100%;
-    letter-spacing: -0.03em;
-    color: var(--orange);
-}
-.shift-line{
-    display: inline-block;
-    transform: translateX(-36%);
-}
-.engDivider{
-    height: 40vh;
-    background: url("/EnergyGroup/assets/eng-arc-glow-EFMcqy1O.png") center bottom / cover no-repeat;
-}
-.engHero__glow{
-    position:absolute;
-    left:50%;
-    bottom:-80px;  /* ГОЛОВНЕ — ось це */
-    transform:translateX(-50%);
-    width: min(2977px, 140%);
-    z-index:1;
-}
-.engSection__glow{
-    position: absolute;
-    left: 50%;
-    top: 210px;
-    transform: translateX(-50%);
-    width: min(2977px, 140%);
-    height: auto;
-    pointer-events: none;
-    z-index: 1;
-}
-.engSection__rows,
-.engSection__video,
-.engSection__bottom{
-    position: relative;
-    z-index: 2;
-}
-.engSection__rows{
-    display: flex;
-    flex-direction: column;
-}
-.engSolRow{
-    display:grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: clamp(16px, 2.8vw, 32px);
-    grid-template-rows: auto 1fr;
-    row-gap: 18px;
-    align-items: start;
-    padding: 80px 0;
-    border-top: none;
-}
-.engSolRow__left{ grid-column: 1 / 3; }
-.engSolRow__center{ grid-column: 4 / 9; }
-.engSolRow__right{ grid-column: 10 / 13; }
-.engSolRow:first-child{
-    border-top: 0;
-    padding-top: 0;
-}
-/* left column */
-.engSolRow__left{
-    grid-column: 1 / 3;
-    display:flex;
-    flex-direction:column;
-    gap:24px;
-    width: auto;
-    padding-top: 6px;
-}
-.engSolRow__label{
-    align-self: start;
-    font-family: var(--third-family), sans-serif;
-    font-weight: 100;
-    font-size: 18px;
-    line-height: 110%;
-    letter-spacing: -0.03em;
-    color: var(--orange);
-    margin-bottom: 55%;
-}
-.engSolRow__num{
-    font-family: var(--font3), sans-serif;
-    font-weight: 400;
-    font-size: clamp(64px, 8vw, 158px);
-    letter-spacing: -0.02em;
-    display: block;
-    line-height: 0.82;
-    align-self: start;
-    color: var(--lightgrey);
-    margin-left: 70%;
-}
-.engSolRow__center {
-    justify-self: center;   /* ти хотіла блок по центру */
-    max-width: 452px;
-    width: 100%;
-    text-align: justify;
-    padding-top: 0;
-    font-family: var(--third-family), sans-serif;
-    font-weight: 300;
-    font-size: 18px;
-    line-height: 1.35;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
-    color: var(--white);
-    text-align-last: left;
-
-}
-.engSolRow__right{
-    width: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 18px;
-    padding-top: 6px;
-}
-.engSolRow__action{
-    position: relative;
-    display: inline-flex;
-    justify-content: flex-end;
-    padding: 0 18px;
-    font-size: 20px;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
-    text-decoration: none;
-    align-items: center;
-    line-height: 105%;
-    white-space: nowrap;
-    align-self: flex-start;
-    font-family: var(--font-family), sans-serif;
-    font-weight: 400;
-    color: var(--white);
-}
-.engSolRow__action--bottom{
-    justify-self: start;
-    align-self: start;
-}
-.engSolRow__action::before,
-.engSolRow__action::after{
-    content: "";
-    position: absolute;
-    inset-block: 0;
-    display: grid;
-    place-items: center;
-    color: var(--orange);
-    transition: transform .18s ease;
-}
-.engSolRow__action::before{ content:"["; left: 0; }
-.engSolRow__action::after { content:"]"; right: 0; }
-.engSolRow__action:hover::before{ transform: translateX(-10px); }
-.engSolRow__action:hover::after { transform: translateX(10px); }
-.engSolRow__note{
-    justify-self: end;
-    align-self: start;
-    margin-top: 12px;
-    max-width: 260px;
-    text-align: left;
-    font-family: var(--font-family),sans-serif;
-    font-weight: 400;
-    font-size: clamp(12px, 0.9vw, 18px);
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    color: var(--orange);
-}
-.engSolRow__left{ grid-column: 1 / 3; }
-.engSolRow__center{ grid-column: 4 / 9; }
-.engSolRow__right{ grid-column: 10 / 13; }
-.engSolRow__note{
-    grid-column: 10 / 13;
-}
-.engVideoGrid{
-    display: grid;
-    gap: 16px;
-
-    grid-template-columns:
-    minmax(240px, 1fr)     /* ліва висока */
-    minmax(140px, .55fr)   /* ⬅ вузька (для "квадратної" нижньої) */
-    minmax(360px, 1.45fr)  /* ⬅ широка (для прямокутної нижньої) */
-    minmax(240px, 1fr);    /* права висока */
-
-    grid-auto-rows: clamp(150px, 10vw, 190px);
-}
-/* tablet */
-@media (max-width: 1024px){
-    .engSolRow{
-        grid-template-columns: 200px minmax(420px, 1fr) 300px;
-        column-gap: 44px;
-        padding: 32px 0;
-    }
-    .engSolRow__num{ font-size: 80px; }
-}
-.engSection__video{
-    position: relative;
-    z-index: 2;
-    margin-top: 26px;
-    margin-bottom: 64px;
-}
-.engSection__videoLabel{
-    font-family: var(--third-family), sans-serif;
-    font-weight: 500;
-    font-size: clamp(22px, 2.2vw, 40px);
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    text-transform: uppercase;
-
-    background: linear-gradient(180deg, rgba(255,255,255,.95) 0%, rgba(255,255,255,.10) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    margin: 0 0 18px;
-}
-.engVideoCard{
-    border-radius: 18px;
-    background: rgba(255,255,255,.16);
-    display: block;
-    text-decoration: none;
-    transition: transform .15s ease, background-color .15s ease;
-}
-.engVideoCard:hover{
-    transform: translateY(-2px);
-    background: rgba(255,255,255,.20);
-}
-.engVideoGrid .engVideoCard:nth-child(1){ grid-column: 1; grid-row: 1 / 3; }
-/* ліва висока */
-.engVideoGrid .engVideoCard:nth-child(2){ grid-column: 2 / 4; grid-row: 1; }
-/* верхня широка */
-.engVideoGrid .engVideoCard:nth-child(3){ grid-column: 2; grid-row: 2; }
-/* нижня мала */
-.engVideoGrid .engVideoCard:nth-child(4){ grid-column: 3; grid-row: 2; }
-/* нижня ширша */
-.engVideoGrid .engVideoCard:nth-child(5){ grid-column: 4; grid-row: 1 / 3; }
-@media (max-width: 1024px){
-    .engVideoGrid{
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-template-rows: auto;
-    }
-    .engVideoGrid .engVideoCard{ grid-column: auto; grid-row: auto; min-height: 120px; }
-}
-@media (max-width: 560px){
-    .engVideoGrid{ grid-template-columns: 1fr; }
-}
-.splitText{
-    position: relative;
-    display: inline-block;
-}
-.engSection__bottom{
-    display: grid;
-    grid-template-columns: minmax(720px, 1fr) 360px;
-    column-gap: clamp(28px, 5vw, 120px);
-    align-items: start;
-    margin-top: clamp(100px, 10vw, 160px);
-}
-.splitText__line1{
-    display: inline-block;
-    transform: translateX(450px);
-}
-/* Сірий (основний, у потоці) */
-.splitText__base{
-    color: var(--grey);
-}
-/* Білий (оверлей) */
-.splitText__overlay{
-    position: absolute;
-    inset: 0;
-    color: var(--white);
-    pointer-events: none;
-    clip-path: inset(0 0 0 42%);
-}
-.splitText__base,
-.splitText__overlay{
-    transform: translateX(55px);
-    font-family: var(--font3), sans-serif;
-    font-weight: 400;
-    font-size: clamp(24px, 2.4vw, 38px);
-    line-height: 1;
-    letter-spacing: -0.01em;
-    text-transform: uppercase;
-    padding-right: 108px;
-}
-.engSection__bottomRight{
-    width: 100%;
-    display: grid;
-    grid-auto-rows: min-content;
-    align-self: start;
-    margin-top: 6px;
-    row-gap: 18px;
-    justify-items: start;
-    font-family: var(--font-family), sans-serif;
-    font-weight: 400;
-    font-size: 12px;         /* як у макеті дрібний правий текст */
-    line-height: 1.35;
-    letter-spacing: .08em;
-    color: var(--orange);
-    text-align: left;
-    max-width: 420px;
-}
-.engSection__ctaText{
-    margin: 0;
-    max-width: 350px;
-    color: var(--orange);
-    font-weight: 400;
-    font-size: clamp(14px, 0.9vw, 16px);
-    line-height: 1.4;
-    letter-spacing: 0.02em;
-
-}
-@media (max-width: 1024px){
-    .engSection__card{ padding: 40px 32px 36px; }
-    .engSolRow{ gap: 24px; }
-    .engSolRow__left{ width: 150px; flex-basis: 150px; }
-    .engSolRow__right{ width: 240px; flex-basis: 240px; }
-    .engSection__big{ font-size: 32px; }
-}
-@media (max-width: 768px){
-    .engSection{ padding: 16px 0 52px; }
-    .engSection__card{ padding: 30px 18px 24px; border-radius: 20px; }
-
-    .engSolRow{
-        flex-direction: column;
-        gap: 14px;
-        padding: 18px 0;
-    }
-    .engSolRow__left{
-        width: auto;
-        flex-basis: auto;
-        flex-direction: row;
-        align-items: baseline;
-        justify-content: space-between;
-        gap: 14px;
-    }
-    .engSolRow__num{ font-size: 64px; }
-
-    .engSolRow__center{ max-width: none; }
-    .engSolRow__right{
-        width: auto;
-        flex-basis: auto;
-        align-items: flex-start;
-        text-align-last: left;
-    }
-    .engSolRow__action {
-        justify-content: flex-start;
-    }
-
-    .engSection__arc{ top: 92px; width: min(420px, 92vw); opacity: .55; }
-
-    .engVideoCard{
-        display: block;
-        border-radius: 18px;
-        background: rgba(255,255,255,.16);
-        min-height: 160px;
-    }
-
-    .engSection__bottomRight{ width: auto; flex-basis: auto; }
-    .engSection__big{ font-size: 28px; }
-}
-@media (min-width: 769px) and (max-width: 1619px){
-    /* прибираємо десктопні зсуви, які на середніх екранах “пливуть” */
-    .splitText__line1,
-    .splitText__base,
-    .splitText__overlay{
-        transform: none !important;
-        padding-right: 0 !important;
-    }
-    /* типографіка: трохи менше, але “дихає” */
-    .splitText__base,
-    .splitText__overlay{
-        font-size: clamp(18px, 1.55vw, 26px);
-        line-height: 1.12;
-        letter-spacing: 0.02em;
-    }
-    /* зсув першого рядка (менший, ніж на великому десктопі) */
-    .splitText__line1{
-        padding-left: clamp(120px, 22vw, 320px); /* було занадто жорстко — тепер м’якше */
-    }
-
-    /* головне: білий оверлей має починатися з того ж місця */
-    .splitText__overlay{
-        clip-path: inset(0 0 0 clamp(120px, 22vw, 320px));
-    }
-}
+/* Engineering page styles moved to css/engineering.css (desktop/tablet)
+   Mobile engineering styles are kept in css/mobile.css */
 /* intro__inner має бути grid12 (як у hero/header) */
 .intro__inner{
     display: grid;
@@ -2846,7 +2046,7 @@ body.menu-open{
 .engineering__top .engineering__headline{
     padding: 0;
     margin: 0;
-    max-width: 640px;                 /* під макет */
+    max-width: 100%;                 /* під макет */
     font-family: var(--font-family), sans-serif;
     text-transform: uppercase;
     font-weight: 500;
@@ -2863,6 +2063,12 @@ body.menu-open{
 .engineering__headline-main{
     display: block;
     grid-column: 1 / 6;
+    overflow-wrap: normal;
+    white-space: normal;
+}
+.engineering__headline-main br,
+.engineering__headline-sub br{
+    display: block;
 }
 /* сірий рядок з відступом вправо як у макеті */
 .engineering__headline-sub{
@@ -3160,10 +2366,26 @@ body.menu-open{
     text-transform: uppercase;
     padding: 40px 0 60px;
     color: var(--black);
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 1.25;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.3;
     letter-spacing: -0.01em;
+}
+/* На середніх та малих екранах br не працюють - текст переноситься природно */
+@media (max-width: 1400px) {
+    .whyus__text br {
+        display: none;
+    }
+    .whyus__text {
+        font-size: 14px;
+        max-width: 520px;
+    }
+}
+@media (max-width: 1024px) {
+    .whyus__text {
+        font-size: 13px;
+        max-width: 450px;
+    }
 }
 .whyReveal{
     --p: 0;                 /* 0 = stacked, 1 = expanded */
@@ -4162,190 +3384,6 @@ body.menu-open{
     transform: translateY(18px);
 }
 /* ---------- footer ---------- */
-/* ===== FOOTER (макетний, темний) ===== */
-/* =========================
-  FOOTER (responsive)
-========================= */
-/* =========================
-   PRODUCTS PAGE
-========================= */
-/* --- Preview product --- */
-.previewProduct{
-    position: relative;
-    padding-top: 74px;
-    background:#fff;
-    overflow:hidden;
-}
-.hide{
-    display: none;
-}
-.previewProduct__gridBg{
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-    background-image: url("/EnergyGroup/assets/grid-404-DXaU8owx.svg");
-    background-repeat: repeat;
-    background-size: 1400px 1400px;
-    background-position: 0 0;
-    opacity: 1;
-}
-.previewProduct::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: url("/EnergyGroup/assets/background-product-wvMnVLp1.png") center 45% no-repeat;
-    background-size: 1200px auto;
-
-    pointer-events: none;
-    z-index: 1;
-}
-.previewProduct__inner{
-    position: relative;
-    justify-content:space-between;
-    min-height: 520px;
-    z-index: 2;
-    display: grid;
-    grid-template-columns: 260px minmax(420px, 1fr) 360px;
-    align-items: end;
-    gap: 40px;
-    padding-top: 28px;
-}
-.previewProduct__side{
-    flex: 0 0 260px;
-    min-width: 220px;
-}
-.previewProduct__label{
-    font-size: 24px;
-    text-transform: uppercase;
-    color: #413E39;
-    letter-spacing: -0.72px;
-    line-height: 1.05;
-    max-width: 540px;
-}
-.previewProduct__side--right{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 18px;
-    padding-bottom: 60px;
-}
-.previewProduct__side--left{
-    padding-bottom: 100px;
-}
-.previewProduct__media{
-    flex: 1 1 auto;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding: 0 10px;
-}
-.previewProduct__media img{
-    width: min(560px, 48vw);
-    height: min(560px, 48vw);
-    object-fit: contain;
-    display:block;
-    transition: opacity .12s ease;
-}
-.previewProduct__desc {
-    font-family: "Manrope", sans-serif;
-    font-weight: 300;
-    color: var(--lightgrey);
-    font-size: 18px;
-    line-height: 1.1;
-    max-width: 600px;
-    margin: 0;
-    letter-spacing: -0.54px;
-}
-/* ===== PREVIEW PRODUCT CTA ===== */
-.previewProduct__btn{
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    color: #413E39;
-}
-.previewProduct__btn.btn--secondary{
-    padding-left: 50px;
-    padding-right: 50px;
-    transition: transform .12s ease, color .18s ease;
-}
-/* --- Mobile Panel --- */
-.mobile_panel{
-    width: 100%;
-    display: flex;
-    justify-content: flex-end; /* кнопки прижати вправо */
-    align-items: center;
-    gap: 8px; /* расстояние между кнопками */
-    padding: 8px 16px; /* отступы по бокам */
-    box-sizing: border-box;
-    opacity: 0;
-    visibility: hidden;
-
-}
-.productCard{
-    flex: 0 0 calc((100% - 72px) / 4);
-    min-width: 220px;
-    transition: flex 0.3s ease;
-}
-.productsList__grid.view-single .productCard,
-.productsList__grid.view-double .productCard {
-    flex: 0 0 calc((100% - 72px) / 4);
-}
-/* Показываем панель на мобильных */
-@media (max-width: 768px) {
-    .mobile_panel{
-        opacity: 1;
-        visibility: visible;
-    }
-
-    /* Режим отображения по 1 элементу */
-    .productsList__grid.view-single .productCard{
-        flex: 0 0 100%;
-    }
-
-    /* Режим отображения по 2 элемента */
-    .productsList__grid.view-double .productCard{
-        flex: 0 0 calc((100% - 24px) / 2);
-    }
-}
-@media (max-width: 767px) {
-    .productsList__grid.view-double {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 24px;
-    }
-
-    .productsList__grid.view-double .productCard {
-        flex: initial;
-        width: 100%;
-        max-width: none;
-    }
-}
-.mobile_panel__btn{
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background: transparent;
-
-    cursor: pointer;
-    border-radius: 12px;
-
-    padding: 0;
-    color: #BDBDBD; /* неактивный цвет */
-    transition: color 0.2s ease, opacity 0.2s ease;
-}
-.mobile_panel__btn:hover{
-
-    color: #FF822C;
-}
-.mobile_panel__btn.active{
-    color: #1E1E1E; /* активный цвет */
-}
-.mobile_panel__btn svg{
-    width: 24px;
-    height: 24px;
-}
 /* Библиотека */
 .docs { background: #fff; }
 /* 1) TOP */

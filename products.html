@@ -5,24 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Prime Energy Group</title>
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/EnergyGroup/assets/favicon-BcPyRVzC.svg">
     <link rel="alternate icon" href="/EnergyGroup/assets/favicon-BcPyRVzC.svg">
 
     <script src="./js/jquery/jquery-3.7.1.min.js"></script>
-    <!-- Подключение скрипта калькулятора -->
     <script src="./js/calc.js"></script>
     <script src="./js/products.js"></script>
 
-    <!-- Подключение CSS -->
-    <link rel="stylesheet" crossorigin href="/EnergyGroup/assets/style-DLbqHBQz.css">
-  <script type="module" crossorigin src="/EnergyGroup/assets/modulepreload-polyfill-COaX8i6R.js"></script>
-  <script type="module" crossorigin src="/EnergyGroup/assets/mainJs-BvzcZXcD.js"></script>
-  <script type="module" crossorigin src="/EnergyGroup/assets/menu-BDQBc4t3.js"></script>
-  <link rel="stylesheet" href="/EnergyGroup/assets/mobile-AJmLwZl5.css" media="(max-width: 768px)">
+    <!-- CSS -->
+    <link rel="stylesheet" crossorigin href="/EnergyGroup/assets/products-CgE11pNU.css">
+  <script type="module" crossorigin src="/EnergyGroup/assets/menu-DC5sL17k.js"></script>
+  <link rel="stylesheet" crossorigin href="/EnergyGroup/assets/style-XJTu_6tc.css">
+  <link rel="stylesheet" href="/EnergyGroup/assets/mobile-hRaAcf3U.css" media="(max-width: 768px)">
 </head>
 
-<body>
+<body class="products-page">
 
 <!-- PRELOADER-->
 <!-- <div class="preloader" id="preloader" aria-label="Завантаження" role="status">
@@ -41,6 +40,7 @@
     </div>
 </div>
  -->
+
 <!-- ===== HEADER ===== -->
 <!-- ===== HEADER ===== -->
 <header class="header" id="top">
@@ -224,52 +224,73 @@
 </div>
 <main>
     <!-- ===== PREVIEW PRODUCT ===== -->
-    <section class="previewProduct" aria-label="Попередній перегляд продукту">
+    <section class="previewProduct previewProduct--cabinet" aria-label="Попередній перегляд продукту">
         <div class="previewProduct__gridBg" aria-hidden="true"></div>
 
         <div class="container previewProduct__inner grid12 debug-grid">
             <div class="previewProduct__side previewProduct__side--left">
                 <div class="previewProduct__label" id="previewProductTitle">
-                    Станції катодного захисту інверторні  автоматичні (СКЗІ)
+                    Станції катодного захисту інверторні автоматичні (СКЗІ)
                 </div>
             </div>
 
             <div class="previewProduct__media">
-                <img id="previewProductImage" src="/EnergyGroup/assets/product-01-CWIkfbj5.png" alt="Станція катодного захисту">
+                <div class="previewProduct__scriptBg" aria-hidden="true"></div>
+
+                <img
+                        id="previewProductImage"
+                        src="/EnergyGroup/assets/product-01-CWIkfbj5.png"
+                        alt="Станція катодного захисту"
+                >
             </div>
 
             <div class="previewProduct__side previewProduct__side--right">
                 <p class="previewProduct__desc" id="previewProductDesc">
-                    Інверторні станції нового покоління для стабільного та енергоефективного катодного захисту трубопроводів
-                    із точним автоматичним регулюванням
+                    Інверторні станції нового покоління для стабільного та енергоефективного катодного захисту
+                    трубопроводів із точним автоматичним регулюванням
                 </p>
-                <div>
-                <button id="calculator_btn" class="openCalcBtn btn btn--secondary btn--drift previewProduct__btn  hide " style="width: 315px; " onclick="openModal('calc-modal');">Визначити кількість</button>
-                <button id="btnShowDetails" class="btn btn--secondary btn--drift previewProduct__btn js-open-product"  style="width: 315px" data-product="p01">
-                    Переглянути продукт
-                </button>
+
+                <div class="previewProduct__actions">
+                    <button
+                            id="calculator_btn"
+                            class="openCalcBtn btn btn--secondary btn--drift previewProduct__btn hide"
+                            type="button"
+                            onclick="openModal('calc-modal');"
+                    >
+                        Визначити кількість
+                    </button>
+
+                    <button
+                            id="btnShowDetails"
+                            class="btn btn--secondary btn--drift previewProduct__btn js-open-product"
+                            type="button"
+                            data-product="p01"
+                            data-type="cabinet"
+                    >
+                        Переглянути продукт
+                    </button>
                 </div>
-
-
-
             </div>
         </div>
     </section>
-    <section id="productDetails">
 
-    </section>
+    <section id="productDetails"></section>
 
     <!-- ===== MOBILE PANEL ===== -->
     <div class="mobile_panel">
         <button class="mobile_panel__btn mobile_panel__btn--single active" data-view="single" type="button" aria-label="Показати по одному">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+                <rect x="4" y="6" width="16" height="4" rx="1" stroke="currentColor" stroke-width="1.6"/>
+                <rect x="4" y="14" width="16" height="4" rx="1" stroke="currentColor" stroke-width="1.6"/>
             </svg>
         </button>
-        <button class="mobile_panel__btn mobile_panel__btn--double" data-view="double" type="button" aria-label="Показати по два">
+
+        <button class="mobile_panel__btn mobile_panel__btn--double" data-view="double" type="button" aria-label="Показати плиткою">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="3" y="4" width="8" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
-                <rect x="13" y="4" width="8" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+                <rect x="4" y="4" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
+                <rect x="14" y="4" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
+                <rect x="4" y="14" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
+                <rect x="14" y="14" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
             </svg>
         </button>
     </div>
@@ -279,7 +300,7 @@
         <div class="container">
             <div class="productsList__grid" id="productsGrid">
 
-                <article class="productCard" data-preview="./img/content/products/product-01.png" data-details="p01">
+                <article class="productCard" data-preview="./img/content/products/product-01.png" data-details="p01" data-type="cabinet">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="/EnergyGroup/assets/product-01-small-BLWIPKwO.jpg" alt="">
@@ -301,11 +322,10 @@
                             <span class="productCard__more">Дізнатися більше</span>
                             <img src="/EnergyGroup/assets/orange-up2-DbPOqHxC.svg" alt="" width="16" height="16">
                         </div>
-
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-02.png" data-details="p02">
+                <article class="productCard" data-preview="./img/content/products/product-02.png" data-details="p02" data-type="module">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="/EnergyGroup/assets/product-02-small-xN8AdkTq.jpg" alt="">
@@ -328,12 +348,10 @@
                                 <img src="/EnergyGroup/assets/orange-up2-DbPOqHxC.svg" alt="" width="16" height="16">
                             </span>
                         </div>
-
-
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-03.png" data-details="p03">
+                <article class="productCard" data-preview="./img/content/products/product-03.png" data-details="p03" data-type="tall">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="/EnergyGroup/assets/product-03-small-V0WSLBmC.jpg" alt="">
@@ -356,12 +374,10 @@
                                 <img src="/EnergyGroup/assets/orange-up2-DbPOqHxC.svg" alt="" width="16" height="16">
                             </span>
                         </div>
-
-
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-04.png" data-details="p04">
+                <article class="productCard" data-preview="./img/content/products/product-04.png" data-details="p04" data-type="tall">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="/EnergyGroup/assets/product-04-small-BIpC0Dr0.jpg" alt="">
@@ -387,7 +403,7 @@
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-05.png" data-details="p05">
+                <article class="productCard" data-preview="./img/content/products/product-05.png" data-details="p05" data-type="module">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="/EnergyGroup/assets/product-05-small-BbdcoY6F.jpg" alt="">
@@ -413,7 +429,7 @@
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-06.png" data-details="p06">
+                <article class="productCard" data-preview="./img/content/products/product-06.png" data-details="p06" data-type="cabinet">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="/EnergyGroup/assets/product-06-small-CIS9x3P0.jpg" alt="">
@@ -436,13 +452,10 @@
                                 <img src="/EnergyGroup/assets/orange-up2-DbPOqHxC.svg" alt="" width="16" height="16">
                             </span>
                         </div>
-
-
                     </a>
                 </article>
 
-
-                <article class="productCard" data-preview="./img/content/products/product-07.png" data-details="p07">
+                <article class="productCard" data-preview="./img/content/products/product-07.png" data-details="p07" data-type="wide">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="/EnergyGroup/assets/product-07-small-CKLJZxWR.jpg" alt="">
@@ -468,7 +481,7 @@
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-08.png" data-details="p08">
+                <article class="productCard" data-preview="./img/content/products/product-08.png" data-details="p08" data-type="module">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="/EnergyGroup/assets/product-08-small-D611FghH.jpg" alt="">
@@ -494,7 +507,7 @@
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-09.png" data-details="p09">
+                <article class="productCard" data-preview="./img/content/products/product-09.png" data-details="p09" data-type="cabinet">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="/EnergyGroup/assets/product-09-small-CqOQXVgY.jpg" alt="">
@@ -521,7 +534,7 @@
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-10.png" data-details="p10">
+                <article class="productCard" data-preview="./img/content/products/product-10.png" data-details="p10" data-type="cabinet">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="/EnergyGroup/assets/product-10-small-BeAH1v1a.jpg" alt="">
@@ -534,7 +547,7 @@
                             </div>
 
                             <div class="productCard__text">
-                                Станція підвищеної потужності для інтенсивного відведення великих
+                                Станція підвищеної потужності для інтенсивного відведення великих
                                 блукаючих струмів, що забезпечує надійний захист трубопроводів на
                                 ділянках із високим рівнем електромагнітних перешкод
                             </div>
@@ -549,7 +562,7 @@
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-11.png" data-details="p11">
+                <article class="productCard" data-preview="./img/content/products/product-11.png" data-details="p11" data-type="wide">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="/EnergyGroup/assets/product-11-small-BG8e2onc.jpg" alt="">
@@ -576,7 +589,7 @@
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-12.png" data-details="p12">
+                <article class="productCard" data-preview="./img/content/products/product-12.png" data-details="p12" data-type="module">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="/EnergyGroup/assets/product-12-small-CrkxB1xM.jpg" alt="">
@@ -603,9 +616,8 @@
                     </a>
                 </article>
 
-
-                <article class="productCard" data-preview="./img/content/products/product-13.png" data-details="p13">
-                    <a class="productCard__link" href="#" >
+                <article class="productCard" data-preview="./img/content/products/product-13.png" data-details="p13" data-type="tall">
+                    <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <img src="/EnergyGroup/assets/product-13-small-EOCXyC08.jpg" alt="">
                         </div>
@@ -703,157 +715,151 @@
             </button>
         </div>
     </div>
-    <script>
-        // swap preview image on hover/focus/click + автопрокрутка каждые 3 секунды
-        (function ($) {
-            $(function () {
-                var $img = $('#previewProductImage');
-                var $title = $('#previewProductTitle');
-                var $desc = $('#previewProductDesc');
-                var $btnDetails = $('#btnShowDetails');
-                var $grid = $('#productsGrid');
-                if (!$img.length || !$grid.length) return;
+<!--    <script>-->
+<!--        (function ($) {-->
+<!--            $(function () {-->
+<!--                var $img = $('#previewProductImage');-->
+<!--                var $title = $('#previewProductTitle');-->
+<!--                var $desc = $('#previewProductDesc');-->
+<!--                var $btnDetails = $('#btnShowDetails');-->
+<!--                var $previewSection = $('.previewProduct');-->
+<!--                var heroTypes = 'previewProduct&#45;&#45;cabinet previewProduct&#45;&#45;module previewProduct&#45;&#45;tall previewProduct&#45;&#45;wide';-->
+<!--                var $grid = $('#productsGrid');-->
+<!--                if (!$img.length || !$grid.length) return;-->
 
-                var autoplayInterval = null;
-                var currentIndex = 0;
-                var $cards = $grid.find('.productCard');
+<!--                var autoplayInterval = null;-->
+<!--                var currentIndex = 0;-->
+<!--                var $cards = $grid.find('.productCard');-->
 
-                function setPreview(src, title, desc, productId) {
-                    if (!src) return;
-                    $img.css('opacity', 0);
-                    $title.css('opacity', 0);
-                    $desc.css('opacity', 0);
+<!--                function setPreviewType(type) {-->
+<!--                    if (!$previewSection.length) return;-->
+<!--                    $previewSection.removeClass(heroTypes);-->
+<!--                    if (type) {-->
+<!--                        $previewSection.addClass('previewProduct&#45;&#45;' + type);-->
+<!--                    }-->
+<!--                }-->
 
+<!--                function setPreview(src, title, desc, productId, productType) {-->
+<!--                    if (!src) return;-->
 
-                    console.log('Product ID:', productId);
-                    if (productId == 'p03'){
-                        console.log('show btn');
-                        $('#calculator_btn').removeClass('hide');
-                    }else{
-                        console.log('hide btn');
-                        $('#calculator_btn').addClass('hide');
-                    }
+<!--                    $img.css('opacity', 0);-->
+<!--                    $title.css('opacity', 0);-->
+<!--                    $desc.css('opacity', 0);-->
 
-                    window.setTimeout(function () {
-                        $img.attr('src', src);
-                        if (title) $title.text(title);
-                        if (desc) $desc.text(desc);
-                        if (productId && $btnDetails.length) {
-                            $btnDetails.data('product', productId).attr('data-product', productId);
-                        }
+<!--                    if (productId === 'p03') {-->
+<!--                        $('#calculator_btn').removeClass('hide');-->
+<!--                    } else {-->
+<!--                        $('#calculator_btn').addClass('hide');-->
+<!--                    }-->
 
-                        $img.css('opacity', 1);
-                        $title.css('opacity', 1);
-                        $desc.css('opacity', 1);
-                    }, 90);
-                }
+<!--                    window.setTimeout(function () {-->
+<!--                        $img.attr('src', src);-->
+<!--                        if (title) $title.text(title);-->
+<!--                        if (desc) $desc.text(desc);-->
+<!--                        if (productId && $btnDetails.length) {-->
+<!--                            $btnDetails.data('product', productId).attr('data-product', productId);-->
+<!--                            if (productType) {-->
+<!--                                $btnDetails.attr('data-type', productType);-->
+<!--                            }-->
+<!--                        }-->
+<!--                        if (productType && $btnDetails.length) {-->
+<!--                            $btnDetails.attr('data-type', productType);-->
+<!--                            setPreviewType(productType);-->
+<!--                        }-->
 
-                // Функция для показа конкретной карточки
-                function showCard(index) {
+<!--                        $img.css('opacity', 1);-->
+<!--                        $title.css('opacity', 1);-->
+<!--                        $desc.css('opacity', 1);-->
+<!--                    }, 90);-->
+<!--                }-->
 
-                    if (index >= $cards.length) index = 0;
-                    if (index < 0) index = $cards.length - 1;
+<!--                function showCard(index) {-->
+<!--                    if (index >= $cards.length) index = 0;-->
+<!--                    if (index < 0) index = $cards.length - 1;-->
 
-                    var $card = $cards.eq(index);
-                    var previewSrc = $card.data('preview');
-                    var title = $card.find('.productCard__title').text().trim();
-                    var text = $card.find('.productCard__text').text().trim();
-                    var productId = $card.data('details');
+<!--                    var $card = $cards.eq(index);-->
+<!--                    var previewSrc = $card.data('preview');-->
+<!--                    var title = $card.find('.productCard__title').text().trim();-->
+<!--                    var text = $card.find('.productCard__text').text().trim();-->
+<!--                    var productId = $card.data('details');-->
+<!--                    var productType = $card.data('type');-->
 
-                    setPreview(previewSrc, title, text, productId);
-                    currentIndex = index;
-                }
+<!--                    setPreview(previewSrc, title, text, productId, productType);-->
+<!--                    currentIndex = index;-->
+<!--                }-->
 
-                // Автопрокрутка каждые 3 секунды
-                function startAutoplay() {
-                    stopAutoplay();
-                    autoplayInterval = window.setInterval(function () {
-                        currentIndex++;
-                        if (currentIndex >= $cards.length) currentIndex = 0;
-                        showCard(currentIndex);
-                    }, 5000);
-                }
+<!--                function startAutoplay() {-->
+<!--                    stopAutoplay();-->
+<!--                    autoplayInterval = window.setInterval(function () {-->
+<!--                        currentIndex++;-->
+<!--                        if (currentIndex >= $cards.length) currentIndex = 0;-->
+<!--                        showCard(currentIndex);-->
+<!--                    }, 5000);-->
+<!--                }-->
 
-                function stopAutoplay() {
-                    if (autoplayInterval) {
-                        window.clearInterval(autoplayInterval);
-                        autoplayInterval = null;
-                    }
-                }
+<!--                function stopAutoplay() {-->
+<!--                    if (autoplayInterval) {-->
+<!--                        window.clearInterval(autoplayInterval);-->
+<!--                        autoplayInterval = null;-->
+<!--                    }-->
+<!--                }-->
 
-                // При наведении/фокусе/клике — останавливаем автопрокрутку и показываем выбранную карточку
-                $grid.on('mouseover focusin click', function (e) {
-                    var $card = $(e.target).closest('.productCard');
-                    if (!$card.length) return;
+<!--                $grid.on('mouseover focusin click', function (e) {-->
+<!--                    var $card = $(e.target).closest('.productCard');-->
+<!--                    if (!$card.length) return;-->
 
-                    stopAutoplay();
+<!--                    stopAutoplay();-->
 
-                    var previewSrc = $card.data('preview');
-                    var title = $card.find('.productCard__title').text().trim();
-                    var text = $card.find('.productCard__text').text().trim();
-                    var productId = $card.data('details');
+<!--                    var previewSrc = $card.data('preview');-->
+<!--                    var title = $card.find('.productCard__title').text().trim();-->
+<!--                    var text = $card.find('.productCard__text').text().trim();-->
+<!--                    var productId = $card.data('details');-->
+<!--                    var productType = $card.data('type');-->
 
-                    setPreview(previewSrc, title, text, productId);
+<!--                    setPreview(previewSrc, title, text, productId, productType);-->
+<!--                    currentIndex = $cards.index($card);-->
+<!--                });-->
 
-                    // Обновляем текущий индекс
-                    currentIndex = $cards.index($card);
-                });
+<!--                $grid.on('mouseleave', function () {-->
+<!--                    startAutoplay();-->
+<!--                });-->
 
-                // При уходе мыши из области сетки — возобновляем автопрокрутку
-                $grid.on('mouseleave', function () {
-                     startAutoplay();
-                });
+<!--                $grid.on('click', '.productCard__link', function (e) {-->
+<!--                    e.preventDefault();-->
+<!--                    return false;-->
+<!--                });-->
 
-                // Обработчик клика на ссылку карточки - обновляем превью и открываем детали
-                $grid.on('click', '.productCard__link', function (e) {
-                    e.preventDefault();
-                  //  $('.productCard__bottom').trigger('click');
-                    return false;
-                });
-                $grid.on('click', '.productCard__bottom', function (e) {
-                    e.preventDefault();
+<!--                $grid.on('click', '.productCard__bottom', function (e) {-->
+<!--                    e.preventDefault();-->
 
+<!--                    var $card = $(this).closest('.productCard');-->
+<!--                    if (!$card.length) return;-->
 
-                    var $card = $(this).closest('.productCard');
+<!--                    stopAutoplay();-->
 
-                    if (!$card.length) return;
+<!--                    var previewSrc = $card.data('preview');-->
+<!--                    var title = $card.find('.productCard__title').text().trim();-->
+<!--                    var text = $card.find('.productCard__text').text().trim();-->
+<!--                    var productId = $card.data('details');-->
+<!--                    var productType = $card.data('type');-->
 
-                    stopAutoplay();
+<!--                    setPreview(previewSrc, title, text, productId, productType);-->
+<!--                    currentIndex = $cards.index($card);-->
+<!--                    $btnDetails = $('#btnShowDetails');-->
 
-                    var previewSrc = $card.data('preview');
-                    var title = $card.find('.productCard__title').text().trim();
-                    var text = $card.find('.productCard__text').text().trim();
-                    var productId = $card.data('details');
+<!--                    $btnDetails.data('product', productId).attr('data-product', productId);-->
+<!--                    $('.productDetails__back').click();-->
 
+<!--                    window.setTimeout(function () {-->
+<!--                        $btnDetails.click();-->
+<!--                    }, 150);-->
+<!--                });-->
 
-
-                    setPreview(previewSrc, title, text, productId);
-                    currentIndex = $cards.index($card);
-                    $btnDetails = $('#btnShowDetails');
-
-                    $btnDetails.data('product', productId).attr('data-product', productId);
-                    $('.productDetails__back').click();
-                    // Программно кликаем по кнопке после небольшой задержки для плавности
-                    window.setTimeout(function () {
-
-
-                        $btnDetails.click();
-
-
-                    }, 150);
-
-                });
-
-                // Запускаем автопрокрутку при загрузке
-               startAutoplay();
-            });
-        })(jQuery);
-    </script>
-
-
+<!--                startAutoplay();-->
+<!--            });-->
+<!--        })(jQuery);-->
+<!--    </script>-->
 </main>
-
-
 
 <!-- ===== FOOTER ===== -->
 <footer class="footerPeg" id="footer">
@@ -951,11 +957,5 @@
         </div>
     </div>
 </footer>
-
 </body>
 </html>
-
-
-
-
-<!--<button class="btn" type="button" data-az-open>Калькулятор</button>-->

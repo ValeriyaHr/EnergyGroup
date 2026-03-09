@@ -28,9 +28,10 @@ document.querySelectorAll(".engRow__arrowIcon").forEach((img) => {
   img.src = WHITE_ARROW;
 });
 document.addEventListener("click", (e) => {
+  var _a;
   const row = e.target.closest(".js-engRow");
   if (!row) return;
-  const panel = row.nextElementSibling?.classList.contains("js-engPanel") ? row.nextElementSibling : null;
+  const panel = ((_a = row.nextElementSibling) == null ? void 0 : _a.classList.contains("js-engPanel")) ? row.nextElementSibling : null;
   if (!panel) return;
   const icon = row.querySelector(".engRow__arrowIcon");
   const isOpen = row.classList.toggle("is-open");
@@ -42,12 +43,13 @@ document.addEventListener("click", (e) => {
   panel.classList.toggle("is-open", isOpen);
 });
 function initWhyUsUnfold() {
+  var _a, _b;
   const root = document.querySelector("#whyReveal");
   if (!root) return;
   const items = root.querySelectorAll(".whyItem");
   if (!items.length) return;
   root.style.setProperty("--count", String(items.length));
-  if (window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches) {
+  if ((_b = (_a = window.matchMedia) == null ? void 0 : _a.call(window, "(prefers-reduced-motion: reduce)")) == null ? void 0 : _b.matches) {
     root.style.setProperty("--p", "1");
     return;
   }
@@ -253,4 +255,4 @@ function initTicsAnimation() {
   }
   sequentialHighlight();
 }
-//# sourceMappingURL=mainJs-BvzcZXcD.js.map
+//# sourceMappingURL=mainJs-CqoWvtCY.js.map

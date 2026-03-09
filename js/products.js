@@ -168,3 +168,228 @@ $(function () {
         if (e.key === "Escape") closeDetails();
     });
 });
+
+
+//---------------------------------- Hero preview products
+(function ($) {
+    $(function () {
+        var $previewSection = $('.previewProduct');
+        var $img = $('#previewProductImage');
+        var $title = $('#previewProductTitle');
+        var $desc = $('#previewProductDesc');
+        var $btnDetails = $('#btnShowDetails');
+        var $calculatorBtn = $('#calculator_btn');
+        var $grid = $('#productsGrid');
+
+        if (
+            !$previewSection.length ||
+            !$img.length ||
+            !$title.length ||
+            !$desc.length ||
+            !$btnDetails.length ||
+            !$grid.length
+        ) {
+            return;
+        }
+
+        var autoplayInterval = null;
+        var currentIndex = 0;
+        var $cards = $grid.find('.productCard');
+
+        var heroTypes = [
+            'previewProduct--cabinet',
+            'previewProduct--module',
+            'previewProduct--tall',
+            'previewProduct--wide'
+        ];
+
+        // fallback, якщо десь у картці ще немає data-type
+        var productTypes = {
+            p01: 'cabinet',
+            p02: 'module',
+            p03: 'tall',
+            p04: 'tall',
+            p05: 'module',
+            p06: 'cabinet',
+            p07: 'wide',
+            p08: 'module',
+            p09: 'cabinet',
+            p10: 'cabinet',
+            p11: 'wide',
+            p12: 'module',
+            p13: 'tall'
+        };
+
+        function getProductType($card, productId) {
+            return $card.data('type') || productTypes[productId] || 'cabinet';
+        }
+
+        function setPreviewType(type) {
+            $previewSection.removeClass(heroTypes.join(' '));
+
+            if (type) {
+                $previewSection.addClass('previewProduct--' + type);
+            }
+        }
+
+        function setPreviewState(productId, productType) {
+            setPreviewType(productType);
+
+            $previewSection.attr('data-product-id', productId || '');
+
+            $btnDetails
+                .attr('data-product', productId || '')
+                .attr('data-type', productType || '')
+                .data('product', productId || '');
+        }
+
+        function toggleCalculator(productId) {
+            if (!$calculatorBtn.length) return;
+
+            if (productId === 'p03') {
+                $calculatorBtn.removeClass('hide');
+            } else {
+                $calculatorBtn.addClass('hide');
+            }
+        }
+
+        function readCardData($card) {
+            if (!$card.length) return null;
+
+            var productId = $card.data('details');
+            var productType = getProductType($card, productId);
+
+            return {
+                previewSrc: $card.data('preview'),
+                title: $card.find('.productCard__title').text().trim(),
+                text: $card.find('.productCard__text').text().trim(),
+                productId: productId,
+                productType: productType
+            };
+        }
+
+        function setPreview(src, title, desc, productId, productType) {
+            if (!src) return;
+
+            $img.css('opacity', 0);
+            $title.css('opacity', 0);
+            $desc.css('opacity', 0);
+
+            toggleCalculator(productId);
+
+            window.setTimeout(function () {
+                $img.attr('src', src);
+
+                if (title) $title.text(title);
+                if (desc) $desc.text(desc);
+
+                setPreviewState(productId, productType);
+
+                $img.css('opacity', 1);
+                $title.css('opacity', 1);
+                $desc.css('opacity', 1);
+            }, 90);
+        }
+
+        function showCard(index) {
+            if (index >= $cards.length) index = 0;
+            if (index < 0) index = $cards.length - 1;
+
+            var $card = $cards.eq(index);
+            var cardData = readCardData($card);
+
+            if (!cardData) return;
+
+            setPreview(
+                cardData.previewSrc,
+                cardData.title,
+                cardData.text,
+                cardData.productId,
+                cardData.productType
+            );
+
+            currentIndex = index;
+        }
+
+        function startAutoplay() {
+            stopAutoplay();
+
+            autoplayInterval = window.setInterval(function () {
+                currentIndex++;
+                if (currentIndex >= $cards.length) currentIndex = 0;
+                showCard(currentIndex);
+            }, 5000);
+        }
+
+        function stopAutoplay() {
+            if (autoplayInterval) {
+                window.clearInterval(autoplayInterval);
+                autoplayInterval = null;
+            }
+        }
+
+        $grid.on('mouseover focusin click', function (e) {
+            var $card = $(e.target).closest('.productCard');
+            if (!$card.length) return;
+
+            var cardData = readCardData($card);
+            if (!cardData) return;
+
+            stopAutoplay();
+
+            setPreview(
+                cardData.previewSrc,
+                cardData.title,
+                cardData.text,
+                cardData.productId,
+                cardData.productType
+            );
+
+            currentIndex = $cards.index($card);
+        });
+
+        $grid.on('mouseleave', function () {
+            // startAutoplay();
+        });
+
+        $grid.on('click', '.productCard__link', function (e) {
+            e.preventDefault();
+            return false;
+        });
+
+        $grid.on('click', '.productCard__bottom', function (e) {
+            e.preventDefault();
+
+            var $card = $(this).closest('.productCard');
+            if (!$card.length) return;
+
+            var cardData = readCardData($card);
+            if (!cardData) return;
+
+            stopAutoplay();
+
+            setPreview(
+                cardData.previewSrc,
+                cardData.title,
+                cardData.text,
+                cardData.productId,
+                cardData.productType
+            );
+
+            currentIndex = $cards.index($card);
+
+            $('.productDetails__back').click();
+
+            window.setTimeout(function () {
+                $('#btnShowDetails').click();
+            }, 150);
+        });
+
+        // стартовий стан
+        setPreviewState('p01', 'cabinet');
+        toggleCalculator('p01');
+        // startAutoplay();
+    });
+})(jQuery);
+
+// 352, 391 startAutoplay(); - розкоментувати і почне мінятись сам
