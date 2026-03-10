@@ -36,6 +36,7 @@
     <!-- ===== HERO ===== -->
     <section class="hero" id="home">
         <div class="container hero__inner grid12">
+            <div class="hero__bg"></div>
             <div class="hero__left">
                 <div class="hero__kicker">
                     <span>Engineering</span>
@@ -44,15 +45,9 @@
                 </div>
                 <h1 class="hero__title">PRIME&nbsp;ENERGY<br>GROUP</h1>
                 <p class="hero__desc">
-            <span class="hero__desc-dark">
-                ВИРОБНИЧО-ІНЖИНІРИНГОВА КОМПАНІЯ, ЩО РОЗРОБЛЯЄ,
-                ВИГОТОВЛЯЄ ТА ВПРОВАДЖУЄ ОБЛАДНАННЯ
-            </span>
-                            <span class="light-grey">
-                ДЛЯ ЕЛЕКТРОХІМІЧНОГО ЗАХИСТУ ВІД КОРОЗІЇ ТРУБОПРОВОДІВ,
-                РЕЗЕРВУАРІВ, НАФТОГАЗОВИХ І КОМУНАЛЬНИХ МЕРЕЖ
-            </span>
-                        </p>
+                    <span class="hero__desc-dark">ВИРОБНИЧО-ІНЖИНІРИНГОВА КОМПАНІЯ, ЩО РОЗРОБЛЯЄ, ВИГОТОВЛЯЄ ТА ВПРОВАДЖУЄ ОБЛАДНАННЯ</span>
+                    <span class="light-grey"> ДЛЯ ЕЛЕКТРОХІМІЧНОГО ЗАХИСТУ ВІД КОРОЗІЇ ТРУБОПРОВОДІВ, РЕЗЕРВУАРІВ, НАФТОГАЗОВИХ І КОМУНАЛЬНИХ МЕРЕЖ</span>
+                </p>
             </div>
             <a class="btn btn--primary btn--brackets hero__cta" href="#contacts">КОНСУЛЬТАЦІЯ</a>
             <div class="hero__right">
@@ -129,12 +124,13 @@
 
                 <div class="intro__text engineering__headline">
                     <span class="engineering__headline-main">
-                        МИ ДОТРИМУЄМОСЬ ЧІТКОЇ ПОСЛІДОВНОСТІ РОБІТ —
+                        МИ ДОТРИМУЄМОСЬ ЧІТКОЇ ПОСЛІДОВНОСТІ РОБІТ —<br>
                         ВІД АНАЛІЗУ ОБʼЄКТА ДО ВВЕДЕННЯ СИСТЕМИ В
                     </span>
 
                                     <span class="engineering__headline-sub">
-                        ЕКСПЛУАТАЦІЮ ТА ЇЇ ПОДАЛЬШОГО МОНІТОРИНГУ
+                        ЕКСПЛУАТАЦІЮ ТА ЇЇ ПОДАЛЬШОГО<br>
+                        МОНІТОРИНГУ
                     </span>
                 </div>
 
@@ -273,9 +269,9 @@
                 <p class="intro__p">[ Чому обирають нас?</p>
 
                 <p class="whyus__text">
-                    Ми не просто розробляємо та виготовляємо обладнання — <br>
-                    ми гарантуємо його ефективність у реальних умовах. Ми <br>
-                    компанія, що об’єднує власне виробництво засобів ЕХЗ. <br>
+                    Ми не просто розробляємо та виготовляємо обладнання —<br>
+                    ми гарантуємо його ефективність у реальних умовах. Ми<br>
+                    компанія, що об'єднує власне виробництво засобів ЕХЗ.<br>
                     Компанію визначено підприємством паливно-<br>
                     енергетичного комплексу критично важливими для<br>
                     функціонування економіки<span class="light-grey"> та забезпечення<br>
@@ -447,12 +443,17 @@
 
                     <div class="contacts__panel">
                         <div class="contacts__row">
-                            <input class="field_contact" type="text" name="name" placeholder="ІМʼЯ *" required>
-                            <input class="field_contact" type="text" name="surname" placeholder="ПРІЗВИЩЕ *" required>
+                            <label class="sr-only" for="contact-name">Ім'я</label>
+                            <input class="field_contact" type="text" id="contact-name" name="name" placeholder="ІМʼЯ *" required>
+                            <label class="sr-only" for="contact-surname">Прізвище</label>
+                            <input class="field_contact" type="text" id="contact-surname" name="surname" placeholder="ПРІЗВИЩЕ *" required>
                         </div>
-                        <input class="field_contact" type="email" name="email" placeholder="EMAIL *" required>
-                        <input class="field_contact" type="tel" name="phone" placeholder="ТЕЛЕФОН" required>
-                        <textarea class="field_contact field_contact--area" name="message" placeholder="ОПИШІТЬ, ЧИМ МИ МОЖЕМО ВАМ ДОПОМОГТИ * "></textarea>
+                        <label class="sr-only" for="contact-email">Email</label>
+                        <input class="field_contact" type="email" id="contact-email" name="email" placeholder="EMAIL *" required>
+                        <label class="sr-only" for="contact-phone">Телефон</label>
+                        <input class="field_contact" type="tel" id="contact-phone" name="phone" placeholder="ТЕЛЕФОН" required>
+                        <label class="sr-only" for="contact-message">Повідомлення</label>
+                        <textarea class="field_contact field_contact--area" id="contact-message" name="message" placeholder="ОПИШІТЬ, ЧИМ МИ МОЖЕМО ВАМ ДОПОМОГТИ * "></textarea>
                     </div>
 
                     <div class="contacts__bottom">

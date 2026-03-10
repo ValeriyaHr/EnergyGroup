@@ -875,12 +875,12 @@
        PRODUCTS LIST
     ===================================================== */
     .productsList{
-        padding: 8px 0 22px;
+        padding: 10px 0 24px;
     }
 
     .productsList__grid{
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 22px 18px;
+        gap: 30px 18px;
         grid-auto-rows: 1fr;
         align-items: stretch;
         justify-items: center;
@@ -904,8 +904,8 @@
 
     .productsList__grid.view-single .productCard{
         grid-column: 1 / -1;
-        padding-bottom: 26px;
-        margin-bottom: 6px;
+        padding-bottom: 30px;
+        margin-bottom: 0;
     }
 
     .productsList__grid.view-single .productCard::after{
@@ -961,7 +961,7 @@
         column-gap: 8px;
         row-gap: 8px;
         padding: 0;
-        margin: 0 0 12px;
+        margin: 0 0 14px;
         min-height: 0;
         height: auto;
         align-items: start;
@@ -1017,7 +1017,7 @@
         display: flex;
         align-items: flex-start;
         justify-content: center;
-        margin: 0 0 12px;
+        margin: 0 0 14px;
         padding: 0;
     }
 
@@ -1038,6 +1038,7 @@
         align-items: center;
         justify-content: space-between;
         gap: 10px;
+        min-height: 18px;
     }
 
     .productCard__more{
@@ -1151,15 +1152,15 @@
     }
 
     .productsList{
-        padding: 8px 0 18px;
+        padding: 10px 0 20px;
     }
 
     .productsList__grid{
-        gap: 18px 14px;
+        gap: 24px 14px;
     }
 
     .productCard__body{
-        margin-bottom: 10px;
+        margin-bottom: 12px;
         row-gap: 6px;
     }
 
@@ -1178,7 +1179,7 @@
     }
 
     .productCard__imgWrap{
-        margin-bottom: 10px;
+        margin-bottom: 12px;
     }
 
     .productCard__imgWrap img{
