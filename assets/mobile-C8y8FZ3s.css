@@ -18,6 +18,11 @@ body:not(.products-page) section{
     margin-bottom: 60px;
 }
 
+/* Прибираємо margin-top для hero секції */
+body:not(.products-page) .hero{
+    margin-top: 0;
+}
+
     .btn,
     .button {
         font-size: 16px;
@@ -134,8 +139,30 @@ body.menu-open .header__burger::after {
 .hero__cta   { grid-row: 5; }
 
 .hero{
-    padding: 18px 0 34px;
+    padding: 0;
     min-height: auto;
+    background: var(--white);
+}
+
+/* Прибираємо padding контейнера для hero на мобільній */
+.hero .container{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Сірий фон + сітка тільки до кінця шафи (не на всю висоту секції) */
+.hero__bg{
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 100vw;
+    height: calc(100% - 126px); /* віднімаємо висоту зони з кнопкою */
+    transform: translateX(-50%);
+    background: var(--grey-pale) url("../img/ui/background-hero.svg") no-repeat center center;
+    background-size: cover;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
 }
 
 /* 5 грід-смужок */
@@ -143,9 +170,11 @@ body.menu-open .header__burger::after {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 14px 0;
+    position: relative;
+    padding: 60px 20px 0 20px; /* відступи для контенту */
 }
 
-/* розчиняємо wrapper, щоб елементи стали grid-item */
+
 .hero__left{ display: contents; }
 
 /* розкладка по макету */
@@ -154,6 +183,8 @@ body.menu-open .header__burger::after {
     margin: 80px 0 14px;
     font-size: 12px;
     white-space: nowrap;
+    position: relative;
+    z-index: 2;
 }
 .hero__kicker span{ display: inline; }
 .hero__kicker span + span{ margin-left: 6px; }
@@ -164,6 +195,8 @@ body.menu-open .header__burger::after {
     text-align: left;
     font-size: clamp(44px, 12vw, 64px);
     line-height: .88;
+    position: relative;
+    z-index: 2;
 }
 
 .hero__desc{
@@ -175,14 +208,25 @@ body.menu-open .header__burger::after {
     line-height: 1.15;
     text-align: left;
     max-width: none;
+    position: relative;
+    z-index: 2;
+    display: flow-root; /* щоб float працював */
+    --col2: calc((100% / 5) * 2); /* 2 колонки */
+    --lh: 1.15em; /* висота рядка */
 }
+
+/* Перші 2 рядки починаються з 3-ї колонки (відкушуємо 2 колонки зліва на 2 рядки) */
 .hero__desc::before{
-    content:"";
-    float:left;
-    width: calc((100% / 5) * 2); /* 2 колонки відступ */
-    height: 2.1em;               /* приблизно 2 рядки тексту */
+    content: "";
+    float: left;
+    width: var(--col2);
+    height: calc(var(--lh) * 2); /* тільки 2 рядки */
 }
-.hero__desc-dark,
+
+.hero__desc-dark{
+    display: inline;
+}
+
 .hero__desc .light-grey{
     display: inline;
 }
@@ -190,8 +234,14 @@ body.menu-open .header__burger::after {
 /* шафа по центру */
 .hero__right{
     grid-column: 1 / -1;
-    margin: 0 auto;
+    margin: 40px auto 0;
 }
+
+/* Приховуємо крапки за шафою на мобільній */
+.hero__right::before{
+    display: none;
+}
+
 .hero__imgWrap{
     width: min(300px, 80vw);
     margin: 0 auto;
@@ -206,7 +256,8 @@ body.menu-open .header__burger::after {
     min-width: 220px;
     max-width: 320px;
     justify-self: center;
-    margin-top: 40px;
+    margin-top: 20px;
+    margin-bottom: 40px;
     height: 52px;
     font-size: 16px;
     padding: 0 28px;
@@ -235,31 +286,26 @@ body.menu-open .header__burger::after {
     font-size: 16px;
     line-height: 1.2;
     overflow-wrap: anywhere;
-    display: flow-root; /* щоб флоати не “вилазили” */
-    --col2: calc((100% / 5) * 2); /* 2 колонки */
-    --lh: 1.2em;                  /* 1 рядок */
+    display: flow-root;
 }
 
-/* 1-й рядок: залишаємо 3 колонки (2 відкушуємо справа на 1 рядок) */
-.intro__text::after{
-    content:"";
-    float:right;
-    width: var(--col2);
-    height: var(--lh);
+/* Приховуємо <br> на мобільній для природного перенесення */
+.intro__text br{
+    display: none;
 }
 
-/* 5-й рядок+ стартує з 3-ї колонки (2 зліва вмикаються після 4 рядків) */
+/* Перші 4 рядки з 1-ї колонки (повна ширина), з 5-го рядка з 3-ї колонки */
 .intro__text::before{
     content:"";
     float:left;
-    width: var(--col2);
-    height: calc(var(--lh) * 8); /* НЕ 999px, інакше блок “росте” */
+    width: calc((100% / 5) * 2);
+    height: 8em;
     shape-outside: polygon(
-            0 0,
-            0 calc(var(--lh) * 4),
-            100% calc(var(--lh) * 4),
-            100% 100%,
-            0 100%
+        0 0,
+        0 4.8em,
+        100% 4.8em,
+        100% 100%,
+        0 100%
     );
 }
 

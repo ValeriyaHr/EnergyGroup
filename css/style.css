@@ -446,17 +446,27 @@ body.menu-open{
 /*ГОЛОВНА ПОЧАТОК*/
 .hero{
     position: relative;
-    padding-top: clamp(20px, 4vh, 56px);
     overflow: hidden;
     display:block;
-    background: #f5f5f5 url("../img/ui/fon1.svg") no-repeat center center;
-    background-size: cover;
+    background: var(--white);
 }
 
-.hero__kicker{ grid-row: 1; }
-.hero__title{  grid-row: 2; }
-.hero__desc{   grid-row: 3; margin: 0; }  /* важливо: прибрати старі margin:50px 0 */
-.hero__cta{    grid-row: 4; margin-top: 12px; }
+.hero__bg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: url("../img/ui/background-hero.svg") no-repeat left center;
+    background-size: cover;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hero__kicker{ grid-row: 1; z-index: 2; }
+.hero__title{  grid-row: 2; z-index: 2; }
+.hero__desc{   grid-row: 3; margin: 0; z-index: 2; }  /* важливо: прибрати старі margin:50px 0 */
+.hero__cta{    grid-row: 4; margin-top: 12px; position: relative; z-index: 2; }
 
 /* 3) шафа спанить 4 ряди і не “роздуває” тільки перший */
 /* шафа сидить у першому рядку (не роздуває 3-4 ряд) */
@@ -466,33 +476,35 @@ body.menu-open{
     align-self: start;
     justify-self: start;
     position: relative;
+    z-index: 2;
 }
 
 .hero__inner{
     align-items: start;
     align-content: start;
     grid-auto-rows: min-content;
+    position: relative;
+    padding-top: 80px; /* відступ для контенту зверху */
 }
+
+
 
 .hero__left{
     display: contents;
 }
 
-.hero__kicker{ grid-column: 3 / 7; margin: 0 0 20px; }
-.hero__title{  grid-column: 2 / 7; margin: 0 0 10px; white-space: nowrap; }
-.hero__desc{   grid-column: 2 / 7; margin: 0; max-width: none; }
-
 
 .hero__kicker{
     font-family: var(--third-family), sans-serif;
-    font-weight: 100;
+    font-weight: 300;
     font-size: 14px;
     line-height: 1.1;
-    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--black);
     grid-column: 3 / 7;
     margin: 0 0 20px;
+    position: relative;
+    z-index: 2;
 }
 
 .hero__kicker span{
@@ -510,6 +522,8 @@ body.menu-open{
     white-space: nowrap;
     grid-column: 2 / 7;
     margin: 0 0 10px;
+    position: relative;
+    z-index: 2;
 }
 
 .hero__desc{
@@ -522,8 +536,16 @@ body.menu-open{
     font-weight: 100;
     grid-column: 2 / 7;
     margin: 0;
-    text-indent: calc((100% / 5) * 1.2);
     position: relative;
+    z-index: 2;
+}
+
+/* Перший рядок починається з 3-ї колонки */
+.hero__desc::before{
+    content:"";
+    float:left;
+    width: calc((100% / 5) * 1); /* відступ 1 колонка з 5-ти (grid 2/7), текст починається з 3-ї загальної */
+    height: 1em; /* 1 рядок тексту */
 }
 
 .hero__desc-dark{
@@ -564,6 +586,34 @@ body.menu-open{
     z-index: 1;
 }
 
+/* Ліва крапка на кінці лінії - сіре кільце з прозорою серединою */
+.hero__imgWrap::before{
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 10%;
+    width: 4px;
+    height: 4px;
+    background: transparent;
+    border: 1px solid var(--grey);
+    border-radius: 50%;
+    z-index: 8;
+}
+
+/* Права крапка на кінці лінії - сіре кільце з прозорою серединою */
+.hero__imgWrap::after{
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    right: 10%;
+    width: 4px;
+    height: 4px;
+    background: transparent;
+    border: 1px solid var(--grey);
+    border-radius: 50%;
+    z-index: 8;
+}
+
 .hero__image{
     width: 100%;
     height: auto;
@@ -582,6 +632,19 @@ body.menu-open{
     background: url("../img/ui/point.svg") no-repeat center / contain;
     z-index: 0;
     pointer-events: none;
+}
+
+/* Лінія під шафою, на якій вона стоїть - 80% ширини шафи */
+.hero__right::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--lightgrey) 2%, var(--lightgrey) 98%, transparent 100%);
+    z-index: 6;
 }
 
 /* кнопка реально по центру контейнера */
