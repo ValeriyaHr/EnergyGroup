@@ -6,8 +6,8 @@
 
     <title>Prime Energy Group</title>
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="alternate icon" href="/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="./img/favicon.svg">
+    <link rel="alternate icon" href="./img/favicon.svg">
 
     <script src="./js/jquery/jquery-3.7.1.min.js"></script>
     <script type="module" src="./js/main.js"></script>
@@ -15,10 +15,11 @@
 
     <!-- Подключение CSS -->
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/library-form.css">
     <link rel="stylesheet" href="./css/mobile.css" media="(max-width: 768px)">
 </head>
 
-<body>
+<body class="page-library">
 
 <!-- PRELOADER-->
 <!-- {{>preloader}} -->
@@ -28,7 +29,7 @@
 
     <main>
         <section class="techLibHero">
-            <div class="container grid12 debug-grid techLibHero__inner">
+            <div class="container grid12 techLibHero__inner">
                 <div class="techLibHero__titleCol">
                     <h1 class="techLibHero__title">
                         <span class="techLibHero__brandInTitle">Prime Energy Group</span>
@@ -38,7 +39,7 @@
 
                     <div class="techLibHero__actions">
                         <a class="uLinkBrackets" href="#materials">ПЕРЕЙТИ ДО МАТЕРІАЛІВ</a>
-                        <a class="uLinkBrackets" href="#consult">ЗВ’ЯЗАТИСЬ ІЗ ТЕХНІЧНИМ ВІДДІЛОМ</a>
+                        <a class="uLinkBrackets" href="./index.html#contacts">ЗВ’ЯЗАТИСЬ ІЗ ТЕХНІЧНИМ ВІДДІЛОМ</a>
                     </div>
                 </div>
 
@@ -54,6 +55,10 @@
                         <a class="techLibHeroCard__titleLink" href="#schemes">ПРИНЦИПОВІ СХЕМИ</a>
                     </div>
 
+                    <div class="techLibHeroCard techLibHeroCard--video">
+                        <a class="techLibHeroCard__titleLink" href="#schemes">ВІДЕОІНСТРУКЦІЯ</a>
+                    </div>
+
                     <div class="techLibHeroCard techLibHeroCard--montage">
                         <a class="techLibHeroCard__titleLink" href="#montage">ТИПОВІ МОНТАЖІ</a>
                     </div>
@@ -67,7 +72,7 @@
         </section>
         <!-- 2) BLACK: Типові монтажі -->
         <section class="techLibBlock techLibBlock--montage" id="montage">
-            <div class="container techLibBlock__inner">
+            <div class="container grid12 techLibBlock__inner">
                 <div class="techLibBlock__left">
                     <h2 class="techLibBlock__title">ТИПОВІ МОНТАЖІ</h2>
 
@@ -116,7 +121,7 @@
 
         <!-- 3) BLACK: Принципові схеми -->
         <section class="techLibBlock techLibBlock--schemes" id="schemes">
-            <div class="container techLibBlock__inner">
+            <div class="container grid12 techLibBlock__inner">
                 <div class="techLibBlock__left">
                     <h2 class="techLibBlock__title">ПРИНЦИПОВІ СХЕМИ</h2>
 
@@ -164,7 +169,7 @@
 
         <!-- 4) BLACK: Документація та сертифікати -->
         <section class="techLibBlock techLibBlock--docs" id="docs-cert">
-            <div class="container techLibBlock__inner">
+            <div class="container grid12 techLibBlock__inner">
                 <div class="techLibBlock__left">
                     <h2 class="techLibBlock__title">ДОКУМЕНТАЦІЯ ТА СЕРТИФІКАТИ</h2>
 
@@ -180,13 +185,64 @@
                     </p>
 
                     <div class="techLibCtas">
-                        <a class="uLinkBrackets uLinkBrackets--right" href="#consult">ЗАПРОСИТИ ОРИГІНАЛ ДОКУМЕНТУ</a>
+                        <a class="uLinkBrackets uLinkBrackets--right" href="./index.html#contacts">ЗАПРОСИТИ ОРИГІНАЛ ДОКУМЕНТУ</a>
                         <a class="techLibPdfBtn btn btn--primary" href="#" download>
                             <span class="btn__bracket">[</span>
                             <span class="btn__label">ЗАВАНТАЖИТИ PDF</span>
                             <span class="btn__bracket">]</span>
                         </a>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="libReqSection" id="library-request">
+            <div class="container grid12 libReqSection__grid">
+                <div class="libReqSection__title">
+                    ЯКЩО ВИ НЕ ЗНАЙШЛИ ПОТРІБНУ СХЕМУ ЧИ МАЄТЕ ПИТАННЯ ЩОДО ЕКСПЛУАТАЦІЇ - НАШ ТЕХНІЧНИЙ ВІДДІЛ ДОПОМОЖЕ ДИСТАНЦІЙНО АБО НА ОБ'ЄКТІ
+                </div>
+
+                <div class="libReqSection__subtitle">
+                    Залиште свої контакти - і технічний відділ зв'яжеться з вами протягом 2 робочих днів
+                </div>
+
+                <div class="libReqSection__right">
+                    <form class="libReqForm" action="#" method="post">
+                        <div class="libReqForm__panel">
+                            <div class="libReqForm__grid">
+                                <label class="libReqField">
+                                    <input class="libReqField__input" type="text" name="firstName" placeholder="ІМ'Я *" required>
+                                </label>
+
+                                <label class="libReqField">
+                                    <input class="libReqField__input" type="text" name="lastName" placeholder="ПРІЗВИЩЕ *" required>
+                                </label>
+
+                                <label class="libReqField libReqField--full">
+                                    <input class="libReqField__input" type="email" name="email" placeholder="EMAIL *" required>
+                                </label>
+
+                                <label class="libReqField libReqField--full">
+                                    <input class="libReqField__input" type="tel" name="phone" placeholder="ТЕЛЕФОН">
+                                </label>
+
+                                <label class="libReqField libReqField--full">
+                                    <textarea class="libReqField__textarea" name="message" placeholder="ОПИШІТЬ, ЧИМ МИ МОЖЕМО ВАМ ДОПОМОГТИ *" required></textarea>
+                                </label>
+                            </div>
+                        </div>
+
+                        <label class="libReqAgree">
+                            <input class="libReqAgree__check" type="checkbox" required>
+                            <span class="libReqAgree__dot" aria-hidden="true"></span>
+                            <span class="libReqAgree__text">Даю згоду на обробку персональних даних</span>
+                        </label>
+
+                        <div class="libReqActions">
+                            <button class="libReqBtn" type="submit">ЗВ'ЯЗАТИСЬ ІЗ ТЕХНІЧНИМ ВІДДІЛОМ</button>
+                            <a class="libReqConsult" href="./index.html#contacts">Consult with Engineer</a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>
