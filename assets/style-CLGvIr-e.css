@@ -3636,11 +3636,10 @@ body.menu-open{
     overflow: hidden;
 }
 .techLibHero__titleCol{
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
+    display: contents;
 }
 .docHero__title{
+    margin-top: 150px;
     display: flex;
     flex-direction: column;
     font-family: var(--font-family), sans-serif;
@@ -4003,11 +4002,11 @@ body.menu-open{
     display:inline-flex;
     align-items:center;
     gap:10px;
-    color:var(--text);
+    color:var(--grey-dark);
     text-decoration:none;
     font-size: clamp(18px, 1.2vw, 24px);
-    line-height: 1.2;
-    letter-spacing: -0.02em;
+    line-height: 1.05;
+    letter-spacing: -0.08em;
     text-transform:uppercase;
     white-space:nowrap;
 }
@@ -4084,19 +4083,26 @@ body.menu-open{
 /* ====== 1) HERO WHITE ====== */
 .techLibHero{
     position:relative;
-    background:#fff;
+    background:var(--white);
     padding: 132px 0 86px;
     overflow:hidden;
 }
-/* сітка-фон */
-.techLibHero::before{
+/* background-lib фон */
+.techLibHero::after{
     content:"";
     position:absolute;
-    inset:0;
-    background: url("/EnergyGroup/assets/grid-404-DXaU8owx.svg") repeat;
-    background-size: 1400px 1400px;
-    background-position: 0 0;
+    left: calc(var(--gutter, 12px) + (100% / 12 * 0));
+    top: 0;
+    width: calc(100% / 12 * 11);
+    height: 100%;
+    background: url("/EnergyGroup/assets/background-lib-C08l7wFZ.svg") no-repeat top center;
+    background-size: contain;
     pointer-events:none;
+    z-index: 0;
+}
+/* прибрано дублюючий шар сітки, лишаємо один фон у hero */
+.techLibHero::before{
+    content: none;
 }
 .techLibHero__inner{
     position: relative;
@@ -4116,7 +4122,7 @@ body.menu-open{
 }
 .techLibHero__title{
     grid-column: 1 / -1;
-    margin: 0;
+    margin: 150px 0 0 0;
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
     column-gap: clamp(12px, 1.8vw, 24px);
@@ -4151,15 +4157,17 @@ body.menu-open{
     grid-row: 2;
     align-self: start;
     padding-top: 14px;
-    font-family: var(--font-family), sans-serif;
+    font-family: var(--third-family), sans-serif;
+    font-weight: 300;
     font-size: 14px;
     line-height: 1.2;
-    letter-spacing: 0;
+    letter-spacing: -0.03em;
     text-transform: none;
     color: var(--orange);
     opacity: 1;
     pointer-events: none;
-    max-width: 110px;
+    max-width: none;
+    white-space: nowrap;
 }
 .techLibHero__brand{
     font-size: 14px;
@@ -4173,6 +4181,7 @@ body.menu-open{
     display: grid;
     gap: 10px;
     margin-top: 28px;
+    margin-bottom: 100px;
     margin-left: 0;
     justify-items: start;
 }
@@ -4216,6 +4225,9 @@ body.menu-open{
     grid-column: 7 / span 2;
     grid-row: 1;
 }
+.techLibHeroCard--video{
+    display: none;
+}
 .techLibHeroCard--montage{
     grid-column: 10 / 13;
     grid-row: 1;
@@ -4248,7 +4260,7 @@ body.menu-open{
 }
 /* Сірий текст під 2+3 (50%) */
 .techLibHeroNote{
-    grid-column: 6 / 13;
+    grid-column: 7 / 13;
     grid-row: 2;
     margin-top: 0;
     max-width: none;
@@ -4266,19 +4278,23 @@ body.menu-open{
 .techLibHeroNote p + p{ margin-top: 18px; }
 .techLibHeroCard__titleLink{
     display: inline-block;
-    font-size: 12px;
-    letter-spacing: .14em;
+    font-family: var(--third-family), sans-serif;
+    font-weight: 300;
+    font-size: 14px;
     text-transform: uppercase;
     text-decoration: none;
-    color: rgba(65,62,57,.60);
+    color: var(--black);
+    line-height: 100%;
+    letter-spacing: -0.03em;
 }
-.techLibHeroCard__titleLink:hover{ color: rgba(65,62,57,.85); }
+.techLibHeroCard__titleLink:hover{ color: var(--black); }
 .techLibHeroCard__text{
     margin-top: 22px;
-    font-size: 12px;
-    line-height: 1.35;
-    color: rgba(65,62,57,.32);
+    font-size: 14px;
+    line-height: 1;
+    color: var(--orange);
     max-width: 520px;
+    letter-spacing: -0.03em;
 }
 .techLibHeroCard__text--orange{
     color: var(--orange);
@@ -4302,7 +4318,7 @@ body.menu-open{
         grid-column: 1 / span 2;
         padding-top: 8px;
         font-size: 12px;
-        max-width: 92px;
+        max-width: none;
     }
 
     .techLibHero__titleBottom{
@@ -4335,9 +4351,13 @@ body.menu-open{
         grid-column: 6 / 13;
     }
 }
-@media (max-width: 640px){
+@media (max-width: 768px){
     .techLibHero{
         padding: 96px 0 56px;
+    }
+
+    .techLibHero::before{
+        content: none;
     }
 
     .techLibHero__titleCol,
@@ -4350,6 +4370,7 @@ body.menu-open{
         font-size: clamp(46px, 16vw, 72px);
         line-height: .92;
         row-gap: 2px;
+        margin: 0;
     }
 
     .techLibHero__titleTop,
@@ -4361,12 +4382,7 @@ body.menu-open{
         grid-column: 1 / -1;
     }
 
-    .techLibHero__brandInTitle{
-        grid-row: auto;
-        padding-top: 0;
-        margin-top: 6px;
-        max-width: none;
-    }
+    .techLibHero__brandInTitle{ display: none; }
 
     .techLibHero__titleBottom{
         grid-row: auto;
@@ -4374,11 +4390,34 @@ body.menu-open{
 
     .techLibHero__actions{
         margin-top: 18px;
+        margin-bottom: 0;
+        justify-items: start;
+        text-align: left;
     }
 
     .techLibHero__bottom{
         margin-top: 72px;
         gap: 18px;
+    }
+
+    .techLibHeroCard,
+    .techLibHeroCard--docs,
+    .techLibHeroCard--schemes,
+    .techLibHeroCard--montage,
+    .techLibHeroNote{
+        grid-column: 1 / -1;
+        justify-self: start;
+        text-align: left;
+    }
+
+    .techLibHeroCard__titleLink,
+    .techLibHeroCard__text,
+    .techLibHeroCard__text--orange,
+    .techLibHeroNote,
+    .techLibHeroNote p{
+        width: 100%;
+        max-width: none;
+        text-align: left;
     }
 
     .techLibHeroCard--montage{
@@ -4395,9 +4434,9 @@ body.menu-open{
 .techLibBlock__desc::before{
     content: "[";
     position: absolute;
-    left: 0;
-    top: -2%;
-    transform: translateX(clamp(-14px, -1.2vw, -8px));
+    left: -12px;
+    top: 0;
+    transform: none;
     font-family: var(--font-family-Thin), sans-serif;
     font-weight: 300;
     font-size: 18px;
@@ -4405,11 +4444,11 @@ body.menu-open{
     color: rgba(255,255,255,.9);
     pointer-events: none;
 }
-.techLib .techLibBlock__desc{
+.techLibBlock__desc{
     font-family: var(--font-family-Thin), sans-serif;
     font-weight: 300;
     position: relative;
-    padding-left: 18px;
+    padding-left: 0;
 }
 /* пункти списку */
 .techLib .techLibItem__text{
@@ -4421,25 +4460,23 @@ body.menu-open{
     text-transform: uppercase;
 }
 .techLibBlock{
-    background:
-            radial-gradient(1000px 520px at 45% 20%, rgba(255,255,255,.08), rgba(0,0,0,0)),
-            var(--black);
+    background: var(--black);
     color:#fff;
     padding:64px 0;
 }
 .techLibBlock__inner{
-    display:flex;
-    gap:56px;
-    justify-content:space-between;
+    display:grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(12px, 1.8vw, 24px);
     align-items:flex-start;
 }
 .techLibBlock__left{
-    flex:0 0 44%;
-    min-width:340px;
+    grid-column: 1 / 7;
+    min-width: 0;
 }
 .techLibBlock__right{
-    flex:1 1 56%;
-    min-width:320px;
+    grid-column: 7 / 13;
+    min-width: 0;
 }
 .techLibBlock__title{
     margin:0 0 18px;
@@ -4481,7 +4518,7 @@ body.menu-open{
     display:flex;
     flex-direction:column;
     gap:10px;
-    margin-bottom:26px;
+    margin-bottom:40px;
 }
 .techLibItem{
     display:flex;
@@ -4501,8 +4538,8 @@ body.menu-open{
 .techLibCtas{
     display: flex;
     flex-direction: column;
-    align-items: flex-end;   /* ← оце головне */
-    gap: 16px;
+    align-items: flex-end;
+    gap: 40px;
 }
 /* ===== techLib: arrow swap (2 svg) ===== */
 .techLibBlock .techLibItem__arrow,
@@ -4550,7 +4587,6 @@ body.menu-open{
     position: relative;
     padding: 0 18px;              /* місце під дужки */
     transition: color .18s ease, opacity .18s ease;
-    margin-bottom: 200px;
 }
 .techLibBlock .uLinkBrackets::before,
 .techLibBlock .uLinkBrackets::after{
@@ -4573,13 +4609,29 @@ body.menu-open{
     justify-content: flex-end;
 }
 /* techLib: primary button size tweak (same look, smaller) */
-.techLib .techLibPdfBtn.btn{
+.techLibBlock .techLibPdfBtn.btn{
     height: 44px;
     padding: 0 20px;
     font-size: 12px;
     letter-spacing: .12em;
 }
-.techLib .techLibPdfBtn .btn__label{
+.techLibBlock .techLibPdfBtn .btn__bracket{
+    transition: transform .18s ease, color .18s ease, opacity .18s ease;
+}
+.techLibBlock .techLibPdfBtn:hover .btn__bracket:first-child{
+    transform: translateX(-8px);
+}
+.techLibBlock .techLibPdfBtn:hover .btn__bracket:last-child{
+    transform: translateX(8px);
+}
+.techLibBlock .techLibPdfBtn:active{
+    background: var(--grey);
+    color: var(--white);
+}
+.techLibBlock .techLibPdfBtn:active .btn__bracket{
+    color: currentColor;
+}
+.techLibBlock .techLibPdfBtn .btn__label{
     letter-spacing: .12em;
 }
 /* ===== techLibHero: brackets drift on hover (ONLY here) ===== */
@@ -4588,15 +4640,15 @@ body.menu-open{
     display: inline-flex;
     width: fit-content;
     align-self: flex-start;
-    padding: 0 18px;
+    padding: 0 12px;
 }
 /* малюємо дужки як елементи */
 .techLibHero .uLinkBrackets::before{
     content: "[";
     position: absolute;
     left: 0;
-    top: 50%;
-    transform: translateY(-50%) translateX(-6px);
+    top: 47%;
+    transform: translateY(-50%) translateX(-2px);
     color: var(--orange);
     transition: transform .18s ease, opacity .18s ease;
     line-height: 1;
@@ -4605,17 +4657,17 @@ body.menu-open{
     content: "]";
     position: absolute;
     right: 0;
-    top: 50%;
-    transform: translateY(-50%) translateX(6px);
+    top: 47%;
+    transform: translateY(-50%) translateX(2px);
     color: var(--orange);
     transition: transform .18s ease, opacity .18s ease;
     line-height: 1;
 }
 .techLibHero .uLinkBrackets:hover::before{
-    transform: translateY(-50%) translateX(-10px);
+    transform: translateY(-50%) translateX(-6px);
 }
 .techLibHero .uLinkBrackets:hover::after{
-    transform: translateY(-50%) translateX(10px);
+    transform: translateY(-50%) translateX(6px);
 }
 /* ====== 5) FORM WHITE ====== */
 .techLibForm{
