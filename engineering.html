@@ -11,11 +11,12 @@
 
     <script src="./js/jquery/jquery-3.7.1.min.js"></script>
 
-    <!-- Подключение CSS -->
-    <link rel="stylesheet" crossorigin href="/EnergyGroup/assets/engineering-UuAoRLpl.css">
-  <script type="module" crossorigin src="/EnergyGroup/assets/menu-DC5sL17k.js"></script>
-  <link rel="stylesheet" crossorigin href="/EnergyGroup/assets/style-Bh_vPNW8.css">
-  <link rel="stylesheet" href="/EnergyGroup/assets/mobile-C8y8FZ3s.css" media="(max-width: 768px)">
+    <!-- Подключение CSS -->
+    <link rel="stylesheet" crossorigin href="/EnergyGroup/assets/engineering-MWCXnqUL.css">
+  <script type="module" crossorigin src="/EnergyGroup/assets/engineering-C9Y9vxcV.js"></script>
+  <link rel="modulepreload" crossorigin href="/EnergyGroup/assets/menu-DC5sL17k.js">
+  <link rel="stylesheet" crossorigin href="/EnergyGroup/assets/style-B_tCZ_9K.css">
+  <link rel="stylesheet" href="/EnergyGroup/assets/mobile-C5pR7oMR.css" media="(max-width: 768px)">
 </head>
 
 <body class="page-engineering">
@@ -219,7 +220,7 @@
 </div><main>
 
     <section class="engHero" aria-label="Інжиніринг та рішення — вступ">
-        <div class="container grid12 debug-grid">
+        <div class="container grid12">
             <div class="engHero__panel">
                 <div class="engHero__bgText" aria-hidden="true">PRIME ENERGY</div>
 
@@ -243,7 +244,7 @@
     <div class="engDivider" aria-hidden="true"></div>
     <!-- Инженеринг та решение начало -->
     <section class="engSection" id="engineering" aria-label="Інжиніринг та рішення">
-        <div class="container engSection__wrap">
+        <div class="container engSection__wrap grid12">
             <div class="engSection__card">
                 <img class="svgTick engSection__ticks is-active" src="/EnergyGroup/assets/tics-pWtZ7qvC.svg" alt="" aria-hidden="true">
                 <div class="engSection__rows">
@@ -262,7 +263,7 @@
                         </div>
 
                         <div class="engSolRow__right">
-                            <a class="engSolRow__action" href="#contacts">ЗАПРОСИТИ РОЗРАХУНОК СИСТЕМИ</a>
+                            <button class="engSolRow__action" type="button" data-eng-request-open>ЗАПРОСИТИ РОЗРАХУНОК СИСТЕМИ</button>
                             <div class="engSolRow__note">Розробляємо системи ЕХЗ для об’єктів будь-якого масштабу — від локальних до міжнародних</div>
                         </div>
                     </div>
@@ -300,7 +301,7 @@
                         </div>
 
                         <div class="engSolRow__right">
-                            <a class="engSolRow__action" href="#contacts">ЗАПРОСИТИ РОЗРАХУНОК СИСТЕМИ</a>
+                            <button class="engSolRow__action" type="button" data-eng-request-open>ЗАПРОСИТИ РОЗРАХУНОК СИСТЕМИ</button>
                             <div class="engSolRow__note">Як ми впроваджуємо системи катодного захисту — на українських і міжнародних об’єктах</div>
                         </div>
                     </div>
@@ -347,14 +348,58 @@
                             Отримайте технічну консультацію та попередній розрахунок системи катодного захисту під ваш об’єкт — наш інженер зв’яжеться з вами протягом двох робочих днів
                         </div>
 
-                        <a class="engSolRow__action engSolRow__action--bottom btn--centered" href="#contacts">
+                        <button class="engSolRow__action engSolRow__action--bottom btn--centered" type="button" data-eng-request-open>
                             ЗАПРОСИТИ РОЗРАХУНОК СИСТЕМИ
-                        </a>
+                        </button>
                     </div>
                 </div>
         </div>
         </div>
     </section>
+
+    <div class="engReqModal" id="engReqModal" aria-hidden="true">
+        <div class="engReqModal__backdrop" data-eng-request-close></div>
+        <div class="engReqModal__dialog" role="dialog" aria-modal="true" aria-labelledby="engReqModalTitle">
+            <button class="engReqModal__close" type="button" aria-label="Закрити" data-eng-request-close></button>
+            <h2 class="engReqModal__title" id="engReqModalTitle">ЗАПРОСИТИ РОЗРАХУНОК СИСТЕМИ</h2>
+
+            <form class="engReqModal__form" action="#" method="post">
+                <div class="engReqModal__grid2">
+                    <label class="engReqModal__field">
+                        <span class="engReqModal__srOnly">Ім'я</span>
+                        <input class="engReqModal__input" type="text" name="eng_name" placeholder="ІМ'Я *" required>
+                    </label>
+                    <label class="engReqModal__field">
+                        <span class="engReqModal__srOnly">Прізвище</span>
+                        <input class="engReqModal__input" type="text" name="eng_surname" placeholder="ПРІЗВИЩЕ *" required>
+                    </label>
+                </div>
+
+                <label class="engReqModal__field">
+                    <span class="engReqModal__srOnly">Email</span>
+                    <input class="engReqModal__input" type="email" name="eng_email" placeholder="EMAIL *" required>
+                </label>
+
+                <label class="engReqModal__field">
+                    <span class="engReqModal__srOnly">Телефон</span>
+                    <input class="engReqModal__input" type="tel" name="eng_phone" placeholder="ТЕЛЕФОН" inputmode="tel">
+                </label>
+
+                <label class="engReqModal__field">
+                    <span class="engReqModal__srOnly">Опис запиту</span>
+                    <textarea class="engReqModal__input engReqModal__input--area" name="eng_message" placeholder="ОПИШІТЬ, ЧИМ МИ МОЖЕМО ВАМ ДОПОМОГТИ *" required></textarea>
+                </label>
+
+                <label class="engReqModal__agree">
+                    <input class="engReqModal__check" type="checkbox" name="eng_agree" required>
+                    <span>Даю згоду на обробку персональних даних</span>
+                </label>
+                <p class="engReqModal__gdpr">Ваші дані будуть використані виключно для надання технічної консультації. Ми не передаємо інформацію третім сторонам та дотримуємося вимог GDPR</p>
+
+                <button class="engReqModal__submit" type="submit">НАДІСЛАТИ ЗАПИТ</button>
+            </form>
+        </div>
+    </div>
 
 
 </main>
@@ -370,7 +415,7 @@
                     <div class="footerPeg__head">Меню:</div>
                     <div class="footerPeg__line"></div>
 
-                    <a class="footerPeg__link" href="#home">ГОЛОВНИЙ ЕКРАН</a>
+                    <a class="footerPeg__link" href="index.html#home">ГОЛОВНИЙ ЕКРАН</a>
                     <a class="footerPeg__link" href="products.html">ПРОДУКЦІЯ</a>
                     <a class="footerPeg__link" href="engineering.html">ІНЖИНІРИНГ</a>
                     <a class="footerPeg__link" href="library.html">ТЕХНІЧНА БІБЛІОТЕКА</a>
@@ -456,6 +501,8 @@
         </div>
     </div>
 </footer>
+
+
 
 
 

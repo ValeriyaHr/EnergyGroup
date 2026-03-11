@@ -348,7 +348,7 @@ body.menu-open .header__burger::after {
 .intro__p{
     grid-column: 1 / 3;
     margin: 0;
-    font-size: 12px;
+    font-size: 15px;
     line-height: 1.1;
 }
 
@@ -550,23 +550,27 @@ body.menu-open .header__burger::after {
 .whyus__inner{
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    row-gap: 82px;
-    margin: 0;
+    row-gap: 24px;
+    margin: 0 auto;
 }
 .whyus__left{
-    display: contents;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    column-gap: 12px;
+    row-gap: 8px;
 }
 
 .whyus .intro__p{
     grid-column: 1 / 3;
     margin: 0;
-    font-size: 13px;
+    font-size: 15px;
 }
 .whyus__text{
     grid-column: 3 / -1;
     margin: 0;
     padding: 0;
-    display: inline;
+    display: block;
     font-size: 12px;
     font-weight: 400;
 }
@@ -577,20 +581,24 @@ body.menu-open .header__burger::after {
 .whyus__tabs{
     grid-column: 1 / -1;
     width: 100%;
+    margin-top: 0;
 }
 
 /* панель табів — теж 100% */
 .whyPanel{
-    width: 100%;
+    width: calc(100% - 24px);
     max-width: none;
-    margin: 0;
-    padding: 14px 16px;
+    margin: 0 auto;
+    padding: 14px 12px;
     border-radius: 18px;
-    overflow: visible;
+    overflow: hidden;
 }
 /* айтеми — без фіксованої ширини */
 .whyItem{
-    width: 100%;}
+    left: 12px;
+    right: 12px;
+    top: 14px;
+}
 /* ===== /WHY US ===== */
 
 /* ===== кінець -мсекція з табами ===== */
