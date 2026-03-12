@@ -20,9 +20,6 @@
 .page-library .libReqSection__grid {
     position: relative;
     z-index: 1;
-}
-
-.page-library .libReqSection__grid {
     align-items: start;
     row-gap: 26px;
 }
@@ -33,6 +30,7 @@
 
 .page-library .libReqSection__right {
     grid-column: 7 / 13;
+    width: 100%;
 }
 
 .page-library .libReqSection__title {
@@ -64,13 +62,17 @@
 
 .page-library .libReqForm {
     width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 .page-library .libReqForm__panel {
     background: var(--black);
     border-radius: 14px;
     padding: 40px;
-    box-shadow: var(--black-background);
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 0 0 0 var(--black-background);
 }
 
 .page-library .libReqForm__grid {
@@ -141,7 +143,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    margin: 22px 44px 22px;
+    margin: 22px 44px 10px;
     font-family: var(--third-family), sans-serif;
     font-weight: 300;
     font-size: 14px;
@@ -171,6 +173,17 @@
     border-color: var(--grey-dark);
 }
 
+.page-library .libReqGdpr {
+    margin: 0 44px 0 64px;
+    font-family: var(--third-family), sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--lightgrey);
+    text-transform: none;
+}
+
 .page-library .libReqBtn {
     display: inline-flex;
     align-items: center;
@@ -186,7 +199,7 @@
     font-size: 14px;
     line-height: 1.05;
     letter-spacing: .08em;
-    text-transform: uppercase;
+    text-transform: none;
     cursor: pointer;
     transition: filter .2s ease;
 }
@@ -225,10 +238,20 @@
     transform: translate3d(6px, -50%, 0);
 }
 
+.page-library .libReqBtn:active {
+    background: var(--grey);
+    color: var(--white);
+}
+
+.page-library .libReqBtn:active::before,
+.page-library .libReqBtn:active::after {
+    color: currentColor;
+}
+
 .page-library .libReqActions {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     gap: 40px;
     margin-top: 50px;
 }
@@ -301,8 +324,9 @@
     }
 
     .page-library .libReqSection__title {
-        font-size: clamp(24px, 7.2vw, 32px);
+        font-size: 17px;
         line-height: 1.08;
+        margin-bottom: 0;
     }
 
     .page-library .libReqSection__subtitle {
@@ -323,17 +347,28 @@
         flex: 1 1 100%;
     }
 
+    .page-library .libReqAgree {
+        margin: 16px 8px 8px;
+    }
+
+    .page-library .libReqGdpr {
+        margin: 0 8px 0 28px;
+        font-size: 12px;
+        line-height: 1.35;
+    }
+
     .page-library .libReqBtn {
-        width: 100%;
+        width: auto;
+        max-width: 100%;
         min-height: 44px;
-        padding: 12px 28px;
+        padding: 20px 26px;
         font-size: 14px;
         line-height: 1.05;
     }
 
     .page-library .libReqActions {
-        align-items: stretch;
-        gap: 10px;
+        align-items: center;
+        gap: 40px;
     }
 
     .page-library .libReqConsult {
