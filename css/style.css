@@ -2974,7 +2974,7 @@ body.menu-open{
 .techLibHero{
     position:relative;
     background:var(--white);
-    padding: 132px 0 86px;
+    padding: 0 0 43px;
     overflow:hidden;
 }
 /* background-lib фон */
@@ -3112,7 +3112,7 @@ body.menu-open{
 /* 3 колонки + 2 рядки: заголовки / тексти */
 .techLibHero__bottom{
     grid-column: 1 / -1;
-    margin-top: 176px;
+    margin-top: 120px;
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
     column-gap: clamp(12px, 1.8vw, 24px);
