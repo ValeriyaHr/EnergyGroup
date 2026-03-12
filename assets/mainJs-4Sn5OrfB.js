@@ -204,55 +204,123 @@ document.addEventListener("DOMContentLoaded", () => {
   initTicsAnimation();
 });
 function initTicsAnimation() {
-  const svg = document.querySelector("svg");
-  const paths = svg ? Array.from(svg.querySelectorAll("g[clip-path] path")) : [];
-  let i = 0;
-  const duration = 1e3;
-  if (paths.length) {
-    paths.forEach((p) => p.classList.remove("is-active"));
-    setInterval(() => {
-      paths.forEach((p) => p.classList.remove("is-active"));
-      paths[i].classList.add("is-active");
-      i = (i + 1) % paths.length;
-    }, duration);
-  }
+  var _a;
+  const section = document.querySelector(".engSection");
+  const card = section == null ? void 0 : section.querySelector(".engSection__card");
   const ticsElement = document.querySelector(".engSection__ticks");
-  if (!ticsElement) return;
-  const ticsItems = ticsElement.querySelectorAll("path");
-  if (!ticsItems.length) {
-    console.warn("No path elements found in tics SVG");
-    return;
+  const secondRow = (_a = section == null ? void 0 : section.querySelectorAll(".engSolRow")) == null ? void 0 : _a[1];
+  if (!section || !card || !ticsElement || !secondRow) return;
+  let ticking = false;
+  let inView = false;
+  let latestDelta = 0;
+  let animationRaf = 0;
+  let lastScrollY = window.scrollY || window.pageYOffset || 0;
+  let currentRotation = 0;
+  let targetRotation = 0;
+  const MAX_DELTA_DESKTOP = 150;
+  const MAX_DELTA_MOBILE = 110;
+  const MAX_ROTATION_DESKTOP = 46;
+  const MAX_ROTATION_MOBILE = 34;
+  const ROTATE_STEP_DESKTOP = 0.23;
+  const ROTATE_STEP_MOBILE = 0.18;
+  const SMOOTHING = 0.18;
+  function setNeutralState() {
+    ticsElement.style.setProperty("--eng-ticks-scroll-rotate", "0deg");
+    ticsElement.style.setProperty("--eng-ticks-scroll-shift-y", "0px");
+    ticsElement.style.setProperty("--eng-ticks-scroll-scale", "1");
   }
-  console.log(`Found ${ticsItems.length} path elements in tics`);
-  const originalStrokes = /* @__PURE__ */ new WeakMap();
-  ticsItems.forEach((element) => {
-    const stroke = element.getAttribute("stroke");
-    if (stroke) {
-      originalStrokes.set(element, stroke);
+  setNeutralState();
+  function updateTicsPlacement() {
+    const mobileView = isMobileView();
+    const target = mobileView ? secondRow.querySelector(".engSolRow__num") : secondRow.querySelector(".engSolRow__center");
+    if (!target) return;
+    const cardRect = card.getBoundingClientRect();
+    const targetRect = target.getBoundingClientRect();
+    const baseCenterX = targetRect.left - cardRect.left + targetRect.width / 2;
+    const baseCenterY = targetRect.top - cardRect.top + targetRect.height / 2;
+    const centerX = mobileView ? baseCenterX - targetRect.width * 0.52 : baseCenterX;
+    const centerY = mobileView ? baseCenterY - targetRect.height * 0.14 : baseCenterY;
+    const baseSize = Math.max(targetRect.width, targetRect.height);
+    const size = mobileView ? Math.max(targetRect.height * 2.85, 320) : Math.max(baseSize * 2.15, 920);
+    ticsElement.style.left = `${centerX.toFixed(2)}px`;
+    ticsElement.style.top = `${centerY.toFixed(2)}px`;
+    ticsElement.style.width = `${size.toFixed(2)}px`;
+  }
+  function applyMotionByDelta(deltaY) {
+    if (!inView) {
+      setNeutralState();
+      return;
     }
+    const mobileView = isMobileView();
+    const maxDelta = mobileView ? MAX_DELTA_MOBILE : MAX_DELTA_DESKTOP;
+    const clampedDelta = Math.max(-maxDelta, Math.min(maxDelta, deltaY));
+    const maxRotation = mobileView ? MAX_ROTATION_MOBILE : MAX_ROTATION_DESKTOP;
+    const rotateStep = mobileView ? ROTATE_STEP_MOBILE : ROTATE_STEP_DESKTOP;
+    targetRotation += clampedDelta * rotateStep;
+    targetRotation = Math.max(-maxRotation, Math.min(maxRotation, targetRotation));
+  }
+  function animateRotation() {
+    if (!inView) {
+      animationRaf = 0;
+      return;
+    }
+    const diff = targetRotation - currentRotation;
+    currentRotation += diff * SMOOTHING;
+    targetRotation *= 0.92;
+    if (Math.abs(targetRotation) < 0.08) targetRotation = 0;
+    if (Math.abs(currentRotation) < 0.06 && targetRotation === 0) currentRotation = 0;
+    ticsElement.style.setProperty("--eng-ticks-scroll-rotate", `${currentRotation.toFixed(2)}deg`);
+    ticsElement.style.setProperty("--eng-ticks-scroll-shift-y", "0px");
+    ticsElement.style.setProperty("--eng-ticks-scroll-scale", "1");
+    if (Math.abs(currentRotation) > 0 || Math.abs(targetRotation) > 0) {
+      animationRaf = window.requestAnimationFrame(animateRotation);
+    } else {
+      animationRaf = 0;
+    }
+  }
+  function requestTickUpdate() {
+    const currentY = window.scrollY || window.pageYOffset || 0;
+    latestDelta = currentY - lastScrollY;
+    lastScrollY = currentY;
+    if (!inView || latestDelta === 0) return;
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(() => {
+      ticking = false;
+      applyMotionByDelta(latestDelta);
+      if (!animationRaf) {
+        animationRaf = window.requestAnimationFrame(animateRotation);
+      }
+    });
+  }
+  updateTicsPlacement();
+  window.addEventListener("resize", () => {
+    updateTicsPlacement();
+    currentRotation = 0;
+    targetRotation = 0;
+    setNeutralState();
   });
-  function highlightTic(element) {
-    const originalStroke = originalStrokes.get(element);
-    if (!originalStroke) {
-      console.warn("No original stroke found for element");
-      return;
-    }
-    element.setAttribute("stroke", "#ff7a00");
-    element.style.transition = "all 0.4s ease";
-    setTimeout(() => {
-      element.setAttribute("stroke", originalStroke);
-    }, 1500);
-  }
-  function sequentialHighlight(index = 0) {
-    if (index >= ticsItems.length) {
-      setTimeout(() => sequentialHighlight(0), 500);
-      return;
-    }
-    highlightTic(ticsItems[index]);
-    setTimeout(() => {
-      sequentialHighlight(index + 1);
-    }, 150);
-  }
-  sequentialHighlight();
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const visible = entries.some((entry) => entry.isIntersecting);
+      if (visible && !inView) {
+        inView = true;
+        lastScrollY = window.scrollY || window.pageYOffset || 0;
+        window.addEventListener("scroll", requestTickUpdate, { passive: true });
+      } else if (!visible && inView) {
+        inView = false;
+        window.removeEventListener("scroll", requestTickUpdate);
+        if (animationRaf) {
+          window.cancelAnimationFrame(animationRaf);
+          animationRaf = 0;
+        }
+        currentRotation = 0;
+        targetRotation = 0;
+        setNeutralState();
+      }
+    },
+    { rootMargin: "200px 0px 200px 0px", threshold: 0.01 }
+  );
+  observer.observe(section);
 }
-//# sourceMappingURL=mainJs-CqoWvtCY.js.map
+//# sourceMappingURL=mainJs-4Sn5OrfB.js.map

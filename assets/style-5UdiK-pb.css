@@ -382,7 +382,7 @@ body.menu-open{
         bottom: 0;
         width: 100%;
         height: 140px;
-        background: url("/EnergyGroup/assets/eng-arc-glow-EFMcqy1O.png") center bottom no-repeat;
+        background: url("/EnergyGroup/assets/eng-arc-glow-CtNHCJJC.png") center bottom no-repeat;
         background-size: cover;
         opacity: 1;
     }
@@ -1559,7 +1559,7 @@ body.no-scroll{ overflow: hidden; }
     --success: #24590d;
     --pad-x: 48px;
 
-    --gutter: clamp(16px, 4vw, 64px);      /* як у тебе */
+    --gutter: clamp(16px, 4vw, 64px);
     --container: min(1320px, calc(100% - (var(--gutter) * 2)));
     --leftEdge: calc((100% - var(--container)) / 2);
     --lineW: 2px;
