@@ -971,7 +971,7 @@ body:not(.products-page) .engSection{
     width: min(720px, 140vw);
 
     filter: none; /* ключове */
-    transform: translate(-50%, -50%) rotate(-12deg) scale(.9);
+    --eng-ticks-scale: .9;
 }
 
 .engSolRow{
@@ -1022,23 +1022,27 @@ body:not(.products-page) .engSection{
     text-align: right;
 }
 
-.engSolRow__center{
-    max-width: 100%;
-    width: 100%;
-    font-family: var(--font-family), sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 100%;
+body.page-engineering .engSection__rows > .engSolRow .engSolRow__label{
+    max-width: 90px;
 }
 
-.engSolRow__action{
+body.page-engineering .engSection__rows > .engSolRow .engSolRow__note{
+    width: auto;
+    max-width: 150px;
+    margin: 4px 0 10px auto;
+    font-size: 10px;
+    line-height: .95;
+}
+
+
+body.page-engineering .engSection__rows .engSolRow__action{
     white-space: normal;
     padding: 0 14px;
     font-size: 16px;
     line-height: 110%;
     letter-spacing: -0.03em;
     align-self: center;
-    margin-top: 83px;
+    margin-top: 0;
     margin-bottom: 165px;
 }
 

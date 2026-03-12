@@ -144,7 +144,7 @@
     --success: #24590d;
     --pad-x: 48px;
 
-    --gutter: clamp(16px, 4vw, 64px);      /* як у тебе */
+    --gutter: clamp(16px, 4vw, 64px);
     --container: min(1320px, calc(100% - (var(--gutter) * 2)));
     --leftEdge: calc((100% - var(--container)) / 2);
     --lineW: 2px;
