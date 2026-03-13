@@ -1324,7 +1324,8 @@ body.page-engineering .engSection__rows .engSolRow__action{
             text-align: left;
         }
 
-        .techLibHero__actions .uLinkBrackets:last-child{
+        .techLibHero__actions .uLinkBrackets:last-child,
+        .techLibHero__actions .uLinkDoc:last-child{
             margin-bottom: 90px;
         }
 
@@ -1369,6 +1370,7 @@ body.page-engineering .engSection__rows .engSolRow__action{
         }
 
         .techLibHero .uLinkBrackets,
+        .techLibHero .uLinkDoc,
         .techLibHeroCard__titleLink{
             letter-spacing: .1em;
         }
@@ -1503,4 +1505,36 @@ body.page-engineering .engSection__rows .engSolRow__action{
         .techLibPdfBtn.btn{
             align-self: center;
         }
+
+
+/* ===== docs (mobile-only) ===== */
+@media (max-width: 560px){
+    .docsTop__tabs{
+        grid-template-columns: 1fr;
+        row-gap: 10px;
+        justify-content: start;
+    }
+
+    .docsTop__tab{
+        white-space: normal;
+    }
+
+    .docsLinks__inner{
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "certs"
+          "manuals"
+          "catalogs";
+    }
+
+    .docsLinks__col#certs,
+    .docsLinks__col#manuals,
+    .docsLinks__col#catalogs {
+        width: 100%;
+    }
+
+    .reqForm__grid{ grid-template-columns: 1fr; }
+    .reqField--full{ grid-column: auto; }
+}
+
 
