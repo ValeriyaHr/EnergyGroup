@@ -3,6 +3,28 @@
 }
 
 @media (max-width: 768px){
+    .docs .docsForm .container{
+        width: calc(100% - 32px);
+    }
+
+    .docsForm__title{
+        margin: 0 0 28px;
+    }
+
+    .docsForm__left,
+    .docsForm__right{
+        grid-column: 1 / -1;
+    }
+
+    .reqForm__grid{
+        gap: 10px;
+    }
+
+    .reqField,
+    .reqField--full{
+        flex: 1 1 100%;
+    }
+
     .docsLinks__inner{
         grid-template-columns: 1fr;
         grid-template-areas:
@@ -203,10 +225,12 @@ body.menu-open .header__burger::after {
     left: 50%;
     top: 0;
     width: 100vw;
-    height: calc(100% - 126px); /* віднімаємо висоту зони з кнопкою */
+    height: calc(100% - 126px);
     transform: translateX(-50%);
-    background: var(--grey-pale) url("/EnergyGroup/assets/background-hero-BOHuWdf0.svg") no-repeat center center;
-    background-size: cover;
+    background:
+        url("/EnergyGroup/assets/grid-home-PV68KFyG.svg") no-repeat left center,
+        var(--grey-pale) url("/EnergyGroup/assets/grid-home-PV68KFyG.svg") no-repeat center center;
+    background-size: cover, cover;
     pointer-events: none;
     z-index: 0;
     opacity: 0.5;
@@ -332,7 +356,9 @@ body.menu-open .header__burger::after {
     text-align: left;
     font-size: 16px;
     line-height: 1.2;
-    overflow-wrap: anywhere;
+    overflow-wrap: break-word;
+    word-break: normal;
+    hyphens: auto;
     display: flow-root;
 }
 
@@ -888,7 +914,7 @@ body:not(.products-page) .engSection{
 
 }
 .engDivider{
-    height: 28vh;              /* було 40vh */
+    height: 28vh;
     background-position: center 120%;  /* опускаємо glow вниз */
 }
 
@@ -1633,12 +1659,23 @@ body.page-engineering .engSection__rows .engSolRow__action{
         width: 100%;
     }
 
-    .reqForm__grid{ grid-template-columns: 1fr; }
-    .reqField--full{ grid-column: auto; }
 }
 
 .docHero__title{
     font-weight: 500;
     font-size: 56px;
     margin-top: 0;}
+
+.docsForm__subtitle{
+    margin-bottom: 80px;
+}
+
+.docs .docsForm .reqBtn{
+    align-self: center;
+    margin-inline: auto;
+}
+
+.reqGdpr {
+    margin-bottom:40px;
+}
 

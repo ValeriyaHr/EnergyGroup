@@ -14,11 +14,11 @@
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <link rel="stylesheet" crossorigin href="/EnergyGroup/assets/style-oUbvti-v.css">
+    <link rel="stylesheet" crossorigin href="/EnergyGroup/assets/style-CLeNPTIo.css">
 
 
   <script type="module" crossorigin src="/EnergyGroup/assets/menu-D4_9xxD4.js"></script>
-  <link rel="stylesheet" href="/EnergyGroup/assets/mobile-C3MFIWbn.css" media="(max-width: 768px)">
+  <link rel="stylesheet" href="/EnergyGroup/assets/mobile-C2t4GIyZ.css" media="(max-width: 768px)">
 </head>
 
 <body>
@@ -854,11 +854,13 @@
                 </div>
             </div>
 
-            <div class="footer__brand" aria-label="Prime Energy Group">
-                <picture>
-                    <source media="(max-width: 768px)" srcset="/EnergyGroup/assets/footer-mobile-BEET_j0h.png">
-                    <img class="footer__brandImg" src="/EnergyGroup/assets/footer-CwovCflA.png" alt="Prime Energy Group">
-                </picture>
+            <div class="footer__brandBleed">
+                <div class="footer__brand" aria-label="Prime Energy Group">
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="/EnergyGroup/assets/footer-mobile-BEET_j0h.png">
+                        <img class="footer__brandImg" src="/EnergyGroup/assets/footer-CwovCflA.png" alt="Prime Energy Group">
+                    </picture>
+                </div>
             </div>
         </div>
     </div>
@@ -922,7 +924,7 @@
         slidesPerView: 4,
         spaceBetween: 24,
         loop: true,
-        autoplay: false, // Отключено по умолчанию, включится при видимости
+        autoplay: false,
         speed: 600,
         navigation: { nextEl: '.partnersNext', prevEl: '.partnersPrev' },
         scrollbar: { el: '.partnersScrollbar', draggable: true },
@@ -935,53 +937,55 @@
         },
     });
 
-    // Автопрокрутка при попадании в область видимости
     const partnersSection = document.querySelector('#partners');
-    if (partnersSection) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Секция в области видимости - запускаем автопрокрутку
-                    partnersSwiper.params.autoplay = {
-                        delay: 3000,
-                        disableOnInteraction: false,
-                    };
-                    partnersSwiper.autoplay.start();
-                } else {
-                    // Секция вне области видимости - останавливаем
-                    partnersSwiper.autoplay.stop();
-                }
-            });
-        }, {
-            threshold: 0.3 // Запуск когда 30% секции видно
-        });
-
-        observer.observe(partnersSection);
-    }
-
     const sliderEl = document.querySelector('.partnersSwiper');
+    let scrollAccumulator = 0;
+    let ticking = false;
+    let lastScrollY = window.scrollY;
+    const STEP = 90;
 
-    sliderEl.addEventListener('wheel', (e) => {
-        const dy = e.deltaY || 0;
-        if (!dy) return;
+    const isPartnersVisible = () => {
+        if (!partnersSection) return false;
+        const rect = partnersSection.getBoundingClientRect();
+        return rect.bottom > 0 && rect.top < window.innerHeight;
+    };
 
-        // обновим края (Swiper иногда ленится, если не было интеракций)
-        partnersSwiper.updateProgress();
+    const moveByScroll = (deltaY) => {
+        if (!deltaY || !isPartnersVisible()) return;
+        scrollAccumulator += deltaY;
 
-        const atStart = partnersSwiper.isBeginning;
-        const atEnd   = partnersSwiper.isEnd;
+        if (ticking) return;
+        ticking = true;
 
-        // Если в конце и крутим вниз — пусть крутится страница
-        if (atEnd && dy > 0) return;
+        requestAnimationFrame(() => {
+            while (Math.abs(scrollAccumulator) >= STEP) {
+                if (scrollAccumulator > 0) {
+                    // scroll down -> banners move right
+                    partnersSwiper.slidePrev();
+                    scrollAccumulator -= STEP;
+                } else {
+                    // scroll up -> banners move left
+                    partnersSwiper.slideNext();
+                    scrollAccumulator += STEP;
+                }
+            }
+            ticking = false;
+        });
+    };
 
-        // Если в начале и крутим вверх — пусть крутится страница
-        if (atStart && dy < 0) return;
+    window.addEventListener('scroll', () => {
+        const currentY = window.scrollY;
+        moveByScroll(currentY - lastScrollY);
+        lastScrollY = currentY;
+    }, { passive: true });
 
-        // Иначе — крутим слайдер и блокируем скролл страницы
-        e.preventDefault();
-        if (dy > 0) partnersSwiper.slideNext();
-        else partnersSwiper.slidePrev();
-    }, { passive: false });
+    if (sliderEl) {
+        sliderEl.addEventListener('wheel', (e) => {
+            if (!isPartnersVisible()) return;
+            moveByScroll(e.deltaY || 0);
+            e.preventDefault();
+        }, { passive: false });
+    }
 </script>
 
     <script>

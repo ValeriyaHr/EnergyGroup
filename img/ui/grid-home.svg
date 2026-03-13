@@ -1185,9 +1185,6 @@
 <circle cx="815" cy="646" r="2" transform="rotate(90 815 646)" fill="#D6D5D3"/>
 <circle cx="1280" cy="855" r="2" transform="rotate(90 1280 855)" fill="#D6D5D3"/>
 <circle cx="660" cy="944" r="2" transform="rotate(90 660 944)" fill="#D6D5D3"/>
-<line x1="660" y1="758.15" x2="505" y2="758.15" stroke="#D6D5D3" stroke-width="0.3"/>
-<circle cx="660" cy="758" r="2" transform="rotate(90 660 758)" fill="#D6D5D3"/>
-<circle cx="505" cy="758" r="2" transform="rotate(90 505 758)" fill="#D6D5D3"/>
 <circle cx="195" cy="566" r="2" transform="rotate(90 195 566)" fill="#D6D5D3"/>
 <circle cx="350" cy="418" r="2" transform="rotate(90 350 418)" fill="#D6D5D3"/>
 </svg>
