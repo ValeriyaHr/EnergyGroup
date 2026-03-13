@@ -28,7 +28,7 @@
     padding: 80px 40px 60px;
     border-radius: 18px;
     border: 1px solid rgba(255, 255, 255, 0.28);
-    background: #0a0606;
+    background: var(--black);
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
     color: var(--white);
 }
@@ -85,9 +85,9 @@
 .engReqModal__input {
     width: 100%;
     height: 44px;
-    border: 1px solid transparent;
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 7px;
-    background: #160e0e;
+    background: var(--black-background);
     padding: 0 14px;
     color: var(--white);
     font-family: var(--font-family), sans-serif;
@@ -112,9 +112,9 @@
 .engReqModal__input:-webkit-autofill:focus,
 .engReqModal__input:-webkit-autofill:active {
     -webkit-text-fill-color: var(--white);
-    box-shadow: 0 0 0 1000px #160e0e inset;
-    -webkit-box-shadow: 0 0 0 1000px #160e0e inset;
-    border: 1px solid transparent;
+    box-shadow: 0 0 0 1000px var(--black-background) inset;
+    -webkit-box-shadow: 0 0 0 1000px var(--black-background) inset;
+    border: 1px solid rgba(255, 255, 255, 0.18);
     caret-color: var(--white);
     transition: background-color 9999s ease-in-out 0s;
 }
@@ -139,6 +139,7 @@
     max-width: 640px;
 }
 
+
 .engReqModal__check {
     appearance: none;
     -webkit-appearance: none;
@@ -156,16 +157,6 @@
     box-shadow: inset 0 0 0 3px #0a0606, inset 0 0 0 12px var(--orange);
 }
 
-/* GDPR text under agree checkbox — all widths */
-.engReqModal__gdpr {
-    margin: 0;
-    padding: 0;
-    color: rgba(255, 255, 255, 0.28);
-    font-family: var(--font-family), sans-serif;
-    font-size: 10px;
-    line-height: 1.35;
-    max-width: 640px;
-}
 
 .engReqModal__submit {
     justify-self: end;
@@ -309,6 +300,7 @@ body.engReqModalOpen .engReqModal {
         max-width: 260px;
     }
 
+
     .engReqModal__check {
         appearance: none;
         -webkit-appearance: none;
@@ -326,12 +318,6 @@ body.engReqModalOpen .engReqModal {
         box-shadow: inset 0 0 0 3px #0a0606, inset 0 0 0 10px var(--orange);
     }
 
-    .engReqModal__gdpr {
-        font-size: 10px;
-        line-height: 1.35;
-        color: rgba(255, 255, 255, 0.28);
-        max-width: 100%;
-    }
 
     .engReqModal__submit {
         width: auto;
