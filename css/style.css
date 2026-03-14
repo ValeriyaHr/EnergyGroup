@@ -625,18 +625,6 @@ body.menu-open{
     object-fit: contain;
 }
 
-/* Точки позади шафы по макету */
-.hero__right::before{
-    content: "";
-    position: absolute;
-    width: 400px;
-    height: 262px;
-    right: -18px;
-    top: 28px;
-    background: url("../img/ui/point.svg") no-repeat center / contain;
-    z-index: 0;
-    pointer-events: none;
-}
 
 /*
 Лінія під шафою, на якій вона стоїть (тимчасово вимкнено)
