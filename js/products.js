@@ -1,4 +1,3 @@
-
 // Mobile panel - переключение режимов отображения продукции
 (function ($) {
     $(function () {
@@ -11,6 +10,32 @@
         var $buttons = $panel.find('.mobile_panel__btn');
 
         if (!$panel.length || !$grid.length) return;
+
+        function switchMobileCardImages(viewMode) {
+            if (!isMobileView()) return;
+
+            $grid.find('.productCard__imgWrap').each(function () {
+                var $wrap = $(this);
+                var $source = $wrap.find('source').first();
+                var $img   = $wrap.find('img').first();
+
+                if (!$source.length || !$img.length) return;
+
+                // Зберігаємо оригінальний mob-src один раз
+                if (!$source.attr('data-mob-src')) {
+                    $source.attr('data-mob-src', $source.attr('srcset') || '');
+                }
+
+                var mobSrc  = $source.attr('data-mob-src') || '';
+                // mob2 виводиться автоматично заміною суфіксу
+                var mob2Src = mobSrc.replace(/-mob\./, '-mob2.');
+
+                var finalSrc = (viewMode === 'double') ? mob2Src : mobSrc;
+
+                $source.attr('srcset', finalSrc);
+                $img.attr('src', finalSrc);
+            });
+        }
 
         // Обработчик клика на кнопки панели
         $buttons.on('click', function (e) {
@@ -35,6 +60,8 @@
                 $grid.addClass('view-double');
             }
 
+            switchMobileCardImages(viewMode);
+
             // Сохраняем выбор в localStorage
             try {
                 localStorage.setItem('productsViewMode', viewMode);
@@ -51,10 +78,17 @@
                 if ($savedBtn.length) {
                     $savedBtn.click();
                 }
+            } else {
+                switchMobileCardImages('single');
             }
         } catch (e) {
             // Игнорируем ошибки localStorage
         }
+
+        $(window).on('resize', function () {
+            var mode = $grid.hasClass('view-double') ? 'double' : 'single';
+            switchMobileCardImages(mode);
+        });
     });
 })(jQuery);
 
@@ -393,3 +427,4 @@ $(function () {
 })(jQuery);
 
 // 352, 391 startAutoplay(); - розкоментувати і почне мінятись сам
+
