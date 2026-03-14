@@ -455,9 +455,9 @@ body.menu-open{
     position: absolute;
     left: 0;
     top: 0;
-    width: 50%;
+    width: 100%;
     height: 100%;
-    background: url("../img/ui/background-hero.svg") no-repeat left center;
+    background: url("../img/ui/grid-home.svg") no-repeat left center;
     background-size: cover;
     pointer-events: none;
     z-index: 1;
@@ -586,7 +586,8 @@ body.menu-open{
     z-index: 1;
 }
 
-/* Ліва крапка на кінці лінії - сіре кільце з прозорою серединою */
+/*
+Ліва крапка на кінці лінії (тимчасово вимкнено)
 .hero__imgWrap::before{
     content: "";
     position: absolute;
@@ -599,8 +600,10 @@ body.menu-open{
     border-radius: 50%;
     z-index: 8;
 }
+*/
 
-/* Права крапка на кінці лінії - сіре кільце з прозорою серединою */
+/*
+Права крапка на кінці лінії (тимчасово вимкнено)
 .hero__imgWrap::after{
     content: "";
     position: absolute;
@@ -613,6 +616,7 @@ body.menu-open{
     border-radius: 50%;
     z-index: 8;
 }
+*/
 
 .hero__image{
     width: 100%;
@@ -634,7 +638,8 @@ body.menu-open{
     pointer-events: none;
 }
 
-/* Лінія під шафою, на якій вона стоїть - 80% ширини шафи */
+/*
+Лінія під шафою, на якій вона стоїть (тимчасово вимкнено)
 .hero__right::after{
     content: "";
     position: absolute;
@@ -646,6 +651,7 @@ body.menu-open{
     background: linear-gradient(90deg, transparent 0%, var(--lightgrey) 2%, var(--lightgrey) 98%, transparent 100%);
     z-index: 6;
 }
+*/
 
 /* кнопка реально по центру контейнера */
 .hero__cta{
@@ -2763,11 +2769,26 @@ body.menu-open{
 
 /* 3) FORM */
 .docsForm{
+    position: relative;
+    overflow: hidden;
+    background: var(--white);
     padding: 110px 0;
+}
+
+.docsForm::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("../img/ui/background-doc1-form.svg") no-repeat center center;
+    background-size: cover;
+    pointer-events: none;
+    z-index: 0;
 }
 
 /* grid12 class provides 12-column grid */
 .docsForm__inner{
+    position: relative;
+    z-index: 1;
     align-items: start;
     row-gap: 0;
 }
@@ -2802,19 +2823,16 @@ body.menu-open{
 
 .docsForm__right{
     grid-column: 7 / 13;
+    width: 100%;
+    max-width: none;
 }
 
-@media (max-width: 1100px){
-    .docsForm__title{
-        margin: 0 0 28px;
-    }
-    .docsForm__left{
-        grid-column: 1 / -1;
-    }
-    .docsForm__right{
-        grid-column: 1 / -1;
-    }
+.docsForm .reqForm,
+.docsForm .reqForm__box{
+    width: 100%;
+    max-width: none;
 }
+
 
 .reqForm__box{
     border-radius: 14px;
@@ -3970,8 +3988,6 @@ body.menu-open{
     .docsTop__inner{ flex-direction:column; }
     .docsTop__tabs{ flex: 1 1 auto; justify-content:flex-start; flex-wrap:wrap; }
     .docsLinks__inner{ flex-wrap:wrap; }
-    .docsForm__inner{ flex-direction:column; }
-    .docsForm__left{ flex: 1 1 auto; }
 }
 
 

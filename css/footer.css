@@ -5,7 +5,7 @@
     font-size: clamp(14px, 0.9vw, 18px);
     line-height: 1;
     letter-spacing: -0.03em;
-    color: var(--white);
+    color: var(--lightgrey);
     overflow: hidden;
 }
 
@@ -59,7 +59,7 @@
 .footerPeg__link{
     display: block;
     text-decoration: none;
-    color: var(--white);
+    color: inherit;
     font-size: 12px;
     letter-spacing: .12em;
     text-transform: uppercase;
@@ -102,7 +102,7 @@
     font-size: 14px;
     line-height: 1.35;
     white-space: nowrap;
-    color: var(--white);
+    color: inherit;
 }
 
 .footerPeg__grid > .footerPeg__col:nth-child(5) .footerPeg__line{
@@ -130,7 +130,7 @@
     column-gap: 14px;
     align-items: center;
     width: 100%;
-    color: var(--white);
+    color: inherit;
     text-transform: uppercase;
     text-decoration: underline;
     text-underline-offset: 3px;
@@ -179,6 +179,12 @@
 }
 
 /* brand image */
+.footer__brandBleed{
+    width: calc(100% + (var(--gutter) * 2));
+    margin-left: calc(var(--gutter) * -1);
+    margin-right: calc(var(--gutter) * -1);
+}
+
 .footer__brand{
     width: 100%;
     margin-top: 28px;
