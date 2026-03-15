@@ -105,12 +105,17 @@
 
 /* Hero кнопки */
 .previewProduct__btn{
-    width: 100%;
+    width: auto;
+    align-self: flex-start;
     min-height: 48px;
     padding-left: 20px;
     padding-right: 20px;
     justify-content: center;
 }
+
+/* На звичайних екранах: дужки трохи ближче до тексту */
+.previewProduct__btn.btn--drift::before{ left: 6px; }
+.previewProduct__btn.btn--drift::after{ right: 6px; }
 
 /* Стан прихованої кнопки калькулятора */
 .previewProduct__btn.hide{
@@ -302,12 +307,12 @@
     grid-template-rows: auto auto;
     column-gap: 12px;
     row-gap: 8px;
-    padding: 0 10px;
     flex: 1 1 auto;
     min-height: 0;
     height: auto;
     align-items: start;
     align-content: start;
+    padding: 0 10px;
 }
 
 /* Номер/маркер картки */
@@ -461,6 +466,29 @@
         content: none;
     }
 
+    .previewProduct__actions{
+        width: 100%;
+        margin-top: 18px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .previewProduct__actions .previewProduct__btn{
+        margin-inline: auto;
+        text-align: center;
+    }
+
+    .previewProduct__btn{
+        width: auto;
+        min-width: min(100%, 248px);
+        min-height: 44px;
+        padding-left: 18px;
+        padding-right: 18px;
+        justify-content: center;
+    }
+
 }
 /* =========================================================
    DESKTOP WIDE
@@ -587,9 +615,18 @@
         transform: translateY(-74px);
     }
 
+    .productsList__grid{
+        grid-template-columns: repeat(2, minmax(0, 335px));
+        column-gap: clamp(20px, 2.6vw, 36px);
+        row-gap: 24px;
+        justify-content: center;
+        grid-auto-rows: 1fr;
+        align-items: stretch;
+    }
+
     .productCard__link{
-        min-height: 520px;
-        height: 520px;
+        min-height: clamp(430px, 42vw, 480px);
+        height: 100%;
     }
 
     .productCard__body{
@@ -597,7 +634,12 @@
     }
 
     .productCard{
-        grid-column: span 4;
+        grid-column: auto;
+        width: 100%;
+        max-width: 335px;
+        justify-self: stretch;
+        align-self: stretch;
+        height: 100%;
     }
 }
 
@@ -644,7 +686,7 @@
     }
 
     .previewProduct__btn{
-        width: 100%;
+        width: auto;
         min-width: 220px;
     }
 
@@ -678,8 +720,8 @@
     }
 
     .productCard__link{
-        min-height: 500px;
-        height: 500px;
+        min-height: 430px;
+        height: 100%;
     }
 
     .productCard__body{
@@ -691,12 +733,16 @@
     }
 
     .productsList__grid{
-        grid-template-columns: repeat(8, minmax(0, 1fr));
-        gap: 24px;
+        grid-template-columns: repeat(2, minmax(0, 335px));
+        column-gap: clamp(18px, 2.8vw, 28px);
+        row-gap: 22px;
+        justify-content: center;
     }
 
     .productCard{
-        grid-column: span 4;
+        grid-column: auto;
+        width: 100%;
+        max-width: 335px;
     }
 }
 
@@ -762,12 +808,14 @@
     }
 
     .previewProduct__side--right{
-        grid-column: 3 / 6;
+        grid-column: 1 / -1;
         order: 3;
         margin: 0;
         max-width: none;
         height: auto;
-        display: block;
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        row-gap: 10px;
     }
 
     .previewProduct__label{
@@ -781,6 +829,7 @@
     }
 
     .previewProduct__desc{
+        grid-column: 3 / 6;
         max-width: 100%;
         margin: 0;
         font-size: 11px;
@@ -788,24 +837,39 @@
         color: var(--lightgrey);
     }
 
-    /* 3. кнопки по центру */
+    /* 3. кнопки по центру (по всей ширине экрана) */
     .previewProduct__actions{
+        grid-column: 1 / -1;
         width: 100%;
         margin-top: 18px;
+        margin-left: 0;
+        margin-right: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 10px;
     }
 
+    .previewProduct__actions .previewProduct__btn{
+        display: inline-flex;
+        margin-inline: auto;
+        text-align: center;
+    }
+
     .previewProduct__btn{
         width: auto;
         min-width: min(100%, 248px);
         min-height: 44px;
-        padding-left: 18px;
-        padding-right: 18px;
+        padding-left: 34px;
+        padding-right: 34px;
         justify-content: center;
     }
+
+    /* На мобільному: дужки трохи далі від тексту */
+    .previewProduct__btn.btn--drift::before{ left: 12px; }
+    .previewProduct__btn.btn--drift::after{ right: 12px; }
+    .previewProduct__btn.btn--drift:hover::before{ transform: translateY(-50%) translateX(-12px); }
+    .previewProduct__btn.btn--drift:hover::after{ transform: translateY(-50%) translateX(12px); }
 
     .previewProduct__btn.hide{
         display: none !important;
@@ -1134,6 +1198,17 @@
 
     .productsList__grid.view-single .productCard__imgWrap{
         aspect-ratio: 1 / 0.8;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .productsList__grid.view-single .productCard__imgWrap img{
+        width: auto;
+        min-width: 0;
+        max-width: 100%;
+        height: 100%;
+        object-fit: contain;
+        margin-inline: auto;
     }
 
     .productsList__grid.view-double .productCard__imgWrap{
@@ -1143,6 +1218,11 @@
         justify-content: stretch;
         padding: 0;
         margin: 0 0 14px;
+        overflow: visible;
+    }
+
+    .productsList__grid.view-double .productCard__imgWrap picture{
+        height: auto;
     }
 
     .productCard__imgWrap img{
@@ -1161,7 +1241,9 @@
         width: 100%;
         height: auto;
         min-width: unset;
-        object-fit: unset;
+        max-height: none;
+        object-fit: contain;
+        object-position: center;
         display: block;
     }
 
@@ -1215,10 +1297,8 @@
         margin-bottom: 12px;
     }
 
-    .previewProduct__side--left,
-    .previewProduct__side--right{
-        grid-column: 3 / 6;
-    }
+    .previewProduct__side--left{ grid-column: 3 / 6; }
+    .previewProduct__side--right{ grid-column: 1 / -1; }
 
     .previewProduct__label{
         font-size: 11px;
@@ -1330,7 +1410,7 @@
     }
 
     .productsList__grid.view-double .productCard__imgWrap{
-        aspect-ratio: 1 / 0.98;
+        aspect-ratio: unset;
     }
 
     .productCard__imgWrap img{
