@@ -9,26 +9,35 @@
         </button>
 
         <h2 class="calc-modal__title">
-            Розрахунок кількості магнетитових осердь
+            РОЗРАХУНОК ОРІЄНТОВНОЇ КІЛЬКОСТІ СЕРДЕЧНИКІВ МАГНЕТИТУ ДЛЯ АНОДНОГО ЗАЗЕМЛЕННЯ
         </h2>
 
         <p class="calc-modal__subtitle">
-            Введіть необхідні параметри для розрахунку
+            Вкажіть параметри об'єкта:
         </p>
 
         <form id="calc-form" class="calc-modal__form" onSubmit="ShowCalcResult(); return false;">
             <div class="calc-field">
-                <label for="inom">Номінальний струм (Inom), А</label>
-                <input type="number" id="inom" name="inom" placeholder="10" required min="0" step="any"/>
+                <label for="inom">Номінальний струм СКЗ</label>
+                <p class="calc-field__hint">Вводиться за проектом або за фактичними режимами. Рекомендовано брати значення для найгірших умов роботи.</p>
+                <input type="number" id="inom" name="inom" placeholder="I НОМ (A)" required min="0" step="any"/>
             </div>
 
             <div class="calc-field">
-                <label for="rho">Питомий опір ґрунту (ρ), Ом·м</label>
-                <input type="number" id="rho" name="rho" placeholder="100" required min="0" step="any"/>
+                <label for="rho">Питомий опір ґрунту</label>
+                <p class="calc-field__hint">Вказується для місця запланованого розташування анодного заземлення (за вимірами або інженерною оцінкою).</p>
+                <input type="number" id="rho" name="rho" placeholder="P (ОМ*М)" required min="0" step="any"/>
             </div>
 
-            <button type="button" class="calc-modal__btn" onclick="ShowCalcResult();">
-                Розрахувати
+            <div class="calc-note" aria-label="Примітка до розрахунку">
+                <div class="calc-note__title">Примітка</div>
+                <p class="calc-note__text">
+                    Отриманий результат є орієнтовним та не є проєктною документацією. Для точного розрахунку та підтвердження параметрів анодного заземлення необхідно звернутися до технічного відділу Prime Energy Group.
+                </p>
+            </div>
+
+            <button type="button" class="calc-modal__btn calc-modal__btn--drift" onclick="ShowCalcResult();">
+                ВИЗНАЧИТИ КІЛЬКІСТЬ
             </button>
         </form>
     </div>
