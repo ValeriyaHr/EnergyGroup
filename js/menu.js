@@ -43,21 +43,21 @@
 
 //------------ jQuery Accordion Menu
 $(function () {
-    var $overlay = $("#menuOverlay");
-    var $nav = $overlay.find(".menuOverlay__nav");
+    let $overlay = $("#menuOverlay");
+    let $nav = $overlay.find(".menuOverlay__nav");
 
     // Accordion toggle handler
     $nav.on("click", ".menuItem--toggle", function (e) {
         e.preventDefault();
 
-        var $btn = $(this);
-        var $submenu = $("#" + $btn.attr("data-target"));
-        var isOpen = $btn.attr("aria-expanded") === "true";
+        let $btn = $(this);
+        let $submenu = $("#" + $btn.attr("data-target"));
+        let isOpen = $btn.attr("aria-expanded") === "true";
 
         // Close all other submenus
         $nav.find(".menuItem--toggle").not($btn).each(function () {
-            var $other = $(this);
-            var $otherSub = $("#" + $other.attr("data-target"));
+            let $other = $(this);
+            let $otherSub = $("#" + $other.attr("data-target"));
             $other.attr("aria-expanded", "false").removeClass("is-open");
             $otherSub.attr("aria-hidden", "true");
         });
@@ -80,13 +80,13 @@ $(function () {
 
     // Wheel scroll support for menu navigation
     $nav.on("wheel", function (e) {
-        var $element = $(this);
-        var scrollTop = $element.scrollTop();
-        var scrollHeight = $element.prop("scrollHeight");
-        var clientHeight = $element.prop("clientHeight");
+        let $element = $(this);
+        let scrollTop = $element.scrollTop();
+        let scrollHeight = $element.prop("scrollHeight");
+        let clientHeight = $element.prop("clientHeight");
 
-        var isAtTop = scrollTop === 0;
-        var isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
+        let isAtTop = scrollTop === 0;
+        let isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
 
         if ((isAtTop && e.originalEvent.deltaY < 0) || (isAtBottom && e.originalEvent.deltaY > 0)) {
             return;

@@ -1,40 +1,3 @@
-(function polyfill() {
-  const relList = document.createElement("link").relList;
-  if (relList && relList.supports && relList.supports("modulepreload")) {
-    return;
-  }
-  for (const link of document.querySelectorAll('link[rel="modulepreload"]')) {
-    processPreload(link);
-  }
-  new MutationObserver((mutations) => {
-    for (const mutation of mutations) {
-      if (mutation.type !== "childList") {
-        continue;
-      }
-      for (const node of mutation.addedNodes) {
-        if (node.tagName === "LINK" && node.rel === "modulepreload")
-          processPreload(node);
-      }
-    }
-  }).observe(document, { childList: true, subtree: true });
-  function getFetchOpts(link) {
-    const fetchOpts = {};
-    if (link.integrity) fetchOpts.integrity = link.integrity;
-    if (link.referrerPolicy) fetchOpts.referrerPolicy = link.referrerPolicy;
-    if (link.crossOrigin === "use-credentials")
-      fetchOpts.credentials = "include";
-    else if (link.crossOrigin === "anonymous") fetchOpts.credentials = "omit";
-    else fetchOpts.credentials = "same-origin";
-    return fetchOpts;
-  }
-  function processPreload(link) {
-    if (link.ep)
-      return;
-    link.ep = true;
-    const fetchOpts = getFetchOpts(link);
-    fetch(link.href, fetchOpts);
-  }
-})();
 function isMobileView() {
   return window.matchMedia("(max-width: 768px)").matches;
 }
@@ -42,10 +5,22 @@ const counterEl = document.querySelector("#counter");
 if (counterEl && typeof window.setupCounter === "function") {
   window.setupCounter(counterEl);
 }
+async function includePart(el) {
+  const url = el.getAttribute("data-include");
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Include failed: ${url}`);
+  el.outerHTML = await res.text();
+}
+async function includeAll() {
+  const nodes = document.querySelectorAll("[data-include]");
+  await Promise.all([...nodes].map(includePart));
+}
 document.addEventListener("DOMContentLoaded", () => {
-  initWhyUsUnfold();
-  if (typeof initSmoothAnchorScroll === "function") initSmoothAnchorScroll();
-  initExperienceAnimation();
+  includeAll().then(() => {
+    initWhyUsUnfold();
+    if (typeof initSmoothAnchorScroll === "function") initSmoothAnchorScroll();
+    initExperienceAnimation();
+  }).catch(console.error);
 });
 const WHITE_ARROW = "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20width%3D%2222%22%20height%3D%2222%22%20viewBox%3D%220%200%2022%2022%22%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M17.98%2C6.06%2C17.98%2C4.02%2C15.94%2C4.02%2C15.94%2C4.04%2C5.02%2C4.04%2C5.02%2C6.06%2C14.48%2C6.06%2C4.02%2C16.52%2C5.48%2C17.98%2C15.94%2C7.52%2C15.94%2C17.98%2C17.98%2C17.98%2C17.98%2C6.06Z%22/%3E%3C/svg%3E";
 const ORANGE_ARROW = "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20width%3D%2222%22%20height%3D%2222%22%20viewBox%3D%220%200%2022%2022%22%3E%3Cpath%20fill%3D%22%23f80%22%20d%3D%22M17.98%2C6.06%2C17.98%2C4.02%2C15.94%2C4.02%2C15.94%2C4.04%2C5.02%2C4.04%2C5.02%2C6.06%2C14.48%2C6.06%2C4.02%2C16.52%2C5.48%2C17.98%2C15.94%2C7.52%2C15.94%2C17.98%2C17.98%2C17.98%2C17.98%2C6.06Z%22/%3E%3C/svg%3E";
@@ -348,73 +323,4 @@ function initTicsAnimation() {
   );
   observer.observe(section);
 }
-(() => {
-  const openBtn = document.querySelector(".header__burger");
-  const overlay = document.querySelector("#menuOverlay");
-  const closeBtn = document.querySelector(".menuOverlay__close");
-  if (!openBtn || !overlay || !closeBtn) return;
-  const open = () => {
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-    document.body.style.paddingRight = scrollbarWidth + "px";
-    overlay.classList.add("is-open");
-    document.body.classList.add("menu-open");
-    overlay.setAttribute("aria-hidden", "false");
-    openBtn.setAttribute("aria-expanded", "true");
-  };
-  const close = () => {
-    overlay.classList.remove("is-open");
-    document.body.classList.remove("menu-open");
-    document.body.style.paddingRight = "";
-    overlay.setAttribute("aria-hidden", "true");
-    openBtn.setAttribute("aria-expanded", "false");
-  };
-  openBtn.addEventListener("click", open);
-  closeBtn.addEventListener("click", close);
-  overlay.addEventListener("click", (e) => {
-    if (e.target === overlay) close();
-  });
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") close();
-  });
-})();
-$(function() {
-  var $overlay = $("#menuOverlay");
-  var $nav = $overlay.find(".menuOverlay__nav");
-  $nav.on("click", ".menuItem--toggle", function(e) {
-    e.preventDefault();
-    var $btn = $(this);
-    var $submenu = $("#" + $btn.attr("data-target"));
-    var isOpen = $btn.attr("aria-expanded") === "true";
-    $nav.find(".menuItem--toggle").not($btn).each(function() {
-      var $other = $(this);
-      var $otherSub = $("#" + $other.attr("data-target"));
-      $other.attr("aria-expanded", "false").removeClass("is-open");
-      $otherSub.attr("aria-hidden", "true");
-    });
-    if (isOpen) {
-      $btn.attr("aria-expanded", "false").removeClass("is-open");
-      $submenu.attr("aria-hidden", "true");
-    } else {
-      $btn.attr("aria-expanded", "true").addClass("is-open");
-      $submenu.attr("aria-hidden", "false");
-    }
-  });
-  $overlay.on("click", ".menuOverlay__close", function() {
-    $nav.find(".menuItem--toggle").attr("aria-expanded", "false").removeClass("is-open");
-    $nav.find(".menuSub").attr("aria-hidden", "true");
-  });
-  $nav.on("wheel", function(e) {
-    var $element = $(this);
-    var scrollTop = $element.scrollTop();
-    var scrollHeight = $element.prop("scrollHeight");
-    var clientHeight = $element.prop("clientHeight");
-    var isAtTop = scrollTop === 0;
-    var isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
-    if (isAtTop && e.originalEvent.deltaY < 0 || isAtBottom && e.originalEvent.deltaY > 0) {
-      return;
-    }
-    e.preventDefault();
-    $element.scrollTop(scrollTop + e.originalEvent.deltaY);
-  });
-});
-//# sourceMappingURL=menu-DRJVkqE4.js.map
+//# sourceMappingURL=mainJs-4Sn5OrfB.js.map
