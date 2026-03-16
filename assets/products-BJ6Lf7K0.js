@@ -2,10 +2,10 @@ var __getOwnPropNames = Object.getOwnPropertyNames;
 var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
-import "./menu-D4_9xxD4.js";
+import "./menu-DRJVkqE4.js";
 /* empty css               */
 var require_products_004 = __commonJS({
-  "assets/products-GnPiv5y6.js"(exports, module) {
+  "assets/products-BJ6Lf7K0.js"(exports, module) {
     /*! jQuery v3.7.1 | (c) OpenJS Foundation and other contributors | jquery.org/license */
     !function(e, t) {
       "object" == typeof module && "object" == typeof module.exports ? module.exports = e.document ? t(e, true) : function(e2) {
@@ -2073,6 +2073,10 @@ var require_products_004 = __commonJS({
         return ie.$ === ce && (ie.$ = nn), e2 && ie.jQuery === ce && (ie.jQuery = tn), ce;
       }, "undefined" == typeof e && (ie.jQuery = ie.$ = ce), ce;
     });
+    function toNum(v) {
+      const n = Number(String(v).trim().replace(",", "."));
+      return Number.isFinite(n) ? n : null;
+    }
     function openModal(id) {
       $("#" + id).addClass("is-open");
       $("body").addClass("no-scroll");
@@ -2081,6 +2085,41 @@ var require_products_004 = __commonJS({
       $("#" + id).removeClass("is-open");
       $("body").removeClass("no-scroll");
     }
+    function ShowCalcResult() {
+      const inom = toNum($("#inom").val());
+      const rho = toNum($("#rho").val());
+      console.log("inom=" + inom);
+      console.log("rho=" + rho);
+      if (inom === null || rho === null || inom <= 0 || rho <= 0) {
+        alert("Перевір числа: мають бути > 0 (можна 4,0 або 4.0).");
+        return;
+      }
+      const U_skz_max = 50;
+      const K_zapas_U = 1.5;
+      const K_zapas_R = 1.3;
+      const K_season = 1.3;
+      const K_ekr = 0.75;
+      const V_anod = 0.02;
+      const T_years = 20;
+      const K_nerivn = 2;
+      const M_core = 6;
+      const U_start = U_skz_max / K_zapas_U;
+      const R_calc = U_start / inom;
+      const R_start = R_calc / K_zapas_R;
+      const Ri_base = 5 * 0.1 * rho;
+      const Ri = Ri_base * K_season;
+      const N_electr = Ri / R_start;
+      const N_fact = N_electr / K_ekr;
+      const M_az = V_anod * T_years * inom * K_nerivn;
+      const N_by_mass = M_az / M_core;
+      const N_final = Math.ceil(Math.max(N_fact, N_by_mass));
+      $("#calc-result-value").text(String(N_final));
+      closeModal("calc-modal");
+      openModal("calc-modal-result");
+    }
+    window.openModal = openModal;
+    window.closeModal = closeModal;
+    window.ShowCalcResult = ShowCalcResult;
     (function initAzCalculator() {
       const $modal = $("#calc-modal");
       const $resultModal = $("#calc-modal-result");
@@ -2175,6 +2214,27 @@ var require_products_004 = __commonJS({
       let isLoaded = false;
       let isOpen = false;
       let wheelArmed = true;
+      function getProductIdFromLocation() {
+        const params = new URLSearchParams(window.location.search);
+        const queryProduct = params.get("product");
+        if (queryProduct && /^p\d{2}$/i.test(queryProduct)) {
+          return queryProduct.toLowerCase();
+        }
+        const hashMatch = window.location.hash.match(/p\d{2}/i);
+        return hashMatch ? hashMatch[0].toLowerCase() : null;
+      }
+      function setProductLocation(productId) {
+        if (!window.history || !window.history.replaceState) return;
+        const url = new URL(window.location.href);
+        if (productId) {
+          url.searchParams.set("product", productId);
+          url.hash = productId;
+        } else {
+          url.searchParams.delete("product");
+          url.hash = "";
+        }
+        window.history.replaceState({}, "", url.toString());
+      }
       function openDetails() {
         if (!isLoaded) return;
         $wrap.addClass("is-ready");
@@ -2189,6 +2249,7 @@ var require_products_004 = __commonJS({
       function closeDetails() {
         $wrap.removeClass("is-open");
         isOpen = false;
+        setProductLocation(null);
         setTimeout(() => {
           $wrap.removeClass("is-ready").empty();
           isLoaded = false;
@@ -2221,6 +2282,7 @@ var require_products_004 = __commonJS({
         e.preventDefault();
         const productId = $(this).data("product");
         const url = `./product-details/${productId}.html`;
+        setProductLocation(productId);
         loadProduct(url);
         wheelArmed = true;
       });
@@ -2236,6 +2298,10 @@ var require_products_004 = __commonJS({
       $(document).on("keydown", function(e) {
         if (e.key === "Escape") closeDetails();
       });
+      const initialProductId = getProductIdFromLocation();
+      if (initialProductId) {
+        loadProduct(`./product-details/${initialProductId}.html`);
+      }
     });
     (function($2) {
       $2(function() {
@@ -2367,4 +2433,4 @@ var require_products_004 = __commonJS({
   }
 });
 export default require_products_004();
-//# sourceMappingURL=products-GnPiv5y6.js.map
+//# sourceMappingURL=products-BJ6Lf7K0.js.map
