@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <defs>
+    <!-- лёгкое свечение как на макете -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.2" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- мягкий градиент на лучиках -->
+    <linearGradient id="tickGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="white" stop-opacity="0.15"/>
+      <stop offset="0.5" stop-color="white" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="white" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+
+  <!-- центр -->
+  <g id="ticks" filter="url(#glow)"></g>
+
+  <!-- Генерация лучиков прямо внутри SVG -->
+  <script><![CDATA[
+    (function () {
+      const svg = document.currentScript.ownerDocument;
+      const g = svg.getElementById("ticks");
+
+      const cx = 400, cy = 400;
+
+      // настройки "как часы"
+      const startDeg = 205;   // откуда начинаем дугу
+      const endDeg   = 25;    // где заканчиваем (через 360)
+      const stepDeg  = 4;     // шаг лучиков (меньше = больше лучиков)
+
+      const rOuter = 345;     // внешний радиус
+      const rInnerMin = 295;  // внутренняя граница (короткие лучи)
+      const rInnerMax = 260;  // внутренняя граница (длинные лучи)
+
+      // нормализуем диапазон дуги через 360
+      const spanDeg = (endDeg >= startDeg) ? (endDeg - startDeg) : (360 - startDeg + endDeg);
+      const count = Math.floor(spanDeg / stepDeg) + 1;
+
+      for (let i = 0; i < count; i++) {
+        const deg = startDeg + i * stepDeg;
+        const t = i / Math.max(1, count - 1); // 0..1 вдоль дуги
+
+        // делаем длины чуть "живыми", как на макете: ближе к правому краю — длиннее
+        const ease = Math.pow(t, 1.6);
+        const rInner = rInnerMin - (rInnerMin - rInnerMax) * ease;
+
+        // прозрачность: ближе к правому краю — ярче
+        const op = 0.25 + 0.75 * ease;
+
+        const rad = deg * Math.PI / 180;
+
+        const x1 = cx + rInner * Math.cos(rad);
+        const y1 = cy + rInner * Math.sin(rad);
+        const x2 = cx + rOuter * Math.cos(rad);
+        const y2 = cy + rOuter * Math.sin(rad);
+
+        const line = svg.createElementNS("http://www.w3.org/2000/svg", "line");
+        line.setAttribute("x1", x1.toFixed(2));
+        line.setAttribute("y1", y1.toFixed(2));
+        line.setAttribute("x2", x2.toFixed(2));
+        line.setAttribute("y2", y2.toFixed(2));
+        line.setAttribute("stroke", "url(#tickGrad)");
+        line.setAttribute("stroke-width", "3");
+        line.setAttribute("stroke-linecap", "round");
+        line.setAttribute("opacity", op.toFixed(3));
+
+        g.appendChild(line);
+      }
+    })();
+  ]]></script>
+</svg>
