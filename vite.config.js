@@ -4,6 +4,16 @@ import { viteStaticCopy } from "vite-plugin-static-copy";
 import handlebars from 'vite-plugin-handlebars'
 import path from 'path'
 
+const productCodes = Array.from({ length: 13 }, (_, i) => `p${String(i + 1).padStart(2, '0')}`);
+
+const uaProductInputs = Object.fromEntries(
+    productCodes.map((code) => [code, `product-details/${code}.html`])
+);
+
+const enProductInputs = Object.fromEntries(
+    productCodes.map((code) => [`en-${code}`, `en/product-details/${code}.html`])
+);
+
 export default defineConfig({
     base: '/EnergyGroup/',
     appType: "mpa",
@@ -19,19 +29,14 @@ export default defineConfig({
                 library: "library.html",
                 404: "404.html",
                 docs: "docs.html",
-                p01: "product-details/p01.html",
-                p02: "product-details/p02.html",
-                p03: "product-details/p03.html",
-                p04: "product-details/p04.html",
-                p05: "product-details/p05.html",
-                p06: "product-details/p06.html",
-                p07: "product-details/p07.html",
-                p08: "product-details/p08.html",
-                p09: "product-details/p09.html",
-                p10: "product-details/p10.html",
-                p11: "product-details/p11.html",
-                p12: "product-details/p12.html",
-                p13: "product-details/p13.html",
+                ...uaProductInputs,
+                enMain: "en/index.html",
+                enEngineering: "en/engineering.html",
+                enProducts: "en/products.html",
+                enLibrary: "en/library.html",
+                en404: "en/404.html",
+                enDocs: "en/docs.html",
+                ...enProductInputs,
                 jquery: "js/jquery/jquery-3.7.1.min.js",
                 calc: "js/calc.js",
                 mainJs: "js/main.js",
@@ -41,6 +46,19 @@ export default defineConfig({
             },
         }},
     plugins: [
+        {
+            name: 'rewrite-en-relative-paths',
+            apply: 'build',
+            enforce: 'pre',
+            transformIndexHtml(html, ctx) {
+                const pagePath = ctx?.path ?? '';
+                if (!pagePath.startsWith('/en/')) return html;
+
+                return html
+                    .replace(/(\b(?:src|href|srcset|data-preview)=["'])\.\/(js|css|img)\//gi, '$1../$2/')
+                    .replace(/(\b(?:src|href|srcset|data-preview)=["'])img\//gi, '$1../img/');
+            },
+        },
         handlebars({
             partialDirectory: path.resolve(__dirname, 'components'),
         }),
@@ -80,12 +98,32 @@ export default defineConfig({
                     dest: "js"
                 },
                 {
+                    src: "js/**/*",
+                    dest: "en/js"
+                },
+                {
                     src: "css/**/*",   // ← добавили копирование CSS
                     dest: "css"
                 },
                 {
+                    src: "css/**/*",
+                    dest: "en/css"
+                },
+                {
                     src: "img/**/*",   // ← добавили копирование картинок
                     dest: "img"
+                },
+                {
+                    src: "img/**/*",
+                    dest: "en/img"
+                },
+                {
+                    src: "fonts/**/*",
+                    dest: "fonts"
+                },
+                {
+                    src: "fonts/**/*",
+                    dest: "en/fonts"
                 }
             ]
         })
