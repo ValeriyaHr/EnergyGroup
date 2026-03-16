@@ -5,9 +5,9 @@
             return window.matchMedia('(max-width: 768px)').matches;
         }
 
-        var $panel = $('.mobile_panel');
-        var $grid = $('#productsGrid');
-        var $buttons = $panel.find('.mobile_panel__btn');
+        let $panel = $('.mobile_panel');
+        let $grid = $('#productsGrid');
+        let $buttons = $panel.find('.mobile_panel__btn');
 
         if (!$panel.length || !$grid.length) return;
 
@@ -15,9 +15,9 @@
             if (!isMobileView()) return;
 
             $grid.find('.productCard__imgWrap').each(function () {
-                var $wrap = $(this);
-                var $source = $wrap.find('source').first();
-                var $img   = $wrap.find('img').first();
+                let $wrap = $(this);
+                let $source = $wrap.find('source').first();
+                let $img   = $wrap.find('img').first();
 
                 if (!$source.length || !$img.length) return;
 
@@ -26,11 +26,11 @@
                     $source.attr('data-mob-src', $source.attr('srcset') || '');
                 }
 
-                var mobSrc  = $source.attr('data-mob-src') || '';
+                let mobSrc  = $source.attr('data-mob-src') || '';
                 // mob2 виводиться автоматично заміною суфіксу
-                var mob2Src = mobSrc.replace(/-mob\./, '-mob2.');
+                let mob2Src = mobSrc.replace(/-mob\./, '-mob2.');
 
-                var finalSrc = (viewMode === 'double') ? mob2Src : mobSrc;
+                let finalSrc = (viewMode === 'double') ? mob2Src : mobSrc;
 
                 $source.attr('srcset', finalSrc);
                 $img.attr('src', finalSrc);
@@ -41,8 +41,8 @@
         $buttons.on('click', function (e) {
             e.preventDefault();
 
-            var $btn = $(this);
-            var viewMode = $btn.data('view');
+            let $btn = $(this);
+            let viewMode = $btn.data('view');
 
             // Убираем активный класс у всех кнопок
             $buttons.removeClass('active');
@@ -72,9 +72,9 @@
 
         // Восстанавливаем сохраненный режим при загрузке
         try {
-            var savedMode = localStorage.getItem('productsViewMode');
+            let savedMode = localStorage.getItem('productsViewMode');
             if (savedMode) {
-                var $savedBtn = $buttons.filter('[data-view="' + savedMode + '"]');
+                let $savedBtn = $buttons.filter('[data-view="' + savedMode + '"]');
                 if ($savedBtn.length) {
                     $savedBtn.click();
                 }
@@ -86,7 +86,7 @@
         }
 
         $(window).on('resize', function () {
-            var mode = $grid.hasClass('view-double') ? 'double' : 'single';
+            let mode = $grid.hasClass('view-double') ? 'double' : 'single';
             switchMobileCardImages(mode);
         });
     });
@@ -161,19 +161,14 @@ $(function () {
         e.preventDefault();
         closeDetails();
     });
-    // ✅ КЛІК по кнопці
+
     $(document).on("click", ".js-open-product", function (e) {
         e.preventDefault();
-
         const productId = $(this).data("product"); // p01
-
-
-
 
         const url = `./product-details/${productId}.html`;
         loadProduct(url);
 
-        // після кліку дозволяємо відкриття колесом ще раз
         wheelArmed = true;
     });
 
@@ -205,15 +200,15 @@ $(function () {
 
 
 //---------------------------------- Hero preview products
-(function ($) {
-    $(function () {
-        var $previewSection = $('.previewProduct');
-        var $img = $('#previewProductImage');
-        var $title = $('#previewProductTitle');
-        var $desc = $('#previewProductDesc');
-        var $btnDetails = $('#btnShowDetails');
-        var $calculatorBtn = $('#calculator_btn');
-        var $grid = $('#productsGrid');
+
+$(function () {
+        let $previewSection = $('.previewProduct');
+        let $img = $('#previewProductImage');
+        let $title = $('#previewProductTitle');
+        let $desc = $('#previewProductDesc');
+        let $btnDetails = $('#btnShowDetails');
+        let $calculatorBtn = $('#calculator_btn');
+        let $grid = $('#productsGrid');
 
         if (
             !$previewSection.length ||
@@ -226,11 +221,11 @@ $(function () {
             return;
         }
 
-        var autoplayInterval = null;
-        var currentIndex = 0;
-        var $cards = $grid.find('.productCard');
+        let autoplayInterval = null;
+        let currentIndex = 0;
+        let $cards = $grid.find('.productCard');
 
-        var heroTypes = [
+        let heroTypes = [
             'previewProduct--cabinet',
             'previewProduct--module',
             'previewProduct--tall',
@@ -238,7 +233,7 @@ $(function () {
         ];
 
         // fallback, якщо десь у картці ще немає data-type
-        var productTypes = {
+        let productTypes = {
             p01: 'cabinet',
             p02: 'module',
             p03: 'tall',
@@ -290,8 +285,8 @@ $(function () {
         function readCardData($card) {
             if (!$card.length) return null;
 
-            var productId = $card.data('details');
-            var productType = getProductType($card, productId);
+            let productId = $card.data('details');
+            let productType = getProductType($card, productId);
 
             return {
                 previewSrc: $card.data('preview'),
@@ -312,7 +307,7 @@ $(function () {
             toggleCalculator(productId);
 
             window.setTimeout(function () {
-                $img.attr('src', src);
+                $img.attr('src', src + '?' + Date.now());
 
                 if (title) $title.text(title);
                 if (desc) $desc.text(desc);
@@ -329,8 +324,8 @@ $(function () {
             if (index >= $cards.length) index = 0;
             if (index < 0) index = $cards.length - 1;
 
-            var $card = $cards.eq(index);
-            var cardData = readCardData($card);
+            let $card = $cards.eq(index);
+            let cardData = readCardData($card);
 
             if (!cardData) return;
 
@@ -363,10 +358,10 @@ $(function () {
         }
 
         $grid.on('mouseover focusin click', function (e) {
-            var $card = $(e.target).closest('.productCard');
+            let $card = $(e.target).closest('.productCard');
             if (!$card.length) return;
 
-            var cardData = readCardData($card);
+            let cardData = readCardData($card);
             if (!cardData) return;
 
             stopAutoplay();
@@ -394,12 +389,12 @@ $(function () {
         $grid.on('click', '.productCard__bottom', function (e) {
             e.preventDefault();
 
-            var $card = $(this).closest('.productCard');
+            let $card = $(this).closest('.productCard');
             if (!$card.length) return;
 
-            var cardData = readCardData($card);
+            let cardData = readCardData($card);
             if (!cardData) return;
-
+console.log(cardData);
             stopAutoplay();
 
             setPreview(
@@ -424,7 +419,6 @@ $(function () {
         toggleCalculator('p01');
         // startAutoplay();
     });
-})(jQuery);
 
 // 352, 391 startAutoplay(); - розкоментувати і почне мінятись сам
 
