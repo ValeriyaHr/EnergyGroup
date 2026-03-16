@@ -60,6 +60,11 @@ function ShowCalcResult(){
     openModal("calc-modal-result");
 }
 
+// Expose modal handlers globally for inline HTML onclick/onSubmit handlers.
+window.openModal = openModal;
+window.closeModal = closeModal;
+window.ShowCalcResult = ShowCalcResult;
+
 (function initAzCalculator(){
     const $modal = $("#calc-modal");
     const $resultModal = $("#calc-modal-result");
