@@ -9,7 +9,6 @@
     <link rel="icon" type="image/svg+xml" href="./img/favicon.svg">
     <link rel="alternate icon" href="./img/favicon.svg">
 
-    <script src="./js/jquery/jquery-3.7.1.min.js"></script>
     <script type="module" src="./js/main.js"></script>
     <script type="module" src="./js/menu.js"></script>
 
@@ -225,49 +224,38 @@
 
 
 <script>
-    $(document).ready(function () {
-        const $section = $(".circleSection");
-        const $items = $section.find(".circleItem");
+    document.addEventListener("DOMContentLoaded", () => {
+        const section = document.querySelector(".circleSection");
+        const items = section ? Array.from(section.querySelectorAll(".circleItem")) : [];
 
         // якщо секція схована або елементів нема — нічого не робимо
-        if (!$items.length || $section.is(":hidden")) return;
+        if (!items.length || section.offsetParent === null) return;
 
-        const total = $items.length;
+        const total = items.length;
         const radius = 260; // радіус кола
         const center = 300; // центр (половина width/height)
 
-        // розставляємо по колу
-        $items.each(function(index) {
-
+        items.forEach((item, index) => {
             const angle = (index / total) * (2 * Math.PI);
-
             const x = center + radius * Math.cos(angle) - 40;
             const y = center + radius * Math.sin(angle) - 40;
 
-            $(this).css({
-                left: x + "px",
-                top: y + "px"
-            });
+            item.style.left = x + "px";
+            item.style.top = y + "px";
         });
 
-        // по черзі з’являються як годинник
         let i = 0;
 
         function showNext() {
-            $items.eq(i).animate({
-                opacity: 1
-            }, 300).animate({
-                scale: 1
-            });
-
-            $items.eq(i).css("transform", "scale(1)");
+            items[i].style.opacity = "1";
+            items[i].style.transform = "scale(1)";
 
             i++;
             if (i >= total) {
                 i = 0;
-                $items.css({
-                    opacity: 0,
-                    transform: "scale(0.3)"
+                items.forEach((item) => {
+                    item.style.opacity = "0";
+                    item.style.transform = "scale(0.3)";
                 });
             }
         }

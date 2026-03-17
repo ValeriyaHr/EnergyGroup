@@ -9,7 +9,6 @@
     <link rel="icon" type="image/svg+xml" href="/img/favicon.svg">
     <link rel="alternate icon" href="/img/favicon.svg">
 
-    <script src="../js/jquery/jquery-3.7.1.min.js"></script>
 
     <script type="module" src="../js/main.js"></script>
     <script type="module" src="../js/menu.js"></script>
@@ -519,34 +518,34 @@
 
 
 <script>
-    $(function () {
-        const $preloader = $("#preloader");
-        const $percent = $("#preloaderPercent");
-        const $image = $("#preloaderImage");
+    (() => {
+        const preloader = document.getElementById("preloader");
+        const percent = document.getElementById("preloaderPercent");
+        const image = document.getElementById("preloaderImage");
 
-        if (!$preloader.length || !$percent.length || !$image.length) return;
+        if (!preloader || !percent || !image) return;
 
         let p = 1;
         let closed = false;
 
         function render() {
-            $percent.text(p + "%");
-            $image.css("opacity", (0.08 + (p / 100) * 0.92).toFixed(3));
+            percent.textContent = p + "%";
+            image.style.opacity = (0.08 + (p / 100) * 0.92).toFixed(3);
         }
 
         function closePreloader() {
             if (closed) return;
             closed = true;
 
-            $preloader.addClass("preloader--hide");
-            setTimeout(function () {
-                $preloader.remove();
+            preloader.classList.add("preloader--hide");
+            setTimeout(() => {
+                preloader.remove();
             }, 260);
         }
 
         render();
 
-        const timer = setInterval(function () {
+        const timer = setInterval(() => {
             p += p < 60 ? 3 : p < 90 ? 2 : 1;
             if (p > 100) p = 100;
 
@@ -558,14 +557,11 @@
             }
         }, 90);
 
-        $preloader.on("click", function () {
+        preloader.addEventListener("click", () => {
             clearInterval(timer);
             closePreloader();
         });
-    });
-
-
-
+    })();
 </script>
 <!--<script defer src="main.js"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

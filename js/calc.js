@@ -1,5 +1,7 @@
 //Калькулятор
 
+import "./jquery-global.js";
+
 const $ = window.jQuery;
 
 function toNum(v){

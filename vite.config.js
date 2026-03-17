@@ -15,7 +15,7 @@ const enProductInputs = Object.fromEntries(
 );
 
 export default defineConfig({
-    base: '/EnergyGroup/',
+    base: '/',
     appType: "mpa",
     build: {
         minify: false,      // отключить минификацию
@@ -37,12 +37,6 @@ export default defineConfig({
                 en404: "en/404.html",
                 enDocs: "en/docs.html",
                 ...enProductInputs,
-                jquery: "js/jquery/jquery-3.7.1.min.js",
-                calc: "js/calc.js",
-                mainJs: "js/main.js",
-                menu: "js/menu.js",
-                parnerSlider: "js/parner_slider.js",
-                productsJs: "js/products.js",
             },
         }},
     plugins: [
