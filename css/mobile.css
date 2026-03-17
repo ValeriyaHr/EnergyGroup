@@ -26,11 +26,7 @@
     }
 
     .docsLinks__inner{
-        grid-template-columns: 1fr;
-        grid-template-areas:
-          "certs"
-          "manuals"
-          "catalogs";
+        grid-template-columns: repeat(5, minmax(0, 1fr));
     }
 
     .docsLinks .container{

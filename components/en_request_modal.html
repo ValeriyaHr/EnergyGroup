@@ -1,0 +1,43 @@
+<div class="engReqModal" id="engReqModal" aria-hidden="true">
+    <div class="engReqModal__backdrop" data-eng-request-close></div>
+    <div class="engReqModal__dialog" role="dialog" aria-modal="true" aria-labelledby="engReqModalTitle">
+        <button class="engReqModal__close" type="button" aria-label="close" data-eng-request-close></button>
+        <h2 class="engReqModal__title" id="engReqModalTitle">REQUEST A SYSTEM CALCULATION</h2>
+
+        <form class="engReqModal__form" action="#" method="post">
+            <div class="engReqModal__grid2">
+                <label class="engReqModal__field">
+                    <span class="engReqModal__srOnly">Name</span>
+                    <input class="engReqModal__input" type="text" name="eng_name" placeholder="NAME *" required>
+                </label>
+                <label class="engReqModal__field">
+                    <span class="engReqModal__srOnly">Surname</span>
+                    <input class="engReqModal__input" type="text" name="eng_surname" placeholder="SURNAME *" required>
+                </label>
+            </div>
+
+            <label class="engReqModal__field">
+                <span class="engReqModal__srOnly">Email</span>
+                <input class="engReqModal__input" type="email" name="eng_email" placeholder="EMAIL *" required>
+            </label>
+
+            <label class="engReqModal__field">
+                <span class="engReqModal__srOnly">Phone</span>
+                <input class="engReqModal__input" type="tel" name="eng_phone" placeholder="PHONE" inputmode="tel">
+            </label>
+
+            <label class="engReqModal__field">
+                <span class="engReqModal__srOnly">Description of the request</span>
+                <textarea class="engReqModal__input engReqModal__input--area" name="eng_message" placeholder="DESCRIBE HOW WE CAN HELP YOU *" required></textarea>
+            </label>
+
+            <label class="engReqModal__agree">
+                <input class="engReqModal__check" type="checkbox" name="eng_agree" required>
+                <span>I agree to the processing of personal data</span>
+            </label>
+
+            <button class="engReqModal__submit" type="submit">SEND REQUEST</button>
+        </form>
+    </div>
+</div>
+
