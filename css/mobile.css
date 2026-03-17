@@ -668,6 +668,32 @@ body.menu-open .header__burger::after {
     right: 12px;
     top: 14px;
 }
+
+@media (max-width: 360px){
+    .whyReveal{
+        --item-h: 112px;
+        --collapsed-step: 74px;
+        --expanded-step: calc(var(--item-h) + var(--gap));
+    }
+
+    .whyItem{
+        height: var(--item-h);
+        align-items: flex-start;
+        padding: 10px 34px 10px 12px;
+        font-size: 11px;
+        line-height: 1.12;
+        letter-spacing: -0.02em;
+        font-weight: 400;
+        color: var(--black);
+    }
+
+    .whyItem span{ color: var(--black); }
+
+    .whyItem .whyDot{
+        margin-top: 2px;
+        background: rgba(10, 6, 6, 0.9);
+    }
+}
 /* ===== /WHY US ===== */
 
 /* ===== кінець -мсекція з табами ===== */

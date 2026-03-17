@@ -1,14 +1,13 @@
 const modalRoot = document.getElementById("engReqModal");
 
 if (modalRoot) {
-    const openButtons = Array.from(document.querySelectorAll("[data-eng-request-open]"));
     const closeButtons = Array.from(modalRoot.querySelectorAll("[data-eng-request-close]"));
     const dialog = modalRoot.querySelector(".engReqModal__dialog");
     const firstInput = modalRoot.querySelector(".engReqModal__input");
     const messageField = modalRoot.querySelector("textarea[name='eng_message']");
     const mobileMedia = window.matchMedia("(max-width: 768px)");
-    const desktopPlaceholder = "ОПИШІТЬ, ЧИМ МИ МОЖЕМО ВАМ ДОПОМОГТИ *";
-    const mobilePlaceholder = "КОРОТКИЙ ОПИС";
+    const desktopPlaceholder = modalRoot.dataset.placeholderDesktop || messageField?.getAttribute("placeholder") || "ОПИШІТЬ, ЧИМ МИ МОЖЕМО ВАМ ДОПОМОГТИ *";
+    const mobilePlaceholder = modalRoot.dataset.placeholderMobile || desktopPlaceholder;
 
     const syncMessagePlaceholder = () => {
         if (!messageField) {
@@ -38,11 +37,24 @@ if (modalRoot) {
         modalRoot.setAttribute("aria-hidden", "true");
     };
 
-    openButtons.forEach((button) => {
-        button.addEventListener("click", (event) => {
-            event.preventDefault();
-            openModal();
-        });
+    document.addEventListener("click", (event) => {
+        const openTrigger = event.target.closest("[data-eng-request-open]");
+        if (!openTrigger) {
+            return;
+        }
+
+        event.preventDefault();
+        openModal();
+    });
+
+    document.addEventListener("keydown", (event) => {
+        const openTrigger = event.target.closest("[data-eng-request-open]");
+        if (!openTrigger || (event.key !== "Enter" && event.key !== " ")) {
+            return;
+        }
+
+        event.preventDefault();
+        openModal();
     });
 
     closeButtons.forEach((button) => {

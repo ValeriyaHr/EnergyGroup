@@ -231,6 +231,12 @@ body.engReqModalOpen .engReqModal {
     pointer-events: auto;
 }
 
+.engReqModal[aria-hidden="false"] {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
 @media (max-width: 768px) {
     .engReqModal__dialog {
         width: min(335px, calc(100vw - 16px));
