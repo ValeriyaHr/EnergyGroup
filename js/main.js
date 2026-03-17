@@ -52,9 +52,33 @@ document.addEventListener("click", (e) => {
     if (!panel) return;
 
     const icon = row.querySelector(".engRow__arrowIcon");
+    const engineeringSection = row.closest("section#engineering.engineering");
+
+    const closeRow = (rowToClose) => {
+        const panelToClose = rowToClose.nextElementSibling?.classList.contains("js-engPanel")
+            ? rowToClose.nextElementSibling
+            : null;
+        const iconToClose = rowToClose.querySelector(".engRow__arrowIcon");
+        const itemToClose = rowToClose.closest(".engItem");
+
+        rowToClose.classList.remove("is-open");
+        rowToClose.setAttribute("aria-expanded", "false");
+        if (iconToClose) iconToClose.src = WHITE_ARROW;
+        if (itemToClose) itemToClose.classList.remove("is-open");
+        if (panelToClose) {
+            panelToClose.hidden = true;
+            panelToClose.classList.remove("is-open");
+        }
+    };
 
     const isOpen = row.classList.toggle("is-open");
     row.setAttribute("aria-expanded", String(isOpen));
+
+    if (engineeringSection && isOpen) {
+        engineeringSection.querySelectorAll(".js-engRow.is-open").forEach((openRow) => {
+            if (openRow !== row) closeRow(openRow);
+        });
+    }
 
     if (icon) icon.src = isOpen ? ORANGE_ARROW : WHITE_ARROW;
 
