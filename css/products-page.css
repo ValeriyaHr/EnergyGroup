@@ -209,8 +209,6 @@
 .productsList{
     position: relative;
     background: var(--white);
-    margin-top: 40px;
-    margin-bottom: 80px;
 }
 
 /* 12-column grid для списку карток */
@@ -220,6 +218,13 @@
     gap: clamp(16px, 2.08vw, 40px);
     align-items: stretch;
     grid-auto-rows: 1fr;
+    width: max-content;
+    max-width: calc(100% - 80px);
+    margin-inline: auto;
+    padding: 40px;
+    box-sizing: border-box;
+    background: var(--grey-pale);
+    border-radius: 18px;
 }
 
 /* Debug overlay for products section alignment */
@@ -278,7 +283,6 @@
 /* Hover-ефект картки */
 .productCard__link:hover{
     transform: translateY(-2px);
-    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.08);
 }
 
 /* Обгортка картинки картки */
@@ -460,6 +464,9 @@
         grid-auto-rows: 1fr;
         align-items: stretch;
         justify-items: center;
+        width: 100%;
+        max-width: none;
+        padding: 0;
     }
 
     .productsList__grid::after{
