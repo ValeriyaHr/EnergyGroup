@@ -1,8 +1,15 @@
 /* partners */
-.partners{ padding: 22px 0 44px; }
+.partners{
+    padding: 22px 0 44px;
+    overflow: hidden;
+}
+
+.partners .container{
+    overflow: hidden;
+}
 .partners__title{
     margin: 0 0 14px;
-    font-family: var(--font-text);
+    font-family: var(--third-family), sans-serif;
     font-size: 18px;
     letter-spacing: .02em;
     text-transform: uppercase;
@@ -11,15 +18,14 @@
 
 .partnersSwiper{
     position: relative;
-    padding-bottom: 26px; /* место под scrollbar */
+    padding-bottom: 26px;
+    overflow: hidden;
 }
 
 .partnersSlide{
     background: #f7f7f7;
     border-radius: 12px;
-    padding: 18px;
     height: 218px;
-
     display:flex;
     align-items:center;
     justify-content:center;
@@ -35,8 +41,8 @@
 /* стрелки */
 .partnersNav{
     position:absolute;
-    inset: 0 0 auto 0;
-    height: 0;
+    inset: 0;
+    height: 100%;
     pointer-events:none;
 }
 
@@ -49,12 +55,12 @@
     height: 44px;
     border-radius: 999px;
     border: 1px solid rgba(0,0,0,.08);
-    background: #fff;
     cursor:pointer;
+    display: none;
 }
 
-.partnersPrev{ left: -10px; }
-.partnersNext{ right: -10px; }
+.partnersPrev{ left: 8px; }
+.partnersNext{ right: 8px; }
 
 /* простые стрелочки */
 .partnersPrev::before,
@@ -88,8 +94,8 @@
 /* responsive */
 @media (max-width: 1024px){
     .partnersSlide{ height: 190px; }
-    .partnersPrev{ left: -6px; }
-    .partnersNext{ right: -6px; }
+    .partnersPrev{ left: 6px; }
+    .partnersNext{ right: 6px; }
 }
 
 @media (max-width: 560px){
