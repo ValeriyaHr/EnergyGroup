@@ -437,7 +437,7 @@ if ($) $(function () {
 
             let cardData = readCardData($card);
             if (!cardData) return;
-console.log(cardData);
+
             stopAutoplay();
 
             setPreview(

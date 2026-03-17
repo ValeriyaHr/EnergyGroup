@@ -1685,8 +1685,8 @@ body.menu-open{
 }
 
 .experienceStat .experience__big.is-highlight {
-    -webkit-text-fill-color: #FFD700;
-    background: linear-gradient(180deg, #FFD700 0%, #FFA500 62.33%);
+    -webkit-text-fill-color: var(--orange);
+    background: linear-gradient(180deg, var(--orange) 0%, var(--orange) 62.33%);
     -webkit-background-clip: text;
     background-clip: text;
 }
