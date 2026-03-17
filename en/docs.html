@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="uk">
 <head>
     <meta charset="utf-8" />
@@ -6,16 +6,16 @@
 
     <title>Prime Energy Group</title>
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="./img/favicon.svg">
-    <link rel="alternate icon" href="./img/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+    <link rel="alternate icon" href="../img/favicon.svg">
 
-    <script src="./js/jquery/jquery-3.7.1.min.js"></script>
-    <script type="module" src="./js/main.js"></script>
-    <script type="module" src="./js/menu.js"></script>
+    <script src="../js/jquery/jquery-3.7.1.min.js"></script>
+    <script type="module" src="../js/main.js"></script>
+    <script type="module" src="../js/menu.js"></script>
 
-    <!-- Подключение CSS -->
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/mobile.css" media="(max-width: 768px)">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/mobile.css" media="(max-width: 768px)">
 </head>
 
 <body>
@@ -23,7 +23,7 @@
 <!-- PRELOADER-->
 <!-- {{>preloader}} -->
 <!-- ===== HEADER ===== -->
-{{>header}}
+{{> en_header}}
 
 <main>
 
@@ -33,21 +33,21 @@
             <div class="docsTop__bg" aria-hidden="true"></div>
             <div class="docsHero__top docsHero__titleCol">
                     <h1 class="docHero__title">
-                        <span>ОФІЦІЙНА</span>
-                        <span>ТЕХНІЧНА</span>
-                        <span>ДОКУМЕНТАЦІЯ</span>
+                        <span>OFFICIAL</span>
+                        <span>TECHNICAL</span>
+                        <span>DOCUMENTATION</span>
                     </h1>
 
                     <div class="techLibHero__actions docsHero__actions">
                         <a class="uLinkDoc" href="/docs/all.zip">
-                            ЗАВАНТАЖИТИ ВСЕ АРХІВОМ</a>
+                            LOAD ALL ARCHIVE</a>
                     </div>
 
                 <div class="docsTop__tabs">
-                    <a class="docsTop__tab" href="#certs">СЕРТИФІКАТИ ВІДПОВІДНОСТІ</a>
-                    <a class="docsTop__tab" href="#techpassports">ТЕХНІЧНІ ПАСПОРТИ</a>
-                    <a class="docsTop__tab" href="#catalogs">КАТАЛОГИ ТА ПРЕЗЕНТАЦІЇ</a>
-                    <a class="docsTop__tab" href="#manuals">ІНСТРУКЦІЇ КОРИСТУВАЧА</a>
+                    <a class="docsTop__tab" href="#certs">CERTIFICATES OF COMPLIANCE</a>
+                    <a class="docsTop__tab" href="#techpassports">TECHNICAL PASSPORTS</a>
+                    <a class="docsTop__tab" href="#catalogs">CATALOGS AND PRESENTATIONS</a>
+                    <a class="docsTop__tab" href="#manuals">USER INSTRUCTIONS</a>
                 </div>
             </div>
           </div>
@@ -57,10 +57,10 @@
         <div class="docsLinks">
             <div class="container docsLinks__inner grid12">
                 <div class="docsLinks__col" id="manuals">
-                    <div class="docsLinks__head">ІНСТРУКЦІЇ КОРИСТУВАЧА</div>
+                    <div class="docsLinks__head">USER INSTRUCTIONS</div>
 
                     <a class="docsLink" href="#">
-                        <span class="docsLink__text">ПЕРЕГЛЯНУТИ <br>ІНСТРУКЦІЇ</span>
+                        <span class="docsLink__text">REVIEW <br>INSTRUCTIONS</span>
                         <span class="docsLink__arrow" aria-hidden="true">
                             <img class="docsArrow docsArrow--white" src="/img/ui/white-up2.svg" alt="">
                             <img class="docsArrow docsArrow--orange" src="/img/ui/orange-up2.svg" alt="">
@@ -68,7 +68,7 @@
                     </a>
 
                     <a class="docsLink" href="#" download>
-                        <span class="docsLink__text">ЗАВАНТАЖИТИ АРХІВ <br>ІНСТРУКЦІЙ</span>
+                        <span class="docsLink__text">DOWNLOAD ARCHIVES <br>INSTRUCTIONS</span>
                         <span class="docsLink__arrow" aria-hidden="true">
                             <img class="docsArrow docsArrow--white" src="/img/ui/white-up2.svg" alt="">
                             <img class="docsArrow docsArrow--orange" src="/img/ui/orange-up2.svg" alt="">
@@ -77,10 +77,10 @@
                 </div>
 
                 <div class="docsLinks__col" id="certs">
-                    <div class="docsLinks__head">СЕРТИФІКАТИ ВІДПОВІДНОСТІ</div>
+                    <div class="docsLinks__head">CERTIFICATES OF COMPLIANCE</div>
 
                     <a class="docsLink" href="#">
-                        <span class="docsLink__text">ПЕРЕГЛЯНУТИ <br>СЕРТИФІКАТИ</span>
+                        <span class="docsLink__text">REVIEW <br>CERTIFICATES</span>
                         <span class="docsLink__arrow" aria-hidden="true">
                             <img class="docsArrow docsArrow--white" src="/img/ui/white-up2.svg" alt="">
                             <img class="docsArrow docsArrow--orange" src="/img/ui/orange-up2.svg" alt="">
@@ -88,7 +88,7 @@
                     </a>
 
                     <a class="docsLink" href="#" download>
-                        <span class="docsLink__text">ЗАВАНТАЖИТИ АРХІВ <br>СЕРТИФІКАТІВ PDF</span>
+                        <span class="docsLink__text">DOWNLOAD ARCHIVES <br>PDF CERTIFICATES</span>
                         <span class="docsLink__arrow" aria-hidden="true">
                             <img class="docsArrow docsArrow--white" src="/img/ui/white-up2.svg" alt="">
                             <img class="docsArrow docsArrow--orange" src="/img/ui/orange-up2.svg" alt="">
@@ -97,10 +97,10 @@
                 </div>
 
                 <div class="docsLinks__col" id="catalogs">
-                    <div class="docsLinks__head">КАТАЛОГИ ТА ПРЕЗЕНТАЦІЇ</div>
+                    <div class="docsLinks__head">CATALOGS AND PRESENTATIONS</div>
 
                     <a class="docsLink" href="#" download>
-                        <span class="docsLink__text">ЗАВАНТАЖИТИ АРХІВ <br>КАТАЛОГУ PDF</span>
+                        <span class="docsLink__text">DOWNLOAD ARCHIVES <br>CATALOG PDF</span>
                         <span class="docsLink__arrow" aria-hidden="true">
                             <img class="docsArrow docsArrow--white" src="/img/ui/white-up2.svg" alt="">
                             <img class="docsArrow docsArrow--orange" src="/img/ui/orange-up2.svg" alt="">
@@ -108,7 +108,7 @@
                     </a>
 
                     <a class="docsLink" href="#">
-                        <span class="docsLink__text">ПЕРЕГЛЯНУТИ <br>КАТАЛОГИ</span>
+                        <span class="docsLink__text">REVIEW <br>CATALOGS</span>
                         <span class="docsLink__arrow" aria-hidden="true">
                             <img class="docsArrow docsArrow--white"  src="/img/ui/white-up2.svg" alt="">
                             <img class="docsArrow docsArrow--orange" src="/img/ui/orange-up2.svg" alt="">
@@ -121,9 +121,9 @@
         <!-- 3) BOTTOM / FORM -->
         <div class="docsForm">
             <div class="container docsForm__inner grid12">
-                <h3 class="docsForm__title">НЕ ЗНАЙШЛИ ПОТРІБНОГО ДОКУМЕНТА?</h3>
+                <h3 class="docsForm__title">DID NOT FIND THE DOCUMENT YOU NEED?</h3>
                 <div class="docsForm__left">
-                    <p class="docsForm__subtitle">Ми надішлемо його на вашу пошту.</p>
+                    <p class="docsForm__subtitle">We will send it to your mail.</p>
                 </div>
 
                 <div class="docsForm__right">
@@ -131,11 +131,11 @@
                         <div class="reqForm__box">
                             <div class="reqForm__grid">
                                 <label class="reqField">
-                                    <input class="reqField__input" type="text" name="firstName" placeholder="ІМ’Я *" required />
+                                    <input class="reqField__input" type="text" name="firstName" placeholder="NAME *" required />
                                 </label>
 
                                 <label class="reqField">
-                                    <input class="reqField__input" type="text" name="lastName" placeholder="ПРІЗВИЩЕ *" required />
+                                    <input class="reqField__input" type="text" name="lastName" placeholder="SURNAME *" required />
                                 </label>
 
                                 <label class="reqField reqField--full">
@@ -143,11 +143,11 @@
                                 </label>
 
                                 <label class="reqField reqField--full">
-                                    <input class="reqField__input" type="tel" name="phone" placeholder="ТЕЛЕФОН" />
+                                    <input class="reqField__input" type="tel" name="phone" placeholder="PHONE" />
                                 </label>
 
                                 <label class="reqField reqField--full">
-                                    <textarea class="reqField__textarea" name="message" placeholder="ОПИШІТЬ, ЧИМ МИ МОЖЕМО ВАМ ДОПОМОГТИ *" required></textarea>
+                                    <textarea class="reqField__textarea" name="message" placeholder="DESCRIBE HOW WE CAN HELP YOU *" required></textarea>
                                 </label>
                             </div>
                         </div>
@@ -155,12 +155,12 @@
                         <label class="reqAgree">
                             <input class="reqAgree__check" type="checkbox" required />
                             <span class="reqAgree__dot" aria-hidden="true"></span>
-                            <span class="reqAgree__text">Даю згоду на обробку персональних даних</span>
+                            <span class="reqAgree__text">I agree to the processing of personal data</span>
                         </label>
 
-                        <p class="reqGdpr">Ваші дані будуть використані виключно для надання технічної консультації. Ми не передаємо інформацію третім сторонам та дотримуємося вимог GDPR.</p>
+                        <p class="reqGdpr">Your data will be used exclusively for providing technical advice. We do not share information with third parties and comply with GDPR requirements.</p>
 
-                        <button class="reqBtn" type="submit">НАДІСЛАТИ ЗАПИТ</button>
+                        <button class="reqBtn" type="submit">SEND REQUEST</button>
                     </form>
                 </div>
             </div>
@@ -179,9 +179,10 @@
 
 
 
-{{>footer}}
+{{> en_footer}}
 
 
 </body>
 </html>
+
 

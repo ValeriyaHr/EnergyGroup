@@ -60,7 +60,7 @@ function ShowCalcResult(){
     openModal("calc-modal-result");
 }
 
-// Для inline-обработчиков в HTML (onclick / onsubmit)
+// Expose modal handlers globally for inline HTML onclick/onSubmit handlers.
 window.openModal = openModal;
 window.closeModal = closeModal;
 window.ShowCalcResult = ShowCalcResult;

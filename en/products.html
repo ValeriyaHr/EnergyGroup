@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="uk">
 <head>
     <meta charset="utf-8" />
@@ -7,19 +7,19 @@
     <title>Prime Energy Group</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="./img/favicon.svg">
-    <link rel="alternate icon" href="./img/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+    <link rel="alternate icon" href="../img/favicon.svg">
 
-    <script type="module" src="./js/jquery/jquery-3.7.1.min.js"></script>
-    <script type="module" src="./js/main.js"></script>
-    <script type="module" src="./js/menu.js"></script>
-    <script type="module" src="./js/calc.js"></script>
-    <script type="module" src="./js/products.js"></script>
+    <script type="module" src="../js/jquery/jquery-3.7.1.min.js"></script>
+    <script type="module" src="../js/main.js"></script>
+    <script type="module" src="../js/menu.js"></script>
+    <script type="module" src="../js/calc.js"></script>
+    <script type="module" src="../js/products.js"></script>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/products-page.css">
-    <link rel="stylesheet" href="./css/mobile.css" media="(max-width: 768px)">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/products-page.css">
+    <link rel="stylesheet" href="../css/mobile.css" media="(max-width: 768px)">
 </head>
 
 <body class="products-page">
@@ -28,17 +28,17 @@
 <!-- {{>preloader}} -->
 
 <!-- ===== HEADER ===== -->
-{{> header}}
+{{> en_header}}
 
 <main>
     <!-- ===== PREVIEW PRODUCT ===== -->
-    <section class="previewProduct previewProduct--cabinet" aria-label="Попередній перегляд продукту">
+    <section class="previewProduct previewProduct--cabinet" aria-label="Product preview">
         <div class="previewProduct__gridBg" aria-hidden="true"></div>
 
         <div class="container previewProduct__inner grid12">
             <div class="previewProduct__side previewProduct__side--left">
                 <div class="previewProduct__label" id="previewProductTitle">
-                    Станції катодного захисту інверторні автоматичні (СКЗІ)
+                    Inverter automatic cathodic protection stations (SCZI)
                 </div>
             </div>
 
@@ -47,15 +47,15 @@
 
                 <img
                         id="previewProductImage"
-                        src="./img/content/products/product-01.png"
-                        alt="Станція катодного захисту"
+                        src="../img/content/products/product-01.png"
+                        alt="Cathodic protection station"
                 >
             </div>
 
             <div class="previewProduct__side previewProduct__side--right">
                 <p class="previewProduct__desc" id="previewProductDesc">
-                    Інверторні станції нового покоління для стабільного та енергоефективного катодного захисту
-                    трубопроводів із точним автоматичним регулюванням
+                    Inverter stations of the new generation for stable and energy-efficient cathodic protection
+                    pipelines with precise automatic regulation
                 </p>
 
                 <div class="previewProduct__actions">
@@ -65,7 +65,7 @@
                             type="button"
                             onclick="openModal('calc-modal');"
                     >
-                        Визначити кількість
+                        Determine the amount
                     </button>
 
                     <button
@@ -75,7 +75,7 @@
                             data-product="p01"
                             data-type="cabinet"
                     >
-                        Переглянути продукт
+                        View product
                     </button>
                 </div>
             </div>
@@ -86,14 +86,14 @@
 
     <!-- ===== MOBILE PANEL ===== -->
     <div class="mobile_panel">
-        <button class="mobile_panel__btn mobile_panel__btn--single active" data-view="single" type="button" aria-label="Показати по одному">
+        <button class="mobile_panel__btn mobile_panel__btn--single active" data-view="single" type="button" aria-label="Show one at a time">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="4" y="6" width="16" height="4" rx="1" stroke="currentColor" stroke-width="1.6"/>
                 <rect x="4" y="14" width="16" height="4" rx="1" stroke="currentColor" stroke-width="1.6"/>
             </svg>
         </button>
 
-        <button class="mobile_panel__btn mobile_panel__btn--double" data-view="double" type="button" aria-label="Показати плиткою">
+        <button class="mobile_panel__btn mobile_panel__btn--double" data-view="double" type="button" aria-label="Show with tiles">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="4" y="4" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
                 <rect x="14" y="4" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
@@ -104,388 +104,388 @@
     </div>
 
     <!-- ===== LIST PRODUCTS ===== -->
-    <section class="productsList" aria-label="Продукція">
+    <section class="productsList" aria-label="Product">
         <div class="container">
             <div class="productsList__grid" id="productsGrid">
 
-                <article class="productCard" data-preview="./img/content/products/product-01.png" data-details="p01" data-type="cabinet">
+                <article class="productCard" data-preview="../img/content/products/product-01.png" data-details="p01" data-type="cabinet">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <picture>
-                                <source media="(max-width: 768px)" srcset="./img/content/products/product-01-mob.jpg">
-                                <img src="./img/content/products/product-01-small.jpg" alt="">
+                                <source media="(max-width: 768px)" srcset="../img/content/products/product-01-mob.jpg">
+                                <img src="../img/content/products/product-01-small.jpg" alt="">
                             </picture>
                         </div>
 
                         <div class="productCard__body">
                             <span class="productCard__num">01</span>
                             <div class="productCard__title">
-                                Станції катодного захисту інверторні автоматичні (СКЗІ)
+                                Inverter automatic cathodic protection stations (SCZI)
                             </div>
 
                             <div class="productCard__text">
-                                Інверторні станції нового покоління для стабільного та енергоефективного катодного
-                                захисту трубопроводів
+                                Inverter stations of the new generation for stable and energy-efficient cathode
+                                protection of pipelines
                             </div>
                         </div>
 
                         <div class="productCard__bottom">
-                            <span class="productCard__more">Дізнатися більше</span>
-                            <img src="./img/ui/orange-up2.svg" alt="" width="16" height="16">
+                            <span class="productCard__more">Learn more</span>
+                            <img src="../img/ui/orange-up2.svg" alt="" width="16" height="16">
                         </div>
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-02.png" data-details="p02" data-type="module">
+                <article class="productCard" data-preview="../img/content/products/product-02.png" data-details="p02" data-type="module">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <picture>
-                                <source media="(max-width: 768px)" srcset="./img/content/products/product-02-mob.jpg">
-                                <img src="./img/content/products/product-02-small.jpg" alt="">
+                                <source media="(max-width: 768px)" srcset="../img/content/products/product-02-mob.jpg">
+                                <img src="../img/content/products/product-02-small.jpg" alt="">
                             </picture>
                         </div>
 
                         <div class="productCard__body">
                             <span class="productCard__num">02</span>
                             <div class="productCard__title">
-                                Блоки сумісного захисту (електронні) плавного прецизійного керування
+                                Blocks of compatible protection (electronic) of smooth precision control
                             </div>
 
                             <div class="productCard__text">
-                                Електронні БЗК з точним плавним регулюванням струмів для максимального контролю та безпеки систем катодного захисту
+                                Electronic BZK with precise smooth regulation of currents for maximum control and safety of cathodic protection systems
                             </div>
                         </div>
 
                         <div class="productCard__bottom">
-                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__more">Learn more</span>
                             <span class="productCard__arrow" aria-hidden="true">
-                                <img src="./img/ui/orange-up2.svg" alt="" width="16" height="16">
+                                <img src="../img/ui/orange-up2.svg" alt="" width="16" height="16">
                             </span>
                         </div>
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-03.png" data-details="p03" data-type="tall">
+                <article class="productCard" data-preview="../img/content/products/product-03.png" data-details="p03" data-type="tall">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <picture>
-                                <source media="(max-width: 768px)" srcset="./img/content/products/product-03-mob.jpg">
-                                <img src="./img/content/products/product-03-small.jpg" alt="">
+                                <source media="(max-width: 768px)" srcset="../img/content/products/product-03-mob.jpg">
+                                <img src="../img/content/products/product-03-small.jpg" alt="">
                             </picture>
                         </div>
 
                         <div class="productCard__body">
                             <span class="productCard__num">03</span>
                             <div class="productCard__title">
-                                Аноди заземлюючі магнетитові (АЗМТ)
+                                Grounding magnetite anodes (AZMT)
                             </div>
 
                             <div class="productCard__text">
-                                Високостійкі магнетитові аноди для катодного захисту з тривалим ресурсом роботи та мінімальним опором ґрунту
+                                Highly resistant magnetite anodes for cathodic protection with a long service life and minimal soil resistance
                             </div>
                         </div>
 
                         <div class="productCard__bottom">
-                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__more">Learn more</span>
                             <span class="productCard__arrow" aria-hidden="true">
-                                <img src="./img/ui/orange-up2.svg" alt="" width="16" height="16">
+                                <img src="../img/ui/orange-up2.svg" alt="" width="16" height="16">
                             </span>
                         </div>
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-04.png" data-details="p04" data-type="tall">
+                <article class="productCard" data-preview="../img/content/products/product-04.png" data-details="p04" data-type="tall">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <picture>
-                                <source media="(max-width: 768px)" srcset="./img/content/products/product-04-mob.jpg">
-                                <img src="./img/content/products/product-04-small.jpg" alt="">
+                                <source media="(max-width: 768px)" srcset="../img/content/products/product-04-mob.jpg">
+                                <img src="../img/content/products/product-04-small.jpg" alt="">
                             </picture>
                         </div>
 
                         <div class="productCard__body">
                             <span class="productCard__num">04</span>
                             <div class="productCard__title">
-                                Контрольно-вимірювальні пункти (ПВ) з БЗК та телеметрією
+                                Monitoring and measuring points (PM) with BZK and telemetry
                             </div>
 
                             <div class="productCard__text">
-                                Комплексні ПВ із вбудованим блоком сумісного захисту та телеметрією для повного моніторингу потенціалів і струмів
+                                Complex PVs with a built-in block of compatible protection and telemetry for full monitoring of potentials and currents
                             </div>
                         </div>
 
                         <div class="productCard__bottom">
-                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__more">Learn more</span>
                             <span class="productCard__arrow" aria-hidden="true">
-                                <img src="./img/ui/orange-up2.svg" alt="" width="16" height="16">
+                                <img src="../img/ui/orange-up2.svg" alt="" width="16" height="16">
                             </span>
                         </div>
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-05.png" data-details="p05" data-type="module">
+                <article class="productCard" data-preview="../img/content/products/product-05.png" data-details="p05" data-type="module">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <picture>
-                                <source media="(max-width: 768px)" srcset="./img/content/products/product-05-mob.jpg">
-                                <img src="./img/content/products/product-05-small.jpg" alt="">
+                                <source media="(max-width: 768px)" srcset="../img/content/products/product-05-mob.jpg">
+                                <img src="../img/content/products/product-05-small.jpg" alt="">
                             </picture>
                         </div>
 
                         <div class="productCard__body">
                             <span class="productCard__num">05</span>
                             <div class="productCard__title">
-                                Система телеметрична для збору даних з ПВ
+                                The telemetry system is used to collect data from the PV
                             </div>
 
                             <div class="productCard__text">
-                                Модем телеметрії для автоматичного збору, зберігання та передачі параметрів ПВ на диспетчерський центр
+                                Telemetry modem for automatic collection, storage and transmission of PV parameters to the dispatch center
                             </div>
                         </div>
 
                         <div class="productCard__bottom">
-                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__more">Learn more</span>
                             <span class="productCard__arrow" aria-hidden="true">
-                                <img src="./img/ui/orange-up2.svg" alt="" width="16" height="16">
+                                <img src="../img/ui/orange-up2.svg" alt="" width="16" height="16">
                             </span>
                         </div>
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-06.png" data-details="p06" data-type="cabinet">
+                <article class="productCard" data-preview="../img/content/products/product-06.png" data-details="p06" data-type="cabinet">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <picture>
-                                <source media="(max-width: 768px)" srcset="./img/content/products/product-06-mob.jpg">
-                                <img src="./img/content/products/product-06-small.jpg" alt="">
+                                <source media="(max-width: 768px)" srcset="../img/content/products/product-06-mob.jpg">
+                                <img src="../img/content/products/product-06-small.jpg" alt="">
                             </picture>
                         </div>
 
                         <div class="productCard__body">
                             <span class="productCard__num">06</span>
                             <div class="productCard__title">
-                                Система телеметрії та телеуправління станціями катодного захисту
+                                System of telemetry and remote control of cathodic protection stations
                             </div>
 
                             <div class="productCard__text">
-                                Комплекс дистанційного контролю та керування СКЗ у режимі реального часу з передачею даних по GSM
+                                A complex of remote control and management of the SCZ in real time with data transmission via GSM
                             </div>
                         </div>
 
                         <div class="productCard__bottom">
-                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__more">Learn more</span>
                             <span class="productCard__arrow" aria-hidden="true">
-                                <img src="./img/ui/orange-up2.svg" alt="" width="16" height="16">
+                                <img src="../img/ui/orange-up2.svg" alt="" width="16" height="16">
                             </span>
                         </div>
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-07.png" data-details="p07" data-type="wide">
+                <article class="productCard" data-preview="../img/content/products/product-07.png" data-details="p07" data-type="wide">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <picture>
-                                <source media="(max-width: 768px)" srcset="./img/content/products/product-07-mob.jpg">
-                                <img src="./img/content/products/product-07-small.jpg" alt="">
+                                <source media="(max-width: 768px)" srcset="../img/content/products/product-07-mob.jpg">
+                                <img src="../img/content/products/product-07-small.jpg" alt="">
                             </picture>
                         </div>
 
                         <div class="productCard__body">
                             <span class="productCard__num">07</span>
                             <div class="productCard__title">
-                                Комплекс відведення наведеного струму
+                                Complex of removal of induced current
                             </div>
 
                             <div class="productCard__text">
-                                Система для безпечного відведення високочастотних і наведених струмів з ЛЕП та промислових об’єктів
+                                System for safe removal of high-frequency and induced currents from power lines and industrial facilities
                             </div>
                         </div>
 
                         <div class="productCard__bottom">
-                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__more">Learn more</span>
                             <span class="productCard__arrow" aria-hidden="true">
-                                <img src="./img/ui/orange-up2.svg" alt="" width="16" height="16">
+                                <img src="../img/ui/orange-up2.svg" alt="" width="16" height="16">
                             </span>
                         </div>
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-08.png" data-details="p08" data-type="module">
+                <article class="productCard" data-preview="../img/content/products/product-08.png" data-details="p08" data-type="module">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <picture>
-                                <source media="(max-width: 768px)" srcset="./img/content/products/product-08-mob.jpg">
-                                <img src="./img/content/products/product-08-small.jpg" alt="">
+                                <source media="(max-width: 768px)" srcset="../img/content/products/product-08-mob.jpg">
+                                <img src="../img/content/products/product-08-small.jpg" alt="">
                             </picture>
                         </div>
 
                         <div class="productCard__body">
                             <span class="productCard__num">08</span>
                             <div class="productCard__title">
-                                Блоки управління ізоляційними фланцями (електронні) плавного прецизійного керування
+                                Control units for insulating flanges (electronic) of smooth precision control
                             </div>
 
                             <div class="productCard__text">
-                                Розумні електронні блоки для контролю стану ізоляційних фланців та автоматичного відведення небезпечних струмів
+                                Intelligent electronic units for monitoring the condition of insulating flanges and automatic removal of dangerous currents
                             </div>
                         </div>
 
                         <div class="productCard__bottom">
-                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__more">Learn more</span>
                             <span class="productCard__arrow" aria-hidden="true">
-                                <img src="./img/ui/orange-up2.svg" alt="" width="16" height="16">
+                                <img src="../img/ui/orange-up2.svg" alt="" width="16" height="16">
                             </span>
                         </div>
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-09.png" data-details="p09" data-type="cabinet">
+                <article class="productCard" data-preview="../img/content/products/product-09.png" data-details="p09" data-type="cabinet">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <picture>
-                                <source media="(max-width: 768px)" srcset="./img/content/products/product-09-mob.jpg">
-                                <img src="./img/content/products/product-09-small.jpg" alt="">
+                                <source media="(max-width: 768px)" srcset="../img/content/products/product-09-mob.jpg">
+                                <img src="../img/content/products/product-09-small.jpg" alt="">
                             </picture>
                         </div>
 
                         <div class="productCard__body">
                             <span class="productCard__num">09</span>
                             <div class="productCard__title">
-                                Станція дренажного захисту “Поляризаційна”
+                                Drainage protection station "Polarization"
                             </div>
 
                             <div class="productCard__text">
-                                Станція для інтенсивного відведення великих блукаючих струмів та
-                                підвищення ефективності захисту трубопроводів у зонах з екстремальними електромагнітними впливами
+                                Station for intensive removal of large stray currents and
+                                increasing the efficiency of protection of pipelines in areas with extreme electromagnetic influences
                             </div>
                         </div>
 
                         <div class="productCard__bottom">
-                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__more">Learn more</span>
                             <span class="productCard__arrow" aria-hidden="true">
-                                <img src="./img/ui/orange-up2.svg" alt="" width="16" height="16">
+                                <img src="../img/ui/orange-up2.svg" alt="" width="16" height="16">
                             </span>
                         </div>
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-10.png" data-details="p10" data-type="cabinet">
+                <article class="productCard" data-preview="../img/content/products/product-10.png" data-details="p10" data-type="cabinet">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <picture>
-                                <source media="(max-width: 768px)" srcset="./img/content/products/product-10-mob.jpg">
-                                <img src="./img/content/products/product-10-small.jpg" alt="">
+                                <source media="(max-width: 768px)" srcset="../img/content/products/product-10-mob.jpg">
+                                <img src="../img/content/products/product-10-small.jpg" alt="">
                             </picture>
                         </div>
 
                         <div class="productCard__body">
                             <span class="productCard__num">10</span>
                             <div class="productCard__title">
-                                Станція дренажного захисту “Підсилений дренаж”
+                                Drainage Protection Station "Reinforced Drainage"
                             </div>
 
                             <div class="productCard__text">
-                                Станція підвищеної потужності для інтенсивного відведення великих
-                                блукаючих струмів, що забезпечує надійний захист трубопроводів на
-                                ділянках із високим рівнем електромагнітних перешкод
+                                Station of increased power for intensive removal of large
+                                stray currents, which provides reliable protection of pipelines on
+                                areas with a high level of electromagnetic interference
                             </div>
                         </div>
 
                         <div class="productCard__bottom">
-                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__more">Learn more</span>
                             <span class="productCard__arrow" aria-hidden="true">
-                                <img src="./img/ui/orange-up2.svg" alt="" width="16" height="16">
+                                <img src="../img/ui/orange-up2.svg" alt="" width="16" height="16">
                             </span>
                         </div>
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-11.png" data-details="p11" data-type="wide">
+                <article class="productCard" data-preview="../img/content/products/product-11.png" data-details="p11" data-type="wide">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <picture>
-                                <source media="(max-width: 768px)" srcset="./img/content/products/product-11-mob.jpg">
-                                <img src="./img/content/products/product-11-small.jpg" alt="">
+                                <source media="(max-width: 768px)" srcset="../img/content/products/product-11-mob.jpg">
+                                <img src="../img/content/products/product-11-small.jpg" alt="">
                             </picture>
                         </div>
 
                         <div class="productCard__body">
                             <span class="productCard__num">11</span>
                             <div class="productCard__title productCard__title--hyphens">
-                                Електроізолюючі вставки (муфти)
+                                Electrically insulating inserts (couplings)
                             </div>
 
                             <div class="productCard__text">
-                                Електроізолюючі вставки призначені для створення на трубопроводах надійного
-                                діелектричного розриву, що запобігає неконтрольованому проходженню струму між окремими ділянками системи
+                                Electrically insulating inserts are designed to create a reliable on pipelines
+                                dielectric breakdown, which prevents the uncontrolled passage of current between individual sections of the system
                             </div>
                         </div>
 
                         <div class="productCard__bottom">
-                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__more">Learn more</span>
                             <span class="productCard__arrow" aria-hidden="true">
-                                <img src="./img/ui/orange-up2.svg" alt="" width="16" height="16">
+                                <img src="../img/ui/orange-up2.svg" alt="" width="16" height="16">
                             </span>
                         </div>
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-12.png" data-details="p12" data-type="module">
+                <article class="productCard" data-preview="../img/content/products/product-12.png" data-details="p12" data-type="module">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <picture>
-                                <source media="(max-width: 768px)" srcset="./img/content/products/product-12-mob.png">
-                                <img src="./img/content/products/product-12-small.jpg" alt="">
+                                <source media="(max-width: 768px)" srcset="../img/content/products/product-12-mob.png">
+                                <img src="../img/content/products/product-12-small.jpg" alt="">
                             </picture>
                         </div>
 
                         <div class="productCard__body">
                             <span class="productCard__num">12</span>
                             <div class="productCard__title">
-                                Пристрої контролю струмів анодних заземлювачів
+                                Devices for monitoring the currents of anode earthing devices
                             </div>
 
                             <div class="productCard__text">
-                                Пристрої ПКЗА застосовуються в системах електрохімічного захисту протяжних підземних металевих об’єктів
-                                (трубопроводів) від корозії та призначені для розподілу та контролю захисних струмів анодних заземлювачів
+                                PKZA devices are used in electrochemical protection systems of long underground metal facilities
+                                (pipelines) against corrosion and intended for the distribution and control of protective currents of anode grounding devices
                             </div>
                         </div>
 
                         <div class="productCard__bottom">
-                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__more">Learn more</span>
                             <span class="productCard__arrow" aria-hidden="true">
-                                <img src="./img/ui/orange-up2.svg" alt="" width="16" height="16">
+                                <img src="../img/ui/orange-up2.svg" alt="" width="16" height="16">
                             </span>
                         </div>
                     </a>
                 </article>
 
-                <article class="productCard" data-preview="./img/content/products/product-13.png" data-details="p13" data-type="tall">
+                <article class="productCard" data-preview="../img/content/products/product-13.png" data-details="p13" data-type="tall">
                     <a class="productCard__link" href="#">
                         <div class="productCard__imgWrap">
                             <picture>
-                                <source media="(max-width: 768px)" srcset="./img/content/products/product-13-mob.jpg">
-                                <img src="./img/content/products/product-13-small.jpg" alt="">
+                                <source media="(max-width: 768px)" srcset="../img/content/products/product-13-mob.jpg">
+                                <img src="../img/content/products/product-13-small.jpg" alt="">
                             </picture>
                         </div>
 
                         <div class="productCard__body">
                             <span class="productCard__num">13</span>
                             <div class="productCard__title">
-                                Пункт вимірювальний ПЕГ КОМБ
+                                Measuring point PEG COMB
                             </div>
 
                             <div class="productCard__text">
-                                Пункт вимірювальний ПЕГ КОМБ призначений для контролю потенціалів "труба-земля",
-                                використовується у системах електрохімічного захисту підземних металевих трубопроводів
-                                для обладнання трасових....
+                                The measuring point PEG KOMB is designed to control the "pipe-earth" potentials,
+                                used in electrochemical protection systems of underground metal pipelines
+                                for track equipment...
                             </div>
                         </div>
 
                         <div class="productCard__bottom">
-                            <span class="productCard__more">Дізнатися більше</span>
+                            <span class="productCard__more">Learn more</span>
                             <span class="productCard__arrow" aria-hidden="true">
-                                <img src="./img/ui/orange-up2.svg" alt="" width="16" height="16">
+                                <img src="../img/ui/orange-up2.svg" alt="" width="16" height="16">
                             </span>
                         </div>
                     </a>
@@ -495,7 +495,7 @@
         </div>
     </section>
 
-    {{> calc_modal}}
+    {{> en_calc_modal}}
 
 <!--    <script>-->
 <!--        (function ($) {-->
@@ -644,7 +644,7 @@
 </main>
 
 <!-- ===== FOOTER ===== -->
-{{> footer}}
+{{> en_footer}}
 
 </body>
 </html>
