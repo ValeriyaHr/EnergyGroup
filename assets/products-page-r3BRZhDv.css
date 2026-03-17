@@ -14,7 +14,7 @@
 .previewProduct__gridBg{
     position: absolute;
     inset: 0;
-    background: url("/EnergyGroup/assets/grid-404-DXaU8owx.svg") center top / cover no-repeat;
+    background: url("/assets/grid-404-CYcgHVOB.svg") center top / cover no-repeat;
     opacity: 0.7;
     pointer-events: none;
     z-index: 0;
@@ -28,7 +28,7 @@
     width: min(1091px, 78vw);
     height: 190px;
     transform: translate(-50%, -50%);
-    background: url("/EnergyGroup/assets/background-product-wvMnVLp1.png") center center / contain no-repeat;
+    background: url("/assets/background-product-wvMnVLp1.png") center center / contain no-repeat;
     pointer-events: none;
     z-index: 1;
 }
@@ -758,7 +758,7 @@
 
     .previewProduct__gridBg{
         opacity: 0.8;
-        background: url("/EnergyGroup/assets/grid-404-DXaU8owx.svg") top center / 100% auto repeat-y;
+        background: url("/assets/grid-404-CYcgHVOB.svg") top center / 100% auto repeat-y;
     }
 
     .previewProduct__scriptBg{

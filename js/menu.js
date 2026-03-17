@@ -1,3 +1,7 @@
+import "./jquery-global.js";
+
+const $ = window.jQuery;
+
 (() => {
     const openBtn = document.querySelector(".header__burger");
     const overlay = document.querySelector("#menuOverlay");

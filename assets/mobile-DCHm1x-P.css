@@ -228,8 +228,8 @@ body.menu-open .header__burger::after {
     height: calc(100% - 126px);
     transform: translateX(-50%);
     background:
-        url("/EnergyGroup/assets/grid-home-PV68KFyG.svg") no-repeat left center,
-        var(--grey-pale) url("/EnergyGroup/assets/grid-home-PV68KFyG.svg") no-repeat center center;
+        url("/assets/grid-home-BVRxxBe4.svg") no-repeat left center,
+        var(--grey-pale) url("/assets/grid-home-BVRxxBe4.svg") no-repeat center center;
     background-size: cover, cover;
     pointer-events: none;
     z-index: 0;

@@ -1,3 +1,5 @@
+import "./jquery-global.js";
+
 // import $ from "jquery";
 // window.$ = $;
 // window.jQuery = $;

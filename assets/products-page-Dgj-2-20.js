@@ -1,3 +1,78 @@
+import "./style-BMHSjCV0.js";
+const $$1 = window.jQuery;
+function toNum(v) {
+  const n = Number(String(v).trim().replace(",", "."));
+  return Number.isFinite(n) ? n : null;
+}
+function openModal(id) {
+  $$1("#" + id).addClass("is-open");
+  $$1("body").addClass("no-scroll");
+}
+function closeModal(id) {
+  $$1("#" + id).removeClass("is-open");
+  $$1("body").removeClass("no-scroll");
+}
+function ShowCalcResult() {
+  const inom = toNum($$1("#inom").val());
+  const rho = toNum($$1("#rho").val());
+  console.log("inom=" + inom);
+  console.log("rho=" + rho);
+  if (inom === null || rho === null || inom <= 0 || rho <= 0) {
+    alert("Перевір числа: мають бути > 0 (можна 4,0 або 4.0).");
+    return;
+  }
+  const U_skz_max = 50;
+  const K_zapas_U = 1.5;
+  const K_zapas_R = 1.3;
+  const K_season = 1.3;
+  const K_ekr = 0.75;
+  const V_anod = 0.02;
+  const T_years = 20;
+  const K_nerivn = 2;
+  const M_core = 6;
+  const U_start = U_skz_max / K_zapas_U;
+  const R_calc = U_start / inom;
+  const R_start = R_calc / K_zapas_R;
+  const Ri_base = 5 * 0.1 * rho;
+  const Ri = Ri_base * K_season;
+  const N_electr = Ri / R_start;
+  const N_fact = N_electr / K_ekr;
+  const M_az = V_anod * T_years * inom * K_nerivn;
+  const N_by_mass = M_az / M_core;
+  const N_final = Math.ceil(Math.max(N_fact, N_by_mass));
+  $$1("#calc-result-value").text(String(N_final));
+  closeModal("calc-modal");
+  openModal("calc-modal-result");
+}
+window.openModal = openModal;
+window.closeModal = closeModal;
+window.ShowCalcResult = ShowCalcResult;
+(function initAzCalculator() {
+  const $modal = $$1("#calc-modal");
+  const $resultModal = $$1("#calc-modal-result");
+  if ($modal.length === 0 || $resultModal.length === 0) return;
+  $$1(document).on("click", ".calc-modal__close", function(e) {
+    e.stopPropagation();
+    const $modal2 = $$1(this).closest("#calc-modal, #calc-modal-result");
+    if ($modal2.length) {
+      const modalId = $modal2.attr("id");
+      if (modalId) {
+        closeModal(modalId);
+      }
+    }
+  });
+  $$1(document).on("click", ".calc-modal__overlay", function(e) {
+    e.stopPropagation();
+    const $modal2 = $$1(this).closest(".calc-modal");
+    if ($modal2.length) {
+      closeModal($modal2.attr("id"));
+    }
+  });
+  $$1(document).on("click", "[data-calc-open]", function() {
+    openModal("calc-modal");
+  });
+  $$1("#calc-form");
+})();
 const $ = window.jQuery;
 (function($2) {
   if (!$2) return;
@@ -283,4 +358,4 @@ if ($) $(function() {
   setPreviewState("p01", "cabinet");
   toggleCalculator("p01");
 });
-//# sourceMappingURL=productsJs-DMMXeoQm.js.map
+//# sourceMappingURL=products-page-Dgj-2-20.js.map

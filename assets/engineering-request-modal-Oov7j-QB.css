@@ -286,7 +286,7 @@
 .engDivider{
     height: 40vh;
     background:
-        url("/EnergyGroup/assets/eng-arc-glow-BIdP8gVe.png") center bottom / cover no-repeat;
+        url("/assets/eng-arc-glow-BIdP8gVe.png") center bottom / cover no-repeat;
 
     margin-bottom: -1px;
 }

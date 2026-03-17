@@ -1,3 +1,5 @@
+import "./jquery-global.js";
+
 const $ = window.jQuery;
 
 // Mobile panel - переключение режимов отображения продукции

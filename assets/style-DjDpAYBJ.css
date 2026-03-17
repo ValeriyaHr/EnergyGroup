@@ -111,7 +111,7 @@
     left:0;
     width:150px;
     height:100%;
-    background: url("/EnergyGroup/assets/glow_menu-DYzMvn5T.png") left center no-repeat;
+    background: url("/assets/glow_menu-DYzMvn5T.png") left center no-repeat;
     background-size: cover;
     pointer-events:none;
     z-index:0;
@@ -386,7 +386,7 @@ body.menu-open{
         bottom: 0;
         width: 100%;
         height: 140px;
-        background: url("/EnergyGroup/assets/eng-arc-glow-BIdP8gVe.png") center bottom no-repeat;
+        background: url("/assets/eng-arc-glow-BIdP8gVe.png") center bottom no-repeat;
         background-size: cover;
         opacity: 1;
     }
@@ -1887,77 +1887,77 @@ body.no-scroll{ overflow: hidden; }
 }
 @font-face {
     font-family: "Bebas Neue";
-    src: url("/EnergyGroup/assets/BebasNeue-Regular-5LZebNIn.woff2") format("woff2");
+    src: url("/assets/BebasNeue-Regular-5LZebNIn.woff2") format("woff2");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: "Supreme";
-    src: url("/EnergyGroup/assets/Supreme-Regular-BBYex7lw.woff2") format("woff2");
+    src: url("/assets/Supreme-Regular-BBYex7lw.woff2") format("woff2");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: "Manrope";
-    src: url("/EnergyGroup/assets/Manrope-Light-Da1J8AqR.woff2") format("woff2");
+    src: url("/assets/Manrope-Light-Da1J8AqR.woff2") format("woff2");
     font-weight: 300;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: "Montserrat";
-    src: url("/EnergyGroup/assets/Montserrat-Thin-cS4p7h4M.woff2") format("woff2");
+    src: url("/assets/Montserrat-Thin-cS4p7h4M.woff2") format("woff2");
     font-weight: 100;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: "Montserrat";
-    src: url("/EnergyGroup/assets/Montserrat-Light-BDXgMDtZ.woff2") format("woff2");
+    src: url("/assets/Montserrat-Light-BDXgMDtZ.woff2") format("woff2");
     font-weight: 300;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: "Montserrat";
-    src: url("/EnergyGroup/assets/Montserrat-Medium-Bv7av8qq.woff2") format("woff2");
+    src: url("/assets/Montserrat-Medium-Bv7av8qq.woff2") format("woff2");
     font-weight: 500;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: "Montserrat";
-    src: url("/EnergyGroup/assets/Montserrat-Regular-DLSKq2aI.woff2") format("woff2");
+    src: url("/assets/Montserrat-Regular-DLSKq2aI.woff2") format("woff2");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: "Montserrat";
-    src: url("/EnergyGroup/assets/Montserrat-Bold-CnhIhCuj.woff2") format("woff2");
+    src: url("/assets/Montserrat-Bold-CnhIhCuj.woff2") format("woff2");
     font-weight: 700;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: "Montserrat";
-    src: url("/EnergyGroup/assets/Montserrat-ExtraBold-DsEz0UwE.woff2") format("woff2");
+    src: url("/assets/Montserrat-ExtraBold-DsEz0UwE.woff2") format("woff2");
     font-weight: 800;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: "Kaushan Script";
-    src: url("/EnergyGroup/assets/KaushanScript-Regular-DfzBMzt-.woff2") format("woff2");
+    src: url("/assets/KaushanScript-Regular-DfzBMzt-.woff2") format("woff2");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 @font-face{
     font-family: "General Sans";
-    src: url("/EnergyGroup/assets/GeneralSans-Bold-dlJ4aeRS.woff2") format("woff2");
+    src: url("/assets/GeneralSans-Bold-dlJ4aeRS.woff2") format("woff2");
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -1965,14 +1965,14 @@ body.no-scroll{ overflow: hidden; }
 /*Заміна Supreme Thin*/
 @font-face{
     font-family: "General Sans";
-    src: url("/EnergyGroup/assets/GeneralSans-Light-DM8dOCDz.woff2") format("woff2");
+    src: url("/assets/GeneralSans-Light-DM8dOCDz.woff2") format("woff2");
     font-weight: 300;
     font-style: normal;
     font-display: swap;
 }
 @font-face{
     font-family: "Roboto";
-    src: url("/EnergyGroup/assets/Roboto-Regular-CDA2nS6X.woff2") format("woff2");
+    src: url("/assets/Roboto-Regular-CDA2nS6X.woff2") format("woff2");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -2289,7 +2289,7 @@ body.menu-open{
     top: 0;
     width: 100%;
     height: 100%;
-    background: url("/EnergyGroup/assets/grid-home-PV68KFyG.svg") no-repeat left center;
+    background: url("/assets/grid-home-BVRxxBe4.svg") no-repeat left center;
     background-size: cover;
     pointer-events: none;
     z-index: 1;
@@ -2982,7 +2982,7 @@ body.menu-open{
     content:"";
     position:absolute;
     inset:0;
-    background:url('/EnergyGroup/assets/bg-circles-C9ujFKrU.svg') center center no-repeat;
+    background:url('/assets/bg-circles-mb02j16_.svg') center center no-repeat;
     background-size: 70%;
     pointer-events:none;
     z-index:0;
@@ -3163,7 +3163,7 @@ body.menu-open{
     right:0;
     bottom: -2px;
     height:400px;
-    background: url("/EnergyGroup/assets/glow-D20zywQf.png") center  bottom no-repeat;
+    background: url("/assets/glow-D20zywQf.png") center  bottom no-repeat;
     background-size: cover;
     animation: waveMove 6s ease-in-out infinite;
     will-change: filter, background-position;
@@ -3404,7 +3404,7 @@ body.menu-open{
     content: "";
     position: absolute;
     inset: 0;
-    background: url("/EnergyGroup/assets/word-3p4zCSP9.svg") no-repeat;
+    background: url("/assets/word-bfZZbFBN.svg") no-repeat;
     background-position: center top;
     background-size: min(900px, 70vw) auto;
 
@@ -3793,7 +3793,7 @@ body.menu-open{
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background-image: url("/EnergyGroup/assets/grid-404-DXaU8owx.svg");
+    background-image: url("/assets/grid-404-CYcgHVOB.svg");
     background-repeat: repeat;
     background-size: 1400px 1400px;
     background-position: 0 0;
@@ -4145,7 +4145,7 @@ body.menu-open{
     content:"";
     position:absolute;
     inset:0;
-    background: url("/EnergyGroup/assets/grid-doc-BY025Cb_.svg") repeat;
+    background: url("/assets/grid-doc-C8Oadknr.svg") repeat;
     background-size: 1242px 958px;
     background-position: 0 0;
     pointer-events:none;
@@ -4174,7 +4174,7 @@ body.menu-open{
     .docs .docsTop__bg{
         grid-column: 1 / 8;
         grid-row: 1 / -1;
-        background: url("/EnergyGroup/assets/grid-doc-BY025Cb_.svg") no-repeat left top;
+        background: url("/assets/grid-doc-C8Oadknr.svg") no-repeat left top;
         pointer-events: none;
         z-index: 0;
     }
@@ -4354,7 +4354,7 @@ body.menu-open{
     content: "";
     position: absolute;
     inset: 0;
-    background: url("/EnergyGroup/assets/background-doc1-form-D7u_QYXE.svg") no-repeat center center;
+    background: url("/assets/background-doc1-form-CTmisOIh.svg") no-repeat center center;
     background-size: cover;
     pointer-events: none;
     z-index: 0;
@@ -4740,7 +4740,7 @@ body.menu-open{
     top: 0;
     width: calc(100% / 12 * 11);
     height: 100%;
-    background: url("/EnergyGroup/assets/background-lib-C08l7wFZ.svg") no-repeat top center;
+    background: url("/assets/background-lib-CHmWxHHC.svg") no-repeat top center;
     background-size: contain;
     pointer-events:none;
     z-index: 0;
@@ -5149,15 +5149,15 @@ body.menu-open{
 .artSvg{ width:100%; height:auto; display:block; }
 /* 1. Типові монтажі */
 .techLibBlock--montage .techLibBlock__art{
-    background-image: url("/EnergyGroup/assets/lib1-nAsO4He9.svg");
+    background-image: url("/assets/lib1-DluEkvGO.svg");
 }
 /* 2. Принципові схеми */
 .techLibBlock--schemes .techLibBlock__art{
-    background-image: url("/EnergyGroup/assets/lib2-DK23tPPJ.svg");
+    background-image: url("/assets/lib2-CSs39WCb.svg");
 }
 /* 3. Документація */
 .techLibBlock--docs .techLibBlock__art{
-    background-image: url("/EnergyGroup/assets/lib3-C1X9033-.svg");
+    background-image: url("/assets/lib3-CIrxrpvd.svg");
 }
 .techLibList{
     display:flex;
