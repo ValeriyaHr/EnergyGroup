@@ -1,5 +1,8 @@
+const $ = window.jQuery;
+
 // Mobile panel - переключение режимов отображения продукции
 (function ($) {
+    if (!$) return;
     $(function () {
         function isMobileView() {
             return window.matchMedia('(max-width: 768px)').matches;
@@ -90,10 +93,10 @@
             switchMobileCardImages(mode);
         });
     });
-})(jQuery);
+})($);
 
 //--------- Открытие и подгрузка детального просмотра продуктов
-$(function () {
+if ($) $(function () {
     const $wrap = $("#productDetails");
 
     let lastUrl = null;
@@ -239,7 +242,7 @@ $(function () {
 
 //---------------------------------- Hero preview products
 
-$(function () {
+if ($) $(function () {
         let $previewSection = $('.previewProduct');
         let $img = $('#previewProductImage');
         let $title = $('#previewProductTitle');

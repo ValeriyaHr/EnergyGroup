@@ -3,7 +3,7 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var require_products_page_00N = __commonJS({
-  "assets/products-page-LyTB3sy3.js"(exports, module) {
+  "assets/products-page-C9IyQp6T.js"(exports, module) {
     /*! jQuery v3.7.1 | (c) OpenJS Foundation and other contributors | jquery.org/license */
     !function(e, t) {
       "object" == typeof module && "object" == typeof module.exports ? module.exports = e.document ? t(e, true) : function(e2) {
@@ -2145,7 +2145,9 @@ var require_products_page_00N = __commonJS({
       });
       $$1("#calc-form");
     })();
+    const $ = window.jQuery;
     (function($2) {
+      if (!$2) return;
       $2(function() {
         function isMobileView() {
           return window.matchMedia("(max-width: 768px)").matches;
@@ -2206,8 +2208,8 @@ var require_products_page_00N = __commonJS({
           switchMobileCardImages(mode);
         });
       });
-    })(jQuery);
-    $(function() {
+    })($);
+    if ($) $(function() {
       const $wrap = $("#productDetails");
       let lastUrl = null;
       let isLoaded = false;
@@ -2302,7 +2304,7 @@ var require_products_page_00N = __commonJS({
         loadProduct(`./product-details/${initialProductId}.html`);
       }
     });
-    $(function() {
+    if ($) $(function() {
       let $previewSection = $(".previewProduct");
       let $img = $("#previewProductImage");
       let $title = $("#previewProductTitle");
@@ -2431,4 +2433,4 @@ var require_products_page_00N = __commonJS({
   }
 });
 export default require_products_page_00N();
-//# sourceMappingURL=products-page-LyTB3sy3.js.map
+//# sourceMappingURL=products-page-C9IyQp6T.js.map

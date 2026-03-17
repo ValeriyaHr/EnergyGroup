@@ -1,4 +1,6 @@
+const $ = window.jQuery;
 (function($2) {
+  if (!$2) return;
   $2(function() {
     function isMobileView() {
       return window.matchMedia("(max-width: 768px)").matches;
@@ -59,8 +61,8 @@
       switchMobileCardImages(mode);
     });
   });
-})(jQuery);
-$(function() {
+})($);
+if ($) $(function() {
   const $wrap = $("#productDetails");
   let lastUrl = null;
   let isLoaded = false;
@@ -155,7 +157,7 @@ $(function() {
     loadProduct(`./product-details/${initialProductId}.html`);
   }
 });
-$(function() {
+if ($) $(function() {
   let $previewSection = $(".previewProduct");
   let $img = $("#previewProductImage");
   let $title = $("#previewProductTitle");
@@ -281,4 +283,4 @@ $(function() {
   setPreviewState("p01", "cabinet");
   toggleCalculator("p01");
 });
-//# sourceMappingURL=productsJs-D4WUXPXf.js.map
+//# sourceMappingURL=productsJs-DMMXeoQm.js.map
