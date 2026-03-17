@@ -3,7 +3,7 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var require_products_page_00N = __commonJS({
-  "assets/products-page-BZXg9iDi.js"(exports, module) {
+  "assets/products-page-LyTB3sy3.js"(exports, module) {
     /*! jQuery v3.7.1 | (c) OpenJS Foundation and other contributors | jquery.org/license */
     !function(e, t) {
       "object" == typeof module && "object" == typeof module.exports ? module.exports = e.document ? t(e, true) : function(e2) {
@@ -2071,21 +2071,22 @@ var require_products_page_00N = __commonJS({
         return ie.$ === ce && (ie.$ = nn), e2 && ie.jQuery === ce && (ie.jQuery = tn), ce;
       }, "undefined" == typeof e && (ie.jQuery = ie.$ = ce), ce;
     });
+    const $$1 = window.jQuery;
     function toNum(v) {
       const n = Number(String(v).trim().replace(",", "."));
       return Number.isFinite(n) ? n : null;
     }
     function openModal(id) {
-      $("#" + id).addClass("is-open");
-      $("body").addClass("no-scroll");
+      $$1("#" + id).addClass("is-open");
+      $$1("body").addClass("no-scroll");
     }
     function closeModal(id) {
-      $("#" + id).removeClass("is-open");
-      $("body").removeClass("no-scroll");
+      $$1("#" + id).removeClass("is-open");
+      $$1("body").removeClass("no-scroll");
     }
     function ShowCalcResult() {
-      const inom = toNum($("#inom").val());
-      const rho = toNum($("#rho").val());
+      const inom = toNum($$1("#inom").val());
+      const rho = toNum($$1("#rho").val());
       console.log("inom=" + inom);
       console.log("rho=" + rho);
       if (inom === null || rho === null || inom <= 0 || rho <= 0) {
@@ -2111,7 +2112,7 @@ var require_products_page_00N = __commonJS({
       const M_az = V_anod * T_years * inom * K_nerivn;
       const N_by_mass = M_az / M_core;
       const N_final = Math.ceil(Math.max(N_fact, N_by_mass));
-      $("#calc-result-value").text(String(N_final));
+      $$1("#calc-result-value").text(String(N_final));
       closeModal("calc-modal");
       openModal("calc-modal-result");
     }
@@ -2119,12 +2120,12 @@ var require_products_page_00N = __commonJS({
     window.closeModal = closeModal;
     window.ShowCalcResult = ShowCalcResult;
     (function initAzCalculator() {
-      const $modal = $("#calc-modal");
-      const $resultModal = $("#calc-modal-result");
+      const $modal = $$1("#calc-modal");
+      const $resultModal = $$1("#calc-modal-result");
       if ($modal.length === 0 || $resultModal.length === 0) return;
-      $(document).on("click", ".calc-modal__close", function(e) {
+      $$1(document).on("click", ".calc-modal__close", function(e) {
         e.stopPropagation();
-        const $modal2 = $(this).closest("#calc-modal, #calc-modal-result");
+        const $modal2 = $$1(this).closest("#calc-modal, #calc-modal-result");
         if ($modal2.length) {
           const modalId = $modal2.attr("id");
           if (modalId) {
@@ -2132,17 +2133,17 @@ var require_products_page_00N = __commonJS({
           }
         }
       });
-      $(document).on("click", ".calc-modal__overlay", function(e) {
+      $$1(document).on("click", ".calc-modal__overlay", function(e) {
         e.stopPropagation();
-        const $modal2 = $(this).closest(".calc-modal");
+        const $modal2 = $$1(this).closest(".calc-modal");
         if ($modal2.length) {
           closeModal($modal2.attr("id"));
         }
       });
-      $(document).on("click", "[data-calc-open]", function() {
+      $$1(document).on("click", "[data-calc-open]", function() {
         openModal("calc-modal");
       });
-      $("#calc-form");
+      $$1("#calc-form");
     })();
     (function($2) {
       $2(function() {
@@ -2430,4 +2431,4 @@ var require_products_page_00N = __commonJS({
   }
 });
 export default require_products_page_00N();
-//# sourceMappingURL=products-page-BZXg9iDi.js.map
+//# sourceMappingURL=products-page-LyTB3sy3.js.map

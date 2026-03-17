@@ -1,3 +1,4 @@
+const $ = window.jQuery;
 function toNum(v) {
   const n = Number(String(v).trim().replace(",", "."));
   return Number.isFinite(n) ? n : null;
@@ -71,4 +72,4 @@ window.ShowCalcResult = ShowCalcResult;
   });
   $("#calc-form");
 })();
-//# sourceMappingURL=calc-C0nKIZ-p.js.map
+//# sourceMappingURL=calc-BoOe_Wdr.js.map

@@ -1,5 +1,7 @@
 //Калькулятор
 
+const $ = window.jQuery;
+
 function toNum(v){
     // підтримка коми 4,5
     const n = Number(String(v).trim().replace(",", "."));
