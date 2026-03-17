@@ -101,6 +101,37 @@ $(function () {
     let isOpen = false;
     let wheelArmed = true; // щоб не спрацьовувало 20 разів
 
+    // Для доступу до деталей продуктів напряму по ссылке: читаем product из URL,
+    // синхронизируем адрес при открытии/закрытии и можем сразу загрузить нужный partial.
+
+    function getProductIdFromLocation() {
+        const params = new URLSearchParams(window.location.search);
+        const queryProduct = params.get("product");
+
+        if (queryProduct && /^p\d{2}$/i.test(queryProduct)) {
+            return queryProduct.toLowerCase();
+        }
+
+        const hashMatch = window.location.hash.match(/p\d{2}/i);
+        return hashMatch ? hashMatch[0].toLowerCase() : null;
+    }
+
+    function setProductLocation(productId) {
+        if (!window.history || !window.history.replaceState) return;
+
+        const url = new URL(window.location.href);
+
+        if (productId) {
+            url.searchParams.set("product", productId);
+            url.hash = productId;
+        } else {
+            url.searchParams.delete("product");
+            url.hash = "";
+        }
+
+        window.history.replaceState({}, "", url.toString());
+    }
+
 
 
 
@@ -123,6 +154,7 @@ $(function () {
     function closeDetails() {
         $wrap.removeClass("is-open");
         isOpen = false;
+        setProductLocation(null);
 
         // Очищаем содержимое после завершения анимации
         setTimeout(() => {
@@ -167,6 +199,7 @@ $(function () {
         const productId = $(this).data("product"); // p01
 
         const url = `./product-details/${productId}.html`;
+        setProductLocation(productId);
         loadProduct(url);
 
         wheelArmed = true;
@@ -196,6 +229,11 @@ $(function () {
     $(document).on("keydown", function (e) {
         if (e.key === "Escape") closeDetails();
     });
+
+    const initialProductId = getProductIdFromLocation();
+    if (initialProductId) {
+        loadProduct(`./product-details/${initialProductId}.html`);
+    }
 });
 
 

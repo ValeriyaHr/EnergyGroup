@@ -3,7 +3,7 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var require_products_page_00N = __commonJS({
-  "assets/products-page-B1kDWSBe.js"(exports, module) {
+  "assets/products-page-BZXg9iDi.js"(exports, module) {
     /*! jQuery v3.7.1 | (c) OpenJS Foundation and other contributors | jquery.org/license */
     !function(e, t) {
       "object" == typeof module && "object" == typeof module.exports ? module.exports = e.document ? t(e, true) : function(e2) {
@@ -2212,6 +2212,27 @@ var require_products_page_00N = __commonJS({
       let isLoaded = false;
       let isOpen = false;
       let wheelArmed = true;
+      function getProductIdFromLocation() {
+        const params = new URLSearchParams(window.location.search);
+        const queryProduct = params.get("product");
+        if (queryProduct && /^p\d{2}$/i.test(queryProduct)) {
+          return queryProduct.toLowerCase();
+        }
+        const hashMatch = window.location.hash.match(/p\d{2}/i);
+        return hashMatch ? hashMatch[0].toLowerCase() : null;
+      }
+      function setProductLocation(productId) {
+        if (!window.history || !window.history.replaceState) return;
+        const url = new URL(window.location.href);
+        if (productId) {
+          url.searchParams.set("product", productId);
+          url.hash = productId;
+        } else {
+          url.searchParams.delete("product");
+          url.hash = "";
+        }
+        window.history.replaceState({}, "", url.toString());
+      }
       function openDetails() {
         if (!isLoaded) return;
         $wrap.addClass("is-ready");
@@ -2226,6 +2247,7 @@ var require_products_page_00N = __commonJS({
       function closeDetails() {
         $wrap.removeClass("is-open");
         isOpen = false;
+        setProductLocation(null);
         setTimeout(() => {
           $wrap.removeClass("is-ready").empty();
           isLoaded = false;
@@ -2258,6 +2280,7 @@ var require_products_page_00N = __commonJS({
         e.preventDefault();
         const productId = $(this).data("product");
         const url = `./product-details/${productId}.html`;
+        setProductLocation(productId);
         loadProduct(url);
         wheelArmed = true;
       });
@@ -2273,6 +2296,10 @@ var require_products_page_00N = __commonJS({
       $(document).on("keydown", function(e) {
         if (e.key === "Escape") closeDetails();
       });
+      const initialProductId = getProductIdFromLocation();
+      if (initialProductId) {
+        loadProduct(`./product-details/${initialProductId}.html`);
+      }
     });
     $(function() {
       let $previewSection = $(".previewProduct");
@@ -2403,4 +2430,4 @@ var require_products_page_00N = __commonJS({
   }
 });
 export default require_products_page_00N();
-//# sourceMappingURL=products-page-B1kDWSBe.js.map
+//# sourceMappingURL=products-page-BZXg9iDi.js.map
