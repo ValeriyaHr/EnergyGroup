@@ -32,10 +32,16 @@ const $ = window.jQuery;
                 }
 
                 let mobSrc  = $source.attr('data-mob-src') || '';
-                // mob2 виводиться автоматично заміною суфіксу
-                let mob2Src = mobSrc.replace(/-mob\./, '-mob2.');
+                // Для окремих карток mob2 може відрізнятись не тільки суфіксом, а й розширенням
+                let mob2Src = $source.attr('data-mob2-src') || '';
+                if (!mob2Src) {
+                    mob2Src = mobSrc.replace(/-mob\.(png|jpe?g|webp)$/i, '-mob2.$1');
+                    if (mob2Src === mobSrc && /-mob\./i.test(mobSrc)) {
+                        mob2Src = mobSrc.replace(/-mob\./i, '-mob2.');
+                    }
+                }
 
-                let finalSrc = (viewMode === 'double') ? mob2Src : mobSrc;
+                let finalSrc = (viewMode === 'double') ? (mob2Src || mobSrc) : mobSrc;
 
                 $source.attr('srcset', finalSrc);
                 $img.attr('src', finalSrc);

@@ -236,9 +236,9 @@ body.menu-open .header__burger::after {
 .hero__inner{
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 14px 0;
+    gap: 10px 0;
     position: relative;
-    padding: 60px 20px 0 20px; /* відступи для контенту */
+    padding: 50px 20px 0 20px; /* відступи для контенту */
 }
 
 
@@ -247,7 +247,7 @@ body.menu-open .header__burger::after {
 /* розкладка по макету */
 .hero__kicker{
     grid-column: 1 / -1;
-    margin: 80px 0 14px;
+    margin: 64px 0 10px;
     font-size: 12px;
     white-space: nowrap;
     position: relative;
@@ -270,7 +270,7 @@ body.menu-open .header__burger::after {
     grid-column: 1 / -1;
     text-indent: 0;
     margin: 0;
-    padding-top: 30px;
+    padding-top: 20px;
     font-size: 15px;
     line-height: 1.15;
     text-align: left;
@@ -301,7 +301,7 @@ body.menu-open .header__burger::after {
 /* шафа по центру */
 .hero__right{
     grid-column: 1 / -1;
-    margin: 40px auto 0;
+    margin: 28px auto 0;
 }
 
 /* Приховуємо крапки за шафою на мобільній */
@@ -1008,8 +1008,8 @@ body:not(.products-page) .engSection{
 
 /* текст всередині рамки */
 .engHeroFrame__text{
-    font-family: var(--third-family), sans-serif;
-    font-weight: 500;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
     font-size: 23px;
     line-height: 150%;
     letter-spacing: -0.1em;
@@ -1017,6 +1017,20 @@ body:not(.products-page) .engSection{
     text-align: justify;
     text-align-last: justify;
     width: 93%;
+}
+
+@media (max-width: 576px){
+    body.page-engineering .engHeroFrame__text .engBracket,
+    body.page-engineering .engHeroFrame__text .engBracket__left,
+    body.page-engineering .engHeroFrame__text .engBracket__text,
+    body.page-engineering .engHeroFrame__text .engBracket__right{
+        font-family: var(--font-family), sans-serif;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 100%;
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
+    }
 }
 
 .text-grey:first-of-type {margin-right: 8px;}
@@ -1512,9 +1526,35 @@ body.page-engineering .engSection__rows .engSolRow__action{
             align-self: center;
         }
 
+@media (max-width: 560px){
+    body.page-library .techLibHero__title,
+    body.page-library .techLibHero__titleTop,
+    body.page-library .techLibHero__titleBottom{
+        font-size: 44px;
+        line-height: 0.9;
+    }
+
+    body.page-library .techLibHero__bottom{
+        grid-template-columns: 1fr;
+        row-gap: 14px;
+    }
+
+    body.page-library .techLibHeroCard--schemes,
+    body.page-library .techLibHeroCard--video,
+    body.page-library .techLibHeroCard--montage{
+        grid-column: 1 / -1;
+        grid-row: auto;
+    }
+}
+
 
 /* ===== docs (mobile-only) ===== */
 @media (max-width: 560px){
+    .docs .docHero__title{
+        font-size: 44px;
+        line-height: 0.9;
+    }
+
     .docs .docsTop__tabs{
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1612,3 +1652,6 @@ body.page-engineering .engSection__rows .engSolRow__action{
     margin-bottom:40px;
 }
 
+body.products-page .mobile_panel{
+    padding-right: var(--gutter);
+}

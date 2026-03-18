@@ -980,6 +980,7 @@
         grid-auto-rows: 1fr;
         align-items: stretch;
         justify-items: center;
+        background: var(--white);
     }
 
     .productsList__grid.view-single .productCard{
