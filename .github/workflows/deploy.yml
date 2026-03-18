@@ -4,10 +4,18 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      server_command:
+        description: "Custom command to run on server (optional)"
+        required: false
+        type: string
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.2.2
@@ -18,7 +26,11 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             set -e
-            cd /var/www/energy.firm.kiev.ua
-            git pull origin main
-            npm ci
-            npm run build
+            if [ -n "${{ github.event.inputs.server_command }}" ]; then
+              ${{ github.event.inputs.server_command }}
+            else
+              cd /var/www/energy.firm.kiev.ua
+              git pull origin main
+              npm ci
+              npm run build
+            fi

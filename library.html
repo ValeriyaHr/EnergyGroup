@@ -12,7 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script type="module" src="./js/main.js"></script>
     <script type="module" src="./js/menu.js"></script>
-    <script src="./js/engineering-request-modal.js" defer></script>
+    <script type="module" src="./js/engineering-request-modal.js"></script>
 
     <!-- Подключение CSS -->
     <link rel="stylesheet" href="./css/style.css">
@@ -244,7 +244,7 @@
 
                         <div class="libReqActions">
                             <button class="libReqBtn" type="submit">Зв'язатись із технічним відділом</button>
-                            <a class="libReqConsult" data-eng-request-open data-eng-request-target="engReqModal">Consult with Engineer</a>
+                            <a class="libReqConsult" data-eng-request-open data-eng-request-target="request_modal_prev">Consult with Engineer</a>
                         </div>
                     </form>
                 </div>
@@ -254,7 +254,7 @@
 
     </main>
 
-{{>request_modal}}
+{{> request_modal_prev}}
 
 <!-- ===== FOOTER ===== -->
 {{>footer}}
