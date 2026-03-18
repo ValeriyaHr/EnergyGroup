@@ -1,9 +1,25 @@
-const modalRoot = document.getElementById("engReqModal");
+const DEFAULT_MODAL_ID = "engReqModal";
+const initializedModals = new WeakSet();
 
-if (modalRoot) {
-    const closeButtons = Array.from(modalRoot.querySelectorAll("[data-eng-request-close]"));
+function syncBodyModalState() {
+    const hasOpenedModal = Boolean(document.querySelector(".engReqModal[aria-hidden='false']"));
+    document.body.classList.toggle("engReqModalOpen", hasOpenedModal);
+}
+
+function closeModal(modalRoot) {
+    if (!modalRoot) {
+        return;
+    }
+    modalRoot.setAttribute("aria-hidden", "true");
+    syncBodyModalState();
+}
+
+function setupModal(modalRoot) {
+    if (!modalRoot || initializedModals.has(modalRoot)) {
+        return;
+    }
+
     const dialog = modalRoot.querySelector(".engReqModal__dialog");
-    const firstInput = modalRoot.querySelector(".engReqModal__input");
     const messageField = modalRoot.querySelector("textarea[name='eng_message']");
     const mobileMedia = window.matchMedia("(max-width: 768px)");
     const desktopPlaceholder = modalRoot.dataset.placeholderDesktop || messageField?.getAttribute("placeholder") || "ОПИШІТЬ, ЧИМ МИ МОЖЕМО ВАМ ДОПОМОГТИ *";
@@ -24,54 +40,83 @@ if (modalRoot) {
         mobileMedia.addListener(syncMessagePlaceholder);
     }
 
-    const openModal = () => {
-        document.body.classList.add("engReqModalOpen");
-        modalRoot.setAttribute("aria-hidden", "false");
-        if (firstInput) {
-            window.requestAnimationFrame(() => firstInput.focus());
-        }
-    };
-
-    const closeModal = () => {
-        document.body.classList.remove("engReqModalOpen");
-        modalRoot.setAttribute("aria-hidden", "true");
-    };
-
-    document.addEventListener("click", (event) => {
-        const openTrigger = event.target.closest("[data-eng-request-open]");
-        if (!openTrigger) {
-            return;
-        }
-
-        event.preventDefault();
-        openModal();
-    });
-
-    document.addEventListener("keydown", (event) => {
-        const openTrigger = event.target.closest("[data-eng-request-open]");
-        if (!openTrigger || (event.key !== "Enter" && event.key !== " ")) {
-            return;
-        }
-
-        event.preventDefault();
-        openModal();
-    });
-
-    closeButtons.forEach((button) => {
-        button.addEventListener("click", closeModal);
-    });
-
     modalRoot.addEventListener("click", (event) => {
         if (!dialog || dialog.contains(event.target)) {
             return;
         }
-        closeModal();
+        closeModal(modalRoot);
     });
 
-    document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && document.body.classList.contains("engReqModalOpen")) {
-            closeModal();
-        }
+    const closeButtons = Array.from(modalRoot.querySelectorAll("[data-eng-request-close]"));
+    closeButtons.forEach((button) => {
+        button.addEventListener("click", () => closeModal(modalRoot));
     });
+
+    initializedModals.add(modalRoot);
 }
+
+function openModal(modalRoot) {
+    if (!modalRoot) {
+        return;
+    }
+
+    setupModal(modalRoot);
+    modalRoot.setAttribute("aria-hidden", "false");
+    document.body.classList.add("engReqModalOpen");
+
+    const firstInput = modalRoot.querySelector(".engReqModal__input");
+    if (firstInput) {
+        window.requestAnimationFrame(() => firstInput.focus());
+    }
+}
+
+function resolveModalFromTrigger(trigger) {
+    const targetId = trigger?.getAttribute("data-eng-request-target")?.trim();
+    if (targetId) {
+        const targetModal = document.getElementById(targetId);
+        if (targetModal) {
+            return targetModal;
+        }
+    }
+    return document.getElementById(DEFAULT_MODAL_ID);
+}
+
+document.addEventListener("click", (event) => {
+    const openTrigger = event.target.closest("[data-eng-request-open]");
+    if (!openTrigger) {
+        return;
+    }
+
+    const modalRoot = resolveModalFromTrigger(openTrigger);
+    if (!modalRoot) {
+        return;
+    }
+
+    event.preventDefault();
+    openModal(modalRoot);
+});
+
+document.addEventListener("keydown", (event) => {
+    const openTrigger = event.target.closest("[data-eng-request-open]");
+    if (!openTrigger || (event.key !== "Enter" && event.key !== " ")) {
+        return;
+    }
+
+    const modalRoot = resolveModalFromTrigger(openTrigger);
+    if (!modalRoot) {
+        return;
+    }
+
+    event.preventDefault();
+    openModal(modalRoot);
+});
+
+document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") {
+        return;
+    }
+
+    const openedModals = document.querySelectorAll(".engReqModal[aria-hidden='false']");
+    openedModals.forEach((modalRoot) => closeModal(modalRoot));
+});
 
