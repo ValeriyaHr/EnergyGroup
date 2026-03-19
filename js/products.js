@@ -369,6 +369,41 @@ if ($) $(function () {
             }, 90);
         }
 
+        function getProductIdFromLocationForPreview() {
+            const params = new URLSearchParams(window.location.search);
+            const queryProduct = params.get('product');
+            if (queryProduct && /^p\d{2}$/i.test(queryProduct)) {
+                return queryProduct.toLowerCase();
+            }
+
+            const hashMatch = window.location.hash.match(/p\d{2}/i);
+            return hashMatch ? hashMatch[0].toLowerCase() : null;
+        }
+
+        function syncPreviewFromProductId(productId) {
+            if (!productId) return false;
+
+            let $card = $cards.filter(function () {
+                return String($(this).data('details') || '').toLowerCase() === productId.toLowerCase();
+            }).first();
+
+            if (!$card.length) return false;
+
+            let cardData = readCardData($card);
+            if (!cardData) return false;
+
+            setPreview(
+                cardData.previewSrc,
+                cardData.title,
+                cardData.text,
+                cardData.productId,
+                cardData.productType
+            );
+
+            currentIndex = $cards.index($card);
+            return true;
+        }
+
         function showCard(index) {
             if (index >= $cards.length) index = 0;
             if (index < 0) index = $cards.length - 1;
@@ -463,9 +498,12 @@ if ($) $(function () {
             }, 150);
         });
 
-        // стартовий стан
-        setPreviewState('p01', 'cabinet');
-        toggleCalculator('p01');
+        // стартовий стан: якщо товар передано в URL, синхронізуємо hero з ним
+        const initialProductId = getProductIdFromLocationForPreview();
+        if (!syncPreviewFromProductId(initialProductId)) {
+            setPreviewState('p01', 'cabinet');
+            toggleCalculator('p01');
+        }
         // startAutoplay();
     });
 

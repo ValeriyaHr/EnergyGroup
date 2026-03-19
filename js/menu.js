@@ -82,6 +82,15 @@ $(function () {
         $nav.find(".menuSub").attr("aria-hidden", "true");
     });
 
+    // Close overlay on any navigation link click (important for same-page anchors)
+    $nav.on("click", "a[href]", function () {
+        $("body").removeClass("menu-open").css("paddingRight", "");
+        $overlay.removeClass("is-open").attr("aria-hidden", "true");
+        $(".header__burger").attr("aria-expanded", "false");
+        $nav.find(".menuItem--toggle").attr("aria-expanded", "false").removeClass("is-open");
+        $nav.find(".menuSub").attr("aria-hidden", "true");
+    });
+
     // Wheel scroll support for menu navigation
     $nav.on("wheel", function (e) {
         let $element = $(this);
