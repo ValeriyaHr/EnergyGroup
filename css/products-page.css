@@ -62,7 +62,8 @@
 .previewProduct__side--right{
     grid-column: 9 / 13;
     margin-top: 578px;
-    height: calc(780px - 578px - 124px);
+    min-height: calc(780px - 578px - 124px);
+    height: auto;
     max-width: 315px;
     display: flex;
     flex-direction: column;
@@ -119,9 +120,7 @@
 
 /* Стан прихованої кнопки калькулятора */
 .previewProduct__btn.hide{
-    display: inline-flex !important;
-    visibility: hidden;
-    pointer-events: none;
+    display: none !important;
 }
 
 /* Центральна зона hero з картинкою продукту */
@@ -518,7 +517,8 @@
 
     .previewProduct__side--right{
         margin-top: 578px;
-        height: calc(820px - 578px - 124px);
+        min-height: calc(820px - 578px - 124px);
+        height: auto;
     }
 
     .previewProduct__media{
@@ -581,7 +581,8 @@
     .previewProduct__side--right{
         grid-column: 9 / 13;
         margin-top: 420px;
-        height: calc(640px - 420px - 84px);
+        min-height: calc(640px - 420px - 84px);
+        height: auto;
         max-width: 280px;
     }
 
@@ -674,7 +675,8 @@
     .previewProduct__side--right{
         grid-column: 9 / 13;
         margin-top: 355px;
-        height: calc(560px - 355px - 72px);
+        min-height: calc(560px - 355px - 72px);
+        height: auto;
         max-width: 240px;
     }
 
