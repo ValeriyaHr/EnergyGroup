@@ -46,22 +46,29 @@
         </button>
 
         <h2 class="calc-modal__title">
-            Calculation result
+            CALCULATION RESULT
         </h2>
 
         <div class="calc-result">
-            <p class="calc-result__text">
-                Recommended number of magnetite cores:
+            <p class="calc-result__label">
+                Recommended quantity of magnetite cores:
             </p>
 
             <div class="calc-result__value">
                 <span id="calc-result-value">0</span>
-                <span class="calc-result__unit">pcs</span>
+                <span class="calc-result__unit">UNITS</span>
+            </div>
+
+            <p class="calc-result__rounding">(the value is automatically rounded up to the nearest whole number)</p>
+
+            <div class="calc-result__important">
+                <p class="calc-result__important-title">Important:</p>
+                <p class="calc-result__important-text">The online calculator performs a preliminary calculation only. For accurate determination of the anode grounding configuration—taking into account geological conditions, electrode layout, backfill type, and regulatory requirements—an engineering calculation by qualified specialists is recommended.</p>
             </div>
         </div>
 
-        <button type="button" class="calc-modal__btn" onclick="closeModal('calc-modal-result');">
-            Close
+        <button type="button" class="calc-modal__btn calc-modal__btn--drift" data-eng-request-open onclick="closeModal('calc-modal-result');">
+            GET TECHNICAL CONSULTATION
         </button>
     </div>
 </div>

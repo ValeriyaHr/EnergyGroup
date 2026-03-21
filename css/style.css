@@ -3038,6 +3038,47 @@ body.menu-open{
     align-self: flex-end;
 }
 
+/* docs form success state (same behavior as technical library) */
+.docsReqSuccess{
+    display: none;
+    margin-top: 32px;
+    padding-left: 18px;
+    position: relative;
+}
+
+.docsReqSuccess::before{
+    content: "[";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--orange);
+    font-family: var(--font-family), sans-serif;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.docsReqSuccess__lead{
+    margin: 0;
+    font-family: var(--font-family), sans-serif;
+    font-size: 13px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.26);
+}
+
+.docsReqSuccess__note{
+    margin: 10px 0 0;
+    font-family: var(--font-family), sans-serif;
+    font-size: 14px;
+    line-height: 1.35;
+    color: var(--grey-dark);
+}
+
+.docsReqSuccess[aria-hidden="false"]{
+    display: block;
+}
+
 .uLinkBrackets{
     font-family: var(--font-family), sans-serif;
     font-weight: 400;

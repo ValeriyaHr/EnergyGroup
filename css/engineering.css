@@ -980,3 +980,10 @@
 .page-engineering .footerPeg__socialIcon{
     filter: invert(1);
 }
+
+/* EN-only typography tweak for engineering split text */
+.page-engineering.page-engineering--en .splitText__base,
+.page-engineering.page-engineering--en .splitText__overlay{
+    letter-spacing: 0.03em;
+}
+

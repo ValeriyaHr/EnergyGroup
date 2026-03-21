@@ -210,6 +210,54 @@
     background: var(--grey);
 }
 
+.engReqModal__success {
+    display: none;
+    padding: 20px 0 0 22px;
+    position: relative;
+    color: rgba(255, 255, 255, 0.86);
+}
+
+.engReqModal__success::before {
+    content: "[";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--orange);
+    line-height: 1;
+}
+
+.engReqModal__successLead {
+    margin: 0;
+    font-family: var(--font-family), sans-serif;
+    font-size: 13px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.26);
+}
+
+.engReqModal__successNote {
+    margin: 10px 0 0;
+    font-family: var(--font-family), sans-serif;
+    font-size: 14px;
+    line-height: 1.35;
+    letter-spacing: 0;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.engReqModal.is-success .engReqModal__form {
+    display: none;
+}
+
+/* dialog keeps normal bottom padding in success state */
+.engReqModal.is-success .engReqModal__dialog {
+    padding-bottom: 60px;
+}
+
+.engReqModal.is-success .engReqModal__success {
+    display: block;
+}
+
 .engReqModal__srOnly {
     position: absolute;
     width: 1px;
@@ -324,6 +372,22 @@ body.engReqModalOpen .engReqModal {
         box-shadow: inset 0 0 0 3px #0a0606, inset 0 0 0 10px var(--orange);
     }
 
+    .engReqModal__success {
+        padding-top: 16px;
+        padding-left: 16px;
+    }
+
+    .engReqModal__successLead {
+        font-size: 11px;
+        line-height: 1.18;
+    }
+
+    .engReqModal__successNote {
+        margin-top: 8px;
+        font-size: 12px;
+        line-height: 1.3;
+    }
+}
 
     .engReqModal__submit {
         width: auto;

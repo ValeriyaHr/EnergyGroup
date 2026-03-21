@@ -55,22 +55,41 @@
         </button>
 
         <h2 class="calc-modal__title">
-            Результат розрахунку
+            РЕЗУЛЬТАТ РОЗРАХУНКУ
         </h2>
 
         <div class="calc-result">
-            <p class="calc-result__text">
-                Рекомендована кількість магнетитових осердь:
+            <p class="calc-result__label">
+                Рекомендована кількість сердечників магнетиту:
             </p>
 
             <div class="calc-result__value">
                 <span id="calc-result-value">0</span>
-                <span class="calc-result__unit">шт</span>
+                <span class="calc-result__unit">ШТУК</span>
+            </div>
+
+            <p class="calc-result__rounding">
+                (значення автоматично округлюється до цілого у більшу сторону)
+            </p>
+
+            <div class="calc-result__important">
+                <p class="calc-result__important-title">Важливо:</p>
+                <p class="calc-result__important-text">
+                    Онлайн-калькулятор виконує попередній розрахунок. Для точного визначення конфігурації анодного
+                    заземлення з урахуванням геології, схеми розміщення електродів, типу обсипки та нормативних
+                    вимог рекомендується інженерний розрахунок фахівцями.
+                </p>
             </div>
         </div>
 
-        <button type="button" class="calc-modal__btn" onclick="closeModal('calc-modal-result');">
-            Закрити
+        <button
+            type="button"
+            class="calc-modal__btn calc-modal__btn--drift"
+            data-eng-request-open
+            data-eng-request-target="request_modal_prev"
+            onclick="closeModal('calc-modal-result');"
+        >
+            ОТРИМАТИ КОНСУЛЬТАЦІЮ ТЕХНІЧНОГО ВІДДІЛУ
         </button>
     </div>
 </div>

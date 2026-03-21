@@ -1,6 +1,54 @@
 const DEFAULT_MODAL_ID = "engReqModal";
 const initializedModals = new WeakSet();
 
+function hasCyrillic(text) {
+    return /[А-Яа-яІіЇїЄєҐґ]/.test(String(text || ""));
+}
+
+function buildSuccessMarkup(isUaLocale) {
+    if (isUaLocale) {
+        return {
+            lead: "ДЯКУЄМО. ВАШ ЗАПИТ ОТРИМАНО.<br>МИ ЗВ'ЯЖЕМОСЯ З ВАМИ НАЙБЛИЖЧИМ ЧАСОМ.<br>ЦЕЙ ЗАПИТ НЕ Є КОМЕРЦІЙНОЮ ПРОПОЗИЦІЄЮ.",
+            note: "Фінальна вартість визначається після виїзду на об'єкт та узгодження технічних вимог."
+        };
+    }
+
+    return {
+        lead: "THANK YOU. YOUR REQUEST HAS BEEN RECEIVED.<br>WE WILL CONTACT YOU SHORTLY.<br>THIS REQUEST DOES NOT CONSTITUTE A COMMERCIAL OFFER.",
+        note: "The final cost is determined after site inspection and approval of the technical requirements."
+    };
+}
+
+function ensureSuccessBlock(modalRoot, formElement, isUaLocale) {
+    if (!modalRoot || !formElement) {
+        return null;
+    }
+
+    let successBlock = modalRoot.querySelector(".engReqModal__success");
+    if (successBlock) {
+        return successBlock;
+    }
+
+    const successText = buildSuccessMarkup(isUaLocale);
+    successBlock = document.createElement("div");
+    successBlock.className = "engReqModal__success";
+    successBlock.setAttribute("aria-live", "polite");
+    successBlock.setAttribute("aria-hidden", "true");
+    successBlock.innerHTML = `
+        <p class="engReqModal__successLead">${successText.lead}</p>
+        <p class="engReqModal__successNote">${successText.note}</p>
+    `;
+
+    // Insert INSIDE the dialog box so success text appears on the dark background
+    const dialog = modalRoot.querySelector(".engReqModal__dialog");
+    if (dialog) {
+        dialog.appendChild(successBlock);
+    } else {
+        formElement.insertAdjacentElement("afterend", successBlock);
+    }
+    return successBlock;
+}
+
 function syncBodyModalState() {
     const hasOpenedModal = Boolean(document.querySelector(".engReqModal[aria-hidden='false']"));
     document.body.classList.toggle("engReqModalOpen", hasOpenedModal);
@@ -20,10 +68,13 @@ function setupModal(modalRoot) {
     }
 
     const dialog = modalRoot.querySelector(".engReqModal__dialog");
+    const formElement = modalRoot.querySelector(".engReqModal__form");
     const messageField = modalRoot.querySelector("textarea[name='eng_message']");
     const mobileMedia = window.matchMedia("(max-width: 768px)");
     const desktopPlaceholder = modalRoot.dataset.placeholderDesktop || messageField?.getAttribute("placeholder") || "ОПИШІТЬ, ЧИМ МИ МОЖЕМО ВАМ ДОПОМОГТИ *";
     const mobilePlaceholder = modalRoot.dataset.placeholderMobile || desktopPlaceholder;
+    const isUaLocale = hasCyrillic(desktopPlaceholder);
+    const successBlock = ensureSuccessBlock(modalRoot, formElement, isUaLocale);
 
     const syncMessagePlaceholder = () => {
         if (!messageField) {
@@ -33,6 +84,20 @@ function setupModal(modalRoot) {
     };
 
     syncMessagePlaceholder();
+
+    const resetSubmitState = () => {
+        modalRoot.classList.remove("is-success");
+
+        if (formElement) {
+            formElement.removeAttribute("aria-hidden");
+        }
+
+        if (successBlock) {
+            successBlock.setAttribute("aria-hidden", "true");
+        }
+    };
+
+    resetSubmitState();
 
     if (typeof mobileMedia.addEventListener === "function") {
         mobileMedia.addEventListener("change", syncMessagePlaceholder);
@@ -52,6 +117,21 @@ function setupModal(modalRoot) {
         button.addEventListener("click", () => closeModal(modalRoot));
     });
 
+    if (formElement && successBlock) {
+        formElement.addEventListener("submit", (event) => {
+            if (!formElement.checkValidity()) {
+                return;
+            }
+
+            event.preventDefault();
+            formElement.setAttribute("aria-hidden", "true");
+            modalRoot.classList.add("is-success");
+            successBlock.setAttribute("aria-hidden", "false");
+            formElement.reset();
+            syncMessagePlaceholder();
+        });
+    }
+
     initializedModals.add(modalRoot);
 }
 
@@ -61,6 +141,18 @@ function openModal(modalRoot) {
     }
 
     setupModal(modalRoot);
+    modalRoot.classList.remove("is-success");
+
+    const formElement = modalRoot.querySelector(".engReqModal__form");
+    if (formElement) {
+        formElement.removeAttribute("aria-hidden");
+    }
+
+    const successBlock = modalRoot.querySelector(".engReqModal__success");
+    if (successBlock) {
+        successBlock.setAttribute("aria-hidden", "true");
+    }
+
     modalRoot.setAttribute("aria-hidden", "false");
     document.body.classList.add("engReqModalOpen");
 

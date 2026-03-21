@@ -261,9 +261,21 @@ body.no-scroll{ overflow: hidden; }
 
 /* ========== RESULT SECTION ========== */
 .calc-result{
-    margin-top: 32px;
+    margin-top: 28px;
 }
 
+/* label above value — orange */
+.calc-result__label{
+    margin: 0 0 14px;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--orange);
+}
+
+/* legacy UA selector — keep for UA modal */
 .calc-result__text{
     margin: 0 0 16px;
     font-family: var(--font-family), sans-serif;
@@ -274,23 +286,64 @@ body.no-scroll{ overflow: hidden; }
     color: rgba(255,255,255,.78);
 }
 
+/* large value row */
 .calc-result__value{
     display: flex;
     align-items: baseline;
-    gap: 12px;
+    gap: 10px;
     font-family: var(--font-family), sans-serif;
     font-weight: 400;
-    font-size: 18px;
-    letter-spacing: -0.02em;
-    color: rgba(255,255,255,.92);
+    font-size: clamp(36px, 5vw, 56px);
+    letter-spacing: -0.04em;
+    color: rgba(255,255,255,.94);
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    text-decoration-color: rgba(255,255,255,.30);
 }
 
 .calc-result__unit{
     font-family: var(--font-family), sans-serif;
     font-weight: 400;
-    font-size: 14px;
+    font-size: clamp(36px, 5vw, 56px);
+    letter-spacing: -0.04em;
+    color: rgba(255,255,255,.94);
+    text-transform: uppercase;
+}
+
+/* rounding note */
+.calc-result__rounding{
+    margin: 10px 0 0;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.35;
     letter-spacing: -0.02em;
-    color: rgba(255,255,255,.60);
+    color: rgba(255,255,255,.38);
+}
+
+/* important block */
+.calc-result__important{
+    margin-top: 28px;
+}
+
+.calc-result__important-title{
+    margin: 0 0 6px;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--orange);
+}
+
+.calc-result__important-text{
+    margin: 0;
+    font-family: var(--font-family), sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.45;
+    letter-spacing: -0.02em;
+    color: rgba(255,255,255,.52);
 }
 
 

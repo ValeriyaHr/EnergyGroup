@@ -48,16 +48,16 @@
                     <div class="techLibHeroCard techLibHeroCard--docs">
                         <a class="techLibHeroCard__titleLink" href="#docs-cert">TECHNICAL DOCUMENTATION</a>
                         <div class="techLibHeroCard__text techLibHeroCard__text--orange">
-                            We create more than just equipment — we create a culture of technical reliability
+                            We don’t just create equipment — we build a culture of technical reliability
                         </div>
                     </div>
 
                     <div class="techLibHeroCard techLibHeroCard--schemes">
-                        <a class="techLibHeroCard__titleLink" href="#schemes">PRINCIPLE SCHEMES</a>
+                        <a class="techLibHeroCard__titleLink" href="#schemes">SCHEMATIC DIAGRAMS</a>
                     </div>
 
                     <div class="techLibHeroCard techLibHeroCard--video">
-                        <a class="techLibHeroCard__titleLink" href="#schemes">VIDEO INSTRUCTION</a>
+                        <a class="techLibHeroCard__titleLink" href="#schemes">VIDEO INSTRUCTIONS</a>
                     </div>
 
                     <div class="techLibHeroCard techLibHeroCard--montage">
@@ -65,8 +65,8 @@
                     </div>
 
                     <div class="techLibHeroNote">
-                        <p>Each document, scheme or video is the result of many years of experience in the implementation of turnkey EHS systems</p>
-                        <p>This section contains practical materials created by our engineers based on real projects in Ukraine and abroad</p>
+                        <p>Every document, schematic, or video is the result of many years of experience in implementing turnkey electrochemical corrosion protection systems.</p>
+                        <p>This section contains practical materials developed by our engineers based on real projects in Ukraine and abroad.</p>
                     </div>
                 </div>
             </div>
@@ -82,10 +82,9 @@
 
                 <div class="techLibBlock__right">
                     <p class="techLibBlock__desc">
-                        We standardized the experience of dozens of implemented projects into ready-made installation examples — to make it easier for your specialists,
-                        faster and more accurately. Each scheme is accompanied by explanations, photos and recommendations from our engineers. The solution
-                        developed in accordance with Ukrainian and European standards — this is a practical guideline for the implementation of EHS systems
-                        of any complexity
+                        We have standardized the experience of dozens of completed projects into ready-to-use installation examples, making implementation
+                        easier, faster, and more accurate. Each schematic includes explanations, photographs, and recommendations from our engineers.
+                        All solutions comply with Ukrainian and European standards and serve as a practical reference for ECP systems of any complexity.
                     </p>
 
                     <div class="techLibList">
@@ -113,7 +112,7 @@
                     </div>
 
                     <div class="right"><a class="uLinkBrackets uLinkBrackets--right" href="./uploads/docs/sheme.pdf" id="materials">
-                        VIEW AND DOWNLOAD SCHEMES
+                        VIEW AND DOWNLOAD SCHEMATICS
                     </a> </div>
 
                 </div>
@@ -124,17 +123,16 @@
         <section class="techLibBlock techLibBlock--schemes" id="schemes">
             <div class="container grid12 techLibBlock__inner">
                 <div class="techLibBlock__left">
-                    <h2 class="techLibBlock__title">PRINCIPLE SCHEMES</h2>
+                    <h2 class="techLibBlock__title">SCHEMATIC DIAGRAMS</h2>
 
                     <div class="techLibBlock__art techLibBlock__art--schemes" aria-hidden="true"></div>
                 </div>
 
                 <div class="techLibBlock__right">
                     <p class="techLibBlock__desc">
-                        Prime Energy Group develops schematic diagrams of cathodic protection systems for pipelines, tanks,
-                        heat networks and industrial facilities. All solutions are created in accordance with DSTU, ISO and EN requirements
-                        are regularly updated. This is a knowledge base for designers, service engineers and technical departments of enterprises,
-                        that seek to implement proven technological approaches
+                        Prime Energy Group develops cathodic protection schematics for pipelines, tank farms, district heating networks,
+                        and industrial facilities. All solutions comply with DSTU, ISO, and EN standards and are regularly updated.
+                        This section serves as a knowledge base for designers, service engineers, and technical departments.
                     </p>
 
                     <div class="techLibList">
@@ -162,7 +160,7 @@
                     </div>
 
                     <div class="right"><a class="uLinkBrackets uLinkBrackets--right" href="#">
-                        VIEW AND DOWNLOAD SCHEMES
+                        VIEW AND DOWNLOAD SCHEMATICS
                     </a></div>
                 </div>
             </div>
@@ -179,14 +177,13 @@
 
                 <div class="techLibBlock__right">
                     <p class="techLibBlock__desc">
-                        We adhere to full technical transparency. This section collects certificates of conformity,
-                        user manuals, operating instructions and installation recommendations for all types
-                        Prime Energy Group equipment. These documents confirm: our products meet the standards
-                        safety, quality and efficiency at the level of leading European manufacturers
+                        We adhere to full technical transparency.
+                        This section contains certificates of conformity, technical data sheets, operation manuals,
+                        and installation guidelines.
                     </p>
 
                     <div class="techLibCtas">
-                        <a class="uLinkBrackets uLinkBrackets--right" href="./index.html#contacts">REQUEST THE ORIGINAL DOCUMENT</a>
+                        <a class="uLinkBrackets uLinkBrackets--right" href="./index.html#contacts">REQUEST ORIGINAL DOCUMENT</a>
                         <a class="techLibPdfBtn btn btn--primary" href="/uploads/docs/certificates/certificates.pdf" download>
                             <span class="btn__bracket">[</span>
                             <span class="btn__label">DOWNLOAD PDF</span>
@@ -246,6 +243,11 @@
                             <a class="libReqConsult" data-eng-request-open role="button" tabindex="0">Consult with Engineer</a>
                         </div>
                     </form>
+
+                    <div class="libReqSuccess" aria-live="polite" aria-hidden="true">
+                        <p class="libReqSuccess__lead">THANK YOU! YOUR REQUEST HAS BEEN RECEIVED.<br>WE WILL CONTACT YOU SHORTLY.<br>THIS REQUEST DOES NOT CONSTITUTE A COMMERCIAL OFFER.</p>
+                        <p class="libReqSuccess__note">The final cost is determined after site inspection and approval of the technical requirements.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -302,6 +304,20 @@
 
 <!-- ===== FOOTER ===== -->
 {{> en_footer}}
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    var form = document.querySelector(".libReqForm");
+    var success = document.querySelector(".libReqSuccess");
+    if (!form || !success) return;
+    form.addEventListener("submit", function (e) {
+        if (!form.checkValidity()) return;
+        e.preventDefault();
+        form.style.display = "none";
+        success.setAttribute("aria-hidden", "false");
+    });
+});
+</script>
 
 
 <script type="module" src="../js/engineering-request-modal.js"></script>

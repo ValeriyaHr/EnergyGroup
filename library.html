@@ -244,9 +244,14 @@
 
                         <div class="libReqActions">
                             <button class="libReqBtn" type="submit">Зв'язатись із технічним відділом</button>
-                            <a class="libReqConsult" data-eng-request-open data-eng-request-target="request_modal_prev">Consult with Engineer</a>
+                            <a class="libReqConsult" data-eng-request-open data-eng-request-target="request_modal_prev">Проконсультуватись з інженером</a>
                         </div>
                     </form>
+
+                    <div class="libReqSuccess" aria-live="polite" aria-hidden="true">
+                        <p class="libReqSuccess__lead">ДЯКУЄМО! ВАШ ЗАПИТ ОТРИМАНО.<br>МИ ЗВ'ЯЖЕМОСЯ З ВАМИ НАЙБЛИЖЧИМ ЧАСОМ.<br>ЦЕЙ ЗАПИТ НЕ Є КОМЕРЦІЙНОЮ ПРОПОЗИЦІЄЮ.</p>
+                        <p class="libReqSuccess__note">Фінальна вартість визначається після виїзду на об'єкт та узгодження технічних вимог.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -258,6 +263,20 @@
 
 <!-- ===== FOOTER ===== -->
 {{>footer}}
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    var form = document.querySelector(".libReqForm");
+    var success = document.querySelector(".libReqSuccess");
+    if (!form || !success) return;
+    form.addEventListener("submit", function (e) {
+        if (!form.checkValidity()) return;
+        e.preventDefault();
+        form.style.display = "none";
+        success.setAttribute("aria-hidden", "false");
+    });
+});
+</script>
 
 
 

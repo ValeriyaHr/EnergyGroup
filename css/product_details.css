@@ -286,7 +286,7 @@
     line-height: 0.85;
     opacity: .9;
     width: 100%;
-    color: var(--grey-pale);
+    color: var(--grey-pale)!important;
     font-family: var(--third-family), sans-serif;
 }
 

@@ -40,14 +40,14 @@
 
                     <div class="techLibHero__actions docsHero__actions">
                         <a class="uLinkDoc" href="/docs/all.zip">
-                            LOAD ALL ARCHIVE</a>
+                            DOWNLOAD ALL AS ARCHIVE</a>
                     </div>
 
                 <div class="docsTop__tabs">
-                    <a class="docsTop__tab" href="#certs">CERTIFICATES OF COMPLIANCE</a>
-                    <a class="docsTop__tab" href="#techpassports">TECHNICAL PASSPORTS</a>
+                    <a class="docsTop__tab" href="#certs">CERTIFICATES OF CONFORMITY</a>
+                    <a class="docsTop__tab" href="#techpassports">TECHNICAL DATA SHEETS</a>
                     <a class="docsTop__tab" href="#catalogs">CATALOGS AND PRESENTATIONS</a>
-                    <a class="docsTop__tab" href="#manuals">USER INSTRUCTIONS</a>
+                    <a class="docsTop__tab" href="#manuals">USER MANUALS</a>
                 </div>
             </div>
           </div>
@@ -57,10 +57,10 @@
         <div class="docsLinks">
             <div class="container docsLinks__inner grid12">
                 <div class="docsLinks__col" id="manuals">
-                    <div class="docsLinks__head">USER INSTRUCTIONS</div>
+                    <div class="docsLinks__head">TECHNICAL DATA SHEETS</div>
 
                     <a class="docsLink" href="/uploads/docs/certificates/certificates.pdf" target="_blank" rel="noopener">
-                        <span class="docsLink__text">REVIEW <br>INSTRUCTIONS</span>
+                        <span class="docsLink__text">VIEW <br>TECHNICAL DATA SHEETS</span>
                         <span class="docsLink__arrow" aria-hidden="true">
                             <img class="docsArrow docsArrow--white" src="/img/ui/white-up2.svg" alt="">
                             <img class="docsArrow docsArrow--orange" src="/img/ui/orange-up2.svg" alt="">
@@ -68,7 +68,7 @@
                     </a>
 
                     <a class="docsLink" href="/uploads/docs/certificates/certificates.zip" download>
-                        <span class="docsLink__text">DOWNLOAD ARCHIVES <br>INSTRUCTIONS</span>
+                        <span class="docsLink__text">DOWNLOAD <br>DATA SHEETS ARCHIVE</span>
                         <span class="docsLink__arrow" aria-hidden="true">
                             <img class="docsArrow docsArrow--white" src="/img/ui/white-up2.svg" alt="">
                             <img class="docsArrow docsArrow--orange" src="/img/ui/orange-up2.svg" alt="">
@@ -77,10 +77,10 @@
                 </div>
 
                 <div class="docsLinks__col" id="certs">
-                    <div class="docsLinks__head">CERTIFICATES OF COMPLIANCE</div>
+                    <div class="docsLinks__head">CERTIFICATES OF CONFORMITY</div>
 
                     <a class="docsLink" href="#">
-                        <span class="docsLink__text">REVIEW <br>CERTIFICATES</span>
+                        <span class="docsLink__text">View certificates</span>
                         <span class="docsLink__arrow" aria-hidden="true">
                             <img class="docsArrow docsArrow--white" src="/img/ui/white-up2.svg" alt="">
                             <img class="docsArrow docsArrow--orange" src="/img/ui/orange-up2.svg" alt="">
@@ -88,7 +88,7 @@
                     </a>
 
                     <a class="docsLink" href="#" download>
-                        <span class="docsLink__text">DOWNLOAD ARCHIVES <br>PDF CERTIFICATES</span>
+                        <span class="docsLink__text">Download certificates archive (PDF)</span>
                         <span class="docsLink__arrow" aria-hidden="true">
                             <img class="docsArrow docsArrow--white" src="/img/ui/white-up2.svg" alt="">
                             <img class="docsArrow docsArrow--orange" src="/img/ui/orange-up2.svg" alt="">
@@ -100,7 +100,7 @@
                     <div class="docsLinks__head">CATALOGS AND PRESENTATIONS</div>
 
                     <a class="docsLink" href="#" download>
-                        <span class="docsLink__text">DOWNLOAD ARCHIVES <br>CATALOG PDF</span>
+                        <span class="docsLink__text">Download materials archive</span>
                         <span class="docsLink__arrow" aria-hidden="true">
                             <img class="docsArrow docsArrow--white" src="/img/ui/white-up2.svg" alt="">
                             <img class="docsArrow docsArrow--orange" src="/img/ui/orange-up2.svg" alt="">
@@ -108,7 +108,7 @@
                     </a>
 
                     <a class="docsLink" href="#">
-                        <span class="docsLink__text">REVIEW <br>CATALOGS</span>
+                        <span class="docsLink__text">View catalogs and presentations</span>
                         <span class="docsLink__arrow" aria-hidden="true">
                             <img class="docsArrow docsArrow--white"  src="/img/ui/white-up2.svg" alt="">
                             <img class="docsArrow docsArrow--orange" src="/img/ui/orange-up2.svg" alt="">
@@ -121,7 +121,7 @@
         <!-- 3) BOTTOM / FORM -->
         <div class="docsForm">
             <div class="container docsForm__inner grid12">
-                <h3 class="docsForm__title">DID NOT FIND THE DOCUMENT YOU NEED?</h3>
+                <h3 class="docsForm__title">Didn't find the required document?</h3>
                 <div class="docsForm__left">
                     <p class="docsForm__subtitle">We will send it to your mail.</p>
                 </div>
@@ -162,6 +162,11 @@
 
                         <button class="reqBtn" type="submit">Submit Request</button>
                     </form>
+
+                    <div class="docsReqSuccess" aria-live="polite" aria-hidden="true">
+                        <p class="docsReqSuccess__lead">THANK YOU! YOUR REQUEST HAS BEEN RECEIVED.<br>WE WILL CONTACT YOU SHORTLY.<br>THIS REQUEST DOES NOT CONSTITUTE A COMMERCIAL OFFER.</p>
+                        <p class="docsReqSuccess__note">The final cost is determined after site inspection and approval of the technical requirements.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -180,6 +185,8 @@
 
 
 {{> en_footer}}
+
+<script type="module" src="../js/docs-request-form.js"></script>
 
 
 </body>

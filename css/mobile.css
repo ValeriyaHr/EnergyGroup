@@ -25,6 +25,22 @@
         flex: 1 1 100%;
     }
 
+    .docsReqSuccess{
+        margin-top: 22px;
+        padding-left: 14px;
+    }
+
+    .docsReqSuccess__lead{
+        font-size: 11px;
+        line-height: 1.18;
+    }
+
+    .docsReqSuccess__note{
+        margin-top: 8px;
+        font-size: 12px;
+        line-height: 1.3;
+    }
+
     .docsLinks__inner{
         grid-template-columns: repeat(5, minmax(0, 1fr));
     }
