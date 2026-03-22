@@ -685,22 +685,59 @@ body.menu-open .header__burger::after {
     top: 14px;
 }
 
-@media (max-width: 360px){
-    .whyReveal{
-        --item-h: 112px;
-        --collapsed-step: 74px;
-        --expanded-step: calc(var(--item-h) + var(--gap));
+@media (max-width: 420px){
+    .whyPanel{
+        min-height: calc(104px + (var(--count) - 1) * 105px + 36px);
     }
 
     .whyItem{
-        height: var(--item-h);
+        height: 104px;
         align-items: flex-start;
         padding: 10px 34px 10px 12px;
         font-size: 11px;
         line-height: 1.12;
+        letter-spacing: -0.01em;
+        font-weight: 400;
+        color: var(--black);
+        transform: translateY(
+            calc(
+                (var(--i) * 68px) * (1 - var(--p)) +
+                (var(--i) * 105px) * var(--p)
+            )
+        );
+    }
+
+    .whyItem span{ color: var(--black); }
+
+    .whyItem .whyDot{
+        width: 16px;
+        height: 16px;
+        flex-basis: 16px;
+        margin-top: 2px;
+        background: rgba(10, 6, 6, 0.9);
+    }
+}
+
+@media (max-width: 360px){
+    .whyPanel{
+        min-height: calc(100px + (var(--count) - 1) * 101px + 36px);
+    }
+
+    .whyItem{
+        height: 100px;
+        align-items: flex-start;
+        padding: 10px 34px 10px 12px;
+        font-size: 10px;
+        line-height: 1.12;
         letter-spacing: -0.02em;
         font-weight: 400;
         color: var(--black);
+        transform: translateY(
+            calc(
+                (var(--i) * 64px) * (1 - var(--p)) +
+                (var(--i) * 101px) * var(--p)
+            )
+        );
     }
 
     .whyItem span{ color: var(--black); }
@@ -712,7 +749,7 @@ body.menu-open .header__burger::after {
 }
 /* ===== /WHY US ===== */
 
-/* ===== кінець -мсекція з табами ===== */
+/* ===== кінець -секція з табами ===== */
 /* ===== початок - experience__content--секція з цифрами ===== */
 .experience{
     min-height: auto;
