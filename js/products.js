@@ -97,12 +97,13 @@ const $ = window.jQuery;
             switchMobileCardImages('single');
         }
 
-        $(window).on('resize', function () {
+        $(window).on('load resize', function () {
 
             let mode = $grid.hasClass('view-double') ? 'double' : 'single';
             switchMobileCardImages(mode);
 
         });
+        $('.mobile_panel__btn').click();
     });
 })($);
 
