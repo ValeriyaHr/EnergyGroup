@@ -15,7 +15,7 @@ const $ = window.jQuery;
         let $buttons = $panel.find('.mobile_panel__btn');
 
         if (!$panel.length || !$grid.length) return;
-
+        switchMobileCardImages('double');
         function switchMobileCardImages(viewMode) {
             if (!isMobileView()) return;
 
