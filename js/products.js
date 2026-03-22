@@ -14,8 +14,9 @@ const $ = window.jQuery;
         let $grid = $('#productsGrid');
         let $buttons = $panel.find('.mobile_panel__btn');
 
+
         if (!$panel.length || !$grid.length) return;
-        switchMobileCardImages('double');
+
         function switchMobileCardImages(viewMode) {
             if (!isMobileView()) return;
 
@@ -93,12 +94,14 @@ const $ = window.jQuery;
                 switchMobileCardImages('single');
             }
         } catch (e) {
-            // Игнорируем ошибки localStorage
+            switchMobileCardImages('single');
         }
 
         $(window).on('resize', function () {
+
             let mode = $grid.hasClass('view-double') ? 'double' : 'single';
             switchMobileCardImages(mode);
+
         });
     });
 })($);
