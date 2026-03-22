@@ -1,6 +1,10 @@
 const DEFAULT_MODAL_ID = "engReqModal";
 const initializedModals = new WeakSet();
 
+function normalizeTargetId(targetValue) {
+    return String(targetValue || "").trim().replace(/^#/, "");
+}
+
 function hasCyrillic(text) {
     return /[А-Яа-яІіЇїЄєҐґ]/.test(String(text || ""));
 }
@@ -163,15 +167,38 @@ function openModal(modalRoot) {
 }
 
 function resolveModalFromTrigger(trigger) {
-    const targetId = trigger?.getAttribute("data-eng-request-target")?.trim();
+    const targetId = normalizeTargetId(trigger?.getAttribute("data-eng-request-target"));
     if (targetId) {
-        const targetModal = document.getElementById(targetId);
-        if (targetModal) {
-            return targetModal;
-        }
+        return document.getElementById(targetId);
     }
-    return document.getElementById(DEFAULT_MODAL_ID);
+
+    const defaultModal = document.getElementById(DEFAULT_MODAL_ID);
+    if (defaultModal) {
+        return defaultModal;
+    }
+
+    const uaModal = document.getElementById("request_modal_prev");
+    if (uaModal) {
+        return uaModal;
+    }
+
+    return document.querySelector(".engReqModal");
 }
+
+document.addEventListener("click", (event) => {
+    const closeTrigger = event.target.closest("[data-eng-request-close]");
+    if (!closeTrigger) {
+        return;
+    }
+
+    const modalRoot = closeTrigger.closest(".engReqModal");
+    if (!modalRoot) {
+        return;
+    }
+
+    event.preventDefault();
+    closeModal(modalRoot);
+});
 
 document.addEventListener("click", (event) => {
     const openTrigger = event.target.closest("[data-eng-request-open]");
