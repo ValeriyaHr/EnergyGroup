@@ -672,10 +672,6 @@ body.menu-open .header__burger::after {
 /* Переменные для мобильной версии whyReveal */
 .whyReveal{
     --p: 0;                        /* СВЕРНУТО по умолчанию на мобильной */
-    --item-h: 76px;                /* высота элемента на мобильной */
-    --gap: 0px;
-    --expanded-step: var(--item-h);
-    --collapsed-step: 48px;        /* расстояние между свернутыми элементами */
 }
 
 /* панель табів — теж 100% */
@@ -686,7 +682,7 @@ body.menu-open .header__burger::after {
     padding: 14px 12px;
     border-radius: 18px;
     overflow: hidden;
-    min-height: calc(var(--item-h) + (var(--count) - 1) * var(--collapsed-step) + 36px);
+    min-height: calc(64px + (var(--count) - 1) * ((36px * (1 - var(--p))) + (64px * var(--p))) + 36px);
 }
 
 /* айтеми — без фіксованої ширини */
@@ -694,26 +690,23 @@ body.menu-open .header__burger::after {
     left: 12px;
     right: 12px;
     top: 14px;
-    height: var(--item-h);
     align-items: flex-start;
-    padding: 14px;
-    font-size: 12px;
+    padding: 10px;
+    font-size: 13px;
     line-height: 1.2;
     letter-spacing: -0.01em;
     font-weight: 400;
     color: var(--black);
-    transform: translateY(
-        calc(
-            (var(--i) * var(--collapsed-step)) * (1 - var(--p)) +
-            (var(--i) * var(--expanded-step)) * var(--p)
-        )
-    );
+    height: 64px;
+    transform: translateY(calc((var(--i) * 36px) * (1 - var(--p)) + (var(--i) * 64px) * var(--p)));
 }
 
 @media (max-width: 420px){
-    .whyReveal{
-        --item-h: 76px;
-        --collapsed-step: 48px;
+    .whyPanel{ min-height: calc(62px + (var(--count) - 1) * ((32px * (1 - var(--p))) + (62px * var(--p))) + 36px); }
+
+    .whyItem{
+        height: 62px;
+        transform: translateY(calc((var(--i) * 32px) * (1 - var(--p)) + (var(--i) * 62px) * var(--p)));
     }
 
 
@@ -728,16 +721,15 @@ body.menu-open .header__burger::after {
 }
 
 @media (max-width: 360px){
-    .whyReveal{
-        --item-h: 72px;
-        --collapsed-step: 44px;
-    }
+    .whyPanel{ min-height: calc(58px + (var(--count) - 1) * ((28px * (1 - var(--p))) + (58px * var(--p))) + 36px); }
 
     .whyItem{
+        height: 58px;
         padding: 10px;
         font-size: 11px;
         line-height: 1.18;
         letter-spacing: -0.02em;
+        transform: translateY(calc((var(--i) * 28px) * (1 - var(--p)) + (var(--i) * 58px) * var(--p)));
     }
 
     .whyItem span{ color: var(--black); }
@@ -1187,8 +1179,21 @@ body:not(.products-page) .engSection{
     text-align: right;
 }
 
+body.page-engineering .engSection__rows > .engSolRow .engSolRow__left{
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    align-items: start;
+    column-gap: 12px;
+}
+
 body.page-engineering .engSection__rows > .engSolRow .engSolRow__label{
-    max-width: 90px;
+    grid-column: 1 / 5;
+    max-width: none;
+}
+
+body.page-engineering .engSection__rows > .engSolRow .engSolRow__num{
+    grid-column: 5 / 6;
+    justify-self: end;
 }
 
 body.page-engineering .engSection__rows > .engSolRow .engSolRow__note{
