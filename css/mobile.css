@@ -662,6 +662,17 @@ body.menu-open .header__burger::after {
 .whyus__text .light-grey{color: var(--grey-dark);}
 .whyus__text br{ display:none; }
 
+/* docs hero на мобильном: только 5-колоночная сетка */
+.docs .docsHero__titleCol{
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    column-gap: 12px;
+}
+
+.docs .docHero__title,
+.docs .docsHero__actions{
+    grid-column: 1 / -1;
+}
+
 /* таби — на всю ширину 5 колонок */
 .whyus__tabs{
     grid-column: 1 / -1;
@@ -1400,7 +1411,7 @@ body.page-engineering .engSection__rows .engSolRow__action{
         .techLibHero__actions{
             margin-top: 20px;
             margin-bottom: 0;
-            margin-left: 20px;
+            margin-left: 10px;
             gap: 14px;
             justify-items: start;
             text-align: left;
