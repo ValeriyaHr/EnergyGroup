@@ -84,6 +84,10 @@
         transform: translateY(0);
     }
 
+    .mobileProductsSheet.is-peek .mobileProductsSheet__panel {
+        touch-action: none;
+    }
+
     .mobileProductsSheet.is-dragging .mobileProductsSheet__overlay,
     .mobileProductsSheet.is-dragging .mobileProductsSheet__panel,
     .mobileProductsSheet__panel.is-dragging {

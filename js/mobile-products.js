@@ -80,13 +80,14 @@ const $ = window.jQuery;
             clearDragTransform();
         }
 
-        function beginDrag(mode, startY) {
+        function beginDrag(mode, startY, origin) {
             dragContext = {
                 mode: mode,
                 startY: startY,
                 productId: null,
                 hasMoved: false,
-                startTranslate: mode === 'opening' ? lastTranslate : 0
+                startTranslate: mode === 'opening' ? lastTranslate : 0,
+                origin: origin || 'trigger'
             };
 
             $sheet.addClass('is-dragging is-open').removeClass('is-peek');
@@ -190,7 +191,9 @@ const $ = window.jQuery;
 
             if (dragContext.mode === 'opening') {
                 if (!dragContext.hasMoved) {
-                    if (dragContext.productId && window.PEGProducts && typeof window.PEGProducts.openProductById === 'function') {
+                    if (dragContext.origin === 'panel') {
+                        setSheetState('open');
+                    } else if (dragContext.productId && window.PEGProducts && typeof window.PEGProducts.openProductById === 'function') {
                         window.PEGProducts.openProductById(dragContext.productId);
                         setSheetState('peek');
                     } else {
@@ -221,11 +224,11 @@ const $ = window.jQuery;
             if (!startY) return;
 
             if ($sheet.hasClass('is-peek')) {
-                beginDrag('opening', startY);
+                beginDrag('opening', startY, 'panel');
                 return;
             }
 
-            beginDrag('closing', startY);
+            beginDrag('closing', startY, 'handle');
         });
 
         // Tap on handle in peek mode -> fully open.
@@ -244,7 +247,7 @@ const $ = window.jQuery;
             const startY = getTouchY(event);
             if (!startY) return;
 
-            beginDrag('opening', startY);
+            beginDrag('opening', startY, 'panel');
         });
 
         $panel.on('click', function (event) {
