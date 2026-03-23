@@ -15,9 +15,11 @@ const $ = window.jQuery;
 
         const OPEN_DRAG_RATIO = 0.45;
         const CLOSE_DRAG_RATIO = 0.25;
+        const PEEK_VISIBLE_HEIGHT = 92;
 
         let dragContext = null;
         let lastTranslate = 0;
+        let pendingPeekOnNextOpen = false;
 
         function isMobileViewport() {
             return window.matchMedia('(max-width: 768px)').matches;
@@ -38,6 +40,10 @@ const $ = window.jQuery;
             return Math.max(panelHeight, 1);
         }
 
+        function getPeekTranslate() {
+            return Math.max(0, getPanelHeight() - PEEK_VISIBLE_HEIGHT);
+        }
+
         function setTranslate(y) {
             const panelHeight = getPanelHeight();
             const clamped = Math.max(0, Math.min(y, panelHeight));
@@ -50,16 +56,28 @@ const $ = window.jQuery;
             $panel.css('transform', '');
         }
 
-        function setSheetOpenState(isOpen) {
+        function setSheetState(mode) {
             if (!isMobileViewport()) return;
 
-            $sheet.toggleClass('is-open', isOpen);
-            $sheet.attr('aria-hidden', isOpen ? 'false' : 'true');
-            $('body').toggleClass('is-product-sheet-open', isOpen);
+            const isOpen = mode === 'open' || mode === 'peek';
+            const isPeek = mode === 'peek';
 
-            if (!isOpen) {
+            $sheet.toggleClass('is-open', isOpen);
+            $sheet.toggleClass('is-peek', isPeek);
+            $sheet.attr('aria-hidden', isOpen ? 'false' : 'true');
+            $('body').toggleClass('is-product-sheet-open', mode === 'open');
+
+            if (mode === 'closed') {
                 clearDragTransform();
+                return;
             }
+
+            if (mode === 'peek') {
+                setTranslate(getPeekTranslate());
+                return;
+            }
+
+            clearDragTransform();
         }
 
         function beginDrag(mode, startY) {
@@ -67,14 +85,18 @@ const $ = window.jQuery;
                 mode: mode,
                 startY: startY,
                 productId: null,
-                hasMoved: false
+                hasMoved: false,
+                startTranslate: mode === 'opening' ? lastTranslate : 0
             };
 
-            $sheet.addClass('is-dragging is-open');
+            $sheet.addClass('is-dragging is-open').removeClass('is-peek');
             $panel.addClass('is-dragging');
 
             if (mode === 'opening') {
-                setTranslate(getPanelHeight());
+                const openingStart = dragContext.startTranslate > 0
+                    ? dragContext.startTranslate
+                    : getPanelHeight();
+                setTranslate(openingStart);
             } else {
                 setTranslate(0);
             }
@@ -85,11 +107,15 @@ const $ = window.jQuery;
             $panel.removeClass('is-dragging');
 
             if (shouldOpen) {
-                setSheetOpenState(true);
+                setSheetState('open');
             } else {
-                setSheetOpenState(false);
-                if (window.PEGProducts && typeof window.PEGProducts.closeProductDetails === 'function') {
-                    window.PEGProducts.closeProductDetails();
+                if (dragContext && dragContext.mode === 'opening') {
+                    setSheetState('peek');
+                } else {
+                    setSheetState('closed');
+                    if (window.PEGProducts && typeof window.PEGProducts.closeProductDetails === 'function') {
+                        window.PEGProducts.closeProductDetails();
+                    }
                 }
             }
 
@@ -114,13 +140,20 @@ const $ = window.jQuery;
         // Swipe-up from product triggers (card CTA or hero button)
         $(document).on('touchstart', '.productCard__bottom, #btnShowDetails', function (event) {
             if (!isMobileViewport()) return;
-            if ($sheet.hasClass('is-open')) return;
+            if ($sheet.hasClass('is-open') && !$sheet.hasClass('is-peek')) return;
 
             const startY = getTouchY(event);
             if (!startY) return;
 
             beginDrag('opening', startY);
             dragContext.productId = resolveProductId($(this));
+        });
+
+        // Tap/click on product -> open details in peek state first.
+        $(document).on('click', '.productCard__bottom, #btnShowDetails', function () {
+            if (!isMobileViewport()) return;
+            if (dragContext) return;
+            pendingPeekOnNextOpen = true;
         });
 
         $(document).on('touchmove', function (event) {
@@ -148,7 +181,7 @@ const $ = window.jQuery;
                 dragContext.hasMoved = true;
 
                 const dragUp = Math.max(0, dragContext.startY - currentY);
-                setTranslate(getPanelHeight() - dragUp);
+                setTranslate(dragContext.startTranslate - dragUp);
                 event.preventDefault();
                 return;
             }
@@ -171,14 +204,16 @@ const $ = window.jQuery;
                 if (!dragContext.hasMoved) {
                     if (dragContext.productId && window.PEGProducts && typeof window.PEGProducts.openProductById === 'function') {
                         window.PEGProducts.openProductById(dragContext.productId);
-                        finishDrag(true);
+                        setSheetState('peek');
                     } else {
                         finishDrag(false);
                     }
+                    dragContext = null;
                     return;
                 }
 
-                const shouldOpen = lastTranslate <= panelHeight * OPEN_DRAG_RATIO || deltaY < -90;
+                // Якщо користувач тягнув вверх і відпустив — панель автоматично дорозкривається.
+                const shouldOpen = lastTranslate <= panelHeight * OPEN_DRAG_RATIO || deltaY < -90 || dragContext.hasMoved;
                 finishDrag(shouldOpen);
                 return;
             }
@@ -197,14 +232,45 @@ const $ = window.jQuery;
             const startY = getTouchY(event);
             if (!startY) return;
 
+            if ($sheet.hasClass('is-peek')) {
+                beginDrag('opening', startY);
+                return;
+            }
+
             beginDrag('closing', startY);
+        });
+
+        // Tap on handle in peek mode -> fully open.
+        $handle.on('click', function () {
+            if (!isMobileViewport()) return;
+            if (!$sheet.hasClass('is-peek')) return;
+            setSheetState('open');
+        });
+
+        // Peek panel: allow dragging/opening from any panel touch area.
+        $panel.on('touchstart', function (event) {
+            if (!isMobileViewport()) return;
+            if (!$sheet.hasClass('is-peek')) return;
+            if (dragContext) return;
+
+            const startY = getTouchY(event);
+            if (!startY) return;
+
+            beginDrag('opening', startY);
+        });
+
+        $panel.on('click', function (event) {
+            if (!isMobileViewport()) return;
+            if (!$sheet.hasClass('is-peek')) return;
+            if (dragContext) return;
+            setSheetState('open');
         });
 
         $overlay.on('click', function () {
             if (window.PEGProducts && typeof window.PEGProducts.closeProductDetails === 'function') {
                 window.PEGProducts.closeProductDetails();
             } else {
-                setSheetOpenState(false);
+                setSheetState('closed');
             }
         });
 
@@ -217,19 +283,28 @@ const $ = window.jQuery;
 
         // Sync bottom-sheet state with existing product details lifecycle.
         window.addEventListener('peg:product-details-open', function () {
-            setSheetOpenState(true);
+            if (!isMobileViewport()) return;
+            if (pendingPeekOnNextOpen) {
+                setSheetState('peek');
+                pendingPeekOnNextOpen = false;
+                return;
+            }
+
+            setSheetState('open');
         });
 
         window.addEventListener('peg:product-details-close', function () {
-            setSheetOpenState(false);
+            pendingPeekOnNextOpen = false;
+            setSheetState('closed');
         });
 
         window.addEventListener('resize', function () {
             if (!isMobileViewport()) {
-                $sheet.removeClass('is-open is-dragging');
+                $sheet.removeClass('is-open is-dragging is-peek');
                 $panel.removeClass('is-dragging');
                 clearDragTransform();
                 $('body').removeClass('is-product-sheet-open');
+                pendingPeekOnNextOpen = false;
             }
         });
     });
