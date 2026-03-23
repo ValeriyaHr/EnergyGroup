@@ -1388,11 +1388,20 @@ body.page-engineering .engSection__rows .engSolRow__action{
         }
 
         .techLibHero__actions{
-            margin-top: 26px;
+            margin-top: 20px;
             margin-bottom: 0;
+            margin-left: 20px;
             gap: 14px;
             justify-items: start;
             text-align: left;
+        }
+
+        .techLibHero__actions .uLinkBrackets,
+        .docs .docsHero__actions .uLinkDoc{
+            font-size: 12px;
+            line-height: 1.1;
+            letter-spacing: 0.1em;
+            min-height: 20px;
         }
 
         .techLibHero__actions .uLinkBrackets:last-child,
