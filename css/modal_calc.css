@@ -385,6 +385,14 @@ body.no-scroll{ overflow: hidden; }
 
     .calc-modal__btn{
         width: auto;
+        font-size: 12px;
+        padding-left: 36px;
+        padding-right: 36px;
+    }
+
+    .calc-modal__btn--drift{
+        padding-left: 36px;
+        padding-right: 36px;
     }
 }
 
@@ -396,5 +404,16 @@ body.no-scroll{ overflow: hidden; }
 
     .calc-modal__title{
         font-size: 14px;
+    }
+
+    .calc-modal__btn{
+        font-size: 11px;
+        padding-left: 28px;
+        padding-right: 28px;
+    }
+
+    .calc-modal__btn--drift{
+        padding-left: 28px;
+        padding-right: 28px;
     }
 }
