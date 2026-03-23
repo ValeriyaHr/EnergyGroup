@@ -120,10 +120,11 @@ function initWhyUsUnfold() {
 
         const r = root.getBoundingClientRect();
         const vh = window.innerHeight || document.documentElement.clientHeight;
+        const mobileView = isMobileView();
 
         // довгий “інтервал” розгортання — щоб виглядало як у макеті
-        const start = vh * 0.95; // починаємо майже знизу
-        const end   = vh * 0.05; // закінчуємо майже зверху
+        const start = vh * (mobileView ? 1.2 : 0.95); // на мобільній починаємо пізніше
+        const end   = vh * (mobileView ? 0.2 : 0.05); // і довше тримаємо стек
 
         const p = clamp01((start - r.top) / (start - end));
         root.style.setProperty("--p", p.toFixed(4));
