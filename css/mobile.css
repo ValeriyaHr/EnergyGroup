@@ -669,48 +669,53 @@ body.menu-open .header__burger::after {
     margin-top: 0;
 }
 
+/* Переменные для мобильной версии whyReveal */
 .whyReveal{
-    --item-h: 76px;
+    --p: 0;                        /* СВЕРНУТО по умолчанию на мобильной */
+    --item-h: 76px;                /* высота элемента на мобильной */
     --gap: 0px;
     --expanded-step: var(--item-h);
-    --collapsed-step: 74px;
+    --collapsed-step: 48px;        /* расстояние между свернутыми элементами */
 }
 
 /* панель табів — теж 100% */
 .whyPanel{
     width: calc(100% - 24px);
-    max-width: 420px;
+    max-width: none;
     margin: 0 auto;
     padding: 14px 12px;
     border-radius: 18px;
     overflow: hidden;
-    min-height: calc(var(--item-h) + (var(--count) - 1) * var(--expanded-step) + 36px);
+    min-height: calc(var(--item-h) + (var(--count) - 1) * var(--collapsed-step) + 36px);
 }
+
 /* айтеми — без фіксованої ширини */
 .whyItem{
     left: 12px;
     right: 12px;
     top: 14px;
     height: var(--item-h);
-    align-items: center;
-    padding: 15px;
+    align-items: flex-start;
+    padding: 14px;
     font-size: 12px;
     line-height: 1.2;
     letter-spacing: -0.01em;
     font-weight: 400;
     color: var(--black);
+    transform: translateY(
+        calc(
+            (var(--i) * var(--collapsed-step)) * (1 - var(--p)) +
+            (var(--i) * var(--expanded-step)) * var(--p)
+        )
+    );
 }
 
 @media (max-width: 420px){
     .whyReveal{
         --item-h: 76px;
-        --collapsed-step: 70px;
+        --collapsed-step: 48px;
     }
 
-    .whyItem{
-        font-size: 12px;
-        line-height: 1.2;
-    }
 
     .whyItem span{ color: var(--black); }
 
@@ -724,8 +729,8 @@ body.menu-open .header__burger::after {
 
 @media (max-width: 360px){
     .whyReveal{
-        --item-h: 76px;
-        --collapsed-step: 66px;
+        --item-h: 72px;
+        --collapsed-step: 44px;
     }
 
     .whyItem{

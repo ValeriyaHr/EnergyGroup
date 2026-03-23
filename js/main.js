@@ -103,9 +103,16 @@ function initWhyUsUnfold() {
     // щоб CSS міг порахувати висоту панелі
     root.style.setProperty("--count", String(items.length));
 
-    // reduced motion — одразу розкладено
+    // На мобільній версії — свернено по умолчанию, на десктопі — залежить від скролу
+    const isMobileDefault = isMobileView();
+    if (isMobileDefault) {
+        root.style.setProperty("--p", "0");  // СВЕРНУТО для мобільної
+    }
+
+    // reduced motion — на мобільній свернено, на десктопі розкладено
     if (window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches) {
-        root.style.setProperty("--p", "1");
+        const isMobile = isMobileView();
+        root.style.setProperty("--p", isMobile ? "0" : "1");
         return;
     }
 
@@ -120,14 +127,23 @@ function initWhyUsUnfold() {
 
         const r = root.getBoundingClientRect();
         const vh = window.innerHeight || document.documentElement.clientHeight;
-        const mobileView = isMobileView();
+        const isMobile = isMobileView();
 
-        // довгий “інтервал” розгортання — щоб виглядало як у макеті
-        const start = vh * (mobileView ? 1.2 : 0.95); // на мобільній починаємо пізніше
-        const end   = vh * (mobileView ? 0.2 : 0.05); // і довше тримаємо стек
+        if (isMobile) {
+            // Для мобільної версії: від стиснутого (внизу екрану) до розкладеного (на верху)
+            const start = vh * 0.85;  // починаємо ближче до низу
+            const end   = vh * 0.15;  // закінчуємо ближче до верху
 
-        const p = clamp01((start - r.top) / (start - end));
-        root.style.setProperty("--p", p.toFixed(4));
+            const p = clamp01((start - r.top) / (start - end));
+            root.style.setProperty("--p", p.toFixed(4));
+        } else {
+            // Для десктопу: як раніше
+            const start = vh * 0.95; // починаємо майже знизу
+            const end   = vh * 0.05; // закінчуємо майже зверху
+
+            const p = clamp01((start - r.top) / (start - end));
+            root.style.setProperty("--p", p.toFixed(4));
+        }
     };
 
     const onScroll = () => {
