@@ -94,7 +94,7 @@
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
         max-height: calc(92dvh - 30px);
-        padding-bottom: env(safe-area-inset-bottom);
+        padding: 0 14px calc(env(safe-area-inset-bottom) + 12px);
     }
 
     /* При swipe-анімації керуємо тільки sheet, без додаткового fly-in усередині */
@@ -103,6 +103,7 @@
         transform: none;
         transition: none;
         will-change: auto;
+        margin: 0;
     }
 }
 

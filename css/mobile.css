@@ -669,42 +669,47 @@ body.menu-open .header__burger::after {
     margin-top: 0;
 }
 
+.whyReveal{
+    --item-h: 76px;
+    --gap: 0px;
+    --expanded-step: var(--item-h);
+    --collapsed-step: 74px;
+}
+
 /* панель табів — теж 100% */
 .whyPanel{
     width: calc(100% - 24px);
-    max-width: none;
+    max-width: 420px;
     margin: 0 auto;
     padding: 14px 12px;
     border-radius: 18px;
     overflow: hidden;
+    min-height: calc(var(--item-h) + (var(--count) - 1) * var(--expanded-step) + 36px);
 }
 /* айтеми — без фіксованої ширини */
 .whyItem{
     left: 12px;
     right: 12px;
     top: 14px;
+    height: var(--item-h);
+    align-items: center;
+    padding: 15px;
+    font-size: 12px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    font-weight: 400;
+    color: var(--black);
 }
 
 @media (max-width: 420px){
-    .whyPanel{
-        min-height: calc(116px + (var(--count) - 1) * 116px + 36px);
+    .whyReveal{
+        --item-h: 76px;
+        --collapsed-step: 70px;
     }
 
     .whyItem{
-        height: 116px;
-        align-items: flex-start;
-        padding: 12px 36px 12px 14px;
         font-size: 12px;
         line-height: 1.2;
-        letter-spacing: -0.01em;
-        font-weight: 400;
-        color: var(--black);
-        transform: translateY(
-            calc(
-                (var(--i) * 74px) * (1 - var(--p)) +
-                (var(--i) * 116px) * var(--p)
-            )
-        );
     }
 
     .whyItem span{ color: var(--black); }
@@ -713,37 +718,26 @@ body.menu-open .header__burger::after {
         width: 16px;
         height: 16px;
         flex-basis: 16px;
-        margin-top: 2px;
         background: rgba(10, 6, 6, 0.9);
     }
 }
 
 @media (max-width: 360px){
-    .whyPanel{
-        min-height: calc(112px + (var(--count) - 1) * 112px + 36px);
+    .whyReveal{
+        --item-h: 76px;
+        --collapsed-step: 66px;
     }
 
     .whyItem{
-        height: 112px;
-        align-items: flex-start;
-        padding: 11px 34px 11px 13px;
+        padding: 10px;
         font-size: 11px;
         line-height: 1.18;
         letter-spacing: -0.02em;
-        font-weight: 400;
-        color: var(--black);
-        transform: translateY(
-            calc(
-                (var(--i) * 70px) * (1 - var(--p)) +
-                (var(--i) * 112px) * var(--p)
-            )
-        );
     }
 
     .whyItem span{ color: var(--black); }
 
     .whyItem .whyDot{
-        margin-top: 2px;
         background: rgba(10, 6, 6, 0.9);
     }
 }

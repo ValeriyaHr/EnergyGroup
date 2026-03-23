@@ -367,6 +367,32 @@ body.menu-open{
     color: var(--lightgrey);
     text-decoration: none;
     white-space: nowrap;
+    transition: color .2s ease;
+}
+
+/* header contacts states: default/lightgrey, hover+focus/grey, pressed/grey-dark, clicked(light visited)/lightgrey */
+.header__contacts a[href^="tel:"],
+.header__contacts a[href^="mailto:"]{
+    color: var(--lightgrey);
+}
+
+.header__contacts a[href^="tel:"]:visited,
+.header__contacts a[href^="mailto:"]:visited{
+    color: var(--lightgrey);
+}
+
+.header__contacts a[href^="tel:"]:hover,
+.header__contacts a[href^="mailto:"]:hover,
+.header__contacts a[href^="tel:"]:focus,
+.header__contacts a[href^="mailto:"]:focus,
+.header__contacts a[href^="tel:"]:focus-visible,
+.header__contacts a[href^="mailto:"]:focus-visible{
+    color: var(--grey);
+}
+
+.header__contacts a[href^="tel:"]:active,
+.header__contacts a[href^="mailto:"]:active{
+    color: var(--grey-dark);
 }
 .header__contacts a.is-underline{
     text-decoration: underline;

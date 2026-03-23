@@ -169,7 +169,12 @@ const $ = window.jQuery;
 
             if (dragContext.mode === 'opening') {
                 if (!dragContext.hasMoved) {
-                    finishDrag(false);
+                    if (dragContext.productId && window.PEGProducts && typeof window.PEGProducts.openProductById === 'function') {
+                        window.PEGProducts.openProductById(dragContext.productId);
+                        finishDrag(true);
+                    } else {
+                        finishDrag(false);
+                    }
                     return;
                 }
 
