@@ -137,18 +137,6 @@ const $ = window.jQuery;
             return /^p\d{2}$/.test(previewProductId) ? previewProductId : null;
         }
 
-        // Swipe-up from product triggers (card CTA or hero button)
-        $(document).on('touchstart', '.productCard__bottom, #btnShowDetails', function (event) {
-            if (!isMobileViewport()) return;
-            if ($sheet.hasClass('is-open') && !$sheet.hasClass('is-peek')) return;
-
-            const startY = getTouchY(event);
-            if (!startY) return;
-
-            beginDrag('opening', startY);
-            dragContext.productId = resolveProductId($(this));
-        });
-
         // Tap/click on product -> open details in peek state first.
         $(document).on('click', '.productCard__bottom, #btnShowDetails', function () {
             if (!isMobileViewport()) return;
@@ -307,6 +295,12 @@ const $ = window.jQuery;
                 pendingPeekOnNextOpen = false;
             }
         });
+
+        // Safe initial state: sheet hidden in background until explicit open.
+        $sheet.removeClass('is-open is-dragging is-peek');
+        $panel.removeClass('is-dragging');
+        clearDragTransform();
+        $sheet.attr('aria-hidden', 'true');
     });
 })($);
 

@@ -75,6 +75,11 @@
         pointer-events: auto;
     }
 
+    .mobileProductsSheet.is-peek .mobileProductsSheet__overlay {
+        opacity: 0;
+        pointer-events: none;
+    }
+
     .mobileProductsSheet.is-open .mobileProductsSheet__panel {
         transform: translateY(0);
     }
