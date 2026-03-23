@@ -987,3 +987,12 @@
     letter-spacing: 0.03em;
 }
 
+/* EN-only background labels for engineering hero */
+.page-engineering.page-engineering--en .engHero__bgText::before{
+    content: "(Engineering)";
+}
+
+.page-engineering.page-engineering--en .engHero__bgText::after{
+    content: "(Decision)";
+}
+

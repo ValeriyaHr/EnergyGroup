@@ -19,6 +19,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/products-page.css">
+    <link rel="stylesheet" href="./css/products.css">
     <link rel="stylesheet" href="./css/engineering-request-modal.css">
     <link rel="stylesheet" href="./css/mobile.css" media="(max-width: 768px)">
 </head>
@@ -83,7 +84,7 @@
         </div>
     </section>
 
-    <section id="productDetails"></section>
+    {{> mobile-products}}
 
     <!-- ===== MOBILE PANEL ===== -->
     <div class="mobile_panel">
@@ -649,6 +650,7 @@
 {{> footer}}
 
 <script type="module" src="./js/engineering-request-modal.js"></script>
+    <script type="module" src="./js/mobile-products.js"></script>
 
 </body>
 </html>

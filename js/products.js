@@ -33,12 +33,17 @@ const $ = window.jQuery;
                 }
 
                 let mobSrc  = $source.attr('data-mob-src') || '';
-                // Для окремих карток mob2 може відрізнятись не тільки суфіксом, а й розширенням
+                // Для режиму 2-в-ряд використовуємо єдиний формат файлів: product-XX-mob2.jpg
                 let mob2Src = $source.attr('data-mob2-src') || '';
                 if (!mob2Src) {
-                    mob2Src = mobSrc.replace(/-mob\.(png|jpe?g|webp)$/i, '-mob2.$1');
-                    if (mob2Src === mobSrc && /-mob\./i.test(mobSrc)) {
-                        mob2Src = mobSrc.replace(/-mob\./i, '-mob2.');
+                    let productNumMatch = mobSrc.match(/(product-\d+)-mob\.(png|jpe?g|webp)$/i);
+                    if (productNumMatch) {
+                        mob2Src = mobSrc.replace(productNumMatch[0], productNumMatch[1] + '-mob2.jpg');
+                    } else {
+                        mob2Src = mobSrc.replace(/-mob\.(png|jpe?g|webp)$/i, '-mob2.$1');
+                        if (mob2Src === mobSrc && /-mob\./i.test(mobSrc)) {
+                            mob2Src = mobSrc.replace(/-mob\./i, '-mob2.');
+                        }
                     }
                 }
 
@@ -110,6 +115,7 @@ const $ = window.jQuery;
 //--------- Открытие и подгрузка детального просмотра продуктов
 if ($) $(function () {
     const $wrap = $("#productDetails");
+    const isMobileViewport = () => window.matchMedia('(max-width: 768px)').matches;
 
     let lastUrl = null;
     let isLoaded = false;
@@ -159,10 +165,13 @@ if ($) $(function () {
         requestAnimationFrame(() => {
             $wrap.addClass("is-open");
             isOpen = true;
+            window.dispatchEvent(new CustomEvent('peg:product-details-open'));
 
-            $("html, body").stop().animate({
-                scrollTop: $wrap.offset().top - 60
-            }, 350);
+            if (!isMobileViewport()) {
+                $("html, body").stop().animate({
+                    scrollTop: $wrap.offset().top - 60
+                }, 350);
+            }
         });
     }
 
@@ -170,6 +179,7 @@ if ($) $(function () {
         $wrap.removeClass("is-open");
         isOpen = false;
         setProductLocation(null);
+        window.dispatchEvent(new CustomEvent('peg:product-details-close'));
 
         // Очищаем содержимое после завершения анимации
         setTimeout(() => {
@@ -200,9 +210,24 @@ if ($) $(function () {
 
             isLoaded = true;
             $wrap.show(); // показуємо контейнер
+            window.dispatchEvent(new CustomEvent('peg:product-details-ready'));
             openDetails();
         });
     }
+
+    function openProductById(productId) {
+        if (!productId || !/^p\d{2}$/i.test(String(productId))) return;
+        const normalizedProductId = String(productId).toLowerCase();
+        const url = `./product-details/${normalizedProductId}.html`;
+
+        setProductLocation(normalizedProductId);
+        loadProduct(url);
+        wheelArmed = true;
+    }
+
+    window.PEGProducts = window.PEGProducts || {};
+    window.PEGProducts.openProductById = openProductById;
+    window.PEGProducts.closeProductDetails = closeDetails;
 
     $(document).on("click", ".productDetails__back", function (e) {
         e.preventDefault();
@@ -212,12 +237,7 @@ if ($) $(function () {
     $(document).on("click", ".js-open-product", function (e) {
         e.preventDefault();
         const productId = $(this).data("product"); // p01
-
-        const url = `./product-details/${productId}.html`;
-        setProductLocation(productId);
-        loadProduct(url);
-
-        wheelArmed = true;
+        openProductById(productId);
     });
 
     // ✅ ВІДКРИТТЯ колесиком вниз (тільки якщо вже щось підвантажено)

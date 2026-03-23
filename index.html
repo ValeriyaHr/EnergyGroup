@@ -79,7 +79,10 @@
 
             <div class="intro__card">
                 <div class="intro__media">
-                    <img src="/img/content/about-preview.jpg" alt="">
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="/img/content/about-preview-mob.jpg">
+                        <img src="/img/content/about-preview.jpg" alt="">
+                    </picture>
                 </div>
 
                 <div class="intro__copy">
@@ -528,8 +531,21 @@
         const preloader = document.getElementById("preloader");
         const percent = document.getElementById("preloaderPercent");
         const image = document.getElementById("preloaderImage");
+        const storageKey = "pegPreloaderShown";
 
         if (!preloader || !percent || !image) return;
+
+        let isAlreadyShown = false;
+        try {
+            isAlreadyShown = sessionStorage.getItem(storageKey) === "1";
+        } catch (e) {
+            isAlreadyShown = false;
+        }
+
+        if (isAlreadyShown) {
+            preloader.remove();
+            return;
+        }
 
         let p = 1;
         let closed = false;
@@ -543,16 +559,22 @@
             if (closed) return;
             closed = true;
 
+            try {
+                sessionStorage.setItem(storageKey, "1");
+            } catch (e) {
+                // ignore storage errors
+            }
+
             preloader.classList.add("preloader--hide");
             setTimeout(() => {
                 preloader.remove();
-            }, 160);
+            }, 120);
         }
 
         render();
 
         const timer = setInterval(() => {
-            p += p < 60 ? 3 : p < 90 ? 2 : 1;
+            p += p < 60 ? 10 : p < 90 ? 6 : 3;
             if (p > 100) p = 100;
 
             render();
@@ -561,7 +583,7 @@
                 clearInterval(timer);
                 closePreloader();
             }
-        }, 90);
+        }, 45);
 
         preloader.addEventListener("click", () => {
             clearInterval(timer);

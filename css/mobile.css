@@ -687,22 +687,22 @@ body.menu-open .header__burger::after {
 
 @media (max-width: 420px){
     .whyPanel{
-        min-height: calc(104px + (var(--count) - 1) * 105px + 36px);
+        min-height: calc(116px + (var(--count) - 1) * 116px + 36px);
     }
 
     .whyItem{
-        height: 104px;
+        height: 116px;
         align-items: flex-start;
-        padding: 10px 34px 10px 12px;
-        font-size: 11px;
-        line-height: 1.12;
+        padding: 12px 36px 12px 14px;
+        font-size: 12px;
+        line-height: 1.2;
         letter-spacing: -0.01em;
         font-weight: 400;
         color: var(--black);
         transform: translateY(
             calc(
-                (var(--i) * 68px) * (1 - var(--p)) +
-                (var(--i) * 105px) * var(--p)
+                (var(--i) * 74px) * (1 - var(--p)) +
+                (var(--i) * 116px) * var(--p)
             )
         );
     }
@@ -720,22 +720,22 @@ body.menu-open .header__burger::after {
 
 @media (max-width: 360px){
     .whyPanel{
-        min-height: calc(100px + (var(--count) - 1) * 101px + 36px);
+        min-height: calc(112px + (var(--count) - 1) * 112px + 36px);
     }
 
     .whyItem{
-        height: 100px;
+        height: 112px;
         align-items: flex-start;
-        padding: 10px 34px 10px 12px;
-        font-size: 10px;
-        line-height: 1.12;
+        padding: 11px 34px 11px 13px;
+        font-size: 11px;
+        line-height: 1.18;
         letter-spacing: -0.02em;
         font-weight: 400;
         color: var(--black);
         transform: translateY(
             calc(
-                (var(--i) * 64px) * (1 - var(--p)) +
-                (var(--i) * 101px) * var(--p)
+                (var(--i) * 70px) * (1 - var(--p)) +
+                (var(--i) * 112px) * var(--p)
             )
         );
     }
@@ -1073,13 +1073,17 @@ body:not(.products-page) .engSection{
 }
 
 @media (max-width: 576px){
+    body.page-engineering .engHeroFrame__text{
+        font-size: 14px;
+    }
+
     body.page-engineering .engHeroFrame__text .engBracket,
     body.page-engineering .engHeroFrame__text .engBracket__left,
     body.page-engineering .engHeroFrame__text .engBracket__text,
     body.page-engineering .engHeroFrame__text .engBracket__right{
         font-family: var(--font-family), sans-serif;
         font-weight: 400;
-        font-size: 15px;
+        font-size: 14px;
         line-height: 100%;
         letter-spacing: -0.03em;
         text-transform: uppercase;
