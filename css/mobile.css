@@ -331,6 +331,11 @@ body.menu-open .header__burger::after {
     display: flex;
     justify-content: center;
 }
+
+.hero__imgWrap::after{
+    content: none;
+}
+
 .hero__image{ max-height: 420px; }
 
 /* кнопка по центру */

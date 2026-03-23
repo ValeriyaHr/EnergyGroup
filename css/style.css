@@ -610,6 +610,25 @@ body.menu-open{
     width: 340px;
     max-width: 340px;
     z-index: 1;
+    --hero-stand-width: 239px;
+    --hero-stand-dot: 4px;
+}
+
+/* Окремий псевдоелемент краще за background секції: лінія завжди прив'язана до шафи */
+.hero__imgWrap::after{
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -2px;
+    width: var(--hero-stand-width);
+    height: var(--hero-stand-dot);
+    transform: translateX(-5%);
+    pointer-events: none;
+    z-index: 0;
+    background:
+        radial-gradient(circle, var(--lightgrey) 0 2px, transparent 2.1px) left center / var(--hero-stand-dot) var(--hero-stand-dot) no-repeat,
+        radial-gradient(circle, var(--lightgrey) 0 2px, transparent 2.1px) right center / var(--hero-stand-dot) var(--hero-stand-dot) no-repeat,
+        linear-gradient(var(--lightgrey), var(--lightgrey)) center / 100% 1px no-repeat;
 }
 
 /*
@@ -649,6 +668,8 @@ body.menu-open{
     height: auto;
     display: block;
     object-fit: contain;
+    position: relative;
+    z-index: 1;
 }
 
 
