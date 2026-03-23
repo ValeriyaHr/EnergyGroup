@@ -120,10 +120,11 @@ function initWhyUsUnfold() {
 
         const r = root.getBoundingClientRect();
         const vh = window.innerHeight || document.documentElement.clientHeight;
+        const mobileView = isMobileView();
 
         // довгий “інтервал” розгортання — щоб виглядало як у макеті
-        const start = vh * 0.95; // починаємо майже знизу
-        const end   = vh * 0.05; // закінчуємо майже зверху
+        const start = vh * (mobileView ? 1.2 : 0.95); // на мобільній починаємо пізніше
+        const end   = vh * (mobileView ? 0.2 : 0.05); // і довше тримаємо стек
 
         const p = clamp01((start - r.top) / (start - end));
         root.style.setProperty("--p", p.toFixed(4));
@@ -330,7 +331,7 @@ function parseNumber(str) {
   return parseInt(match[0].replace(/\s/g, ''), 10);
 }
 
-function animateCounter(element, finalValue, duration = 1800) {
+function animateCounter(element, finalValue, duration = 900) {
   const startValue = 0;
   const startTime = Date.now();
   
@@ -371,21 +372,21 @@ function animateSingleRow(row) {
       // Парсим финальное число
       const finalValue = parseNumber(expNum.textContent);
       
-      // Запускаем counter-анимацию (1800ms)
+      // Запускаем counter-анимацию (900ms)
       if (finalValue > 0) {
-        animateCounter(expNum, finalValue, 1800);
+        animateCounter(expNum, finalValue, 900);
       }
       
-      // Через 1900ms (после завершения счёта) меняем цвет обратно
+      // Через 950ms (после завершения счёта) меняем цвет обратно
       setTimeout(() => {
         expNum.classList.remove('is-highlight');
-      }, 1900);
+      }, 950);
     }
     
-    // Разрешаем Promise через 2000ms (чтобы гарантировать завершение анимации)
+    // Разрешаем Promise через 1000ms (чтобы гарантировать завершение анимации)
     setTimeout(() => {
       resolve();
-    }, 2000);
+    }, 1000);
   });
 }
 
@@ -437,21 +438,21 @@ function animateSingleMobileRow(stat) {
       // Парсим финальное число
       const finalValue = parseNumber(expBig.textContent);
       
-      // Запускаем counter-анимацию (1800ms)
+      // Запускаем counter-анимацию (900ms)
       if (finalValue > 0) {
-        animateCounter(expBig, finalValue, 1800);
+        animateCounter(expBig, finalValue, 900);
       }
       
-      // Через 1900ms (после завершения счёта) меняем цвет обратно
+      // Через 950ms (после завершения счёта) меняем цвет обратно
       setTimeout(() => {
         expBig.classList.remove('is-highlight');
-      }, 1900);
+      }, 950);
     }
     
-    // Разрешаем Promise через 2000ms (чтобы гарантировать завершение анимации)
+    // Разрешаем Promise через 1000ms (чтобы гарантировать завершение анимации)
     setTimeout(() => {
       resolve();
-    }, 2000);
+    }, 1000);
   });
 }
 
