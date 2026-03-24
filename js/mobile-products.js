@@ -15,7 +15,7 @@ const $ = window.jQuery;
 
         const OPEN_DRAG_RATIO = 0.45;
         const CLOSE_DRAG_RATIO = 0.25;
-        const PEEK_VISIBLE_HEIGHT = 140;
+        const PEEK_VISIBLE_HEIGHT = 100;
         const DRAG_START_THRESHOLD = 6;
 
         let dragContext = null;
@@ -162,7 +162,7 @@ const $ = window.jQuery;
             setSheetState('peek');
         });
 
-        // Swipe/drag from the handle area.
+        // Swipe/drag from handle and bottom tail.
         $handle.on('touchstart', function (event) {
             if (!isMobileViewport()) return;
             if (!$sheet.hasClass('is-open')) return;

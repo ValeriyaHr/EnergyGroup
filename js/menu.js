@@ -12,8 +12,8 @@ const $ = window.jQuery;
     const open = () => {
 
         // compensation for scrollbar width
-        const scrollbarWidth = Math.max(0, window.innerWidth - document.documentElement.clientWidth);
-        document.body.style.paddingRight = scrollbarWidth > 0 ? (scrollbarWidth + "px") : "";
+        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+        document.body.style.paddingRight = scrollbarWidth + "px";
 
         overlay.classList.add("is-open");
         document.body.classList.add("menu-open");
@@ -91,5 +91,21 @@ $(function () {
         $nav.find(".menuSub").attr("aria-hidden", "true");
     });
 
-    // Native scrolling is smoother; keep wheel handler disabled to avoid jank.
+    // Wheel scroll support for menu navigation
+    $nav.on("wheel", function (e) {
+        let $element = $(this);
+        let scrollTop = $element.scrollTop();
+        let scrollHeight = $element.prop("scrollHeight");
+        let clientHeight = $element.prop("clientHeight");
+
+        let isAtTop = scrollTop === 0;
+        let isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
+
+        if ((isAtTop && e.originalEvent.deltaY < 0) || (isAtBottom && e.originalEvent.deltaY > 0)) {
+            return;
+        }
+
+        e.preventDefault();
+        $element.scrollTop(scrollTop + e.originalEvent.deltaY);
+    });
 });

@@ -6,7 +6,6 @@
 .menuOverlay{
     position: fixed;
     inset: 0;
-    overflow: hidden;
     background: rgba(0,0,0,.25);
     opacity: 0;
     pointer-events: none;
@@ -40,8 +39,6 @@ body.menu-open{
 .menuOverlay__panel{
     position: fixed;
     inset: 0;
-    box-sizing: border-box;
-    max-width: 100vw;
     --right-rail: 44px;
     --row-gap: 14px;
 
@@ -166,7 +163,6 @@ body.menu-open{
     min-height: 0;
     overflow-y: auto;
     overflow-x: hidden;
-    overscroll-behavior: contain;
     display: flex;
     flex-direction: column;
     gap: 8px;
