@@ -129,6 +129,7 @@ const $ = window.jQuery;
             if (!isMobileViewport()) return;
             if (dragContext) return;
             pendingPeekOnNextOpen = true;
+            setSheetState('peek');
         });
 
         // Swipe-close only from handle to avoid breaking native inner scroll.
