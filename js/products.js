@@ -199,6 +199,8 @@ if ($) $(function () {
     function openDetails() {
         if (!isLoaded) return;
 
+        cancelCloseCleanup();
+
         $wrap.addClass("is-ready");
         // даємо браузеру вставити DOM, тоді додаємо клас для анімації
         requestAnimationFrame(() => {

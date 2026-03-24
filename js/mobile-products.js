@@ -162,7 +162,7 @@ const $ = window.jQuery;
             setSheetState('peek');
         });
 
-        // Swipe/drag from handle and bottom tail.
+        // Swipe/drag from the handle area.
         $handle.on('touchstart', function (event) {
             if (!isMobileViewport()) return;
             if (!$sheet.hasClass('is-open')) return;
