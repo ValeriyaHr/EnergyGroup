@@ -17,6 +17,22 @@ const $ = window.jQuery;
 
         if (!$panel.length || !$grid.length) return;
 
+        function syncMobileGridDividers(viewMode) {
+            $grid.children('.productsList__divider').remove();
+
+            if (!isMobileView() || viewMode !== 'double') return;
+
+            const $cards = $grid.children('.productCard');
+            $cards.each(function (index) {
+                const isPairEnd = (index + 1) % 2 === 0;
+                const isLastCard = index === $cards.length - 1;
+
+                if (isPairEnd && !isLastCard) {
+                    $('<div class="productsList__divider" aria-hidden="true"></div>').insertAfter($(this));
+                }
+            });
+        }
+
         function switchMobileCardImages(viewMode) {
             if (!isMobileView()) return;
 
@@ -78,6 +94,7 @@ const $ = window.jQuery;
             }
 
             switchMobileCardImages(viewMode);
+            syncMobileGridDividers(viewMode);
 
             // Сохраняем выбор в localStorage
             try {
@@ -97,15 +114,18 @@ const $ = window.jQuery;
                 }
             } else {
                 switchMobileCardImages('single');
+                syncMobileGridDividers('single');
             }
         } catch (e) {
             switchMobileCardImages('single');
+            syncMobileGridDividers('single');
         }
 
         $(window).on('load resize', function () {
 
             let mode = $grid.hasClass('view-double') ? 'double' : 'single';
             switchMobileCardImages(mode);
+            syncMobileGridDividers(mode);
 
         });
         $('.mobile_panel__btn').click();
