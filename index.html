@@ -6,55 +6,95 @@
 
     <title>Prime Energy Group</title>
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/img/favicon.svg">
-    <link rel="alternate icon" href="/img/favicon.svg">
-
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/svg+xml" href="./img/favicon.svg">
+    <link rel="alternate icon" href="./img/favicon.svg">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script type="module" src="./js/main.js"></script>
     <script type="module" src="./js/menu.js"></script>
 
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <!-- Подключение CSS -->
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/engineering-request-modal.css">
-
     <link rel="stylesheet" href="./css/mobile.css" media="(max-width: 768px)">
-
-
 </head>
 
 <body>
 
-<div class="siteScale">
-
-
 <!-- PRELOADER-->
-  {{> preloader }}
+<div class="preloader" id="preloader" aria-label="Завантаження" role="status">
+    <div class="preloader__card">
+        <img
+                src="./img/content/hero-desktop.png"
+                alt="Prime Energy Group"
+                class="preloader__image"
+                id="preloaderImage"
+        />
+
+        <div class="preloader__progress">
+            <span class="preloader__spinner" aria-hidden="true"></span>
+            <span class="preloader__percent" id="preloaderPercent">1%</span>
+        </div>
+    </div>
+</div>
+
 <!-- ===== HEADER ===== -->
-{{> header}}
+<header class="header" id="top">
+    <div class="container header__inner">
+        <div class="header__left">
+            <button class="header__burger" type="button" aria-label="Menu" aria-controls="menuOverlay" aria-expanded="false">
+                <img src="./img/ui/burger.svg" alt="" width="24" height="24">
+            </button>
+
+            <div class="header__lang">
+                <a href="index.html" class="is-active">UA</a>
+                <span>|</span>
+                <a href="index-en.html">EN</a>
+            </div>
+
+            <div class="header__contacts">
+                <a href="tel:+380443901015">+38 (044) 390-10-15</a>
+                <a class="is-underline" href="mailto:info@llc-peg.com">info@llc-peg.com</a>
+            </div>
+        </div>
+
+        <a class="header__logo" href="#home" aria-label="Prime Energy Group">
+            <img src="./img/logos/peg-logo.svg" alt="Prime Energy Group">
+        </a>
+
+        <div class="header__right">
+            <a class="header__ctaSecondary btn btn--secondary" href="#contacts">CONSULT WITH ENGINEER</a>
+
+            <a class="header__ctaPrimary btn btn--primary" href="#contacts">
+                <span class="btn__bracket">[</span>
+                <span class="btn__label">КОНСУЛЬТАЦІЯ</span>
+                <span class="btn__bracket">]</span>
+            </a>
+        </div>
+    </div>
+</header>
 
 <main>
     <!-- ===== HERO ===== -->
     <section class="hero" id="home">
-        <div class="container hero__inner grid12">
-            <div class="hero__bg"></div>
+        <div class="container hero__inner">
             <div class="hero__left">
-                <div class="hero__kicker">
-                    <span>Engineering</span>
-                    <span>Production</span>
-                    <span>Implementation</span>
-                </div>
-                <h1 class="hero__title">PRIME&nbsp;ENERGY<br>GROUP</h1>
+                <div class="hero__kicker">Engineering Production Implementation</div>
+                <h1 class="hero__title">PRIME ENERGY<br>GROUP</h1>
                 <p class="hero__desc">
-                    <span class="hero__desc-dark">ВИРОБНИЧО-ІНЖИНІРИНГОВА КОМПАНІЯ, ЩО РОЗРОБЛЯЄ, ВИГОТОВЛЯЄ ТА ВПРОВАДЖУЄ ОБЛАДНАННЯ</span>
-                    <span class="light-grey"> ДЛЯ ЕЛЕКТРОХІМІЧНОГО ЗАХИСТУ ВІД КОРОЗІЇ ТРУБОПРОВОДІВ, РЕЗЕРВУАРІВ, НАФТОГАЗОВИХ І КОМУНАЛЬНИХ МЕРЕЖ</span>
+                    Виробничо-інжинірингова компанія, що
+                    розробляє, виготовляє та впроваджує обладнання для електрохімічного захисту від
+                    корозії трубопроводів, резервуарів, нафтогазових і інших підземних металевих споруд
                 </p>
+
+                <a class="btn btn--primary hero__cta" href="#contacts">
+                    <span class="btn__bracket">[</span>
+                    <span class="btn__label">КОНСУЛЬТАЦІЯ</span>
+                    <span class="btn__bracket">]</span>
+                </a>
             </div>
-            <a class="btn btn--primary btn--brackets hero__cta" href="#contacts">КОНСУЛЬТАЦІЯ</a>
+
             <div class="hero__right">
                 <div class="hero__imgWrap">
-                    <img class="hero__image" src="/img/content/hero-product.png" alt="">
+                    <img class="hero__image" src="./img/content/hero-product.png" alt="">
                 </div>
             </div>
 
@@ -63,205 +103,105 @@
 
     <!-- ===== ABOUT / INTRO ===== -->
     <section class="intro" aria-label="Про компанію">
-        <div class="container intro__inner grid12">
+        <div class="container intro__inner">
             <p class="intro__text">
-    <span class="intro__text-top">
-        Ми проєктуємо, виготовляємо та монтуємо системи, які <br>забезпечують
-    </span>
-
-                <span class="intro__text-bottom">
-        <span class="intro__text-bottomBlack">довговічність і</span>
-        <span class="light-grey">
-            безаварійність трубопроводів, резервуарів,<br> промислових і комунальних об’єктів
-        </span>
-    </span>
+                Ми проєктуємо, виготовляємо та монтуємо системи,
+                які забезпечують довговічність і безаварійність трубопроводів, резервуарів,
+                промислових і комунальних об’єктів
             </p>
 
             <div class="intro__card">
                 <div class="intro__media">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="./img/content/about-preview-mob.jpg">
-                        <img src="./img/content/about-preview.jpg" alt="">
-                    </picture>
+                    <img src="./img/content/about-preview.jpg" alt="">
                 </div>
 
                 <div class="intro__copy">
-                    <div class="intro__grid2">
-                        <p class="intro__p">[ Наша діяльність</p>
+                    <p class="intro__p">
+                        [ Наша діяльність ]
+                    </p>
 
-                        <div class="intro__grid2Right">
-                            <p class="intro__content">
-                                Наша компетенція охоплює весь ланцюг - Від розробки технічного рішення та виготовлення
-                                обладнання - до монтажу, пусконалагодження, діагностики та сервісного супроводу.
-                                Завдяки власному виробництву, та інженерному відділу ми гарантуємо точність,
-                                відповідність ДСТУ/ISO і стабільність кожного проєкту.
-                            </p>
+                    <p class="intro__p">
+                        Наша компетенція охоплює весь ланцюг - Від розробки технічного рішення та виготовлення
+                        обладнання - до монтажу, пусконалагодження, діагностики та сервісного супроводу.
+                        Завдяки власному виробництву, та інженерному відділу ми гарантуємо точність,
+                        відповідність ДСТУ/ISO і стабільність кожного проєкту
+                    </p>
+                    <p class="intro__p">
+                        Ми не просто постачаємо обладнання — ми створюємо системи, які працюють десятиліттями
+                        та оптимізують виробничі процеси наших клієнтів
+                    </p>
 
-                            <div class="intro__aside">
-                                Ми не просто постачаємо обладнання — ми створюємо системи, які працюють десятиліттями
-                                та оптимізують виробничі процеси наших клієнтів
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="intro__actions intro__actions--mobile">
-                        <a class="intro__link intro__link--sub" href="products.html">
-                            ПЕРЕГЛЯНУТИ ПРОДУКЦІЮ
-                        </a>
-
-                        <a class="intro__link intro__link--sub" href="#contacts">
-                            РОЗРАХУВАТИ ВАРТІСТЬ РІШЕННЯ ПІД ВАШ ОБʼЄКТ
-                        </a>
+                    <div class="intro__actions">
+                        <a class="btn btn--secondary" href="#products">ПЕРЕГЛЯНУТИ ПРОДУКЦІЮ</a>
+                        <a class="btn btn--secondary" href="#products">РОЗРАХУВАТИ ВАРТІСТЬ РІШЕННЯ ПІД ВАШ ОБʼЄКТ</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ===== ENGINEERING ===== -->
     <section class="engineering" id="engineering">
-        <div class="container grid12">
-        <div class="engineering__bgText" aria-hidden="true">PRIME<br>ENERGY GROUP</div>
-
-
-            <!-- TOP -->
-            <div class="engineering__top">
-                <p class="intro__p">[ Реалізація проєктів</p>
-
-                <div class="intro__text engineering__headline">
-                    <span class="engineering__headline-main">
-                        МИ ДОТРИМУЄМОСЬ ЧІТКОЇ ПОСЛІДОВНОСТІ РОБІТ —<br>
-                        ВІД АНАЛІЗУ ОБʼЄКТА ДО ВВЕДЕННЯ СИСТЕМИ В
-                    </span>
-
-                                    <span class="engineering__headline-sub">
-                        ЕКСПЛУАТАЦІЮ ТА ЇЇ ПОДАЛЬШОГО<br>
-                        МОНІТОРИНГУ
-                    </span>
-                </div>
-
+        <div class="container engineering__inner">
+            <div class="engineering__left">
+                <p>Реалізація проєктів</p>
+                <h2 class="h2">ми дотримуємось чіткої послідовності робіт — від аналізу об’єкта до введення системи в</h2>
+                <p class="muted">експлуатацію та її подальшого моніторингу</p>
             </div>
 
-            <!-- CONTENT -->
-            <div class="engineering__content">
+            <div class="engineering__left">
+                Кожен етап виконується під контролем профільних інженерів,
+            що гарантує точність, надійність і відповідність технічним вимогам
+            </div>
 
-                <div class="engineering__left">
-                    Кожен етап виконується під контролем профільних інженерів,
-                    що гарантує точність, надійність і відповідність технічним вимогам
-                </div>
+            <div class="engineering__right">
+                <button class="engRow" type="button">
+                    <span>АНАЛІЗ ОБʼЄКТА ТА ТЕХНІЧНЕ ЗАВДАННЯ</span>
+                    <img
+                            src="./img/ui/arrow-diag-open.svg"
+                            alt=""
+                            class="process__arrow"
+                            aria-hidden="true"
+                    >
+                </button>
+                <button class="engRow" type="button">
+                    <span>РОЗРОБКА РІШЕННЯ ТА ВИРОБНИЦТВО</span>
+                    <img
+                            src="./img/ui/arrow-diag-open.svg"
+                            alt=""
+                            class="process__arrow"
+                            aria-hidden="true"
+                    >
+                </button>
+                <button class="engRow" type="button">
+                    <span>БУДІВЕЛЬНО-МОНТАЖНІ РОБОТИ ЕХЗ</span>
+                    <img
+                            src="./img/ui/arrow-diag-open.svg"
+                            alt=""
+                            class="process__arrow"
+                            aria-hidden="true"
+                    >
+                </button>
+                <button class="engRow" type="button">
+                    <span>МОНІТОРИНГ І СЕРВІС</span>
+                    <img
+                            src="./img/ui/arrow-diag-open.svg"
+                            alt=""
+                            class="process__arrow"
+                            aria-hidden="true"
+                    >
+                </button>
 
-                <div class="engineering__right">
+                <div class="engineering__ctaLine">
+                    <span class="muted">CONSULT WITH ENGINEER</span>
 
-                    <!-- 1 -->
-                    <div class="engItem">
-                        <div class="engRow js-engRow" aria-expanded="false">
-                            <div class="engRow__title">
-                                АНАЛІЗ ОБʼЄКТА ТА<br>ТЕХНІЧНЕ ЗАВДАННЯ
-                            </div>
+                    <div>We also cooperate with international engineering teams</div>
 
-                            <button
-                                    class="engRow__arrowBtn js-engArrow"
-                                    type="button"
-                                    aria-label="Розгорнути пункт"
-                                    data-src-closed="/img/ui/white-up2.svg"
-                                    data-src-open="/img/ui/orange-up2.svg"
-                            >
-                                <img class="engRow__arrowIcon" src="/img/ui/white-up2.svg" alt="" width="26" height="26" loading="lazy"/>
-                            </button>
-                        </div>
-
-                        <div class="engRowPanel js-engPanel" hidden>
-                            <p>
-                                Клієнт надає базові дані щодо об’єкта (схеми, умови експлуатації, параметри ґрунтів).
-                                Фахівці компанії проводять технічний аналіз, розрахунок струмів і формують технічно
-                                обґрунтоване завдання (ТЗ) з оптимальним складом обладнання
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- 2 -->
-                    <div class="engItem">
-                        <div class="engRow js-engRow" aria-expanded="false">
-                            <div class="engRow__title">
-                                РОЗРОБКА РІШЕННЯ ТА<br>ВИРОБНИЦТВО
-                            </div>
-
-                            <button
-                                    class="engRow__arrowBtn js-engArrow"
-                                    type="button"
-                                    aria-label="Розгорнути пункт"
-                                    data-src-closed="/img/ui/white-up2.svg"
-                                    data-src-open="/img/ui/orange-up2.svg"
-                            >
-                                <img class="engRow__arrowIcon" src="/img/ui/white-up2.svg" alt="" width="18" height="18" loading="lazy"/>
-                            </button>
-                        </div>
-
-                        <div class="engRowPanel js-engPanel" hidden>
-                            <p>На основі погодженого ТЗ розробляється індивідуальний проєкт системи ЕХЗ. Усі ключові елементи — аноди, станції
-                                катодного захисту, блоки БЗК, пункти вимірювання, телеметрія — виготовляються на власному виробництві з дотриманням ДСТУ та ISO</p>
-                        </div>
-                    </div>
-
-                    <!-- 3 -->
-                    <div class="engItem">
-                        <div class="engRow js-engRow" aria-expanded="false">
-                            <div class="engRow__title">
-                                БУДІВЕЛЬНО-МОНТАЖНІ<br>РОБОТИ ЕХЗ
-                            </div>
-
-                            <button
-                                    class="engRow__arrowBtn js-engArrow"
-                                    type="button"
-                                    aria-label="Розгорнути пункт"
-                                    data-src-closed="/img/ui/white-up2.svg"
-                                    data-src-open="/img/ui/orange-up2.svg"
-                            >
-                                <img class="engRow__arrowIcon" src="/img/ui/white-up2.svg" alt="" width="18" height="18" loading="lazy"/>
-                            </button>
-                        </div>
-
-                        <div class="engRowPanel js-engPanel" hidden>
-                            <p>Після виготовлення обладнання виконується монтаж, підключення та пусконалагодження інженерами Prime Energy Group. Система
-                                вводиться в експлуатацію з перевіркою параметрів і оформленням технічної документації</p>
-                        </div>
-                    </div>
-
-                    <!-- 4 -->
-                    <div class="engItem">
-                        <div class="engRow js-engRow" aria-expanded="false">
-                            <div class="engRow__title">
-                                МОНІТОРИНГ<br>І СЕРВІС
-                            </div>
-
-                            <button
-                                    class="engRow__arrowBtn js-engArrow"
-                                    type="button"
-                                    aria-label="Розгорнути пункт"
-                                    data-src-closed="/img/ui/white-up2.svg"
-                                    data-src-open="/img/ui/orange-up2.svg"
-                            >
-                                <img class="engRow__arrowIcon" src="/img/ui/white-up2.svg" alt="" width="18" height="18" loading="lazy"/>
-                            </button>
-                        </div>
-
-                        <div class="engRowPanel js-engPanel" hidden>
-                            <p>Після введення системи в експлуатацію забезпечується технічний супровід:
-                                діагностика анодних полів і станцій,
-                                обслуговування електронних модулів,
-                                дистанційний моніторинг через телеметрію GSM
-                                Це забезпечує стабільність потенціалів і продовжує ресурс експлуатації об’єкта</p>
-                        </div>
-                    </div>
-
-                    <div class="engineering__ctaLine">
-                        <div class="engCta">
-                            <a class="btn btn--secondary btn--drift" data-eng-request-open data-eng-request-target="request_modal_prev">CONSULT WITH ENGINEER</a>
-                            <div class="engCta__sub">We also cooperate with international engineering teams</div>
-                        </div>
-
-                        <a class="btn btn--primary btn--bracketsPseudo" href="#contacts">КОНСУЛЬТАЦІЯ</a>
-                    </div>
-
+                    <a class="btn btn--primary" href="#contacts">
+                        <span class="btn__bracket">[</span>
+                        <span class="btn__label">КОНСУЛЬТАЦІЯ</span>
+                        <span class="btn__bracket">]</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -269,222 +209,132 @@
 
     <!-- ===== WHY US ===== -->
     <section class="whyus" id="whyus" aria-label="Чому обирають нас">
-        <div class="container whyus__inner grid12">
+        <div class="container whyus__inner">
             <div class="whyus__left">
-                <p class="intro__p">[ Чому обирають нас?</p>
+                <h2 class="whyus__title">Чому обирають нас ?</h2>
 
                 <p class="whyus__text">
-                    Ми не просто розробляємо та виготовляємо обладнання —<br>
-                    ми гарантуємо його ефективність у реальних умовах. Ми<br>
-                    компанія, що об'єднує власне виробництво засобів ЕХЗ.<br>
-                    Компанію визначено підприємством паливно-<br>
-                    енергетичного комплексу критично важливими для<br>
-                    функціонування економіки<span class="light-grey"> та забезпечення<br>
-                    життєдіяльності населення в особливий період</span>
+                    Ми не просто розробляємо та виготовляємо обладнання — ми гарантуємо його ефективність у реальних умовах.
+                    Ми компанія, що об’єднує власне виробництво засобів ЕХЗ. Компанію визначено підприємством паливно-
+                    енергетичного комплексу критично важливими для функціонування економіки та забезпечення
+                    життєдіяльності населення в особливий період
                 </p>
             </div>
-            <div class="whyus__tabs whyReveal" id="whyReveal">
-                <div class="whyPanel">
-                    <div class="whyItem" style="--i:0">
-                        <span>Сертифікати відповідності ДСТУ / ISO</span>
-                        <i class="whyDot" aria-hidden="true"></i>
-                    </div>
 
-                    <div class="whyItem is-accent" style="--i:1">
-                        <span>Технічна підтримка на кожному етапі</span>
-                        <i class="whyDot" aria-hidden="true"></i>
-                    </div>
-
-                    <div class="whyItem is-muted" style="--i:2">
-                        <span>Сертифіковані електроізолюючі вставки (муфти)</span>
-                        <i class="whyDot" aria-hidden="true"></i>
-                    </div>
-
-                    <div class="whyItem" style="--i:3">
-                        <span>Засоби телеметрії для дистанційного контролю</span>
-                        <i class="whyDot" aria-hidden="true"></i>
-                    </div>
-
-                    <div class="whyItem is-accent is-soft" style="--i:4">
-                        <span>Унікальні електронні блоки БЗК (власна розробка)</span>
-                        <i class="whyDot" aria-hidden="true"></i>
-                    </div>
-
-                    <div class="whyItem is-muted" style="--i:5">
-                        <span>Власне виробництво в Україні</span>
-                        <i class="whyDot" aria-hidden="true"></i>
-                    </div>
-
-                    <div class="whyItem" style="--i:6">
-                        <span>Виробництво магнетитових анодів</span>
-                        <i class="whyDot" aria-hidden="true"></i>
-                    </div>
-
-                    <div class="whyItem is-accent" style="--i:7">
-                        <span>Комплектація об’єктів обладнанням ЕХЗ “під ключ”</span>
-                        <i class="whyDot" aria-hidden="true"></i>
-                    </div>
-
-                    <div class="whyItem is-muted" style="--i:8">
-                        <span>Повний інженерний цикл</span>
-                        <i class="whyDot" aria-hidden="true"></i>
-                    </div>
-
-                    <div class="whyItem" style="--i:9">
-                        <span>Сертифікація для роботи на міжнародному ринку</span>
-                        <i class="whyDot" aria-hidden="true"></i>
-                    </div>
+            <div class="whyus__right">
+                <div class="whyus__tabs">
+                    <div class="whyus__tab is-active"><span>Сертифікати відповідності ДСТУ / ISO</span><i></i></div>
+                    <div class="whyus__tab"><span>Технічна підтримка на кожному етапі</span><i></i></div>
+                    <div class="whyus__tab"><span>сертифіковані електроізолюючі вставки (муфти)</span><i></i></div>
+                    <div class="whyus__tab"><span>Засоби телеметрії для дистанційного контролю</span><i></i></div>
+                    <div class="whyus__tab"><span>Унікальні електронні блоки БЗК ( власна розробка )</span><i></i></div>
+                    <div class="whyus__tab"><span>Власне виробництво в Україні</span><i></i></div>
+                    <div class="whyus__tab"><span>виробнИЦТВО магнетитових анодів</span><i></i></div>
+                    <div class="whyus__tab"><span>Комплектація об’єктів обладнанням ЕХЗ ʼ під ключ ʼ</span><i></i></div>
+                    <div class="whyus__tab"><span>Повний інженерний цикл</span><i></i></div>
+                    <div class="whyus__tab"><span>сертифікація для роботи на міжнародному ринку</span><i></i></div>
                 </div>
             </div>
         </div>
     </section>
     <!-- ===== PARTNERS ===== -->
     <section class="partners" id="partners">
-        <div class="container">
-            <div class="partners__title">Наші партнери</div>
-
-            <div class="swiper partnersSwiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide partnersSlide"><img src="/img/logos/naftogaz.svg" alt="Нафтогаз"></div>
-                    <div class="swiper-slide partnersSlide"><img src="/img/logos/kyivgaz.svg" alt="Київгаз"></div>
-                    <div class="swiper-slide partnersSlide"><img src="/img/logos/umangaz.svg" alt="Уманьгаз"></div>
-                    <div class="swiper-slide partnersSlide"><img src="/img/logos/ukrnafta.svg" alt="Укрнафта"></div>
-                    <div class="swiper-slide partnersSlide"><img src="/img/logos/gazmerezi.svg" alt="Газмережі"></div>
-                </div>
-
-                <div class="partnersNav">
-                    <button class="partnersPrev" type="button" aria-label="Prev"></button>
-                    <button class="partnersNext" type="button" aria-label="Next"></button>
-                </div>
-
-                <div class="partnersScrollbar"></div>
-            </div>
+        <div style="text-align: center">Наші партнери</div>
+        <div class="container partners__inner">
+            <img src="./img/logos/naftogaz.svg" alt="Нафтогаз">
+            <img src="./img/logos/kyivgaz.svg" alt="Київгаз">
+            <img src="./img/logos/umangaz.svg" alt="Уманьгаз">
+            <img src="./img/logos/ukrnafta.svg" alt="Укрнафта">
+            <img src="./img/logos/gazmerezi.svg" alt="Газмережі">
         </div>
-
-</section>
+    </section>
 
     <!-- ===== EXPERIENCE / RESULTS ===== -->
     <section class="experience">
         <div class="experience__bgGlow"></div>
 
-        <div class="container experience__inner grid12">
+        <div class="container experience__inner">
 
             <div class="experience__top">
                 <div class="experience__kicker">
-                    [ Досвід, підтверджений результатами
+                    [ Досвід, підтверджений результатами ]
                 </div>
 
                 <div class="experience__lead">
-                    Наша ефективність вимірюється не словами, а цифрами. За
-                    роки роботи Prime Energy Group реалізувала десятки
-                    комплексних систем електрохімічного захисту, що
-                    працюють — від магістральних газопроводів до
-                    промислових резервуарів
+                    Наша ефективність вимірюється не словами, а цифрами. За роки роботи Prime Energy Group
+                    реалізувала десятки комплексних систем електрохімічного захисту, що працюють —
+                    від магістральних газопроводів до промислових резервуарів
                 </div>
             </div>
 
-            <div class="experience__content experience__content--desktop">
-                <div class="expGrid">
-                    <div class="expRow">
-                        <div class="expNum">15 000+</div>
-                        <div class="expTxt">Км трубопроводів під захистом наших систем</div>
-                    </div>
-
-                    <div class="expRow">
-                        <div class="expNum">100%</div>
-                        <div class="expTxt">Гарантії на кожен тип продукції власного виробництва</div>
-                    </div>
-
-                    <div class="expRow">
-                        <div class="expNum">35+</div>
-                        <div class="expTxt">Ресурс роботи анодного поля магнетитового типу</div>
-                    </div>
-
-                    <div class="expRow">
-                        <div class="expNum">8+</div>
-                        <div class="expTxt">Років на ринку інжинірингових рішень ЕХЗ</div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="experience__content experience__content--mobile">
-            <div class="experienceStats">
-                <div class="experienceStat">
+            <div class="experience__content">
+                <div class="experience__numbers">
                     <div class="experience__big">15 000+</div>
-                    <div class="experience__label">Км трубопроводів під захистом наших систем</div>
-                </div>
-
-                <div class="experienceStat">
                     <div class="experience__big">100%</div>
-                    <div class="experience__label">Гарантії на кожен тип продукції власного виробництва</div>
-                </div>
-
-                <div class="experienceStat exleft">
                     <div class="experience__big">35+</div>
-                    <div class="experience__label">Ресурс роботи анодного поля магнетитового типу</div>
+                    <div class="experience__big">8+</div>
                 </div>
 
-                <div class="experienceStat exleft">
-                    <div class="experience__big">8+</div>
-                    <div class="experience__label">Років на ринку інжинірингових рішень ЕХЗ</div>
+                <div class="experience__labels">
+                    <div>Км трубопроводів під захистом наших систем</div>
+                    <div>Гарантії на кожен тип продукції власного виробництва</div>
+                    <div>Ресурс роботи анодного поля магнетитового типу</div>
+                    <div>Років на ринку інжинірингових рішень ЕХЗ</div>
                 </div>
             </div>
+
         </div>
     </section>
 
     <!-- ===== CONTACTS ===== -->
     <section class="contacts" id="contacts">
-        <div class="container grid12">
-            <div class="contacts__tittle">ПОТРІБЕН ТЕХНІЧНИЙ РОЗРАХУНОК АБО ПІДБІР ОБЛАДНАННЯ?</div>
-            <div class="contacts__inner">
-                <div class= "contacts__left">
-                    <div class="contacts__text">Заповніть форму — інженер зв’яжеться з вами
-                        й підготує попередній розрахунок під ваш об’єкт</div>
-                </div>
-
-                <form class="contacts__form" id="contacts-form"  action="https://formspree.io/f/xwvrdeaw"  method="post" novalidate>
-
-                    <div class="contacts__panel">
-                        <div class="contacts__row">
-                            <label class="sr-only" for="contact-name">Ім'я</label>
-                            <input class="field_contact" type="text" id="contact-name" name="name" placeholder="ІМʼЯ *" required>
-                            <label class="sr-only" for="contact-surname">Прізвище</label>
-                            <input class="field_contact" type="text" id="contact-surname" name="surname" placeholder="ПРІЗВИЩЕ *" required>
-                        </div>
-                        <label class="sr-only" for="contact-email">Email</label>
-                        <input class="field_contact" type="email" id="contact-email" name="email" placeholder="EMAIL *" required>
-                        <label class="sr-only" for="contact-phone">Телефон</label>
-                        <input class="field_contact" type="tel" id="contact-phone" name="phone" placeholder="ТЕЛЕФОН" required>
-                        <label class="sr-only" for="contact-message">Повідомлення</label>
-                        <textarea class="field_contact field_contact--area" id="contact-message" name="message" placeholder="ОПИШІТЬ, ЧИМ МИ МОЖЕМО ВАМ ДОПОМОГТИ * "></textarea>
-                    </div>
-
-                    <div class="contacts__bottom">
-                        <label class="contacts__consent">
-                            <input class="contacts__radio" type="checkbox" name="consent" required>
-                            <span>Даю згоду на обробку персональних даних</span>
-                            <span class="light-grey">Ваші дані будуть використані виключно для надання
-                                технічної консультації. Ми не передаємо інформацію третім сторонам та дотримуємося вимог GDPR</span>
-                        </label>
-
-                        <p class="contacts__error" id="contacts-consent-error"></p>
-
-                        <button class="btn btn--primary btn--brackets contacts__submit" type="submit">
-                            <span class="contacts__submit-text--desktop">НАДІСЛАТИ ЗАПИТ</span>
-                            <span class="contacts__submit-text--mobile">Зв'язатись із технічним відділом</span>
-                        </button>
-                        <button class="contacts__consult-mob" type="button" data-eng-request-open data-eng-request-target="engReqModal" aria-label="Open engineer consultation form">Consult with Engineer</button>
-                    </div>
-                    <p id="my-form-status"></p>
-                </form>
+        <div class="container contacts__inner">
+            <div class="contacts__left">
+                <h2 class="h2">ПОТРІБЕН ТЕХНІЧНИЙ РОЗРАХУНОК АБО ПІДБІР ОБЛАДНАННЯ?</h2>
+                <p class="muted">
+                    Заповніть форму — ми звʼяжемось з вами.
+                </p>
             </div>
+
+            <form class="contacts__form" action="#" method="post">
+                <input class="field" type="text" name="name" placeholder="Імʼя *" required>
+                <input class="field" type="email" name="email" placeholder="Email *" required>
+                <input class="field" type="tel" name="phone" placeholder="Телефон *" required>
+                <textarea class="field field--area" name="message" placeholder="Опишіть задачу"></textarea>
+
+                <button class="btn btn--primary" type="submit">
+                    <span class="btn__bracket">[</span>
+                    <span class="btn__label">НАДІСЛАТИ ЗАПИТ</span>
+                    <span class="btn__bracket">]</span>
+                </button>
+            </form>
         </div>
     </section>
 </main>
 
+    <!-- ====== CONTACTS (секція + кнопка відкриває попап) ====== -->
+    <section class="section contacts" id="contacts">
+        <div class="container">
+            <header class="section__head">
+                <h2 class="h2">Контакти</h2>
+                <p class="lead">Адреса / телефон / пошта + форма (у модалці).</p>
+            </header>
 
+            <div class="contacts__grid">
+                <div class="contacts__info card">
+                    <p><b>Телефон:</b> <a href="tel:+380000000000">+38 (000) 000-00-00</a></p>
+                    <p><b>Email:</b> <a href="mailto:info@lc-peg.com">info@lc-peg.com</a></p>
+                    <p><b>Адреса:</b> Київ, Україна</p>
+                </div>
+
+                <div class="contacts__cta card">
+                    <h3 class="h3">Потрібна консультація?</h3>
+                    <p class="muted">Залиште заявку — відповімо найближчим часом.</p>
+                    <button class="btn btn--primary" type="button" data-open-contact>Відкрити форму</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- ====== CONTACT MODAL (форма зворотнього зв’язку) ====== -->
     <div class="modal" id="contact-modal" aria-hidden="true">
@@ -516,67 +366,136 @@
         </div>
     </div>
 
-    {{> request_modal_prev}}
-    {{> en_request_modal}}
+
+
 
 <!-- ===== FOOTER ===== -->
-{{> footer}}
+<footer class="footer" id="footer">
+    <div class="container">
+        <div class="footer_top">
 
+            <!-- Колонка 1: Меню -->
+            <div class="footer_col">
+                <div class="footer_title">Меню:</div>
+                <div class="footer_line"></div>
 
-<script type="module" src="./js/engineering-request-modal.js"></script>
+                <a class="footer_link" href="#home">Головний екран</a>
+                <a class="footer_link" href="#products">Продукція</a>
+                <a class="footer_link" href="#engineering">Інжиніринг</a>
+                <a class="footer_link" href="#library">Технічна бібліотека</a>
+                <a class="footer_link" href="docs.html">Документація</a>
+            </div>
 
+            <!-- Колонка 2: Ліцензії -->
+            <div class="footer_col">
+                <div class="footer_title">Ліцензії</div>
+                <div class="footer_line"></div>
+
+                <a class="footer_link" href="#">Каталоги та презентації</a>
+                <a class="footer_link" href="#">Інструкції користувача</a>
+                <a class="footer_link" href="#">Сертифікати відповідності</a>
+                <a class="footer_link" href="#">Інструкції користувача</a>
+                <a class="footer_link" href="#">Політика конфіденційності</a>
+            </div>
+
+            <!-- Колонка 3: Контакти -->
+            <div class="footer_col footer_contacts">
+                <div class="footer_title">Контакти:</div>
+                <div class="footer_line"></div>
+
+                <div class="footer_meta">
+                    <div class="footer_muted">Номер телефону :</div>
+                    <div>+38 (044) 390-10-15&nbsp;&nbsp;+38 (073) 244-40-88</div>
+                </div>
+
+                <div class="footer_meta">
+                    <div class="footer_muted">E-mail :</div>
+                    <div><a class="footer_link footer_link_plain" href="mailto:info@llc-peg.com">info@llc-peg.com</a></div>
+                </div>
+
+                <div class="footer_meta">
+                    <div class="footer_muted">Поштова адреса :</div>
+                    <div>07400, Київська обл., м. Бровари,<br>вул. Героїв України, 21А, офіс 405</div>
+                </div>
+
+                <div class="footer_meta">
+                    <div class="footer_muted">Юридична адреса :</div>
+                    <div>Україна м. Київ, вул. Князів Острозьких, 15</div>
+                </div>
+            </div>
+
+            <!-- Колонка 4: Соцмережі (2 колонки як у макеті) -->
+            <div class="footer_col footer_social">
+                <div class="footer_title">&nbsp;</div>
+                <div class="footer_line footer_line_invisible"></div>
+
+                <div class="footer_social_cols">
+                    <div class="footer_social_col">
+                        <a class="footer_social_link" href="#" aria-label="Instagram">
+                            <span>INSTAGRAM</span>
+                            <img class="footer_social_icon" src="./img/ui/instagram.svg" alt="">
+                        </a>
+                        <a class="footer_social_link" href="#" aria-label="Facebook">
+                            <span>FACEBOOK</span>
+                            <img class="footer_social_icon" src="./img/ui/facebook.svg" alt="">
+                        </a>
+                    </div>
+
+                    <div class="footer_social_col">
+                        <a class="footer_social_link" href="#" aria-label="Telegram">
+                            <span>TELEGRAM</span>
+                            <img class="footer_social_icon" src="./img/ui/qr-telegram.png" alt="">
+                        </a>
+                        <a class="footer_social_link" href="#" aria-label="WhatsApp">
+                            <span>WHATSAPP</span>
+                            <img class="footer_social_icon" src="./img/ui/qr-whatsapp.png" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Колонка 5: QR (окремо справа як у макеті) -->
+            <div class="footer_col footer_qr">
+                <img src="./img/ui/qr-telegram.png" alt="QR Telegram">
+                <img src="./img/ui/qr-whatsapp.png" alt="QR WhatsApp">
+            </div>
+
+        <div class="footer_brand">PRIME ENERGY GROUP</div>
+    </div>
+</footer>
 
 
 
 <script>
-    (() => {
-        const preloader = document.getElementById("preloader");
-        const percent = document.getElementById("preloaderPercent");
-        const image = document.getElementById("preloaderImage");
-        const storageKey = "pegPreloaderShown";
+    $(function () {
+        const $preloader = $("#preloader");
+        const $percent = $("#preloaderPercent");
+        const $image = $("#preloaderImage");
 
-        if (!preloader || !percent || !image) return;
-
-        let isAlreadyShown = false;
-        try {
-            isAlreadyShown = sessionStorage.getItem(storageKey) === "1";
-        } catch (e) {
-            isAlreadyShown = false;
-        }
-
-        if (isAlreadyShown) {
-            preloader.remove();
-            return;
-        }
+        if (!$preloader.length || !$percent.length || !$image.length) return;
 
         let p = 1;
         let closed = false;
 
         function render() {
-            percent.textContent = p + "%";
-            image.style.opacity = (0.08 + (p / 100) * 0.92).toFixed(3);
+            $percent.text(p + "%");
+            $image.css("opacity", (0.08 + (p / 100) * 0.92).toFixed(3));
         }
 
         function closePreloader() {
             if (closed) return;
             closed = true;
 
-            try {
-                sessionStorage.setItem(storageKey, "1");
-            } catch (e) {
-                // ignore storage errors
-            }
-
-            preloader.classList.add("preloader--hide");
-            setTimeout(() => {
-                preloader.remove();
-            }, 120);
+            $preloader.addClass("preloader--hide");
+            setTimeout(function () {
+                $preloader.remove();
+            }, 260);
         }
 
         render();
 
-        const timer = setInterval(() => {
-            p += p < 60 ? 10 : p < 90 ? 6 : 3;
+        const timer = setInterval(function () {
+            p += p < 60 ? 3 : p < 90 ? 2 : 1;
             if (p > 100) p = 100;
 
             render();
@@ -585,137 +504,64 @@
                 clearInterval(timer);
                 closePreloader();
             }
-        }, 45);
+        }, 90);
 
-        preloader.addEventListener("click", () => {
+        $preloader.on("click", function () {
             clearInterval(timer);
             closePreloader();
         });
-    })();
+    });
 </script>
 <!--<script defer src="main.js"></script>-->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-    const partnersSwiper = new Swiper('.partnersSwiper', {
-        slidesPerView: 4,
-        spaceBetween: 24,
-        loop: true,
-        autoplay: false,
-        speed: 600,
-        navigation: { nextEl: '.partnersNext', prevEl: '.partnersPrev' },
-        scrollbar: { el: '.partnersScrollbar', draggable: true },
-        breakpoints: {
-            0:   { slidesPerView: 1.2, spaceBetween: 14 },
-            480: { slidesPerView: 1.8, spaceBetween: 16 },
-            768: { slidesPerView: 2.6, spaceBetween: 18 },
-            1024:{ slidesPerView: 3.2, spaceBetween: 22 },
-            1200:{ slidesPerView: 4,   spaceBetween: 24 },
-        },
-    });
 
-    const partnersSection = document.querySelector('#partners');
-    const sliderEl = document.querySelector('.partnersSwiper');
-    let scrollAccumulator = 0;
-    let ticking = false;
-    let lastScrollY = window.scrollY;
-    const STEP = 90;
 
-    const isPartnersVisible = () => {
-        if (!partnersSection) return false;
-        const rect = partnersSection.getBoundingClientRect();
-        return rect.bottom > 0 && rect.top < window.innerHeight;
-    };
+<div class="menuOverlay" id="menuOverlay" aria-hidden="true">
+    <div class="menuOverlay__panel" role="dialog" aria-modal="true" aria-label="Меню">
 
-    const moveByScroll = (deltaY) => {
-        if (!deltaY || !isPartnersVisible()) return;
-        scrollAccumulator += deltaY;
+        <div class="menuOverlay__top">
+            <div class="menuOverlay__title">МЕНЮ</div>
 
-        if (ticking) return;
-        ticking = true;
+            <a class="menuOverlay__consult btn btn--brackets" href="#">
+                КОНСУЛЬТАЦІЯ
+            </a>
 
-        requestAnimationFrame(() => {
-            while (Math.abs(scrollAccumulator) >= STEP) {
-                if (scrollAccumulator > 0) {
-                    // scroll down -> banners move right
-                    partnersSwiper.slidePrev();
-                    scrollAccumulator -= STEP;
-                } else {
-                    // scroll up -> banners move left
-                    partnersSwiper.slideNext();
-                    scrollAccumulator += STEP;
-                }
-            }
-            ticking = false;
-        });
-    };
+            <button class="menuOverlay__close" type="button" aria-label="Закрити меню">×</button>
+        </div>
 
-    window.addEventListener('scroll', () => {
-        const currentY = window.scrollY;
-        moveByScroll(currentY - lastScrollY);
-        lastScrollY = currentY;
-    }, { passive: true });
+        <div class="menuOverlay__divider"></div>
 
-    if (sliderEl) {
-        sliderEl.addEventListener('wheel', (e) => {
-            if (!isPartnersVisible()) return;
-            moveByScroll(e.deltaY || 0);
-            e.preventDefault();
-        }, { passive: false });
-    }
-</script>
+        <nav class="menuOverlay__nav">
+            <a class="menuItem" href="index.html">
+                <span class="menuItem__text">ГОЛОВНИЙ ЕКРАН</span>
+                <span class="menuItem__num">(01)</span>
+                <img class="menuItem__icon" src="./img/ui/arrow-diag-open.svg" alt="" />
+            </a>
 
-    <script>
-        (() => {
-            const form = document.getElementById('contacts-form');
-            if (!form) return;
+            <a class="menuItem" href="products.html">
+                <span class="menuItem__text">ПРОДУКЦІЯ</span>
+                <span class="menuItem__num">(02)</span>
+                <img class="menuItem__icon" src="./img/ui/arrow-diag-open.svg" alt="" />
+            </a>
 
-            const radio = form.querySelector('input[name="consent"]');
-            const error = document.getElementById('contacts-consent-error');
+            <a class="menuItem" href="engineering.html">
+                <span class="menuItem__text">ІНЖИНІРИНГ</span>
+                <span class="menuItem__num">(03)</span>
+                <img class="menuItem__icon" src="./img/ui/arrow-diag-open.svg" alt="" />
+            </a>
 
-            form.addEventListener('submit', (e) => {
-                if (!radio.checked) {
-                    e.preventDefault();
-                    error.textContent = 'Підтвердіть згоду з політикою приватності, щоб продовжити';
-                } else {
-                    error.textContent = '';
-                }
+            <a class="menuItem" href="library.html">
+                <span class="menuItem__text">ТЕХНІЧКА БІБЛІОТЕКА</span>
+                <span class="menuItem__num">(04)</span>
+                <img class="menuItem__icon" src="./img/ui/arrow-diag-open.svg" alt="" />
+            </a>
 
-                async function handleSubmit(event) {
-                    event.preventDefault();
-                    var status = document.getElementById("my-form-status");
-                    var data = new FormData(event.target);
-                    fetch(event.target.action, {
-                        method: form.method,
-                        body: data,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    }).then(response => {
-                        if (response.ok) {
-                            status.innerHTML = "Thanks for your submission!";
-                            form.reset()
-                        } else {
-                            response.json().then(data => {
-                                if (Object.hasOwn(data, 'errors')) {
-                                    status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
-                                } else {
-                                    status.innerHTML = "Oops! There was a problem submitting your form"
-                                }
-                            })
-                        }
-                    }).catch(error => {
-                        status.innerHTML = "Oops! There was a problem submitting your form"
-                    });
-                }
-                form.addEventListener("submit", handleSubmit)
-            });
-
-            radio.addEventListener('change', () => {
-                if (radio.checked) error.textContent = '';
-            });
-        })();
-    </script>
-
+            <a class="menuItem" href="docs.html">
+                <span class="menuItem__text">ДОКУМЕНТАЦІЯ</span>
+                <span class="menuItem__num">(05)</span>
+                <img class="menuItem__icon" src="./img/ui/arrow-diag-open.svg" alt="" />
+            </a>
+        </nav>
+    </div>
 </div>
 </body>
 </html>

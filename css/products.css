@@ -9,10 +9,6 @@
     display: none;
 }
 
-.mobileProductsSheet__tail {
-    display: none;
-}
-
 .mobileProductsSheet__panel {
     position: static;
     transform: none;
@@ -42,7 +38,7 @@
         background: #000;
         border-radius: 18px 18px 0 0;
         box-shadow: 0 -16px 36px rgba(0, 0, 0, 0.18);
-        transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+        transition: transform 0.42s cubic-bezier(0.2, 0.8, 0.2, 1);
         will-change: transform;
         backface-visibility: hidden;
         transform: translate3d(0, 100%, 0);
@@ -73,25 +69,6 @@
         max-height: 10000px;
     }
 
-
-    .mobileProductsSheet__tail {
-        position: fixed;
-        left: 50%;
-        bottom: 0;
-        transform: translateX(-50%);
-        width: min(180px, 46vw);
-        height: 18px;
-        border-radius: 12px 12px 0 0;
-        background: #000;
-        box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.35);
-        touch-action: none;
-        z-index: 1402;
-        pointer-events: auto;
-    }
-
-    .mobileProductsSheet.is-open.is-peek .mobileProductsSheet__tail {
-        display: block;
-    }
 
     .mobileProductsSheet.is-open .mobileProductsSheet__panel {
         transform: translate3d(0, 0, 0);

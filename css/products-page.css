@@ -191,12 +191,16 @@
 }
 
 /* Спец-правило для p03 */
+.previewProduct[data-product-id="p03"] .previewProduct__media{
+    align-items: start;
+}
+
 .previewProduct[data-product-id="p03"] #previewProductImage,
 .previewProduct[data-product-id="p03"] .previewProduct__media img{
     max-width: 270px;
     max-height: 800px;
     align-self: start;
-    transform: translateY(-92px);
+    transform: translateY(-132px);
     object-position: center top;
 }
 
@@ -560,7 +564,7 @@
     .previewProduct[data-product-id="p03"] .previewProduct__media img{
         max-width: 280px;
         max-height: 840px;
-        transform: translateY(-108px);
+        transform: translateY(-148px);
     }
 }
 
@@ -627,7 +631,7 @@
 
     .previewProduct[data-product-id="p03"] #previewProductImage,
     .previewProduct[data-product-id="p03"] .previewProduct__media img{
-        transform: translateY(-74px);
+        transform: translateY(-104px);
     }
 
     .productsList__grid{
@@ -732,7 +736,7 @@
 
     .previewProduct[data-product-id="p03"] #previewProductImage,
     .previewProduct[data-product-id="p03"] .previewProduct__media img{
-        transform: translateY(-66px);
+        transform: translateY(-92px);
     }
 
     .productCard__link{

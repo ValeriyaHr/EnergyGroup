@@ -141,6 +141,25 @@ if ($) $(function () {
     let isLoaded = false;
     let isOpen = false;
     let wheelArmed = true; // щоб не спрацьовувало 20 разів
+    let closeCleanupTimer = null;
+    let loadRequestId = 0;
+
+    window.PEGProducts = window.PEGProducts || {};
+
+    function syncSelectedProduct(productId) {
+        const normalizedProductId = productId ? String(productId).toLowerCase() : null;
+        window.PEGProducts.currentProductId = normalizedProductId;
+        window.dispatchEvent(new CustomEvent('peg:product-selected', {
+            detail: { productId: normalizedProductId }
+        }));
+    }
+    function cancelCloseCleanup() {
+        if (closeCleanupTimer) {
+            clearTimeout(closeCleanupTimer);
+            closeCleanupTimer = null;
+        }
+    }
+
 
     // Для доступу до деталей продуктів напряму по ссылке: читаем product из URL,
     // синхронизируем адрес при открытии/закрытии и можем сразу загрузить нужный partial.
@@ -180,6 +199,8 @@ if ($) $(function () {
     function openDetails() {
         if (!isLoaded) return;
 
+        cancelCloseCleanup();
+
         $wrap.addClass("is-ready");
         // даємо браузеру вставити DOM, тоді додаємо клас для анімації
         requestAnimationFrame(() => {
@@ -196,20 +217,28 @@ if ($) $(function () {
     }
 
     function closeDetails() {
+        cancelCloseCleanup();
+
         $wrap.removeClass("is-open");
         isOpen = false;
+        window.PEGProducts.currentProductId = null;
         setProductLocation(null);
         window.dispatchEvent(new CustomEvent('peg:product-details-close'));
 
         // Очищаем содержимое после завершения анимации
-        setTimeout(() => {
+        closeCleanupTimer = setTimeout(() => {
+            // Если за время анимации карточку уже открыли заново — ничего не трогаем.
+            if (isOpen) return;
             $wrap.removeClass("is-ready").empty();
             isLoaded = false;
             //lastUrl = null;
+            closeCleanupTimer = null;
         }, 350);
     }
 
     function loadProduct(url) {
+        cancelCloseCleanup();
+
         // якщо вже завантажували той самий — просто відкриваємо
         if (isLoaded && url === lastUrl) {
             openDetails();
@@ -219,12 +248,16 @@ if ($) $(function () {
         isLoaded = false;
         isOpen = false;
         lastUrl = url;
+        const currentRequestId = ++loadRequestId;
 
         $wrap.removeClass("is-open is-ready").hide().empty();
 
         $wrap.load(url, function (response, status) {
+            if (currentRequestId !== loadRequestId) return;
+
             if (status === "error") {
                 $wrap.show().addClass("is-ready").html("<p>Помилка завантаження</p>");
+                isLoaded = false;
                 return;
             }
 
@@ -240,12 +273,12 @@ if ($) $(function () {
         const normalizedProductId = String(productId).toLowerCase();
         const url = `./product-details/${normalizedProductId}.html`;
 
+        syncSelectedProduct(normalizedProductId);
         setProductLocation(normalizedProductId);
         loadProduct(url);
         wheelArmed = true;
     }
 
-    window.PEGProducts = window.PEGProducts || {};
     window.PEGProducts.openProductById = openProductById;
     window.PEGProducts.closeProductDetails = closeDetails;
 
@@ -287,7 +320,7 @@ if ($) $(function () {
 
     const initialProductId = getProductIdFromLocation();
     if (initialProductId) {
-        loadProduct(`./product-details/${initialProductId}.html`);
+        openProductById(initialProductId);
     }
 });
 
@@ -448,6 +481,13 @@ if ($) $(function () {
             return true;
         }
 
+        window.addEventListener('peg:product-selected', function (event) {
+            const productId = event.detail && event.detail.productId;
+            if (productId) {
+                syncPreviewFromProductId(productId);
+            }
+        });
+
         function showCard(index) {
             if (index >= $cards.length) index = 0;
             if (index < 0) index = $cards.length - 1;
@@ -566,7 +606,8 @@ if ($) $(function () {
         });
 
         // стартовий стан: якщо товар передано в URL, синхронізуємо hero з ним
-        const initialProductId = getProductIdFromLocationForPreview();
+        const initialProductId = (window.PEGProducts && window.PEGProducts.currentProductId)
+            || getProductIdFromLocationForPreview();
         if (!syncPreviewFromProductId(initialProductId)) {
             setPreviewState('p01', 'cabinet');
             toggleCalculator('p01');
