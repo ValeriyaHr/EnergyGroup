@@ -17,6 +17,7 @@ const $ = window.jQuery;
 
         let dragContext = null;
         let lastTranslate = 0;
+        let pendingPeekOnNextOpen = false;
 
         function isMobileViewport() {
             return window.matchMedia('(max-width: 768px)').matches;
@@ -52,9 +53,11 @@ const $ = window.jQuery;
         function setSheetState(mode) {
             if (!isMobileViewport()) return;
 
-            const isOpen = mode === 'open';
+            const isOpen = mode === 'open' || mode === 'peek';
+            const isPeek = mode === 'peek';
 
             $sheet.toggleClass('is-open', isOpen);
+            $sheet.toggleClass('is-peek', isPeek);
             $sheet.attr('aria-hidden', isOpen ? 'false' : 'true');
 
             if (!isOpen) {
@@ -122,15 +125,32 @@ const $ = window.jQuery;
             finishDrag(shouldClose);
         });
 
+        $(document).on('click', '.productCard__bottom, #btnShowDetails', function () {
+            if (!isMobileViewport()) return;
+            if (dragContext) return;
+            pendingPeekOnNextOpen = true;
+        });
+
         // Swipe-close only from handle to avoid breaking native inner scroll.
         $handle.on('touchstart', function (event) {
             if (!isMobileViewport()) return;
             if (!$sheet.hasClass('is-open')) return;
 
+            if ($sheet.hasClass('is-peek')) {
+                setSheetState('open');
+                return;
+            }
+
             const startY = getTouchY(event);
             if (!startY) return;
 
             beginDrag(startY);
+        });
+
+        $handle.on('click', function () {
+            if (!isMobileViewport()) return;
+            if (!$sheet.hasClass('is-peek')) return;
+            setSheetState('open');
         });
 
         $overlay.on('click', function () {
@@ -150,23 +170,32 @@ const $ = window.jQuery;
 
         window.addEventListener('peg:product-details-open', function () {
             if (!isMobileViewport()) return;
+
+            if (pendingPeekOnNextOpen) {
+                setSheetState('peek');
+                pendingPeekOnNextOpen = false;
+                return;
+            }
+
             setSheetState('open');
         });
 
         window.addEventListener('peg:product-details-close', function () {
+            pendingPeekOnNextOpen = false;
             setSheetState('closed');
         });
 
         window.addEventListener('resize', function () {
             if (!isMobileViewport()) {
-                $sheet.removeClass('is-open is-dragging');
+                $sheet.removeClass('is-open is-dragging is-peek');
                 $panel.removeClass('is-dragging');
                 clearDragTransform();
+                pendingPeekOnNextOpen = false;
             }
         });
 
         // Safe initial state.
-        $sheet.removeClass('is-open is-dragging');
+        $sheet.removeClass('is-open is-dragging is-peek');
         $panel.removeClass('is-dragging');
         clearDragTransform();
         $sheet.attr('aria-hidden', 'true');

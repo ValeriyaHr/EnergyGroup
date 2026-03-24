@@ -68,6 +68,10 @@
         max-height: 10000px;
     }
 
+    .mobileProductsSheet.is-open.is-peek {
+        max-height: 60px;
+    }
+
     .mobileProductsSheet.is-open .mobileProductsSheet__panel {
         transform: translateY(0);
     }
