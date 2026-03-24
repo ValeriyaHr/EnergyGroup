@@ -16,28 +16,25 @@
 
 @media (max-width: 768px) {
     .mobileProductsSheet {
-        position: fixed;
-        inset: 0;
+        position: relative;
         z-index: 1400;
         pointer-events: none;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.32s ease;
     }
 
+    /* In continuous-scroll mode overlay is disabled. */
     .mobileProductsSheet__overlay {
-        display: block;
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.44);
-        opacity: 0;
-        transition: opacity 0.24s ease;
-        pointer-events: none;
+        display: none;
     }
 
     .mobileProductsSheet__panel {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        max-height: 92dvh;
+        position: relative;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        max-height: none;
         background: #000;
         border-radius: 18px 18px 0 0;
         box-shadow: 0 -16px 36px rgba(0, 0, 0, 0.18);
@@ -68,45 +65,26 @@
 
     .mobileProductsSheet.is-open {
         pointer-events: auto;
-    }
-
-    .mobileProductsSheet.is-open .mobileProductsSheet__overlay {
-        opacity: 1;
-        pointer-events: auto;
-    }
-
-    .mobileProductsSheet.is-peek .mobileProductsSheet__overlay {
-        opacity: 0;
-        pointer-events: none;
+        max-height: 10000px;
     }
 
     .mobileProductsSheet.is-open .mobileProductsSheet__panel {
         transform: translateY(0);
     }
 
-    .mobileProductsSheet.is-peek .mobileProductsSheet__panel {
-        touch-action: none;
-    }
-
-    .mobileProductsSheet.is-dragging .mobileProductsSheet__overlay,
     .mobileProductsSheet.is-dragging .mobileProductsSheet__panel,
     .mobileProductsSheet__panel.is-dragging {
         transition: none;
     }
 
-    .is-product-sheet-open {
-        overflow: hidden;
-        touch-action: none;
-    }
-
     #productDetails {
-        overflow-y: auto;
+        overflow: visible;
         -webkit-overflow-scrolling: touch;
-        max-height: calc(92dvh - 30px);
+        max-height: none;
         padding: 0;
     }
 
-    /* При swipe-анімації керуємо тільки sheet, без додаткового fly-in усередині */
+    /* Keep inner block static while sheet itself animates/dragges. */
     #productDetails .productDetails {
         opacity: 1;
         transform: none;
@@ -115,4 +93,3 @@
         margin: 0;
     }
 }
-
