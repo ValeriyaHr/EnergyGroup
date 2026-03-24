@@ -6,6 +6,12 @@ import "./jquery-global.js";
 
 const $ = window.jQuery;
 
+function closeContactModal(modalRoot) {
+    if (!modalRoot) return;
+    modalRoot.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("no-scroll");
+}
+
 
 //import "./menu.js";
 
@@ -25,6 +31,24 @@ document.addEventListener("DOMContentLoaded", () => {
     if (typeof initSmoothAnchorScroll === "function") initSmoothAnchorScroll();
     initExperienceNumbers();
     initExperienceAnimation();
+});
+
+document.addEventListener("click", (event) => {
+    const closeTrigger = event.target.closest("[data-contact-close]");
+    if (!closeTrigger) return;
+
+    const modalRoot = closeTrigger.closest(".modal");
+    if (!modalRoot) return;
+
+    event.preventDefault();
+    closeContactModal(modalRoot);
+});
+
+document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+
+    const openedContactModals = document.querySelectorAll(".modal[aria-hidden='false']");
+    openedContactModals.forEach((modalRoot) => closeContactModal(modalRoot));
 });
 
 
