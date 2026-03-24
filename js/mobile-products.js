@@ -13,7 +13,10 @@ const $ = window.jQuery;
         const $overlay = $sheet.find('[data-mobile-sheet-overlay]');
         const $handle = $sheet.find('[data-mobile-sheet-handle]');
 
+        const OPEN_DRAG_RATIO = 0.45;
         const CLOSE_DRAG_RATIO = 0.25;
+        const PEEK_VISIBLE_HEIGHT = 100;
+        const DRAG_START_THRESHOLD = 6;
 
         let dragContext = null;
         let lastTranslate = 0;
@@ -38,11 +41,15 @@ const $ = window.jQuery;
             return Math.max(panelHeight, 1);
         }
 
+        function getPeekTranslate() {
+            return Math.max(0, getPanelHeight() - PEEK_VISIBLE_HEIGHT);
+        }
+
         function setTranslate(y) {
             const panelHeight = getPanelHeight();
             const clamped = Math.max(0, Math.min(y, panelHeight));
             lastTranslate = clamped;
-            $panel.css('transform', `translateY(${clamped}px)`);
+            $panel.css('transform', `translate3d(0, ${clamped}px, 0)`);
         }
 
         function clearDragTransform() {
@@ -65,18 +72,25 @@ const $ = window.jQuery;
                 return;
             }
 
+            if (isPeek) {
+                setTranslate(getPeekTranslate());
+                return;
+            }
+
             clearDragTransform();
         }
 
-        function beginDrag(startY) {
+        function beginDrag(mode, startY) {
             dragContext = {
+                mode: mode,
                 startY: startY,
-                hasMoved: false
+                hasMoved: false,
+                startTranslate: mode === 'opening' ? getPeekTranslate() : 0
             };
 
             $sheet.addClass('is-dragging is-open');
             $panel.addClass('is-dragging');
-            setTranslate(0);
+            setTranslate(dragContext.startTranslate);
         }
 
         function finishDrag(shouldClose) {
@@ -103,11 +117,18 @@ const $ = window.jQuery;
 
             const deltaY = currentY - dragContext.startY;
 
-            if (!dragContext.hasMoved && Math.abs(deltaY) < 4) {
+            if (!dragContext.hasMoved && Math.abs(deltaY) < DRAG_START_THRESHOLD) {
                 return;
             }
 
             dragContext.hasMoved = true;
+
+            if (dragContext.mode === 'opening') {
+                const dragUp = Math.max(0, dragContext.startY - currentY);
+                setTranslate(dragContext.startTranslate - dragUp);
+                event.preventDefault();
+                return;
+            }
 
             const dragDown = Math.max(0, deltaY);
             setTranslate(dragDown);
@@ -120,8 +141,17 @@ const $ = window.jQuery;
             const releaseY = getReleaseTouchY(event);
             const deltaY = releaseY - dragContext.startY;
             const panelHeight = getPanelHeight();
-            const shouldClose = lastTranslate >= panelHeight * CLOSE_DRAG_RATIO || deltaY > 70;
 
+            if (dragContext.mode === 'opening') {
+                const shouldOpen = lastTranslate <= panelHeight * OPEN_DRAG_RATIO || deltaY < -70;
+                $sheet.removeClass('is-dragging');
+                $panel.removeClass('is-dragging');
+                setSheetState(shouldOpen ? 'open' : 'peek');
+                dragContext = null;
+                return;
+            }
+
+            const shouldClose = lastTranslate >= panelHeight * CLOSE_DRAG_RATIO || deltaY > 70;
             finishDrag(shouldClose);
         });
 
@@ -132,20 +162,15 @@ const $ = window.jQuery;
             setSheetState('peek');
         });
 
-        // Swipe-close only from handle to avoid breaking native inner scroll.
+        // Swipe/drag from handle and bottom tail.
         $handle.on('touchstart', function (event) {
             if (!isMobileViewport()) return;
             if (!$sheet.hasClass('is-open')) return;
 
-            if ($sheet.hasClass('is-peek')) {
-                setSheetState('open');
-                return;
-            }
-
             const startY = getTouchY(event);
             if (!startY) return;
 
-            beginDrag(startY);
+            beginDrag($sheet.hasClass('is-peek') ? 'opening' : 'closing', startY);
         });
 
         $handle.on('click', function () {

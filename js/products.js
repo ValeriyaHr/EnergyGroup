@@ -485,6 +485,32 @@ if ($) $(function () {
             }
         }
 
+        function openCardDetailsFromCatalog(productId) {
+            const normalizedProductId = String(productId || '').toLowerCase();
+            if (!/^p\d{2}$/.test(normalizedProductId)) return;
+
+            const openSelected = function () {
+                if (window.PEGProducts && typeof window.PEGProducts.openProductById === 'function') {
+                    window.PEGProducts.openProductById(normalizedProductId);
+                    return;
+                }
+
+                $('#btnShowDetails')
+                    .attr('data-product', normalizedProductId)
+                    .data('product', normalizedProductId)
+                    .trigger('click');
+            };
+
+            const shouldScrollToTop = window.matchMedia('(max-width: 768px)').matches;
+            if (!shouldScrollToTop) {
+                openSelected();
+                return;
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.setTimeout(openSelected, 280);
+        }
+
         $grid.on('mouseover focusin click', function (e) {
             let $card = $(e.target).closest('.productCard');
             if (!$card.length) return;
@@ -536,10 +562,7 @@ if ($) $(function () {
             currentIndex = $cards.index($card);
 
             $('.productDetails__back').click();
-
-            window.setTimeout(function () {
-                $('#btnShowDetails').click();
-            }, 150);
+            openCardDetailsFromCatalog(cardData.productId);
         });
 
         // стартовий стан: якщо товар передано в URL, синхронізуємо hero з ним

@@ -42,9 +42,10 @@
         background: #000;
         border-radius: 18px 18px 0 0;
         box-shadow: 0 -16px 36px rgba(0, 0, 0, 0.18);
-        transform: translateY(100%);
         transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
         will-change: transform;
+        backface-visibility: hidden;
+        transform: translate3d(0, 100%, 0);
         overflow: hidden;
         display: flex;
         flex-direction: column;
@@ -64,7 +65,7 @@
         width: 44px;
         height: 5px;
         border-radius: 999px;
-        background: #cfcfcf;
+        background: var(--black);
     }
 
     .mobileProductsSheet.is-open {
@@ -72,9 +73,6 @@
         max-height: 10000px;
     }
 
-    .mobileProductsSheet.is-open.is-peek {
-        max-height: 100px;
-    }
 
     .mobileProductsSheet__tail {
         position: fixed;
@@ -96,7 +94,7 @@
     }
 
     .mobileProductsSheet.is-open .mobileProductsSheet__panel {
-        transform: translateY(0);
+        transform: translate3d(0, 0, 0);
     }
 
     .mobileProductsSheet.is-dragging .mobileProductsSheet__panel,
