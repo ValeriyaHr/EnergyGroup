@@ -1003,36 +1003,67 @@ body.menu-open .header__burger::after {
     align-items: center;
 }
 
-/* за замовчуванням (десктоп): показуємо desktop-текст, ховаємо mobile */
-.contacts__submit-text--desktop { display: inline; }
-.contacts__submit-text--mobile  { display: none; }
-.contacts__consult-mob          { display: none; }
-
-/* стилі додаткової кнопки */
-.contacts__consult-mob{
-    display: none;
-    align-items: center;
-    justify-content: center;
-    margin: 8px auto 0;
-    height: 52px;
-    padding: 0 28px;
-    border-radius: 999px;
-    font-size: 14px;
-    text-transform: uppercase;
-    white-space: nowrap;
-    border: 1.5px solid var(--orange);
-    color: var(--orange);
-    background: transparent;
-    text-decoration: none;
-}
+/* за замовчуванням (десктоп): показуємо тільки desktop-текст */
+.contacts .contacts__submit .contacts__submit-text--desktop { display: inline !important; }
+.contacts .contacts__submit .contacts__submit-text--mobile  { display: none !important; }
+.contacts .contacts__consult-mob                            { display: none !important; }
 
 @media (max-width: 768px){
     /* мобільний текст submit-кнопки */
-    .contacts__submit-text--desktop { display: none; }
-    .contacts__submit-text--mobile  { display: inline; }
+    .contacts .contacts__submit .contacts__submit-text--desktop { display: none !important; }
+    .contacts .contacts__submit .contacts__submit-text--mobile  { display: inline !important; }
 
-    /* додаткова кнопка видима на мобільному */
-    .contacts__consult-mob{ display: inline-flex; }
+    /* оранжева кнопка на мобільному */
+    .contacts__submit{
+        text-transform: none;
+        font-size: 13px;
+    }
+
+    /* додаткова кнопка видима на мобільному - як в хедері */
+    .contacts .contacts__consult-mob{
+        position: relative;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        min-height: auto;
+        height: auto;
+        margin: 8px auto 0;
+        padding: 0 14px;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        font-family: var(--font-family), sans-serif;
+        font-size: 16px;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        color: var(--grey-dark);
+        text-decoration: none;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+
+    .contacts .contacts__consult-mob::before,
+    .contacts .contacts__consult-mob::after{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%) translateX(0);
+        color: var(--orange);
+        line-height: 1;
+        transition: transform .18s ease;
+        pointer-events: none;
+    }
+
+    .contacts .contacts__consult-mob::before{
+        content: "[";
+        left: 0;
+    }
+
+    .contacts .contacts__consult-mob::after{
+        content: "]";
+        right: 0;
+    }
 
     /* фон секції на мобільному */
     .contacts::before{

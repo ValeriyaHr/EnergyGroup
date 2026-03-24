@@ -1490,7 +1490,7 @@ body.menu-open{
     will-change: filter, background-position;
     pointer-events:none;
 }
-/** --- движение фона */
+/** --- рух фону */
 /*@keyframes waveMove{*/
 /*    0%   { background-position: 25% 50%; filter: hue-rotate(0deg) saturate(1.05); }*/
 /*    25%  { background-position: 35% 50%; filter: hue-rotate(25deg) saturate(1.15); }*/
@@ -1866,6 +1866,14 @@ body.menu-open{
 .contacts__submit{
     justify-self:end;
     margin-top:4px;
+}
+
+.contacts__submit .contacts__submit-text--mobile{
+    display: none;
+}
+
+.contacts__consult-mob{
+    display: none;
 }
 
 /* form — прозора, тільки сітка */
@@ -2964,8 +2972,8 @@ body.menu-open{
 }
 
 .reqAgree{
-    display:flex;
-    align-items:center;
+    display: flex;
+    align-items: center;
     gap: 10px;
     margin: 14px 0 4px;
     font-size: 11px;
@@ -2975,7 +2983,7 @@ body.menu-open{
     letter-spacing: -0.03em;
     color: var(--grey);
 }
-.reqAgree__check{ position:absolute; opacity:0; pointer-events:none; }
+.reqAgree__check{ position: absolute; opacity: 0; pointer-events: none; }
 .reqAgree__dot{
     position: relative;
     width: 10px;
@@ -3959,13 +3967,13 @@ body.menu-open{
     line-height:1.05;
 }
 .techLibForm__note{
-    margin:0;
-    color:var(--orange);
-    font-size:12px;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    max-width:420px;
-    line-height:1.4;
+    margin: 0;
+    color: var(--orange);
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    max-width: 420px;
+    line-height: 1.4;
 }
 
 .tForm__panel{
@@ -4016,6 +4024,7 @@ body.menu-open{
     border-radius:50%;
     display:inline-block;
 }
+
 .tAgree__check:checked + .tAgree__dot{
     background:var(--orange);
     border-color:var(--orange);
@@ -4053,39 +4062,3 @@ body.menu-open{
 }
 
 
-.docs{
-    --debug-cols: 12;
-    --debug-gap: clamp(12px, 1.8vw, 24px);
-    --debug-container: min(1440px, calc(100% - (var(--gutter) * 2)));
-}
-
-.grid12.debug-grid{
-    position: relative;
-}
-
-@media (min-width: 1101px){
-    .docs .container.grid12.debug-grid{
-        width: var(--debug-container);
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-
-.grid12.debug-grid::after{
-    --_cols: var(--debug-cols, 12);
-    --_gap: var(--debug-gap, clamp(12px, 1.8vw, 24px));
-    --_colw: calc((100% - (var(--_gap) * (var(--_cols) - 1))) / var(--_cols));
-    --_step: calc(var(--_colw) + var(--_gap));
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 9999;
-    background-image: repeating-linear-gradient(
-        to right,
-        rgba(180,0,255,.7) 0,
-        rgba(180,0,255,.7) 1px,
-        transparent 1px,
-        transparent var(--_step)
-    );
-}
