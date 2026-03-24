@@ -1249,6 +1249,58 @@ body:not(.products-page) .engSection{
 .engSection__card{
     padding: 64px 20px 0; /* було 110px 48px 160px на десктопі */
 }
+
+.engSection__main{
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 22px;
+}
+
+.engSection__content{
+    min-width: 0;
+}
+
+.engStickyNav{
+    position: sticky;
+    top: 68px;
+    z-index: 4;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: flex-start;
+    padding: 0;
+    margin: 0;
+}
+
+.engStickyNav__link{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 10px 14px;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 999px;
+    background: rgba(255,255,255,.04);
+    color: rgba(255,255,255,.78);
+    text-decoration: none;
+    font-family: var(--third-family), sans-serif;
+    font-weight: 300;
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+}
+
+.engStickyNav__link.is-active{
+    background: var(--orange);
+    border-color: var(--orange);
+    color: var(--white);
+}
+
+.engSolRow[id]{
+    scroll-margin-top: 98px;
+}
 .engSection__ticks{
     left: 78%;
     top: 27%;
