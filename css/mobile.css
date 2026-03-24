@@ -998,14 +998,19 @@ body.menu-open .header__burger::after {
     font-weight: 300;
     padding: 0;
     gap: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* за замовчуванням (десктоп): показуємо desktop-текст, ховаємо mobile */
-.contacts__submit-text--mobile { display: none; }
-.contacts__consult-mob         { display: none; }
+.contacts__submit-text--desktop { display: inline; }
+.contacts__submit-text--mobile  { display: none; }
+.contacts__consult-mob          { display: none; }
 
-/* стилі кнопки (завжди, щоб не дублювати) */
+/* стилі додаткової кнопки */
 .contacts__consult-mob{
+    display: none;
     align-items: center;
     justify-content: center;
     margin: 8px auto 0;
@@ -1026,10 +1031,10 @@ body.menu-open .header__burger::after {
     .contacts__submit-text--desktop { display: none; }
     .contacts__submit-text--mobile  { display: inline; }
 
-    /* додаткова кнопка */
+    /* додаткова кнопка видима на мобільному */
     .contacts__consult-mob{ display: inline-flex; }
 
-    /* фон секції */
+    /* фон секції на мобільному */
     .contacts::before{
         background: url("../img/ui/word-mob.svg") no-repeat;
         background-position: center top;
