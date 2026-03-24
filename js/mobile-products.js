@@ -15,7 +15,7 @@ const $ = window.jQuery;
 
         const OPEN_DRAG_RATIO = 0.45;
         const CLOSE_DRAG_RATIO = 0.25;
-        const PEEK_VISIBLE_HEIGHT = 100;
+        const PEEK_VISIBLE_HEIGHT = 140;
         const DRAG_START_THRESHOLD = 6;
 
         let dragContext = null;
