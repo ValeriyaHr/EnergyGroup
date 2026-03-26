@@ -59,7 +59,7 @@ const $ = window.jQuery;
         function setSheetVisibleHeight(height) {
             let safeHeight = Math.max(0, Math.round(height || 0));
 
-            lastVisibleHeight = safeHeight*2;
+            //lastVisibleHeight = safeHeight*2;
             $sheet.css('--mobile-sheet-visible-height', `${safeHeight}px`);
         }
 
