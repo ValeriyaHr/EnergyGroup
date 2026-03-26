@@ -60,7 +60,8 @@ const $ = window.jQuery;
             let safeHeight = Math.max(0, Math.round(height || 0));
 
             //lastVisibleHeight = safeHeight*2;
-            $sheet.css('--mobile-sheet-visible-height', `${safeHeight}px`);
+            //$sheet.css('--mobile-sheet-visible-height', `${safeHeight}px`);
+            $sheet.css('--mobile-sheet-visible-height', `100%`);
         }
 
         function getVisibleHeightByTranslate(translateY) {

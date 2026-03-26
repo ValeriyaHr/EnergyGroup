@@ -1909,8 +1909,8 @@ body.products-page .mobile_panel{
     padding-right: var(--gutter);
 }
 
- .previewProduct--cabinet,.previewProduct--module, .previewProduct--tall{
+ .previewProduct--cabinet,.previewProduct--module,.previewProduct--wide, .previewProduct--tall {
     min-height: 87vh;
 
-     padding-top: 35%;
+     padding-top: 30%;
 }
