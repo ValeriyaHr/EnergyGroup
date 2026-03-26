@@ -857,7 +857,7 @@
         color: var(--lightgrey);
     }
 
-    /* 3. кнопки по центру (по всей ширине экрана) */
+    /* 3. кнопки по центру (по всій ширині екрана) */
     .previewProduct__actions{
         grid-column: 1 / -1;
         width: 100%;
@@ -1070,9 +1070,8 @@
     }
 
     .productsList__grid.view-double .productCard{
-        padding-bottom: 82px;
+        padding-bottom: 0;
         margin-bottom: 0;
-        height: auto;
         align-self: start;
     }
 
@@ -1087,7 +1086,7 @@
         grid-column: 1 / -1;
         width: 100%;
         height: 1px;
-        margin: 0 0 82px;
+        margin: 80px 0 80px;
         background: #d9d9d9;
     }
 
@@ -1110,7 +1109,11 @@
     }
 
     .productsList__grid.view-double .productCard__link{
-        min-height: 392px;
+        min-height: 370px;
+        height: 100%;
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr) auto;
+        align-items: start;
     }
 
     .productCard__link:hover{
@@ -1204,13 +1207,25 @@
         -webkit-line-clamp: 4;
         overflow: hidden;
         min-height: 0;
-        margin-bottom: 40px;
+        margin-bottom: 0;
     }
+
+    .productsList__grid.view-double .productCard__body{
+        min-height: 0;
+        margin-bottom: 0;
+        grid-row: 1;
+    }
+
 
     .productsList__grid.view-double .productCard__bottom{
         order: 3;
+        grid-row: 3;
         flex-direction: row;
-        margin-top: 20px;
+        margin-top: 12px;
+    }
+
+    .productsList__grid.view-double .productCard:not(:last-of-type) .productCard__bottom{
+        margin-bottom: 0;
     }
 
     .productCard__imgWrap{
@@ -1276,12 +1291,15 @@
 
     .productsList__grid.view-double .productCard__imgWrap{
         order: 2;
+        grid-row: 2;
         aspect-ratio: unset;
         height: auto;
-        align-items: stretch;
-        justify-content: stretch;
+        align-items: flex-end;
+        justify-content: center;
         padding: 0;
-        margin: 0 0 8px;
+        /* Картинка остается прижатой вниз, но от текста всегда не меньше 40px */
+        margin: auto 0 6px;
+        padding-top: 40px;
         overflow: visible;
     }
 
@@ -1453,9 +1471,17 @@
         line-height: 1.04;
     }
 
+    .productsList__grid.view-double .productCard__title{
+        min-height: 0;
+    }
+
     .productCard__text{
         font-size: 11px;
         line-height: 1.3;
+    }
+
+    .productsList__grid.view-double .productCard__text{
+        min-height: 0;
     }
 
     .productCard__imgWrap{
