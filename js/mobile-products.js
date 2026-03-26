@@ -57,8 +57,9 @@ const $ = window.jQuery;
         }
 
         function setSheetVisibleHeight(height) {
-            const safeHeight = Math.max(0, Math.round(height || 0));
-            lastVisibleHeight = safeHeight;
+            let safeHeight = Math.max(0, Math.round(height || 0));
+
+            lastVisibleHeight = safeHeight*2;
             $sheet.css('--mobile-sheet-visible-height', `${safeHeight}px`);
         }
 
@@ -123,10 +124,15 @@ const $ = window.jQuery;
             dragContext = {
                 mode: mode,
                 startY: startY,
+                lastY: startY,
                 hasMoved: false,
                 startTranslate: mode === 'opening' ? getPeekTranslate() : 0,
                 startVisibleHeight: mode === 'opening' ? getPeekVisibleHeight() : panelHeight
             };
+
+            if (mode === 'scrolling') {
+                return;
+            }
 
             $sheet.addClass('is-dragging is-open');
             $panel.addClass('is-dragging');
@@ -157,6 +163,20 @@ const $ = window.jQuery;
 
             const deltaY = currentY - dragContext.startY;
 
+            if (dragContext.mode === 'scrolling') {
+                const moveDelta = currentY - dragContext.lastY;
+                dragContext.lastY = currentY;
+
+                if (Math.abs(moveDelta) < 1) {
+                    return;
+                }
+
+                // Swipe on the handle should scroll the page in open mobile sheet mode.
+                window.scrollBy(0, -moveDelta);
+                event.preventDefault();
+                return;
+            }
+
             if (!dragContext.hasMoved && Math.abs(deltaY) < DRAG_START_THRESHOLD) {
                 return;
             }
@@ -179,6 +199,11 @@ const $ = window.jQuery;
 
         $(document).on('touchend touchcancel', function (event) {
             if (!dragContext || !isMobileViewport()) return;
+
+            if (dragContext.mode === 'scrolling') {
+                dragContext = null;
+                return;
+            }
 
             const releaseY = getReleaseTouchY(event);
             const deltaY = releaseY - dragContext.startY;
@@ -216,7 +241,7 @@ const $ = window.jQuery;
             const startY = getTouchY(event);
             if (!startY) return;
 
-            beginDrag($sheet.hasClass('is-peek') ? 'opening' : 'closing', startY);
+            beginDrag($sheet.hasClass('is-peek') ? 'opening' : 'scrolling', startY);
         });
 
         $handle.on('click', function () {

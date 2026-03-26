@@ -54,7 +54,7 @@
         justify-content: center;
         min-height: 26px;
         padding: 0;
-        touch-action: none;
+        touch-action: pan-y;
     }
 
     .mobileProductsSheet__handle {

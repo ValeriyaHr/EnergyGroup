@@ -273,12 +273,6 @@ body.engReqModalOpen {
     overflow: hidden;
 }
 
-body.engReqModalOpen .engReqModal {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
-
 .engReqModal[aria-hidden="false"] {
     opacity: 1;
     visibility: visible;
@@ -403,4 +397,3 @@ body.engReqModalOpen .engReqModal {
         letter-spacing: -0.02em;
         text-transform: uppercase;
     }
-
