@@ -1912,5 +1912,6 @@ body.products-page .mobile_panel{
  .previewProduct--cabinet,.previewProduct--module, .previewProduct--tall{
     min-height: 87vh;
      vertical-align: middle;
-     padding-top: 41%;
+     margin: auto !important;
+     padding-top: 35%;
 }
