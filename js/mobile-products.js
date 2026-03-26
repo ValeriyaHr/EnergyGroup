@@ -22,6 +22,7 @@ const $ = window.jQuery;
 
         let dragContext = null;
         let lastTranslate = 0;
+        let lastVisibleHeight = 0;
         let pendingPeekOnNextOpen = false;
 
         function isMobileViewport() {
@@ -52,13 +53,12 @@ const $ = window.jQuery;
         }
 
         function getPeekTranslate() {
-            const panelHeight = getPanelHeight();
-            const peekVisibleHeight = getPeekVisibleHeight();
-            return Math.max(0, panelHeight - peekVisibleHeight);
+            return 0;
         }
 
         function setSheetVisibleHeight(height) {
             const safeHeight = Math.max(0, Math.round(height || 0));
+            lastVisibleHeight = safeHeight;
             $sheet.css('--mobile-sheet-visible-height', `${safeHeight}px`);
         }
 
@@ -104,7 +104,7 @@ const $ = window.jQuery;
             if (isPeek) {
                 const peekVisibleHeight = getPeekVisibleHeight();
                 setSheetVisibleHeight(peekVisibleHeight);
-                setTranslate(getPeekTranslate());
+                clearDragTransform();
                 return;
             }
 
@@ -119,11 +119,13 @@ const $ = window.jQuery;
         }
 
         function beginDrag(mode, startY) {
+            const panelHeight = getPanelHeight();
             dragContext = {
                 mode: mode,
                 startY: startY,
                 hasMoved: false,
-                startTranslate: mode === 'opening' ? getPeekTranslate() : 0
+                startTranslate: mode === 'opening' ? getPeekTranslate() : 0,
+                startVisibleHeight: mode === 'opening' ? getPeekVisibleHeight() : panelHeight
             };
 
             $sheet.addClass('is-dragging is-open');
@@ -163,13 +165,15 @@ const $ = window.jQuery;
 
             if (dragContext.mode === 'opening') {
                 const dragUp = Math.max(0, dragContext.startY - currentY);
-                setTranslate(dragContext.startTranslate - dragUp);
+                const nextVisibleHeight = Math.min(getPanelHeight(), dragContext.startVisibleHeight + dragUp);
+                setSheetVisibleHeight(nextVisibleHeight);
                 event.preventDefault();
                 return;
             }
 
             const dragDown = Math.max(0, deltaY);
-            setTranslate(dragDown);
+            const nextVisibleHeight = Math.max(0, dragContext.startVisibleHeight - dragDown);
+            setSheetVisibleHeight(nextVisibleHeight);
             event.preventDefault();
         });
 
@@ -181,7 +185,7 @@ const $ = window.jQuery;
             const panelHeight = getPanelHeight();
 
             if (dragContext.mode === 'opening') {
-                const shouldOpen = lastTranslate <= panelHeight * OPEN_DRAG_RATIO || deltaY < -70;
+                const shouldOpen = lastVisibleHeight >= panelHeight * OPEN_DRAG_RATIO || deltaY < -70;
                 $sheet.removeClass('is-dragging');
                 $panel.removeClass('is-dragging');
                 setSheetState(shouldOpen ? 'open' : 'peek');
@@ -189,7 +193,8 @@ const $ = window.jQuery;
                 return;
             }
 
-            const shouldClose = lastTranslate >= panelHeight * CLOSE_DRAG_RATIO || deltaY > 70;
+            const hiddenHeight = Math.max(0, panelHeight - lastVisibleHeight);
+            const shouldClose = hiddenHeight >= panelHeight * CLOSE_DRAG_RATIO || deltaY > 70;
             finishDrag(shouldClose);
         });
 
@@ -262,7 +267,7 @@ const $ = window.jQuery;
             }
 
             if ($sheet.hasClass('is-peek')) {
-                setTranslate(getPeekTranslate());
+                setSheetState('peek');
                 return;
             }
 
