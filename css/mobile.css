@@ -1191,6 +1191,10 @@ body:not(.products-page) .engSection{
 }
 
 @media (max-width: 576px){
+    .engHero{
+        padding-top: 40px;
+    }
+
     body.page-engineering .engHeroFrame__text{
         font-size: 14px;
     }
