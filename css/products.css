@@ -20,7 +20,7 @@
         z-index: 1400;
         pointer-events: none;
         overflow: hidden;
-        max-height: 0;
+        max-height: var(--mobile-sheet-visible-height, 0px);
         transition: max-height 0.32s ease;
     }
 
@@ -35,7 +35,7 @@
         right: auto;
         bottom: auto;
         max-height: none;
-        background: #000;
+        background: var(--black);
         border-radius: 18px 18px 0 0;
         box-shadow: 0 -16px 36px rgba(0, 0, 0, 0.18);
         transition: transform 0.42s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -61,12 +61,11 @@
         width: 44px;
         height: 5px;
         border-radius: 999px;
-        background: var(--black);
+        background: var(--grey-pale);
     }
 
     .mobileProductsSheet.is-open {
         pointer-events: auto;
-        max-height: 10000px;
     }
 
 
@@ -76,6 +75,10 @@
 
     .mobileProductsSheet.is-dragging .mobileProductsSheet__panel,
     .mobileProductsSheet__panel.is-dragging {
+        transition: none;
+    }
+
+    .mobileProductsSheet.is-dragging {
         transition: none;
     }
 

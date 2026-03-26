@@ -289,6 +289,7 @@ if ($) $(function () {
 
     $(document).on("click", ".js-open-product", function (e) {
         e.preventDefault();
+        if (this && this.id === 'btnShowDetails') return;
         const productId = $(this).data("product"); // p01
         openProductById(productId);
     });
@@ -525,9 +526,21 @@ if ($) $(function () {
             }
         }
 
-        function openCardDetailsFromCatalog(productId) {
+        function openCardDetailsFromCatalog(productId, options) {
             const normalizedProductId = String(productId || '').toLowerCase();
             if (!/^p\d{2}$/.test(normalizedProductId)) return;
+            const settings = options || {};
+
+            // Keep hero preview in sync with the product that is about to open.
+            if (!syncPreviewFromProductId(normalizedProductId)) {
+                const fallbackType = String($btnDetails.attr('data-type') || '').toLowerCase();
+                setPreviewState(normalizedProductId, fallbackType || 'cabinet');
+                toggleCalculator(normalizedProductId);
+            }
+
+            if ($('.productDetails__back').length) {
+                $('.productDetails__back').trigger('click');
+            }
 
             const openSelected = function () {
                 if (window.PEGProducts && typeof window.PEGProducts.openProductById === 'function') {
@@ -541,7 +554,8 @@ if ($) $(function () {
                     .trigger('click');
             };
 
-            const shouldScrollToTop = window.matchMedia('(max-width: 768px)').matches;
+            const shouldScrollToTop = window.matchMedia('(max-width: 768px)').matches
+                && settings.scrollToTop !== false;
             if (!shouldScrollToTop) {
                 openSelected();
                 return;
@@ -600,9 +614,19 @@ if ($) $(function () {
             );
 
             currentIndex = $cards.index($card);
-
-            $('.productDetails__back').click();
             openCardDetailsFromCatalog(cardData.productId);
+        });
+
+        $btnDetails.on('click', function (e) {
+            e.preventDefault();
+
+            const previewProductId = String($previewSection.attr('data-product-id') || '').toLowerCase();
+            const buttonProductId = String($(this).attr('data-product') || '').toLowerCase();
+            const targetProductId = /^p\d{2}$/.test(previewProductId)
+                ? previewProductId
+                : buttonProductId;
+
+            openCardDetailsFromCatalog(targetProductId);
         });
 
         // стартовий стан: якщо товар передано в URL, синхронізуємо hero з ним

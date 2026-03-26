@@ -12,10 +12,12 @@ const $ = window.jQuery;
         const $panel = $sheet.find('[data-mobile-sheet-panel]');
         const $overlay = $sheet.find('[data-mobile-sheet-overlay]');
         const $handle = $sheet.find('[data-mobile-sheet-handle]');
+        const $grid = $('#productsGrid');
 
         const OPEN_DRAG_RATIO = 0.45;
         const CLOSE_DRAG_RATIO = 0.25;
         const PEEK_VISIBLE_HEIGHT = 140;
+        const MIN_PEEK_VISIBLE_HEIGHT = 56;
         const DRAG_START_THRESHOLD = 6;
 
         let dragContext = null;
@@ -37,12 +39,37 @@ const $ = window.jQuery;
         }
 
         function getPanelHeight() {
-            const panelHeight = $panel.outerHeight() || Math.round(window.innerHeight * 0.85);
-            return Math.max(panelHeight, 1);
+            const panelNode = $panel.get(0);
+            const scrollHeight = panelNode ? Math.round(panelNode.scrollHeight || 0) : 0;
+            const outerHeight = Math.round($panel.outerHeight() || 0);
+            const measuredHeight = Math.max(scrollHeight, outerHeight);
+
+            if (measuredHeight > 0) {
+                return measuredHeight;
+            }
+
+            return Math.max(PEEK_VISIBLE_HEIGHT, MIN_PEEK_VISIBLE_HEIGHT);
         }
 
         function getPeekTranslate() {
-            return Math.max(0, getPanelHeight() - PEEK_VISIBLE_HEIGHT);
+            const panelHeight = getPanelHeight();
+            const peekVisibleHeight = getPeekVisibleHeight();
+            return Math.max(0, panelHeight - peekVisibleHeight);
+        }
+
+        function setSheetVisibleHeight(height) {
+            const safeHeight = Math.max(0, Math.round(height || 0));
+            $sheet.css('--mobile-sheet-visible-height', `${safeHeight}px`);
+        }
+
+        function getVisibleHeightByTranslate(translateY) {
+            const panelHeight = getPanelHeight();
+            const clampedTranslate = Math.max(0, Math.min(translateY || 0, panelHeight));
+            return Math.max(0, panelHeight - clampedTranslate);
+        }
+
+        function getPeekVisibleHeight() {
+            return Math.max(MIN_PEEK_VISIBLE_HEIGHT, Math.min(PEEK_VISIBLE_HEIGHT, getPanelHeight()));
         }
 
         function setTranslate(y) {
@@ -50,6 +77,7 @@ const $ = window.jQuery;
             const clamped = Math.max(0, Math.min(y, panelHeight));
             lastTranslate = clamped;
             $panel.css('transform', `translate3d(0, ${clamped}px, 0)`);
+            setSheetVisibleHeight(getVisibleHeightByTranslate(clamped));
         }
 
         function clearDragTransform() {
@@ -69,15 +97,25 @@ const $ = window.jQuery;
 
             if (!isOpen) {
                 clearDragTransform();
+                setSheetVisibleHeight(0);
                 return;
             }
 
             if (isPeek) {
+                const peekVisibleHeight = getPeekVisibleHeight();
+                setSheetVisibleHeight(peekVisibleHeight);
                 setTranslate(getPeekTranslate());
                 return;
             }
 
             clearDragTransform();
+            setSheetVisibleHeight(getPanelHeight());
+        }
+
+        function queuePeekOnNextOpen() {
+            if (!isMobileViewport()) return;
+            if (dragContext) return;
+            pendingPeekOnNextOpen = true;
         }
 
         function beginDrag(mode, startY) {
@@ -155,12 +193,15 @@ const $ = window.jQuery;
             finishDrag(shouldClose);
         });
 
-        $(document).on('click', '.productCard__bottom, #btnShowDetails', function () {
-            if (!isMobileViewport()) return;
-            if (dragContext) return;
-            pendingPeekOnNextOpen = true;
-            setSheetState('peek');
+        $(document).on('click', '#btnShowDetails', function () {
+            queuePeekOnNextOpen();
         });
+
+        if ($grid.length) {
+            $grid.on('click', '.productCard__bottom', function () {
+                queuePeekOnNextOpen();
+            });
+        }
 
         // Swipe/drag from the handle area.
         $handle.on('touchstart', function (event) {
@@ -207,7 +248,6 @@ const $ = window.jQuery;
         });
 
         window.addEventListener('peg:product-details-close', function () {
-            pendingPeekOnNextOpen = false;
             setSheetState('closed');
         });
 
@@ -217,6 +257,17 @@ const $ = window.jQuery;
                 $panel.removeClass('is-dragging');
                 clearDragTransform();
                 pendingPeekOnNextOpen = false;
+                setSheetVisibleHeight(0);
+                return;
+            }
+
+            if ($sheet.hasClass('is-peek')) {
+                setTranslate(getPeekTranslate());
+                return;
+            }
+
+            if ($sheet.hasClass('is-open')) {
+                setSheetVisibleHeight(getPanelHeight());
             }
         });
 
@@ -224,6 +275,7 @@ const $ = window.jQuery;
         $sheet.removeClass('is-open is-dragging is-peek');
         $panel.removeClass('is-dragging');
         clearDragTransform();
+        setSheetVisibleHeight(0);
         $sheet.attr('aria-hidden', 'true');
     });
 })($);
