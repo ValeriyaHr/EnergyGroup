@@ -1908,7 +1908,9 @@ body.page-engineering .engSection__rows .engSolRow__action{
 body.products-page .mobile_panel{
     padding-right: var(--gutter);
 }
-
+ .mobileProductsSheet{
+     display: none;
+ }
  .previewProduct--cabinet,.previewProduct--module,.previewProduct--wide, .previewProduct--tall {
     min-height: 87vh;
 

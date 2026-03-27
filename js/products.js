@@ -218,7 +218,7 @@ if ($) $(function () {
 
     function closeDetails() {
         cancelCloseCleanup();
-
+        $('#mobileProductsSheet').hide();
         $wrap.removeClass("is-open");
         isOpen = false;
         window.PEGProducts.currentProductId = null;
@@ -543,6 +543,7 @@ if ($) $(function () {
             }
 
             const openSelected = function () {
+                $('#mobileProductsSheet').show();
                 if (window.PEGProducts && typeof window.PEGProducts.openProductById === 'function') {
                     window.PEGProducts.openProductById(normalizedProductId);
                     return;
