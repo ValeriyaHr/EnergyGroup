@@ -1388,7 +1388,7 @@ body.page-engineering .engSection__rows > .engSolRow .engSolRow__note{
 }
 
 
-body.page-engineering .engSection__rows .engSolRow__action{
+body.page.engineering .engSection__rows .engSolRow__action{
     white-space: normal;
     padding: 0 14px;
     font-size: 16px;
@@ -1915,10 +1915,10 @@ body.products-page .mobile_panel{
 .previewProduct--module,
 .previewProduct--wide,
 .previewProduct--tall {
-    /* Держим общу висоту превью ~90% екрана: 10% залишається видимим для панелі знизу */
+    /* Держим общу висоту превью ~95% екрана: 5% залишається видимим для панелі знизу */
     --preview-top-offset: clamp(88px, 30vw, 180px);
     padding-top: var(--preview-top-offset);
-    min-height: calc(90vh - var(--preview-top-offset));
+    min-height: calc(100vh - var(--preview-top-offset));
 }
 
 @supports (height: 100dvh) {
@@ -1926,6 +1926,6 @@ body.products-page .mobile_panel{
     .previewProduct--module,
     .previewProduct--wide,
     .previewProduct--tall {
-        min-height: calc(90dvh - var(--preview-top-offset));
+        min-height: calc(100dvh - var(--preview-top-offset));
     }
 }
