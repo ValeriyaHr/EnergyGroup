@@ -3786,6 +3786,7 @@ body.menu-open{
 
 .techLibBlock .techLibItem__arrow,
 .techLib .techLibItem__arrow{
+    display: block;
     position: relative;
     width: 18px;
     height: 18px;

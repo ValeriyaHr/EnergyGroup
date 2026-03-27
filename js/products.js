@@ -592,11 +592,6 @@ if ($) $(function () {
 
         $grid.on('click', '.productCard__link', function (e) {
             e.preventDefault();
-            return false;
-        });
-
-        $grid.on('click', '.productCard__bottom', function (e) {
-            e.preventDefault();
 
             let $card = $(this).closest('.productCard');
             if (!$card.length) return;
@@ -616,6 +611,7 @@ if ($) $(function () {
 
             currentIndex = $cards.index($card);
             openCardDetailsFromCatalog(cardData.productId);
+            return false;
         });
 
         $btnDetails.on('click', function (e) {
