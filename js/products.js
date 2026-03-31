@@ -210,7 +210,7 @@ if ($) $(function () {
 
             if (!isMobileViewport()) {
                 $("html, body").stop().animate({
-                    scrollTop: $wrap.offset().top - 60
+                    scrollTop: 0
                 }, 350);
             }
         });
