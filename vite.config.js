@@ -118,6 +118,10 @@ export default defineConfig({
                 {
                     src: "fonts/**/*",
                     dest: "en/fonts"
+                },
+                {
+                    src: "uploads/**/*",
+                    dest: "uploads"
                 }
             ]
         })
