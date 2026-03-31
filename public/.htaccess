@@ -1,0 +1,36 @@
+Options -Indexes
+
+# Кастомні сторінки помилок
+ErrorDocument 404 /404.html
+ErrorDocument 403 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Якщо файл або директорія існує — віддаємо напряму
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Все інше → 404
+  RewriteRule ^ /404.html [L,R=404]
+</IfModule>
+
+# Кешування статики
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/svg+xml  "access plus 1 year"
+  ExpiresByType image/png      "access plus 1 year"
+  ExpiresByType image/jpeg     "access plus 1 year"
+  ExpiresByType image/webp     "access plus 1 year"
+  ExpiresByType font/woff2     "access plus 1 year"
+  ExpiresByType text/css       "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+# Стиснення gzip
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json
+</IfModule>
+
