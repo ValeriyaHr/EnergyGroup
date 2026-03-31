@@ -7,7 +7,7 @@
 .productDetails__card{
     padding: 20px;
     position: relative;
-    border-radius: 18px 0 0 18px;
+    border-radius: 18px;
     overflow: hidden;
     background: var(--black);
     color: rgba(255,255,255,.86);
