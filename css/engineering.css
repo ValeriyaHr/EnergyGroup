@@ -395,14 +395,15 @@
 }
 
 @media (min-width: 769px){
-    .engSolRow__videoList > div{
+    .engSolRow__videoLink{
         text-decoration: underline;
         text-decoration-color: currentColor;
         text-decoration-thickness: 1px;
         text-underline-offset: 2px;
     }
 
-    #eng-video-implementation .engSolRow__videoList > div:hover{
+    #eng-video-implementation .engSolRow__videoLink:hover,
+    #eng-video-implementation .engSolRow__videoLink:focus-visible{
         text-decoration-color: var(--orange);
     }
 }
@@ -423,22 +424,44 @@
     text-align: left;
 }
 
+#eng-video-implementation .engSolRow__videoLink{
+    display: block;
+    color: var(--white);
+    cursor: pointer;
+}
+
+#eng-video-implementation .engSolRow__videoLink:visited,
+#eng-video-implementation .engSolRow__videoLink:hover,
+#eng-video-implementation .engSolRow__videoLink:active{
+    color: var(--white);
+}
+
+@media (min-width: 769px){
+    #eng-video-implementation .engSolRow__videoLink:hover,
+    #eng-video-implementation .engSolRow__videoLink:focus-visible{
+        text-decoration: underline;
+        text-decoration-color: var(--orange);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+    }
+}
+
 .engTermPlain{
     color: var(--orange);
     -webkit-text-fill-color: var(--orange);
 }
 
 /* iOS/UA auto-link detectors (MTT.SKZ, BZK.EPPK, etc.) keep text color as designed */
-#eng-video-implementation .engSolRow__center a,
-#eng-video-implementation .engSolRow__center a:link,
-#eng-video-implementation .engSolRow__center a:visited,
-#eng-video-implementation .engSolRow__center a:hover,
-#eng-video-implementation .engSolRow__center a:active,
-#eng-video-implementation .engSolRow__center a[x-apple-data-detectors],
-#eng-video-implementation .engSolRow__center a[href^="x-apple-data-detectors:"],
-#eng-video-implementation .engSolRow__center a[href^="tel:"],
-#eng-video-implementation .engSolRow__center a[href^="mailto:"],
-#eng-video-implementation .engSolRow__center a[href^="http"]{
+#eng-video-implementation .engSolRow__center a:not(.engSolRow__videoLink),
+#eng-video-implementation .engSolRow__center a:not(.engSolRow__videoLink):link,
+#eng-video-implementation .engSolRow__center a:not(.engSolRow__videoLink):visited,
+#eng-video-implementation .engSolRow__center a:not(.engSolRow__videoLink):hover,
+#eng-video-implementation .engSolRow__center a:not(.engSolRow__videoLink):active,
+#eng-video-implementation .engSolRow__center a:not(.engSolRow__videoLink)[x-apple-data-detectors],
+#eng-video-implementation .engSolRow__center a:not(.engSolRow__videoLink)[href^="x-apple-data-detectors:"],
+#eng-video-implementation .engSolRow__center a:not(.engSolRow__videoLink)[href^="tel:"],
+#eng-video-implementation .engSolRow__center a:not(.engSolRow__videoLink)[href^="mailto:"],
+#eng-video-implementation .engSolRow__center a:not(.engSolRow__videoLink)[href^="http"]{
     color: var(--white) !important;
     -webkit-text-fill-color: var(--white) !important;
     text-decoration: none !important;
@@ -996,10 +1019,19 @@
     }
 
     #eng-video-implementation .engSolRow__videoList,
-    #eng-video-implementation .engSolRow__videoList > div,
+    #eng-video-implementation .engSolRow__videoLink,
     #eng-video-implementation .engSolRow__videoList .engTermPlain{
         text-transform: none;
         text-decoration: none;
+    }
+
+    #eng-video-implementation .engSolRow__videoLink:hover,
+    #eng-video-implementation .engSolRow__videoLink:focus-visible,
+    #eng-video-implementation .engSolRow__videoLink:active{
+        text-decoration: underline;
+        text-decoration-color: currentColor;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
     }
 
     .engSection__rows > .engSolRow .engSolRow__action{
