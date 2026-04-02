@@ -331,7 +331,7 @@
 .engSolRow__center{ grid-column: 4 / 9; }
 .engSolRow__right{ grid-column: 10 / 13; }
 
-.engSolRow:first-child{
+.engSection__rows:not(.engSection__rows--extra) > .engSolRow:first-child{
     border-top: 0;
     padding-top: 0;
 }
@@ -384,6 +384,67 @@
     text-align-last: left;
 }
 
+.engSolRow__intro{
+    margin: 0;
+}
+
+.engSolRow__videoList{
+    margin-top: 64px;
+    display: grid;
+    gap: 18px;
+}
+
+@media (min-width: 769px){
+    .engSolRow__videoList > div{
+        text-decoration: underline;
+        text-decoration-color: currentColor;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+    }
+
+    #eng-video-implementation .engSolRow__videoList > div:hover{
+        text-decoration-color: var(--orange);
+    }
+}
+
+#eng-video-implementation .engSolRow__center,
+#eng-video-implementation .engSolRow__videoList{
+    max-width: none;
+}
+
+#eng-video-implementation .engSolRow__center{
+    justify-self: stretch;
+}
+
+#eng-video-implementation .engSolRow__videoList{
+    width: auto;
+    justify-self: start;
+    margin-right: auto;
+    text-align: left;
+}
+
+.engTermPlain{
+    color: var(--orange);
+    -webkit-text-fill-color: var(--orange);
+}
+
+/* iOS/UA auto-link detectors (MTT.SKZ, BZK.EPPK, etc.) keep text color as designed */
+#eng-video-implementation .engSolRow__center a,
+#eng-video-implementation .engSolRow__center a:link,
+#eng-video-implementation .engSolRow__center a:visited,
+#eng-video-implementation .engSolRow__center a:hover,
+#eng-video-implementation .engSolRow__center a:active,
+#eng-video-implementation .engSolRow__center a[x-apple-data-detectors],
+#eng-video-implementation .engSolRow__center a[href^="x-apple-data-detectors:"],
+#eng-video-implementation .engSolRow__center a[href^="tel:"],
+#eng-video-implementation .engSolRow__center a[href^="mailto:"],
+#eng-video-implementation .engSolRow__center a[href^="http"]{
+    color: var(--white) !important;
+    -webkit-text-fill-color: var(--white) !important;
+    text-decoration: none !important;
+    text-decoration-color: var(--white) !important;
+}
+
 .engSolRow__right{
     width: auto;
     display: flex;
@@ -408,6 +469,10 @@
     align-self: flex-start;
     font-family: var(--font-family), sans-serif;
     font-weight: 400;
+    color: var(--white);
+}
+
+.engSolRow__action:visited{
     color: var(--white);
 }
 
@@ -461,7 +526,7 @@
     }
 
     .engSection__rows > .engSolRow .engSolRow__label{
-        grid-column: 1 / 3;
+        grid-column: 1 / 4;
         grid-row: 1;
         margin-bottom: 0;
         align-self: start;
@@ -477,6 +542,7 @@
     }
 
     .engSection__rows > .engSolRow .engSolRow__center{
+        grid-column: 4 / 9;
         grid-row: 2;
         align-self: start;
     }
@@ -496,6 +562,11 @@
         align-self: start;
         margin-top: 0;
         text-align: left;
+    }
+
+    /* Row 3: центральний блок як Row 2 — col 4/9 */
+    .engSection__rows > #eng-video-implementation .engSolRow__center{
+        grid-column: 4 / 9;
     }
 }
 
@@ -549,6 +620,23 @@
 .engVideoGrid .engVideoCard:nth-child(3){ grid-column: 2; grid-row: 2; }
 .engVideoGrid .engVideoCard:nth-child(4){ grid-column: 3; grid-row: 2; }
 .engVideoGrid .engVideoCard:nth-child(5){ grid-column: 4; grid-row: 1 / 3; }
+
+.engSection__video--featured{
+    margin-top: 0;
+    margin-bottom: 72px;
+}
+
+.engVideoGrid--featured{
+    display: block;
+}
+
+.engVideoGrid--featured .engVideoCard--featured{
+    display: block;
+    width: 100%;
+    min-height: clamp(220px, 34vw, 430px);
+    border-radius: 12px;
+    background: rgba(255,255,255,.16);
+}
 
 .splitText{
     position: relative;
@@ -775,7 +863,7 @@
     }
 
     .engSection__rows > .engSolRow .engSolRow__center{
-        grid-column: 4 / 10;
+        grid-column: 4 / 9;
         grid-row: 2;
         justify-self: stretch;
         align-self: start;
@@ -810,6 +898,7 @@
         font-size: 12px;
         line-height: 1.15;
     }
+
 }
 
 @media (max-width: 768px){
@@ -901,6 +990,18 @@
         margin-bottom: 80px;
     }
 
+    .engSolRow__videoList{
+        margin-top: 64px;
+        gap: 18px;
+    }
+
+    #eng-video-implementation .engSolRow__videoList,
+    #eng-video-implementation .engSolRow__videoList > div,
+    #eng-video-implementation .engSolRow__videoList .engTermPlain{
+        text-transform: none;
+        text-decoration: none;
+    }
+
     .engSection__rows > .engSolRow .engSolRow__action{
         order: 4;
         align-self: center;
@@ -948,6 +1049,16 @@
         text-align: center;
         line-height: 1.1;
         letter-spacing: -0.03em;
+    }
+
+
+    .engSection__video--featured{
+        margin-top: 8px;
+        margin-bottom: 56px;
+    }
+
+    .engVideoGrid--featured .engVideoCard--featured{
+        min-height: 260px;
     }
 }
 
