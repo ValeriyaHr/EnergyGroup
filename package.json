@@ -4,6 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "sync:youtube": "node ./scripts/fetch-youtube-videos.mjs",
+    "predev": "npm run sync:youtube",
+    "prebuild": "npm run sync:youtube",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",

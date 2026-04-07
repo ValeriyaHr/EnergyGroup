@@ -121,14 +121,26 @@
                     </div>
                 </div>
 
-                <div class="engSection__video" aria-label="Відео">
-                    <div class="engSection__videoLabel">ВІДЕО</div>
-                    <div class="engVideoGrid">
-                        <a class="engVideoCard" href="#" aria-label="Відео 1"></a>
-                        <a class="engVideoCard" href="#" aria-label="Відео 2"></a>
-                        <a class="engVideoCard" href="#" aria-label="Відео 3"></a>
-                        <a class="engVideoCard" href="#" aria-label="Відео 4"></a>
-                        <a class="engVideoCard" href="#" aria-label="Відео 5"></a>
+                <div class="engSection__video engSection__video--channel" aria-label="Відео">
+                    <div class="engChannelVideos" data-youtube-feed data-max-results="6" data-source="./data/youtube-videos.json" data-loading-text="ЗАВАНТАЖУЄМО ВІДЕО…" data-error-text="НЕ ВДАЛОСЯ ЗАВАНТАЖИТИ ВІДЕО. СПРОБУЙТЕ ПІЗНІШЕ АБО ПЕРЕЙДІТЬ НА НАШ КАНАЛ." data-empty-text="НАРАЗІ ВІДЕО НЕДОСТУПНІ." data-play-label="Відкрити відео" data-close-label="Закрити відео" data-nav-prev-label="Попередні відео" data-nav-next-label="Наступні відео" data-featured-label="Обране відео">
+                        <div class="engChannelVideos__top">
+                            <div class="engSection__videoLabel">ВІДЕО</div>
+                            <a class="engSolRow__action engChannelVideos__more" href="https://www.youtube.com/@PrimeEnergyGroup-LLC" target="_blank" rel="noopener noreferrer">ДИВИТИСЯ БІЛЬШЕ</a>
+                        </div>
+                        <div class="engChannelVideos__status" data-youtube-status>ЗАВАНТАЖУЄМО ВІДЕО…</div>
+                        <div class="engChannelVideos__slider" data-youtube-slider hidden>
+                            <button class="engChannelVideos__nav engChannelVideos__nav--prev" type="button" data-youtube-nav-prev aria-label="Попередні відео">
+                                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                    <path d="M15.5 5L8.5 12L15.5 19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <div class="engChannelVideos__grid" data-youtube-grid></div>
+                            <button class="engChannelVideos__nav engChannelVideos__nav--next" type="button" data-youtube-nav-next aria-label="Наступні відео">
+                                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                    <path d="M8.5 5L15.5 12L8.5 19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -152,11 +164,14 @@
                     </div>
                 </div>
 
-                <div class="engSection__video engSection__video--featured" aria-label="Відео монтажу">
+                <div class="engSection__video engSection__video--featured" aria-label="Обране відео" data-youtube-featured>
                     <div class="engSection__videoLabel">ВІДЕО</div>
-                    <div class="engVideoGrid engVideoGrid--featured">
-                        <a class="engVideoCard engVideoCard--featured" href="#" aria-label="Відео монтажу"></a>
+                    <div class="engVideoGrid engVideoGrid--featured" data-youtube-featured-frame>
+                        <div class="engVideoCard engVideoCard--featured engVideoFeatured" data-youtube-featured-card>
+                            <div class="engVideoFeatured__status" data-youtube-featured-status>ОБЕРІТЬ ВІДЕО ЗІ СПИСКУ ВИЩЕ</div>
+                        </div>
                     </div>
+                    <div class="engVideoFeatured__title" data-youtube-featured-title></div>
                 </div>
 
                 <div class="engSection__bottom">
@@ -209,6 +224,7 @@
 
 
 <script type="module" src="./js/engineering-request-modal.js"></script>
+<script type="module" src="./js/engineering-videos.js"></script>
 
 
 
