@@ -102,6 +102,7 @@ function renderFeaturedVideo(featured, video, locale, autoplay = false) {
   `;
 
   if (featured.status) featured.status.hidden = true;
+  featured.card.setAttribute('data-has-video', '');
   if (featured.title) featured.title.textContent = `${locale.featuredLabel}: ${video.title}`;
 }
 

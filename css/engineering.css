@@ -955,20 +955,30 @@ body.engVideoModalOpen{
 .engVideoGrid--featured .engVideoCard--featured{
     display: block;
     width: 100%;
-    min-height: clamp(220px, 34vw, 430px);
     border-radius: 12px;
-    background: rgba(255,255,255,.16);
+    background: transparent;
 }
 
 .engVideoFeatured{
     border: 1px solid rgba(255,255,255,.12);
     background: rgba(255,255,255,.04);
     overflow: hidden;
+    border-radius: 12px;
+}
+
+.engVideoFeatured[data-has-video]{
+    position: relative;
+    height: 0;
+    padding-top: 56.25%;
+    background: #000;
+    border-color: rgba(255,255,255,.08);
 }
 
 .engVideoFeatured iframe{
+    position: absolute;
+    inset: 0;
     width: 100%;
-    aspect-ratio: 16 / 9;
+    height: 100%;
     display: block;
     border: 0;
     background: #000;
@@ -1485,11 +1495,11 @@ body.engVideoModalOpen{
     }
 
     .engVideoGrid--featured .engVideoCard--featured{
-        min-height: 260px;
+        /* min-height removed — controlled by iframe aspect-ratio */
     }
 
     .engVideoFeatured__status{
-        min-height: 260px;
+        min-height: 180px;
     }
 }
 
