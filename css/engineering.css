@@ -394,20 +394,6 @@
     gap: 18px;
 }
 
-@media (min-width: 769px){
-    .engSolRow__videoLink{
-        text-decoration: underline;
-        text-decoration-color: currentColor;
-        text-decoration-thickness: 1px;
-        text-underline-offset: 2px;
-    }
-
-    #eng-video-implementation .engSolRow__videoLink:hover,
-    #eng-video-implementation .engSolRow__videoLink:focus-visible{
-        text-decoration-color: var(--orange);
-    }
-}
-
 #eng-video-implementation .engSolRow__center,
 #eng-video-implementation .engSolRow__videoList{
     max-width: none;
@@ -437,6 +423,13 @@
 }
 
 @media (min-width: 769px){
+    #eng-video-implementation .engSolRow__videoLink{
+        text-decoration: underline;
+        text-decoration-color: currentColor;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+    }
+
     #eng-video-implementation .engSolRow__videoLink:hover,
     #eng-video-implementation .engSolRow__videoLink:focus-visible{
         text-decoration: underline;
