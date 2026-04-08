@@ -164,14 +164,37 @@
                     </div>
                 </div>
 
-                <div class="engSection__video engSection__video--featured" aria-label="Обране відео" data-youtube-featured>
+                <div class="engSection__video engSection__video--featured" aria-label="Обране відео">
                     <div class="engSection__videoLabel">ВІДЕО</div>
-                    <div class="engVideoGrid engVideoGrid--featured" data-youtube-featured-frame>
-                        <div class="engVideoCard engVideoCard--featured engVideoFeatured" data-youtube-featured-card>
-                            <div class="engVideoFeatured__status" data-youtube-featured-status>ОБЕРІТЬ ВІДЕО ЗІ СПИСКУ ВИЩЕ</div>
-                        </div>
+                    <div class="engVideoGrid engVideoGrid--featured">
+                        <button
+                            class="engChannelVideoCard engChannelVideoCard--featuredFixed"
+                            type="button"
+                            data-youtube-featured-fixed
+                            data-video-id="MNvl3p8v6QM"
+                            data-video-title="Складання силової частини потужністю 3000 Вт для станції СКЗІ"
+                            aria-label="Відкрити відео: Складання силової частини потужністю 3000 Вт для станції СКЗІ">
+                            <span class="engChannelVideoCard__media">
+                                <img
+                                    class="engChannelVideoCard__thumb"
+                                    src="https://i.ytimg.com/vi/MNvl3p8v6QM/hqdefault.jpg"
+                                    alt="Складання силової частини потужністю 3000 Вт для станції СКЗІ"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                                <span class="engChannelVideoCard__overlay"></span>
+                                <span class="engChannelVideoCard__play" aria-hidden="true">
+                                    <svg viewBox="0 0 64 64" focusable="false">
+                                        <circle cx="32" cy="32" r="31" fill="rgba(0,0,0,.45)" stroke="rgba(255,255,255,.18)" />
+                                        <path d="M26 20.5L46 32L26 43.5V20.5Z" fill="#fff" />
+                                    </svg>
+                                </span>
+                            </span>
+                            <span class="engChannelVideoCard__body">
+                                <span class="engChannelVideoCard__title">Складання силової частини потужністю 3000 Вт для станції СКЗІ</span>
+                            </span>
+                        </button>
                     </div>
-                    <div class="engVideoFeatured__title" data-youtube-featured-title></div>
                 </div>
 
                 <div class="engSection__bottom">
@@ -213,8 +236,18 @@
         </div>
     </section>
 
-    {{> request_modal_prev}}
+     {{> request_modal_prev}}
 
+     <!-- Модаль для відео -->
+     <div class="engVideoModal" id="engVideoModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="engVideoModalTitle">
+         <div class="engVideoModal__backdrop" data-eng-video-close></div>
+         <div class="engVideoModal__dialog">
+             <button class="engVideoModal__close" type="button" aria-label="Закрити" data-eng-video-close></button>
+             <div class="engVideoModal__container">
+                 <div class="engVideoModal__frame" data-eng-video-frame></div>
+             </div>
+         </div>
+     </div>
 
 </main>
 

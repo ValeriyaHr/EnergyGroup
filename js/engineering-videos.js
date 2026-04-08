@@ -50,9 +50,9 @@ function getLocaleConfig(root) {
     errorText: root.dataset.errorText || 'Не вдалося завантажити відео.',
     emptyText: root.dataset.emptyText || 'Наразі відео недоступні.',
     playLabel: root.dataset.playLabel || 'Відкрити відео',
+    closeLabel: root.dataset.closeLabel || 'Закрити відео',
     navPrevLabel: root.dataset.navPrevLabel || 'Попередні відео',
     navNextLabel: root.dataset.navNextLabel || 'Наступні відео',
-    featuredLabel: root.dataset.featuredLabel || 'Обране відео',
   };
 }
 
@@ -73,37 +73,63 @@ function renderStatus(statusNode, text, isError = false) {
   statusNode.classList.toggle('is-error', isError);
 }
 
-function getFeaturedNodes() {
-  const section = document.querySelector('[data-youtube-featured]');
-  if (!section) return null;
-
-  return {
-    section,
-    card: section.querySelector('[data-youtube-featured-card]'),
-    status: section.querySelector('[data-youtube-featured-status]'),
-    title: section.querySelector('[data-youtube-featured-title]'),
-  };
+function buildEmbedUrl(video) {
+  if (video.embedUrl) return video.embedUrl;
+  if (!video.id) return '';
+  return `https://www.youtube.com/embed/${encodeURIComponent(video.id)}`;
 }
 
-function renderFeaturedVideo(featured, video, locale, autoplay = false) {
-  if (!featured?.card) return;
+function setupVideoModal() {
+  const modal = document.querySelector('#engVideoModal');
+  if (!modal) {
+    return {
+      open: () => {},
+      close: () => {},
+    };
+  }
 
-  const autoplayQuery = autoplay ? '1' : '0';
-  const joinChar = video.embedUrl.includes('?') ? '&' : '?';
-  featured.card.innerHTML = `
-    <iframe
-      src="${escapeHtml(`${video.embedUrl}${joinChar}autoplay=${autoplayQuery}&rel=0`)}"
-      title="${escapeHtml(video.title)}"
-      loading="lazy"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen>
-    </iframe>
-  `;
+  const frame = modal.querySelector('[data-eng-video-frame]');
+  const closeButtons = modal.querySelectorAll('[data-eng-video-close]');
 
-  if (featured.status) featured.status.hidden = true;
-  featured.card.setAttribute('data-has-video', '');
-  if (featured.title) featured.title.textContent = `${locale.featuredLabel}: ${video.title}`;
+  const close = () => {
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('engVideoModalOpen');
+    if (frame) frame.innerHTML = '';
+  };
+
+  const open = (video) => {
+    if (!frame || !video) return;
+
+    const embedUrl = buildEmbedUrl(video);
+    if (!embedUrl) return;
+
+    const joinChar = embedUrl.includes('?') ? '&' : '?';
+    frame.innerHTML = `
+      <iframe
+        src="${escapeHtml(`${embedUrl}${joinChar}autoplay=1&rel=0`)}"
+        title="${escapeHtml(video.title || 'YouTube video')}"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
+    `;
+
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('engVideoModalOpen');
+  };
+
+  closeButtons.forEach((button) => {
+    button.addEventListener('click', close);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') {
+      close();
+    }
+  });
+
+  return { open, close };
 }
 
 function setupSliderNavigation(root, locale) {
@@ -146,40 +172,53 @@ function setupSliderNavigation(root, locale) {
   updateButtonsState();
 }
 
-function renderGrid(root, videos, locale) {
-  const grid = root.querySelector('[data-youtube-grid]');
-  const slider = root.querySelector('[data-youtube-slider]');
-  const status = root.querySelector('[data-youtube-status]');
-  const featured = getFeaturedNodes();
-  if (!grid) return;
+function renderGrid(root, videos, locale, modalApi) {
+   const grid = root.querySelector('[data-youtube-grid]');
+   const slider = root.querySelector('[data-youtube-slider]');
+   const status = root.querySelector('[data-youtube-status]');
+   if (!grid) return;
 
-  grid.innerHTML = videos.map((video) => buildCardMarkup(video, locale)).join('');
-  if (slider) {
-    slider.hidden = false;
-  }
-  if (status) status.hidden = true;
+   grid.innerHTML = videos.map((video) => buildCardMarkup(video, locale)).join('');
+   if (slider) {
+     slider.hidden = false;
+   }
+   if (status) status.hidden = true;
 
-  setupSliderNavigation(root, locale);
-  if (featured && videos[0]) {
-    renderFeaturedVideo(featured, videos[0], locale, false);
-  }
+   setupSliderNavigation(root, locale);
 
-  grid.addEventListener('click', (event) => {
-    const button = event.target.closest('.engChannelVideoCard');
-    if (!button) return;
+   const videosById = new Map(videos.map((video) => [String(video.id), video]));
 
-    const videoId = button.dataset.videoId;
-    const video = videos.find((item) => item.id === videoId);
-    if (!video) return;
+     grid.addEventListener('click', (event) => {
+       const button = event.target.closest('.engChannelVideoCard');
+       if (!button) return;
 
-    if (featured) {
-      renderFeaturedVideo(featured, video, locale, true);
-      featured.section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
+       const videoId = button.dataset.videoId;
+       const video = videosById.get(String(videoId));
+       if (!video) return;
+
+       modalApi.open(video);
+     });
+   }
+
+function setupFixedFeaturedVideo(modalApi) {
+  const featuredCards = document.querySelectorAll('[data-youtube-featured-fixed]');
+  if (!featuredCards.length) return;
+
+  featuredCards.forEach((card) => {
+    card.addEventListener('click', () => {
+      const videoId = card.dataset.videoId;
+      if (!videoId) return;
+
+      modalApi.open({
+        id: videoId,
+        title: card.dataset.videoTitle || '',
+        embedUrl: card.dataset.embedUrl || `https://www.youtube.com/embed/${encodeURIComponent(videoId)}`,
+      });
+    });
   });
 }
 
-async function initYoutubeFeed(root) {
+async function initYoutubeFeed(root, modalApi) {
   const locale = getLocaleConfig(root);
   const dataUrl = root.dataset.source || DEFAULT_DATA_URL;
   const limit = Math.max(1, Number(root.dataset.maxResults || 6));
@@ -194,7 +233,7 @@ async function initYoutubeFeed(root) {
       return;
     }
 
-    renderGrid(root, videos.slice(0, limit), locale);
+    renderGrid(root, videos.slice(0, limit), locale, modalApi);
   } catch (error) {
     console.error('[engineering-videos] Failed to render YouTube feed:', error);
     renderStatus(status, locale.errorText, true);
@@ -202,7 +241,10 @@ async function initYoutubeFeed(root) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const feeds = document.querySelectorAll('[data-youtube-feed]');
-  feeds.forEach((root) => initYoutubeFeed(root));
+   const modalApi = setupVideoModal();
+   setupFixedFeaturedVideo(modalApi);
+
+   const feeds = document.querySelectorAll('[data-youtube-feed]');
+   feeds.forEach((root) => initYoutubeFeed(root, modalApi));
 });
 
