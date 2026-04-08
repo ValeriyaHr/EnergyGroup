@@ -3439,9 +3439,6 @@ body.menu-open{
     grid-row: 1;
 }
 
-.techLibHeroCard--video{
-    display: none;
-}
 
 .techLibHeroCard--montage{
     grid-column: 10 / 13;

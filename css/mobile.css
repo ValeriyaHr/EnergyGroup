@@ -1619,9 +1619,6 @@ body.page.engineering .engSection__rows .engSolRow__action{
             text-align: left;
         }
 
-        .techLibHeroCard--video{
-            display: block;
-        }
 
         .techLibHeroCard--docs,
         .techLibHeroNote{
@@ -1629,7 +1626,6 @@ body.page.engineering .engSection__rows .engSolRow__action{
         }
 
         .techLibHeroCard--schemes{ grid-column: 1; }
-        .techLibHeroCard--video{ grid-column: 2; }
         .techLibHeroCard--montage{ grid-column: 3; }
 
         .techLibHeroCard__titleLink,
@@ -1663,7 +1659,6 @@ body.page.engineering .engSection__rows .engSolRow__action{
         }
 
         .techLibHeroCard--schemes .techLibHeroCard__titleLink,
-        .techLibHeroCard--video .techLibHeroCard__titleLink,
         .techLibHeroCard--montage .techLibHeroCard__titleLink{
             white-space: nowrap;
             font-size: 12px;
@@ -1793,7 +1788,6 @@ body.page.engineering .engSection__rows .engSolRow__action{
     }
 
     body.page-library .techLibHeroCard--schemes,
-    body.page-library .techLibHeroCard--video,
     body.page-library .techLibHeroCard--montage{
         grid-column: 1 / -1;
         grid-row: auto;
