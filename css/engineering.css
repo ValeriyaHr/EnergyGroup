@@ -403,6 +403,14 @@
     justify-self: stretch;
 }
 
+@media (min-width: 1025px){
+    #eng-video-implementation .engSolRow__center{
+        /* Start line matches rows with 452px centered text block, but row 3 may extend wider to the right */
+        box-sizing: border-box;
+        padding-left: max(0px, calc((100% - 452px) / 2));
+    }
+}
+
 #eng-video-implementation .engSolRow__videoList{
     width: auto;
     justify-self: start;
