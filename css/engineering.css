@@ -694,6 +694,12 @@
     justify-self: end;
 }
 
+.engChannelVideos__moreRow{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
 .engChannelVideos__status{
     font-family: var(--font-family), sans-serif;
     font-size: 14px;
@@ -1386,6 +1392,10 @@ body.engVideoModalOpen{
         column-gap: 8px;
     }
 
+    .engChannelVideos__moreRow{
+        margin-top: 12px;
+    }
+
     .engChannelVideos__grid{
         --cards-per-view: 1;
         --card-gap: 14px;
@@ -1509,6 +1519,12 @@ body.engVideoModalOpen{
 
     .engVideoFeatured__status{
         min-height: 180px;
+    }
+}
+
+@media (max-width: 420px){
+    .engSection__rows > #eng-video-implementation .engSolRow__action{
+        margin-bottom: 100px;
     }
 }
 
