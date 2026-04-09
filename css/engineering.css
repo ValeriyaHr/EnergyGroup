@@ -1104,6 +1104,7 @@ body.engVideoModalOpen{
     margin-top: 16px;
     justify-self: start;
     align-self: start;
+    white-space: nowrap;
 }
 
 @media (min-width: 993px) and (max-width: 1024px){
@@ -1486,12 +1487,12 @@ body.engVideoModalOpen{
 
     .engSection__bottomRight .engSolRow__action--bottom{
         grid-column: 1 / 6;
-        justify-self: center;
+        justify-self: start;
         margin-top: 40px;
-        white-space: normal;
+        white-space: nowrap;
         font-size: 16px;
         padding: 0 14px;
-        text-align: center;
+        text-align: left;
         line-height: 1.1;
         letter-spacing: -0.03em;
     }
