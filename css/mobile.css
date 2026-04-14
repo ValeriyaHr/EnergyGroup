@@ -1388,12 +1388,15 @@ body.page-engineering .engSection__rows > .engSolRow .engSolRow__note{
 }
 
 
-body.page.engineering .engSection__rows .engSolRow__action{
+body.page-engineering .engSection__rows .engSolRow__action{
     white-space: normal;
+    overflow-wrap: anywhere;
     padding: 0 14px;
     font-size: 16px;
     line-height: 110%;
     letter-spacing: -0.03em;
+    max-width: 100%;
+    text-align: center;
     align-self: center;
     margin-top: 0;
     margin-bottom: 165px;
@@ -1470,10 +1473,7 @@ body.page.engineering .engSection__rows .engSolRow__action{
 .engSection__ctaText{
     max-width: 100%;
 }
-.btn--centered{
-    display: flex;        /* щоб margin auto спрацював */
-    margin: 64px auto 82px;  /* центр + відступ знизу */
-}
+/* Нижняя CTA использует тот же стиль, что и верхние кнопки (`engSolRow__action`) */
 
 
 /* ===== кінець - інженірінг ===== */
@@ -1599,7 +1599,7 @@ body.page.engineering .engSection__rows .engSolRow__action{
 
         .techLibHero__actions .uLinkBrackets:last-child,
         .techLibHero__actions .uLinkDoc:last-child{
-            margin-bottom: 200px;
+            margin-bottom: 150px;
         }
 
         .techLibHero__bottom{
@@ -1783,14 +1783,48 @@ body.page.engineering .engSection__rows .engSolRow__action{
     }
 
     body.page-library .techLibHero__bottom{
-        grid-template-columns: 1fr;
-        row-gap: 14px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 12px;
+        row-gap: 12px;
+    }
+
+    body.page-library .techLibHeroCard--docs{
+        grid-column: 1 / -1;
+        grid-row: 1;
     }
 
     body.page-library .techLibHeroCard--schemes,
     body.page-library .techLibHeroCard--montage{
+        grid-row: 2;
+    }
+
+    body.page-library .techLibHeroCard--schemes{
+        grid-column: 1;
+        justify-self: start;
+    }
+
+    body.page-library .techLibHeroCard--montage{
+        grid-column: 2;
+        justify-self: end;
+        text-align: right;
+    }
+
+    body.page-library .techLibHeroCard--schemes .techLibHeroCard__titleLink,
+    body.page-library .techLibHeroCard--montage .techLibHeroCard__titleLink{
+        white-space: nowrap;
+        font-size: 11px;
+    }
+
+    body.page-library .techLibHeroNote{
         grid-column: 1 / -1;
-        grid-row: auto;
+        grid-row: 3;
+        margin-top: -6px;
+        font-size: 10px;
+        line-height: 1.2;
+    }
+
+    body.page-library .techLibHeroNote p + p{
+        margin-top: 10px;
     }
 }
 
