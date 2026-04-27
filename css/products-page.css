@@ -190,6 +190,16 @@
     justify-self: center;
 }
 
+/* Спец-корекція для p05/p06 у верхньому preview каталогу (desktop/tablet) */
+@media (min-width: 769px){
+    .previewProduct[data-product-id="p05"] #previewProductImage,
+    .previewProduct[data-product-id="p05"] .previewProduct__media img,
+    .previewProduct[data-product-id="p06"] #previewProductImage,
+    .previewProduct[data-product-id="p06"] .previewProduct__media img{
+        transform: translateY(-30%);
+    }
+}
+
 /* Спец-правило для p03 */
 .previewProduct[data-product-id="p03"] .previewProduct__media{
     align-items: start;
@@ -311,6 +321,14 @@
     object-fit: contain;
     display: block;
     border-radius: 18px;
+}
+
+@media (min-width: 769px){
+    /* Точечна коррекція: 05 і 06 візуально були занижені відносно інших карток */
+    .productsList__grid .productCard[data-details="p05"] .productCard__imgWrap img,
+    .productsList__grid .productCard[data-details="p06"] .productCard__imgWrap img{
+        transform: translateY(-20%);
+    }
 }
 
 /* Тіло картки */
