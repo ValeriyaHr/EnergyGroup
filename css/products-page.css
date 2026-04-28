@@ -323,13 +323,6 @@
     border-radius: 18px;
 }
 
-@media (min-width: 769px){
-    /* Точечна коррекція: 05 і 06 візуально були занижені відносно інших карток */
-    .productsList__grid .productCard[data-details="p05"] .productCard__imgWrap img,
-    .productsList__grid .productCard[data-details="p06"] .productCard__imgWrap img{
-        transform: translateY(-20%);
-    }
-}
 
 /* Тіло картки */
 .productCard__body{

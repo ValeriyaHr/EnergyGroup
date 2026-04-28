@@ -70,65 +70,62 @@ const $ = window.jQuery;
             });
         }
 
+        function applyViewMode(viewMode, options) {
+            const settings = options || {};
+            const normalizedMode = viewMode === 'double' ? 'double' : 'single';
+
+            if (!isMobileView()) {
+                $buttons.removeClass('active');
+                $grid.removeClass('view-single view-double');
+                syncMobileGridDividers(normalizedMode);
+                return;
+            }
+
+            const $targetButton = $buttons.filter('[data-view="' + normalizedMode + '"]');
+
+            $buttons.removeClass('active');
+            $targetButton.addClass('active');
+
+            $grid.removeClass('view-single view-double').addClass('view-' + normalizedMode);
+
+            switchMobileCardImages(normalizedMode);
+            syncMobileGridDividers(normalizedMode);
+
+            if (settings.persist === false) return;
+
+            try {
+                localStorage.setItem('productsViewMode', normalizedMode);
+            } catch (e) {
+                // Игнорируем ошибки localStorage
+            }
+        }
+
         // Обработчик клика на кнопки панели
         $buttons.on('click', function (e) {
             e.preventDefault();
 
             let $btn = $(this);
             let viewMode = $btn.data('view');
-
-            // Убираем активный класс у всех кнопок
-            $buttons.removeClass('active');
-
-            // Добавляем активный класс к текущей кнопке
-            $btn.addClass('active');
-
-            // Удаляем все классы режимов
-            $grid.removeClass('view-single view-double');
-
-            // Добавляем класс в зависимости от выбранного режима
-            if (viewMode === 'single') {
-                $grid.addClass('view-single');
-            } else if (viewMode === 'double') {
-                $grid.addClass('view-double');
-            }
-
-            switchMobileCardImages(viewMode);
-            syncMobileGridDividers(viewMode);
-
-            // Сохраняем выбор в localStorage
-            try {
-                localStorage.setItem('productsViewMode', viewMode);
-            } catch (e) {
-                // Игнорируем ошибки localStorage
-            }
+            applyViewMode(viewMode);
         });
 
         // Восстанавливаем сохраненный режим при загрузке
         try {
             let savedMode = localStorage.getItem('productsViewMode');
-            if (savedMode) {
-                let $savedBtn = $buttons.filter('[data-view="' + savedMode + '"]');
-                if ($savedBtn.length) {
-                    $savedBtn.click();
-                }
-            } else {
-                switchMobileCardImages('single');
-                syncMobileGridDividers('single');
-            }
+            applyViewMode(savedMode || 'single', { persist: false });
         } catch (e) {
-            switchMobileCardImages('single');
-            syncMobileGridDividers('single');
+            applyViewMode('single', { persist: false });
         }
 
         $(window).on('load resize', function () {
+            if (!isMobileView()) {
+                applyViewMode('single', { persist: false });
+                return;
+            }
 
             let mode = $grid.hasClass('view-double') ? 'double' : 'single';
-            switchMobileCardImages(mode);
-            syncMobileGridDividers(mode);
-
+            applyViewMode(mode, { persist: false });
         });
-        $('.mobile_panel__btn').click();
     });
 })($);
 
@@ -351,6 +348,7 @@ if ($) $(function () {
         let autoplayInterval = null;
         let currentIndex = 0;
         let $cards = $grid.find('.productCard');
+        let previewRenderToken = 0;
 
         let heroTypes = [
             'previewProduct--cabinet',
@@ -427,6 +425,9 @@ if ($) $(function () {
         function setPreview(src, title, desc, productId, productType) {
             if (!src) return;
 
+            // Ignore stale async renders when user quickly switches between cards.
+            const renderToken = ++previewRenderToken;
+
             $img.css('opacity', 0);
             $title.css('opacity', 0);
             $desc.css('opacity', 0);
@@ -434,6 +435,8 @@ if ($) $(function () {
             toggleCalculator(productId);
 
             window.setTimeout(function () {
+                if (renderToken !== previewRenderToken) return;
+
                 $img.attr('src', src + '?' + Date.now());
 
                 if (title) $title.text(title);
@@ -486,6 +489,14 @@ if ($) $(function () {
             const productId = event.detail && event.detail.productId;
             if (productId) {
                 syncPreviewFromProductId(productId);
+            }
+        });
+
+        // Keep hero preview synced even when details are opened via delayed/mobile flow.
+        window.addEventListener('peg:product-details-ready', function () {
+            const openedProductId = window.PEGProducts && window.PEGProducts.currentProductId;
+            if (openedProductId) {
+                syncPreviewFromProductId(openedProductId);
             }
         });
 
