@@ -349,6 +349,7 @@ if ($) $(function () {
         let currentIndex = 0;
         let $cards = $grid.find('.productCard');
         let previewRenderToken = 0;
+        let isDetailsOpen = false;
 
         let heroTypes = [
             'previewProduct--cabinet',
@@ -500,6 +501,18 @@ if ($) $(function () {
             }
         });
 
+        window.addEventListener('peg:product-details-open', function () {
+            isDetailsOpen = true;
+            const openedProductId = window.PEGProducts && window.PEGProducts.currentProductId;
+            if (openedProductId) {
+                syncPreviewFromProductId(openedProductId);
+            }
+        });
+
+        window.addEventListener('peg:product-details-close', function () {
+            isDetailsOpen = false;
+        });
+
         function showCard(index) {
             if (index >= $cards.length) index = 0;
             if (index < 0) index = $cards.length - 1;
@@ -577,7 +590,9 @@ if ($) $(function () {
             window.setTimeout(openSelected, 280);
         }
 
-        $grid.on('mouseover focusin click', function (e) {
+        $grid.on('mouseover focusin', function (e) {
+            if (isDetailsOpen) return;
+
             let $card = $(e.target).closest('.productCard');
             if (!$card.length) return;
 

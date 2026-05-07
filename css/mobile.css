@@ -1943,17 +1943,8 @@ body.products-page .mobile_panel{
 .previewProduct--module,
 .previewProduct--wide,
 .previewProduct--tall {
-    /* Держим общу висоту превью ~95% екрана: 5% залишається видимим для панелі знизу */
-    --preview-top-offset: clamp(88px, 30vw, 180px);
+    /* На мобильных уменьшаем верхний отступ и не растягиваем hero на весь экран */
+    --preview-top-offset: clamp(24px, 8vw, 56px);
     padding-top: var(--preview-top-offset);
-    min-height: calc(100vh - var(--preview-top-offset));
-}
-
-@supports (height: 100dvh) {
-    .previewProduct--cabinet,
-    .previewProduct--module,
-    .previewProduct--wide,
-    .previewProduct--tall {
-        min-height: calc(100dvh - var(--preview-top-offset));
-    }
+    min-height: auto;
 }

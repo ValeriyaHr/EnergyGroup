@@ -214,6 +214,12 @@
     object-position: center top;
 }
 
+/* Точечная коррекция для p13: убираем визуальный зазор снизу hero */
+.previewProduct[data-product-id="p13"] #previewProductImage,
+.previewProduct[data-product-id="p13"] .previewProduct__media img{
+    transform: translateY(56px);
+}
+
 /* =========================================================
    PRODUCTS LIST
    Секція карток продуктів
@@ -577,6 +583,11 @@
         max-height: 820px;
         transform: translateY(-74px);
     }
+
+    .previewProduct[data-product-id="p13"] #previewProductImage,
+    .previewProduct[data-product-id="p13"] .previewProduct__media img{
+        transform: translateY(62px);
+    }
 }
 
 /* =========================================================
@@ -643,6 +654,11 @@
     .previewProduct[data-product-id="p03"] #previewProductImage,
     .previewProduct[data-product-id="p03"] .previewProduct__media img{
         transform: translateY(-58px);
+    }
+
+    .previewProduct[data-product-id="p13"] #previewProductImage,
+    .previewProduct[data-product-id="p13"] .previewProduct__media img{
+        transform: translateY(48px);
     }
 
     .productsList__grid{
@@ -748,6 +764,11 @@
     .previewProduct[data-product-id="p03"] #previewProductImage,
     .previewProduct[data-product-id="p03"] .previewProduct__media img{
         transform: translateY(-50px);
+    }
+
+    .previewProduct[data-product-id="p13"] #previewProductImage,
+    .previewProduct[data-product-id="p13"] .previewProduct__media img{
+        transform: translateY(40px);
     }
 
     .productCard__link{
