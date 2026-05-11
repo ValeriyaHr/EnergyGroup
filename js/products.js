@@ -423,6 +423,32 @@ if ($) $(function () {
             };
         }
 
+        function escapeHtml(value) {
+            return String(value || '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function formatPreviewTitle(title, productId) {
+            const cleanTitle = String(title || '').replace(/\s+/g, ' ').trim();
+            if (!cleanTitle) return '';
+
+            // Для p07 виносимо частину у дужках окремим сірим рядком, як у макеті.
+            if (String(productId || '').toLowerCase() === 'p07') {
+                const titleParts = cleanTitle.match(/^(.*?)(\s*\([^)]*\)\s*)$/);
+                if (titleParts) {
+                    const mainPart = escapeHtml(titleParts[1].trim());
+                    const mutedPart = escapeHtml(titleParts[2].trim());
+                    return `${mainPart}<span class="previewProduct__labelMuted">${mutedPart}</span>`;
+                }
+            }
+
+            return escapeHtml(cleanTitle);
+        }
+
         function setPreview(src, title, desc, productId, productType) {
             if (!src) return;
 
@@ -440,7 +466,7 @@ if ($) $(function () {
 
                 $img.attr('src', src + '?' + Date.now());
 
-                if (title) $title.text(title);
+                if (title) $title.html(formatPreviewTitle(title, productId));
                 if (desc) $desc.text(desc);
 
                 setPreviewState(productId, productType);

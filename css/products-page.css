@@ -83,6 +83,18 @@
     color: var(--grey-dark);
 }
 
+.previewProduct__labelMuted{
+    display: block;
+    margin-top: 2px;
+    color: var(--lightgrey);
+}
+
+@media (min-width: 769px){
+    .previewProduct[data-product-id="p07"] .previewProduct__label{
+        max-width: 258px;
+    }
+}
+
 /* Сірий опис справа */
 .previewProduct__desc{
     width: 100%;
@@ -727,6 +739,10 @@
         font-size: 13px;
     }
 
+    .previewProduct[data-product-id="p07"] .previewProduct__label{
+        max-width: 236px;
+    }
+
     .previewProduct__desc{
         max-width: 240px;
         font-size: 11px;
@@ -795,6 +811,23 @@
         grid-column: auto;
         width: 100%;
         max-width: 335px;
+    }
+}
+
+/* =========================================================
+   DESKTOP TUNING
+   Точкове вирівнювання лівого hero-тексту на звичайних екранах
+========================================================= */
+
+@media (min-width: 1201px){
+    .previewProduct__side--left{
+        grid-column: 2 / 4;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1200px){
+    .previewProduct__side--left{
+        grid-column: 2 / 5;
     }
 }
 
