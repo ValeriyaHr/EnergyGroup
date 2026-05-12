@@ -1322,9 +1322,8 @@ body.menu-open{
 }
 
 .whyReveal{
-    --p: 0;                 /* 0 = stacked, 1 = expanded */
     --count: 10;            /* JS overwrite */
-    --item-h: 56px;
+    --item-h: 76px;
     --gap: 1px;
     --expanded-step: calc(var(--item-h) + var(--gap));
     --collapsed-step: 26px; /* наскільки “стиснутий” стек у дефолті */
@@ -1336,9 +1335,8 @@ body.menu-open{
     padding: 18px;
     position: relative;
     overflow: hidden;
-    min-height: calc(
-            var(--item-h) + (var(--count) - 1) * var(--expanded-step) + 36px
-    );
+    /* min-height встановлює JS динамічно */
+    min-height: calc(var(--item-h) + 40px);
 }
 
 .whyItem{
@@ -1346,7 +1344,7 @@ body.menu-open{
     left: 20px;
     right: 20px;
     top: 20px;
-    height: 76px;
+    height: var(--item-h);
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -1360,13 +1358,7 @@ body.menu-open{
     text-transform: uppercase;
     background: var(--lightgrey);
     color: var(--grey-dark);
-    transform: translateY(
-            calc(
-                    (var(--i) * var(--collapsed-step)) * (1 - var(--p)) +
-                    (var(--i) * var(--expanded-step)) * var(--p)
-            )
-    );
-    transition: filter .25s ease;
+    /* transform повністю керується JS */
     will-change: transform;
     opacity: 1;
 }
@@ -4058,5 +4050,3 @@ body.menu-open{
     .docsTop__inner{ flex-direction:column; }
     .docsTop__tabs{ flex: 1 1 auto; justify-content:flex-start; flex-wrap:wrap; }
 }
-
-

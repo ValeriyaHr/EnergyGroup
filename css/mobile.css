@@ -544,7 +544,7 @@ body.menu-open .header__burger::after {
 .intro__link--sub:hover::after{
     transform: translateY(-50%) translateX(4px);
 }
-/* ===== кінець інтро (2 блок головної сторінки, де фото з каскою ===== */
+/* ===== кінець інтро (2 блок головної сторінки, де фото з каскою) ===== */
 /* ===== ENGINEERING СЕКЦІЯ ГОЛОВНОЇ 3, ДЕ АКОНДЕОН ===== */
 .engineering{
     padding: 82px 0 66px;
@@ -722,12 +722,7 @@ body.menu-open .header__burger::after {
     margin-top: 0;
 }
 
-/* Переменные для мобильной версии whyReveal */
-.whyReveal{
-    --p: 0;                        /* СВЕРНУТО по умолчанию на мобільній */
-}
-
-/* панель табів — теж 100% */
+/* JS керує розкладкою/складанням, тут лиш мобільна геометрія */
 .whyPanel{
     width: calc(100% - 24px);
     max-width: none;
@@ -735,10 +730,9 @@ body.menu-open .header__burger::after {
     padding: 14px 12px;
     border-radius: 18px;
     overflow: hidden;
-    min-height: calc(64px + (var(--count) - 1) * ((36px * (1 - var(--p))) + (64px * var(--p))) + 36px);
+    min-height: 100px;
 }
 
-/* айтеми — без фіксованої ширини */
 .whyItem{
     left: 12px;
     right: 12px;
@@ -751,17 +745,12 @@ body.menu-open .header__burger::after {
     font-weight: 400;
     color: var(--black);
     height: 64px;
-    transform: translateY(calc((var(--i) * 36px) * (1 - var(--p)) + (var(--i) * 64px) * var(--p)));
 }
 
 @media (max-width: 420px){
-    .whyPanel{ min-height: calc(62px + (var(--count) - 1) * ((32px * (1 - var(--p))) + (62px * var(--p))) + 36px); }
-
     .whyItem{
         height: 62px;
-        transform: translateY(calc((var(--i) * 32px) * (1 - var(--p)) + (var(--i) * 62px) * var(--p)));
     }
-
 
     .whyItem span{ color: var(--black); }
 
@@ -774,15 +763,12 @@ body.menu-open .header__burger::after {
 }
 
 @media (max-width: 360px){
-    .whyPanel{ min-height: calc(58px + (var(--count) - 1) * ((28px * (1 - var(--p))) + (58px * var(--p))) + 36px); }
-
     .whyItem{
         height: 58px;
         padding: 10px;
         font-size: 11px;
         line-height: 1.18;
         letter-spacing: -0.02em;
-        transform: translateY(calc((var(--i) * 28px) * (1 - var(--p)) + (var(--i) * 58px) * var(--p)));
     }
 
     .whyItem span{ color: var(--black); }

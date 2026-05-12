@@ -121,53 +121,75 @@ function initWhyUsUnfold() {
     const root = document.querySelector("#whyReveal");
     if (!root) return;
 
+    const panel = root.querySelector(".whyPanel");
     const items = root.querySelectorAll(".whyItem");
-    if (!items.length) return;
+    if (!panel || !items.length) return;
 
-    // щоб CSS міг порахувати висоту панелі
-    root.style.setProperty("--count", String(items.length));
+    const section = root.closest(".whyus") || root;
+    const N = items.length;
 
-    // На мобільній версії — свернено по умолчанию, на десктопі — залежить від скролу
-    const isMobileDefault = isMobileView();
-    if (isMobileDefault) {
-        root.style.setProperty("--p", "0");  // СВЕРНУТО для мобільної
-    }
+    root.style.setProperty("--count", String(N));
 
-    // reduced motion — на мобільній свернено, на десктопі розкладено
+    // reduced motion — одразу показати розкладеним
     if (window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches) {
-        const isMobile = isMobileView();
-        root.style.setProperty("--p", isMobile ? "0" : "1");
+        const itemHeight = items[0].offsetHeight || 76;
+        const topOffset = parseFloat(window.getComputedStyle(items[0]).top) || 20;
+        const step = itemHeight + 1;
+        items.forEach((item, i) => {
+            item.style.transform = `translateY(${Math.round(i * step)}px)`;
+        });
+        panel.style.minHeight = `${Math.ceil(topOffset + itemHeight + ((N - 1) * step) + topOffset)}px`;
         return;
     }
 
     let raf = 0;
-    let active = false;
-
     const clamp01 = (v) => Math.max(0, Math.min(1, v));
+
+    /**
+     * p = 0  → картки складені (peek-стек, видно тільки краї)
+     * p = 1  → картки повністю розкладені
+     */
+    const applyProgress = (p) => {
+        const firstItem = items[0];
+        const itemHeight = firstItem.offsetHeight || 76;
+        const topOffset = parseFloat(window.getComputedStyle(firstItem).top) || 20;
+        const paddingBottom = parseFloat(window.getComputedStyle(panel).paddingBottom) || topOffset;
+
+        const mobile = isMobileView();
+        // Крок у складеному стані (видно тільки краї)
+        const peekStep  = mobile ? 32 : 24;
+        // Крок у розкладеному стані (кожна картка повністю видна)
+        const expandedStep = itemHeight + 2;
+        // Поточний крок (lerp між peek та expanded)
+        const currentStep = peekStep * (1 - p) + expandedStep * p;
+
+        items.forEach((item, i) => {
+            item.style.transform = `translateY(${(i * currentStep).toFixed(2)}px)`;
+        });
+
+        const h = topOffset + itemHeight + ((N - 1) * currentStep) + paddingBottom;
+        panel.style.minHeight = `${Math.ceil(h)}px`;
+    };
 
     const update = () => {
         raf = 0;
-        if (!active) return;
+        const r   = section.getBoundingClientRect();
+        const vh  = window.innerHeight || document.documentElement.clientHeight;
 
-        const r = root.getBoundingClientRect();
-        const vh = window.innerHeight || document.documentElement.clientHeight;
-        const isMobile = isMobileView();
+        // -- ВХІД: розкладаємо картки, коли секція з'являється знизу --
+        // p=0 коли r.top = vh (секція ще не видна)
+        // p=1 коли r.top = vh * 0.25 (секція зайшла на 75%)
+        const enterP = clamp01((vh - r.top) / (vh * 0.75));
 
-        if (isMobile) {
-            // Для мобільної версії: від стиснутого (внизу екрану) до розкладеного (на верху)
-            const start = vh * 0.85;  // починаємо ближче до низу
-            const end   = vh * 0.15;  // закінчуємо ближче до верху
+        // -- ВИХІД: складаємо картки одразу як верх секції виходить за верх viewport --
+        // p=1 поки r.top >= 0 (верх секції ще в viewport або нижче)
+        // p=0 коли r.top = -vh * 0.45 (верх секції на 45% вище viewport)
+        // Це означає "складання" видно ще ПОКИ секція частково видна — ефект очевидний!
+        const exitP  = clamp01(1 + r.top / (vh * 0.45));
 
-            const p = clamp01((start - r.top) / (start - end));
-            root.style.setProperty("--p", p.toFixed(4));
-        } else {
-            // Для десктопу: як раніше
-            const start = vh * 0.95; // починаємо майже знизу
-            const end   = vh * 0.05; // закінчуємо майже зверху
-
-            const p = clamp01((start - r.top) / (start - end));
-            root.style.setProperty("--p", p.toFixed(4));
-        }
+        // Загальний прогрес: мінімум enter і exit → 0 поза зоною видимості, 1 у зоні
+        const p = Math.min(enterP, exitP);
+        applyProgress(p);
     };
 
     const onScroll = () => {
@@ -175,25 +197,10 @@ function initWhyUsUnfold() {
         raf = requestAnimationFrame(update);
     };
 
-    const io = new IntersectionObserver(
-        (entries) => {
-            const isIn = entries.some((e) => e.isIntersecting);
-
-            if (isIn && !active) {
-                active = true;
-                update();
-                window.addEventListener("scroll", onScroll, { passive: true });
-                window.addEventListener("resize", onScroll);
-            } else if (!isIn && active) {
-                active = false;
-                window.removeEventListener("scroll", onScroll);
-                window.removeEventListener("resize", onScroll);
-            }
-        },
-        { rootMargin: "200px 0px 200px 0px", threshold: 0.01 }
-    );
-
-    io.observe(root);
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    window.addEventListener("load", onScroll, { once: true });
 }
 
 // головна цифри
