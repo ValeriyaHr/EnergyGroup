@@ -5,7 +5,7 @@ import path from 'node:path';
 const CHANNEL_ID = process.env.YOUTUBE_CHANNEL_ID || 'UC_im8kPplH1Wx7qJiPpvuWQ';
 const CHANNEL_HANDLE = process.env.YOUTUBE_CHANNEL_HANDLE || '@PrimeEnergyGroup-LLC';
 const CHANNEL_URL = `https://www.youtube.com/${CHANNEL_HANDLE}`;
-const MAX_RESULTS = Number(process.env.YOUTUBE_MAX_RESULTS || 6);
+const MAX_RESULTS = Number(process.env.YOUTUBE_MAX_RESULTS || 7);
 const OUTPUT_PATH = path.resolve(process.cwd(), 'public', 'data', 'youtube-videos.json');
 
 const XML_ENTITIES = {
