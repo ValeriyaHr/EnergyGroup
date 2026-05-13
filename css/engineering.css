@@ -1108,180 +1108,8 @@ body.engVideoModalOpen{
 .engSection__bottomRight .engSolRow__action--bottom{
     grid-column: 1 / 4;
     margin-top: 16px;
-    justify-self: start;
+    justify-self: end;
     align-self: start;
-    white-space: nowrap;
-}
-
-@media (min-width: 993px) and (max-width: 1024px){
-    .engSolRow{
-        grid-template-columns: 200px minmax(420px, 1fr) 300px;
-        column-gap: 44px;
-        padding: 32px 0;
-    }
-
-    .engSolRow__num{ font-size: 80px; }
-
-    .engVideoGrid{
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-template-rows: auto;
-    }
-
-    .engVideoGrid .engVideoCard{
-        grid-column: auto;
-        grid-row: auto;
-        min-height: 120px;
-    }
-
-    .engSection__card{ padding: 40px 32px 36px; }
-    .engSolRow{ gap: 24px; }
-    .engSolRow__left{ width: 150px; flex-basis: 150px; }
-    .engSolRow__right{ width: 240px; flex-basis: 240px; }
-    .engSection__big{ font-size: 32px; }
-}
-
-@media (min-width: 769px){
-    .engSection__bottom{
-        column-gap: clamp(20px, 2.8vw, 40px);
-    }
-
-    .splitText__base,
-    .splitText__overlay{
-        transform: none;
-        padding-right: 0;
-    }
-
-    .splitText__line1{
-        display: inline-block;
-        margin: 0;
-        margin-left: 36%;
-        padding: 0;
-        transform: none;
-    }
-
-    .splitText__base,
-    .splitText__overlay{
-        font-size: clamp(18px, 1.55vw, 26px);
-        line-height: 1.12;
-        letter-spacing: 0.02em;
-    }
-
-
-    .splitText__overlay{
-        clip-path: inset(0 0 0 36%);
-    }
-}
-
-
-@media (min-width: 769px) and (max-width: 992px){
-    .engSection__card{
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-
-    .engSection__bottom{
-        margin-top: clamp(72px, 9vw, 110px);
-        margin-bottom: clamp(72px, 9vw, 110px);
-        column-gap: clamp(14px, 2vw, 22px);
-    }
-
-    .engSection__bottomLeft{
-        grid-column: 1 / 9;
-    }
-
-    .engSection__bottomRight{
-        grid-column: 9 / 13;
-        row-gap: 32px;
-    }
-
-    .splitText__base,
-    .splitText__overlay{
-        font-size: clamp(16px, 1.95vw, 22px);
-        line-height: 1.08;
-    }
-
-    .engSection__ticks{
-        left: 62%;
-        top: 30%;
-        width: min(760px, 96vw);
-        filter: none;
-        --eng-ticks-scale: 1.15;
-    }
-
-    .engSection__rows > .engSolRow{
-        display: grid;
-        grid-template-columns: repeat(12, minmax(0, 1fr));
-        grid-template-rows: 96px auto;
-        column-gap: clamp(14px, 2vw, 20px);
-        row-gap: 0;
-        padding: 32px 0;
-        min-width: 0;
-        align-items: start;
-    }
-
-    .engSection__rows > .engSolRow > .engSolRow__left,
-    .engSection__rows > .engSolRow > .engSolRow__right{
-        display: contents;
-    }
-
-    .engSection__rows > .engSolRow .engSolRow__label{
-        grid-column: 1 / 3;
-        grid-row: 1;
-        margin-bottom: 0;
-        font-size: 12px;
-        line-height: 1;
-        align-self: start;
-        text-align: left;
-        max-width: 100%;
-    }
-
-    .engSection__rows > .engSolRow .engSolRow__num{
-        grid-column: 2 / 4;
-        grid-row: 2;
-        margin-left: 0;
-        justify-self: start;
-        align-self: start;
-        font-size: clamp(88px, 10vw, 120px);
-        line-height: 0.82;
-    }
-
-    .engSection__rows > .engSolRow .engSolRow__center{
-        grid-column: 4 / 9;
-        grid-row: 2;
-        justify-self: stretch;
-        align-self: start;
-        width: 100%;
-        max-width: none;
-        min-width: 0;
-        font-size: 16px;
-        line-height: 1.2;
-    }
-
-    .engSection__rows > .engSolRow .engSolRow__action{
-        grid-column: 10 / 13;
-        grid-row: 1;
-        justify-self: end;
-        align-self: start;
-        margin: 0;
-        white-space: normal;
-        text-align: right;
-        font-size: 18px;
-        line-height: 1.05;
-    }
-
-    .engSection__rows > .engSolRow .engSolRow__note{
-        grid-column: 10 / 13;
-        grid-row: 2;
-        justify-self: stretch;
-        align-self: start;
-        width: 100%;
-        max-width: none;
-        margin: 0;
-        text-align: left;
-        font-size: 12px;
-        line-height: 1.15;
-    }
-
 }
 
 @media (max-width: 768px){
@@ -1373,91 +1201,6 @@ body.engVideoModalOpen{
         margin-bottom: 80px;
     }
 
-    .engSolRow__videoList{
-        margin-top: 64px;
-        gap: 18px;
-    }
-
-    .engChannelVideos{
-        gap: 18px;
-    }
-
-    .engChannelVideos__top{
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-    }
-
-    .engChannelVideos__slider{
-        column-gap: 8px;
-    }
-
-    .engChannelVideos__moreRow{
-        margin-top: 12px;
-    }
-
-    .engChannelVideos__grid{
-        --cards-per-view: 1;
-        --card-gap: 14px;
-    }
-
-    .engChannelVideos__nav{
-        width: 36px;
-        height: 36px;
-        font-size: 22px;
-    }
-
-    .engChannelVideos__nav svg{
-        width: 16px;
-        height: 16px;
-    }
-
-    .engChannelVideoCard__body{
-        padding: 16px;
-    }
-
-    .engChannelVideoCard__title{
-        font-size: 16px;
-        line-height: 1.2;
-    }
-
-    .engVideoModal{
-        padding: 16px;
-    }
-
-    .engVideoModal__dialog{
-        width: min(100vw - 16px, 100%);
-        padding: 48px 12px 12px;
-        border-radius: 16px;
-    }
-
-    .engVideoModal__close{
-        top: 12px;
-        right: 12px;
-    }
-
-    .engVideoModal__title{
-        margin-top: 12px;
-        font-size: 16px;
-        line-height: 1.2;
-    }
-
-    #eng-video-implementation .engSolRow__videoList,
-    #eng-video-implementation .engSolRow__videoLink,
-    #eng-video-implementation .engSolRow__videoList .engTermPlain{
-        text-transform: none;
-        text-decoration: none;
-    }
-
-    #eng-video-implementation .engSolRow__videoLink:hover,
-    #eng-video-implementation .engSolRow__videoLink:focus-visible,
-    #eng-video-implementation .engSolRow__videoLink:active{
-        text-decoration: underline;
-        text-decoration-color: currentColor;
-        text-decoration-thickness: 1px;
-        text-underline-offset: 2px;
-    }
-
     .engSection__rows > .engSolRow .engSolRow__action{
         order: 4;
         align-self: center;
@@ -1497,12 +1240,12 @@ body.engVideoModalOpen{
 
     .engSection__bottomRight .engSolRow__action--bottom{
         grid-column: 1 / 6;
-        justify-self: start;
+        justify-self: center;
         margin-top: 40px;
         white-space: nowrap;
         font-size: 16px;
         padding: 0 14px;
-        text-align: left;
+        text-align: center;
         line-height: 1.1;
         letter-spacing: -0.03em;
     }
@@ -1525,6 +1268,12 @@ body.engVideoModalOpen{
 @media (max-width: 420px){
     .engSection__rows > #eng-video-implementation .engSolRow__action{
         margin-bottom: 100px;
+    }
+}
+
+@media (max-width: 768px){
+    .engChannelVideos__grid{
+        --cards-per-view: 1;
     }
 }
 
